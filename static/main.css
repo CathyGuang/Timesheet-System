@@ -1,6 +1,7 @@
 /* ROOT STYLES */
 :root {
   --background-purple: #b099ff;
+  --dark-purple: #321c77;
 
   font-family: Verdana, sans-serif;
 }
@@ -9,5 +10,41 @@
 
 body {
   background-color: var(--background-purple);
+  margin: 0;
+}
+
+button {
+  background-color: white;
+  border: 2px solid #4829ad;
+  border-radius: 2px;
 
 }
+
+    /* HEADER STYLES */
+    header {
+      display: flex;
+      justify-content: space-between;
+      flex-flow: row wrap;
+    }
+
+    nav {
+      margin-top: 15px;
+      margin-right: 10px;
+      width: 20vw;
+      display: flex;
+      justify-content: space-around;
+      flex-flow: row wrap;
+    }
+
+    nav > * {
+      width: 5em
+    }
+
+    #home-button {
+      height: 2em;
+      width: 100%;
+    }
+
+
+
+    /* MAIN CONTENT STYLES */

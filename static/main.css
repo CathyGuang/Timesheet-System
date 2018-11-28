@@ -58,3 +58,11 @@ button:hover {
 
 
     /* MAIN CONTENT STYLES */
+
+    .main-button-div {
+      margin-left: 15%;
+      margin-right: 15%;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+    }

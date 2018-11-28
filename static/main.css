@@ -1,7 +1,8 @@
 /* ROOT STYLES */
 :root {
   --background-purple: #b099ff;
-  
+
+  font-family: "Roboto", Verdana, sans-serif;
 }
 
 /* BODY STYLES */

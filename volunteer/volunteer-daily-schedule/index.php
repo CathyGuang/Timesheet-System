@@ -15,6 +15,10 @@
     </nav>
   </header>
 
+  <?php
+    include "../../static/scripts/connectdb.php";
+  ?>
+
   <form action="">
     <input name="query-name" list="volunteers">
     <datalist id="volunteers">

@@ -4,3 +4,9 @@ INSTALL APACHE, PHP, AND POSTGRES
 MAKE SURE APACHE IS PROPERLY CONFIGURED
   - NO INDEXING
   - NEED TO ADD .PHP FILES TO DirectoryIndex variable to serve php files.
+
+MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
+  - MAKE SURE
+              # IPv4 local connections:
+              host    all             all             127.0.0.1/32            md5
+      IS IN PostgreSQL\11\data\pg_hba.conf FILE AT THE END

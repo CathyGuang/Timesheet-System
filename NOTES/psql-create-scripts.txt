@@ -1,0 +1,11 @@
+/* CREATE DATABASE */
+
+
+/* CREATE VOLUNTEER TABLE */
+CREATE TABLE volunteer (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  phone TEXT
+
+);

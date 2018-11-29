@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  
+
   <header>
     <h1>Volunteer Daily Schedule</h1>
     <nav>
@@ -15,6 +15,15 @@
     </nav>
   </header>
 
+  <form action="">
+    <input name="query-name" list="volunteers">
+    <datalist id="volunteers">
+      <?php
+        //GET LIST OF ALL VOLUNTEERS FROM DATABASE, ECHO <option value="NAME"> FOR EACH NAME
+      ?>
+    </datalist>
+
+  </form
 
 
 </body>

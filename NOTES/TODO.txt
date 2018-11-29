@@ -1,6 +1,0 @@
-INSTALL APACHE, PHP, AND POSTGRES
-  - use Lynda tutorial to properly configure apache and php on windows
-
-MAKE SURE APACHE IS PROPERLY CONFIGURED
-  - NO INDEXING
-  - NEED TO ADD .PHP FILES TO DirectoryIndex variable to serve php files.

@@ -19,6 +19,7 @@
     <input name="query-name" list="volunteers">
     <datalist id="volunteers">
       <?php
+        echo "<option value='Hello this is PHP!'>";
         //GET LIST OF ALL VOLUNTEERS FROM DATABASE, ECHO <option value="NAME"> FOR EACH NAME
       ?>
     </datalist>

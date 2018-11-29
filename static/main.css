@@ -69,6 +69,7 @@ button:hover {
     }
 
     .main-button-div > * {
+      margin-top: 8vh;
       height: 30vh;
       width: 20vw;
     }

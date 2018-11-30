@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <?php include "../../static/scripts/connectdb.php";?>
   <title>Volunteer Daily Schedule</title>
 </head>
 
@@ -15,22 +16,23 @@
     </nav>
   </header>
 
-  <?php
-    include "../../static/scripts/connectdb.php";
-  ?>
+  <div class="main-content-div">
 
-  <form action="">
-    <input name="query-name" list="volunteers">
-    <datalist id="volunteers">
-      <?php
-        $result = pg_query($db_connection, "SELECT name FROM volunteer;");
-        while ($row = pg_fetch_row($result)) {
-          echo "<option value='$row[0]'>";
-        }
-      ?>
-    </datalist>
+    <form action="schedule.php" method="post">
+      <input name="query-name" list="volunteers">
+      <datalist id="volunteers">
+        <?php
+          $result = pg_query($db_connection, "SELECT name FROM volunteer;");
+          while ($row = pg_fetch_row($result)) {
+            echo "<option value='$row[0]'>";
+          }
+        ?>
+      </datalist>
 
-  </form
+      <input type="submit" value="Search">
+    </form>
+
+  </div>
 
 
 </body>

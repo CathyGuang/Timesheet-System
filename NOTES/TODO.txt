@@ -1,1 +1,3 @@
 - see if I can use the Tel form element to ensure that administrators creating new volunteers/clients/staff are forced to input consistent telephone numbers?
+
+- COME MAKE CUSTOM DATA TYPES LIKE TACK, CLASS_TYPE, ETC FULLY CUSTOMIZEABLE -- MAKE 'ADD CLASS_TYPE' ETC AVAILABLE FROM ADMIN PAGE

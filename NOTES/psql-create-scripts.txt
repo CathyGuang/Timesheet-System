@@ -3,6 +3,35 @@
 
 /* CREATE CLASS TABLE */
 
+CREATE TYPE CLASS_TYPE AS ENUM();
+CREATE TYPE ARENA AS ENUM();
+CREATE TYPE HORSE_BEHAVIOR AS ENUM();
+CREATE TYPE TACK AS ENUM();
+CREATE TYPE PAD AS ENUM();
+
+CREATE TABLE classes (
+  id SERIAL PRIMARY KEY,
+  class_type CLASS_TYPE,
+  date_of_class DATE,
+  time_of_class TIME,
+  arena ARENA,
+  lesson-plan TEXT,
+  horse INT REFERENCES horses(id),
+  horse_behavior HORSE_BEHAVIOR,
+  tack TACK,
+  special_tack TEXT,
+  stirrup_leather_length TEXT,
+  pad PAD,
+  client INT [],
+  attendance INT [],
+  client_notes TEXT,
+  instructor INT REFERENCES workers(id),
+  therapist INT REFERENCES workers(id),
+  equine_specialist INT REFERENCES workers(id),
+  leader INT REFERENCES workers(id),
+  sidewalkers INT []
+);
+
 
 /* CREATE WORKERS TABLE */
 
@@ -39,9 +68,11 @@ CREATE TABLE horses (
 
 /* CREATE HORSE CARE TABLE */
 
+CREATE TYPE CARE_TYPE AS ENUM();
+
 CREATE TABLE horse_care (
   id SERIAL PRIMARY KEY,
-  /*care_type ENUM*//*,*/
+  care_type CARE_TYPE,
   date_of_shift DATE,
   time_of_shift TIME,
   volunteers INT []
@@ -50,9 +81,11 @@ CREATE TABLE horse_care (
 
 /* CREATE OFFICE SHIFT TABLE */
 
+CREATE TYPE OFFICE_SHIFT_TYPE AS ENUM();
+
 CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
-  /*office_shift_type ENUM*//*,*/
+  office_shift_type OFFICE_SHIFT_TYPE,
   date_of_shift DATE,
   time_of_shift TIME,
   volunteers INT []
@@ -61,9 +94,10 @@ CREATE TABLE office_shifts (
 
 /* CREATE VOLUNTEER HOURS TABLE */
 
+
 CREATE TABLE volunteer_hours (
   id SERIAL PRIMARY KEY,
   volunteer INT REFERENCES volunteer(id),
-  hours INT/*,*/
-  /* shift_type ENUM CUSTOM TYPE */
+  hours INT,
+  shift_type TEXT
 );

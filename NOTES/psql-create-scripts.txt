@@ -50,15 +50,21 @@ CREATE TABLE horse (
 CREATE TABLE horse_care (
   id SERIAL PRIMARY KEY,
   /*care_type ENUM*//*,*/
-  date_of_care DATE,
-  time_of_care TIME,
+  date_of_shift DATE,
+  time_of_shift TIME,
   volunteers INT []
 );
 
 
 /* CREATE OFFICE SHIFT TABLE */
 
-CREATE TABLE 
+CREATE TABLE office_shift (
+  id SERIAL PRIMARY KEY,
+  /*office_shift_type ENUM*//*,*/
+  date_of_shift DATE,
+  time_of_shift TIME,
+  volunteers INT []
+);
 
 
 /* CREATE VOLUNTEER HOURS TABLE */

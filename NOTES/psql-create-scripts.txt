@@ -1,6 +1,9 @@
 /* CREATE DATABASE */
 
 
+/* CREATE CLASS TABLE */
+
+
 /* CREATE VOLUNTEER TABLE */
 CREATE TABLE volunteer (
   id SERIAL PRIMARY KEY,
@@ -29,6 +32,33 @@ CREATE TABLE client (
   email TEXT,
   phone TEXT
 );
+
+
+/* CREATE HORSE TABLE */
+
+CREATE TABLE horse (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  fs_uses_per_day INT,
+  owner_uses_per_day INT,
+  notes TEXT
+);
+
+
+/* CREATE HORSE CARE TABLE */
+
+CREATE TABLE horse_care (
+  id SERIAL PRIMARY KEY,
+  /*care_type ENUM*//*,*/
+  date_of_care DATE,
+  time_of_care TIME,
+  volunteers INT []
+);
+
+
+/* CREATE OFFICE SHIFT TABLE */
+
+CREATE TABLE 
 
 
 /* CREATE VOLUNTEER HOURS TABLE */

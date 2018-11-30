@@ -16,10 +16,6 @@
   </header>
 
   <?php
-    echo extension_loaded('pgsql') ? 'yes':'no';
-  ?>
-  
-  <?php
     include "../../static/scripts/connectdb.php";
   ?>
 
@@ -27,8 +23,10 @@
     <input name="query-name" list="volunteers">
     <datalist id="volunteers">
       <?php
-        echo "<option value='Hello this is PHP!'>";
-        //GET LIST OF ALL VOLUNTEERS FROM DATABASE, ECHO <option value="NAME"> FOR EACH NAME
+        $result = pg_query($db_connection, "SELECT name FROM volunteer;");
+        while ($row = pg_fetch_row($result)) {
+          echo "<option value='$row[0]'>";
+        }
       ?>
     </datalist>
 

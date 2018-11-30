@@ -5,6 +5,11 @@ MAKE SURE APACHE IS PROPERLY CONFIGURED
   - NO INDEXING
   - NEED TO ADD .PHP FILES TO DirectoryIndex variable to serve php files.
 
+MAKE SURE PHP IS PROPERLY CONFIGURED
+  - NEED TO MAKE SURE PGSQL EXTENSION IS ENABLED AND WORKS IN PHP.INI FILE
+      - set extension_dir to ABSOLUTE path to the extensions folder in php
+      - uncomment extension=pgsql line in php.ini file.
+
 MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
   - MAKE SURE
               # IPv4 local connections:

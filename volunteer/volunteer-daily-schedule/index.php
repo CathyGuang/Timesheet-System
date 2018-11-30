@@ -16,6 +16,10 @@
   </header>
 
   <?php
+    echo extension_loaded('pgsql') ? 'yes':'no';
+  ?>
+  
+  <?php
     include "../../static/scripts/connectdb.php";
   ?>
 

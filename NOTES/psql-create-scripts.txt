@@ -4,29 +4,21 @@
 /* CREATE CLASS TABLE */
 
 
-/* CREATE VOLUNTEER TABLE */
-CREATE TABLE volunteer (
+/* CREATE WORKERS TABLE */
+
+CREATE TABLE workers (
   id SERIAL PRIMARY KEY,
   name TEXT,
   email TEXT,
-  phone TEXT
-
+  phone TEXT,
+  staff BOOLEAN,
+  volunteer BOOLEAN
 );
 
 
-/* CREATE STAFF TABLE */
+/* CREATE CLIENTS TABLE */
 
-CREATE TABLE staff (
-  id SERIAL PRIMARY KEY,
-  name TEXT,
-  email TEXT,
-  phone TEXT
-);
-
-
-/* CREATE CLIENT TABLE */
-
-CREATE TABLE client (
+CREATE TABLE clients (
   id SERIAL PRIMARY KEY,
   name TEXT,
   email TEXT,
@@ -34,9 +26,9 @@ CREATE TABLE client (
 );
 
 
-/* CREATE HORSE TABLE */
+/* CREATE HORSES TABLE */
 
-CREATE TABLE horse (
+CREATE TABLE horses (
   id SERIAL PRIMARY KEY,
   name TEXT,
   fs_uses_per_day INT,
@@ -58,7 +50,7 @@ CREATE TABLE horse_care (
 
 /* CREATE OFFICE SHIFT TABLE */
 
-CREATE TABLE office_shift (
+CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
   /*office_shift_type ENUM*//*,*/
   date_of_shift DATE,

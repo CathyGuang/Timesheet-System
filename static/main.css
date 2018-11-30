@@ -61,7 +61,7 @@ button:hover {
 
     /* MAIN CONTENT STYLES */
 
-    .main-button-div {
+    .main-content-div {
       margin-left: 15%;
       margin-right: 15%;
       display: flex;
@@ -69,7 +69,7 @@ button:hover {
       justify-content: space-around;
     }
 
-    .main-button-div > * {
+    .main-content-div > * {
       margin-top: 8vh;
       height: 30vh;
       width: 20vw;

@@ -15,7 +15,7 @@ CREATE TABLE classes (
   date_of_class DATE,
   time_of_class TIME,
   arena ARENA,
-  lesson-plan TEXT,
+  lesson_plan TEXT,
   horse INT REFERENCES horses(id),
   horse_behavior HORSE_BEHAVIOR,
   tack TACK,
@@ -97,7 +97,7 @@ CREATE TABLE office_shifts (
 
 CREATE TABLE volunteer_hours (
   id SERIAL PRIMARY KEY,
-  volunteer INT REFERENCES volunteer(id),
+  volunteer INT REFERENCES workers(id),
   hours INT,
   shift_type TEXT
 );

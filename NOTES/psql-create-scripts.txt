@@ -9,3 +9,33 @@ CREATE TABLE volunteer (
   phone TEXT
 
 );
+
+
+/* CREATE STAFF TABLE */
+
+CREATE TABLE staff (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  phone TEXT
+);
+
+
+/* CREATE CLIENT TABLE */
+
+CREATE TABLE client (
+  id SERIAL PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  phone TEXT
+);
+
+
+/* CREATE VOLUNTEER HOURS TABLE */
+
+CREATE TABLE volunteer_hours (
+  id SERIAL PRIMARY KEY,
+  volunteer INT REFERENCES volunteer(id),
+  hours INT/*,*/
+  /* shift_type ENUM CUSTOM TYPE */
+);

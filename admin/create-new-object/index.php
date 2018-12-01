@@ -20,10 +20,10 @@
   <h3 class="main-content-header">Select type of object:</h3>
 
   <div class="main-content-div">
-    <a href=""><button>Worker</button></a>
-    <a href=""><button>Client</button></a>
-    <a href=""><button>Horse</button></a>
-    <a href=""><button>Other</button></a>
+    <a href="new-worker"><button>Worker</button></a>
+    <a href="new-client"><button>Client</button></a>
+    <a href="new-horse"><button>Horse</button></a>
+    <a href="new-other"><button>Other</button></a>
 
   </div>
 

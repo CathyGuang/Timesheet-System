@@ -4,7 +4,6 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/connectdb.php";?>
   <title>Admin | Generate Report</title>
 </head>
 

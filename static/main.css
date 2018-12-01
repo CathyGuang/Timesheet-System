@@ -2,6 +2,9 @@
 :root {
   --background-purple: #b099ff;
   --dark-purple: #321c77;
+  --background-blue: #91ecff;
+  --background-red: #ff7c7c;
+  --background-green: #8aff84;
 
   font-family: Verdana, sans-serif;
   font-size: 18pt;

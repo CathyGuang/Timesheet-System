@@ -19,7 +19,7 @@
   <div class="main-content-div">
 
     <form action="schedule.php" method="post">
-      <input name="query-name" list="volunteers">
+      <input name="query_name" list="volunteers">
       <datalist id="volunteers">
         <?php
           $result = pg_query($db_connection, "SELECT name FROM volunteer;");

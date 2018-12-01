@@ -78,3 +78,19 @@ button:hover {
       height: 30vh;
       width: 20vw;
     }
+
+
+        /* FORM STYLES */
+
+        .main-form {
+          display: flex;
+          flex-flow: column wrap;
+          justify-content: space-between;
+          max-height: 75vh;
+          margin-left: 15%;
+          margin-top: 8vh;
+        }
+
+        .main-form > * {
+          max-width: 200px;
+        }

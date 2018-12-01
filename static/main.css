@@ -61,6 +61,10 @@ button:hover {
 
     /* MAIN CONTENT STYLES */
 
+    .main-content-header {
+      margin-left: 7%;
+    }
+
     .main-content-div {
       margin-left: 15%;
       margin-right: 15%;

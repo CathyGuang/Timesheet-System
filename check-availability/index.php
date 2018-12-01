@@ -17,7 +17,7 @@
     </nav>
   </header>
 
-  <h3 class="main-content-header">Search for any person, horse, arena, or object to check its availability</h3>
+  <h3 class="main-content-header">Search for anything to check its availability!</h3>
 
   <div class="main-content-div">
 

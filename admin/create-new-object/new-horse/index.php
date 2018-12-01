@@ -16,7 +16,24 @@
     </nav>
   </header>
 
+  <form action="create-new-horse.php" method="post" class="main-form">
 
+    <p>Name:</p>
+    <input type="text" name="name" value="">
+
+    <p>FS Uses per Day:</p>
+    <input type="number" name="fs_uses_per_day" value="">
+
+    <p>Owner Uses per Day:</p>
+    <input type="number" name="owner_uses_per_day" value="">
+
+    <p>Notes:</p>
+    <input type="text" name="notes" value="">
+
+    <br><br>
+    <input type="submit" value="Create">
+
+  </form>
 
 
 

@@ -18,21 +18,11 @@
   </header>
 
 
-  <form action="" method="post" class="main-form">
+  <?php
+    print_r($_POST);
 
-    <p>Name:</p>
-    <input type="text" name="name" value="">
 
-    <p>Email:</p>
-    <input type="email" name="email" value="">
-
-    <p>Phone Number:</p>
-    <input type="tel" name="phone" value="">
-
-    <br><br>
-    <input type="submit" value="Create">
-
-  </form>
+  ?>
 
 
 

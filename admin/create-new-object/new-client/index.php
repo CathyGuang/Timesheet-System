@@ -17,7 +17,7 @@
   </header>
 
 
-  <form action="" method="post" class="main-form">
+  <form action="create-new-client.php" method="post" class="main-form">
 
     <p>Name:</p>
     <input type="text" name="name" value="">

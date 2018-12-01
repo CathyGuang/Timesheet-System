@@ -70,7 +70,7 @@ button:hover {
       margin-right: 15%;
       display: flex;
       flex-flow: row wrap;
-      justify-content: space-between;
+      justify-content: space-around;
     }
 
     .main-content-div > * {
@@ -85,7 +85,6 @@ button:hover {
         .main-form {
           display: flex;
           flex-flow: column wrap;
-          justify-content: space-between;
           max-height: 75vh;
           margin-left: 15%;
           margin-top: 8vh;

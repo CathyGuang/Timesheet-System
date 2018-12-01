@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <?php include "../../static/scripts/connectdb.php";?>
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/connectdb.php";?>
   <title>Volunteer Daily Schedule</title>
 </head>
 

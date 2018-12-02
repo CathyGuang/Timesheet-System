@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/connectdb.php";?>
   <title>Admin | New Misc. Object</title>
 </head>
 
@@ -17,6 +18,41 @@
   </header>
 
 
+  <form action="create-new-other.php" method="post" class="main-form">
+
+    <p>Select object type:</p>
+    <input name="object-type" list="object-type-list">
+      <datalist id="object-type-list">
+        <?php
+          $query = <<<EOT
+          SELECT n.nspname as "Schema",
+  pg_catalog.format_type(t.oid, NULL) AS "Name",
+  pg_catalog.obj_description(t.oid, 'pg_type') as "Description"
+FROM pg_catalog.pg_type t
+     LEFT JOIN pg_catalog.pg_namespace n ON n.oid = t.typnamespace
+WHERE (t.typrelid = 0 OR (SELECT c.relkind = 'c' FROM pg_catalog.pg_class c WHERE c.oid = t.typrelid))
+  AND NOT EXISTS(SELECT 1 FROM pg_catalog.pg_type el WHERE el.oid = t.typelem AND el.typarray = t.oid)
+      AND n.nspname <> 'pg_catalog'
+      AND n.nspname <> 'information_schema'
+  AND pg_catalog.pg_type_is_visible(t.oid)
+ORDER BY 1, 2;
+EOT;
+          $result = pg_query($db_connection, $query);
+
+          while ($row = pg_fetch_row($result)) {
+            echo "<option value='{$row[1]}'>";
+          }
+        ?>
+      </datalist>
+
+    <p>Name of new object:</p>
+    <input type="text" name="new-object-name" value="">
+
+
+    <br><br>
+    <input type="submit" value="Submit">
+
+  </form>
 
 
 

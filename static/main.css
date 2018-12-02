@@ -83,6 +83,8 @@ button:hover {
 
     .main-content-header {
       margin-left: 7%;
+      margin-bottom: 0;
+      margin-top: 2vh;
     }
 
     .main-content-div {

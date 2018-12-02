@@ -6,3 +6,6 @@
 
 
 NEXT: all objects can now be created and edited, next allow classes to be created and edited.
+      - then do personal schedule pages,
+      - then allow hours to be entered,
+      - then allow reports to be generated.

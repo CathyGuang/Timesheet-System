@@ -32,7 +32,7 @@
     </div>
 
     <div>
-      <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE" class=""></p>
+      <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE"></p>
     </div>
 
     <br><br>

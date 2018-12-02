@@ -107,9 +107,10 @@ button:hover {
         .main-form {
           display: flex;
           flex-flow: column wrap;
-          max-height: 45vh;
+          justify-content: space-around;
+          max-height: 50vh;
           margin-left: 15%;
-          margin-top: 8vh;
+          margin-top: 6vh;
         }
 
         .main-form > * {
@@ -118,6 +119,12 @@ button:hover {
         .main-form > p {
           margin-bottom: 3px;
         }
+        input {
+          height: 30px;
+        }
         input[type='checkbox' i] {
           transform: scale(2);
+        }
+        input[type='submit'] {
+          height: 40px;
         }

@@ -43,7 +43,7 @@
       echo <<<EOT
       <form action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
 
-        <p>ID:</p>
+        <p>Database ID:</p>
         <input type="number" name="id" value="{$clientInfo['id']}" readonly>
 
         <p>Name:</p>

@@ -43,7 +43,7 @@
       echo <<<EOT
       <form action="edit-horse.php" method="post" class="main-form" style="margin-top: 2vh;">
 
-        <p>ID:</p>
+        <p>Database ID:</p>
         <input type="number" name="id" value="{$horseInfo['id']}" readonly>
 
         <p>Name:</p>

@@ -19,13 +19,13 @@
   <form action="create-new-horse.php" method="post" class="main-form">
 
     <p>Name:</p>
-    <input type="text" name="name" value="">
+    <input type="text" name="name" value="" required>
 
     <p>FS Uses per Day:</p>
-    <input type="number" name="fs_uses_per_day" value="">
+    <input type="number" name="fs_uses_per_day" value="" required>
 
     <p>Owner Uses per Day:</p>
-    <input type="number" name="owner_uses_per_day" value="">
+    <input type="number" name="owner_uses_per_day" value="" required>
 
     <p>Notes:</p>
     <input type="text" name="notes" value="">

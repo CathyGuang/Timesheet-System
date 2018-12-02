@@ -19,7 +19,7 @@
   <form action="create-new-worker.php" method="post" class="main-form">
 
     <p>Name:</p>
-    <input type="text" name="name" value="">
+    <input type="text" name="name" value="" required>
 
     <p>Email:</p>
     <input type="email" name="email" value="">

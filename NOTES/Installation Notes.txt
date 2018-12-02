@@ -9,6 +9,7 @@ MAKE SURE PHP IS PROPERLY CONFIGURED
   - NEED TO MAKE SURE PGSQL EXTENSION IS ENABLED AND WORKS IN PHP.INI FILE
       - set extension_dir to ABSOLUTE path to the extensions folder in php
       - uncomment extension=pgsql line in php.ini file.
+  - MAKE SURE TO USE PRODUCTION PHP.INI FILE (NO ERROR-REPORTING)
 
 MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
   - MAKE SURE

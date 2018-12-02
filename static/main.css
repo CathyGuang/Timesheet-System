@@ -99,3 +99,6 @@ button:hover {
         .main-form > p {
           margin-bottom: 3px;
         }
+        input[type='checkbox' i] {
+          transform: scale(2);
+        }

@@ -16,7 +16,29 @@
     </nav>
   </header>
 
+  <form action="create-new-worker.php" method="post" class="main-form">
 
+    <p>Name:</p>
+    <input type="text" name="name" value="">
+
+    <p>Email:</p>
+    <input type="email" name="email" value="">
+
+    <p>Phone Number:</p>
+    <input type="tel" name="phone" value="">
+
+    <div>
+      <p>Staff: <input type="checkbox" name="staff" value="TRUE"></p>
+    </div>
+
+    <div>
+      <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE" class=""></p>
+    </div>
+
+    <br><br>
+    <input type="submit" value="Create">
+
+  </form>
 
 
 

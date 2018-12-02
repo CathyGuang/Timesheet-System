@@ -3,3 +3,6 @@
 
 
 - if time permits, switch all "other objects" from ENUMS to single column tables. This would make editing and deleting easier.
+
+
+NEXT: all objects can now be created and edited, next allow classes to be created and edited.

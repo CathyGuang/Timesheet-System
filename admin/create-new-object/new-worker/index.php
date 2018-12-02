@@ -25,7 +25,7 @@
     <input type="email" name="email" value="">
 
     <p>Phone Number:</p>
-    <input type="tel" name="phone" value="">
+    <input type="number" name="phone" maxlength="10" value="">
 
     <div>
       <p>Staff: <input type="checkbox" name="staff" value="TRUE"></p>

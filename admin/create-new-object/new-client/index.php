@@ -26,7 +26,7 @@
     <input type="email" name="email" value="">
 
     <p>Phone Number:</p>
-    <input type="tel" name="phone" value="">
+    <input type="number" name="phone" maxlength="10" value="">
 
     <br><br>
     <input type="submit" value="Create">

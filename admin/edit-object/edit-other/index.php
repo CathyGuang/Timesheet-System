@@ -71,9 +71,6 @@ EOT;
     <p>Change object name:</p>
     <input type="text" name="new-object-name" value="">
 
-    <div style="max-width: 600px;">
-      <p style="font-size: 12pt;">Delete Object: <input type="checkbox" name="delete-object" value="TRUE"> THIS CANNOT BE UNDONE</p>
-    </div>
 
     <br><br>
     <input type="submit" value="Submit">

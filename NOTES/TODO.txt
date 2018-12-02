@@ -1,4 +1,5 @@
 - see if I can use the Tel form element to ensure that administrators creating new volunteers/clients/staff are forced to input consistent telephone numbers?
   - make SQL restrictions to columns to ensure that only properly formatted data gets added. Return errors to users.
 
-- COME MAKE CUSTOM DATA TYPES LIKE TACK, CLASS_TYPE, ETC FULLY CUSTOMIZEABLE -- MAKE 'ADD CLASS_TYPE' ETC AVAILABLE FROM ADMIN PAGE
+
+- if time permits, switch all "other objects" from ENUMS to single column tables. This would make editing and deleting easier.

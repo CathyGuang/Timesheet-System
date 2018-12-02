@@ -27,8 +27,6 @@
           while ($row = pg_fetch_row($result)) {
             echo "<option value='$row[0]'>";
           }
-
-
         ?>
       </datalist>
 

@@ -107,7 +107,7 @@ button:hover {
         .main-form {
           display: flex;
           flex-flow: column wrap;
-          max-height: 75vh;
+          max-height: 45vh;
           margin-left: 15%;
           margin-top: 8vh;
         }

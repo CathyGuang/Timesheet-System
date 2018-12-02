@@ -21,7 +21,7 @@
   <form action="edit-other.php" method="post" class="main-form">
 
     <p>Select object type:</p>
-    <input id="object-type-selector" name="object-type" list="object-type-list" value="">
+    <input id="object-type-selector" name="object-type" list="object-type-list" value="" required>
       <datalist id="object-type-list">
         <?php
           $query = <<<EOT
@@ -66,10 +66,10 @@ EOT;
     ?>
 
     <p>Select object to edit:</p>
-    <input id="object-selector" name="selected-object" list="">
+    <input id="object-selector" name="selected-object" list="" required>
 
     <p>Change object name:</p>
-    <input type="text" name="new-object-name" value="">
+    <input type="text" name="new-object-name" value="" required>
 
 
     <br><br>

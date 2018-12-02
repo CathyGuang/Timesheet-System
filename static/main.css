@@ -32,6 +32,15 @@ button:hover {
   background-color: var(--dark-purple);
   color: white;
 }
+.green-button {
+  background-color: var(--background-green);
+}
+.red-button {
+  background-color: var(--background-red);
+}
+.blue-button {
+  background-color: var(--background-blue);
+}
 
     /* HEADER STYLES */
     header {

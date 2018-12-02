@@ -19,7 +19,7 @@
 
 
   <?php
-    $query = "INSERT INTO clients(name, email, phone) VALUES ('{$_POST['name']}', '{$_POST['email']}', '{$_POST['phone']}');";
+    $query = "UPDATE clients SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

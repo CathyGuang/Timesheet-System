@@ -17,22 +17,52 @@
     </nav>
   </header>
 
+  <form action="" method="post" class="main-form">
+    <p>Select a client to edit:</p>
+    <input type="text" name="selected-client" list="client-list">
+      <datalist id="client-list">
+        <?php
+          $query = "SELECT name FROM clients;";
+          $result = pg_query($db_connection, $query);
+          while ($row = pg_fetch_row($result)) {
+            echo "<option value='$row[0]'>";
+          }
 
-  <form action="edit-client.php" method="post" class="main-form">
 
-    <p>Name:</p>
-    <input type="text" name="name" value="" required>
+        ?>
+      </datalist>
 
-    <p>Email:</p>
-    <input type="email" name="email" value="">
-
-    <p>Phone Number:</p>
-    <input type="number" name="phone" maxlength="10" value="">
-
-    <br><br>
-    <input type="submit" value="Create">
-
+      <input type="submit" value="submit">
   </form>
+
+  <?php
+    if ($_POST['selected-client']) {
+      $clientInfoQuery = "SELECT * FROM clients WHERE name LIKE '{$_POST['selected-client']}';";
+      $clientInfoSQL = pg_query($db_connection, $clientInfoQuery);
+      $clientInfo = pg_fetch_array($clientInfoSQL, 0, PGSQL_ASSOC);
+
+      echo <<<EOT
+      <form action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
+
+        <p>ID:</p>
+        <input type="number" name="id" value="{$clientInfo['id']}" readonly>
+
+        <p>Name:</p>
+        <input type="text" name="name" value="{$clientInfo['name']}" required>
+
+        <p>Email:</p>
+        <input type="email" name="email" value="{$clientInfo['email']}">
+
+        <p>Phone Number:</p>
+        <input type="number" name="phone" maxlength="10" value="{$clientInfo['phone']}">
+
+        <br><br>
+        <input type="submit" value="Update">
+
+      </form>
+EOT;
+    }
+  ?>
 
 
 

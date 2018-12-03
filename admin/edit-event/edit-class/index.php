@@ -52,14 +52,19 @@
       }
 
       $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE horses.id = {$classData['horse']};"), 0, 1)['name'];
-      $therapistName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['instructor']};"), 0, 1)['name'];
-      $instructorName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['therapist']};"), 0, 1)['name'];
+      $instructorName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['instructor']};"), 0, 1)['name'];
+      $therapistName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['therapist']};"), 0, 1)['name'];
       $esName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['equine_specialist']};"), 0, 1)['name'];
       $leaderName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['leader']};"), 0, 1)['name'];
 
       echo <<<EOT
 
       <form action="edit-class.php" method="post" class="main-form full-page-form">
+
+        <div>
+          <label for="delete-checkbox">Delete Class? </label>
+          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+        </div>
 
         <p>Class Type:</p>
         <input type="text" name="class-type" list="class-type-list" value="{$classData['class_type']}" onclick="select()" required>

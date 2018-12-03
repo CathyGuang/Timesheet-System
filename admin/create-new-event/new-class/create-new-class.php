@@ -19,7 +19,6 @@
 
   <?php
     //Process form input
-    var_dump($_POST);
     //get array of dates and times
     $date = $_POST['start-date'];
     $end_date = $_POST['end-date'];

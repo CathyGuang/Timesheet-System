@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <title>Admin | Create Event</title>
+  <title>Admin | Edit Event</title>
 </head>
 
 <body>
 
   <header>
-    <h1>Create Event</h1>
+    <h1>Edit Event</h1>
     <nav>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

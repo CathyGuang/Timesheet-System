@@ -21,7 +21,7 @@
   <form action="create-new-class.php" method="post" class="main-form full-page-form">
 
     <p>Class Type:</p>
-    <input type="text" name="class-type" list="class-type-list" required>
+    <input type="text" name="class-type" list="class-type-list" onclick="select()" required>
       <datalist id="class-type-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))";

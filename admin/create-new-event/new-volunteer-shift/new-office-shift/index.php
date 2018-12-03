@@ -18,13 +18,13 @@
   </header>
 
 
-  <form action="create-new-horse-care-shift.php" method="post" class="main-form full-page-form">
+  <form action="create-new-office-shift.php" method="post" class="main-form full-page-form">
 
     <p>Shift Type:</p>
     <input type="text" name="shift-type" list="shift-type-list" onclick="select()" required>
       <datalist id="shift-type-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::CARE_TYPE))";
+          $query = "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE))";
           $result = pg_query($db_connection, $query);
           $careTypeNames = pg_fetch_all_columns($result);
           foreach ($careTypeNames as $key => $value) {
@@ -93,120 +93,9 @@
       <input type="time" id="sunday-end-time" name="sunday-end-time">
     </div>
 
-    <p>Arena:</p>
-    <input type="text" name="arena" list="arena-list" value="none" onclick="select();">
-      <datalist id="arena-list">
-        <?php
-          $query = "SELECT unnest(enum_range(NULL::ARENA))";
-          $result = pg_query($db_connection, $query);
-          $arenaNames = pg_fetch_all_columns($result);
-          foreach ($arenaNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
 
-    <p>Horse:</p>
-    <input type="text" name="horse" list="horse-list" value="none" onclick="select();">
-      <datalist id="horse-list">
-        <?php
-          $query = "SELECT name FROM horses;";
-          $result = pg_query($db_connection, $query);
-          $horseNames = pg_fetch_all_columns($result);
-          foreach ($horseNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
 
-    <p>Tack:</p>
-    <input type="text" name="tack" list="tack-list" value="none" onclick="select();">
-      <datalist id="tack-list">
-        <?php
-          $query = "SELECT unnest(enum_range(NULL::TACK))";
-          $result = pg_query($db_connection, $query);
-          $tackNames = pg_fetch_all_columns($result);
-          foreach ($tackNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
-
-    <p>Special Tack:</p>
-    <input type="text" name="special-tack">
-
-    <p>Stirrup Leather Length:</p>
-    <input type="text" name="stirrup-leather-length">
-
-    <p>Pad:</p>
-    <input type="text" name="pad" list="pad-list" value="none" onclick="select();">
-      <datalist id="pad-list">
-        <?php
-          $query = "SELECT unnest(enum_range(NULL::PAD))";
-          $result = pg_query($db_connection, $query);
-          $padNames = pg_fetch_all_columns($result);
-          foreach ($padNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
-    <div id="client-section">
-      <p>Clients:</p>
-      <input type="text" name="clients[]" list="client-list" value="none" onclick="select();">
-        <datalist id="client-list">
-          <?php
-            $query = "SELECT name FROM clients;";
-            $result = pg_query($db_connection, $query);
-            $clientNames = pg_fetch_all_columns($result);
-            foreach ($clientNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-    </div>
-    <br>
-    <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
-
-    <p>Instructor:</p>
-    <input type="text" name="instructor" list="instructor-list" value="none" onclick="select();">
-      <datalist id="instructor-list">
-        <?php
-          $query = "SELECT name FROM workers;";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
-
-    <p>Therapist:</p>
-    <input type="text" name="therapist" list="therapist-list" value="none" onclick="select();">
-      <datalist id="therapist-list">
-        <?php
-          $query = "SELECT name FROM workers;";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
-
-    <p>ES:</p>
-    <input type="text" name="equine-specialist" list="es-list" value="none" onclick="select();">
-      <datalist id="es-list">
-        <?php
-          $query = "SELECT name FROM workers;";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
-
-    <p>Leader:</p>
+    <p>Shift Leader:</p>
     <input type="text" name="leader" list="leader-list" value="none" onclick="select();">
       <datalist id="leader-list">
         <?php
@@ -219,10 +108,10 @@
         ?>
       </datalist>
 
-      <div id="sidewalker-section">
-        <p>Sidewalkers:</p>
-        <input type="text" name="sidewalkers[]" list="sidewalker-list" value="none" onclick="select();">
-          <datalist id="sidewalker-list">
+      <div id="volunteer-section">
+        <p>Volunteers:</p>
+        <input type="text" name="volunteers[]" list="volunteer-list" value="none" onclick="select();">
+          <datalist id="volunteer-list">
             <?php
               $query = "SELECT name FROM workers;";
               $result = pg_query($db_connection, $query);
@@ -234,9 +123,7 @@
           </datalist>
         </div>
         <br>
-        <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Sidewalker</button>
-
-
+        <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
 
 
     <br><br>
@@ -247,26 +134,15 @@
 
   <footer>
     <script type="text/javascript">
-    function newClientFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'clients[]');
-        newInput.setAttribute('list', 'client-list');
-        newInput.setAttribute('value', 'none');
-        newInput.setAttribute('onclick', 'select()');
-        var clientSection = document.getElementById('client-section');
-        clientSection.appendChild(newInput);
-      };
-
-    function newSidewalkerFunction() {
+    function newVolunteerFunction() {
       newInput = document.createElement('input');
       newInput.setAttribute('type', 'text');
-      newInput.setAttribute('name', 'sidewalkers[]');
-      newInput.setAttribute('list', 'sidewalker-list');
+      newInput.setAttribute('name', 'volunteers[]');
+      newInput.setAttribute('list', 'volunteer-list');
       newInput.setAttribute('value', 'none');
       newInput.setAttribute('onclick', 'select()');
-      var sidewalkerSection = document.getElementById('sidewalker-section');
-      sidewalkerSection.appendChild(newInput);
+      var volunteerSection = document.getElementById('volunteer-section');
+      volunteerSection.appendChild(newInput);
     };
     </script>
   </footer>

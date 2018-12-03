@@ -126,8 +126,6 @@
         <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
 
 
-
-
     <br><br>
     <input type="submit" value="Create">
 

@@ -113,6 +113,11 @@ button:hover {
           margin-top: 6vh;
         }
 
+        .full-page-form {
+          margin-left: 4%;
+          max-height: 100vh;
+        }
+
         .main-form > * {
           max-width: 300px;
         }
@@ -127,4 +132,7 @@ button:hover {
         }
         input[type='submit'] {
           height: 40px;
+        }
+        label {
+          font-size: 12pt;
         }

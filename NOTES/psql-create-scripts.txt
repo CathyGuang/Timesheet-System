@@ -9,11 +9,17 @@ CREATE TYPE HORSE_BEHAVIOR AS ENUM();
 CREATE TYPE TACK AS ENUM();
 CREATE TYPE PAD AS ENUM();
 
+ALTER TYPE ARENA ADD VALUE 'none';
+ALTER TYPE HORSE_BEHAVIOR ADD VALUE 'none';
+ALTER TYPE TACK ADD VALUE 'none';
+ALTER TYPE PAD ADD VALUE 'none';
+
 CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
   class_type CLASS_TYPE,
   date_of_class DATE,
-  time_of_class TIME,
+  start_time TIME,
+  end_time TIME,
   arena ARENA,
   lesson_plan TEXT,
   horse INT REFERENCES horses(id),
@@ -69,6 +75,7 @@ CREATE TABLE horses (
 /* CREATE HORSE CARE TABLE */
 
 CREATE TYPE CARE_TYPE AS ENUM();
+ALTER TYPE CARE_TYPE ADD VALUE 'none';
 
 CREATE TABLE horse_care (
   id SERIAL PRIMARY KEY,
@@ -82,6 +89,7 @@ CREATE TABLE horse_care (
 /* CREATE OFFICE SHIFT TABLE */
 
 CREATE TYPE OFFICE_SHIFT_TYPE AS ENUM();
+ALTER TYPE OFFICE_SHIFT_TYPE ADD VALUE 'none';
 
 CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
@@ -101,3 +109,9 @@ CREATE TABLE volunteer_hours (
   hours INT,
   shift_type TEXT
 );
+
+
+/* INITIALIZE NECESSARY NULL VALUES */
+INSERT INTO workers (name) VALUES ('none');
+INSERT INTO clients (name) VALUES ('none');
+INSERT INTO horses (name) VALUES ('none');

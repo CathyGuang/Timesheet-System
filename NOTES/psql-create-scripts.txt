@@ -48,6 +48,7 @@ CREATE TABLE classes (
   date_of_class DATE,
   start_time TIME,
   end_time TIME,
+  all_weekdays_times TEXT,
   arena ARENA,
   lesson_plan TEXT,
   horse INT REFERENCES horses(id),

@@ -130,6 +130,9 @@ button:hover {
         input[type='checkbox' i] {
           transform: scale(2);
         }
+        input[type='time'] {
+          width: 90px;
+        }
         input[type='submit'] {
           height: 40px;
         }

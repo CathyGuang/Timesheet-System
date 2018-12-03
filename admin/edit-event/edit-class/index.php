@@ -38,6 +38,21 @@
       $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes;"), 0, 1)['start_date'];
       $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes;"), 0, 1)['end_date'];
 
+
+      $weekdaysBlocks = explode(";", $classData['all_weekdays_times']);
+      $allWeekdaysTimesList = array();
+      foreach ($weekdaysBlocks as $weekdayString) {
+        if ($weekdayString == "") {continue;}
+        $weekdayTriple = explode(",", $weekdayString);
+        $allWeekdaysTimesList[$weekdayTriple[0]] = array($weekdayTriple[1], $weekdayTriple[2]);
+      }
+      echo "<br><br>";
+      var_dump($allWeekdaysTimesList);
+      $checkboxList = array("Monday" => "", "Tuesday" => "", "Wednesday" => "", "Thursday" => "", "Friday" => "", "Saturday" => "", "Sunday" => "", );
+      foreach ($allWeekdaysTimesList as $day => $times) {
+        $checkboxList[$day] = "checked";
+      }
+
       $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE horses.id = {$classData['horse']};"), 0, 1)['name'];
       $therapistName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['instructor']};"), 0, 1)['name'];
       $instructorName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['therapist']};"), 0, 1)['name'];
@@ -71,52 +86,52 @@ EOT;
           <input type="date" id="end-date" name="end-date" value="{$endDate}" placeholder="to" required>
         </div>
 
-        <div style="max-width: 420px;">
+        <div style="max-width: 430px;">
           <!-- MONDAY-->
           <label for="monday-checkbox">Monday: </label>
-          <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday">
+          <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" {$checkboxList['Monday']}>
           <label for="monday-start-time">from:</label>
-          <input type="time" id="monday-start-time" name="monday-start-time">
+          <input type="time" id="monday-start-time" name="monday-start-time" value="{$allWeekdaysTimesList['Monday'][0]}">
           <label for="monday-end-time">to:</label>
           <input type="time" id="monday-end-time" name="monday-end-time">
           <!-- TUESDAY-->
           <label for="tuesday-checkbox">Tuesday: </label>
-          <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday">
+          <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" {$checkboxList['Tuesday']}>
           <label for="tuesday-start-time">from:</label>
           <input type="time" id="tuesday-start-time" name="tuesday-start-time">
           <label for="tuesday-end-time">to:</label>
           <input type="time" id="tuesday-end-time" name="tuesday-end-time">
           <!-- WEDNESDAY-->
           <label for="wednesday-checkbox">Wednesday: </label>
-          <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday">
+          <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" {$checkboxList['Wednesday']}>
           <label for="wednesday-start-time">from:</label>
           <input type="time" id="wednesday-start-time" name="wednesday-start-time">
           <label for="wednesday-end-time">to:</label>
           <input type="time" id="wednesday-end-time" name="wednesday-end-time">
           <!-- THURSDAY-->
           <label for="thursday-checkbox">Thursday: </label>
-          <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday">
+          <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" {$checkboxList['Thursday']}>
           <label for="thursday-start-time">from:</label>
           <input type="time" id="thursday-start-time" name="thursday-start-time">
           <label for="thursday-end-time">to:</label>
           <input type="time" id="thursday-end-time" name="thursday-end-time">
           <!-- FRIDAY-->
           <label for="friday-checkbox">Friday: </label>
-          <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday">
+          <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" {$checkboxList['Friday']}>
           <label for="friday-start-time">from:</label>
           <input type="time" id="friday-start-time" name="friday-start-time">
           <label for="friday-end-time">to:</label>
           <input type="time" id="friday-end-time" name="friday-end-time">
           <!-- SATURDAY-->
           <label for="saturday-checkbox">Saturday: </label>
-          <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday">
+          <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" {$checkboxList['Saturday']}>
           <label for="saturday-start-time">from:</label>
           <input type="time" id="saturday-start-time" name="saturday-start-time">
           <label for="saturday-end-time">to:</label>
           <input type="time" id="saturday-end-time" name="saturday-end-time">
           <!-- SUNDAY-->
           <label for="sunday-checkbox">Sunday: </label>
-          <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday">
+          <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" {$checkboxList['Sunday']}>
           <label for="sunday-start-time">from:</label>
           <input type="time" id="sunday-start-time" name="sunday-start-time">
           <label for="sunday-end-time">to:</label>

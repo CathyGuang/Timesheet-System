@@ -41,7 +41,7 @@
       <input type="date" id="end-date" name="end-date" value="" placeholder="to" required>
     </div>
 
-    <div style="max-width: 420px;">
+    <div style="max-width: 440px;">
       <!-- MONDAY-->
       <label for="monday-checkbox">Monday: </label>
       <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday">

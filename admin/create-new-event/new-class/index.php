@@ -36,9 +36,9 @@
     <p>Dates:</p>
     <div style="max-width: 500px;">
       <label for="start-date">Start date:</label>
-      <input type="date" id="start-date" name="date-start" value="" placeholder="from" required>
+      <input type="date" id="start-date" name="start-date" value="" placeholder="from" required>
       <label for="end-date">End date:</label>
-      <input type="date" id="end-date" name="date-end" value="" placeholder="to" required>
+      <input type="date" id="end-date" name="end-date" value="" placeholder="to" required>
     </div>
 
     <div style="max-width: 420px;">

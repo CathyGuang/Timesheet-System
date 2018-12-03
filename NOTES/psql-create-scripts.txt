@@ -22,7 +22,7 @@ CREATE TABLE classes (
   special_tack TEXT,
   stirrup_leather_length TEXT,
   pad PAD,
-  client INT [],
+  clients INT [],
   attendance INT [],
   client_notes TEXT,
   instructor INT REFERENCES workers(id),

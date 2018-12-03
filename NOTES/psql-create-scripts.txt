@@ -75,7 +75,8 @@ CREATE TABLE horse_care_shifts (
   id SERIAL PRIMARY KEY,
   care_type CARE_TYPE,
   date_of_shift DATE,
-  time_of_shift TIME,
+  start_time TIME,
+  end_time TIME,
   leader INT REFERENCES workers(id),
   volunteers INT []
 );
@@ -90,7 +91,8 @@ CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
   office_shift_type OFFICE_SHIFT_TYPE,
   date_of_shift DATE,
-  time_of_shift TIME,
+  start_time TIME,
+  end_time TIME,
   leader INT REFERENCES workers(id),
   volunteers INT []
 );

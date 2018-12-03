@@ -5,11 +5,11 @@
 - if time permits, switch all "other objects" from ENUMS to single column tables. This would make editing and deleting easier.
 
 
+
 NEXT: all objects can now be created and edited, next allow classes to be created and edited.
       - then do personal schedule pages,
       - then allow hours to be entered,
       - then allow reports to be generated.
 
-- Add User and Database SQL create scripts to file, so that database can be spun up on any PostgreSQL server.
 
-- Add REMOVE option for all objects that are not enums, such as people, horses, classes, shifts 
+- Add REMOVE option for all objects that are not enums, such as people, horses, classes, shifts

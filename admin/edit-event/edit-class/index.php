@@ -17,14 +17,15 @@
     </nav>
   </header>
 
-  <h3 class="main-content-header"><?php echo "{$_POST['selected-class']}" ?></h3>
+
 
   <?php
     if ($_POST['selected-class']) {
+      echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
       $selectedClassType = explode(', ', $_POST['selected-class'])[0];
       $selectedInstructorName = explode(', ', $_POST['selected-class'])[1];
-      $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, workers WHERE class_type = '$selectedClassType' AND instructor = (SELECT id FROM workers WHERE name LIKE '$selectedInstructorName');";
 
+      $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, workers WHERE class_type = '$selectedClassType' AND instructor = (SELECT id FROM workers WHERE name LIKE '$selectedInstructorName');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       foreach ($classIDSQLObject as $row => $data) {
         $classIDList[] = $data['id'];

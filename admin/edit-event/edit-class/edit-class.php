@@ -20,10 +20,7 @@
   <?php
 
 
-    if ($_POST['DELETE']) {
-      echo "DELEEEETEEETET";
-
-      var_dump($_POST['class-type'], $_POST['instructor']);
+    if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
       $query = "DELETE FROM classes WHERE class_type = '{$_POST['class-type']}' AND instructor = (SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}');";
       $result = pg_query($db_connection, $query);
       if ($result) {
@@ -34,9 +31,16 @@
       return;
     }
 
+    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, workers WHERE class_type = '{$_POST['class-type']}' AND instructor = (SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}');";
+    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
+    foreach ($classIDSQLObject as $row => $data) {
+      pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
+    }
 
+    //ADD NEW VALUES
+    
     //Process form input
-    var_dump($_POST);
     //get array of dates and times
     $date = $_POST['start-date'];
     $end_date = $_POST['end-date'];

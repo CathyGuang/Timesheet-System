@@ -17,6 +17,7 @@
     </nav>
   </header>
 
+  <h3 class="main-content-header"><?php echo "{$_POST['selected-class']}" ?></h3>
 
   <?php
     if ($_POST['selected-class']) {
@@ -33,8 +34,6 @@
 
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
-      var_dump($classData);
-
       $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes;"), 0, 1)['start_date'];
       $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes;"), 0, 1)['end_date'];
 
@@ -46,8 +45,7 @@
         $weekdayTriple = explode(",", $weekdayString);
         $allWeekdaysTimesList[$weekdayTriple[0]] = array($weekdayTriple[1], $weekdayTriple[2]);
       }
-      echo "<br><br>";
-      var_dump($allWeekdaysTimesList);
+
       $checkboxList = array("Monday" => "", "Tuesday" => "", "Wednesday" => "", "Thursday" => "", "Friday" => "", "Saturday" => "", "Sunday" => "", );
       foreach ($allWeekdaysTimesList as $day => $times) {
         $checkboxList[$day] = "checked";

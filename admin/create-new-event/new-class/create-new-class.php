@@ -19,16 +19,24 @@
 
   <?php
     //Process form input
+    var_dump($_POST);
     //get array of dates and times
     $date = $_POST['start-date'];
     $end_date = $_POST['end-date'];
     $dateTimeTriplets = array();
+
+    $all_weekdays_times = "";
+    $weekdaysAdded = array();
     while (strtotime($date) <= strtotime($end_date)) {
       $dayOfWeek = date('l', strtotime($date));
       if (in_array($dayOfWeek, $_POST)) {
         $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
         $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
         $dateTimeTriplets[$date] = array($startTime, $endTime);
+        if (!in_array($dayOfWeek, $weekdaysAdded)){
+          $all_weekdays_times = $all_weekdays_times . $dayOfWeek . "," . $startTime . "," . $endTime . ";";
+          $weekdaysAdded[] = $dayOfWeek;
+        }
       }
 
       //looper
@@ -88,9 +96,9 @@
 
 
     //Create SQL query
-    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, arena, horse, tack, special_tack, stirrup_leather_length, pad, clients, instructor, therapist, equine_specialist, leader, sidewalkers) VALUES";
+    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horse, tack, special_tack, stirrup_leather_length, pad, clients, instructor, therapist, equine_specialist, leader, sidewalkers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '{$_POST['arena']}', {$horseID}, '{$_POST['tack']}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$_POST['pad']}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, {$leaderID}, '{$sidewalkerIDList}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', {$horseID}, '{$_POST['tack']}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$_POST['pad']}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, {$leaderID}, '{$sidewalkerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";

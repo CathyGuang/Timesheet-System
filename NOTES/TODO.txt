@@ -5,10 +5,10 @@
 - if time permits, switch all "other objects" from ENUMS to single column tables. This would make editing and deleting easier.
   - think about whether or not I should even do this -- not being allowed to remove enums would prevent old classes/objects from being accidentally erased
   - need a way to remove it from all new objects, so that admins don't need to see the old options when creating new classes etc.
-  
 
 
-NEXT: classes can now be created! Next allow classes to be edited (by admin) and managed (by staff).
+
+NEXT: Allow classes to be managed (by staff).
       - then do personal schedule pages,
       - then allow hours to be entered,
       - then allow reports to be generated.

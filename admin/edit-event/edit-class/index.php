@@ -93,49 +93,49 @@ EOT;
           <label for="monday-start-time">from:</label>
           <input type="time" id="monday-start-time" name="monday-start-time" value="{$allWeekdaysTimesList['Monday'][0]}">
           <label for="monday-end-time">to:</label>
-          <input type="time" id="monday-end-time" name="monday-end-time">
+          <input type="time" id="monday-end-time" name="monday-end-time" value="{$allWeekdaysTimesList['Monday'][1]}">
           <!-- TUESDAY-->
           <label for="tuesday-checkbox">Tuesday: </label>
           <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" {$checkboxList['Tuesday']}>
           <label for="tuesday-start-time">from:</label>
-          <input type="time" id="tuesday-start-time" name="tuesday-start-time">
+          <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="{$allWeekdaysTimesList['Tuesday'][0]}">
           <label for="tuesday-end-time">to:</label>
-          <input type="time" id="tuesday-end-time" name="tuesday-end-time">
+          <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="{$allWeekdaysTimesList['Tuesday'][1]}">
           <!-- WEDNESDAY-->
           <label for="wednesday-checkbox">Wednesday: </label>
           <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" {$checkboxList['Wednesday']}>
           <label for="wednesday-start-time">from:</label>
-          <input type="time" id="wednesday-start-time" name="wednesday-start-time">
+          <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="{$allWeekdaysTimesList['Wednesday'][0]}">
           <label for="wednesday-end-time">to:</label>
-          <input type="time" id="wednesday-end-time" name="wednesday-end-time">
+          <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="{$allWeekdaysTimesList['Wednesday'][1]}">
           <!-- THURSDAY-->
           <label for="thursday-checkbox">Thursday: </label>
           <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" {$checkboxList['Thursday']}>
           <label for="thursday-start-time">from:</label>
-          <input type="time" id="thursday-start-time" name="thursday-start-time">
+          <input type="time" id="thursday-start-time" name="thursday-start-time" value="{$allWeekdaysTimesList['Thursday'][0]}">
           <label for="thursday-end-time">to:</label>
-          <input type="time" id="thursday-end-time" name="thursday-end-time">
+          <input type="time" id="thursday-end-time" name="thursday-end-time" value="{$allWeekdaysTimesList['Thursday'][1]}">
           <!-- FRIDAY-->
           <label for="friday-checkbox">Friday: </label>
           <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" {$checkboxList['Friday']}>
           <label for="friday-start-time">from:</label>
-          <input type="time" id="friday-start-time" name="friday-start-time">
+          <input type="time" id="friday-start-time" name="friday-start-time" value="{$allWeekdaysTimesList['Friday'][0]}">
           <label for="friday-end-time">to:</label>
-          <input type="time" id="friday-end-time" name="friday-end-time">
+          <input type="time" id="friday-end-time" name="friday-end-time" value="{$allWeekdaysTimesList['Friday'][1]}">
           <!-- SATURDAY-->
           <label for="saturday-checkbox">Saturday: </label>
           <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" {$checkboxList['Saturday']}>
           <label for="saturday-start-time">from:</label>
-          <input type="time" id="saturday-start-time" name="saturday-start-time">
+          <input type="time" id="saturday-start-time" name="saturday-start-time" value="{$allWeekdaysTimesList['Saturday'][0]}">
           <label for="saturday-end-time">to:</label>
-          <input type="time" id="saturday-end-time" name="saturday-end-time">
+          <input type="time" id="saturday-end-time" name="saturday-end-time" value="{$allWeekdaysTimesList['Saturday'][1]}">
           <!-- SUNDAY-->
           <label for="sunday-checkbox">Sunday: </label>
           <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" {$checkboxList['Sunday']}>
           <label for="sunday-start-time">from:</label>
-          <input type="time" id="sunday-start-time" name="sunday-start-time">
+          <input type="time" id="sunday-start-time" name="sunday-start-time" value="{$allWeekdaysTimesList['Sunday'][0]}">
           <label for="sunday-end-time">to:</label>
-          <input type="time" id="sunday-end-time" name="sunday-end-time">
+          <input type="time" id="sunday-end-time" name="sunday-end-time" value="{$allWeekdaysTimesList['Sunday'][1]}">
         </div>
 
         <p>Arena:</p>

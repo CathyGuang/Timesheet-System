@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <h3 class="main-content-header">Select type of shift to edit</h3>
+  <h3 class="main-content-header">Select type of shift to edit:</h3>
 
   <div class="main-content-div">
     <a href="edit-horse-care-shift"><button>Horse Care Shift</button></a>

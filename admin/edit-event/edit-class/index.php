@@ -291,7 +291,7 @@ EOT;
 EOT;
           $sidewalkerIDList = explode(', ', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
           foreach ($sidewalkerIDList as $id) {
-            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id}") , 0, 1)['name'];
             echo <<<EOT
             <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
 EOT;

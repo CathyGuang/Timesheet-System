@@ -126,40 +126,43 @@ EOT;
         <p>Arena:</p>
         <input type="text" name="arena" list="arena-list" value="{$classData['arena']}" onclick="select();">
           <datalist id="arena-list">
-            <?php
+EOT;
+
               $query = "SELECT unnest(enum_range(NULL::ARENA))";
               $result = pg_query($db_connection, $query);
               $arenaNames = pg_fetch_all_columns($result);
               foreach ($arenaNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>Horse:</p>
         <input type="text" name="horse" list="horse-list" value="{$horseName}" onclick="select();">
           <datalist id="horse-list">
-            <?php
+EOT;
+
               $query = "SELECT name FROM horses;";
               $result = pg_query($db_connection, $query);
               $horseNames = pg_fetch_all_columns($result);
               foreach ($horseNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>Tack:</p>
         <input type="text" name="tack" list="tack-list" value="{$classData['tack']}" onclick="select();">
           <datalist id="tack-list">
-            <?php
+EOT;
+
               $query = "SELECT unnest(enum_range(NULL::TACK))";
               $result = pg_query($db_connection, $query);
               $tackNames = pg_fetch_all_columns($result);
               foreach ($tackNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>Special Tack:</p>
@@ -171,14 +174,15 @@ EOT;
         <p>Pad:</p>
         <input type="text" name="pad" list="pad-list" value="{$classData['pad']}" onclick="select();">
           <datalist id="pad-list">
-            <?php
+EOT;
+
               $query = "SELECT unnest(enum_range(NULL::PAD))";
               $result = pg_query($db_connection, $query);
               $padNames = pg_fetch_all_columns($result);
               foreach ($padNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <div id="client-section">
@@ -210,53 +214,56 @@ EOT;
         <p>Instructor:</p>
         <input type="text" name="instructor" list="instructor-list" value="{$instructorName}" onclick="select();">
           <datalist id="instructor-list">
-            <?php
+EOT;
+
               $query = "SELECT name FROM workers;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>Therapist:</p>
         <input type="text" name="therapist" list="therapist-list" value="{$therapistName}" onclick="select();">
           <datalist id="therapist-list">
-            <?php
+EOT;
+
               $query = "SELECT name FROM workers;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>ES:</p>
         <input type="text" name="equine-specialist" list="es-list" value="{$esName}" onclick="select();">
           <datalist id="es-list">
-            <?php
+EOT;
               $query = "SELECT name FROM workers;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
         <p>Leader:</p>
         <input type="text" name="leader" list="leader-list" value="{$leaderName}" onclick="select();">
           <datalist id="leader-list">
-            <?php
+EOT;
+
               $query = "SELECT name FROM workers;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
                 echo "<option value='$value'>";
               }
-            ?>
+        echo <<<EOT
           </datalist>
 
           <div id="sidewalker-section">

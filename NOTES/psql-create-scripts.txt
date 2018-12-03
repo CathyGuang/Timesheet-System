@@ -71,11 +71,12 @@ CREATE TABLE horses (
 CREATE TYPE CARE_TYPE AS ENUM();
 ALTER TYPE CARE_TYPE ADD VALUE 'none';
 
-CREATE TABLE horse_care (
+CREATE TABLE horse_care_shifts (
   id SERIAL PRIMARY KEY,
   care_type CARE_TYPE,
   date_of_shift DATE,
   time_of_shift TIME,
+  leader INT REFERENCES workers(id),
   volunteers INT []
 );
 
@@ -90,6 +91,7 @@ CREATE TABLE office_shifts (
   office_shift_type OFFICE_SHIFT_TYPE,
   date_of_shift DATE,
   time_of_shift TIME,
+  leader INT REFERENCES workers(id),
   volunteers INT []
 );
 

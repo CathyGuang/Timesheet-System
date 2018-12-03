@@ -315,7 +315,7 @@ EOT;
             <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Sidewalker</button>
 
         <br><br>
-        <input type="submit" value="Create">
+        <input type="submit" value="Submit Changes">
 
       </form>
 
@@ -363,7 +363,7 @@ EOT;
     echo <<<EOT
           </datalist>
           <br><br>
-          <input type="submit" value="submit">
+          <input type="submit" value="Submit">
       </form>
 EOT;
     }

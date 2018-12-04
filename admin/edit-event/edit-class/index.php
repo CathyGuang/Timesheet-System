@@ -234,14 +234,19 @@ EOT;
         <div id="client-section">
           <p>Clients:</p>
 EOT;
+        $oldClientIDListPGArray = "{";
         foreach ($clientIDList as $id) {
           $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+          $oldClientIDListPGArray .= $id .',';
           echo <<<EOT
             <input type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
 EOT;
         }
+        $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
 
         echo <<<EOT
+            <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+
             <datalist id="client-list">
 EOT;
                 $query = "SELECT name FROM clients;";
@@ -257,7 +262,6 @@ EOT;
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
 
         <p>Instructor:</p>
-        <input type="text" name="old-instructor" value="{$instructorName}" style="visibility: hidden;">
         <input type="text" name="instructor" list="instructor-list" value="{$instructorName}" onclick="select();">
           <datalist id="instructor-list">
 EOT;

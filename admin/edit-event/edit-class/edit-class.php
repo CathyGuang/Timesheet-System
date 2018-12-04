@@ -32,7 +32,7 @@
     }
 
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, workers WHERE class_type = '{$_POST['old-class-type']}' AND instructor = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-instructor']}');";
+    $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients = '{$_POST['old-client-id-list']}';";
     $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
     foreach ($classIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");

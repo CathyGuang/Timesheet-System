@@ -22,10 +22,36 @@
   <?php
     if ($_POST['selected-class']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
-      $selectedClassType = explode(', ', $_POST['selected-class'])[0];
-      $selectedInstructorName = explode(', ', $_POST['selected-class'])[1];
 
-      $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, workers WHERE class_type = '$selectedClassType' AND instructor = (SELECT id FROM workers WHERE name LIKE '$selectedInstructorName');";
+      $selectedClassType = explode('; ', $_POST['selected-class'])[0];
+      $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[1]);
+
+      $clientIDList = array();
+      foreach ($selectedClientNames as $name) {
+        if ($name == "") {continue;}
+        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}';";
+        $id = pg_fetch_row(pg_query($db_connection, $IDQuery))[0];
+        $clientIDList[] = $id;
+      }
+
+      function to_pg_array($set) {
+        settype($set, 'array'); // can be called with a scalar or array
+        $result = array();
+        foreach ($set as $t) {
+            if (is_array($t)) {
+                $result[] = to_pg_array($t);
+            } else {
+                $t = str_replace('"', '\\"', $t); // escape double quote
+                if (! is_numeric($t)) // quote only non-numeric values
+                    $t = '"' . $t . '"';
+                $result[] = $t;
+            }
+        }
+        return '{' . implode(",", $result) . '}'; // format
+      }
+      $clientIDPGArray = to_pg_array($clientIDList);
+
+      $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, clients WHERE class_type = '$selectedClassType' AND clients = '{$clientIDPGArray}';";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       foreach ($classIDSQLObject as $row => $data) {
         $classIDList[] = $data['id'];
@@ -208,7 +234,6 @@ EOT;
         <div id="client-section">
           <p>Clients:</p>
 EOT;
-        $clientIDList = explode(', ', ltrim(rtrim($classData['clients'], "}"), '{'));
         foreach ($clientIDList as $id) {
           $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
           echo <<<EOT
@@ -356,10 +381,20 @@ EOT;
         <input type="text" name="selected-class" list="class-list">
           <datalist id="class-list">
 EOT;
-          $query = "SELECT DISTINCT class_type, name FROM classes, workers WHERE workers.id = classes.instructor;";
+          $query = "SELECT DISTINCT class_type, clients FROM classes;";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
-            echo "<option value='$row[0], $row[1]'>";
+            $getClientsQuery = <<<EOT
+              SELECT clients.name FROM clients WHERE
+              clients.id = ANY('{$row[1]}')
+              ;
+EOT;
+            $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
+            $clientString = "";
+            foreach ($clients as $name) {
+              $clientString .= $name . ", ";
+            }
+            echo "<option value='$row[0]; $clientString'>";
           }
 
     echo <<<EOT

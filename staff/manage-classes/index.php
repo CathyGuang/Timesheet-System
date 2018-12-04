@@ -40,7 +40,11 @@ EOT;
 EOT;
       if($allClasses) {
         foreach ($allClasses as $classTuple) {
-          echo "<button type='submit' name='selectedClassID' value='{$classTuple['id']}'>{$classTuple['class_type']}, {$classTuple['name']}, {$classTuple['date_of_class']}</button>";
+          $clientString = "";
+          foreach ($classTuple['clients'] as $name) {
+            $clientString = $clientString . $name . ", ";
+          }
+          echo "<button type='submit' name='buttonInfo' value='{$classTuple['id']};{$clientString}'>{$classTuple['class_type']}, {$clientString} {$classTuple['date_of_class']}</button>";
         }
 
 

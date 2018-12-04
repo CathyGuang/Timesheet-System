@@ -63,6 +63,7 @@
           ?>
         </datalist>
 
+      <br>
       <p>Horse Behavior Notes:</p>
       <textarea name="horse-behavior-notes" rows="10" cols="30">
         <?php

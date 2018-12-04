@@ -245,7 +245,6 @@ EOT;
         $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
 
         echo <<<EOT
-            <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
 
             <datalist id="client-list">
 EOT;
@@ -258,7 +257,8 @@ EOT;
         echo <<<EOT
             </datalist>
         </div>
-        <br>
+        <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
 
         <p>Instructor:</p>

@@ -74,6 +74,76 @@ EOT;
         }
       ?>
 
+      <p>Client Notes:</p>
+      <textarea name="client-notes" rows="10" cols="30">
+        <?php
+          echo $classInfo['client_notes'];
+        ?>
+      </textarea>
+
+      <?php $therapistName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['therapist']}'"))[0]; ?>
+      <p>Therapist:</p>
+      <input type="text" list="therapist-list" name="therapist" value="<?php echo $therapistName?>" onclick="select()">
+        <datalist id="therapist-list">
+          <?php
+            $query = "SELECT name FROM workers;";
+            $result = pg_query($db_connection, $query);
+            $workerNames = pg_fetch_all_columns($result);
+            foreach ($workerNames as $key => $name) {
+              echo "<option value='$name'>";
+            }
+          ?>
+        </datalist>
+
+        <?php $equineSpecialistName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['equine_specialist']}'"))[0]; ?>
+        <p>Equine Specialist:</p>
+        <input type="text" list="equine-specialist-list" name="equine-specialist" value="<?php echo $equineSpecialistName?>" onclick="select()">
+          <datalist id="equine-specialist-list">
+            <?php
+              $query = "SELECT name FROM workers;";
+              $result = pg_query($db_connection, $query);
+              $workerNames = pg_fetch_all_columns($result);
+              foreach ($workerNames as $key => $name) {
+                echo "<option value='$name'>";
+              }
+            ?>
+          </datalist>
+
+          <?php $leaderName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['leader']}'"))[0]; ?>
+          <p>Leader:</p>
+          <input type="text" list="leader-list" name="leader" value="<?php echo $leaderName?>" onclick="select()">
+            <datalist id="leader-list">
+              <?php
+                $query = "SELECT name FROM workers;";
+                $result = pg_query($db_connection, $query);
+                $workerNames = pg_fetch_all_columns($result);
+                foreach ($workerNames as $key => $name) {
+                  echo "<option value='$name'>";
+                }
+              ?>
+            </datalist>
+
+          <p>Sidewalkers:</p>
+            <datalist id="sidewalker-list">
+              <?php
+                $query = "SELECT name FROM workers;";
+                $result = pg_query($db_connection, $query);
+                $workerNames = pg_fetch_all_columns($result);
+                foreach ($workerNames as $key => $name) {
+                  echo "<option value='$name'>";
+                }
+              ?>
+            </datalist>
+          <?php
+            $sidewalkerIDList = explode(',', rtrim(ltrim($classInfo['sidewalkers'], "{"), "}"));
+            foreach ($sidewalkerIDList as $index => $id) {
+              $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$id}'"))[0];
+              echo "<input type='text' name='sidewalkers[]' list='sidewalker-list' value='{$name}'>";
+            }
+          ?>
+          <br>
+          
+
 
     <br><br>
     <input type="submit" value="Submit">

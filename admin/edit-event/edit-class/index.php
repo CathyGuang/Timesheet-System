@@ -50,9 +50,9 @@
         return '{' . implode(",", $result) . '}'; // format
       }
       $clientIDPGArray = to_pg_array($clientIDList);
-
-      $getClassIDsQuery = "SELECT DISTINCT classes.id FROM classes, clients WHERE class_type = '$selectedClassType' AND clients = '{$clientIDPGArray}';";
+      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}';";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
+      $classIDList = array();
       foreach ($classIDSQLObject as $row => $data) {
         $classIDList[] = $data['id'];
       }
@@ -320,7 +320,7 @@ EOT;
             <p>Sidewalkers:</p>
 
 EOT;
-          $sidewalkerIDList = explode(', ', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
+          $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
           foreach ($sidewalkerIDList as $id) {
             $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id}") , 0, 1)['name'];
             echo <<<EOT

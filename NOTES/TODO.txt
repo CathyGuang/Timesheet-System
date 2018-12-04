@@ -2,8 +2,7 @@
   - make SQL restrictions to columns to ensure that only properly formatted data gets added. Return errors to users.
 
 
-NEXT: Allow classes to be managed (by staff).
-      - then do personal schedule pages,
+NEXT: - then do personal schedule pages,
       - then allow hours to be entered,
       - then allow reports to be generated.
 

@@ -18,14 +18,15 @@ EOT;
 
   if (!$allClasses) {return;}
 
-  $getClientsQuery = <<<EOT
-    SELECT clients.name FROM clients WHERE
-    clients.id = ANY('{$allClasses[0]['clients']}')
-    ;
-EOT;
-  $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
-
   foreach ($allClasses as $key => $specificClass) {
+    $getClientsQuery = <<<EOT
+      SELECT clients.name FROM clients WHERE
+      clients.id = ANY('{$allClasses[$key]['clients']}')
+      ;
+EOT;
+
+    $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
+
     $allClasses[$key]['clients'] = $clients;
   }
 

@@ -109,9 +109,9 @@ button:hover {
           display: flex;
           flex-flow: column wrap;
           justify-content: space-around;
-          max-height: 50vh;
-          margin-left: 15%;
-          margin-top: 6vh;
+          max-height: 75vh;
+          margin-left: 10%;
+          margin-top: 5vh;
         }
 
         .full-page-form {

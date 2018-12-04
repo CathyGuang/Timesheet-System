@@ -17,8 +17,6 @@
   </header>
 
   <?php
-    echo "<b>_POST</b><br>";
-    var_dump($_POST);
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
@@ -34,8 +32,50 @@
 
   <form action="manage-class-back-end.php" method="post" class="main-form">
 
+    <p>Lesson Plan:</p>
+    <textarea name="lesson-plan" rows="15" cols="30">
+      <?php
+        echo $classInfo['lesson_plan'];
+      ?>
+    </textarea>
+
+    <?php $horseName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM horses WHERE id = '{$classInfo['horse']}'"))[0]; ?>
+    <p>Horse:</p>
+    <input type="text" list="horse-list" value="<?php echo $horseName?>" onclick="select()">
+      <datalist id="horse-list">
+        <?php
+          $query = "SELECT name FROM horses;";
+          $result = pg_query($db_connection, $query);
+          $horseNames = pg_fetch_all_columns($result);
+          foreach ($horseNames as $key => $value) {
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+
+      <p>Horse Behavior:</p>
+      <textarea name="horse-behavior" rows="10" cols="30">
+        <?php
+          echo $classInfo['horse_behavior'];
+        ?>
+      </textarea>
+
+      <p>Attendance:</p>
+      <?php
+        $clientIDList = explode(',', rtrim(ltrim($classInfo['clients'], '{'), '}'));
+        $clientNameList = explode(',', $clientString);
+        foreach ($clientIDList as $index => $id) {
+          echo <<<EOT
+          <div>
+            <label>{$clientNameList[$index]}</label>
+            <input type="checkbox" name="attendance[]" value="$id" style="position: absolute; margin-left: 15px;">
+          </div>
+EOT;
+        }
+      ?>
 
 
+    <br><br>
     <input type="submit" value="Submit">
   </form>
 

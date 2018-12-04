@@ -15,15 +15,15 @@
     </nav>
   </header>
 
-  <div class="main-content-div">
-
-    <?php
-      print_r($_POST);
-
-    ?>
 
 
-  </div>
+
+  <?php
+    print_r($_POST);
+
+  ?>
+
+
 
 
 

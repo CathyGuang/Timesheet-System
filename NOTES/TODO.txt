@@ -13,5 +13,6 @@ NEXT: Allow classes to be managed (by staff).
       - then allow hours to be entered,
       - then allow reports to be generated.
 
+- Allow classes/shifts (other objects?) to be ARCHIVED by admin, so that they remain in the database but disappear from all current editing/management menus
 
 - Add REMOVE option for all objects that are not enums, such as people, horses, classes, shifts

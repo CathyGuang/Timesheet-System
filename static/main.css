@@ -50,6 +50,7 @@ button:hover {
   background-color: var(--dark-blue);
 }
 
+
     /* HEADER STYLES */
     header {
       display: flex;
@@ -123,6 +124,9 @@ button:hover {
         }
         .main-form > p {
           margin-bottom: 3px;
+        }
+        .main-form > button {
+          margin-bottom: 1vh;
         }
         input {
           height: 30px;

@@ -64,6 +64,7 @@
         </div>
 
         <p>Shift Type:</p>
+        <input type="text" name="old-shift-type" value="{$shiftData['care_type']}" style="visibility: hidden;">
         <input type="text" name="shift-type" list="shift-type-list" value="{$shiftData['care_type']}" onclick="select()" required>
           <datalist id="shift-type-list">
 EOT;
@@ -139,6 +140,7 @@ EOT;
         </div>
 
         <p>Leader:</p>
+        <input type="text" name="old-leader" value="{$leaderName}" style="visibility: hidden;">
         <input type="text" name="leader" list="leader-list" value="{$leaderName}" onclick="select();">
           <datalist id="leader-list">
 EOT;

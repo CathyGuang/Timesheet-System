@@ -68,6 +68,7 @@
         </div>
 
         <p>Class Type:</p>
+        <input type="text" name="old-class-type" value="{$classData['class_type']}" style="visibility: hidden;">
         <input type="text" name="class-type" list="class-type-list" value="{$classData['class_type']}" onclick="select()" required>
           <datalist id="class-type-list">
 EOT;
@@ -231,6 +232,7 @@ EOT;
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
 
         <p>Instructor:</p>
+        <input type="text" name="old-instructor" value="{$instructorName}" style="visibility: hidden;">
         <input type="text" name="instructor" list="instructor-list" value="{$instructorName}" onclick="select();">
           <datalist id="instructor-list">
 EOT;

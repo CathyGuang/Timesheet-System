@@ -20,13 +20,15 @@
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, date_of_class, lesson_plan, horse, horse_behavior, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT class_type, date_of_class, lesson_plan, horse, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
 
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
 
   <form action="manage-class-back-end.php" method="post" class="main-form">
+
+    <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 
     <p>Lesson Plan:</p>
     <textarea name="lesson-plan" rows="15" cols="30">
@@ -50,9 +52,22 @@
       </datalist>
 
       <p>Horse Behavior:</p>
-      <textarea name="horse-behavior" rows="10" cols="30">
+      <input type="text" name="horse-behavior" list="horse-behavior-form" value="none">
+        <datalist id="horse-behavior-form">
+          <?php
+            $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))";
+            $result = pg_query($db_connection, $query);
+            $behaviorNames = pg_fetch_all_columns($result);
+            foreach ($behaviorNames as $key => $value) {
+              echo "<option value='$value'>";
+            }
+          ?>
+        </datalist>
+
+      <p>Horse Behavior Notes:</p>
+      <textarea name="horse-behavior-notes" rows="10" cols="30">
         <?php
-          echo $classInfo['horse_behavior'];
+          echo $classInfo['horse_behavior_notes'];
         ?>
       </textarea>
 

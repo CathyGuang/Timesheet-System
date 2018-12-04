@@ -140,6 +140,7 @@ CREATE TABLE classes (
   lesson_plan TEXT,
   horse INT REFERENCES horses(id),
   horse_behavior HORSE_BEHAVIOR,
+  horse_behavior_notes TEXT,
   tack TACK,
   special_tack TEXT,
   stirrup_leather_length TEXT,

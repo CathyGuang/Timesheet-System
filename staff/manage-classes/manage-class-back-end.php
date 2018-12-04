@@ -18,7 +18,6 @@
 
   <?php
     // PROCESS USER INPUT
-    var_dump($_POST);
     if ($_POST['attendance']) {
       $attendance = "{" . implode(",", $_POST['attendance']) . "}";
     } else {

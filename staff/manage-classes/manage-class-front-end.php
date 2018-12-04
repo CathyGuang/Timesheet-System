@@ -22,7 +22,6 @@
 
     $getClassInfoQuery = "SELECT class_type, date_of_class, lesson_plan, horse, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
-
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
 
@@ -75,11 +74,16 @@
       <?php
         $clientIDList = explode(',', rtrim(ltrim($classInfo['clients'], '{'), '}'));
         $clientNameList = explode(',', $clientString);
+        $clientAttendanceList = explode(',', rtrim(ltrim($classInfo['attendance'], '{'), '}'));
         foreach ($clientIDList as $index => $id) {
+          $checked = "";
+          if (in_array($id, $clientAttendanceList)) {
+            $checked = "checked";
+          }
           echo <<<EOT
           <div>
             <label>{$clientNameList[$index]}</label>
-            <input type="checkbox" name="attendance[]" value="$id" style="position: absolute; margin-left: 15px;">
+            <input type="checkbox" name="attendance[]" value="$id" style="position: absolute; margin-left: 15px;" {$checked}>
           </div>
 EOT;
         }

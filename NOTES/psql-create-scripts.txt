@@ -104,7 +104,7 @@ CREATE TABLE office_shifts (
 CREATE TABLE volunteer_hours (
   id SERIAL PRIMARY KEY,
   volunteer INT REFERENCES workers(id),
-  hours INT,
+  hours NUMERIC,
   shift_type TEXT
 );
 

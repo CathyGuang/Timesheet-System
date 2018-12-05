@@ -30,8 +30,12 @@ EOT;
       $volunteers = pg_fetch_all_columns(pg_query($db_connection, $getVolunteersQuery));
 
       $allHorseCareShifts[$key]['volunteers'] = $volunteers;
+
+      $allHorseCareShifts[$key]['leader'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allHorseCareShifts[$key]['leader']} ;"))['name'];
+
     }
   }
+
   if ($allOfficeShifts) {
     foreach ($allOfficeShifts as $key => $specificOfficeShift) {
       $getVolunteersQuery = <<<EOT
@@ -43,6 +47,9 @@ EOT;
       $volunteers = pg_fetch_all_columns(pg_query($db_connection, $getVolunteersQuery));
 
       $allOfficeShifts[$key]['volunteers'] = $volunteers;
+
+      $allOfficeShifts[$key]['leader'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allOfficeShifts[$key]['leader']} ;"))['name'];
+
     }
   }
 

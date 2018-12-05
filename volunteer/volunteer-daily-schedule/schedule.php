@@ -103,9 +103,12 @@
 EOT;
 
     foreach ($masterList as $time => $event) {
+
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
       echo "<p class='schedule-time'>{$newTimeString}</p>";
+
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['shift_type']}</p>";
+
       if ($event['instructor']){
         $lead = $event['instructor'];
       } else if ($event['leader']) {
@@ -113,6 +116,9 @@ EOT;
       } else {
         $lead = "";
       }
+      echo "<p class='schedule-instructor-leader'>{$lead}</p>";
+
+      
 
     }
 

@@ -100,12 +100,24 @@ CREATE TABLE office_shifts (
 
 /* CREATE VOLUNTEER HOURS TABLE */
 
-
 CREATE TABLE volunteer_hours (
   id SERIAL PRIMARY KEY,
   volunteer INT REFERENCES workers(id),
   hours NUMERIC,
-  shift_type TEXT
+  shift_type TEXT,
+  date_of_hours DATE,
+);
+
+
+/* CREATE STAFF HOURS TABLE */
+
+CREATE TABLE staff_hours (
+  id SERIAL PRIMARY KEY,
+  staff INT REFERENCES workers(id),
+  hours NUMERIC,
+  work_type TEXT,
+  date_of_hours DATE,
+
 );
 
 

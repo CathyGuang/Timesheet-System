@@ -105,7 +105,7 @@ CREATE TABLE volunteer_hours (
   volunteer INT REFERENCES workers(id),
   hours NUMERIC,
   shift_type TEXT,
-  date_of_hours DATE,
+  date_of_hours DATE
 );
 
 
@@ -116,8 +116,7 @@ CREATE TABLE staff_hours (
   staff INT REFERENCES workers(id),
   hours NUMERIC,
   work_type TEXT,
-  date_of_hours DATE,
-
+  date_of_hours DATE
 );
 
 

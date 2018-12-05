@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
+  <?php error_reporting(E_ALL & ~E_NOTICE); ?>
   <title>Volunteer Daily Schedule</title>
 </head>
 
@@ -85,14 +86,22 @@
     foreach ($todaysOfficeShifts as $value) {
       $masterList[$value['start_time']] = $value;
     }
+    //sort masterlist by time.
+    ksort($masterList);
 
     echo "<br><b>masterList</b><br>";
     var_dump($masterList);
 
 
+
+    //Display the schedule
     echo "<div class='schedule-display'>";
 
-    
+    foreach ($masterList as $time => $event) {
+      $newTimeString = date("g:i a", strtotime($time));
+      echo "<p class='schedule-time'>{$newTimeString}</p>";
+      echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['shift_type']}</p>";
+    }
 
 
 

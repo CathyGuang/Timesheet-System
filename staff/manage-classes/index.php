@@ -19,11 +19,13 @@
   <?php
     if (!$_POST['selected-worker']) {
       echo <<<EOT
+      <div class="main-content-div">
         <form action="" method="post" class="main-form">
+          <p>Select your name:</p>
           <input type="text" name="selected-worker" list="worker-list" onclick="select();">
             <datalist id="worker-list">
 EOT;
-            $workerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers;"), 0);
+            $workerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE;"), 0);
             foreach ($workerNames as $name) {
               echo "<option value='{$name}'>";
             }
@@ -31,6 +33,7 @@ EOT;
             </datalist>
           <input type="submit" value="Submit">
         </form>
+      </div>
 EOT;
     } else {
       $QUERY_NAME = $_POST['selected-worker'];
@@ -46,7 +49,6 @@ EOT;
           }
           echo "<button type='submit' name='buttonInfo' value='{$classTuple['id']};{$clientString}'>{$classTuple['class_type']}, {$clientString} {$classTuple['date_of_class']}</button>";
         }
-
 
         echo <<<EOT
         </form>

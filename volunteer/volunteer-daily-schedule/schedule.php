@@ -22,7 +22,7 @@
   <?php
     $selectedName = $_POST['selected-name'];
     $selectedDate = $_POST['selected-date'];
-    
+
     print_r($_POST);
     echo "<br><br>";
 
@@ -32,12 +32,15 @@
 
     echo "<br><b>allClasses:</b><br>";
     var_dump($allClasses);
-    echo "<br><b>allShifts:</b><br>";
-    var_dump($allShifts);
+    echo "<br><b>allHorseCareShifts:</b><br>";
+    var_dump($allHorseCareShifts);
+    echo "<br><b>allOfficeShifts</b><br>";
+    var_dump($allOfficeShifts);
 
     //filter classes by date
     $todaysClasses = array();
-    $todaysShifts = array();
+    $todaysHorseCareShifts = array();
+    $todaysOfficeShifts = array();
 
     //foreach class check if date_of_class matches $selectedDate, if so, append to $todaysClasses / $todaysShifts
 
@@ -46,7 +49,7 @@
 
 
     //If no classes/shifts are found for a volunteer
-    if (!$todaysClasses and !$todaysShifts) {
+    if (!$todaysClasses and !$todaysHorseCareShifts and !$todaysOfficeShifts) {
       echo "<br><h3 class='main-content-header'>No scheduled events today!</h3>";
       //possibly display an empty schedule?
       return;

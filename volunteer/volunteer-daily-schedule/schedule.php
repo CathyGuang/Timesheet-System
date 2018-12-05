@@ -58,13 +58,6 @@
       }
     }
 
-    echo "<br><b>todaysClasses</b><br>";
-    var_dump($todaysClasses);
-    echo "<br><b>todaysHorseCareShifts</b><br>";
-    var_dump($todaysHorseCareShifts);
-    echo "<br><b>todaysOfficeShifts</b><br>";
-    var_dump($todaysOfficeShifts);
-
     //If no classes/shifts are found for a volunteer
     if (!$todaysClasses and !$todaysHorseCareShifts and !$todaysOfficeShifts) {
       echo "<br><h3 class='main-content-header'>No scheduled events today!</h3>";
@@ -88,10 +81,6 @@
     }
     //sort masterlist by time.
     ksort($masterList);
-
-    echo "<br><b>masterList</b><br>";
-    var_dump($masterList);
-
 
 
     //Display the schedule
@@ -129,7 +118,12 @@ EOT;
       if ($staffString == "") {
         $staffString = "&#8212";
       }
-      echo "<p class='schedule-staff'>{$staffString}</p>";
+      if (strpos($staffString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      echo "<p class='schedule-staff' {$style}>{$staffString}</p>";
 
       //Volunteers
       $volunteerString = "";
@@ -151,7 +145,12 @@ EOT;
       if ($volunteerString == "") {
         $volunteerString = "&#8212";
       }
-      echo "<p class='schedule-volunteers'>{$volunteerString}</p>";
+      if (strpos($volunteerString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      echo "<p class='schedule-volunteers' {$style}>{$volunteerString}</p>";
 
       //Horse
       $horseString = "";
@@ -186,10 +185,20 @@ EOT;
       if ($clientString == "") {
         $clientString = "&#8212";
       }
-      echo "<p class='schedule-clients'>{$clientString}</p>";
+      if (strpos($clientString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
       //Lesson Plan
-      echo "<p class='schedule-lesson-plan'>{$event['lesson_plan']}</p>";
+      if ($event['lesson_plan']) {
+        $lessonplan = $event['lesson_plan'];
+      } else {
+        $lessonplan = "&#8212";
+      }
+      echo "<p class='schedule-lesson-plan'>{$lessonplan}</p>";
 
     }
 

@@ -42,13 +42,28 @@
     $todaysHorseCareShifts = array();
     $todaysOfficeShifts = array();
 
-    //foreach class check if date_of_class matches $selectedDate, if so, append to $todaysClasses / $todaysShifts
-    foreach ($allClasses as $key => $class) {
-      if ($class['date_of_class'] == $selectedDate){
-        $todaysClasses[] = $class;
+    //foreach class/shift check if date_of_class/date_of_shift matches $selectedDate, if so, append to $todaysClasses / $todaysShifts
+    if ($allClasses) {
+      foreach ($allClasses as $key => $class) {
+        if ($class['date_of_class'] == $selectedDate){
+          $todaysClasses[] = $class;
+        }
       }
     }
-
+    if ($allHorseCareShifts) {
+      foreach ($allHorseCareShifts as $key => $horseCareShift) {
+        if ($horseCareShift['date_of_shift'] == $selectedDate){
+          $todaysHorseCareShifts[] = $horseCareShift;
+        }
+      }
+    }
+    if ($allOfficeShifts) {
+      foreach ($allOfficeShifts as $key => $officeShift) {
+        if ($officeShift['date_of_shift'] == $selectedDate){
+          $todaysOfficeShifts[] = $officeShift;
+        }
+      }
+    }
 
 
 

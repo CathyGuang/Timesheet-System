@@ -95,12 +95,25 @@
 
 
     //Display the schedule
-    echo "<div class='schedule-display'>";
+    echo <<<EOT
+    <div class="schedule-display">
+    <p class="schedule-time" style="height: 5vh;">Time:</p>
+    <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
+    <p class="schedule-instructor-leader" style="height: 5vh;">Instructor/Leader:</p>
+EOT;
 
     foreach ($masterList as $time => $event) {
-      $newTimeString = date("g:i a", strtotime($time));
+      $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
       echo "<p class='schedule-time'>{$newTimeString}</p>";
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['shift_type']}</p>";
+      if ($event['instructor']){
+        $lead = $event['instructor'];
+      } else if ($event['leader']) {
+        $lead = $event['leader'];
+      } else {
+        $lead = "";
+      }
+
     }
 
 

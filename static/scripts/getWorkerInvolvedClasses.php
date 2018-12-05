@@ -28,6 +28,14 @@ EOT;
     $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
 
     $allClasses[$key]['clients'] = $clients;
+
+    $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
+    $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];
+    $allClasses[$key]['equine_specialist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['equine_specialist']} ;"))['name'];
+    $allClasses[$key]['leader'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['leader']} ;"))['name'];
+    $allClasses[$key]['horse'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$allClasses[$key]['horse']} ;"))['name'];
+
+
   }
 
 ?>

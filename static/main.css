@@ -150,14 +150,21 @@ button:hover {
     .schedule-display {
       margin: 0;
       display: grid;
-      grid-template-columns: 1fr 120px 250px 200px 300px 1fr;
+      grid-template-columns: 1fr 120px 250px 250px 300px 1fr;
     }
     .schedule-display > * {
       border: 1px solid black;
       margin: 0;
-      padding-left: 5px;
+      padding-left: 8px;
+      padding-top: 5px;
       height: 15vh;
     }
     .schedule-time {
       grid-column: 2;
+    }
+    .schedule-event-type {
+      grid-column: 3;
+    }
+    .schedule-instructor-leader {
+      grid-column: 4;
     }

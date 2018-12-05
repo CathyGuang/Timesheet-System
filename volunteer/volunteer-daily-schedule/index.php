@@ -18,16 +18,18 @@
 
   <div class="main-content-div">
 
-    <form action="schedule.php" method="post">
-      <input name="query-name" list="volunteers">
+    <form action="schedule.php" method="post" class="main-form">
+      <p>Select your name:</p>
+      <input name="selected-name" list="volunteers">
       <datalist id="volunteers">
         <?php
-          $result = pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE;");
-          while ($row = pg_fetch_row($result)) {
-            echo "<option value='$row[0]'>";
+          $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE;"));
+          foreach ($volunteerNames as $name) {
+            echo "<option value='$name'>";
           }
         ?>
       </datalist>
+      <input type="date" name="selected-date" value="<?php echo date('Y-m-d') ?>">
 
       <input type="submit" value="Search">
     </form>

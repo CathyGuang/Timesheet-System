@@ -115,20 +115,39 @@ EOT;
 
       $staffString = "";
       if ($event['instructor']) {
-        $staffString .= "Instructor: " . $event['instructor'];
+        $staffString .= "<i>Instructor: </i>" . $event['instructor'];
       }
-      if ($event['therapist']) {
-        $staffString .= " Therapist: " . $event['therapist'];
+      if ($event['therapist'] != "none" and $event['therapist']) {
+        $staffString .= "<i> Therapist: </i>" . $event['therapist'];
       }
-      if ($event['equine_specialist']) {
-        $staffString .= " ES: " . $event['equine_specialist'];
+      if ($event['equine_specialist'] != "none" and $event['equine_specialist']) {
+        $staffString .= "<i> ES: </i>" . $event['equine_specialist'];
       }
       if ($staffString == "") {
         $staffString = "&#8212";
       }
       echo "<p class='schedule-staff'>{$staffString}</p>";
 
-
+      $volunteerString = "";
+      if ($event['leader'] != "none") {
+        $volunteerString .= "<i>Leader: </i>" . $event['leader'];
+      }
+      if ($event['volunteers']) {
+        foreach ($event['volunteers'] as $volunteerName) {
+          $volunteerString .= "<i> Volunteer: </i>" . $volunteerName;
+        }
+      }
+      if ($event['sidewalkers']) {
+        foreach ($event['sidewalkers'] as $volunteerName) {
+          if ($volunteerName != "none") {
+            $volunteerString .= "<i> Sidewalker: </i>" . $volunteerName;
+          }
+        }
+      }
+      if ($volunteerString == "") {
+        $volunteerString = "&#8212";
+      }
+      echo "<p class='schedule-volunteers'>{$volunteerString}</p>";
 
 
 

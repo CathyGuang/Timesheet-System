@@ -24,10 +24,19 @@ EOT;
       clients.id = ANY('{$allClasses[$key]['clients']}')
       ;
 EOT;
+      if ($specificClass['sidewalkers']) {
+        $getSidewalkersQuery = <<<EOT
+          SELECT workers.name FROM workers WHERE
+          workers.id = ANY('{$allClasses[$key]['sidewalkers']}')
+          ;
+EOT;
+      }
 
     $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
+    $sidewalkers = pg_fetch_all_columns(pg_query($db_connection, $getSidewalkersQuery));
 
     $allClasses[$key]['clients'] = $clients;
+    $allClasses[$key]['sidewalkers'] = $sidewalkers;
 
     $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
     $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];

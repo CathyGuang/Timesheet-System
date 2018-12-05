@@ -99,7 +99,11 @@
     <div class="schedule-display">
     <p class="schedule-time" style="height: 5vh;">Time:</p>
     <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
-    <p class="schedule-instructor-leader" style="height: 5vh;">Instructor/Leader:</p>
+    <p class="schedule-staff" style="height: 5vh;">Staff:</p>
+    <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
+    <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
+    <p class="schedule-clients" style="height: 5vh;">Clients:</p>
+    <p class="schedule-lesson-plan" style="height: 5vh;">Lesson Plan:</p>
 EOT;
 
     foreach ($masterList as $time => $event) {
@@ -109,21 +113,27 @@ EOT;
 
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['shift_type']}</p>";
 
-      if ($event['instructor']){
-        $lead = $event['instructor'];
-      } else if ($event['leader']) {
-        $lead = $event['leader'];
-      } else {
-        $lead = "";
+      $staffString = "";
+      if ($event['instructor']) {
+        $staffString .= "Instructor: " . $event['instructor'];
       }
-      echo "<p class='schedule-instructor-leader'>{$lead}</p>";
+      if ($event['therapist']) {
+        $staffString .= " Therapist: " . $event['therapist'];
+      }
+      if ($event['equine_specialist']) {
+        $staffString .= " ES: " . $event['equine_specialist'];
+      }
+      if ($staffString == "") {
+        $staffString = "&#8212";
+      }
+      echo "<p class='schedule-staff'>{$staffString}</p>";
 
-      
+
+
+
+
 
     }
-
-
-
 
     echo "</div>";
 

@@ -143,3 +143,12 @@ button:hover {
         label {
           font-size: 12pt;
         }
+
+
+    /* SCHEDULE DISPLAY STYLES */
+
+    .schedule-display {
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 200px 200px 300px 1fr;
+    }

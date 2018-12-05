@@ -73,11 +73,31 @@
 
     //CREATE AND DISPLAY SCHEDULE FOR GIVEN WORKER AND DATE
 
+    //an array containing all class and shift data indexed by start time.
+    $masterList = array();
+
+    foreach ($todaysClasses as $value) {
+      $masterList[$value['start_time']] = $value;
+    }
+    foreach ($todaysHorseCareShifts as $value) {
+      $masterList[$value['start_time']] = $value;
+    }
+    foreach ($todaysOfficeShifts as $value) {
+      $masterList[$value['start_time']] = $value;
+    }
+
+    echo "<br><b>masterList</b><br>";
+    var_dump($masterList);
+
+
+    echo "<div class='schedule-display'>";
+
+    
 
 
 
 
-
+    echo "</div>";
 
 
 

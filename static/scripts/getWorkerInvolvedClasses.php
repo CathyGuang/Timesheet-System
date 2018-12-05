@@ -2,7 +2,7 @@
   $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}';"), 0, 1)['id'];
 
   $query = <<<EOT
-  SELECT class_type, date_of_class, start_time, end_time, classes.id, clients FROM classes WHERE
+  SELECT class_type, classes.id, date_of_class, start_time, end_time, lesson_plan, tack, special_tack, stirrup_leather_length, pad, horse, instructor, therapist, equine_specialist, leader, sidewalkers, clients FROM classes WHERE
   instructor = {$queryID} OR
   therapist = {$queryID} OR
   equine_specialist = {$queryID} OR

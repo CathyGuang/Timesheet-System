@@ -17,8 +17,8 @@
   </header>
 
   <div class="main-content-div">
-    <a href="new-class"><button>New Class</button></a>
-    <a href="new-volunteer-shift"><button>New Volunteer Shift</button></a>
+    <a href="new-class"><button class="green-button">New Class</button></a>
+    <a href="new-volunteer-shift"><button class="green-button">New Volunteer Shift</button></a>
 
   </div>
 

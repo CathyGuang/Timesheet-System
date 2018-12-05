@@ -19,8 +19,8 @@
   <h3 class="main-content-header">Select type of event to edit:</h3>
 
   <div class="main-content-div">
-    <a href="edit-class"><button>Class</button></a>
-    <a href="edit-volunteer-shift"><button>Volunteer Shift</button></a>
+    <a href="edit-class"><button class="blue-button">Class</button></a>
+    <a href="edit-volunteer-shift"><button class="blue-button">Volunteer Shift</button></a>
 
   </div>
 

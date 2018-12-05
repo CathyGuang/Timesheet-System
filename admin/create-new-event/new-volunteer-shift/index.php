@@ -17,8 +17,8 @@
   </header>
 
   <div class="main-content-div">
-    <a href="new-horse-care-shift"><button>New Horse Care Shift</button></a>
-    <a href="new-office-shift"><button>New Office Shift</button></a>
+    <a href="new-horse-care-shift"><button class="green-button">New Horse Care Shift</button></a>
+    <a href="new-office-shift"><button class="green-button">New Office Shift</button></a>
 
   </div>
 

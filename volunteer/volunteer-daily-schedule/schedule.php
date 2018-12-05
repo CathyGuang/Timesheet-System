@@ -23,19 +23,11 @@
     $selectedName = $_POST['selected-name'];
     $selectedDate = $_POST['selected-date'];
 
-    print_r($_POST);
-    echo "<br><br>";
-
     $QUERY_NAME = $_POST['selected-name'];
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedClasses.php";
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedShifts.php";
+    //these scripts generate the variables $allClasses, $allOfficeShifts, $allHorseCareShifts
 
-    echo "<br><b>allClasses:</b><br>";
-    var_dump($allClasses);
-    echo "<br><b>allHorseCareShifts:</b><br>";
-    var_dump($allHorseCareShifts);
-    echo "<br><b>allOfficeShifts</b><br>";
-    var_dump($allOfficeShifts);
 
     //filter classes by date
     $todaysClasses = array();
@@ -65,8 +57,6 @@
       }
     }
 
-
-
     echo "<br><b>todaysClasses</b><br>";
     var_dump($todaysClasses);
     echo "<br><b>todaysHorseCareShifts</b><br>";
@@ -81,16 +71,17 @@
       return;
     }
 
-
-
     //CREATE AND DISPLAY SCHEDULE FOR GIVEN WORKER AND DATE
 
+
+
+
+
+
+
+
+
   ?>
-
-
-
-
-
 
 
 </body>

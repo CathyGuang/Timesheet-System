@@ -43,10 +43,21 @@
     $todaysOfficeShifts = array();
 
     //foreach class check if date_of_class matches $selectedDate, if so, append to $todaysClasses / $todaysShifts
+    foreach ($allClasses as $key => $class) {
+      if ($class['date_of_class'] == $selectedDate){
+        $todaysClasses[] = $class;
+      }
+    }
 
 
 
 
+    echo "<br><b>todaysClasses</b><br>";
+    var_dump($todaysClasses);
+    echo "<br><b>todaysHorseCareShifts</b><br>";
+    var_dump($todaysHorseCareShifts);
+    echo "<br><b>todaysOfficeShifts</b><br>";
+    var_dump($todaysOfficeShifts);
 
     //If no classes/shifts are found for a volunteer
     if (!$todaysClasses and !$todaysHorseCareShifts and !$todaysOfficeShifts) {

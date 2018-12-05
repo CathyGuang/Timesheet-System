@@ -158,7 +158,7 @@ EOT;
             <p>Volunteers:</p>
 
 EOT;
-          $volunteerIDList = explode(', ', ltrim(rtrim($shiftData['volunteers'], "}"), '{'));
+          $volunteerIDList = explode(',', ltrim(rtrim($shiftData['volunteers'], "}"), '{'));
           foreach ($volunteerIDList as $id) {
             $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id}") , 0, 1)['name'];
             echo <<<EOT

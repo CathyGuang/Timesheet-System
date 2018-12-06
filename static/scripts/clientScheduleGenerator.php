@@ -88,10 +88,10 @@ EOT;
       if ($event['instructor']) {
         $staffString .= "<i>Instructor: </i>" . $event['instructor'];
       }
-      if ($event['therapist'] != "none" and $event['therapist']) {
+      if ($event['therapist'] != "" and $event['therapist']) {
         $staffString .= "<br><i>Therapist: </i>" . $event['therapist'];
       }
-      if ($event['equine_specialist'] != "none" and $event['equine_specialist']) {
+      if ($event['equine_specialist'] != "" and $event['equine_specialist']) {
         $staffString .= "<br><i>ES: </i>" . $event['equine_specialist'];
       }
       if ($staffString == "") {
@@ -106,7 +106,7 @@ EOT;
 
       //Volunteers
       $volunteerString = "";
-      if ($event['leader'] != "none") {
+      if ($event['leader'] != "") {
         $volunteerString .= "<i>Leader: </i>" . $event['leader'];
       }
       if ($event['volunteers']) {
@@ -116,7 +116,7 @@ EOT;
       }
       if ($event['sidewalkers']) {
         foreach ($event['sidewalkers'] as $volunteerName) {
-          if ($volunteerName != "none") {
+          if ($volunteerName != "") {
             $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;
           }
         }
@@ -133,19 +133,19 @@ EOT;
 
       //Horse
       $horseString = "";
-      if ($event['horse'] and $event['horse'] != "none") {
+      if ($event['horse'] and $event['horse'] != "") {
         $horseString .= "<i>Horse: </i>" . $event['horse'] . ", ";
       }
-      if ($event['tack'] and $event['tack'] != "none") {
+      if ($event['tack'] and $event['tack'] != "") {
         $horseString .= "<br><i>Tack: </i>" . $event['tack'] . ", ";
       }
-      if ($event['special_tack'] and $event['special_tack'] != "none") {
+      if ($event['special_tack'] and $event['special_tack'] != "") {
         $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
       }
-      if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "none") {
+      if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
         $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
       }
-      if ($event['pad'] and $event['pad'] != "none") {
+      if ($event['pad'] and $event['pad'] != "") {
         $horseString .= "<i><br>Pad: </i>" . $event['pad'];
       }
       if ($horseString == "") {

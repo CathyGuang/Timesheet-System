@@ -195,7 +195,7 @@ EOT;
           newInput.setAttribute('type', 'text');
           newInput.setAttribute('name', 'volunteers[]');
           newInput.setAttribute('list', 'volunteer-list');
-          newInput.setAttribute('value', 'none');
+          newInput.setAttribute('value', '');
           newInput.setAttribute('onclick', 'select()');
           var volunteerSection = document.getElementById('volunteer-section');
           volunteerSection.appendChild(newInput);

@@ -252,7 +252,7 @@
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'clients[]');
         newInput.setAttribute('list', 'client-list');
-        newInput.setAttribute('value', 'none');
+        newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         var clientSection = document.getElementById('client-section');
         clientSection.appendChild(newInput);
@@ -263,7 +263,7 @@
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'sidewalkers[]');
       newInput.setAttribute('list', 'sidewalker-list');
-      newInput.setAttribute('value', 'none');
+      newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       var sidewalkerSection = document.getElementById('sidewalker-section');
       sidewalkerSection.appendChild(newInput);

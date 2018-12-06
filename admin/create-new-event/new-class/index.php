@@ -94,7 +94,7 @@
     </div>
 
     <p>Arena:</p>
-    <input type="text" name="arena" list="arena-list" value="none" onclick="select();">
+    <input type="text" name="arena" list="arena-list" value="" onclick="select();">
       <datalist id="arena-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::ARENA))";
@@ -107,7 +107,7 @@
       </datalist>
 
     <p>Horse:</p>
-    <input type="text" name="horse" list="horse-list" value="none" onclick="select();">
+    <input type="text" name="horse" list="horse-list" value="" onclick="select();">
       <datalist id="horse-list">
         <?php
           $query = "SELECT name FROM horses;";
@@ -120,7 +120,7 @@
       </datalist>
 
     <p>Tack:</p>
-    <input type="text" name="tack" list="tack-list" value="none" onclick="select();">
+    <input type="text" name="tack" list="tack-list" value="" onclick="select();">
       <datalist id="tack-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::TACK))";
@@ -139,7 +139,7 @@
     <input type="text" name="stirrup-leather-length">
 
     <p>Pad:</p>
-    <input type="text" name="pad" list="pad-list" value="none" onclick="select();">
+    <input type="text" name="pad" list="pad-list" value="" onclick="select();">
       <datalist id="pad-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::PAD))";
@@ -152,7 +152,7 @@
       </datalist>
     <div id="client-section">
       <p>Clients:</p>
-      <input type="text" name="clients[]" list="client-list" value="none" onclick="select();">
+      <input type="text" name="clients[]" list="client-list" value="" onclick="select();">
         <datalist id="client-list">
           <?php
             $query = "SELECT name FROM clients;";
@@ -168,7 +168,7 @@
     <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
 
     <p>Instructor:</p>
-    <input type="text" name="instructor" list="instructor-list" value="none" onclick="select();">
+    <input type="text" name="instructor" list="instructor-list" value="" onclick="select();">
       <datalist id="instructor-list">
         <?php
           $query = "SELECT name FROM workers;";
@@ -181,7 +181,7 @@
       </datalist>
 
     <p>Therapist:</p>
-    <input type="text" name="therapist" list="therapist-list" value="none" onclick="select();">
+    <input type="text" name="therapist" list="therapist-list" value="" onclick="select();">
       <datalist id="therapist-list">
         <?php
           $query = "SELECT name FROM workers;";
@@ -194,7 +194,7 @@
       </datalist>
 
     <p>ES:</p>
-    <input type="text" name="equine-specialist" list="es-list" value="none" onclick="select();">
+    <input type="text" name="equine-specialist" list="es-list" value="" onclick="select();">
       <datalist id="es-list">
         <?php
           $query = "SELECT name FROM workers;";
@@ -207,7 +207,7 @@
       </datalist>
 
     <p>Leader:</p>
-    <input type="text" name="leader" list="leader-list" value="none" onclick="select();">
+    <input type="text" name="leader" list="leader-list" value="" onclick="select();">
       <datalist id="leader-list">
         <?php
           $query = "SELECT name FROM workers;";
@@ -221,7 +221,7 @@
 
       <div id="sidewalker-section">
         <p>Sidewalkers:</p>
-        <input type="text" name="sidewalkers[]" list="sidewalker-list" value="none" onclick="select();">
+        <input type="text" name="sidewalkers[]" list="sidewalker-list" value="" onclick="select();">
           <datalist id="sidewalker-list">
             <?php
               $query = "SELECT name FROM workers;";

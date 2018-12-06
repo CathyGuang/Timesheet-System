@@ -51,7 +51,7 @@
       </datalist>
 
       <p>Horse Behavior:</p>
-      <input type="text" name="horse-behavior" list="horse-behavior-form" value="none">
+      <input type="text" name="horse-behavior" list="horse-behavior-form" value="">
         <datalist id="horse-behavior-form">
           <?php
             $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))";

@@ -96,7 +96,7 @@
 
 
     <p>Shift Leader:</p>
-    <input type="text" name="leader" list="leader-list" value="none" onclick="select();">
+    <input type="text" name="leader" list="leader-list" value="" onclick="select();">
       <datalist id="leader-list">
         <?php
           $query = "SELECT name FROM workers;";
@@ -110,7 +110,7 @@
 
       <div id="volunteer-section">
         <p>Volunteers:</p>
-        <input type="text" name="volunteers[]" list="volunteer-list" value="none" onclick="select();">
+        <input type="text" name="volunteers[]" list="volunteer-list" value="" onclick="select();">
           <datalist id="volunteer-list">
             <?php
               $query = "SELECT name FROM workers;";

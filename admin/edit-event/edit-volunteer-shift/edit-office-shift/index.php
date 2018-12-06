@@ -155,7 +155,7 @@ EOT;
           </datalist>
 
           <div id="volunteer-section">
-            <p>Volunteers:</p>
+            <p>Volunteer(s):</p>
 
 EOT;
           $volunteerIDList = explode(',', ltrim(rtrim($shiftData['volunteers'], "}"), '{'));
@@ -181,7 +181,7 @@ EOT;
               </datalist>
             </div>
             <br>
-            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
         <br><br>
         <input type="submit" value="Submit Changes">

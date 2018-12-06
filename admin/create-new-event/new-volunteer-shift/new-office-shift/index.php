@@ -109,7 +109,7 @@
       </datalist>
 
       <div id="volunteer-section">
-        <p>Volunteers:</p>
+        <p>Volunteer(s):</p>
         <input type="text" name="volunteers[]" list="volunteer-list" value="" onclick="select();">
           <datalist id="volunteer-list">
             <?php
@@ -123,7 +123,7 @@
           </datalist>
         </div>
         <br>
-        <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+        <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
 
     <br><br>

@@ -151,7 +151,7 @@
         ?>
       </datalist>
     <div id="client-section">
-      <p>Clients:</p>
+      <p>Client(s):</p>
       <input type="text" name="clients[]" list="client-list" value="" onclick="select();">
         <datalist id="client-list">
           <?php
@@ -165,7 +165,7 @@
         </datalist>
     </div>
     <br>
-    <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
+    <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
 
     <p>Instructor:</p>
     <input type="text" name="instructor" list="instructor-list" value="" onclick="select();">
@@ -220,7 +220,7 @@
       </datalist>
 
       <div id="sidewalker-section">
-        <p>Sidewalkers:</p>
+        <p>Sidewalker(s):</p>
         <input type="text" name="sidewalkers[]" list="sidewalker-list" value="" onclick="select();">
           <datalist id="sidewalker-list">
             <?php
@@ -234,7 +234,7 @@
           </datalist>
         </div>
         <br>
-        <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Sidewalker</button>
+        <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
 
 
 

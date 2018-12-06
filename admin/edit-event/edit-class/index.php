@@ -232,7 +232,7 @@ EOT;
           </datalist>
 
         <div id="client-section">
-          <p>Clients:</p>
+          <p>Client(s):</p>
 EOT;
         $oldClientIDListPGArray = "{";
         foreach ($clientIDList as $id) {
@@ -259,7 +259,7 @@ EOT;
         </div>
         <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
 
-        <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
+        <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
 
         <p>Instructor:</p>
         <input type="text" name="instructor" list="instructor-list" value="{$instructorName}" onclick="select();">
@@ -317,7 +317,7 @@ EOT;
           </datalist>
 
           <div id="sidewalker-section">
-            <p>Sidewalkers:</p>
+            <p>Sidewalker(s):</p>
 
 EOT;
           $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
@@ -343,7 +343,7 @@ EOT;
               </datalist>
             </div>
             <br>
-            <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Sidewalker</button>
+            <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
 
         <br><br>
         <input type="submit" value="Submit Changes">

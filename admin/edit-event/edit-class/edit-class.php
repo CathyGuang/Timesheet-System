@@ -21,7 +21,7 @@
 
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
-      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND instructor = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-instructor']}');";
+      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";

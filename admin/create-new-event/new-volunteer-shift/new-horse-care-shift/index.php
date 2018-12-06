@@ -144,6 +144,42 @@
       var volunteerSection = document.getElementById('volunteer-section');
       volunteerSection.appendChild(newInput);
     };
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    }
+
+    if(mm<10) {
+        mm = '0'+mm
+    }
+
+    today = yyyy + '-' + mm + '-' + dd;
+
+    var startDateSelector = document.getElementById('start-date');
+    var endDateSelector = document.getElementById('end-date');
+    startDateSelector.onchange = function() {
+      if (this.value < today) {
+        alert("Please select a valid start date \u2014 cannot start in the past!");
+        this.value = "";
+      } else if (this.value > endDateSelector.value) {
+        alert("Check your dates \u2014 end date cannot be before the start date!");
+        this.value = "";
+        endDateSelector.value = "";
+      }
+    };
+
+    endDateSelector.onchange = function() {
+      if (this.value < startDateSelector.value) {
+        alert("Please select a valid end date \u2014 cannot end before the start date!");
+        this.value = "";
+      }
+    };
+
     </script>
   </footer>
 

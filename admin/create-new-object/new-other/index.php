@@ -12,7 +12,7 @@
 
   <header>
     <h1>New Object</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav>
       <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
@@ -22,7 +22,7 @@
   <form action="create-new-other.php" method="post" class="main-form">
 
     <p>Select object type:</p>
-    <input name="object-type" list="object-type-list" required>
+    <input name="object-type" list="object-type-list" onclick="select();" required>
       <datalist id="object-type-list">
         <?php
           $query = <<<EOT

@@ -12,7 +12,8 @@
 
   <header>
     <h1>New Object</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav>
+      <a href="index.php"><button>Create Another</button></a>
       <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

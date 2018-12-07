@@ -7,7 +7,7 @@
     $QUERY_NAME = $_POST['selected-name'];
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getClientInvolvedClasses.php";
     //this script generates the variable $allClasses
-    
+
 
     //filter classes by date
     $todaysClasses = array();
@@ -155,7 +155,7 @@ EOT;
 
       //Clients
       $clientString = "";
-      if ($event['clients']) {
+      if ($event['clients'] and $event['clients'][0] != "") {
         $clientString = "<i>Clients: </i>";
         foreach ($event['clients'] as $clientName) {
           $clientString .= $clientName . ", ";

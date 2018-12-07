@@ -11,7 +11,7 @@
 
   <header>
     <h1>Edit Event</h1>
-    <nav>
+    <nav> <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

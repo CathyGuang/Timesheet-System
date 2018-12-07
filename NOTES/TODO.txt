@@ -1,11 +1,6 @@
-- see if I can use the Tel form element to ensure that administrators creating new volunteers/clients/staff are forced to input consistent telephone numbers?
-  - make SQL restrictions to columns to ensure that only properly formatted data gets added. Return errors to users.
-
 
 NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
       - finished availability checker script (takes a person, a date. and a time range and computes availability. returns true or false)
       - integrate availability checker to class creation / editing
 
 - Allow classes/shifts/other objects to be ARCHIVED by admin, so that they remain in the database but disappear from all current editing/management menus
-
-- ADD DATE VERIFICATION FOR NEW CLASSES, NO BACKWARDS DATES, NO PAST DATES

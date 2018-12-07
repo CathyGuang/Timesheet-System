@@ -156,7 +156,7 @@ EOT;
 
       //Clients
       $clientString = "";
-      if ($event['clients']) {
+      if ($event['clients'] and $event['clients'][0] != "") {
         $clientString = "<i>Clients: </i>";
         foreach ($event['clients'] as $clientName) {
           $clientString .= $clientName . ", ";

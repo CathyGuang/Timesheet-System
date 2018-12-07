@@ -20,7 +20,7 @@
       <form class="main-form" action="staff-record-hours.php" method="post">
 
         <p>Name:</p>
-        <input type="text" name="staff" list="staff-list">
+        <input type="text" name="staff" list="staff-list" required>
           <datalist id="staff-list">
             <?php
               $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE;"));
@@ -31,7 +31,7 @@
           </datalist>
 
         <p>Type of Work:</p>
-        <input type="text" name="work-type" list="work-type-list">
+        <input type="text" name="work-type" list="work-type-list" required>
           <datalist id="work-type-list">
             <?php
               //POTENTIALLY CHANGE THIS SECTION TO DISPLAY A LIST OF STAFF WORK OPTIONS INSTEAD OF VOLUNTEER ONES
@@ -54,10 +54,10 @@
           </datalist>
 
         <p>Date:</p>
-        <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>">
+        <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
 
         <p>Number of hours</p>
-        <input type="number" name="hours">
+        <input type="number" name="hours" required>
 
         <br><br>
         <input type="submit" value="Submit">

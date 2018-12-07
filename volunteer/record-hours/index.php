@@ -21,7 +21,7 @@
     <form class="main-form" action="volunteer-record-hours.php" method="post">
 
       <p>Name:</p>
-      <input type="text" name="volunteer" list="volunteer-list">
+      <input type="text" name="volunteer" list="volunteer-list" required>
         <datalist id="volunteer-list">
           <?php
             $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE;"));
@@ -32,7 +32,7 @@
         </datalist>
 
       <p>Type of shift:</p>
-      <input type="text" name="shift-type" list="shift-type-list">
+      <input type="text" name="shift-type" list="shift-type-list" required>
         <datalist id="shift-type-list">
           <?php
             $classTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CLASS_TYPE));"));
@@ -52,10 +52,10 @@
         </datalist>
 
       <p>Date:</p>
-      <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>">
+      <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
 
       <p>Number of hours</p>
-      <input type="number" name="hours">
+      <input type="number" name="hours" required>
 
       <br><br>
       <input type="submit" value="Submit">

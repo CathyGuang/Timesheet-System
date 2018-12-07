@@ -21,7 +21,7 @@
   <form action="create-new-other.php" method="post" class="main-form">
 
     <p>Select object type:</p>
-    <input name="object-type" list="object-type-list">
+    <input name="object-type" list="object-type-list" required>
       <datalist id="object-type-list">
         <?php
           $query = <<<EOT
@@ -46,7 +46,7 @@ EOT;
       </datalist>
 
     <p>Name of new object:</p>
-    <input type="text" name="new-object-name" value="">
+    <input type="text" name="new-object-name" value="" required>
 
 
     <br><br>

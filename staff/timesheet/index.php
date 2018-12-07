@@ -36,17 +36,8 @@
             <?php
               //POTENTIALLY CHANGE THIS SECTION TO DISPLAY A LIST OF STAFF WORK OPTIONS INSTEAD OF VOLUNTEER ONES
               //-------------------------------------------------------------------------
-              $classTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CLASS_TYPE));"));
-              foreach ($classTypes as $value) {
-                echo "<option value='{$value} &#8212 Leader'>";
-                echo "<option value='{$value} &#8212 Sidewalker'>";
-              }
-              $horseCareShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CARE_TYPE));"));
-              foreach ($horseCareShiftTypes as $value) {
-                echo "<option value='{$value}'>";
-              }
-              $officeShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE));"));
-              foreach ($officeShiftTypes as $value) {
+              $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+              foreach ($staffShiftTypes as $value) {
                 echo "<option value='{$value}'>";
               }
               //-----------------------------------------------------------------

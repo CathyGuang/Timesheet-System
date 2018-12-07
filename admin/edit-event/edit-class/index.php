@@ -33,6 +33,9 @@
         $id = pg_fetch_row(pg_query($db_connection, $IDQuery))[0];
         $clientIDList[] = $id;
       }
+      if (!$clientIDList) {
+        $clientIDList[] = 1;
+      }
 
       function to_pg_array($set) {
         settype($set, 'array'); // can be called with a scalar or array

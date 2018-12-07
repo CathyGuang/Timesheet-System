@@ -19,7 +19,7 @@
 
   <form action="create-new-client.php" method="post" class="main-form">
 
-    <p>Name:</p>
+    <p>Initials:</p>
     <input type="text" name="name" value="" required>
 
     <p>Email:</p>

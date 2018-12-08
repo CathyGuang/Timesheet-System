@@ -25,10 +25,11 @@ EOT;
 
 
     if (in_array($typeOfObject, $tableNameList)) {
-      echo "this is in a table!";
-      $query = <<<EOT
-      SELECT id FROM classes, horse_care_shifts, office_shifts
+      echo "this is in a table!<br>";
+      $classQuery = <<<EOT
+      SELECT start_time, end_time FROM classes
       WHERE
+      (
       {$id} = classes.horse OR
       {$id} = ANY(classes.clients) OR
       {$id} = classes.instructor OR
@@ -36,22 +37,63 @@ EOT;
       {$id} = classes.equine_specialist OR
       {$id} = classes.leader OR
       {$id} = ANY(classes.sidewalkers)
+      ) AND (
+      '{$date}' = date_of_class
+      )
+
+      ;
+EOT;
+      $horseCareShiftQuery = <<<EOT
+      SELECT start_time, end_time FROM horse_care_shifts
+      WHERE
+      (
+      {$id} = horse_care_shifts.leader OR
+      {$id} = ANY(horse_care_shifts.volunteers)
+      )
+
+      ;
+EOT;
+      $officeShiftQuery = <<<EOT
+      SELECT start_time, end_time FROM office_shifts
+      WHERE
+      (
+      {$id} = office_shifts.leader OR
+      {$id} = ANY(office_shifts.volunteers)
+      )
 
       ;
 EOT;
 
+      $allEvents = pg_fetch_all(pg_query($db_connection, $classQuery));
+      $allEvents[] = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));
+      $allEvents[] = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
+
+      var_dump($allEvents);
+
+      foreach ($allEvents as $key => $timePair) {
+        if ($timePair) {
+          if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return false;}
+        }
+      }
+
+
+
     } elseif (in_array($typeOfObject, $enumTypeList)) {
-      echo "this is an enum value!";
+      echo "this is an enum value!<br>";
+
 
     }
 
-    return false;
+
+
+
+    return true;
   };
 
 
 
 
-  $result = checkAvailability(2, 'care_type', "2018-12-15", "10:00", "11:00");
+  $result = checkAvailability(2, 'workers', "2018-12-10", "9:00", "10:00");
 
   echo "<br><br>";
 

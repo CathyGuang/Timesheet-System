@@ -21,7 +21,7 @@
 
   <div class="main-content-div">
 
-    <form action="check.php" method="post" class="main-form">
+    <form action="check.php" method="post" class="main-form small-form">
       <p>Select any person/arena/resource:</p>
       <input type="text" name="target-name" list="all-objects-list" required>
         <datalist id="all-objects-list">

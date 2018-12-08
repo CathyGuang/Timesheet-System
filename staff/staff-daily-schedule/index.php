@@ -18,7 +18,7 @@
 
   <div class="main-content-div">
 
-    <form action="schedule.php" method="post" class="main-form">
+    <form action="schedule.php" method="post" class="main-form small-form">
       <p>Select your name:</p>
       <input name="selected-name" list="staff">
       <datalist id="staff">

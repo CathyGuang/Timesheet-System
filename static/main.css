@@ -118,6 +118,9 @@ button:hover {
           margin-left: 8%;
           margin-top: 5vh;
         }
+        .small-form {
+          max-height: 35vh
+        }
 
         .full-page-form {
           margin-left: 4%;

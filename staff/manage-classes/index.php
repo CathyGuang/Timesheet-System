@@ -20,7 +20,7 @@
     if (!$_POST['selected-worker']) {
       echo <<<EOT
       <div class="main-content-div">
-        <form action="" method="post" class="main-form">
+        <form action="" method="post" class="main-form small-form">
           <p>Select your name:</p>
           <input type="text" name="selected-worker" list="worker-list" onclick="select();">
             <datalist id="worker-list">

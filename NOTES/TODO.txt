@@ -1,6 +1,5 @@
 
 NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
-      - integrate availability checker to class creation / editing
       
 - STAFF/VOLUNTEER DIRECTORIES
 

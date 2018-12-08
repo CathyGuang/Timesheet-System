@@ -144,11 +144,4 @@ EOT;
   };
 
 
-
-
-  $result = checkAvailability('Big Tack', 'tack', "2018-12-10", "9:00", "10:00");
-
-  echo "<br><br>";
-
-  var_dump($result);
 ?>

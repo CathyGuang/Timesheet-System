@@ -17,33 +17,34 @@
     </nav>
   </header>
 
-  <form action="" method="post" class="main-form">
-    <p>Select a worker to edit:</p>
-    <input type="text" name="selected-worker" list="worker-list">
-      <datalist id="worker-list">
-        <?php
-          $query = "SELECT name FROM workers;";
-          $result = pg_query($db_connection, $query);
-          while ($row = pg_fetch_row($result)) {
-            echo "<option value='$row[0]'>";
-          }
-        ?>
-      </datalist>
-
-      <br><br>
-      <input type="submit" value="submit">
-  </form>
-
   <?php
-    if ($_POST['selected-worker']) {
+    if (!$_POST['selected-worker']) {
+      echo <<<EOT
+      <form action="" method="post" class="main-form">
+        <p>Select a worker to edit:</p>
+        <input type="text" name="selected-worker" list="worker-list">
+          <datalist id="worker-list">
+EOT;
+              $query = "SELECT name FROM workers;";
+              $result = pg_query($db_connection, $query);
+              while ($row = pg_fetch_row($result)) {
+                echo "<option value='$row[0]'>";
+              }
+      echo <<<EOT
+          </datalist>
+
+          <br><br>
+          <input type="submit" value="submit">
+      </form>
+EOT;
+
+    } else {
       $workerInfoQuery = "SELECT * FROM workers WHERE name LIKE '{$_POST['selected-worker']}';";
       $workerInfoSQL = pg_query($db_connection, $workerInfoQuery);
       $workerInfo = pg_fetch_array($workerInfoSQL, 0, PGSQL_ASSOC);
       echo <<<EOT
       <form action="edit-worker.php" method="post" class="main-form" style="margin-top: 2vh;">
 
-        <p>Database ID:</p>
-        <input type="number" name="id" value="{$workerInfo['id']}" readonly>
 
         <p>Name:</p>
         <input type="text" name="name" value="{$workerInfo['name']}" required>
@@ -83,6 +84,8 @@ EOT;
       echo <<<EOT
         <br><br>
         <input type="submit" value="Update">
+
+        <input type="number" name="id" value="{$workerInfo['id']}" style="visibility: hidden;">
 
       </form>
 EOT;

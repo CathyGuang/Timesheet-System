@@ -17,34 +17,34 @@
     </nav>
   </header>
 
-  <form action="" method="post" class="main-form">
-    <p>Select a client to edit:</p>
-    <input type="text" name="selected-client" list="client-list">
-      <datalist id="client-list">
-        <?php
+  <?php
+  if (!$_POST['selected-client']) {
+    echo <<<EOT
+    <form action="" method="post" class="main-form">
+      <p>Select a client to edit:</p>
+      <input type="text" name="selected-client" list="client-list">
+        <datalist id="client-list">
+EOT;
           $query = "SELECT name FROM clients;";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             echo "<option value='$row[0]'>";
           }
-        ?>
-      </datalist>
+  echo <<<EOT
+        </datalist>
 
-      <br><br>
-      <input type="submit" value="submit">
-  </form>
+        <br><br>
+        <input type="submit" value="submit">
+    </form>
+EOT;
 
-  <?php
-    if ($_POST['selected-client']) {
+  } else {
       $clientInfoQuery = "SELECT * FROM clients WHERE name LIKE '{$_POST['selected-client']}';";
       $clientInfoSQL = pg_query($db_connection, $clientInfoQuery);
       $clientInfo = pg_fetch_array($clientInfoSQL, 0, PGSQL_ASSOC);
 
       echo <<<EOT
       <form action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
-
-        <p>Database ID:</p>
-        <input type="number" name="id" value="{$clientInfo['id']}" readonly>
 
         <p>Name:</p>
         <input type="text" name="name" value="{$clientInfo['name']}" required>
@@ -57,6 +57,8 @@
 
         <br><br>
         <input type="submit" value="Update">
+
+        <input type="number" name="id" value="{$clientInfo['id']}" readonly style='visibility: hidden;'>
 
       </form>
 EOT;

@@ -17,25 +17,27 @@
     </nav>
   </header>
 
-  <form action="" method="post" class="main-form">
-    <p>Select a horse to edit:</p>
-    <input type="text" name="selected-horse" list="horse-list">
-      <datalist id="horse-list">
-        <?php
-          $query = "SELECT name FROM horses;";
-          $result = pg_query($db_connection, $query);
-          while ($row = pg_fetch_row($result)) {
-            echo "<option value='$row[0]'>";
-          }
-        ?>
-      </datalist>
-
-      <br><br>
-      <input type="submit" value="submit">
-  </form>
-
   <?php
-    if ($_POST['selected-horse']) {
+    if (!$_POST['selected-horse']) {
+      echo <<<EOT
+      <form action="" method="post" class="main-form">
+        <p>Select a horse to edit:</p>
+        <input type="text" name="selected-horse" list="horse-list">
+          <datalist id="horse-list">
+EOT;
+              $query = "SELECT name FROM horses;";
+              $result = pg_query($db_connection, $query);
+              while ($row = pg_fetch_row($result)) {
+                echo "<option value='$row[0]'>";
+              }
+      echo <<<EOT
+          </datalist>
+
+          <br><br>
+          <input type="submit" value="submit">
+      </form>
+EOT;
+    } else {
       $horseInfoQuery = "SELECT * FROM horses WHERE name LIKE '{$_POST['selected-horse']}';";
       $horseInfoSQL = pg_query($db_connection, $horseInfoQuery);
       $horseInfo = pg_fetch_array($horseInfoSQL, 0, PGSQL_ASSOC);
@@ -43,8 +45,6 @@
       echo <<<EOT
       <form action="edit-horse.php" method="post" class="main-form" style="margin-top: 2vh;">
 
-        <p>Database ID:</p>
-        <input type="number" name="id" value="{$horseInfo['id']}" readonly>
 
         <p>Name:</p>
         <input type="text" name="name" value="{$horseInfo['name']}" required>
@@ -60,6 +60,8 @@
 
         <br><br>
         <input type="submit" value="Update">
+
+        <input type="number" name="id" value="{$horseInfo['id']}" style='visibility: hidden;'>
 
       </form>
 EOT;

@@ -21,7 +21,7 @@
   <form action="edit-other.php" method="post" class="main-form">
 
     <p>Select object type:</p>
-    <input id="object-type-selector" name="object-type" list="object-type-list" value="" required>
+    <input id="object-type-selector" name="object-type" list="object-type-list" value="" onclick="select();" required>
       <datalist id="object-type-list">
         <?php
           $query = <<<EOT

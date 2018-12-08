@@ -1,5 +1,7 @@
 
 NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
       - integrate availability checker to class creation / editing
+      
+- STAFF/VOLUNTEER DIRECTORIES
 
 - Allow classes/shifts/other objects to be ARCHIVED by admin, so that they remain in the database but disappear from all current editing/management menus

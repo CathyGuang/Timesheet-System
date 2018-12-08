@@ -12,13 +12,13 @@
 
   <header>
     <h1>Edit Class</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav>
+      <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
 
   <?php
-
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
       $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
@@ -29,13 +29,6 @@
         echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }
       return;
-    }
-
-    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
-    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
-    foreach ($classIDSQLObject as $row => $data) {
-      pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
     }
 
     //ADD NEW VALUES
@@ -116,6 +109,95 @@
     $sidewalkerIDList = to_pg_array($sidewalkerIDList);
 
 
+
+    //Check for double-booking
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
+    $abort = false;
+    foreach ($dateTimeTriplets as $date => $timeArray) {
+      if ($_POST['arena'] != "") {
+        $result = checkAvailability($_POST['arena'], 'arena', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['horse'] != "") {
+        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horse']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['tack'] != "") {
+        $result = checkAvailability($_POST['tack'], 'tack', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['tack']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['pad'] != "") {
+        $result = checkAvailability($_POST['pad'], 'pad', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['pad']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['instructor'] != "") {
+        $result = checkAvailability($instructorID, 'workers', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['instructor']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['therapist'] != "") {
+        $result = checkAvailability($therapistID, 'workers', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['therapist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['equine-specialist'] != "") {
+        $result = checkAvailability($esID, 'workers', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['equine-specialist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($_POST['leader'] != "") {
+        $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leader']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($sidewalkerIDList != "{1}") {
+        foreach ($_POST['sidewalkers'] as $sidewalkerName) {
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}'"))[0];
+          $result = checkAva3ilability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$sidewalkerName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
+        }
+      }
+    }
+    if ($abort) {
+      echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
+      return;
+    }
+
+    //If no conflicts, delete current database entries and replace with new ones.
+
+    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
+    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
+    foreach ($classIDSQLObject as $row => $data) {
+      pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
+    }
+
+
+
+
     //Create SQL query
     $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horse, tack, special_tack, stirrup_leather_length, pad, clients, instructor, therapist, equine_specialist, leader, sidewalkers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
@@ -123,7 +205,6 @@
     }
 
     $query = chop($query, ",") . ";";
-
 
 
     //Modify database

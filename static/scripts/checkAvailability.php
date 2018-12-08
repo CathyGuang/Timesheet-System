@@ -106,11 +106,12 @@ EOT;
         $allEvents[] = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
       }
 
-
       //Check all events for availability, return conflicting times if conflict is found
-      foreach ($allEvents as $key => $timePair) {
-        if ($timePair) {
-          if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return array($timePair['start_time'], $timePair['end_time']);}
+      if ($allEvents) {
+        foreach ($allEvents as $key => $timePair) {
+          if ($timePair) {
+            if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return array($timePair['start_time'], $timePair['end_time']);}
+          }
         }
       }
 
@@ -122,28 +123,30 @@ EOT;
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}';"));
 
       //Filter by time
-      $allClasses2 = array();
-      foreach ($allClasses as $key => $class) {
-        if (strtotime($class['start_time']) < strtotime($time2) and strtotime($class['end_time']) > strtotime($time1)) {
-          $allClasses2[] = $class;
+      if ($allClasses) {
+        $allClasses2 = array();
+        foreach ($allClasses as $key => $class) {
+          if (strtotime($class['start_time']) < strtotime($time2) and strtotime($class['end_time']) > strtotime($time1)) {
+            $allClasses2[] = $class;
+          }
         }
+        $allClasses = $allClasses2;
       }
-      $allClasses = $allClasses2;
+
 
       //Check if target is being used in any of these classes, return conflicting times if so
-      foreach ($allClasses as $key => $class) {
-        if (in_array($id, $class)) {return array($class['start_time'], $class['end_time']);}
+      if ($allClasses) {
+        foreach ($allClasses as $key => $class) {
+          if (in_array($id, $class)) {return array($class['start_time'], $class['end_time']);}
+        }
       }
+
 
     }
 
-
-
-
+    //If no conflicts have been found and returned, return false (which means the target IS available)
     return false;
   };
 
-
-  var_dump(checkAvailability('Big Tack', 'tack', '2018-12-10', '10:00', '11:00'));
 
 ?>

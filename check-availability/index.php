@@ -21,11 +21,38 @@
 
   <div class="main-content-div">
 
+    <form action="check.php" method="post" class="main-form">
+      <p>Select any person/arena/resource:</p>
+      <input type="text" name="target-name" list="all-objects-list" required>
+        <datalist id="all-objects-list">
+          <?php
+            $allResources = array();
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers;")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses;")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::ARENA))")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::TACK))")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::PAD))")));
+
+            foreach ($allResources as $key => $name) {
+              echo "<option value='$name'>";
+            }
+          ?>
+        </datalist>
+
+      <p>Select date to check:</p>
+      <input type="date" name="target-date" value="<?php echo date('Y-m-d'); ?>" required>
+
+      <div>
+        <label for="start-time">from:</label>
+        <input type="time" id="start-time" name="start-time" value="<?php echo date('h:i') ?>" required>
+        <label for="end-time">to:</label>
+        <input type="time" id="end-time" name="end-time" value="<?php echo date('h:i', strtotime('+1 hour')) ?>" required>
+      </div>
+
+      <input type="submit" value="Check Availability">
+    </form>
 
   </div>
-
-
-
 
 
 </body>

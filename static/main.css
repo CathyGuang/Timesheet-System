@@ -6,6 +6,7 @@
   --background-blue: #91ecff;
   --dark-blue: #2163ff;
   --background-red: #ff7c7c;
+  --dark-red: #a00303;
   --background-green: #8aff84;
   --dark-green: #0f771b;
 
@@ -64,14 +65,14 @@ button:hover {
 
     nav {
       margin-top: 45px;
-      width: 20vw;
+      width: 30vw;
       display: flex;
       justify-content: space-around;
       flex-flow: row wrap;
     }
 
     nav > * {
-      width: 35%;
+      width: 30%;
     }
 
     #home-button {
@@ -101,6 +102,9 @@ button:hover {
       margin-top: 8vh;
       height: 30vh;
       width: 20vw;
+    }
+    .main-content-div > form {
+      height: 75vh;
     }
 
 

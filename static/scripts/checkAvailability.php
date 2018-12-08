@@ -25,51 +25,89 @@ EOT;
 
 
     if (in_array($typeOfObject, $tableNameList)) {
-      echo "this is in a table!<br>";
-      $classQuery = <<<EOT
-      SELECT start_time, end_time FROM classes
-      WHERE
-      (
-      {$id} = classes.horse OR
-      {$id} = ANY(classes.clients) OR
-      {$id} = classes.instructor OR
-      {$id} = classes.therapist OR
-      {$id} = classes.equine_specialist OR
-      {$id} = classes.leader OR
-      {$id} = ANY(classes.sidewalkers)
-      ) AND (
-      '{$date}' = date_of_class
-      )
 
-      ;
+      $classQuery = "";
+      $horseCareShiftQuery = "";
+      $officeShiftQuery = "";
+
+      if ($typeOfObject == "workers") {
+        $classQuery = <<<EOT
+        SELECT start_time, end_time FROM classes
+        WHERE
+        (
+        {$id} = classes.instructor OR
+        {$id} = classes.therapist OR
+        {$id} = classes.equine_specialist OR
+        {$id} = classes.leader OR
+        {$id} = ANY(classes.sidewalkers)
+        ) AND (
+        '{$date}' = date_of_class
+        )
+
+        ;
 EOT;
-      $horseCareShiftQuery = <<<EOT
-      SELECT start_time, end_time FROM horse_care_shifts
-      WHERE
-      (
-      {$id} = horse_care_shifts.leader OR
-      {$id} = ANY(horse_care_shifts.volunteers)
-      )
+        $horseCareShiftQuery = <<<EOT
+        SELECT start_time, end_time FROM horse_care_shifts
+        WHERE
+        (
+        {$id} = horse_care_shifts.leader OR
+        {$id} = ANY(horse_care_shifts.volunteers)
+        ) AND (
+        '{$date}' = date_of_shift
+        )
 
-      ;
+        ;
 EOT;
-      $officeShiftQuery = <<<EOT
-      SELECT start_time, end_time FROM office_shifts
-      WHERE
-      (
-      {$id} = office_shifts.leader OR
-      {$id} = ANY(office_shifts.volunteers)
-      )
+        $officeShiftQuery = <<<EOT
+        SELECT start_time, end_time FROM office_shifts
+        WHERE
+        (
+        {$id} = office_shifts.leader OR
+        {$id} = ANY(office_shifts.volunteers)
+        ) AND (
+        '{$date}' = date_of_shift
+        )
 
-      ;
+        ;
 EOT;
+      } else if ($typeOfObject == "horses") {
+        $classQuery = <<<EOT
+        SELECT start_time, end_time FROM classes
+        WHERE
+        (
+        {$id} = classes.horse
+        ) AND (
+        '{$date}' = date_of_class
+        )
 
+        ;
+EOT;
+      } else if ($typeOfObject == "clients") {
+        $classQuery = <<<EOT
+        SELECT start_time, end_time FROM classes
+        WHERE
+        (
+        {$id} = ANY(classes.clients)
+        ) AND (
+        '{$date}' = date_of_class
+        )
+
+        ;
+EOT;
+      }
+
+
+      //compile list of all events that involve the target that are on the date of concern
       $allEvents = pg_fetch_all(pg_query($db_connection, $classQuery));
-      $allEvents[] = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));
-      $allEvents[] = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
+      if ($horseCareShiftQuery != "") {
+        $allEvents[] = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));
+      }
+      if ($officeShiftQuery != "") {
+        $allEvents[] = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
+      }
 
-      var_dump($allEvents);
 
+      //Check all events for availability, return false if conflict is found
       foreach ($allEvents as $key => $timePair) {
         if ($timePair) {
           if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return false;}
@@ -81,6 +119,21 @@ EOT;
     } elseif (in_array($typeOfObject, $enumTypeList)) {
       echo "this is an enum value!<br>";
 
+      //Get all classes on date
+      $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}';"));
+
+      //Filter by time
+      foreach ($allClasses as $key => $class) {
+        if (strtotime($class['start_time']) < strtotime($time2) and strtotime($class['end_time']) > strtotime($time1)) {
+          $allClasses2[] = $class;
+        }
+      }
+      $allClasses = $allClasses2;
+
+      //Check if target is being used in any of these classes, return false if so
+      foreach ($allClasses as $key => $class) {
+        if (in_array($id, $class)) {return false;}
+      }
 
     }
 
@@ -93,7 +146,7 @@ EOT;
 
 
 
-  $result = checkAvailability(2, 'workers', "2018-12-10", "9:00", "10:00");
+  $result = checkAvailability('Big Tack', 'tack', "2018-12-10", "9:00", "10:00");
 
   echo "<br><br>";
 

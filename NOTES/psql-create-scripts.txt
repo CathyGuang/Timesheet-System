@@ -72,6 +72,7 @@ CREATE TYPE CARE_TYPE AS ENUM();
 
 CREATE TABLE horse_care_shifts (
   id SERIAL PRIMARY KEY,
+  archived BOOLEAN,
   care_type CARE_TYPE,
   date_of_shift DATE,
   start_time TIME,
@@ -88,6 +89,7 @@ CREATE TYPE OFFICE_SHIFT_TYPE AS ENUM();
 
 CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
+  archived BOOLEAN,
   office_shift_type OFFICE_SHIFT_TYPE,
   date_of_shift DATE,
   start_time TIME,
@@ -141,8 +143,10 @@ ALTER TYPE PAD ADD VALUE '';
 
 CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
+  archived BOOLEAN,
   class_type CLASS_TYPE,
   date_of_class DATE,
+  cancelled BOOLEAN,
   start_time TIME,
   end_time TIME,
   all_weekdays_times TEXT,
@@ -163,4 +167,10 @@ CREATE TABLE classes (
   equine_specialist INT REFERENCES workers(id),
   leader INT REFERENCES workers(id),
   sidewalkers INT []
+);
+
+
+/* CREATE ARCHIVED ENUMS TABLE */
+CREATE TABLE archived_enums (
+  name TEXT
 );

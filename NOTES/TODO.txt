@@ -1,6 +1,11 @@
 
 NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
-      
+
 - STAFF/VOLUNTEER DIRECTORIES
 
+- allow individual classes to be cancelled from manage classes page
+
 - Allow classes/shifts/other objects to be ARCHIVED by admin, so that they remain in the database but disappear from all current editing/management menus
+
+- Add password to admin page
+- Add password to staff page

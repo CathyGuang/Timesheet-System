@@ -31,12 +31,7 @@
       return;
     }
 
-    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}');";
-    $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
-    foreach ($shiftIDSQLObject as $row => $data) {
-      pg_query($db_connection, "DELETE FROM horse_care_shifts WHERE horse_care_shifts.id = {$data['id']}");
-    }
+
 
     //ADD NEW VALUES
 
@@ -92,6 +87,41 @@
     }
     $volunteerIDList = to_pg_array($volunteerIDList);
 
+
+    //Check for double-booking
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
+    $abort = false;
+    foreach ($dateTimeTriplets as $date => $timeArray) {
+      if ($_POST['leader'] != "") {
+        $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $abort = true;
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leader']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+        }
+      }
+      if ($volunteerIDList != "{1}") {
+        foreach ($_POST['volunteers'] as $volunteerName) {
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$volunteerName}'"))[0];
+          $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$volunteerName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
+        }
+      }
+    }
+    if ($abort) {
+      echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
+      return;
+    }
+
+    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}');";
+    $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
+    foreach ($shiftIDSQLObject as $row => $data) {
+      pg_query($db_connection, "DELETE FROM horse_care_shifts WHERE horse_care_shifts.id = {$data['id']}");
+    }
+    
 
     //Create SQL query
     $query = "INSERT INTO horse_care_shifts (care_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";

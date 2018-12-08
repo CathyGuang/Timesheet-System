@@ -157,8 +157,8 @@
       }
       if ($sidewalkerIDList != "{1}") {
         foreach ($_POST['sidewalkers'] as $sidewalkerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}'"))[0];
-          $result = checkAva3ilability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}'"))[0];
+          $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
             echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$sidewalkerName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";

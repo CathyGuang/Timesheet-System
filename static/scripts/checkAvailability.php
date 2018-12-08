@@ -107,22 +107,22 @@ EOT;
       }
 
 
-      //Check all events for availability, return false if conflict is found
+      //Check all events for availability, return conflicting times if conflict is found
       foreach ($allEvents as $key => $timePair) {
         if ($timePair) {
-          if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return false;}
+          if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return array($timePair['start_time'], $timePair['end_time']);}
         }
       }
 
 
 
     } elseif (in_array($typeOfObject, $enumTypeList)) {
-      echo "this is an enum value!<br>";
 
       //Get all classes on date
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}';"));
 
       //Filter by time
+      $allClasses2 = array();
       foreach ($allClasses as $key => $class) {
         if (strtotime($class['start_time']) < strtotime($time2) and strtotime($class['end_time']) > strtotime($time1)) {
           $allClasses2[] = $class;
@@ -130,9 +130,9 @@ EOT;
       }
       $allClasses = $allClasses2;
 
-      //Check if target is being used in any of these classes, return false if so
+      //Check if target is being used in any of these classes, return conflicting times if so
       foreach ($allClasses as $key => $class) {
-        if (in_array($id, $class)) {return false;}
+        if (in_array($id, $class)) {return array($class['start_time'], $class['end_time']);}
       }
 
     }
@@ -140,8 +140,10 @@ EOT;
 
 
 
-    return true;
+    return false;
   };
 
+
+  var_dump(checkAvailability('Big Tack', 'tack', '2018-12-10', '10:00', '11:00'));
 
 ?>

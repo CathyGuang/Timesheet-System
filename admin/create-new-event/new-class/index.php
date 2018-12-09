@@ -110,7 +110,7 @@
     <input type="text" name="horse" list="horse-list" value="" onclick="select();">
       <datalist id="horse-list">
         <?php
-          $query = "SELECT name FROM horses;";
+          $query = "SELECT name FROM horses WHERE archived IS NULL;";
           $result = pg_query($db_connection, $query);
           $horseNames = pg_fetch_all_columns($result);
           foreach ($horseNames as $key => $value) {

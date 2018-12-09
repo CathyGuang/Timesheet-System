@@ -60,7 +60,7 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
-    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}'"))[0];
+    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND archived IS NULL;"))[0];
     if (!$horseID) {
       $horseID = 'null';
     }

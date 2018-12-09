@@ -1,7 +1,6 @@
 
 NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
 
-- STAFF/VOLUNTEER DIRECTORIES
 
 - Add password to admin page
 - Add password to staff page

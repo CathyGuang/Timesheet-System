@@ -1,6 +1,6 @@
 <?php
   //Get id of worker being requested in $QUERY_NAME
-  $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}' AND archived IS NULL;"), 0, 1)['id'];
+  $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
   $horseCareQuery = <<<EOT
   SELECT * FROM horse_care_shifts WHERE
@@ -8,7 +8,7 @@
   leader = {$queryID} OR
   {$queryID} = ANY(volunteers)
   ) AND (
-  archived IS NULL
+  (archived IS NULL OR archived = '')
   )
   ;
 EOT;
@@ -19,7 +19,7 @@ EOT;
   leader = {$queryID} OR
   {$queryID} = ANY(volunteers)
   ) AND (
-  archived IS NULL
+  (archived IS NULL OR archived = '')
   )
   ;
 EOT;

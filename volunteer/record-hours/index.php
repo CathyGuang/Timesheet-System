@@ -24,7 +24,7 @@
       <input type="text" name="volunteer" list="volunteer-list" required>
         <datalist id="volunteer-list">
           <?php
-            $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE AND archived IS NULL;"));
+            $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');"));
             foreach ($volunteerNames as $name) {
               echo "<option value='{$name}'>";
             }

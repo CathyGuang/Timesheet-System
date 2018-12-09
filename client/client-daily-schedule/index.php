@@ -23,7 +23,7 @@
       <input name="selected-name" list="clients">
       <datalist id="clients">
         <?php
-          $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE archived IS NULL;"));
+          $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');"));
           foreach ($clientNames as $name) {
             echo "<option value='$name'>";
           }

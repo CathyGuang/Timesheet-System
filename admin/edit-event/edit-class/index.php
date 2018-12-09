@@ -29,7 +29,7 @@
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
         if ($name == "") {continue;}
-        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}' AND archived IS NULL;";
+        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');";
         $id = pg_fetch_row(pg_query($db_connection, $IDQuery))[0];
         $clientIDList[] = $id;
       }
@@ -53,7 +53,7 @@
         return '{' . implode(",", $result) . '}'; // format
       }
       $clientIDPGArray = to_pg_array($clientIDList);
-      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;";
+      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       $classIDList = array();
       foreach ($classIDSQLObject as $row => $data) {
@@ -64,8 +64,8 @@
 
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
-      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;"), 0, 1)['start_date'];
-      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;"), 0, 1)['end_date'];
+      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
+      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];
 
 
       $weekdaysBlocks = explode(";", $classData['all_weekdays_times']);
@@ -188,7 +188,7 @@ EOT;
           <datalist id="horse-list">
 EOT;
 
-              $query = "SELECT name FROM horses WHERE archived IS NULL;";
+              $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $horseNames = pg_fetch_all_columns($result);
               foreach ($horseNames as $key => $value) {
@@ -248,7 +248,7 @@ EOT;
 
             <datalist id="client-list">
 EOT;
-                $query = "SELECT name FROM clients WHERE archived IS NULL;";
+                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
                 $result = pg_query($db_connection, $query);
                 $clientNames = pg_fetch_all_columns($result);
                 foreach ($clientNames as $key => $value) {
@@ -266,7 +266,7 @@ EOT;
           <datalist id="instructor-list">
 EOT;
 
-              $query = "SELECT name FROM workers WHERE archived IS NULL;";
+              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -280,7 +280,7 @@ EOT;
           <datalist id="therapist-list">
 EOT;
 
-              $query = "SELECT name FROM workers WHERE archived IS NULL;";
+              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -293,7 +293,7 @@ EOT;
         <input type="text" name="equine-specialist" list="es-list" value="{$esName}" onclick="select();">
           <datalist id="es-list">
 EOT;
-              $query = "SELECT name FROM workers WHERE archived IS NULL;";
+              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -307,7 +307,7 @@ EOT;
           <datalist id="leader-list">
 EOT;
 
-              $query = "SELECT name FROM workers WHERE archived IS NULL;";
+              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -322,7 +322,7 @@ EOT;
 EOT;
           $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
           foreach ($sidewalkerIDList as $id) {
-            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND archived IS NULL;") , 0, 1)['name'];
+            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
             echo <<<EOT
             <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
 EOT;
@@ -332,7 +332,7 @@ EOT;
               <datalist id="sidewalker-list">
 EOT;
 
-                  $query = "SELECT name FROM workers WHERE archived IS NULL;";
+                  $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
                   $result = pg_query($db_connection, $query);
                   $workerNames = pg_fetch_all_columns($result);
                   foreach ($workerNames as $key => $value) {
@@ -429,7 +429,7 @@ EOT;
         <input type="text" name="selected-class" list="class-list">
           <datalist id="class-list">
 EOT;
-          $query = "SELECT DISTINCT class_type, clients FROM classes WHERE archived IS NULL;";
+          $query = "SELECT DISTINCT class_type, clients FROM classes WHERE (archived IS NULL OR archived = '');";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             $getClientsQuery = <<<EOT

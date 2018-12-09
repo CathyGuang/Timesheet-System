@@ -43,7 +43,7 @@ EOT;
         ) AND (
         '{$date}' = date_of_class
         ) AND (
-        archived IS NULL
+        (archived IS NULL OR archived = '')
         )
 
         ;
@@ -57,7 +57,7 @@ EOT;
         ) AND (
         '{$date}' = date_of_shift
         ) AND (
-        archived IS NULL
+        (archived IS NULL OR archived = '')
         )
 
         ;
@@ -71,7 +71,7 @@ EOT;
         ) AND (
         '{$date}' = date_of_shift
         ) AND (
-        archived IS NULL
+        (archived IS NULL OR archived = '')
         )
 
         ;
@@ -85,7 +85,7 @@ EOT;
         ) AND (
         '{$date}' = date_of_class
         ) AND (
-        archived IS NULL
+        (archived IS NULL OR archived = '')
         )
 
         ;
@@ -99,7 +99,7 @@ EOT;
         ) AND (
         '{$date}' = date_of_class
         ) AND (
-        archived IS NULL
+        (archived IS NULL OR archived = '')
         )
 
         ;
@@ -130,7 +130,7 @@ EOT;
     } elseif (in_array($typeOfObject, $enumTypeList)) {
 
       //Get all classes on date
-      $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND archived IS NULL;"));
+      $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND (archived IS NULL OR archived = '');"));
 
       //Filter by time
       if ($allClasses) {

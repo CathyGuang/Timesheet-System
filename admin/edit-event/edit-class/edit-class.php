@@ -21,7 +21,7 @@
   <?php
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
-      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND archived IS NULL;";
+      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
@@ -85,36 +85,36 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
-    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND archived IS NULL;"))[0];
+    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$horseID) {
       $horseID = 'null';
     }
     $clientIDList = array();
     foreach ($_POST['clients'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $clientIDList[] = $id;
     }
     $clientIDList = to_pg_array($clientIDList);
 
-    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND archived IS NULL;"))[0];
+    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$instructorID) {
       $instructorID = 'null';
     }
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}' AND archived IS NULL;"))[0];
+    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$therapistID) {
       $therapistID = 'null';
     }
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}' AND archived IS NULL;"))[0];
+    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$esID) {
       $esID = 'null';
     }
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND archived IS NULL;"))[0];
+    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
     }
     $sidewalkerIDList = array();
     foreach ($_POST['sidewalkers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $sidewalkerIDList[] = $id;
     }
     $sidewalkerIDList = to_pg_array($sidewalkerIDList);
@@ -183,7 +183,7 @@
       }
       if ($sidewalkerIDList != "{1}") {
         foreach ($_POST['sidewalkers'] as $sidewalkerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}' AND archived IS NULL;"))[0];
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}' AND (archived IS NULL OR archived = '');"))[0];
           $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
@@ -200,7 +200,7 @@
     //If no conflicts, delete current database entries and replace with new ones.
 
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND archived IS NULL;";
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
     $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
     foreach ($classIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");

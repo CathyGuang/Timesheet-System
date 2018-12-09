@@ -25,7 +25,7 @@
         <input type="text" name="selected-horse" list="horse-list">
           <datalist id="horse-list">
 EOT;
-              $query = "SELECT name FROM horses WHERE archived IS NULL;";
+              $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               while ($row = pg_fetch_row($result)) {
                 echo "<option value='$row[0]'>";
@@ -38,7 +38,7 @@ EOT;
       </form>
 EOT;
     } else {
-      $horseInfoQuery = "SELECT * FROM horses WHERE name LIKE '{$_POST['selected-horse']}' AND archived IS NULL;";
+      $horseInfoQuery = "SELECT * FROM horses WHERE name LIKE '{$_POST['selected-horse']}' AND (archived IS NULL OR archived = '');";
       $horseInfoSQL = pg_query($db_connection, $horseInfoQuery);
       $horseInfo = pg_fetch_array($horseInfoSQL, 0, PGSQL_ASSOC);
 

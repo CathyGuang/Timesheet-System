@@ -18,7 +18,7 @@
 
   <?php
 
-    $volunteerID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['volunteer']}' AND archived IS NULL;"), 0, 1)['id'];
+    $volunteerID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['volunteer']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
     $query = <<<EOT
       INSERT INTO volunteer_hours (volunteer, hours, shift_type, date_of_hours)

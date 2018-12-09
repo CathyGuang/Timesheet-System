@@ -23,13 +23,13 @@
 
     <?php
 
-      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE archived IS NULL;")))) {
-        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['target-name']}' AND archived IS NULL;"), 0, 1)['id'];
+      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');")))) {
+        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['target-name']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
         $targetType = "workers";
       }
 
-      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE archived IS NULL;")))) {
-        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM horses WHERE name = '{$_POST['target-name']}' AND archived IS NULL;"), 0, 1)['id'];
+      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');")))) {
+        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM horses WHERE name = '{$_POST['target-name']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
         $targetType = "horses";
       }
 

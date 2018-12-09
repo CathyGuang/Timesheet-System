@@ -71,6 +71,7 @@ EOT;
     <p>Change object name:</p>
     <input type="text" name="new-object-name" value="" required>
 
+    <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive"></p>
 
     <br><br>
     <input type="submit" value="Submit">

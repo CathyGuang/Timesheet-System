@@ -58,6 +58,8 @@ EOT;
         <p>Notes:</p>
         <input type="text" name="notes" value="{$horseInfo['notes']}">
 
+        <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive"></p>
+
         <br><br>
         <input type="submit" value="Update">
 

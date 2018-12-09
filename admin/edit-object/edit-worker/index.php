@@ -82,6 +82,9 @@ EOT;
 EOT;
       }
       echo <<<EOT
+
+        <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive"></p>
+
         <br><br>
         <input type="submit" value="Update">
 

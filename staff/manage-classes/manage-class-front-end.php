@@ -159,6 +159,7 @@ EOT;
           ?>
           <br>
 
+    <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE"></p>
 
 
     <br><br>

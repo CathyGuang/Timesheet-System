@@ -31,6 +31,17 @@
       return;
     }
 
+    if ($_POST['archive']) { //ARCHIVE SHIFT IF REQUESTED
+      $query = "UPDATE office_shifts SET archived = 'TRUE' WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}');";
+      $result = pg_query($db_connection, $query);
+      if ($result) {
+        echo "<h3 class='main-content-header'>Success</h3";
+      } else {
+        echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      }
+      return;
+    }
+
 
     //ADD NEW VALUES
 

@@ -31,6 +31,17 @@
       return;
     }
 
+    if ($_POST['archive']) { //ARCHIVE SHIFT IF REQUESTED
+      $query = "UPDATE horse_care_shifts SET archived = 'TRUE' WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}');";
+      $result = pg_query($db_connection, $query);
+      if ($result) {
+        echo "<h3 class='main-content-header'>Success</h3";
+      } else {
+        echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      }
+      return;
+    }
+
 
 
     //ADD NEW VALUES
@@ -121,7 +132,7 @@
     foreach ($shiftIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM horse_care_shifts WHERE horse_care_shifts.id = {$data['id']}");
     }
-    
+
 
     //Create SQL query
     $query = "INSERT INTO horse_care_shifts (care_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";

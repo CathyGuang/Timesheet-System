@@ -31,7 +31,7 @@
       return;
     }
 
-    if ($_POST['archive']) {
+    if ($_POST['archive']) { //ARCHIVE CLASS IF REQUESTED
       $query = "UPDATE classes SET archived = 'TRUE' WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
       $result = pg_query($db_connection, $query);
       if ($result) {

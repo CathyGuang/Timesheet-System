@@ -38,6 +38,7 @@ CREATE DATABASE "ForwardStrideDatabase"
 CREATE TABLE workers (
   id SERIAL PRIMARY KEY,
   archived TEXT,
+  title TEXT,
   name TEXT,
   email TEXT,
   phone TEXT,

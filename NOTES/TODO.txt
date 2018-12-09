@@ -3,7 +3,5 @@ NEXT: - then allow reports to be generated - export tables (queries?) to csv fil
 
 - STAFF/VOLUNTEER DIRECTORIES
 
-- allow individual classes to be cancelled from manage classes page
-
 - Add password to admin page
 - Add password to staff page

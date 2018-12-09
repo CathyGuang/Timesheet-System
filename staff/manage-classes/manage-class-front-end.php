@@ -54,7 +54,7 @@
       <input type="text" name="horse-behavior" list="horse-behavior-form" value="">
         <datalist id="horse-behavior-form">
           <?php
-            $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))";
+            $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";
             $result = pg_query($db_connection, $query);
             $behaviorNames = pg_fetch_all_columns($result);
             foreach ($behaviorNames as $key => $value) {

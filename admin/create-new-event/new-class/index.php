@@ -24,7 +24,7 @@
     <input type="text" name="class-type" list="class-type-list" onclick="select()" required>
       <datalist id="class-type-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))";
+          $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $classTypeNames = pg_fetch_all_columns($result);
           foreach ($classTypeNames as $key => $value) {
@@ -97,7 +97,7 @@
     <input type="text" name="arena" list="arena-list" value="" onclick="select();">
       <datalist id="arena-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::ARENA))";
+          $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $arenaNames = pg_fetch_all_columns($result);
           foreach ($arenaNames as $key => $value) {
@@ -123,7 +123,7 @@
     <input type="text" name="tack" list="tack-list" value="" onclick="select();">
       <datalist id="tack-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::TACK))";
+          $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $tackNames = pg_fetch_all_columns($result);
           foreach ($tackNames as $key => $value) {
@@ -142,7 +142,7 @@
     <input type="text" name="pad" list="pad-list" value="" onclick="select();">
       <datalist id="pad-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::PAD))";
+          $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $padNames = pg_fetch_all_columns($result);
           foreach ($padNames as $key => $value) {

@@ -99,7 +99,7 @@
           <datalist id="class-type-list">
 EOT;
 
-              $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))";
+              $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
               $result = pg_query($db_connection, $query);
               $classTypeNames = pg_fetch_all_columns($result);
               foreach ($classTypeNames as $key => $value) {
@@ -174,7 +174,7 @@ EOT;
           <datalist id="arena-list">
 EOT;
 
-              $query = "SELECT unnest(enum_range(NULL::ARENA))";
+              $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
               $result = pg_query($db_connection, $query);
               $arenaNames = pg_fetch_all_columns($result);
               foreach ($arenaNames as $key => $value) {
@@ -202,7 +202,7 @@ EOT;
           <datalist id="tack-list">
 EOT;
 
-              $query = "SELECT unnest(enum_range(NULL::TACK))";
+              $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
               $result = pg_query($db_connection, $query);
               $tackNames = pg_fetch_all_columns($result);
               foreach ($tackNames as $key => $value) {
@@ -222,7 +222,7 @@ EOT;
           <datalist id="pad-list">
 EOT;
 
-              $query = "SELECT unnest(enum_range(NULL::PAD))";
+              $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
               $result = pg_query($db_connection, $query);
               $padNames = pg_fetch_all_columns($result);
               foreach ($padNames as $key => $value) {

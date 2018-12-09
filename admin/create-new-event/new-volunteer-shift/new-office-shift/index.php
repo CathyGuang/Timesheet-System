@@ -24,7 +24,7 @@
     <input type="text" name="shift-type" list="shift-type-list" onclick="select()" required>
       <datalist id="shift-type-list">
         <?php
-          $query = "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE))";
+          $query = "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $careTypeNames = pg_fetch_all_columns($result);
           foreach ($careTypeNames as $key => $value) {

@@ -18,14 +18,19 @@
   </header>
 
   <?php
-
-    $query = "UPDATE pg_enum SET enumlabel = '{$_POST['new-object-name']}' WHERE enumlabel = '{$_POST['selected-object']}' AND enumtypid = (SELECT oid FROM pg_type WHERE typname = '{$_POST['object-type']}');";
-    $result = pg_query($db_connection, $query);
+    if ($_POST['archive'] == "TRUE") {
+      $result = pg_query($db_connection, "INSERT INTO archived_enums (name) VALUES ('{$_POST['selected-object']}');");
+    } else {
+      $query = "UPDATE pg_enum SET enumlabel = '{$_POST['new-object-name']}' WHERE enumlabel = '{$_POST['selected-object']}' AND enumtypid = (SELECT oid FROM pg_type WHERE typname = '{$_POST['object-type']}');";
+      $result = pg_query($db_connection, $query);
+    }
+    
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
+
   ?>
 
 

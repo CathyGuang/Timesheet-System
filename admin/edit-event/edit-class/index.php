@@ -29,7 +29,7 @@
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
         if ($name == "") {continue;}
-        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}';";
+        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}' AND archived IS NULL;";
         $id = pg_fetch_row(pg_query($db_connection, $IDQuery))[0];
         $clientIDList[] = $id;
       }
@@ -248,7 +248,7 @@ EOT;
 
             <datalist id="client-list">
 EOT;
-                $query = "SELECT name FROM clients;";
+                $query = "SELECT name FROM clients WHERE archived IS NULL;";
                 $result = pg_query($db_connection, $query);
                 $clientNames = pg_fetch_all_columns($result);
                 foreach ($clientNames as $key => $value) {

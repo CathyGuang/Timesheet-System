@@ -66,7 +66,7 @@
     }
     $clientIDList = array();
     foreach ($_POST['clients'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}'"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
       $clientIDList[] = $id;
     }
     $clientIDList = to_pg_array($clientIDList);

@@ -155,7 +155,7 @@
       <input type="text" name="clients[]" list="client-list" value="" onclick="select();">
         <datalist id="client-list">
           <?php
-            $query = "SELECT name FROM clients;";
+            $query = "SELECT name FROM clients WHERE archived IS NULL;";
             $result = pg_query($db_connection, $query);
             $clientNames = pg_fetch_all_columns($result);
             foreach ($clientNames as $key => $value) {

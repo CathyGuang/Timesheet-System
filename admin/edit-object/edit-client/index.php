@@ -25,7 +25,7 @@
       <input type="text" name="selected-client" list="client-list">
         <datalist id="client-list">
 EOT;
-          $query = "SELECT name FROM clients;";
+          $query = "SELECT name FROM clients WHERE archived IS NULL;";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             echo "<option value='$row[0]'>";
@@ -39,7 +39,7 @@ EOT;
 EOT;
 
   } else {
-      $clientInfoQuery = "SELECT * FROM clients WHERE name LIKE '{$_POST['selected-client']}';";
+      $clientInfoQuery = "SELECT * FROM clients WHERE name LIKE '{$_POST['selected-client']}' AND archived IS NULL;";
       $clientInfoSQL = pg_query($db_connection, $clientInfoQuery);
       $clientInfo = pg_fetch_array($clientInfoSQL, 0, PGSQL_ASSOC);
 

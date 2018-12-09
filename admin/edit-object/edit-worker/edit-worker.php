@@ -29,7 +29,7 @@
     }
 
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
-    $query = "UPDATE workers SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', staff = $staffbool, volunteer = $volunteerbool, archived = '{$archived}' WHERE id = {$_POST['id']};";
+    $query = "UPDATE workers SET NAME = '{$_POST['name']}', title = '{$_POST['title']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', staff = $staffbool, volunteer = $volunteerbool, archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

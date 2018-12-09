@@ -25,7 +25,7 @@
         <input type="text" name="selected-worker" list="worker-list">
           <datalist id="worker-list">
 EOT;
-              $query = "SELECT name FROM workers WHERE archived IS NULL;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL OR archived = '';";
               $result = pg_query($db_connection, $query);
               while ($row = pg_fetch_row($result)) {
                 echo "<option value='$row[0]'>";
@@ -48,6 +48,9 @@ EOT;
 
         <p>Name:</p>
         <input type="text" name="name" value="{$workerInfo['name']}" required>
+
+        <p>Title:</p>
+        <input type="text" name="title" value="{$workerInfo['title']}">
 
         <p>Email:</p>
         <input type="email" name="email" value="{$workerInfo['email']}">

@@ -58,11 +58,6 @@
 
       <form action="edit-horse-care-shift.php" method="post" class="main-form full-page-form">
 
-        <div>
-          <label for="delete-checkbox">Delete Shift? </label>
-          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
-        </div>
-
         <p>Shift Type:</p>
         <input type="text" name="old-shift-type" value="{$shiftData['care_type']}" style="visibility: hidden;">
         <input type="text" name="shift-type" list="shift-type-list" value="{$shiftData['care_type']}" onclick="select()" required>
@@ -182,6 +177,14 @@ EOT;
             </div>
             <br>
             <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
+
+        <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves shift in database but removes from all schedules and menus</p>
+
+        <div>
+          <p style='font-size: 12pt; color: var(--dark-red)'>Delete Shift?
+          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+          WARNING: this will permanently delete all record of the shift</p>
+        </div>
 
         <br><br>
         <input type="submit" value="Submit Changes">

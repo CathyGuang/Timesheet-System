@@ -96,7 +96,7 @@
 
 
     <p>Shift Leader:</p>
-    <input type="text" name="leader" list="leader-list" value="" onclick="select();">
+    <input type="text" name="leader" list="leader-list" value="" onclick="select();" required>
       <datalist id="leader-list">
         <?php
           $query = "SELECT name FROM workers;";

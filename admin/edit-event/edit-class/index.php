@@ -91,10 +91,7 @@
 
       <form action="edit-class.php" method="post" class="main-form full-page-form">
 
-        <div>
-          <label for="delete-checkbox">Delete Class? </label>
-          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
-        </div>
+
 
         <p>Class Type:</p>
         <input type="text" name="old-class-type" value="{$classData['class_type']}" style="visibility: hidden;">
@@ -348,6 +345,14 @@ EOT;
             <br>
             <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
 
+        <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>
+
+        <div>
+          <p style='font-size: 12pt; color: var(--dark-red)'>Delete Class?
+          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+          WARNING: this will permanently delete all record of the class</p>
+        </div>
+
         <br><br>
         <input type="submit" value="Submit Changes">
 
@@ -416,7 +421,7 @@ EOT;
       </footer>
 EOT;
 
-    } else {
+} else { //IF CLASS HAS NOT YET BEEN SELECTED
 
     echo <<<EOT
       <form action="" method="post" class="main-form">
@@ -442,6 +447,7 @@ EOT;
 
     echo <<<EOT
           </datalist>
+
           <br><br>
           <input type="submit" value="Submit">
       </form>

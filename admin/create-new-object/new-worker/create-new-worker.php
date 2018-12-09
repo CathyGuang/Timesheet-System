@@ -29,7 +29,7 @@
     if ($_POST['volunteer']) {
       $volunteerbool = 'TRUE';
     }
-    $query = "INSERT INTO workers(name, email, phone, staff, volunteer) VALUES ('{$_POST['name']}', '{$_POST['email']}', '{$_POST['phone']}', $staffbool, $volunteerbool);";
+    $query = "INSERT INTO workers(name, title, email, phone, staff, volunteer) VALUES ('{$_POST['name']}', '{$_POST['title']}', '{$_POST['email']}', '{$_POST['phone']}', $staffbool, $volunteerbool);";
 
     $result = pg_query($db_connection, $query);
 

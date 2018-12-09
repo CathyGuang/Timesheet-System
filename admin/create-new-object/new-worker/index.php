@@ -21,6 +21,9 @@
     <p>Name:</p>
     <input type="text" name="name" value="" required>
 
+    <p>Title:</p>
+    <input type="text" name="title" value="">
+
     <p>Email:</p>
     <input type="email" name="email" value="">
 

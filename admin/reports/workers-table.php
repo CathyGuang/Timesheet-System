@@ -4,25 +4,27 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
   <title>Admin | Generate Report</title>
 </head>
 
 <body>
 
   <header>
-    <h1>Generate Report</h1>
+    <h1>Workers Table</h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
 
-  <div class="main-content-div">
 
-    <a href="workers-table.php"><button class="blue-button">Export Staff/Volunteer Data</button></a>
+  <?php
+    $query = "copy workers to 'workers.csv' csv header";
+    $result = pg_copy_to($db_connection, "workers", ",");
+    var_dump($result);
 
 
-
-  </div>
+  ?>
 
 
 

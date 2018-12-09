@@ -19,7 +19,8 @@
 
 
   <?php
-    $query = "UPDATE horses SET NAME = '{$_POST['name']}', fs_uses_per_day = '{$_POST['fs_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$_POST['notes']}' WHERE id = {$_POST['id']};";
+    if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
+    $query = "UPDATE horses SET NAME = '{$_POST['name']}', fs_uses_per_day = '{$_POST['fs_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$_POST['notes']}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

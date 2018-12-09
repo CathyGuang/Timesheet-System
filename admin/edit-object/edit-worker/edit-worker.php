@@ -19,15 +19,17 @@
 
 
   <?php
-  $staffbool = 'FALSE';
-  $volunteerbool = 'FALSE';
-  if ($_POST['staff']) {
-    $staffbool = 'TRUE';
-  }
-  if ($_POST['volunteer']) {
-    $volunteerbool = 'TRUE';
-  }
-    $query = "UPDATE workers SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', staff = $staffbool, volunteer = $volunteerbool WHERE id = {$_POST['id']};";
+    $staffbool = 'FALSE';
+    $volunteerbool = 'FALSE';
+    if ($_POST['staff']) {
+      $staffbool = 'TRUE';
+    }
+    if ($_POST['volunteer']) {
+      $volunteerbool = 'TRUE';
+    }
+
+    if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
+    $query = "UPDATE workers SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', staff = $staffbool, volunteer = $volunteerbool, archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

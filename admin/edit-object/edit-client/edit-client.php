@@ -19,7 +19,8 @@
 
 
   <?php
-    $query = "UPDATE clients SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}' WHERE id = {$_POST['id']};";
+    if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
+    $query = "UPDATE clients SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

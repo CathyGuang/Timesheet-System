@@ -3,11 +3,15 @@
 
   $query = <<<EOT
   SELECT class_type, classes.id, date_of_class, start_time, end_time, lesson_plan, tack, special_tack, stirrup_leather_length, pad, horse, instructor, therapist, equine_specialist, leader, sidewalkers, clients FROM classes WHERE
+  (
   instructor = {$queryID} OR
   therapist = {$queryID} OR
   equine_specialist = {$queryID} OR
   leader = {$queryID} OR
   {$queryID} = ANY(sidewalkers)
+  ) AND (
+  archived IS NULL
+  )
 
   ;
 EOT;

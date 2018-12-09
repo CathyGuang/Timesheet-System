@@ -53,7 +53,7 @@
         return '{' . implode(",", $result) . '}'; // format
       }
       $clientIDPGArray = to_pg_array($clientIDList);
-      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}';";
+      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       $classIDList = array();
       foreach ($classIDSQLObject as $row => $data) {
@@ -64,8 +64,8 @@
 
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
-      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes;"), 0, 1)['start_date'];
-      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes;"), 0, 1)['end_date'];
+      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;"), 0, 1)['start_date'];
+      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND archived IS NULL;"), 0, 1)['end_date'];
 
 
       $weekdaysBlocks = explode(";", $classData['all_weekdays_times']);
@@ -429,7 +429,7 @@ EOT;
         <input type="text" name="selected-class" list="class-list">
           <datalist id="class-list">
 EOT;
-          $query = "SELECT DISTINCT class_type, clients FROM classes;";
+          $query = "SELECT DISTINCT class_type, clients FROM classes WHERE archived IS NULL;";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             $getClientsQuery = <<<EOT

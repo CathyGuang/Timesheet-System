@@ -42,6 +42,8 @@ EOT;
         {$id} = ANY(classes.sidewalkers)
         ) AND (
         '{$date}' = date_of_class
+        ) AND (
+        archived IS NULL
         )
 
         ;
@@ -54,6 +56,8 @@ EOT;
         {$id} = ANY(horse_care_shifts.volunteers)
         ) AND (
         '{$date}' = date_of_shift
+        ) AND (
+        archived IS NULL
         )
 
         ;
@@ -66,6 +70,8 @@ EOT;
         {$id} = ANY(office_shifts.volunteers)
         ) AND (
         '{$date}' = date_of_shift
+        ) AND (
+        archived IS NULL
         )
 
         ;
@@ -78,6 +84,8 @@ EOT;
         {$id} = classes.horse
         ) AND (
         '{$date}' = date_of_class
+        ) AND (
+        archived IS NULL
         )
 
         ;
@@ -90,6 +98,8 @@ EOT;
         {$id} = ANY(classes.clients)
         ) AND (
         '{$date}' = date_of_class
+        ) AND (
+        archived IS NULL
         )
 
         ;
@@ -120,7 +130,7 @@ EOT;
     } elseif (in_array($typeOfObject, $enumTypeList)) {
 
       //Get all classes on date
-      $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}';"));
+      $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND archived IS NULL;"));
 
       //Filter by time
       if ($allClasses) {

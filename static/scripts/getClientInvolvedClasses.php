@@ -3,7 +3,8 @@
 
   $query = <<<EOT
   SELECT class_type, classes.id, date_of_class, start_time, end_time, lesson_plan, tack, special_tack, stirrup_leather_length, pad, horse, instructor, therapist, equine_specialist, leader, sidewalkers, clients FROM classes WHERE
-  {$queryID} = ANY(clients)
+  {$queryID} = ANY(clients) AND
+  archived IS NULL
   ;
 EOT;
 

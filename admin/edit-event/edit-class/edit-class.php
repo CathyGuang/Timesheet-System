@@ -21,7 +21,7 @@
   <?php
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
-      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
+      $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND archived IS NULL;";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
@@ -200,7 +200,7 @@
     //If no conflicts, delete current database entries and replace with new ones.
 
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND archived IS NULL;";
     $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
     foreach ($classIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");

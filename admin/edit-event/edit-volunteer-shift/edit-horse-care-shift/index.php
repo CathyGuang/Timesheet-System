@@ -25,7 +25,7 @@
       $selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
       $selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
 
-      $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName');";
+      $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
       foreach ($shiftIDSQLObject as $row => $data) {
         $shiftIDList[] = $data['id'];
@@ -35,8 +35,8 @@
 
       $shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
 
-      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM horse_care_shifts;"), 0, 1)['start_date'];
-      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM horse_care_shifts;"), 0, 1)['end_date'];
+      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;"), 0, 1)['start_date'];
+      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;"), 0, 1)['end_date'];
 
 
       $weekdaysBlocks = explode(";", $shiftData['all_weekdays_times']);
@@ -251,7 +251,7 @@ EOT;
         <input type="text" name="selected-shift" list="shift-list">
           <datalist id="shift-list">
 EOT;
-          $query = "SELECT DISTINCT care_type, name FROM horse_care_shifts, workers WHERE workers.id = horse_care_shifts.leader;";
+          $query = "SELECT DISTINCT care_type, name FROM horse_care_shifts, workers WHERE workers.id = horse_care_shifts.leader AND archived IS NULL;";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             echo "<option value='$row[0], $row[1]'>";

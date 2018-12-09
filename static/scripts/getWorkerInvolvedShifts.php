@@ -4,15 +4,23 @@
 
   $horseCareQuery = <<<EOT
   SELECT * FROM horse_care_shifts WHERE
+  (
   leader = {$queryID} OR
   {$queryID} = ANY(volunteers)
+  ) AND (
+  archived IS NULL
+  )
   ;
 EOT;
 
   $officeShiftQuery = <<<EOT
   SELECT * FROM office_shifts WHERE
+  (
   leader = {$queryID} OR
   {$queryID} = ANY(volunteers)
+  ) AND (
+  archived IS NULL
+  )
   ;
 EOT;
 

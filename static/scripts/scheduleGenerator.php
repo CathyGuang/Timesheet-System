@@ -79,7 +79,14 @@ EOT;
 
       //Time
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
-      echo "<p class='schedule-time'>{$newTimeString}</p>";
+      if ($event['cancelled']) {
+        $style = "style='background-color: var(--dark-red);'";
+        $cancelled = "<br>CANCELLED";
+      } else {
+        $style = "";
+        $cancelled = "";
+      }
+      echo "<p class='schedule-time' {$style}>{$newTimeString}{$cancelled}</p>";
 
       //Event Type
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";

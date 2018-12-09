@@ -21,8 +21,45 @@
   <?php
     $query = "copy workers to 'workers.csv' csv header";
     $result = pg_copy_to($db_connection, "workers", ",");
+
     var_dump($result);
 
+    $tempfile = fopen('tempfile.csv', 'w');
+
+    foreach ($result as $line) {
+      $fields = explode(',', $line);
+      fputcsv($tempfile, $fields);
+    }
+
+    fclose($tempfile);
+
+
+
+
+    $filename = "tempfile.csv";
+
+    if(file_exists($filename)){
+
+        //Get file type and set it as Content Type
+        header('Content-Type: application/csv');
+
+        //add date to filename
+        //Use Content-Disposition: attachment to specify the filename
+        header('Content-Disposition: attachment; filename="workers-table.csv"');
+
+        //No cache
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+
+        //Define file size
+        header('Content-Length: ' . filesize($filename));
+
+        ob_clean();
+        flush();
+        readfile($filename);
+        exit;
+    }
 
   ?>
 

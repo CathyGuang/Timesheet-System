@@ -24,6 +24,13 @@
 
   </div>
 
+  <?php
+    //delete tempfiles from previous reports
+    if (file_exists("tempfile.csv")) {
+      unlink("tempfile.csv");
+    }
+
+  ?>
 
 
 

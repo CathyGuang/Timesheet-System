@@ -1,7 +1,7 @@
 /* CREATE USER */
 -- User: "ForwardStrideAdmin"
 -- TO RESET:
--- DROP USER "ForwardStrideAdmin";
+DROP USER "ForwardStrideAdmin";
 
 CREATE USER "ForwardStrideAdmin" WITH
   LOGIN
@@ -16,7 +16,7 @@ CREATE USER "ForwardStrideAdmin" WITH
 /* CREATE DATABASE */
 -- Database: ForwardStrideDatabase
 -- TO RESET:
--- DROP DATABASE "ForwardStrideDatabase";
+DROP DATABASE "ForwardStrideDatabase";
 
 CREATE DATABASE "ForwardStrideDatabase"
     WITH
@@ -27,7 +27,7 @@ CREATE DATABASE "ForwardStrideDatabase"
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1;
 
-/* SWITCH USER AND CONNECT TO NEW DATABASE??? */
+/* SWITCH USER AND CONNECT TO NEW DATABASE */
 
 \c ForwardStrideDatabase
 
@@ -37,6 +37,7 @@ CREATE DATABASE "ForwardStrideDatabase"
 
 CREATE TABLE workers (
   id SERIAL PRIMARY KEY,
+  archived TEXT,
   name TEXT,
   email TEXT,
   phone TEXT,
@@ -49,6 +50,7 @@ CREATE TABLE workers (
 
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY,
+  archived TEXT,
   name TEXT,
   email TEXT,
   phone TEXT
@@ -59,6 +61,7 @@ CREATE TABLE clients (
 
 CREATE TABLE horses (
   id SERIAL PRIMARY KEY,
+  archived TEXT,
   name TEXT,
   fs_uses_per_day INT,
   owner_uses_per_day INT,
@@ -72,7 +75,7 @@ CREATE TYPE CARE_TYPE AS ENUM();
 
 CREATE TABLE horse_care_shifts (
   id SERIAL PRIMARY KEY,
-  archived BOOLEAN,
+  archived TEXT,
   care_type CARE_TYPE,
   date_of_shift DATE,
   start_time TIME,
@@ -89,7 +92,7 @@ CREATE TYPE OFFICE_SHIFT_TYPE AS ENUM();
 
 CREATE TABLE office_shifts (
   id SERIAL PRIMARY KEY,
-  archived BOOLEAN,
+  archived TEXT,
   office_shift_type OFFICE_SHIFT_TYPE,
   date_of_shift DATE,
   start_time TIME,
@@ -143,7 +146,7 @@ ALTER TYPE PAD ADD VALUE '';
 
 CREATE TABLE classes (
   id SERIAL PRIMARY KEY,
-  archived BOOLEAN,
+  archived TEXT,
   class_type CLASS_TYPE,
   date_of_class DATE,
   cancelled BOOLEAN,

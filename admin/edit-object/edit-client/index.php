@@ -34,7 +34,7 @@ EOT;
         </datalist>
 
         <br><br>
-        <input type="submit" value="submit">
+        <input type="submit" value="Submit">
     </form>
 EOT;
 

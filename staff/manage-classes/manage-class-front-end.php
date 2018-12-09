@@ -20,7 +20,7 @@
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, date_of_class, lesson_plan, horse, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horse, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
@@ -159,7 +159,8 @@ EOT;
           ?>
           <br>
 
-    <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE"></p>
+    <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
+    <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
 
 
     <br><br>

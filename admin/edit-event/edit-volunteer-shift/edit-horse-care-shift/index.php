@@ -25,7 +25,7 @@
       $selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
       $selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
 
-      $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;";
+      $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND archived IS NULL) AND archived IS NULL;";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
       foreach ($shiftIDSQLObject as $row => $data) {
         $shiftIDList[] = $data['id'];
@@ -35,8 +35,8 @@
 
       $shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
 
-      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;"), 0, 1)['start_date'];
-      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName') AND archived IS NULL;"), 0, 1)['end_date'];
+      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND archived IS NULL) AND archived IS NULL;"), 0, 1)['start_date'];
+      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND archived IS NULL) AND archived IS NULL;"), 0, 1)['end_date'];
 
 
       $weekdaysBlocks = explode(";", $shiftData['all_weekdays_times']);
@@ -140,7 +140,7 @@ EOT;
           <datalist id="leader-list">
 EOT;
 
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -165,7 +165,7 @@ EOT;
               <datalist id="volunteer-list">
 EOT;
 
-                  $query = "SELECT name FROM workers;";
+                  $query = "SELECT name FROM workers WHERE archived IS NULL;";
                   $result = pg_query($db_connection, $query);
                   $workerNames = pg_fetch_all_columns($result);
                   foreach ($workerNames as $key => $value) {

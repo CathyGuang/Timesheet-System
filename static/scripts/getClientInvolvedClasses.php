@@ -23,7 +23,8 @@ EOT;
       if ($specificClass['sidewalkers']) {
         $getSidewalkersQuery = <<<EOT
           SELECT workers.name FROM workers WHERE
-          workers.id = ANY('{$allClasses[$key]['sidewalkers']}')
+          workers.id = ANY('{$allClasses[$key]['sidewalkers']}') AND
+          archived IS NULL
           ;
 EOT;
       }

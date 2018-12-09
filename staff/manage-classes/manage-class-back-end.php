@@ -24,13 +24,13 @@
       $attendance = "{}";
     }
 
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['therapist']}';"))[0];
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['equine-specialist']}';"))[0];
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['leader']}';"))[0];
+    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['therapist']}' AND archived IS NULL;"))[0];
+    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['equine-specialist']}' AND archived IS NULL;"))[0];
+    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['leader']}' AND archived IS NULL;"))[0];
 
     $sidewalkerIDPGArray = "{";
     foreach ($_POST['sidewalkers'] as $name) {
-      $sidewalkerID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}';"))[0];
+      $sidewalkerID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND archived IS NULL;"))[0];
       $sidewalkerIDPGArray .= $sidewalkerID . ",";
     }
     $sidewalkerIDPGArray = rtrim($sidewalkerIDPGArray, ",") . "}";

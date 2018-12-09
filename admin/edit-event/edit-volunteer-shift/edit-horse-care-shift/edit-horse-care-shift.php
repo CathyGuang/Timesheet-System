@@ -32,7 +32,7 @@
     }
 
     if ($_POST['archive']) { //ARCHIVE SHIFT IF REQUESTED
-      $query = "UPDATE horse_care_shifts SET archived = 'TRUE' WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}');";
+      $query = "UPDATE horse_care_shifts SET archived = 'TRUE' WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}') AND archived IS NULL;";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
@@ -87,13 +87,13 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}'"))[0];
+    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND archived IS NULL;"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
     }
     $volunteerIDList = array();
     foreach ($_POST['volunteers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}'"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
       $volunteerIDList[] = $id;
     }
     $volunteerIDList = to_pg_array($volunteerIDList);
@@ -112,7 +112,7 @@
       }
       if ($volunteerIDList != "{1}") {
         foreach ($_POST['volunteers'] as $volunteerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$volunteerName}'"))[0];
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$volunteerName}' AND archived IS NULL;"))[0];
           $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
@@ -127,7 +127,7 @@
     }
 
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}') AND archived IS NULL;";
+    $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND archived IS NULL) AND archived IS NULL;";
     $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
     foreach ($shiftIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM horse_care_shifts WHERE horse_care_shifts.id = {$data['id']}");

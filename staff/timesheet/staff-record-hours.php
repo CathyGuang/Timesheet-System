@@ -18,7 +18,7 @@
 
   <?php
 
-    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['staff']}'"), 0, 1)['id'];
+    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['staff']}' AND archived IS NULL;"), 0, 1)['id'];
 
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours)

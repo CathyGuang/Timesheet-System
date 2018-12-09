@@ -23,7 +23,7 @@
       <input name="selected-name" list="staff">
       <datalist id="staff">
         <?php
-          $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE;"));
+          $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND archived IS NULL;"));
           foreach ($staffNames as $name) {
             echo "<option value='$name'>";
           }

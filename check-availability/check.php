@@ -23,8 +23,8 @@
 
     <?php
 
-      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers;")))) {
-        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['target-name']}';"), 0, 1)['id'];
+      if (in_array($_POST['target-name'], pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE archived IS NULL;")))) {
+        $target = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['target-name']}' AND archived IS NULL;"), 0, 1)['id'];
         $targetType = "workers";
       }
 

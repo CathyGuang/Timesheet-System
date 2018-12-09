@@ -99,7 +99,7 @@
     <input type="text" name="leader" list="leader-list" value="" onclick="select();" required>
       <datalist id="leader-list">
         <?php
-          $query = "SELECT name FROM workers;";
+          $query = "SELECT name FROM workers WHERE archived IS NULL;";
           $result = pg_query($db_connection, $query);
           $workerNames = pg_fetch_all_columns($result);
           foreach ($workerNames as $key => $value) {
@@ -113,7 +113,7 @@
         <input type="text" name="volunteers[]" list="volunteer-list" value="" onclick="select();">
           <datalist id="volunteer-list">
             <?php
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {

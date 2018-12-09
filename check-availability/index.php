@@ -27,8 +27,8 @@
         <datalist id="all-objects-list">
           <?php
             $allResources = array();
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers;")));
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses;")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE archived IS NULL;")));
+            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE archived IS NULL;")));
             $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::ARENA))")));
             $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::TACK))")));
             $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::PAD))")));

@@ -1,5 +1,5 @@
 <?php
-  $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}';"), 0, 1)['id'];
+  $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}' AND archived IS NULL;"), 0, 1)['id'];
 
   $query = <<<EOT
   SELECT class_type, classes.id, date_of_class, start_time, end_time, lesson_plan, tack, special_tack, stirrup_leather_length, pad, horse, instructor, therapist, equine_specialist, leader, sidewalkers, clients FROM classes WHERE
@@ -31,7 +31,8 @@ EOT;
       if ($specificClass['sidewalkers']) {
         $getSidewalkersQuery = <<<EOT
           SELECT workers.name FROM workers WHERE
-          workers.id = ANY('{$allClasses[$key]['sidewalkers']}')
+          workers.id = ANY('{$allClasses[$key]['sidewalkers']}') AND
+          archived IS NULL
           ;
 EOT;
       }

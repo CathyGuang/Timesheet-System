@@ -96,25 +96,25 @@
     }
     $clientIDList = to_pg_array($clientIDList);
 
-    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}'"))[0];
+    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND archived IS NULL;"))[0];
     if (!$instructorID) {
       $instructorID = 'null';
     }
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}'"))[0];
+    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}' AND archived IS NULL;"))[0];
     if (!$therapistID) {
       $therapistID = 'null';
     }
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}'"))[0];
+    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}' AND archived IS NULL;"))[0];
     if (!$esID) {
       $esID = 'null';
     }
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}'"))[0];
+    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND archived IS NULL;"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
     }
     $sidewalkerIDList = array();
     foreach ($_POST['sidewalkers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}'"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
       $sidewalkerIDList[] = $id;
     }
     $sidewalkerIDList = to_pg_array($sidewalkerIDList);
@@ -183,7 +183,7 @@
       }
       if ($sidewalkerIDList != "{1}") {
         foreach ($_POST['sidewalkers'] as $sidewalkerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}'"))[0];
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}' AND archived IS NULL;"))[0];
           $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;

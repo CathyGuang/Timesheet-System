@@ -25,7 +25,7 @@
         <input type="text" name="selected-worker" list="worker-list">
           <datalist id="worker-list">
 EOT;
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               while ($row = pg_fetch_row($result)) {
                 echo "<option value='$row[0]'>";
@@ -39,7 +39,7 @@ EOT;
 EOT;
 
     } else {
-      $workerInfoQuery = "SELECT * FROM workers WHERE name LIKE '{$_POST['selected-worker']}';";
+      $workerInfoQuery = "SELECT * FROM workers WHERE name LIKE '{$_POST['selected-worker']}' AND archived IS NULL;";
       $workerInfoSQL = pg_query($db_connection, $workerInfoQuery);
       $workerInfo = pg_fetch_array($workerInfoSQL, 0, PGSQL_ASSOC);
       echo <<<EOT

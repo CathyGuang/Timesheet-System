@@ -102,7 +102,7 @@ EOT;
       <input type="text" list="therapist-list" name="therapist" value="<?php echo $therapistName?>" onclick="select()">
         <datalist id="therapist-list">
           <?php
-            $query = "SELECT name FROM workers;";
+            $query = "SELECT name FROM workers WHERE archived IS NULL;";
             $result = pg_query($db_connection, $query);
             $workerNames = pg_fetch_all_columns($result);
             foreach ($workerNames as $key => $name) {
@@ -116,7 +116,7 @@ EOT;
         <input type="text" list="equine-specialist-list" name="equine-specialist" value="<?php echo $equineSpecialistName?>" onclick="select()">
           <datalist id="equine-specialist-list">
             <?php
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $name) {
@@ -130,7 +130,7 @@ EOT;
           <input type="text" list="leader-list" name="leader" value="<?php echo $leaderName?>" onclick="select()">
             <datalist id="leader-list">
               <?php
-                $query = "SELECT name FROM workers;";
+                $query = "SELECT name FROM workers WHERE archived IS NULL;";
                 $result = pg_query($db_connection, $query);
                 $workerNames = pg_fetch_all_columns($result);
                 foreach ($workerNames as $key => $name) {
@@ -142,7 +142,7 @@ EOT;
           <p>Sidewalkers:</p>
             <datalist id="sidewalker-list">
               <?php
-                $query = "SELECT name FROM workers;";
+                $query = "SELECT name FROM workers WHERE archived IS NULL;";
                 $result = pg_query($db_connection, $query);
                 $workerNames = pg_fetch_all_columns($result);
                 foreach ($workerNames as $key => $name) {

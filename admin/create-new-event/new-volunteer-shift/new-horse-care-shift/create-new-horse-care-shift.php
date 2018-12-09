@@ -61,13 +61,13 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}'"))[0];
+    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND archived IS NULL;"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
     }
     $volunteerIDList = array();
     foreach ($_POST['volunteers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}'"))[0];
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND archived IS NULL;"))[0];
       $volunteerIDList[] = $id;
     }
     $volunteerIDList = to_pg_array($volunteerIDList);
@@ -85,7 +85,7 @@
       }
       if ($volunteerIDList != "{1}") {
         foreach ($_POST['volunteers'] as $volunteerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$volunteerName}'"))[0];
+          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$volunteerName}' AND archived IS NULL;"))[0];
           $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;

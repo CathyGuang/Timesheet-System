@@ -25,7 +25,7 @@
           <input type="text" name="selected-worker" list="worker-list" onclick="select();">
             <datalist id="worker-list">
 EOT;
-            $workerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE;"), 0);
+            $workerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND archived IS NULL;"), 0);
             foreach ($workerNames as $name) {
               echo "<option value='{$name}'>";
             }

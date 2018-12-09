@@ -266,7 +266,7 @@ EOT;
           <datalist id="instructor-list">
 EOT;
 
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -280,7 +280,7 @@ EOT;
           <datalist id="therapist-list">
 EOT;
 
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -293,7 +293,7 @@ EOT;
         <input type="text" name="equine-specialist" list="es-list" value="{$esName}" onclick="select();">
           <datalist id="es-list">
 EOT;
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -307,7 +307,7 @@ EOT;
           <datalist id="leader-list">
 EOT;
 
-              $query = "SELECT name FROM workers;";
+              $query = "SELECT name FROM workers WHERE archived IS NULL;";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -322,7 +322,7 @@ EOT;
 EOT;
           $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
           foreach ($sidewalkerIDList as $id) {
-            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id}") , 0, 1)['name'];
+            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND archived IS NULL;") , 0, 1)['name'];
             echo <<<EOT
             <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
 EOT;
@@ -332,7 +332,7 @@ EOT;
               <datalist id="sidewalker-list">
 EOT;
 
-                  $query = "SELECT name FROM workers;";
+                  $query = "SELECT name FROM workers WHERE archived IS NULL;";
                   $result = pg_query($db_connection, $query);
                   $workerNames = pg_fetch_all_columns($result);
                   foreach ($workerNames as $key => $value) {

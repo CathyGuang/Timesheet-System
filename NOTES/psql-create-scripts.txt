@@ -1,7 +1,7 @@
 /* CREATE USER */
 -- User: "ForwardStrideAdmin"
 -- TO RESET:
-DROP USER "ForwardStrideAdmin";
+-- DROP USER "ForwardStrideAdmin";
 
 CREATE USER "ForwardStrideAdmin" WITH
   LOGIN
@@ -16,7 +16,7 @@ CREATE USER "ForwardStrideAdmin" WITH
 /* CREATE DATABASE */
 -- Database: ForwardStrideDatabase
 -- TO RESET:
-DROP DATABASE "ForwardStrideDatabase";
+-- DROP DATABASE "ForwardStrideDatabase";
 
 CREATE DATABASE "ForwardStrideDatabase"
     WITH

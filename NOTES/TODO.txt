@@ -1,4 +1,0 @@
-
-
-- Add password to admin page
-- Add password to staff page

@@ -9,7 +9,8 @@ CREATE USER "ForwardStrideAdmin" WITH
   INHERIT
   CREATEDB
   CREATEROLE
-  NOREPLICATION;
+  NOREPLICATION
+  ENCRYPTED PASSWORD 'fsdatabaseadministrator5';
 
 \c postgres ForwardStrideAdmin
 

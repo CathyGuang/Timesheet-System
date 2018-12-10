@@ -1,6 +1,4 @@
 
-NEXT: - then allow reports to be generated - export tables (queries?) to csv files for download.
-
 
 - Add password to admin page
 - Add password to staff page

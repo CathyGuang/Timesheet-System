@@ -1,41 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/main.css">
-  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
-  <title>Admin | Generate Report</title>
-</head>
-
-<body>
-
-  <header>
-    <h1>Workers Table</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
-      <a href="/"><button id="home-button">Home</button></a>
-    </nav>
-  </header>
-
-
   <?php
-    $query = "copy workers to 'workers.csv' csv header";
-    $result = pg_copy_to($db_connection, "workers", ",");
+    //Connect to database
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php";
 
-    var_dump($result);
+    //delete tempfiles from previous reports
+    if (file_exists("tempfile.csv")) {
+      unlink("tempfile.csv");
+    }
 
+    //Get table columns for CSV file
+    $metadata = array();
+    $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'workers';"));
+
+    //Get table data
+    $result = pg_copy_to($db_connection, "workers", ",", "");
+    foreach ($result as $key => $workerDataString) {
+      $result[$key] = explode(',', $workerDataString);
+    }
+
+    $data = array_merge($metadata, $result);
+
+    //Write data to temporary CSV file on the server
     $tempfile = fopen('tempfile.csv', 'w');
 
-    foreach ($result as $line) {
-      $fields = explode(',', $line);
-      fputcsv($tempfile, $fields);
+    foreach ($data as $line) {
+      fputcsv($tempfile, $line);
     }
 
     fclose($tempfile);
 
 
 
-
+    //Send file to client browser
     $filename = "tempfile.csv";
 
     if(file_exists($filename)){
@@ -62,11 +57,3 @@
     }
 
   ?>
-
-
-
-
-
-</body>
-
-</html>

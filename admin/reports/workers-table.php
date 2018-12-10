@@ -1,4 +1,6 @@
   <?php
+    //initialize target table name
+    $tableName = "workers";
     //Connect to database
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php";
 
@@ -9,12 +11,12 @@
 
     //Get table columns for CSV file
     $metadata = array();
-    $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = 'workers';"));
+    $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
     //Get table data
-    $result = pg_copy_to($db_connection, "workers", ",", "");
-    foreach ($result as $key => $workerDataString) {
-      $result[$key] = explode(',', $workerDataString);
+    $result = pg_copy_to($db_connection, "{$tableName}", ",", "");
+    foreach ($result as $key => $dataString) {
+      $result[$key] = explode(',', trim($dataString));
     }
 
     $data = array_merge($metadata, $result);
@@ -40,7 +42,7 @@
 
         //add date to filename
         //Use Content-Disposition: attachment to specify the filename
-        header('Content-Disposition: attachment; filename="workers-table.csv"');
+        header("Content-Disposition: attachment; filename='{$tableName}-table.csv'");
 
         //No cache
         header('Expires: 0');

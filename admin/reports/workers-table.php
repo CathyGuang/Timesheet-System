@@ -40,9 +40,9 @@
         //Get file type and set it as Content Type
         header('Content-Type: application/csv');
 
-        //add date to filename
+        $date = date('Y-m-d');
         //Use Content-Disposition: attachment to specify the filename
-        header("Content-Disposition: attachment; filename='{$tableName}-table.csv'");
+        header("Content-Disposition: attachment; filename='{$tableName}-table-{$date}.csv'");
 
         //No cache
         header('Expires: 0');

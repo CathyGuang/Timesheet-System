@@ -42,6 +42,13 @@
       return;
     }
 
+    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
+    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
+    foreach ($classIDSQLObject as $row => $data) {
+      pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
+    }
+
     //ADD NEW VALUES
 
     //Process form input
@@ -197,14 +204,8 @@
       return;
     }
 
-    //If no conflicts, delete current database entries and replace with new ones.
+    //If no conflicts, create new entries.
 
-    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
-    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
-    foreach ($classIDSQLObject as $row => $data) {
-      pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
-    }
 
 
 

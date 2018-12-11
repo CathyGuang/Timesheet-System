@@ -124,9 +124,7 @@ EOT;
       }
       if ($event['sidewalkers']) {
         foreach ($event['sidewalkers'] as $volunteerName) {
-          if ($volunteerName != "") {
-            $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;
-          }
+            $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;          
         }
       }
       if ($volunteerString == "") {

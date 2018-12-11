@@ -55,26 +55,33 @@
 
     //Process form input
     //get array of dates and times
-    $date = date('Y-m-d');
+    $date = $_POST['start-date'];
     $end_date = $_POST['end-date'];
     $dateTimeTriplets = array();
+    if ($_POST['every-other-week'] == "TRUE") {
+      $everyOtherWeek = true;
+    } else {$everyOtherWeek = false;}
 
     $all_weekdays_times = "";
+    if ($everyOtherWeek) {
+      $all_weekdays_times = "EO;";
+    }
     $weekdaysAdded = array();
+    $datesAdded = array();
     while (strtotime($date) <= strtotime($end_date)) {
       $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST)) {
+      if (in_array($dayOfWeek, $_POST) and !in_array(date('Y-m-d', strtotime("-1 week" . $date)), $datesAdded)) {
         $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
         $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
         $dateTimeTriplets[$date] = array($startTime, $endTime);
+        $datesAdded[] = $date;
         if (!in_array($dayOfWeek, $weekdaysAdded)){
-          $all_weekdays_times = $all_weekdays_times . $dayOfWeek . "," . $startTime . "," . $endTime . ";";
+          $all_weekdays_times .= $dayOfWeek . "," . $startTime . "," . $endTime . ";";
           $weekdaysAdded[] = $dayOfWeek;
         }
       }
-
       //looper
-      $date = date ('Y-m-d', strtotime('+1 day', strtotime($date)));
+      $date = date ('Y-m-d', strtotime("+1 day", strtotime($date)));
     }
     //Convert other user selections to database ids
 

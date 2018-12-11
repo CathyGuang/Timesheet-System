@@ -69,9 +69,14 @@
 
 
       $weekdaysBlocks = explode(";", $classData['all_weekdays_times']);
+      if ($weekdaysBlocks[0] == "EO") {
+        $everyOtherWeek = true;
+        $everyOtherWeekCheckbox = "checked";
+      } else {$everyOtherWeek = false; $everyOtherWeekCheckbox = "";}
       $allWeekdaysTimesList = array();
       foreach ($weekdaysBlocks as $weekdayString) {
         if ($weekdayString == "") {continue;}
+        if ($weekdayString == "EO") {continue;}
         $weekdayTriple = explode(",", $weekdayString);
         $allWeekdaysTimesList[$weekdayTriple[0]] = array($weekdayTriple[1], $weekdayTriple[2]);
       }
@@ -108,6 +113,7 @@ EOT;
           </datalist>
 
         <p>Dates:</p>
+        <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE" {$everyOtherWeekCheckbox}></p>
         <div style="max-width: 500px;">
           <label for="start-date">Start date:</label>
           <input type="date" id="start-date" name="start-date" value="{$startDate}" placeholder="from" required>

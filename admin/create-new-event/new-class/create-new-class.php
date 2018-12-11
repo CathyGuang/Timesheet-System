@@ -30,7 +30,7 @@
 
     $all_weekdays_times = "";
     if ($everyOtherWeek) {
-      $all_weekdays_times = "EO,";
+      $all_weekdays_times = "EO;";
     }
     $weekdaysAdded = array();
     $datesAdded = array();

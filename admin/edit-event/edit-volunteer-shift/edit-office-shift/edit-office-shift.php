@@ -127,7 +127,7 @@
 
 
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');";
+    $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (workers.archived IS NULL OR workers.archived = '')) AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
     $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
     foreach ($shiftIDSQLObject as $row => $data) {
       pg_query($db_connection, "DELETE FROM office_shifts WHERE office_shifts.id = {$data['id']}");

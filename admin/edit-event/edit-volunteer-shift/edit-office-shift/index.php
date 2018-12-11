@@ -25,7 +25,7 @@
       $selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
       $selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
 
-      $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');";
+      $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (workers.archived IS NULL OR workers.archived = '')) AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
       foreach ($shiftIDSQLObject as $row => $data) {
         $shiftIDList[] = $data['id'];
@@ -251,7 +251,7 @@ EOT;
         <input type="text" name="selected-shift" list="shift-list">
           <datalist id="shift-list">
 EOT;
-          $query = "SELECT DISTINCT office_shift_type, name FROM office_shifts, workers WHERE workers.id = office_shifts.leader AND (archived IS NULL OR archived = '');";
+          $query = "SELECT DISTINCT office_shift_type, name FROM office_shifts, workers WHERE workers.id = office_shifts.leader AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             echo "<option value='$row[0], $row[1]'>";

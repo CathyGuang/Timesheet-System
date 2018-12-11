@@ -1,4 +1,5 @@
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
 
   function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
     //ignore calls for empty fields

@@ -115,11 +115,16 @@ EOT;
 
       //Leaders
       $leaderString = "";
+      //Classes with potentially multiple leaders
       if ($event['leaders']) {
         foreach ($event['leaders'] as $leaderName) {
           $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
 
         }
+      }
+      //Shifts with only one leader
+      if ($event['leader']) {
+        $leaderString .= "<i>Leader: </i>" . $event['leader'];
       }
       if ($leaderString == "") {
         $leaderString = "&#8212";
@@ -140,10 +145,10 @@ EOT;
         }
       }
       if ($event['sidewalkers']) {
-        foreach ($event['sidewalkers'] as $volunteerName) {
+          foreach ($event['sidewalkers'] as $volunteerName) {
             $volunteerString .= "<i>Sidewalker: </i>" . $volunteerName;
             $volunteerString .= "<br>";
-        }
+          }
       }
       if ($volunteerString == "") {
         $volunteerString = "&#8212";
@@ -157,23 +162,25 @@ EOT;
 
       //Horse
       $horseString = "";
-      foreach ($event['horses'] as $key => $value) {
-        $horseString .= "<i>Horse: </i>" . $value . ", ";
-        if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
-          $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
-          $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+      if ($event['horses']) {
+        foreach ($event['horses'] as $key => $value) {
+          $horseString .= "<i>Horse: </i>" . $value . ", ";
+          if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+            $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
+            $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+          }
+          if ($event['pads'][$key] and $event['pads'][$key] != "") {
+            $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
+            $horseString .= "<i>Pad: </i>" . $padName;
+          }
+          $horseString .= "<br>";
         }
-        if ($event['pads'][$key] and $event['pads'][$key] != "") {
-          $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
-          $horseString .= "<i>Pad: </i>" . $padName;
+        if ($event['special_tack'] and $event['special_tack'] != "") {
+          $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
         }
-        $horseString .= "<br>";
-      }
-      if ($event['special_tack'] and $event['special_tack'] != "") {
-        $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
-      }
-      if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
-        $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
+        if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
+          $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
+        }
       }
       if ($horseString == "") {
         $horseString = "&#8212";
@@ -182,7 +189,7 @@ EOT;
 
       //Clients
       $clientString = "";
-      if ($event['clients']) {
+      if ($event['clients'][0] != "") {
         foreach ($event['clients'] as $clientName) {
           $clientString .= "<i>Clients: </i>";
           if (in_array($clientName, $event['attendance'])) {

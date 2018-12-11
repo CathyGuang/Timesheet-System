@@ -40,7 +40,7 @@
 
     //If no classes/shifts are found for a volunteer
     if (!$todaysClasses and !$todaysHorseCareShifts and !$todaysOfficeShifts) {
-      echo "<br><h3 class='main-content-header'>No scheduled events today!</h3>";
+      echo "<br><h3 class='main-content-header' style='margin-top: 40vh; margin-left: 30vw;'>No scheduled events today!</h3>";
       //possibly display an empty schedule?
       return;
     }

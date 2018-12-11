@@ -20,7 +20,11 @@
 
   <?php
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
-    $query = "UPDATE clients SET NAME = '{$_POST['name']}', email = '{$_POST['email']}', phone = '{$_POST['phone']}', archived = '{$archived}' WHERE id = {$_POST['id']};";
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+
+    $query = "UPDATE clients SET NAME = '{$name}', email = '{$email}', phone = '{$phone}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

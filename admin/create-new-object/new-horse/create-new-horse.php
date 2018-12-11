@@ -21,7 +21,10 @@
 
 
   <?php
-    $query = "INSERT INTO horses(name, fs_uses_per_day, owner_uses_per_day, notes) VALUES ('{$_POST['name']}', '{$_POST['fs_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$_POST['notes']}');";
+    $name = trim($_POST['name']);
+    $notes = trim($_POST['notes']);
+
+    $query = "INSERT INTO horses(name, fs_uses_per_day, owner_uses_per_day, notes) VALUES ('{$name}', '{$_POST['fs_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$notes}');";
 
     $result = pg_query($db_connection, $query);
 

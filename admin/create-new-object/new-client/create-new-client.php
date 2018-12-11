@@ -21,7 +21,10 @@
 
 
   <?php
-    $query = "INSERT INTO clients(name, email, phone) VALUES ('{$_POST['name']}', '{$_POST['email']}', '{$_POST['phone']}');";
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $phone = trim($_POST['phone']);
+    $query = "INSERT INTO clients(name, email, phone) VALUES ('{$name}', '{$email}', '{$phone}');";
 
     $result = pg_query($db_connection, $query);
 

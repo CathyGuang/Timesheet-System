@@ -6,9 +6,3 @@ TEST APACHE DIRECTORY RESTRICTIONS
 
 
 ADD CHECK SCHEDULE BY HORSE
-
-
-
-
-
-- trim all free-text user input for spaces

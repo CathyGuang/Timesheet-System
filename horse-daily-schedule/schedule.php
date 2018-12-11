@@ -5,11 +5,10 @@
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
   <?php error_reporting(E_ALL & ~E_NOTICE); ?>
-  <title>Staff Daily Schedule</title>
+  <title>Horse Daily Schedule</title>
 </head>
 
 <body>
-
   <div class="schedule-header">
     <header>
       <h1><?php echo $_POST['selected-name'] ?>'s Daily Schedule</h1>
@@ -26,11 +25,13 @@
     </div>
   </div>
 
-  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/scheduleGenerator.php"; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/horseScheduleGenerator.php"; ?>
+
 
   <form id="new-schedule" method="post" action="" style="visibility: hidden;">
     <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" style="visibility: hidden; height: 1px;">
   </form>
+
 
 </body>
 

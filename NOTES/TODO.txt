@@ -14,5 +14,3 @@ ADD CHECK SCHEDULE BY HORSE
 - trim all free-text user input for spaces
 
 - allow every other week option for class creation
-
--fix edit shift index pages, not loading shifts to edit into datalist

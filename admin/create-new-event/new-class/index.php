@@ -33,7 +33,8 @@
         ?>
       </datalist>
 
-    <p>Dates:</p>
+    <p>Dates: </p>
+    <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></p>
     <div style="max-width: 500px;">
       <label for="start-date">Start date:</label>
       <input type="date" id="start-date" name="start-date" value="" placeholder="from" required>
@@ -92,6 +93,7 @@
       <label for="sunday-end-time">to:</label>
       <input type="time" id="sunday-end-time" name="sunday-end-time">
     </div>
+
 
     <p>Arena:</p>
     <input type="text" name="arena" list="arena-list" value="" onclick="select();">

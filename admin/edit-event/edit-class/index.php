@@ -266,7 +266,7 @@ EOT;
           <datalist id="instructor-list">
 EOT;
 
-              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -280,7 +280,7 @@ EOT;
           <datalist id="therapist-list">
 EOT;
 
-              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
@@ -293,7 +293,7 @@ EOT;
         <input type="text" name="equine-specialist" list="es-list" value="{$esName}" onclick="select();">
           <datalist id="es-list">
 EOT;
-              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {

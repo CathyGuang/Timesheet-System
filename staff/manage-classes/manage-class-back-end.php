@@ -29,12 +29,10 @@
 
     $leaderIDPGArray = "{";
     foreach ($_POST['leaders'] as $name) {
-      var_dump($name);
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND (archived IS NULL OR archived = '');"))[0];
       $leaderIDPGArray .= $id . ",";
     }
     $leaderIDPGArray = rtrim($leaderIDPGArray, ",") . "}";
-    var_dump($leaderIDPGArray);
 
     $sidewalkerIDPGArray = "{";
     foreach ($_POST['sidewalkers'] as $name) {

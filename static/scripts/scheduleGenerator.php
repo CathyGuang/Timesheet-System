@@ -79,7 +79,7 @@ EOT;
 
       //Time
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
-      if ($event['cancelled']) {
+      if ($event['cancelled'] == 't') {
         $style = "style='background-color: var(--dark-red);'";
         $cancelled = "<br>CANCELLED";
       } else {
@@ -124,7 +124,7 @@ EOT;
       }
       if ($event['sidewalkers']) {
         foreach ($event['sidewalkers'] as $volunteerName) {
-            $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;          
+            $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;
         }
       }
       if ($volunteerString == "") {

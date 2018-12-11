@@ -1,10 +1,10 @@
 
   <?php
-    //MAKE SURE POST INCLUDES THESE TWO PARAMETERS!!
+    //MAKE SURE _POST INCLUDES THESE TWO PARAMETERS!!
     $selectedName = $_POST['selected-name'];
     $selectedDate = $_POST['selected-date'];
 
-    $QUERY_NAME = $_POST['selected-name'];
+    $QUERY_NAME = $selectedName;
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedClasses.php";
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedShifts.php";
     //these scripts generate the variables $allClasses, $allOfficeShifts, $allHorseCareShifts

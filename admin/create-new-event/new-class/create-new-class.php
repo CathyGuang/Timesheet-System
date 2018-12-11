@@ -116,7 +116,7 @@
           $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horse']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horses'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
           }
         }
       }
@@ -125,7 +125,7 @@
           $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['tack']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$tackName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
           }
         }
       }
@@ -134,7 +134,7 @@
           $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['pad']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$padName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
           }
         }
       }
@@ -164,7 +164,7 @@
           $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leader']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
           }
         }
       }

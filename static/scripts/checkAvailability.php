@@ -1,6 +1,9 @@
 <?php
 
   function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
+    //ignore calls for empty fields
+    if ($id == "") {return false;}
+    //connect to database
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php";
 
     $tableNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';"));
@@ -25,6 +28,10 @@ EOT;
 
 
     if (in_array($typeOfObject, $tableNameList)) {
+      //ignore calls to check empty fields/null values
+      $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM {$typeOfObject} WHERE id = '{$id}';"))[0];
+      if (!$name) {return false;}
+
 
       $classQuery = "";
       $horseCareShiftQuery = "";
@@ -128,6 +135,8 @@ EOT;
 
 
     } elseif (in_array($typeOfObject, $enumTypeList)) {
+      //Ignore calls to check empty fields/null values
+      if (!$id) {return false;}
 
       //Get all classes on date
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND (archived IS NULL OR archived = '');"));
@@ -148,6 +157,9 @@ EOT;
       if ($allClasses) {
         foreach ($allClasses as $key => $class) {
           if (in_array($id, $class)) {return array($class['start_time'], $class['end_time']);}
+          foreach ($class as $subString) {
+            if (strpos($subString, $id)) {return array($class['start_time'], $class['end_time']);}
+          }
         }
       }
 

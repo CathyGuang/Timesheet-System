@@ -51,16 +51,28 @@
     $masterList = array();
 
     foreach ($todaysClasses as $value) {
-      $masterList[$value['start_time']] = $value;
+      $masterList[] = $value;
     }
     foreach ($todaysHorseCareShifts as $value) {
-      $masterList[$value['start_time']] = $value;
+      $masterList[] = $value;
     }
     foreach ($todaysOfficeShifts as $value) {
-      $masterList[$value['start_time']] = $value;
+      $masterList[] = $value;
     }
     //sort masterlist by time.
-    ksort($masterList);
+    //ksort($masterList);
+    function compare($a, $b) {
+      if ($a['start_time'] < $b['start_time']) {
+        return -1;
+      } else if ($a['start_time'] > $b['start_time']) {
+        return 1;
+      } else if ($a['end_time'] < $b['end_time']) {
+        return -1;
+      } else {
+        return 1;
+      }
+    }
+    usort($masterList, "compare");
 
 
     //Display the schedule
@@ -76,9 +88,10 @@
     <p class="schedule-lesson-plan" style="height: 5vh;">Lesson Plan:</p>
 EOT;
 
-    foreach ($masterList as $time => $event) {
+    foreach ($masterList as $event) {
 
       //Time
+      $time = $event['start_time'];
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
       if ($event['cancelled'] == 't') {
         $style = "style='background-color: var(--dark-red);'";

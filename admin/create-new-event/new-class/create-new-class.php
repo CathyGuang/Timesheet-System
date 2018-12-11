@@ -19,6 +19,7 @@
   </header>
 
   <?php
+    var_dump($_POST);
     //Process form input
     //get array of dates and times
     $date = $_POST['start-date'];
@@ -60,10 +61,16 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
-    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$horseID) {
-      $horseID = 'null';
+    $horseIDList = array();
+    foreach ($_POST['horses'] as $key => $value) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
+      $horseIDList[] = $id;
     }
+
+    //TACK LIST
+
+    //PAD LIST
+
     $clientIDList = array();
     foreach ($_POST['clients'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
@@ -83,10 +90,12 @@
     if (!$esID) {
       $esID = 'null';
     }
-    $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$leaderID) {
-      $leaderID = 'null';
+    $leaderIDList = array();
+    foreach ($_POST['leaders'] as $key => $value) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
+      $leaderIDList[] = $id;
     }
+
     $sidewalkerIDList = array();
     foreach ($_POST['sidewalkers'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
@@ -106,25 +115,31 @@
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
         }
       }
-      if ($_POST['horse'] != "") {
-        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horse']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['horses'] != array()) {
+        foreach ($horseIDList as $key => $horseID) {
+          $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horse']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
-      if ($_POST['tack'] != "") {
-        $result = checkAvailability($_POST['tack'], 'tack', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['tack']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['tacks'] != array()) {
+        foreach ($_POST['tacks'] as $key => $tackName) {
+          $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['tack']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
-      if ($_POST['pad'] != "") {
-        $result = checkAvailability($_POST['pad'], 'pad', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['pad']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['pads'] != array()) {
+        foreach ($_POST['pads'] as $key => $padName) {
+          $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['pad']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
       if ($_POST['instructor'] != "") {
@@ -148,11 +163,13 @@
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['equine-specialist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
         }
       }
-      if ($_POST['leader'] != "") {
-        $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leader']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['leaders'] != array()) {
+        foreach ($leaderIDList as $key => $leaderID) {
+          $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leader']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
       if ($sidewalkerIDList != "{1}") {
@@ -171,11 +188,19 @@
       return;
     }
 
+    $horseIDList = to_pg_array($horseIDList);
+    $tackList = to_pg_array($_POST['tacks']);
+    $padList = to_pg_array($_POST['pads']);
+
+    $leaderIDList = to_pg_array($leaderIDList);
+
+
+
 
     //If no conflicts, create SQL query
-    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horse, tack, special_tack, stirrup_leather_length, pad, clients, instructor, therapist, equine_specialist, leader, sidewalkers) VALUES";
+    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, instructor, therapist, equine_specialist, leaders, sidewalkers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', {$horseID}, '{$_POST['tack']}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$_POST['pad']}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, {$leaderID}, '{$sidewalkerIDList}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, '{$leaderIDList}', '{$sidewalkerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";

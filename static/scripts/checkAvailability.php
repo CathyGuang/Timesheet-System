@@ -38,7 +38,7 @@ EOT;
         {$id} = classes.instructor OR
         {$id} = classes.therapist OR
         {$id} = classes.equine_specialist OR
-        {$id} = classes.leader OR
+        {$id} = ANY(classes.leaders) OR
         {$id} = ANY(classes.sidewalkers)
         ) AND (
         '{$date}' = date_of_class
@@ -81,7 +81,7 @@ EOT;
         SELECT start_time, end_time FROM classes
         WHERE
         (
-        {$id} = classes.horse
+        {$id} = ANY(classes.horses)
         ) AND (
         '{$date}' = date_of_class
         ) AND (

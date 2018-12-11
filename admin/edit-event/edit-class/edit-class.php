@@ -200,7 +200,7 @@
       }
     }
     if ($abort) {
-      echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
+      echo "<h3 class='main-content-header'>Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again If you leave this page without resolving conflicts the class data will be lost.</h3>";
       return;
     }
 

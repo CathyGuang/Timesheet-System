@@ -53,7 +53,7 @@
 
     //Process form input
     //get array of dates and times
-    $date = $_POST['start-date'];
+    $date = date('Y-m-d');
     $end_date = $_POST['end-date'];
     $dateTimeTriplets = array();
 
@@ -205,10 +205,6 @@
     }
 
     //If no conflicts, create new entries.
-
-
-
-
 
     //Create SQL query
     $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horse, tack, special_tack, stirrup_leather_length, pad, clients, instructor, therapist, equine_specialist, leader, sidewalkers) VALUES";

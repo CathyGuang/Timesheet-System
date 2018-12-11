@@ -16,7 +16,6 @@ ADD CHECK SCHEDULE BY HORSE
 - allow every other week option for class creation
 
 
-MAKE SURE ADMIN EDIT CLASS ONLY EDITS FUTURE CLASSES
 
 make attendance show up on schedule pages
 

@@ -194,9 +194,9 @@
 
 
     //If no conflicts, create SQL query
-    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, instructor, therapist, equine_specialist, leaders, sidewalkers) VALUES";
+    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, instructor, therapist, equine_specialist, leaders, sidewalkers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, '{$leaderIDList}', '{$sidewalkerIDList}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, '{$leaderIDList}', '{$sidewalkerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";

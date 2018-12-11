@@ -160,7 +160,8 @@ EOT;
       foreach ($event['horses'] as $key => $value) {
         $horseString .= "<i>Horse: </i>" . $value . ", ";
         if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
-          $horseString .= "<i>Tack: </i>" . $event['tacks'][$key] . ", ";
+          $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
+          $horseString .= "<i>Tack: </i>" . $tackName . ", ";
         }
         if ($event['pads'][$key] and $event['pads'][$key] != "") {
           $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
@@ -184,7 +185,11 @@ EOT;
       if ($event['clients']) {
         foreach ($event['clients'] as $clientName) {
           $clientString .= "<i>Clients: </i>";
-          $clientString .= $clientName . "<br>";
+          if (in_array($clientName, $event['attendance'])) {
+            $clientString .= $clientName . "<br>";
+          } else {
+            $clientString .= "<s style='color: red;'>" . $clientName . "</s><br>";
+          }
         }
       }
       if ($clientString == "") {

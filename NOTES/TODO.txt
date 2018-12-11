@@ -10,17 +10,13 @@ ADD CHECK SCHEDULE BY HORSE
   - MAKE VIEW FULL DAILY SCHEDULE OPTION FROM HOME PAGE
 
 
-- classes can have MULTIPLE EVERYTHING
 
-- make blank leaders/sidewalkers/clients show up in schedule
 
-- trim all free text user input for spaces
+- trim all free-text user input for spaces
 
 - allow every other week option for class creation
 
 
 
-- make attendance show up on schedule pages
-  - set default attendance for all clients to true
 
 - make clients able to mark their own attendance / client notes for classes they are associated with

@@ -165,11 +165,18 @@ button:hover {
 
     /* SCHEDULE DISPLAY STYLES */
 
+    .schedule-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+    }
+
     .schedule-display {
       margin: 0;
-      margin-top: 3vh;
+      margin-top: 50vh;
       display: grid;
-      grid-template-columns: 5px 1fr 132px 175px 275px 275px 230px 130px 310px 1fr 5px;
+      grid-template-columns: 5px 1fr 132px 175px 300px 300px 350px 500px 250px 350px 1fr 5px;
     }
     .schedule-display > * {
       border: 1px solid black;
@@ -188,15 +195,18 @@ button:hover {
     .schedule-staff {
       grid-column: 5;
     }
-    .schedule-volunteers {
+    .schedule-leaders {
       grid-column: 6;
     }
-    .schedule-horse-info {
+    .schedule-volunteers {
       grid-column: 7;
     }
-    .schedule-clients {
+    .schedule-horse-info {
       grid-column: 8;
     }
-    .schedule-lesson-plan {
+    .schedule-clients {
       grid-column: 9;
+    }
+    .schedule-lesson-plan {
+      grid-column: 10;
     }

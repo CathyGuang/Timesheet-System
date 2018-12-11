@@ -253,9 +253,10 @@ EOT;
 
 EOT;
           $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
-          foreach ($padList as $name) {
+          foreach ($padList as $key => $name) {
+            $padList[$key] = rtrim(ltrim($name, "\""), "\"");
             echo <<<EOT
-            <input type="text" name="pads[]" list="pad-list" value="{$name}" onclick="select();">
+            <input type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
 EOT;
           }
 

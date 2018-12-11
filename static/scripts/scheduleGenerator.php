@@ -69,6 +69,7 @@
     <p class="schedule-time" style="height: 5vh;">Time:</p>
     <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
+    <p class="schedule-leaders" style="height: 5vh;">Leaders:</p>
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>
@@ -112,19 +113,35 @@ EOT;
       }
       echo "<p class='schedule-staff' {$style}>{$staffString}</p>";
 
+      //Leaders
+      $leaderString = "";
+      if ($event['leaders']) {
+        foreach ($event['leaders'] as $leaderName) {
+          $leaderString .= "<i>Leader: </i>" . $leaderName;
+        }
+      }
+      if ($leaderString == "") {
+        $leaderString = "&#8212";
+      }
+      if (strpos($leaderString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      echo "<p class='schedule-leaders' {$style}>{$leaderString}</p>";
+
+
       //Volunteers
       $volunteerString = "";
-      if ($event['leader'] != "") {
-        $volunteerString .= "<i>Leader: </i>" . $event['leader'];
-      }
       if ($event['volunteers']) {
         foreach ($event['volunteers'] as $volunteerName) {
-          $volunteerString .= "<br><i>Volunteer: </i>" . $volunteerName;
+          $volunteerString .= "<i>Volunteer: </i>" . $volunteerName;
         }
       }
       if ($event['sidewalkers']) {
         foreach ($event['sidewalkers'] as $volunteerName) {
-            $volunteerString .= "<br><i>Sidewalker: </i>" . $volunteerName;
+            $volunteerString .= "<i>Sidewalker: </i>" . $volunteerName;
+            $volunteerString .= "<br>";
         }
       }
       if ($volunteerString == "") {
@@ -139,20 +156,24 @@ EOT;
 
       //Horse
       $horseString = "";
-      if ($event['horse'] and $event['horse'] != "") {
-        $horseString .= "<i>Horse: </i>" . $event['horse'] . ", ";
-      }
-      if ($event['tack'] and $event['tack'] != "") {
-        $horseString .= "<br><i>Tack: </i>" . $event['tack'] . ", ";
+      foreach ($event['horses'] as $key => $value) {
+        if ($value != "") {
+          $horseString .= "<i>Horse: </i>" . $value . ", ";
+        }
+        if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+          $horseString .= "<i>Tack: </i>" . $event['tacks'][$key] . ", ";
+        }
+        if ($event['pads'][$key] and $event['pads'][$key] != "") {
+          $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
+          $horseString .= "<i>Pad: </i>" . $padName;
+        }
+        $horseString .= "<br>";
       }
       if ($event['special_tack'] and $event['special_tack'] != "") {
         $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
       }
       if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
         $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
-      }
-      if ($event['pad'] and $event['pad'] != "") {
-        $horseString .= "<i><br>Pad: </i>" . $event['pad'];
       }
       if ($horseString == "") {
         $horseString = "&#8212";
@@ -161,10 +182,10 @@ EOT;
 
       //Clients
       $clientString = "";
-      if ($event['clients'] and $event['clients'][0] != "") {
-        $clientString = "<i>Clients: </i>";
+      if ($event['clients']) {
         foreach ($event['clients'] as $clientName) {
-          $clientString .= $clientName . ", ";
+          $clientString .= "<i>Clients: </i>";
+          $clientString .= $clientName . "<br>";
         }
       }
       if ($clientString == "") {

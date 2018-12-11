@@ -21,5 +21,6 @@ ADD CHECK SCHEDULE BY HORSE
 
 
 - make attendance show up on schedule pages
+  - set default attendance for all clients to true
 
 - make clients able to mark their own attendance / client notes for classes they are associated with

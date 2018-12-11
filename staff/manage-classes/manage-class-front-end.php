@@ -20,7 +20,7 @@
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horse, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, therapist, equine_specialist, leader, sidewalkers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, instructor, therapist, equine_specialist, leaders, sidewalkers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
@@ -36,9 +36,13 @@
       ?>
     </textarea>
 
-    <?php $horseName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM horses WHERE id = '{$classInfo['horse']}'"))[0]; ?>
-    <p>Horse:</p>
-    <input type="text" list="horse-list" value="<?php echo $horseName?>" onclick="select()">
+    <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
+    <p>Horse(s):</p>
+    <?php
+      foreach ($horseNameList as $name) {
+        echo "<input type='text' list='horse-list' name='horses[]' value='{$name}' onclick='select()'>";
+      }
+    ?>
       <datalist id="horse-list">
         <?php
           $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
@@ -97,12 +101,26 @@ EOT;
         ?>
       </textarea>
 
+      <?php $instructorName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['instructor']}'"))[0]; ?>
+      <p>Instructor:</p>
+      <input type="text" list="instructor-list" name="instructor" value="<?php echo $instructorName?>" onclick="select()">
+        <datalist id="instructor-list">
+          <?php
+            $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
+            $result = pg_query($db_connection, $query);
+            $workerNames = pg_fetch_all_columns($result);
+            foreach ($workerNames as $key => $name) {
+              echo "<option value='$name'>";
+            }
+          ?>
+        </datalist>
+
       <?php $therapistName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['therapist']}'"))[0]; ?>
       <p>Therapist:</p>
       <input type="text" list="therapist-list" name="therapist" value="<?php echo $therapistName?>" onclick="select()">
         <datalist id="therapist-list">
           <?php
-            $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+            $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
             $result = pg_query($db_connection, $query);
             $workerNames = pg_fetch_all_columns($result);
             foreach ($workerNames as $key => $name) {
@@ -116,7 +134,7 @@ EOT;
         <input type="text" list="equine-specialist-list" name="equine-specialist" value="<?php echo $equineSpecialistName?>" onclick="select()">
           <datalist id="equine-specialist-list">
             <?php
-              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $name) {
@@ -125,9 +143,13 @@ EOT;
             ?>
           </datalist>
 
-          <?php $leaderName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['leader']}'"))[0]; ?>
-          <p>Leader:</p>
-          <input type="text" list="leader-list" name="leader" value="<?php echo $leaderName?>" onclick="select()">
+          <?php $leaderNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE id = ANY('{$classInfo['leaders']}')")); ?>
+          <p>Leader(s):</p>
+          <?php
+            foreach ($leaderNameList as $name) {
+              echo "<input type='text' list='leader-list' name='leaders[]' value='{$name}' onclick='select()'>";
+            }
+          ?>
             <datalist id="leader-list">
               <?php
                 $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
@@ -139,7 +161,7 @@ EOT;
               ?>
             </datalist>
 
-          <p>Sidewalkers:</p>
+          <p>Sidewalker(s):</p>
             <datalist id="sidewalker-list">
               <?php
                 $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
@@ -152,7 +174,7 @@ EOT;
             </datalist>
           <?php
             $sidewalkerIDList = explode(',', rtrim(ltrim($classInfo['sidewalkers'], "{"), "}"));
-            foreach ($sidewalkerIDList as $index => $id) {
+            foreach ($sidewalkerIDList as $id) {
               $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$id}'"))[0];
               echo "<input type='text' name='sidewalkers[]' list='sidewalker-list' value='{$name}'>";
             }

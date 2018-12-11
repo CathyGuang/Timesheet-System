@@ -114,7 +114,7 @@ button:hover {
           display: flex;
           flex-flow: column wrap;
           justify-content: space-around;
-          max-height: 75vh;
+          max-height: 77vh;
           margin-left: 8%;
           margin-top: 5vh;
         }

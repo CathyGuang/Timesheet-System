@@ -15,8 +15,3 @@ ADD CHECK SCHEDULE BY HORSE
 - trim all free-text user input for spaces
 
 - allow every other week option for class creation
-
-
-
-
-- make clients able to mark their own attendance / client notes for classes they are associated with

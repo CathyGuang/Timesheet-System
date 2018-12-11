@@ -223,19 +223,13 @@
       return;
     }
 
-    var_dump($_POST['pads']);
 
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
-    $padList = '{';
-    foreach ($_POST['pads'] as $padName) {
-      $padList .= $padName . ",";
-    }
-    $padList = rtrim($padList, ',') . '}';
+    $padList = to_pg_array($_POST['pads']);
 
     $leaderIDList = to_pg_array($leaderIDList);
 
-    var_dump($padList);
 
     //If no conflicts, create new entries.
 

@@ -117,7 +117,8 @@ EOT;
       $leaderString = "";
       if ($event['leaders']) {
         foreach ($event['leaders'] as $leaderName) {
-          $leaderString .= "<i>Leader: </i>" . $leaderName;
+          $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
+
         }
       }
       if ($leaderString == "") {
@@ -157,9 +158,7 @@ EOT;
       //Horse
       $horseString = "";
       foreach ($event['horses'] as $key => $value) {
-        if ($value != "") {
-          $horseString .= "<i>Horse: </i>" . $value . ", ";
-        }
+        $horseString .= "<i>Horse: </i>" . $value . ", ";
         if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
           $horseString .= "<i>Tack: </i>" . $event['tacks'][$key] . ", ";
         }

@@ -2,6 +2,9 @@ TEST APACHE DIRECTORY RESTRICTIONS
   - MAKE SURE ALL PAGES CAN BE ACCESSED ON LOCAL NETWORK
   - MAKE SURE ADMIN/STAFF PAGES CANNOT BE ACCESSED OFF LOCAL NETWORK
 
+
+
+
 ADD CHECK SCHEDULE BY HORSE
 
   - MAKE VIEW FULL DAILY SCHEDULE OPTION FROM HOME PAGE
@@ -17,6 +20,6 @@ ADD CHECK SCHEDULE BY HORSE
 
 
 
-make attendance show up on schedule pages
+- make attendance show up on schedule pages
 
 - make clients able to mark their own attendance / client notes for classes they are associated with

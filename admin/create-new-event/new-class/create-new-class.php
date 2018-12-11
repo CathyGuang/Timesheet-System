@@ -19,7 +19,6 @@
   </header>
 
   <?php
-    var_dump($_POST);
     //Process form input
     //get array of dates and times
     $date = $_POST['start-date'];
@@ -61,15 +60,12 @@
       return '{' . implode(",", $result) . '}'; // format
     }
 
+
     $horseIDList = array();
     foreach ($_POST['horses'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $horseIDList[] = $id;
     }
-
-    //TACK LIST
-
-    //PAD LIST
 
     $clientIDList = array();
     foreach ($_POST['clients'] as $key => $value) {

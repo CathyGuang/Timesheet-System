@@ -42,8 +42,11 @@
       return;
     }
 
+    //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
+    $todaysDate = date('Y-m-d');
+    var_dump($todaysDate);
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
     $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
     if ($classIDSQLObject) {
       foreach ($classIDSQLObject as $row => $data) {
@@ -55,7 +58,7 @@
 
     //Process form input
     //get array of dates and times
-    $date = $_POST['start-date'];
+    $date = $todaysDate;
     $end_date = $_POST['end-date'];
     $dateTimeTriplets = array();
     if ($_POST['every-other-week'] == "TRUE") {
@@ -226,7 +229,7 @@
       }
     }
     if ($abort) {
-      echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
+      echo "<h3 class='main-content-header'>Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again. Some data from this class will be lost unless you resolve the booking conflicts now.</h3>";
       return;
     }
 

@@ -43,7 +43,7 @@
     }
 
     //ONLY EDIT FUTURE CLASSES
-    $todaysDate = "2018-12-20"; //date('Y-m-d');
+    $todaysDate = date('Y-m-d');
 
     //ADD NEW VALUES
 

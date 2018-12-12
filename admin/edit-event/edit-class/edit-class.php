@@ -70,7 +70,7 @@
     $datesAdded = array();
     while (strtotime($date) <= strtotime($end_date)) {
       $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST) and !in_array(date('Y-m-d', strtotime("-1 week" . $date)), $datesAdded)) {
+      if (in_array($dayOfWeek, $_POST) and (!$everyOtherWeek or !in_array(date('Y-m-d', strtotime("-1 week" . $date)), $datesAdded))) {
         $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
         $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
         $dateTimeTriplets[$date] = array($startTime, $endTime);

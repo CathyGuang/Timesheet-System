@@ -134,6 +134,7 @@ INSERT INTO workers (name) VALUES ('NEED');
 
 INSERT INTO clients (name) VALUES ('');
 INSERT INTO horses (name) VALUES ('');
+INSERT INTO horses (name) VALUES ('HORSE NEEDED');
 
 /* CREATE CLASS TABLE */
 

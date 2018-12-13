@@ -130,6 +130,8 @@ CREATE TABLE staff_hours (
 
 /* INITIALIZE NECESSARY NULL VALUES */
 INSERT INTO workers (name) VALUES ('');
+INSERT INTO workers (name) VALUES ('NEED');
+
 INSERT INTO clients (name) VALUES ('');
 INSERT INTO horses (name) VALUES ('');
 

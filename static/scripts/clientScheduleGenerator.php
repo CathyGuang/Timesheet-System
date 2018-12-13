@@ -68,7 +68,7 @@
     <p class="schedule-time" style="height: 5vh;">Time:</p>
     <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
-    <p class="schedule-leaders" style="height: 5vh;">Leaders:</p>
+    <p class="schedule-leaders" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>
@@ -114,11 +114,19 @@ EOT;
 
             //Leaders
             $leaderString = "";
+            //Classes with potentially multiple leaders
             if ($event['leaders']) {
               foreach ($event['leaders'] as $leaderName) {
-                $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
-
+                if ($leaderName == "NEED"){
+                  $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div><br>";
+                } else {
+                  $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
+                }
               }
+            }
+            //Shifts with only one leader
+            if ($event['leader']) {
+              $leaderString .= "<i>Shift Leader/Key Volunteer: </i>" . $event['leader'];
             }
             if ($leaderString == "") {
               $leaderString = "&#8212";
@@ -135,14 +143,23 @@ EOT;
             $volunteerString = "";
             if ($event['volunteers']) {
               foreach ($event['volunteers'] as $volunteerName) {
-                $volunteerString .= "<i>Volunteer: </i>" . $volunteerName;
+                if ($volunteerName == "NEED") {
+                  $volunteerString .= "<div style='color: yellow;'>{$volunteerName}</div>, ";
+                } else {
+                  $volunteerString .= $volunteerName . ", ";
+                }
               }
             }
             if ($event['sidewalkers']) {
-              foreach ($event['sidewalkers'] as $volunteerName) {
-                  $volunteerString .= "<i>Sidewalker: </i>" . $volunteerName;
-                  $volunteerString .= "<br>";
-              }
+                foreach ($event['sidewalkers'] as $volunteerName) {
+                  if ($volunteerName == "NEED") {
+                    $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
+                    $volunteerString .= "<br>";
+                  } else {
+                    $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}";
+                    $volunteerString .= "<br>";
+                  }
+                }
             }
             if ($volunteerString == "") {
               $volunteerString = "&#8212";
@@ -152,32 +169,43 @@ EOT;
             } else {
               $style = "";
             }
-            echo "<p class='schedule-volunteers' {$style}>{$volunteerString}</p>";
+            echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
 
             //Horse
             $horseString = "";
-            foreach ($event['horses'] as $key => $value) {
-              $horseString .= "<i>Horse: </i>" . $value . ", ";
-              if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
-                $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
-                $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+            if ($event['horses']) {
+              foreach ($event['horses'] as $key => $horseName) {
+                if ($horseName == "HORSE NEEDED") {
+                  $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='color: red; float: left;'>{$horseName}</div>, ";
+                } else {
+                  $horseString .= "<i>Horse: </i>" . $horseName . ", ";
+                }
+                if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+                  $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
+                  $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+                }
+                if ($event['pads'][$key] and $event['pads'][$key] != "") {
+                  $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
+                  $horseString .= "<i>Pad: </i>" . $padName;
+                }
+                $horseString .= "<br>";
               }
-              if ($event['pads'][$key] and $event['pads'][$key] != "") {
-                $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
-                $horseString .= "<i>Pad: </i>" . $padName;
+              if ($event['special_tack'] and $event['special_tack'] != "") {
+                $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
               }
-              $horseString .= "<br>";
+              if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
+                $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
+              }
             }
-            if ($event['special_tack'] and $event['special_tack'] != "") {
-              $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
-            }
-            if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
-              $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
+            if (strpos($horseString, $selectedName) !== false) {
+              $style = "style='background-color: var(--accent-purple);'";
+            } else {
+              $style = "";
             }
             if ($horseString == "") {
               $horseString = "&#8212";
             }
-            echo "<p class='schedule-horse-info'>{$horseString}</p>";
+            echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
             //Clients
             $clientString = "";

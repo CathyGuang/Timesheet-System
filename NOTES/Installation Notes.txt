@@ -8,6 +8,9 @@ MAKE SURE APACHE IS PROPERLY CONFIGURED
   - IN <Directory "${SRVROOT}/htdocs"> BLOCK, SET "AllowOverride All" TO ALLOW .htaccess FILES TO WORK
   - GENERATE HTPASSWD FILE WITH HTPASSWD.exe IN apache/bin WITH SPECIFIED PASSWORDS FOR staff AND admin
   - CREATE /apache/HTPASSWD DIRECTORY AND PLACE .htpasswd FILE THERE
+  - DISABLE CENTOS 7 FIREWALL:
+      - sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent
+      - sudo systemctl restart firewalld
 
 MAKE SURE PHP IS PROPERLY CONFIGURED
   - NEED TO MAKE SURE PGSQL EXTENSION IS ENABLED AND WORKS IN PHP.INI FILE

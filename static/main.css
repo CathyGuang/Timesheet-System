@@ -183,7 +183,7 @@ button:hover {
       margin: 0;
       padding-left: 8px;
       padding-top: 5px;
-      height: 25vh;
+      /*height: 20vh;*/
       font-size: 15pt;
     }
     .schedule-time {

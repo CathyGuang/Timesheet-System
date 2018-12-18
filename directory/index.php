@@ -18,6 +18,7 @@
   <div class="main-content-div">
     <a href="staff-directory"><button class="blue-button">Staff</button></a>
     <a href="volunteer-directory"><button class="blue-button">Volunteers</button></a>
+    <a href="horse-directory"><button class="blue-button">Horses</button></a>
   </div>
 
 </body>

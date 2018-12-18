@@ -25,7 +25,7 @@
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
 
-  <form action="manage-class-back-end.php" method="post" class="main-form">
+  <form autocomplete="off" action="manage-class-back-end.php" method="post" class="main-form">
 
     <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 

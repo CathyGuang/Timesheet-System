@@ -18,7 +18,7 @@
 
   <div class="main-content-div">
 
-    <form action="schedule.php" method="post" class="main-form small-form">
+    <form autocomplete="off" action="schedule.php" method="post" class="main-form small-form">
       <p>Select your name:</p>
       <input name="selected-name" list="volunteers">
       <datalist id="volunteers">

@@ -56,7 +56,7 @@
 
       echo <<<EOT
 
-      <form action="edit-office-shift.php" method="post" class="main-form full-page-form">
+      <form autocomplete="off" action="edit-office-shift.php" method="post" class="main-form full-page-form">
 
         <p>Shift Type:</p>
         <input type="text" name="old-shift-type" value="{$shiftData['office_shift_type']}" style="visibility: hidden;">
@@ -246,7 +246,7 @@ EOT;
     } else {
 
     echo <<<EOT
-      <form action="" method="post" class="main-form">
+      <form autocomplete="off" action="" method="post" class="main-form">
         <p>Select a shift to edit:</p>
         <input type="text" name="selected-shift" list="shift-list">
           <datalist id="shift-list">

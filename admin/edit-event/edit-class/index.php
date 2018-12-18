@@ -92,7 +92,7 @@
 
       echo <<<EOT
 
-      <form action="edit-class.php" method="post" class="main-form full-page-form">
+      <form autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
 
 
 
@@ -539,7 +539,7 @@ EOT;
 } else { //IF CLASS HAS NOT YET BEEN SELECTED
 
     echo <<<EOT
-      <form action="" method="post" class="main-form">
+      <form autocomplete="off" action="" method="post" class="main-form">
         <p>Select a class to edit:</p>
         <input type="text" name="selected-class" list="class-list">
           <datalist id="class-list">

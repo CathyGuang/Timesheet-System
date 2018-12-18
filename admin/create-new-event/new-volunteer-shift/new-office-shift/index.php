@@ -18,7 +18,7 @@
   </header>
 
 
-  <form action="create-new-office-shift.php" method="post" class="main-form full-page-form">
+  <form autocomplete="off" action="create-new-office-shift.php" method="post" class="main-form full-page-form">
 
     <p>Shift Type:</p>
     <input type="text" name="shift-type" list="shift-type-list" onclick="select()" required>

@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <form action="create-new-horse.php" method="post" class="main-form">
+  <form autocomplete="off" action="create-new-horse.php" method="post" class="main-form">
 
     <p>Name:</p>
     <input type="text" name="name" value="" required>

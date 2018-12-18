@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <form action="volunteer-directory.php" method="post" class="main-form">
+  <form autocomplete="off" action="volunteer-directory.php" method="post" class="main-form">
     <?php
       $query = "SELECT * FROM workers WHERE volunteer = TRUE AND name != 'NEED' AND (archived IS NULL OR archived = '');";
       $allPeople = pg_fetch_all(pg_query($db_connection, $query));

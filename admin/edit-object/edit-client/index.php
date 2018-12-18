@@ -20,7 +20,7 @@
   <?php
   if (!$_POST['selected-client']) {
     echo <<<EOT
-    <form action="" method="post" class="main-form">
+    <form autocomplete="off" action="" method="post" class="main-form">
       <p>Select a client to edit:</p>
       <input type="text" name="selected-client" list="client-list">
         <datalist id="client-list">
@@ -44,7 +44,7 @@ EOT;
       $clientInfo = pg_fetch_array($clientInfoSQL, 0, PGSQL_ASSOC);
 
       echo <<<EOT
-      <form action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
+      <form autocomplete="off" action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
 
         <p>Name:</p>
         <input type="text" name="name" value="{$clientInfo['name']}" required>

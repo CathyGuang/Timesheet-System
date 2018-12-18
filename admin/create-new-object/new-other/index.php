@@ -19,7 +19,7 @@
   </header>
 
 
-  <form action="create-new-other.php" method="post" class="main-form">
+  <form autocomplete="off" action="create-new-other.php" method="post" class="main-form">
 
     <p>Select object type:</p>
     <input name="object-type" list="object-type-list" onclick="select();" required>

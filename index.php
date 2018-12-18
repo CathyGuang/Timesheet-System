@@ -27,7 +27,7 @@
     <a href="/admin"><button class="red-button">Admin</button></a>
   </div>
 
-  <form action="/full-daily-schedule/index.php" method="post" id="full-daily-schedule-form" style="visibility: hidden">
+  <form autocomplete="off" action="/full-daily-schedule/index.php" method="post" id="full-daily-schedule-form" style="visibility: hidden">
     <input type="text" name="selected-name" value="ALL">
   </form>
 

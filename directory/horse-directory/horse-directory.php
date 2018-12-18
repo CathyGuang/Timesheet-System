@@ -17,7 +17,7 @@
   </header>
 
   <div class="main-content-div">
-    <form class="main-content-form" style="width: 500px;">
+    <form autocomplete="off" class="main-content-form" style="width: 500px;">
       <?php
         $query = "SELECT * FROM horses WHERE id = {$_POST['buttonInfo']};";
         $horseInfo = pg_fetch_all(pg_query($db_connection, $query))[0];

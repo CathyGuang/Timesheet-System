@@ -20,7 +20,7 @@
     if (!$_POST['selected-worker']) {
       echo <<<EOT
       <div class="main-content-div">
-        <form action="" method="post" class="main-form small-form">
+        <form autocomplete="off" action="" method="post" class="main-form small-form">
           <p>Select your name:</p>
           <input type="text" name="selected-worker" list="worker-list" onclick="select();">
             <datalist id="worker-list">
@@ -39,7 +39,7 @@ EOT;
       $QUERY_NAME = $_POST['selected-worker'];
       include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/getWorkerInvolvedClasses.php";
       echo <<<EOT
-        <form action="manage-class-front-end.php" method="get" class="main-form">
+        <form autocomplete="off" action="manage-class-front-end.php" method="get" class="main-form">
 EOT;
       if($allClasses) {
         foreach ($allClasses as $classTuple) {

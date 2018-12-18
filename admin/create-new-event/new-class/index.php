@@ -18,7 +18,7 @@
   </header>
 
 
-  <form action="create-new-class.php" method="post" class="main-form full-page-form">
+  <form id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
 
     <p>Class Type:</p>
     <input type="text" name="class-type" list="class-type-list" onclick="select()" required>
@@ -107,39 +107,8 @@
           }
         ?>
       </datalist>
-    <div id="horse-section">
-      <p>Horse(s):</p>
-      <input type="text" name="horses[]" list="horse-list" value="" onclick="select();">
-        <datalist id="horse-list">
-          <?php
-            $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $horseNames = pg_fetch_all_columns($result);
-            foreach ($horseNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
 
-    <div id="tack-section">
-      <p>Tack(s):</p>
-      <input type="text" name="tacks[]" list="tack-list" value="" onclick="select();">
-        <datalist id="tack-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $tackNames = pg_fetch_all_columns($result);
-            foreach ($tackNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
+
 
 
     <p>Special Tack:</p>
@@ -148,41 +117,7 @@
     <p>Stirrup Leather Length:</p>
     <input type="text" name="stirrup-leather-length">
 
-    <div id="pad-section">
-      <p>Pad(s):</p>
-      <input type="text" name="pads[]" list="pad-list" value="" onclick="select();">
-        <datalist id="pad-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $padNames = pg_fetch_all_columns($result);
-            foreach ($padNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
 
-
-
-    <div id="client-section">
-      <p>Client(s):</p>
-      <input type="text" name="clients[]" list="client-list" value="" onclick="select();">
-        <datalist id="client-list">
-          <?php
-            $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $clientNames = pg_fetch_all_columns($result);
-            foreach ($clientNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-    </div>
-    <br>
-    <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
 
     <p>Instructor:</p>
     <input type="text" name="instructor" list="instructor-list" value="" onclick="select();">
@@ -222,27 +157,122 @@
           }
         ?>
       </datalist>
-    <div id="leader-section">
-      <p>Leader(s):</p>
-      <input type="text" name="leaders[]" list="leader-list" value="" onclick="select();">
-        <datalist id="leader-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $value) {
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+
+
+
+
+
+    <br><br>
+    <input type="submit" value="Create">
+
+  </form>
+
+
+
+  <div style="display:flex; justify-content:space-around;">
+
+    <div>
+      <div id="horse-section">
+        <p>Horse(s):</p>
+        <input form="class-form" type="text" name="horses[]" list="horse-list" value="" onclick="select();">
+          <datalist id="horse-list">
+            <?php
+              $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $horseNames = pg_fetch_all_columns($result);
+              foreach ($horseNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
       </div>
       <br>
-      <button type="button" id="add-leader-button" onclick="newLeaderFunction();">Add Additional Leader</button>
+      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
+    </div>
+
+    <div>
+      <div id="tack-section">
+        <p>Tack(s):</p>
+        <input form="class-form" type="text" name="tacks[]" list="tack-list" value="" onclick="select();">
+          <datalist id="tack-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $tackNames = pg_fetch_all_columns($result);
+              foreach ($tackNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+      </div>
+      <br>
+      <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
+    </div>
+
+    <div>
+      <div id="pad-section">
+        <p>Pad(s):</p>
+        <input form="class-form" type="text" name="pads[]" list="pad-list" value="" onclick="select();">
+          <datalist id="pad-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $padNames = pg_fetch_all_columns($result);
+              foreach ($padNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+      </div>
+      <br>
+      <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
+    </div>
 
 
+
+    <div>
+      <div id="client-section">
+        <p>Client(s):</p>
+        <input form="class-form" type="text" name="clients[]" list="client-list" value="" onclick="select();">
+          <datalist id="client-list">
+            <?php
+              $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $clientNames = pg_fetch_all_columns($result);
+              foreach ($clientNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+      </div>
+      <br>
+      <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
+    </div>
+
+    <div>
+      <div id="leader-section">
+        <p>Leader(s):</p>
+        <input form="class-form" type="text" name="leaders[]" list="leader-list" value="" onclick="select();">
+          <datalist id="leader-list">
+            <?php
+              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $workerNames = pg_fetch_all_columns($result);
+              foreach ($workerNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+        </div>
+        <br>
+        <button type="button" id="add-leader-button" onclick="newLeaderFunction();">Add Additional Leader</button>
+      </div>
+
+
+    <div>
       <div id="sidewalker-section">
         <p>Sidewalker(s):</p>
-        <input type="text" name="sidewalkers[]" list="sidewalker-list" value="" onclick="select();">
+        <input form="class-form" type="text" name="sidewalkers[]" list="sidewalker-list" value="" onclick="select();">
           <datalist id="sidewalker-list">
             <?php
               $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
@@ -256,14 +286,21 @@
         </div>
         <br>
         <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
+      </div>
+
+
+
+  </div>
 
 
 
 
-    <br><br>
-    <input type="submit" value="Create">
 
-  </form>
+
+
+
+
+
 
 
   <footer>
@@ -275,6 +312,7 @@
         newInput.setAttribute('list', 'horse-list');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
         var horseSection = document.getElementById('horse-section');
         horseSection.appendChild(newInput);
       };
@@ -286,6 +324,7 @@
           newInput.setAttribute('list', 'tack-list');
           newInput.setAttribute('value', '');
           newInput.setAttribute('onclick', 'select()');
+          newInput.setAttribute('form', 'class-form');
           var tackSection = document.getElementById('tack-section');
           tackSection.appendChild(newInput);
         };
@@ -297,6 +336,7 @@
             newInput.setAttribute('list', 'pad-list');
             newInput.setAttribute('value', '');
             newInput.setAttribute('onclick', 'select()');
+            newInput.setAttribute('form', 'class-form');
             var padSection = document.getElementById('pad-section');
             padSection.appendChild(newInput);
           };
@@ -307,6 +347,7 @@
         newInput.setAttribute('list', 'client-list');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
         var clientSection = document.getElementById('client-section');
         clientSection.appendChild(newInput);
       };
@@ -318,6 +359,7 @@
           newInput.setAttribute('list', 'leader-list');
           newInput.setAttribute('value', '');
           newInput.setAttribute('onclick', 'select()');
+          newInput.setAttribute('form', 'class-form');
           var leaderSection = document.getElementById('leader-section');
           leaderSection.appendChild(newInput);
         };
@@ -329,6 +371,7 @@
       newInput.setAttribute('list', 'sidewalker-list');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
       var sidewalkerSection = document.getElementById('sidewalker-section');
       sidewalkerSection.appendChild(newInput);
     };

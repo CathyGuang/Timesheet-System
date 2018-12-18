@@ -25,7 +25,7 @@
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
 
-  <form action="manage-class-back-end.php" method="post" class="main-form">
+  <form action="manage-class-back-end.php" method="post" class="main-form" autocomplete="off">
 
     <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 
@@ -93,13 +93,6 @@
 EOT;
         }
       ?>
-
-      <p>Client Notes:</p>
-      <textarea name="client-notes" rows="10" cols="30">
-        <?php
-          echo $classInfo['client_notes'];
-        ?>
-      </textarea>
 
       <?php $instructorName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['instructor']}'"))[0]; ?>
       <p>Instructor:</p>
@@ -182,7 +175,8 @@ EOT;
           <br>
 
     <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
-    <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
+    <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?> disabled></p>
+    <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?> style="visibility:hidden;">
 
 
     <br><br>

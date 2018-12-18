@@ -20,7 +20,7 @@
     if (!$_POST['selected-client']) {
       echo <<<EOT
       <div class="main-content-div">
-        <form action="" method="post" class="main-form small-form">
+        <form action="" method="post" class="main-form small-form" autocomplete='off'>
           <p>Select your name:</p>
           <input type="text" name="selected-client" list="client-list" onclick="select();">
             <datalist id="client-list">

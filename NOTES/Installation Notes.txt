@@ -20,9 +20,11 @@ MAKE SURE PHP IS PROPERLY CONFIGURED
 
 MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
   - MAKE SURE
+              # "local" is for Unix domain socket connections only
+              local   all             all                                     md5
               # IPv4 local connections:
               host    all             all             127.0.0.1/32            md5
-      IS IN PostgreSQL\11\data\pg_hba.conf FILE AT THE END
+      ARE BOTH IN PostgreSQL\11\data\pg_hba.conf FILE AT THE END
 
 REMEMBER TO INCLUDE /static/dbinfo/ SUBDIRECTORY, IT IS NOT ON GIT. MOVE FROM MY LAPTOP
 

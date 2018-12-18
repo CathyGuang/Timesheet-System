@@ -41,17 +41,12 @@
     }
     $sidewalkerIDPGArray = rtrim($sidewalkerIDPGArray, ",") . "}";
 
-    if ($_POST['cancel'] == "TRUE") {
-      $cancel = 'TRUE';
-    } else {
-      $cancel = 'FALSE';
-    }
 
 
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$_POST['lesson-plan']}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}', client_notes = '{$_POST['client-notes']}', therapist = '{$therapistID}', equine_specialist = '{$esID}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
+      horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}', therapist = '{$therapistID}', equine_specialist = '{$esID}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
       WHERE id = {$_POST['id']};
 EOT;
 

@@ -29,13 +29,7 @@
 
     <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 
-    <p>Lesson Plan:</p>
-    <textarea name="lesson-plan" rows="15" cols="30" readonly>
-      <?php
-        echo $classInfo['lesson_plan'];
-      ?>
-    </textarea>
-
+    
     <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
     <p>Horse(s):</p>
     <?php

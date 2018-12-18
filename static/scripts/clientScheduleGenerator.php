@@ -72,7 +72,6 @@
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>
-    <p class="schedule-lesson-plan" style="height: 5vh;">Lesson Plan:</p>
 EOT;
 
     foreach ($masterList as $time => $event) {
@@ -229,13 +228,6 @@ EOT;
             }
             echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
-            //Lesson Plan
-            if ($event['lesson_plan']) {
-              $lessonplan = $event['lesson_plan'];
-            } else {
-              $lessonplan = "&#8212";
-            }
-            echo "<p class='schedule-lesson-plan'>{$lessonplan}</p>";
 
           }
 

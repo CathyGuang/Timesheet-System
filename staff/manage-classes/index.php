@@ -39,7 +39,7 @@ EOT;
       $QUERY_NAME = $_POST['selected-worker'];
       include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/getWorkerInvolvedClasses.php";
       echo <<<EOT
-        <form action="manage-class-front-end.php" method="post" class="main-form">
+        <form action="manage-class-front-end.php" method="get" class="main-form">
 EOT;
       if($allClasses) {
         foreach ($allClasses as $classTuple) {

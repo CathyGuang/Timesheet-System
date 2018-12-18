@@ -26,7 +26,7 @@
     </div>
   </div>
 
-  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/scheduleGenerator.php"; ?>
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/staffScheduleGenerator.php"; ?>
 
   <form id="new-schedule" method="post" action="" style="visibility: hidden;">
     <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" style="visibility: hidden; height: 1px;">

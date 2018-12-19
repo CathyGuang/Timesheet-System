@@ -23,10 +23,9 @@ CREATE DATABASE "ForwardStrideDatabase"
     WITH
     OWNER = "ForwardStrideAdmin"
     ENCODING = 'UTF8'
-    LC_COLLATE = 'English_United States.1252'
-    LC_CTYPE = 'English_United States.1252'
     TABLESPACE = pg_default
-    CONNECTION LIMIT = -1;
+    CONNECTION LIMIT = -1
+    TEMPLATE = template0;
 
 /* SWITCH USER AND CONNECT TO NEW DATABASE */
 

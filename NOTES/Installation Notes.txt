@@ -9,7 +9,7 @@ MAKE SURE APACHE IS PROPERLY CONFIGURED
   - GENERATE HTPASSWD FILE WITH HTPASSWD.exe IN apache/bin WITH SPECIFIED PASSWORDS FOR staff AND admin
   - CREATE /apache/HTPASSWD DIRECTORY AND PLACE .htpasswd FILE THERE
     - MAKE SURE .htaccess FILES HAVE THE CORRECT PATH TO .htpasswd FILE.
-  - DISABLE CENTOS 7 FIREWALL:
+  - DISABLE CENTOS 7 FIREWALL FOR APACHE:
       - sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent
       - sudo systemctl restart firewalld
 

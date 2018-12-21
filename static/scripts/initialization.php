@@ -8,6 +8,11 @@ date_default_timezone_set($organizationTimeZone);
 //Connect to Database
 $db_connection = pg_connect("host=localhost dbname=$database user=$dbuser password=$dbpassword");
 
+if ($db_connection) {
+  echo " CONNECTED TO DATABASE ";
+} else {
+  echo " not connected ";
+}
 
 
 ?>

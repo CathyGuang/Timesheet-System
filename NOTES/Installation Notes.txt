@@ -27,6 +27,11 @@ MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
               # IPv4 local connections:
               host    all             all             127.0.0.1/32            md5
       ARE BOTH IN PostgreSQL\11\data\pg_hba.conf FILE AT THE END
+  - ALSO MAKE SURE THE LINES TO ALLOW CONNECTIONS FROM LOCALHOST ARE UNCOMMENTED AND SET TO ALL USERS AND MD5
+              # Allow replication connections from localhost, by a user with the
+              # replication privilege.
+              host    replication     all             127.0.0.1/32            md5
+              host    replication     all             ::1/128                 md5
 
 REMEMBER TO INCLUDE /static/dbinfo/ SUBDIRECTORY, IT IS NOT ON GIT. MOVE FROM MY LAPTOP
 

@@ -1,5 +1,0 @@
-Type all commands exactly as shown after the "--> ", replacing elements in curly braces "{}" with the desired object/table/etc (indicated inside the curly braces)
-
-
-To unarchive an object with a given {ID}, in a given {TABLE}:
--->  UPDATE {TABLE} SET archived = NULL WHERE id = {ID};

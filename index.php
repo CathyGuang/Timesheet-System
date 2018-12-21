@@ -9,7 +9,7 @@
 
 <body>
 
-  <img src="/static/images/logo.png" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
+  <img src="/../Org-Specific-Info/images/logo.png" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
 
   <header>
     <h1><?php echo $organizationName; ?> Web Portal</h1>

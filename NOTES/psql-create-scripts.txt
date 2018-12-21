@@ -3,25 +3,25 @@
 -- TO RESET:
 -- DROP USER "ForwardStrideAdmin";
 
-CREATE USER "ForwardStrideAdmin" WITH
+CREATE USER "DarkHorseAdmin" WITH
   LOGIN
   SUPERUSER
   INHERIT
   CREATEDB
   CREATEROLE
   NOREPLICATION
-  ENCRYPTED PASSWORD 'fsdatabaseadministrator5';
+  ENCRYPTED PASSWORD 'PASSWORD';
 
-\c postgres ForwardStrideAdmin
+\c postgres DarkHorseAdmin
 
 /* CREATE DATABASE */
 -- Database: ForwardStrideDatabase
 -- TO RESET:
 -- DROP DATABASE "ForwardStrideDatabase";
 
-CREATE DATABASE "ForwardStrideDatabase"
+CREATE DATABASE "DarkHorseDatabase"
     WITH
-    OWNER = "ForwardStrideAdmin"
+    OWNER = "DarkHorseAdmin"
     ENCODING = 'UTF8'
     TABLESPACE = pg_default
     CONNECTION LIMIT = -1
@@ -29,7 +29,7 @@ CREATE DATABASE "ForwardStrideDatabase"
 
 /* SWITCH USER AND CONNECT TO NEW DATABASE */
 
-\c ForwardStrideDatabase
+\c DarkHorseDatabase
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
-  <title>Volunteer Directory | Forward Stride Web Portal</title>
+  <title>Volunteer Directory | <?php echo $organizationName; ?> Web Portal</title>
 </head>
 
 <body>

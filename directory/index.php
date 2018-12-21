@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <title>Directory | Forward Stride Web Portal</title>
+  <title>Directory | <?php echo $organizationName; ?> Web Portal</title>
 </head>
 
 <body>

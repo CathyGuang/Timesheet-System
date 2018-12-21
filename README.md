@@ -1,2 +1,3 @@
-# ForwardStride-Database-Webapp
-Database and web portal for Forward Stride's scheduling and hour tracking
+# Dark Horse Scheduling
+
+PHP-based web portal for equine facility schedule management and hour tracking.

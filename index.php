@@ -4,15 +4,15 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php"; ?>
-  <title>Home | Forward Stride Web Portal</title>
+  <title>Home | <?php echo $organizationName; ?> Web Portal</title>
 </head>
 
 <body>
 
-  <img src="/static/images/logo.png" alt="Forward Stride Logo" style="position: absolute;">
+  <img src="/static/images/logo.png" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
 
   <header>
-    <h1>Forward Stride Web Portal</h1>
+    <h1><?php echo $organizationName; ?> Web Portal</h1>
   </header>
 
 

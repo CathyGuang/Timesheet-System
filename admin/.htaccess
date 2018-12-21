@@ -1,4 +1,4 @@
 AuthName "Administrator Page"
 Authtype Basic
-AuthUserFile /var/www/DarkHorseSchedulingDemo/HTPASSWD/.htpasswd
+AuthUserFile /var/www/DarkHorseScheduling/Org-Specific-Info/.htpasswd
 require user admin

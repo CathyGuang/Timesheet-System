@@ -23,7 +23,7 @@
     $name = trim($_POST['name']);
     $notes = trim($_POST['notes']);
 
-    $query = "UPDATE horses SET NAME = '{$name}', fs_uses_per_day = '{$_POST['fs_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
+    $query = "UPDATE horses SET NAME = '{$name}', org_uses_per_day = '{$_POST['org_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

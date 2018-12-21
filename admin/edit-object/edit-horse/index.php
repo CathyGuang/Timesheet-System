@@ -50,7 +50,7 @@ EOT;
         <input type="text" name="name" value="{$horseInfo['name']}" required>
 
         <p>FS Uses per Day:</p>
-        <input type="number" name="fs_uses_per_day" value="{$horseInfo['fs_uses_per_day']}">
+        <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
 
         <p>Owner Uses per Day:</p>
         <input type="number" name="owner_uses_per_day" value="{$horseInfo['owner_uses_per_day']}">

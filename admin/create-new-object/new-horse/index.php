@@ -22,7 +22,7 @@
     <input type="text" name="name" value="" required>
 
     <p>FS Uses per Day:</p>
-    <input type="number" name="fs_uses_per_day" value="" required>
+    <input type="number" name="org_uses_per_day" value="" required>
 
     <p>Owner Uses per Day:</p>
     <input type="number" name="owner_uses_per_day" value="" required>

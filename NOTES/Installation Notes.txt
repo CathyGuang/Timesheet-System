@@ -30,10 +30,13 @@ MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
   - ALSO MAKE SURE THE LINES TO ALLOW CONNECTIONS FROM LOCALHOST ARE UNCOMMENTED AND SET TO ALL USERS AND MD5
               # Allow replication connections from localhost, by a user with the
               # replication privilege.
-              host    replication     all             127.0.0.1/32            md5
-              host    replication     all             ::1/128                 md5
+              host    all             all             127.0.0.1/32            md5
+              host    all             all             ::1/128                 md5
+  - ENABLE HTTPD ACCESS TO DATABASE THROUGH SELINUX:
+              - setsebool -P httpd_can_network_connect_db 1
 
-REMEMBER TO INCLUDE /static/dbinfo/ SUBDIRECTORY, IT IS NOT ON GIT. MOVE FROM MY LAPTOP
+
+REMEMBER TO INCLUDE /static/dbinfo/ SUBDIRECTORY, IT IS NOT ON GIT. CREATE WITH CUSTOM CREDENTIALS
 
 ----------------------------------------------------------
 GLOBAL INSTALLATION NOTES:

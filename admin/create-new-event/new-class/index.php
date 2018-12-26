@@ -121,10 +121,10 @@
 
 
     <div>
-      <div id="staff-section" style="display:flex;">
+      <div id="staff-section">
         <p>Staff:</p>
-        <br>
-
+        
+        <label>Role: </label>
         <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">
           <datalist id="staff-role-list">
             <?php
@@ -137,6 +137,7 @@
             ?>
           </datalist>
 
+        <label>Role: </label>
         <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
           <datalist id="staff-list">
             <?php

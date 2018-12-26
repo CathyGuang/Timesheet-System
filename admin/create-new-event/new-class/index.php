@@ -310,9 +310,11 @@
         var staffSection = document.getElementById('staff-section');
         staffSection.appendChild(newInput);
         newInput = document.createElement('br');
-        var staffSection = document.getElementById('staff-section');
         staffSection.appendChild(newInput);
         //add role selector
+        newInput = document.createElement('label');
+        newInput.innerHTML = "Role: ";
+        staffSection.appendChild(newInput);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staffRoles[]');
@@ -323,6 +325,9 @@
         var staffSection = document.getElementById('staff-section');
         staffSection.appendChild(newInput);
         //Add name selector
+        newInput = document.createElement('label');
+        newInput.innerHTML = "Staff Member: ";
+        staffSection.appendChild(newInput);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff[]');

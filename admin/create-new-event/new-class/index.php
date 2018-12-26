@@ -325,6 +325,8 @@
         var staffSection = document.getElementById('staff-section');
         staffSection.appendChild(newInput);
         //Add name selector
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
         newInput = document.createElement('label');
         newInput.innerHTML = "Staff Member: ";
         staffSection.appendChild(newInput);

@@ -123,6 +123,7 @@
     <div>
       <div id="staff-section" style="display:flex;">
         <p>Staff:</p>
+        <br>
 
         <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">
           <datalist id="staff-role-list">

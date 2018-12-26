@@ -119,44 +119,49 @@
 
 
 
-    <p>Instructor:</p>
-    <input type="text" name="instructor" list="instructor-list" value="" onclick="select();">
-      <datalist id="instructor-list">
-        <?php
-          $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
 
-    <p>Therapist:</p>
-    <input type="text" name="therapist" list="therapist-list" value="" onclick="select();">
-      <datalist id="therapist-list">
-        <?php
-          $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
+    <div>
+      <div id="staff-section">
+        <p>Staff:</p>
 
-    <p>ES:</p>
-    <input type="text" name="equine-specialist" list="es-list" value="" onclick="select();">
-      <datalist id="es-list">
-        <?php
-          $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
+        <input form="class-form" type="text" name="staffRoles[]" list="staff-roles-list" value="" onclick="select();">
+          <datalist id="staff-roles-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $classTypeNames = pg_fetch_all_columns($result);
+              foreach ($classTypeNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+
+        <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
+          <datalist id="staff-list">
+            <?php
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $staffNames = pg_fetch_all_columns($result);
+              foreach ($staffNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+      </div>
+      <br>
+      <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -295,16 +300,32 @@
 
 
 
-
-
-
-
-
-
-
-
   <footer>
     <script type="text/javascript">
+    function newStaffFunction() {
+        //add role selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staffRoles[]');
+        newInput.setAttribute('list', 'staff-role-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+        //Add name selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staff[]');
+        newInput.setAttribute('list', 'staff-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+      };
+
+
     function newHorseFunction() {
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');

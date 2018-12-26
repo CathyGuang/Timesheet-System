@@ -137,6 +137,7 @@
             ?>
           </datalist>
 
+        <br>
         <label>Staff Member: </label>
         <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
           <datalist id="staff-list">

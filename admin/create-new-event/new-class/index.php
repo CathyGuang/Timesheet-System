@@ -306,6 +306,12 @@
   <footer>
     <script type="text/javascript">
     function newStaffFunction() {
+        newInput = document.createElement('br');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('br');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
         //add role selector
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');

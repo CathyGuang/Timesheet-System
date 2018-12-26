@@ -121,7 +121,7 @@
 
 
     <div>
-      <div id="staff-section">
+      <div id="staff-section" style="display:flex;">
         <p>Staff:</p>
 
         <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">

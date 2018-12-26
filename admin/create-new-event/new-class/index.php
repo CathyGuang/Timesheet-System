@@ -123,7 +123,7 @@
     <div>
       <div id="staff-section">
         <p>Staff:</p>
-        
+
         <label>Role: </label>
         <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">
           <datalist id="staff-role-list">
@@ -137,7 +137,7 @@
             ?>
           </datalist>
 
-        <label>Role: </label>
+        <label>Staff Member: </label>
         <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
           <datalist id="staff-list">
             <?php

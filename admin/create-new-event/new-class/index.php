@@ -124,7 +124,7 @@
       <div id="staff-section">
         <p>Staff:</p>
 
-        <input form="class-form" type="text" name="staffRoles[]" list="staff-roles-list" value="" onclick="select();">
+        <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">
           <datalist id="staff-role-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";

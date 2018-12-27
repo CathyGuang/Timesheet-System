@@ -127,7 +127,7 @@ EOT;
           if ($leaderName == "NEEDED"){
             $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
           } else {
-            $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
+            $leaderString .= "<i>Leader: </i>" . $leaderName;
           }
         }
       }

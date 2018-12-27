@@ -39,7 +39,7 @@
     ?>
 
       <p>Horse Behavior:</p>
-      <input type="text" name="horse-behavior" list="horse-behavior-form" value="">
+      <input type="text" name="horse-behavior" list="horse-behavior-form" value="<?php echo $classInfo['horse-behavior']; ?>">
         <datalist id="horse-behavior-form">
           <?php
             $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";

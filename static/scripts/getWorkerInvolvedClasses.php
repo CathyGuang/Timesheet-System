@@ -108,12 +108,10 @@ EOT;
     }
 
     $allClasses[$key]['leaders'] = array();
-    var_dump($allClasses[$key]['leaders']);
     foreach ($leaderOrder as $id) {
       foreach ($leaders as $leaderData) {
         if ($leaderData['id'] == $id) {
           $allClasses[$key]['leaders'][] = $leaderData['name'];
-          var_dump($allClasses[$key]['leaders']);
         }
       }
     }
@@ -128,9 +126,6 @@ EOT;
       $allClasses[$key]['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
     }
 
-
-    $allClasses[$key]['leaders'] = $leaders;
-    $allClasses[$key]['horses'] = $horses;
 
     $allClasses[$key]['tacks'] = explode(',', rtrim(ltrim($allClasses[$key]['tacks'], '{'), '}'));
     $allClasses[$key]['pads'] = explode(',', rtrim(ltrim($allClasses[$key]['pads'], '{'), '}'));

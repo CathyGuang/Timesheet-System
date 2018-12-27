@@ -88,7 +88,7 @@
 
       echo <<<EOT
 
-      <form autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
+      <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
 
 
 
@@ -267,7 +267,7 @@ EOT;
       foreach ($horseIDList as $id) {
         $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
         echo <<<EOT
-        <input type="text" name="horses[]" list="horse-list" value="{$horseName}" onclick="select();">
+        <input form='class-form' type="text" name="horses[]" list="horse-list" value="{$horseName}" onclick="select();">
 EOT;
       }
 
@@ -297,7 +297,7 @@ EOT;
         $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
         foreach ($tackList as $name) {
           echo <<<EOT
-          <input type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
+          <input form='class-form' type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
 EOT;
         }
 
@@ -329,7 +329,7 @@ EOT;
           foreach ($padList as $key => $name) {
             $padList[$key] = rtrim(ltrim($name, "\""), "\"");
             echo <<<EOT
-            <input type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
+            <input form='class-form' type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
 EOT;
           }
 
@@ -360,7 +360,7 @@ EOT;
           $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
           $oldClientIDListPGArray .= $id .',';
           echo <<<EOT
-            <input type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
+            <input form='class-form' type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
 EOT;
         }
         $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
@@ -378,7 +378,7 @@ EOT;
         echo <<<EOT
             </datalist>
         </div>
-        <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+        <input form='class-form' type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
         </div>
 
@@ -391,7 +391,7 @@ EOT;
         foreach ($leaderIDList as $id) {
           $leaderName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
           echo <<<EOT
-          <input type="text" name="leaders[]" list="leader-list" value="{$leaderName}" onclick="select();">
+          <input form='class-form' type="text" name="leaders[]" list="leader-list" value="{$leaderName}" onclick="select();">
 EOT;
         }
 
@@ -423,7 +423,7 @@ EOT;
           foreach ($sidewalkerIDList as $id) {
             $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
             echo <<<EOT
-            <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
+            <input form='class-form' type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
 EOT;
           }
 

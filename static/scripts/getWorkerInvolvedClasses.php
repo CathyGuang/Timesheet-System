@@ -131,15 +131,6 @@ EOT;
     $allClasses[$key]['pads'] = explode(',', rtrim(ltrim($allClasses[$key]['pads'], '{'), '}'));
 
 
-
-    echo "<br>FINAL FORMATTING:<br>";
-    echo "CLIENTS: ";
-    var_dump($allClasses[$key]['clients']);
-    echo "LEADERS: ";
-    var_dump($allClasses[$key]['leaders']);
-    echo "SIDEWALKERS: ";
-    var_dump($allClasses[$key]['sidewalkers']);
-
   }
 
 

@@ -1,4 +1,4 @@
 AuthName "Staff Page"
 Authtype Basic
-AuthUserFile /var/www/DarkHorseScheduling/Org-Specific-Info/.htpasswd
+AuthUserFile .htpasswd-link
 require user staff

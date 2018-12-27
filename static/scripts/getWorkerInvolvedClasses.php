@@ -78,7 +78,7 @@ EOT;
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
     $allClasses[$key]['staff'] = array();
     foreach ($rawArray as $roleIDString) {
-      var_dump($roleIDString);
+      $roleIDString = trim($roleIDString);
       $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
       $staffID = trim(explode(':', $roleIDString)[1]);
       $allClasses[$key]['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];

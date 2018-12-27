@@ -146,6 +146,8 @@ EOT;
               $orgUseCount++;
             }
           }
+          var_dump($orgUseCount);
+          var_dump($ownerUseCount);
           if ($orgUseCount >= $horseInfo['org_uses_per_day']) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
           }

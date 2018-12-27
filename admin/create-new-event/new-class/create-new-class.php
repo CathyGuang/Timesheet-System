@@ -101,7 +101,7 @@
     $staffIDList = array();
     foreach ($_POST['staff'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $leaderIDList[] = $id;
+      $staffIDList[] = $id;
     }
 
 

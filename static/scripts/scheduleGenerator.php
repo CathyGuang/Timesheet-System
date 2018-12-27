@@ -104,15 +104,10 @@ EOT;
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
 
       //Staff
+      var_dump($event['staff']);
       $staffString = "";
-      if ($event['instructor']) {
-        $staffString .= "<i>Instructor: </i>" . $event['instructor'];
-      }
-      if ($event['therapist'] != "" and $event['therapist']) {
-        $staffString .= "<br><i>Therapist: </i>" . $event['therapist'];
-      }
-      if ($event['equine_specialist'] != "" and $event['equine_specialist']) {
-        $staffString .= "<br><i>ES: </i>" . $event['equine_specialist'];
+      foreach ($event['staff'] as $role => $name) {
+        $staffString .= "<i>{$role}:</i> {$name}&nbsp";
       }
       if ($staffString == "") {
         $staffString = "&#8212";

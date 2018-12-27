@@ -2,7 +2,7 @@
   //initialize target table name
   $tableName = "classes";
   //Connect to database
-  include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php";
+  include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
 
   //delete tempfiles from previous reports
   if (file_exists("tempfile.csv")) {

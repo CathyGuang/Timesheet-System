@@ -88,65 +88,36 @@ EOT;
         }
       ?>
 
-      <?php $instructorName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['instructor']}'"))[0]; ?>
-      <p>Instructor:</p>
-      <input type="text" list="instructor-list" name="instructor" value="<?php echo $instructorName?>" onclick="select()" readonly>
-        <datalist id="instructor-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
+      <?php
+        $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
+        $classInfo['staff'] = array();
+        foreach ($rawArray as $roleIDString) {
+          $roleIDString = trim($roleIDString);
+          $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
+          $staffID = trim(explode(':', $roleIDString)[1]);
+          $classInfo['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
+        }
 
-      <?php $therapistName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['therapist']}'"))[0]; ?>
-      <p>Therapist:</p>
-      <input type="text" list="therapist-list" name="therapist" value="<?php echo $therapistName?>" onclick="select()" readonly>
-        <datalist id="therapist-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
+        foreach ($classInfo['staff'] as $role => $name) {
 
-        <?php $equineSpecialistName = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$classInfo['equine_specialist']}'"))[0]; ?>
-        <p>Equine Specialist:</p>
-        <input type="text" list="equine-specialist-list" name="equine-specialist" value="<?php echo $equineSpecialistName?>" onclick="select()" readonly>
-          <datalist id="equine-specialist-list">
-            <?php
-              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $workerNames = pg_fetch_all_columns($result);
-              foreach ($workerNames as $key => $name) {
-                echo "<option value='$name'>";
-              }
-            ?>
-          </datalist>
+          echo <<<EOT
+          <p>{$role}:</p>
+          <input type="text" name="staff[]" value="{$name}" onclick="select()" readonly>
+
+EOT;
+
+        }
+      ?>
+
 
           <?php $leaderNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE id = ANY('{$classInfo['leaders']}')")); ?>
           <p>Leader(s):</p>
           <?php
             foreach ($leaderNameList as $name) {
-              echo "<input type='text' list='leader-list' name='leaders[]' value='{$name}' onclick='select()' readonly>";
+              echo "<input type='text' name='leaders[]' value='{$name}' onclick='select()' readonly>";
             }
           ?>
-            <datalist id="leader-list">
-              <?php
-                $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $workerNames = pg_fetch_all_columns($result);
-                foreach ($workerNames as $key => $name) {
-                  echo "<option value='$name'>";
-                }
-              ?>
-            </datalist>
+          
 
           <p>Sidewalker(s):</p>
             <datalist id="sidewalker-list">

@@ -24,9 +24,8 @@
 
         echo <<<EOT
           <p>Name: {$horseInfo['name']}</p>
-EOT;
-        echo <<<EOT
-          <p>FS Uses per Day: {$horseInfo['org_uses_per_day']}</p>
+          <p>Owner: {$horseInfo['owner']}</p>
+          <p>Organization Uses per Day: {$horseInfo['org_uses_per_day']}</p>
           <p>Owner Uses per Day: {$horseInfo['owner_uses_per_day']}</p>
           <p>Notes: {$horseInfo['notes']}</p>
 EOT;

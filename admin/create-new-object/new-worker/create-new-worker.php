@@ -29,11 +29,11 @@
     if ($_POST['volunteer']) {
       $volunteerbool = 'TRUE';
     }
-    $name = trim($_POST['name']);
-    $title = trim($_POST['title']);
+    $name = pg_escape_string(trim($_POST['name']));
+    $title = pg_escape_string(trim($_POST['title']));
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
-    
+
     $query = "INSERT INTO workers(name, title, email, phone, staff, volunteer) VALUES ('{$name}', '{$title}', '{$email}', '{$phone}', $staffbool, $volunteerbool);";
 
     $result = pg_query($db_connection, $query);

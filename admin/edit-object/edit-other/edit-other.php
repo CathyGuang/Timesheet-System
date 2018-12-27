@@ -21,7 +21,7 @@
     if ($_POST['archive'] == "TRUE") {
       $result = pg_query($db_connection, "INSERT INTO archived_enums (name) VALUES ('{$_POST['selected-object']}');");
     } else {
-      $objectName = trim($_POST['new-object-name']);
+      $objectName = pg_escape_string(trim($_POST['new-object-name']));
       $query = "UPDATE pg_enum SET enumlabel = '{$objectName}' WHERE enumlabel = '{$_POST['selected-object']}' AND enumtypid = (SELECT oid FROM pg_type WHERE typname = '{$_POST['object-type']}');";
       $result = pg_query($db_connection, $query);
     }

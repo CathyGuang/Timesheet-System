@@ -29,8 +29,8 @@
     }
 
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
-    $name = trim($_POST['name']);
-    $title = trim($_POST['title']);
+    $name = pg_escape_string(trim($_POST['name']));
+    $title = pg_escape_string(trim($_POST['title']));
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $query = "UPDATE workers SET NAME = '{$name}', title = '{$title}', email = '{$email}', phone = '{$phone}', staff = $staffbool, volunteer = $volunteerbool, archived = '{$archived}' WHERE id = {$_POST['id']};";

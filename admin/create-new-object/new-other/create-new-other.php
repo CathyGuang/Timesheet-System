@@ -20,7 +20,7 @@
   </header>
 
   <?php
-    $objectName = trim($_POST['new-object-name']);
+    $objectName = pg_escape_string(trim($_POST['new-object-name']));
     $query = "ALTER TYPE {$_POST['object-type']} ADD VALUE '{$objectName}';";
 
     $result = pg_query($db_connection, $query);

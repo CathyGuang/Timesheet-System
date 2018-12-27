@@ -21,7 +21,7 @@
 
 
   <?php
-    $name = trim($_POST['name']);
+    $name = pg_escape_string(trim($_POST['name']));
     $owner = trim($_POST['owner']);
     $notes = trim($_POST['notes']);
 

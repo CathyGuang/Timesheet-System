@@ -22,6 +22,7 @@
     <input type="text" name="name" value="" required>
 
     <p>Owner:</p>
+    <label>(Leave blank if owner is this organization)</label>
     <input type="text" name="owner" value="">
 
     <p>FS Uses per Day:</p>

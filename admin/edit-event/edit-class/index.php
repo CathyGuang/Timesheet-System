@@ -356,7 +356,7 @@ EOT;
           <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select();">
           <br>
           <label>Staff Member: </label>
-          <input form="class-form" type="text" name="staff[]" list="staff-list" value="{$staffID}" onclick="select();">
+          <input form="class-form" type="text" name="staff[]" list="staff-list" value="{$staffName}" onclick="select();">
 
 EOT;
         }

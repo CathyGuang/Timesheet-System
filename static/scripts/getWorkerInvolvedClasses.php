@@ -77,15 +77,21 @@ EOT;
     $horseOrder = explode(',', rtrim(ltrim($allClasses[$key]['horses'], '{'), '}'));
     $leaderOrder = explode(',', rtrim(ltrim($allClasses[$key]['leaders'], '{'), '}'));
 
-    var_dump($clientOrder);
-    var_dump($horseOrder);
-    var_dump($leaderOrder);
-    var_dump($sidewalkerOrder);
+    var_dump($clients);
+    var_dump($leaders);
+    var_dump($sidewalkers);
 
 
-    $allClasses[$key]['clients'] = $clients;
-    $allClasses[$key]['attendance'] = $attendance;
-    $allClasses[$key]['sidewalkers'] = $sidewalkers;
+    $allClasses[$key]['clients'] = array();
+    foreach ($clientOrder as $id) {
+      // code...
+    }
+
+    $allClasses[$key]['attendance'] = array();
+
+    $allClasses[$key]['sidewalkers'] = array();
+
+
 
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
     $allClasses[$key]['staff'] = array();

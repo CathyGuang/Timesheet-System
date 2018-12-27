@@ -19,7 +19,6 @@
   </header>
 
   <?php
-    var_dump($_POST);
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
       $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";

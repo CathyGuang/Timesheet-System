@@ -95,12 +95,31 @@ EOT;
 
 
     $allClasses[$key]['sidewalkers'] = array();
-
+    foreach ($sidewalkerOrder as $id) {
+      foreach ($sidewalkers as $sidewalkerData) {
+        if ($sidewalkerData['id'] == $id) {
+          $allClasses[$key]['sidewalkers'][] = $sidewalkerData['name'];
+        }
+      }
+    }
 
     $allClasses[$key]['horses'] = array();
-
+    foreach ($horseOrder as $id) {
+      foreach ($horses as $horseData) {
+        if ($horseData['id'] == $id) {
+          $allClasses[$key]['horses'][] = $horseData['name'];
+        }
+      }
+    }
 
     $allClasses[$key]['leaders'] = array();
+    foreach ($leaderOrder as $id) {
+      foreach ($leaders as $leaderData) {
+        if ($leaderData['id'] == $id) {
+          $allClasses[$key]['leaders'][] = $leaderData['name'];
+        }
+      }
+    }
 
 
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));

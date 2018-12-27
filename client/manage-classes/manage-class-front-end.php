@@ -20,7 +20,7 @@
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, instructor, therapist, equine_specialist, leaders, sidewalkers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, staff, leaders, sidewalkers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>
@@ -29,7 +29,7 @@
 
     <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 
-    
+
     <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
     <p>Horse(s):</p>
     <?php

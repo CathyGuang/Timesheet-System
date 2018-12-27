@@ -111,7 +111,7 @@
 
 
 
-    <p>Special Tack:</p>
+    <p>Tack Notes:</p>
     <input type="text" name="special-tack">
 
     <p>Stirrup Leather Length:</p>

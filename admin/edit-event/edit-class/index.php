@@ -184,7 +184,7 @@ EOT;
           </datalist>
 
 
-        <p>Special Tack:</p>
+        <p>Tack Notes:</p>
         <input type="text" name="special-tack" value="{$classData['special_tack']}">
 
         <p>Stirrup Leather Length:</p>

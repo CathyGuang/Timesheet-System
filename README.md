@@ -7,6 +7,18 @@
 ### Version 1.0
   *Complete Functionality*
 
+* Complex Class Data Structure
+  * Fully customizeable, infinitely extendible
+    * *Class type*
+    * *Arena*
+    * *Horses*
+    * *Tacks*
+    * *Pads*
+    * *Clients*
+    * *Leaders*
+    * *Sidewalkers*
+    * *Staff Roles*
+
 * Conflict-Free Scheduling
   * Automatic conflict detection for all people, horses, spaces, and objects
   * Automatic horse overuse detection

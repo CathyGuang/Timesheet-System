@@ -84,13 +84,23 @@ EOT;
 
     $allClasses[$key]['clients'] = array();
     foreach ($clientOrder as $id) {
-      // code...
+      foreach ($clients as $clientData) {
+        if ($clientData['id'] == $id) {
+          $allClasses[$key]['clients'][] = $clientData['name'];
+        }
+      }
     }
 
-    $allClasses[$key]['attendance'] = array();
+    $allClasses[$key]['attendance'] = $attendance;
+
 
     $allClasses[$key]['sidewalkers'] = array();
 
+
+    $allClasses[$key]['horses'] = array();
+
+
+    $allClasses[$key]['leaders'] = array();
 
 
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
@@ -112,6 +122,7 @@ EOT;
 
 
     echo "<br>FINAL FORMATTING:<br>";
+    var_dump($allClasses[$key]['clients']);
     var_dump($allClasses[$key]['leaders']);
     var_dump($allClasses[$key]['sidewalkers']);
 

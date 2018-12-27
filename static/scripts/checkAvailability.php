@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
     //ignore calls for empty fields
     if ($id == "") {return false;}
     //connect to database
-    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/connectdb.php";
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
 
     $tableNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';"));
     $enumTypeQuery = <<<EOT

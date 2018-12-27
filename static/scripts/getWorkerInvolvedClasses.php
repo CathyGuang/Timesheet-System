@@ -112,6 +112,7 @@ EOT;
       foreach ($leaders as $leaderData) {
         if ($leaderData['id'] == $id) {
           $allClasses[$key]['leaders'][] = $leaderData['name'];
+          echo "NAME::::::: " . $leaderData['name'];
         }
       }
     }

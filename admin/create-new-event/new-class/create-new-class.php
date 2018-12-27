@@ -83,21 +83,6 @@
     }
     $clientIDList = to_pg_array($clientIDList);
 
-    /*
-    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$instructorID) {
-      $instructorID = 'null';
-    }
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$therapistID) {
-      $therapistID = 'null';
-    }
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$esID) {
-      $esID = 'null';
-    }
-    */
-
     $staffIDList = array();
     foreach ($_POST['staff'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
@@ -197,17 +182,12 @@
 
     $leaderIDList = to_pg_array($leaderIDList);
 
-
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
 
-
-    echo "STAFF JSON:";
-    var_dump($staffJSON);
-    var_dump($staffIDList);
 
 
 

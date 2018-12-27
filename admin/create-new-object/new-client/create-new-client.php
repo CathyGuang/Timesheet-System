@@ -21,7 +21,7 @@
 
 
   <?php
-    $name = trim($_POST['name']);
+    $name = pg_escape_string(trim($_POST['name']));
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $query = "INSERT INTO clients(name, email, phone) VALUES ('{$name}', '{$email}', '{$phone}');";

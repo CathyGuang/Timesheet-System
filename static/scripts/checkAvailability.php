@@ -139,9 +139,6 @@ EOT;
           $ownerUseCount = 0;
           $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"))[0];
 
-          var_dump($horseInfo);
-
-
           foreach ($allEvents as $eventInfo) {
             $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
             if (in_array($horseInfo['owner'], $clientNames)) {
@@ -150,8 +147,6 @@ EOT;
               $orgUseCount++;
             }
           }
-          var_dump($orgUseCount);
-          var_dump($ownerUseCount);
 
           if ($orgUseCount >= $horseInfo['org_uses_per_day'] && !in_array($horseInfo['owner'], $_POST['clients'])) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";

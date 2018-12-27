@@ -20,7 +20,7 @@
 
   <?php
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
-    $name = trim($_POST['name']);
+    $name = pg_escape_string(trim($_POST['name']));
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
 

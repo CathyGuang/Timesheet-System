@@ -19,7 +19,7 @@
 
   <form autocomplete="off" action="create-new-client.php" method="post" class="main-form">
 
-    <p>Initials:</p>
+    <p>Name/Initials:</p>
     <input type="text" name="name" value="" required>
 
     <p>Email:</p>

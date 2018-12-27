@@ -46,7 +46,7 @@ EOT;
       echo <<<EOT
       <form autocomplete="off" action="edit-client.php" method="post" class="main-form" style="margin-top: 2vh;">
 
-        <p>Name:</p>
+        <p>Name/Initials:</p>
         <input type="text" name="name" value="{$clientInfo['name']}" required>
 
         <p>Email:</p>

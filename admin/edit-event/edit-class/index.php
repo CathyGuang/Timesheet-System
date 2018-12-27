@@ -347,15 +347,15 @@ EOT;
 EOT;
         $staffData = json_decode($classData['staff']);
         var_dump($staffData);
-        foreach ($classData as $key => $staffID) {
+        foreach ($staffData as $role => $staffID) {
           // code...
 
           echo <<<EOT
           <label>Role: </label>
-          <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="" onclick="select();">
+          <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select();">
           <br>
           <label>Staff Member: </label>
-          <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
+          <input form="class-form" type="text" name="staff[]" list="staff-list" value="{$staffID}" onclick="select();">
 
 EOT;
         }

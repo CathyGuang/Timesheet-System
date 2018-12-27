@@ -101,7 +101,7 @@ EOT;
         ?>
       </textarea>
       <br>
-      
+
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
         $classInfo['staff'] = array();
@@ -116,6 +116,7 @@ EOT;
 
           echo <<<EOT
           <p>{$role}:</p>
+          <input type="text" name="staff-roles[]" value="{$role}" style="visibility:hidden;">
           <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
 EOT;
         }

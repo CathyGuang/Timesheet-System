@@ -24,8 +24,11 @@
       $attendance = "{}";
     }
 
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['therapist']}' AND (archived IS NULL OR archived = '');"))[0];
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['equine-specialist']}' AND (archived IS NULL OR archived = '');"))[0];
+    $staffJSON = "{";
+    foreach ($staffIDList as $key => $staffID) {
+      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
+    }
+    $staffJSON = rtrim($staffJSON, ',') . "}";
 
     $leaderIDPGArray = "{";
     foreach ($_POST['leaders'] as $name) {

@@ -184,64 +184,6 @@ EOT;
           </datalist>
 
 
-          <div id="horse-section">
-            <p>Horse(s):</p>
-
-EOT;
-          $horseIDList = explode(',', ltrim(rtrim($classData['horses'], "}"), '{'));
-          foreach ($horseIDList as $id) {
-            $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
-            echo <<<EOT
-            <input type="text" name="horses[]" list="horse-list" value="{$horseName}" onclick="select();">
-EOT;
-          }
-
-          echo <<<EOT
-              <datalist id="horse-list">
-EOT;
-
-                  $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
-                  $result = pg_query($db_connection, $query);
-                  $horseNames = pg_fetch_all_columns($result);
-                  foreach ($horseNames as $key => $value) {
-                    echo "<option value='$value'>";
-                  }
-
-          echo <<<EOT
-              </datalist>
-            </div>
-            <br>
-            <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
-
-
-            <div id="tack-section">
-              <p>Tack(s):</p>
-
-EOT;
-            $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
-            foreach ($tackList as $name) {
-              echo <<<EOT
-              <input type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
-EOT;
-            }
-
-            echo <<<EOT
-                <datalist id="tack-list">
-EOT;
-
-                    $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
-                    $result = pg_query($db_connection, $query);
-                    $tackNames = pg_fetch_all_columns($result);
-                    foreach ($tackNames as $key => $value) {
-                      echo "<option value='$value'>";
-                    }
-
-            echo <<<EOT
-                </datalist>
-              </div>
-              <br>
-              <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
-
 
         <p>Special Tack:</p>
         <input type="text" name="special-tack" value="{$classData['special_tack']}">
@@ -440,6 +382,93 @@ EOT;
         <input type="submit" value="Submit Changes">
 
       </form>
+
+
+
+      <div style="display:flex; justify-content:space-around;">
+
+
+      <div id="horse-section">
+        <p>Horse(s):</p>
+
+EOT;
+      $horseIDList = explode(',', ltrim(rtrim($classData['horses'], "}"), '{'));
+      foreach ($horseIDList as $id) {
+        $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+        echo <<<EOT
+        <input type="text" name="horses[]" list="horse-list" value="{$horseName}" onclick="select();">
+EOT;
+      }
+
+      echo <<<EOT
+          <datalist id="horse-list">
+EOT;
+
+              $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $horseNames = pg_fetch_all_columns($result);
+              foreach ($horseNames as $key => $value) {
+                echo "<option value='$value'>";
+              }
+
+      echo <<<EOT
+          </datalist>
+        </div>
+        <br>
+        <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
+
+
+        <div id="tack-section">
+          <p>Tack(s):</p>
+
+EOT;
+        $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
+        foreach ($tackList as $name) {
+          echo <<<EOT
+          <input type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
+EOT;
+        }
+
+        echo <<<EOT
+            <datalist id="tack-list">
+EOT;
+
+                $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
+                $result = pg_query($db_connection, $query);
+                $tackNames = pg_fetch_all_columns($result);
+                foreach ($tackNames as $key => $value) {
+                  echo "<option value='$value'>";
+                }
+
+        echo <<<EOT
+            </datalist>
+          </div>
+          <br>
+          <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      </div>
+
+
+
+
+
+
+
 
       <footer>
         <script type="text/javascript">

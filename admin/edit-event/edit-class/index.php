@@ -192,68 +192,6 @@ EOT;
         <input type="text" name="stirrup-leather-length" value="{$classData['stirrup_leather_length']}">
 
 
-          <div id="pad-section">
-            <p>Pad(s):</p>
-
-EOT;
-          $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
-          foreach ($padList as $key => $name) {
-            $padList[$key] = rtrim(ltrim($name, "\""), "\"");
-            echo <<<EOT
-            <input type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
-EOT;
-          }
-
-          echo <<<EOT
-              <datalist id="pad-list">
-EOT;
-
-                  $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
-                  $result = pg_query($db_connection, $query);
-                  $padNames = pg_fetch_all_columns($result);
-                  foreach ($padNames as $key => $value) {
-                    echo "<option value='$value'>";
-                  }
-
-          echo <<<EOT
-              </datalist>
-            </div>
-            <br>
-            <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
-
-
-
-        <div id="client-section">
-          <p>Client(s):</p>
-EOT;
-        $oldClientIDListPGArray = "{";
-        foreach ($clientIDList as $id) {
-          $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
-          $oldClientIDListPGArray .= $id .',';
-          echo <<<EOT
-            <input type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
-EOT;
-        }
-        $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
-
-        echo <<<EOT
-
-            <datalist id="client-list">
-EOT;
-                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $clientNames = pg_fetch_all_columns($result);
-                foreach ($clientNames as $key => $value) {
-                  echo "<option value='$value'>";
-                }
-        echo <<<EOT
-            </datalist>
-        </div>
-        <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
-
-        <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
-
-
 
 
         <div>
@@ -385,6 +323,12 @@ EOT;
 
 
 
+
+
+
+
+
+
       <div style="display:flex; justify-content:space-around;">
 
       <div>
@@ -448,6 +392,68 @@ EOT;
           <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
           </div>
 
+
+          <div>
+          <div id="pad-section">
+            <p>Pad(s):</p>
+
+EOT;
+          $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
+          foreach ($padList as $key => $name) {
+            $padList[$key] = rtrim(ltrim($name, "\""), "\"");
+            echo <<<EOT
+            <input type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
+EOT;
+          }
+
+          echo <<<EOT
+              <datalist id="pad-list">
+EOT;
+
+                  $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
+                  $result = pg_query($db_connection, $query);
+                  $padNames = pg_fetch_all_columns($result);
+                  foreach ($padNames as $key => $value) {
+                    echo "<option value='$value'>";
+                  }
+
+          echo <<<EOT
+              </datalist>
+            </div>
+            <br>
+            <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
+            </div>
+
+            <div>
+            <div id="client-section">
+              <p>Client(s):</p>
+EOT;
+        $oldClientIDListPGArray = "{";
+        foreach ($clientIDList as $id) {
+          $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+          $oldClientIDListPGArray .= $id .',';
+          echo <<<EOT
+            <input type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
+EOT;
+        }
+        $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
+
+        echo <<<EOT
+
+            <datalist id="client-list">
+EOT;
+                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+                $result = pg_query($db_connection, $query);
+                $clientNames = pg_fetch_all_columns($result);
+                foreach ($clientNames as $key => $value) {
+                  echo "<option value='$value'>";
+                }
+        echo <<<EOT
+            </datalist>
+        </div>
+        <input type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+        <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
+        </div>
 
 
 

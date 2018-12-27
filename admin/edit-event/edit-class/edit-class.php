@@ -118,19 +118,10 @@
     }
     $clientIDList = to_pg_array($clientIDList);
 
-    $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$instructorID) {
-      $instructorID = 'null';
-    }
-
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['therapist']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$therapistID) {
-      $therapistID = 'null';
-    }
-
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['equine-specialist']}' AND (archived IS NULL OR archived = '');"))[0];
-    if (!$esID) {
-      $esID = 'null';
+    $staffIDList = array();
+    foreach ($_POST['staff'] as $key => $value) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
+      $staffIDList[] = $id;
     }
 
     $leaderIDList = array();
@@ -187,25 +178,13 @@
           }
         }
       }
-      if ($_POST['instructor'] != "") {
-        $result = checkAvailability($instructorID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['instructor']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['therapist'] != "") {
-        $result = checkAvailability($therapistID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['therapist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['equine-specialist'] != "") {
-        $result = checkAvailability($esID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['equine-specialist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['staff'] != array()) {
+        foreach ($staffIDList as $key => $staffID) {
+          $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
       if ($_POST['leaders'] != array()) {
@@ -240,13 +219,19 @@
 
     $leaderIDList = to_pg_array($leaderIDList);
 
+    $staffJSON = "{";
+    foreach ($staffIDList as $key => $staffID) {
+      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
+    }
+    $staffJSON = rtrim($staffJSON, ',') . "}";
+
 
     //If no conflicts, create new entries.
 
     //Create SQL query
-    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, instructor, therapist, equine_specialist, leaders, sidewalkers) VALUES";
+    $query = "INSERT INTO classes (class_type, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, staff, leaders, sidewalkers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', {$instructorID}, {$therapistID}, {$esID}, '{$leaderIDList}', '{$sidewalkerIDList}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$leaderIDList}', '{$sidewalkerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";

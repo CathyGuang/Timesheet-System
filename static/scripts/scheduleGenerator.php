@@ -104,7 +104,6 @@ EOT;
       echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
 
       //Staff
-      var_dump($event['staff']);
       $staffString = "";
       foreach ($event['staff'] as $role => $name) {
         $staffString .= "<i>{$role}:</i> {$name}&nbsp";

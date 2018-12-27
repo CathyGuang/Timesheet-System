@@ -37,16 +37,6 @@
         echo "<input type='text' list='horse-list' name='horses[]' value='{$name}' onclick='select()' readonly>";
       }
     ?>
-      <datalist id="horse-list">
-        <?php
-          $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
-          $result = pg_query($db_connection, $query);
-          $horseNames = pg_fetch_all_columns($result);
-          foreach ($horseNames as $key => $value) {
-            echo "<option value='$value'>";
-          }
-        ?>
-      </datalist>
 
       <p>Horse Behavior:</p>
       <input type="text" name="horse-behavior" list="horse-behavior-form" value="">
@@ -88,6 +78,7 @@ EOT;
         }
       ?>
 
+
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
         $classInfo['staff'] = array();
@@ -103,9 +94,7 @@ EOT;
           echo <<<EOT
           <p>{$role}:</p>
           <input type="text" name="staff[]" value="{$name}" onclick="select()" readonly>
-
 EOT;
-
         }
       ?>
 
@@ -120,21 +109,11 @@ EOT;
 
 
           <p>Sidewalker(s):</p>
-            <datalist id="sidewalker-list">
-              <?php
-                $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $workerNames = pg_fetch_all_columns($result);
-                foreach ($workerNames as $key => $name) {
-                  echo "<option value='$name'>";
-                }
-              ?>
-            </datalist>
           <?php
             $sidewalkerIDList = explode(',', rtrim(ltrim($classInfo['sidewalkers'], "{"), "}"));
             foreach ($sidewalkerIDList as $id) {
               $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$id}'"))[0];
-              echo "<input type='text' name='sidewalkers[]' list='sidewalker-list' value='{$name}' readonly>";
+              echo "<input type='text' name='sidewalkers[]' value='{$name}' readonly>";
             }
           ?>
           <br>

@@ -127,7 +127,7 @@ EOT;
           if ($leaderName == "NEEDED"){
             $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
           } else {
-            $leaderString .= "<i>Leader: </i>" . $leaderName;
+            $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
           }
         }
       }
@@ -162,7 +162,7 @@ EOT;
             if ($volunteerName == "NEEDED") {
               $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
             } else {
-              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}";
+              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}" . "<br>";
             }
           }
       }

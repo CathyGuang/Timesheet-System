@@ -74,7 +74,7 @@ EOT;
     $allClasses[$key]['clients'] = $clients;
     $allClasses[$key]['attendance'] = $attendance;
     $allClasses[$key]['sidewalkers'] = $sidewalkers;
-
+    var_dump($allClasses['staff']);
     $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
     $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];
     $allClasses[$key]['equine_specialist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['equine_specialist']} ;"))['name'];

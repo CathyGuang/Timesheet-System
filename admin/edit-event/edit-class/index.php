@@ -345,7 +345,8 @@ EOT;
         echo <<<EOT
               </datalist>
 EOT;
-        var_dump($classData);
+        $staffData = json_decode($classData['staff']);
+        var_dump($staffData);
         foreach ($classData as $key => $staffID) {
           // code...
 

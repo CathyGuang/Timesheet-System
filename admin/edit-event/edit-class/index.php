@@ -86,11 +86,6 @@
         $checkboxList[$day] = "checked";
       }
 
-      /*
-      $instructorName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['instructor']};"), 0, 1)['name'];
-      $therapistName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['therapist']};"), 0, 1)['name'];
-      $esName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['equine_specialist']};"), 0, 1)['name'];
-      */
       echo <<<EOT
 
       <form autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
@@ -346,7 +341,6 @@ EOT;
               </datalist>
 EOT;
         $staffData = json_decode($classData['staff']);
-        var_dump($staffData);
         foreach ($staffData as $role => $staffID) {
           $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
 

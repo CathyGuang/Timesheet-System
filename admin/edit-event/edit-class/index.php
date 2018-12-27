@@ -359,12 +359,13 @@ EOT;
 EOT;
         }
 
-
+        echo <<<EOT
           </div>
           <br>
           <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
         </div>
 
+EOT;
 
 
 

@@ -125,7 +125,7 @@ EOT;
       if ($event['leaders']) {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){
-            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div><br>";
+            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
           } else {
             $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
           }

@@ -49,6 +49,9 @@ EOT;
         <p>Name:</p>
         <input type="text" name="name" value="{$horseInfo['name']}" required>
 
+        <p>Owner:</p>
+        <input type="text" name="owner" value="{$horseInfo['owner']}">
+
         <p>FS Uses per Day:</p>
         <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
 

@@ -21,6 +21,9 @@
     <p>Name:</p>
     <input type="text" name="name" value="" required>
 
+    <p>Owner:</p>
+    <input type="text" name="owner" value="">
+
     <p>FS Uses per Day:</p>
     <input type="number" name="org_uses_per_day" value="" required>
 

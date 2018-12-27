@@ -21,9 +21,10 @@
   <?php
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
     $name = trim($_POST['name']);
+    $owner = trim($_POST['name']);
     $notes = trim($_POST['notes']);
 
-    $query = "UPDATE horses SET NAME = '{$name}', org_uses_per_day = '{$_POST['org_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
+    $query = "UPDATE horses SET name = '{$name}', owner = '{$owner}', org_uses_per_day = '{$_POST['org_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

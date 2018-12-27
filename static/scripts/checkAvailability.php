@@ -84,7 +84,7 @@ EOT;
 EOT;
       } else if ($typeOfObject == "horses") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time FROM classes
+        SELECT start_time, end_time, clients, FROM classes
         WHERE
         (
         {$id} = ANY(classes.horses)
@@ -126,10 +126,19 @@ EOT;
       if ($allEvents) {
         foreach ($allEvents as $key => $timePair) {
           if ($timePair) {
-            if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {return array($timePair['start_time'], $timePair['end_time']);}
+            if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {
+              return array($timePair['start_time'], $timePair['end_time']);
+            }
           }
         }
       }
+
+      //Check if horse is maxed out on uses for the day
+      if ($typeOfObject == "horses") {
+        $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"));
+        var_dump($horseInfo);
+      }
+
 
 
 

@@ -22,9 +22,10 @@
 
   <?php
     $name = trim($_POST['name']);
+    $owner = trim($_POST['owner']);
     $notes = trim($_POST['notes']);
 
-    $query = "INSERT INTO horses(name, org_uses_per_day, owner_uses_per_day, notes) VALUES ('{$name}', '{$_POST['org_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$notes}');";
+    $query = "INSERT INTO horses(name, owner, org_uses_per_day, owner_uses_per_day, notes) VALUES ('{$name}', '{$owner}', '{$_POST['org_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$notes}');";
 
     $result = pg_query($db_connection, $query);
 

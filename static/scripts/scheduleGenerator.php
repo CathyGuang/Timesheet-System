@@ -106,7 +106,7 @@ EOT;
       //Staff
       $staffString = "";
       foreach ($event['staff'] as $role => $name) {
-        $staffString .= "<i>{$role}:</i> {$name}&nbsp";
+        $staffString .= "<i>{$role}:</i> {$name}<br>";
       }
       if ($staffString == "") {
         $staffString = "&#8212";

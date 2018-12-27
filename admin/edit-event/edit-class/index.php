@@ -453,6 +453,42 @@ EOT;
 
       <footer>
         <script type="text/javascript">
+        function newStaffFunction() {
+            newInput = document.createElement('br');
+            var staffSection = document.getElementById('staff-section');
+            staffSection.appendChild(newInput);
+            newInput = document.createElement('br');
+            staffSection.appendChild(newInput);
+            //add role selector
+            newInput = document.createElement('label');
+            newInput.innerHTML = "Role: ";
+            staffSection.appendChild(newInput);
+            newInput = document.createElement('input');
+            newInput.setAttribute('type', 'text');
+            newInput.setAttribute('name', 'staff-roles[]');
+            newInput.setAttribute('list', 'staff-role-list');
+            newInput.setAttribute('value', '');
+            newInput.setAttribute('onclick', 'select()');
+            newInput.setAttribute('form', 'class-form');
+            var staffSection = document.getElementById('staff-section');
+            staffSection.appendChild(newInput);
+            //Add name selector
+            newInput = document.createElement('br');
+            staffSection.appendChild(newInput);
+            newInput = document.createElement('label');
+            newInput.innerHTML = "Staff Member: ";
+            staffSection.appendChild(newInput);
+            newInput = document.createElement('input');
+            newInput.setAttribute('type', 'text');
+            newInput.setAttribute('name', 'staff[]');
+            newInput.setAttribute('list', 'staff-list');
+            newInput.setAttribute('value', '');
+            newInput.setAttribute('onclick', 'select()');
+            newInput.setAttribute('form', 'class-form');
+            var staffSection = document.getElementById('staff-section');
+            staffSection.appendChild(newInput);
+          };
+
         function newHorseFunction() {
             newInput = document.createElement('input');
             newInput.setAttribute('type', 'text');

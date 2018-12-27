@@ -76,7 +76,7 @@ EOT;
     $leaders = pg_fetch_all_columns(pg_query($db_connection, $getLeadersQuery));
 
 
-    var_dump($allClasses[$key]['clients']);
+    var_dump($allClasses[$key]['leaders']);
 
 
     $allClasses[$key]['clients'] = $clients;

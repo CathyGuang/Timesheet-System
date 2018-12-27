@@ -25,6 +25,8 @@ EOT;
 
   $allClasses = pg_fetch_all($result);
 
+  var_dump($allClasses);
+
   if (!$allClasses) {return;}
 
 

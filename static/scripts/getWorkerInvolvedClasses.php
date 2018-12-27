@@ -75,9 +75,18 @@ EOT;
     $allClasses[$key]['attendance'] = $attendance;
     $allClasses[$key]['sidewalkers'] = $sidewalkers;
     var_dump($allClasses[$key]['staff']);
+    foreach ($allClasses[$key]['staff'] as $JSONString) {
+      $rawArray = explode(",", ltrim(rtrim($JSONString, '}'), '{'));
+      echo "RAWARRAY: ";
+      var_dump($rawArray);
+    }
+
+
     $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
     $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];
     $allClasses[$key]['equine_specialist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['equine_specialist']} ;"))['name'];
+
+
     $allClasses[$key]['leaders'] = $leaders;
     $allClasses[$key]['horses'] = $horses;
 

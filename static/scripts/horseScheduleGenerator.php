@@ -104,7 +104,7 @@ EOT;
       if ($event['leaders']) {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){
-            $leaderString .= "<i style='float: left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div><br>";
+            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
           } else {
             $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
           }
@@ -112,11 +112,7 @@ EOT;
       }
       //Shifts with only one leader
       if ($event['leader']) {
-        if ($event['leader'] == "NEEDED") {
-          $leaderString .= "<i style='float: left;'>Shift Leader/Key Volunteer:&nbsp;</i><div style='color:yellow;'>{$event['leader']}</div><br>";
-        } else {
-          $leaderString .= "<i>Shift Leader/Key Volunteer: </i>" . $event['leader'];
-        }
+        $leaderString .= "<i>Shift Leader/Key Volunteer: </i>" . $event['leader'];
       }
       if ($leaderString == "") {
         $leaderString = "&#8212";
@@ -144,10 +140,8 @@ EOT;
           foreach ($event['sidewalkers'] as $volunteerName) {
             if ($volunteerName == "NEEDED") {
               $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
-              $volunteerString .= "<br>";
             } else {
-              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}";
-              $volunteerString .= "<br>";
+              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}" . "<br>";
             }
           }
       }

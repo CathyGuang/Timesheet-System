@@ -112,7 +112,7 @@ EOT;
       if ($event['leaders']) {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){
-            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div><br>";
+            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
           } else {
             $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
           }
@@ -130,7 +130,7 @@ EOT;
       } else {
         $style = "";
       }
-      echo "<p class='schedule-leaders' {$style}>{$leaderString}</p>";
+      echo "<div class='schedule-leaders' {$style}>{$leaderString}</div>";
 
 
       //Volunteers
@@ -148,10 +148,8 @@ EOT;
           foreach ($event['sidewalkers'] as $volunteerName) {
             if ($volunteerName == "NEEDED") {
               $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
-              $volunteerString .= "<br>";
             } else {
-              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}";
-              $volunteerString .= "<br>";
+              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}" . "<br>";
             }
           }
       }

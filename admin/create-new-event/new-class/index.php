@@ -125,7 +125,7 @@
         <p>Staff:</p>
 
         <label>Role: </label>
-        <input form="class-form" type="text" name="staffRoles[]" list="staff-role-list" value="" onclick="select();">
+        <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="" onclick="select();">
           <datalist id="staff-role-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
@@ -154,18 +154,6 @@
       <br>
       <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

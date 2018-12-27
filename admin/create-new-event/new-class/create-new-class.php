@@ -19,7 +19,7 @@
   </header>
 
   <?php
-    error_reporting(1);
+    error_reporting(0);
     var_dump($_POST);
     //Process form input
     //get array of dates and times
@@ -83,6 +83,7 @@
     }
     $clientIDList = to_pg_array($clientIDList);
 
+    /*
     $instructorID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['instructor']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$instructorID) {
       $instructorID = 'null';
@@ -95,6 +96,18 @@
     if (!$esID) {
       $esID = 'null';
     }
+    */
+
+    $staffIDList = array();
+    foreach ($_POST['staff'] as $key => $value) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
+      $leaderIDList[] = $id;
+    }
+
+
+
+
+
     $leaderIDList = array();
     foreach ($_POST['leaders'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
@@ -147,25 +160,13 @@
           }
         }
       }
-      if ($_POST['instructor'] != "") {
-        $result = checkAvailability($instructorID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['instructor']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['therapist'] != "") {
-        $result = checkAvailability($therapistID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['therapist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['equine-specialist'] != "") {
-        $result = checkAvailability($esID, 'workers', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['equine-specialist']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+      if ($_POST['staff'] != array()) {
+        foreach ($staffIDList as $key => $staffID) {
+          $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
+          if ($result) {
+            $abort = true;
+            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
+          }
         }
       }
       if ($_POST['leaders'] != array()) {
@@ -199,6 +200,15 @@
 
     $leaderIDList = to_pg_array($leaderIDList);
 
+
+    $staffJSON = "{";
+    foreach ($staffIDList as $key => $staffID) {
+      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": \"{$staffID}\",";
+    }
+    $staffJSON = rtrim($staffJSON, ',') . "}";
+
+    echo "STAFF JSON:";
+    var_dump($staffJSON);
 
 
 

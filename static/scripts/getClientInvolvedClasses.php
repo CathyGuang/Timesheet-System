@@ -2,7 +2,7 @@
   $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM clients WHERE name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
   $query = <<<EOT
-  SELECT class_type, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, instructor, therapist, equine_specialist, leaders, sidewalkers, clients, attendance FROM classes WHERE
+  SELECT class_type, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, leaders, sidewalkers, clients, attendance FROM classes WHERE
   {$queryID} = ANY(clients) AND
   (archived IS NULL OR archived = '')
   ;
@@ -60,9 +60,15 @@ EOT;
     $allClasses[$key]['attendance'] = $attendance;
     $allClasses[$key]['sidewalkers'] = $sidewalkers;
 
-    $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
-    $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];
-    $allClasses[$key]['equine_specialist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['equine_specialist']} ;"))['name'];
+    $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
+    $allClasses[$key]['staff'] = array();
+    foreach ($rawArray as $roleIDString) {
+      $roleIDString = trim($roleIDString);
+      $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
+      $staffID = trim(explode(':', $roleIDString)[1]);
+      $allClasses[$key]['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
+    }
+
     $allClasses[$key]['leaders'] = $leaders;
     $allClasses[$key]['horses'] = $horses;
 

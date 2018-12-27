@@ -76,6 +76,7 @@ EOT;
     $allClasses[$key]['sidewalkers'] = $sidewalkers;
     var_dump($allClasses[$key]['staff']);
     foreach ($allClasses[$key]['staff'] as $JSONString) {
+      echo $JSONString;
       $rawArray = explode(",", ltrim(rtrim($JSONString, '}'), '{'));
       echo "RAWARRAY: ";
       var_dump($rawArray);

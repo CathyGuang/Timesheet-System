@@ -24,29 +24,11 @@
       $attendance = "{}";
     }
 
-    $therapistID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['therapist']}' AND (archived IS NULL OR archived = '');"))[0];
-    $esID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['equine-specialist']}' AND (archived IS NULL OR archived = '');"))[0];
-
-    $leaderIDPGArray = "{";
-    foreach ($_POST['leaders'] as $name) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND (archived IS NULL OR archived = '');"))[0];
-      $leaderIDPGArray .= $id . ",";
-    }
-    $leaderIDPGArray = rtrim($leaderIDPGArray, ",") . "}";
-
-    $sidewalkerIDPGArray = "{";
-    foreach ($_POST['sidewalkers'] as $name) {
-      $sidewalkerID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND (archived IS NULL OR archived = '');"))[0];
-      $sidewalkerIDPGArray .= $sidewalkerID . ",";
-    }
-    $sidewalkerIDPGArray = rtrim($sidewalkerIDPGArray, ",") . "}";
-
-
 
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}', therapist = '{$therapistID}', equine_specialist = '{$esID}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
+      horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}'
       WHERE id = {$_POST['id']};
 EOT;
 

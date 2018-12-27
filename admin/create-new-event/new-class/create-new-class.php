@@ -200,7 +200,7 @@
 
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
-      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": \"{$staffID}\",";
+      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
 

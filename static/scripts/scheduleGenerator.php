@@ -161,10 +161,8 @@ EOT;
           foreach ($event['sidewalkers'] as $volunteerName) {
             if ($volunteerName == "NEEDED") {
               $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
-              $volunteerString .= "<br>";
             } else {
               $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}";
-              $volunteerString .= "<br>";
             }
           }
       }

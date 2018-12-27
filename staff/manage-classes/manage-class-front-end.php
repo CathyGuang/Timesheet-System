@@ -55,8 +55,8 @@
       </datalist>
 
       <p>Horse Behavior:</p>
-      <input type="text" name="horse-behavior" list="horse-behavior-form" value="">
-        <datalist id="horse-behavior-form">
+      <input type="text" name="horse-behavior" list="horse-behavior-enum" value="<?php echo $classInfo['horse_behavior']; ?>">
+        <datalist id="horse-behavior-enum">
           <?php
             $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";
             $result = pg_query($db_connection, $query);

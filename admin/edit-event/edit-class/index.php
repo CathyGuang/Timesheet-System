@@ -86,10 +86,11 @@
         $checkboxList[$day] = "checked";
       }
 
+      /*
       $instructorName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['instructor']};"), 0, 1)['name'];
       $therapistName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['therapist']};"), 0, 1)['name'];
       $esName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$classData['equine_specialist']};"), 0, 1)['name'];
-
+      */
       echo <<<EOT
 
       <form autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
@@ -315,46 +316,59 @@ EOT;
 
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
 
-        <p>Instructor:</p>
-        <input type="text" name="instructor" list="instructor-list" value="{$instructorName}" onclick="select();">
-          <datalist id="instructor-list">
+
+
+
+        <div>
+          <div id="staff-section">
+            <p>Staff:</p>
+
+              <datalist id="staff-role-list">
 EOT;
-
-              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $workerNames = pg_fetch_all_columns($result);
-              foreach ($workerNames as $key => $value) {
-                echo "<option value='$value'>";
-              }
+                  $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+                  $result = pg_query($db_connection, $query);
+                  $classTypeNames = pg_fetch_all_columns($result);
+                  foreach ($classTypeNames as $key => $value) {
+                    echo "<option value='$value'>";
+                  }
         echo <<<EOT
-          </datalist>
+              </datalist>
 
-        <p>Therapist:</p>
-        <input type="text" name="therapist" list="therapist-list" value="{$therapistName}" onclick="select();">
-          <datalist id="therapist-list">
+              <datalist id="staff-list">
 EOT;
-
-              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $workerNames = pg_fetch_all_columns($result);
-              foreach ($workerNames as $key => $value) {
-                echo "<option value='$value'>";
-              }
+                  $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
+                  $result = pg_query($db_connection, $query);
+                  $staffNames = pg_fetch_all_columns($result);
+                  foreach ($staffNames as $key => $value) {
+                    echo "<option value='$value'>";
+                  }
         echo <<<EOT
-          </datalist>
-
-        <p>ES:</p>
-        <input type="text" name="equine-specialist" list="es-list" value="{$esName}" onclick="select();">
-          <datalist id="es-list">
+              </datalist>
 EOT;
-              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $workerNames = pg_fetch_all_columns($result);
-              foreach ($workerNames as $key => $value) {
-                echo "<option value='$value'>";
-              }
-        echo <<<EOT
-          </datalist>
+        var_dump($classData);
+        foreach ($classData as $key => $staffID) {
+          // code...
+
+          echo <<<EOT
+          <label>Role: </label>
+          <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="" onclick="select();">
+          <br>
+          <label>Staff Member: </label>
+          <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
+
+EOT;
+        }
+
+
+          </div>
+          <br>
+          <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
+        </div>
+
+
+
+
+
 
 
         <div id="leader-section">

@@ -84,7 +84,7 @@ EOT;
 EOT;
       } else if ($typeOfObject == "horses") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time, clients, FROM classes
+        SELECT start_time, end_time, clients FROM classes
         WHERE
         (
         {$id} = ANY(classes.horses)

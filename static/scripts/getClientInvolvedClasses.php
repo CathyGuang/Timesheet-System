@@ -15,6 +15,7 @@ EOT;
   if (!$allClasses) {return;}
 
   foreach ($allClasses as $key => $specificClass) {
+
     $getClientsQuery = <<<EOT
       SELECT clients.name FROM clients WHERE
       clients.id = ANY('{$allClasses[$key]['clients']}')

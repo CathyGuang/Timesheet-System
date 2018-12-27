@@ -31,7 +31,7 @@ EOT;
   foreach ($allClasses as $key => $specificClass) {
 
     $getClientsQuery = <<<EOT
-      SELECT clients.name FROM clients WHERE
+      SELECT id, clients.name FROM clients WHERE
       clients.id = ANY('{$allClasses[$key]['clients']}')
       ;
 EOT;
@@ -42,7 +42,7 @@ EOT;
 EOT;
       if ($specificClass['sidewalkers']) {
         $getSidewalkersQuery = <<<EOT
-          SELECT workers.name FROM workers WHERE
+          SELECT id, workers.name FROM workers WHERE
           workers.id = ANY('{$allClasses[$key]['sidewalkers']}') AND
           (archived IS NULL OR archived = '')
           ;
@@ -50,7 +50,7 @@ EOT;
       }
       if ($specificClass['horses']) {
         $getHorsesQuery = <<<EOT
-          SELECT name FROM horses WHERE
+          SELECT id, name FROM horses WHERE
           id = ANY('{$allClasses[$key]['horses']}') AND
           (archived IS NULL OR archived = '')
           ;
@@ -58,7 +58,7 @@ EOT;
       }
       if ($specificClass['leaders']) {
         $getLeadersQuery = <<<EOT
-          SELECT workers.name FROM workers WHERE
+          SELECT id, workers.name FROM workers WHERE
           workers.id = ANY('{$allClasses[$key]['leaders']}') AND
           (archived IS NULL OR archived = '')
           ;
@@ -66,10 +66,18 @@ EOT;
       }
 
     $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
+
     $attendance = pg_fetch_all_columns(pg_query($db_connection, $getAttendanceQuery));
+
     $sidewalkers = pg_fetch_all_columns(pg_query($db_connection, $getSidewalkersQuery));
+
     $horses = pg_fetch_all_columns(pg_query($db_connection, $getHorsesQuery));
+
     $leaders = pg_fetch_all_columns(pg_query($db_connection, $getLeadersQuery));
+
+
+    var_dump($allClasses[$key]['clients']);
+
 
     $allClasses[$key]['clients'] = $clients;
     $allClasses[$key]['attendance'] = $attendance;

@@ -108,11 +108,11 @@ EOT;
     }
 
     $allClasses[$key]['leaders'] = array();
+    var_dump($allClasses[$key]['leaders']);
     foreach ($leaderOrder as $id) {
       foreach ($leaders as $leaderData) {
         if ($leaderData['id'] == $id) {
           $allClasses[$key]['leaders'][] = $leaderData['name'];
-          echo "NAME::::::: " . $leaderData['name'];
         }
       }
     }

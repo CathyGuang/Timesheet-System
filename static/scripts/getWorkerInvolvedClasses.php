@@ -75,16 +75,15 @@ EOT;
     $allClasses[$key]['attendance'] = $attendance;
     $allClasses[$key]['sidewalkers'] = $sidewalkers;
 
-    var_dump($allClasses[$key]['staff']);
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
     $allClasses[$key]['staff'] = array();
     foreach ($rawArray as $roleIDString) {
       $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
       $staffID = trim(explode(':', $roleIDString)[1]);
-      var_dump($role);
-      var_dump($staffID);
-      $allClasses[$key]['staff'][$role] =  pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
+      $allClasses[$key]['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
     }
+    
+    var_dump($allClasses[$key]['staff']);
 
     $allClasses[$key]['instructor'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['instructor']} ;"))['name'];
     $allClasses[$key]['therapist'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allClasses[$key]['therapist']} ;"))['name'];

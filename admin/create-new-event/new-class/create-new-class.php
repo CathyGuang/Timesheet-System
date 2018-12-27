@@ -207,8 +207,10 @@
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
 
+
     echo "STAFF JSON:";
     var_dump($staffJSON);
+    var_dump($staffIDList);
 
 
 

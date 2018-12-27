@@ -305,7 +305,7 @@
         staffSection.appendChild(newInput);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'staffRoles[]');
+        newInput.setAttribute('name', 'staff-roles[]');
         newInput.setAttribute('list', 'staff-role-list');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');

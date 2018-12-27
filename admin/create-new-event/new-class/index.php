@@ -236,7 +236,7 @@
               $result = pg_query($db_connection, $query);
               $clientNames = pg_fetch_all_columns($result);
               foreach ($clientNames as $key => $value) {
-                echo "<option value='$value'>";
+                echo "<option value='{$value}'>";
               }
             ?>
           </datalist>

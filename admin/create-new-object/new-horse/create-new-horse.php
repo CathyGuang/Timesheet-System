@@ -22,8 +22,8 @@
 
   <?php
     $name = pg_escape_string(trim($_POST['name']));
-    $owner = trim($_POST['owner']);
-    $notes = trim($_POST['notes']);
+    $owner = pg_escape_string(trim($_POST['owner']));
+    $notes = pg_escape_string(trim($_POST['notes']));
 
     $query = "INSERT INTO horses(name, owner, org_uses_per_day, owner_uses_per_day, notes) VALUES ('{$name}', '{$owner}', '{$_POST['org_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$notes}');";
 

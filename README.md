@@ -5,7 +5,7 @@
 ## Update Log:
 
 ### Version 1.0
-  *Complete Functionality
+  *Complete Functionality*
 
 * Conflict-Free Scheduling
   * Automatic conflict detection for all people, horses, spaces, and objects

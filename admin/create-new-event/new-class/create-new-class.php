@@ -19,6 +19,8 @@
   </header>
 
   <?php
+    error_reporting(1);
+    var_dump($_POST);
     //Process form input
     //get array of dates and times
     $date = $_POST['start-date'];

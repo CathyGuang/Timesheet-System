@@ -67,7 +67,7 @@
           ?>
         </datalist>
 
-      <br>
+      <br><br>
       <p>Horse Behavior Notes:</p>
       <textarea name="horse-behavior-notes" rows="12" cols="30">
         <?php
@@ -100,7 +100,8 @@ EOT;
           echo $classInfo['client_notes'];
         ?>
       </textarea>
-
+      <br>
+      
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
         $classInfo['staff'] = array();

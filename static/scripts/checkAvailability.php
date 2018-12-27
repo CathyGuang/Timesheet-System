@@ -137,6 +137,10 @@ EOT;
       if ($typeOfObject == "horses") {
         $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"));
         var_dump($horseInfo);
+        foreach ($allEvents as $eventInfo) {
+          $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
+          var_dump($clientNames);
+        }
       }
 
 

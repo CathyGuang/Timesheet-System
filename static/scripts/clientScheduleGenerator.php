@@ -93,6 +93,7 @@ EOT;
       //Staff
       $staffString = "";
       foreach ($event['staff'] as $role => $name) {
+        if ($name == "") {continue;}
         $staffString .= "<i>{$role}:</i> {$name}<br>";
       }
       if ($staffString == "") {

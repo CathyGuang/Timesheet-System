@@ -56,17 +56,17 @@
       $cancel = 'FALSE';
     }
 
-    echo "<br>LESSON PLAN:<br>";
-    var_dump($_POST['lesson-plan']);
-    echo "<br>ESCAPED LESSON PLAN:<br>";
+    // Escape user input strings for postgres
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
-    var_dump($escapedLessonPlan);
+    $escapedHorseBehaviorNotes = pg_escape_string($_POST['horse-behavior-notes']);
+    $escapedClientNotes = pg_escape_string($_POST['client-notes']);
+
 
 
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}', client_notes = '{$_POST['client-notes']}', staff = '{$staffJSON}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
+      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
       WHERE id = {$_POST['id']};
 EOT;
 

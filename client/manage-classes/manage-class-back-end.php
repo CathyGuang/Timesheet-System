@@ -24,11 +24,14 @@
       $attendance = "{}";
     }
 
+    // Escape user input for postgres
+    $escapedHorseBehaviorNotes = pg_escape_string($_POST['horse-behavior-notes']);
+
 
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$_POST['horse-behavior-notes']}', attendance = '{$attendance}'
+      horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}'
       WHERE id = {$_POST['id']};
 EOT;
 

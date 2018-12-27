@@ -77,11 +77,6 @@ EOT;
     $horseOrder = explode(',', rtrim(ltrim($allClasses[$key]['horses'], '{'), '}'));
     $leaderOrder = explode(',', rtrim(ltrim($allClasses[$key]['leaders'], '{'), '}'));
 
-    var_dump($clients);
-    var_dump($leaders);
-    var_dump($sidewalkers);
-
-
     $allClasses[$key]['clients'] = array();
     foreach ($clientOrder as $id) {
       foreach ($clients as $clientData) {
@@ -141,8 +136,11 @@ EOT;
 
 
     echo "<br>FINAL FORMATTING:<br>";
+    echo "CLIENTS: ";
     var_dump($allClasses[$key]['clients']);
+    echo "LEADERS: ";
     var_dump($allClasses[$key]['leaders']);
+    echo "SIDEWALKERS: ";
     var_dump($allClasses[$key]['sidewalkers']);
 
   }

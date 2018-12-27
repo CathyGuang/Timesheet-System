@@ -63,7 +63,7 @@
 
       <br>
       <p>Horse Behavior Notes:</p>
-      <textarea name="horse-behavior-notes" rows="10" cols="30">
+      <textarea name="horse-behavior-notes" rows="12" cols="30">
         <?php
           echo $classInfo['horse_behavior_notes'];
         ?>
@@ -117,7 +117,7 @@ EOT;
               echo "<input type='text' name='leaders[]' value='{$name}' onclick='select()' readonly>";
             }
           ?>
-          
+
 
           <p>Sidewalker(s):</p>
             <datalist id="sidewalker-list">

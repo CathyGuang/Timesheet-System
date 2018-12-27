@@ -387,7 +387,7 @@ EOT;
 
       <div style="display:flex; justify-content:space-around;">
 
-
+      <div>
       <div id="horse-section">
         <p>Horse(s):</p>
 
@@ -416,8 +416,9 @@ EOT;
         </div>
         <br>
         <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
+        </div>
 
-
+        <div>
         <div id="tack-section">
           <p>Tack(s):</p>
 
@@ -445,7 +446,7 @@ EOT;
           </div>
           <br>
           <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
-
+          </div>
 
 
 

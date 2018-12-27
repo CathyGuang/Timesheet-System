@@ -59,7 +59,7 @@
     echo "<br>LESSON PLAN:<br>";
     var_dump($_POST['lesson-plan']);
     echo "<br>ESCAPED LESSON PLAN:<br>";
-    $escapedLessonPlan = pg_escape_literal($_POST['lesson-plan']);
+    $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
     var_dump($escapedLessonPlan);
 
 

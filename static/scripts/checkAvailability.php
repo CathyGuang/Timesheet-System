@@ -43,7 +43,7 @@ EOT;
         SELECT start_time, end_time, value FROM classes, jsonb_each_text(classes.staff)
         WHERE
         (
-        {$id} = value OR
+        '{$id}' = value OR
         {$id} = ANY(classes.leaders) OR
         {$id} = ANY(classes.sidewalkers)
         ) AND (

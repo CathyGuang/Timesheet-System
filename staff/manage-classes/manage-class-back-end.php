@@ -24,6 +24,12 @@
       $attendance = "{}";
     }
 
+    $staffIDList = array();
+    foreach ($_POST['staff'] as $name) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
+      $staffIDList[] = $id;
+    }
+
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";

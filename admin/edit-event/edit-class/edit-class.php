@@ -44,7 +44,6 @@
 
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
     $todaysDate = date('Y-m-d');
-    var_dump($todaysDate);
     //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
     $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
     $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));

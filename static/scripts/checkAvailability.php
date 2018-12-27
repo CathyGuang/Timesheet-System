@@ -131,26 +131,27 @@ EOT;
             }
           }
         }
-      }
 
-      //Check if horse is maxed out on uses for the day
-      if ($typeOfObject == "horses") {
-        $orgUseCount = 0;
-        $ownerUseCount = 0;
-        $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"));
-        foreach ($allEvents as $eventInfo) {
-          $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
-          if (in_array($horseInfo['owner'], $clientNames)) {
-            $ownerUseCount++;
-          } else {
-            $orgUseCount++;
+
+        //Check if horse is maxed out on uses for the day
+        if ($typeOfObject == "horses") {
+          $orgUseCount = 0;
+          $ownerUseCount = 0;
+          $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"));
+          foreach ($allEvents as $eventInfo) {
+            $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
+            if (in_array($horseInfo['owner'], $clientNames)) {
+              $ownerUseCount++;
+            } else {
+              $orgUseCount++;
+            }
           }
-        }
-        if ($orgUseCount >= $horseInfo['org_uses_per_day']) {
-          return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
-        }
-        if ($ownerUseCount >= $horseInfo['owner_uses_per_day']) {
-          return "{$horseInfo['name']} is already being used {$horseInfo['owner_uses_per_day']} times on {$date} by their owner ({$horseInfo['owner']})!";
+          if ($orgUseCount >= $horseInfo['org_uses_per_day']) {
+            return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
+          }
+          if ($ownerUseCount >= $horseInfo['owner_uses_per_day']) {
+            return "{$horseInfo['name']} is already being used {$horseInfo['owner_uses_per_day']} times on {$date} by their owner ({$horseInfo['owner']})!";
+          }
         }
       }
 

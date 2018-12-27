@@ -65,11 +65,11 @@ EOT;
 EOT;
       }
 
-    $clients = pg_fetch_all_columns(pg_query($db_connection, $getClientsQuery));
+    $clients = pg_fetch_all(pg_query($db_connection, $getClientsQuery));
     $attendance = pg_fetch_all_columns(pg_query($db_connection, $getAttendanceQuery));
-    $sidewalkers = pg_fetch_all_columns(pg_query($db_connection, $getSidewalkersQuery));
-    $horses = pg_fetch_all_columns(pg_query($db_connection, $getHorsesQuery));
-    $leaders = pg_fetch_all_columns(pg_query($db_connection, $getLeadersQuery));
+    $sidewalkers = pg_fetch_all(pg_query($db_connection, $getSidewalkersQuery));
+    $horses = pg_fetch_all(pg_query($db_connection, $getHorsesQuery));
+    $leaders = pg_fetch_all(pg_query($db_connection, $getLeadersQuery));
 
 
     $clientOrder = explode(',', rtrim(ltrim($allClasses[$key]['clients'], '{'), '}'));

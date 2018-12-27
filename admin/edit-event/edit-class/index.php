@@ -184,14 +184,11 @@ EOT;
           </datalist>
 
 
-
         <p>Special Tack:</p>
         <input type="text" name="special-tack" value="{$classData['special_tack']}">
 
         <p>Stirrup Leather Length:</p>
         <input type="text" name="stirrup-leather-length" value="{$classData['stirrup_leather_length']}">
-
-
 
 
         <div>
@@ -243,71 +240,6 @@ EOT;
 
 
 
-
-
-
-
-
-        <div id="leader-section">
-          <p>Leader(s):</p>
-
-EOT;
-        $leaderIDList = explode(',', ltrim(rtrim($classData['leaders'], "}"), '{'));
-        foreach ($leaderIDList as $id) {
-          $leaderName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
-          echo <<<EOT
-          <input type="text" name="leaders[]" list="leader-list" value="{$leaderName}" onclick="select();">
-EOT;
-        }
-
-        echo <<<EOT
-            <datalist id="leader-list">
-EOT;
-
-                $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $workerNames = pg_fetch_all_columns($result);
-                foreach ($workerNames as $key => $value) {
-                  echo "<option value='$value'>";
-                }
-
-        echo <<<EOT
-            </datalist>
-          </div>
-          <br>
-          <button type="button" id="add-leader-button" onclick="newLeaderFunction();">Add Additional Leader</button>
-
-
-
-          <div id="sidewalker-section">
-            <p>Sidewalker(s):</p>
-
-EOT;
-          $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
-          foreach ($sidewalkerIDList as $id) {
-            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
-            echo <<<EOT
-            <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
-EOT;
-          }
-
-          echo <<<EOT
-              <datalist id="sidewalker-list">
-EOT;
-
-                  $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-                  $result = pg_query($db_connection, $query);
-                  $workerNames = pg_fetch_all_columns($result);
-                  foreach ($workerNames as $key => $value) {
-                    echo "<option value='$value'>";
-                  }
-
-          echo <<<EOT
-              </datalist>
-            </div>
-            <br>
-            <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
-
         <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>
 
         <div>
@@ -320,11 +252,6 @@ EOT;
         <input type="submit" value="Submit Changes">
 
       </form>
-
-
-
-
-
 
 
 
@@ -455,23 +382,70 @@ EOT;
         <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
         </div>
 
+        <div>
+        <div id="leader-section">
+          <p>Leader(s):</p>
+
+EOT;
+        $leaderIDList = explode(',', ltrim(rtrim($classData['leaders'], "}"), '{'));
+        foreach ($leaderIDList as $id) {
+          $leaderName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+          echo <<<EOT
+          <input type="text" name="leaders[]" list="leader-list" value="{$leaderName}" onclick="select();">
+EOT;
+        }
+
+        echo <<<EOT
+            <datalist id="leader-list">
+EOT;
+
+                $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+                $result = pg_query($db_connection, $query);
+                $workerNames = pg_fetch_all_columns($result);
+                foreach ($workerNames as $key => $value) {
+                  echo "<option value='$value'>";
+                }
+
+        echo <<<EOT
+            </datalist>
+          </div>
+          <br>
+          <button type="button" id="add-leader-button" onclick="newLeaderFunction();">Add Additional Leader</button>
+          </div>
 
 
+          <div>
+          <div id="sidewalker-section">
+            <p>Sidewalker(s):</p>
 
+EOT;
+          $sidewalkerIDList = explode(',', ltrim(rtrim($classData['sidewalkers'], "}"), '{'));
+          foreach ($sidewalkerIDList as $id) {
+            $sidewalkerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+            echo <<<EOT
+            <input type="text" name="sidewalkers[]" list="sidewalker-list" value="{$sidewalkerName}" onclick="select();">
+EOT;
+          }
 
+          echo <<<EOT
+              <datalist id="sidewalker-list">
+EOT;
 
+                  $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+                  $result = pg_query($db_connection, $query);
+                  $workerNames = pg_fetch_all_columns($result);
+                  foreach ($workerNames as $key => $value) {
+                    echo "<option value='$value'>";
+                  }
 
-
-
-
-
-
-
+          echo <<<EOT
+              </datalist>
+            </div>
+            <br>
+            <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
+            </div>
 
       </div>
-
-
-
 
 
 

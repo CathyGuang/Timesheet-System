@@ -25,7 +25,7 @@
         <input type="text" name="selected-horse" list="horse-list">
           <datalist id="horse-list">
 EOT;
-              $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT name FROM horses WHERE name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               while ($row = pg_fetch_row($result)) {
                 echo "<option value='$row[0]'>";

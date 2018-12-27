@@ -365,7 +365,7 @@ EOT;
           <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
         </div>
 
-EOT;
+
 
 
 

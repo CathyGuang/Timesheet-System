@@ -13,8 +13,8 @@
 
   <header>
     <h1><?php echo $organizationName; ?> Web Portal</h1>
-    <label id="version-label">v1.0</label>
   </header>
+  <label id="version-label">v1.0</label>
 
 
   <div class="main-content-div">

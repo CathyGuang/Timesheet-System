@@ -62,6 +62,9 @@ button:hover {
     h1 {
       margin-left: 10px;
     }
+    #version-label {
+      position: absolute;
+    }
 
     nav {
       margin-top: 45px;

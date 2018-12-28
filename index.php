@@ -9,12 +9,13 @@
 
 <body>
 
-  <img src="/static/logo.png.ln" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
 
   <header>
+    <img src="/static/logo.png.ln" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
     <h1><?php echo $organizationName; ?> Web Portal</h1>
+    <label id="version-label">v1.0</label>
   </header>
-  <label id="version-label">v1.0</label>
+
 
 
   <div class="main-content-div">

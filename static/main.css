@@ -64,6 +64,7 @@ button:hover {
     }
     #version-label {
       position: absolute;
+      right: 0;
     }
 
     nav {

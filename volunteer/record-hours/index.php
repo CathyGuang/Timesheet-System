@@ -35,11 +35,6 @@
       <input type="text" name="shift-type" list="shift-type-list" required>
         <datalist id="shift-type-list">
           <?php
-            $classTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CLASS_TYPE));"));
-            foreach ($classTypes as $value) {
-              echo "<option value='{$value} &#8212 Leader'>";
-              echo "<option value='{$value} &#8212 Sidewalker'>";
-            }
             $horseCareShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CARE_TYPE));"));
             foreach ($horseCareShiftTypes as $value) {
               echo "<option value='{$value}'>";

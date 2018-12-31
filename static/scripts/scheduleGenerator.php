@@ -80,10 +80,10 @@
     <p class="schedule-time" style="height: 5vh;">Time:</p>
     <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
+    <p class="schedule-clients" style="height: 5vh;">Clients:</p>
+    <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
     <p class="schedule-leaders" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
-    <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
-    <p class="schedule-clients" style="height: 5vh;">Clients:</p>
 EOT;
 
     foreach ($masterList as $event) {

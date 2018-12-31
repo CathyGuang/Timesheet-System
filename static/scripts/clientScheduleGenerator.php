@@ -109,7 +109,7 @@ EOT;
       //Leaders
       $leaderString = "";
       //Classes with potentially multiple leaders
-      if ($event['leaders']) {
+      if ($event['leaders'] && $event['leaders'][0] != "") {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){
             $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
@@ -135,7 +135,7 @@ EOT;
 
       //Volunteers
       $volunteerString = "";
-      if ($event['volunteers']) {
+      if ($event['volunteers'] && $event['volunteers'][0] != "") {
         foreach ($event['volunteers'] as $volunteerName) {
           if ($volunteerName == "NEEDED") {
             $volunteerString .= "<div style='color: yellow;'>{$volunteerName}</div>, ";
@@ -144,7 +144,7 @@ EOT;
           }
         }
       }
-      if ($event['sidewalkers']) {
+      if ($event['sidewalkers'] && $event['sidewalkers'][0] != "") {
           foreach ($event['sidewalkers'] as $volunteerName) {
             if ($volunteerName == "NEEDED") {
               $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";

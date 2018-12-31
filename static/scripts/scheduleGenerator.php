@@ -122,7 +122,6 @@ EOT;
       //Leaders
       $leaderString = "";
       //Classes with potentially multiple leaders
-      var_dump($event['leaders']);
       if ($event['leaders'] && $event['leaders'][0] != "") {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){

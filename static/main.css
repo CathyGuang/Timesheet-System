@@ -207,7 +207,7 @@ button:hover {
       grid-column: 7;
     }
     .schedule-volunteers > * {
-      grid-column: 8;
+      grid-column: 7;
     }
     .schedule-horse-info {
       grid-column: 8;

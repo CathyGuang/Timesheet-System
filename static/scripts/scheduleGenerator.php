@@ -123,7 +123,7 @@ EOT;
       $leaderString = "";
       //Classes with potentially multiple leaders
       var_dump($event['leaders']);
-      if ($event['leaders']) {
+      if ($event['leaders'] && $event['leaders'][0] != "") {
         foreach ($event['leaders'] as $leaderName) {
           if ($leaderName == "NEEDED"){
             $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";

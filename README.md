@@ -4,6 +4,16 @@
 
 ## Update Log:
 
+### Version 1.1
+  *Bug fixes and minor improvements*
+
+* Volunteer and Horse directories are now password protected by staff credentials
+
+* Hour entries now support decimal numbers
+
+* Fixed permissions issue with reports that caused them to not work
+
+
 ### Version 1.0
   *Complete Functionality*
 

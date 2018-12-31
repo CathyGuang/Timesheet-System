@@ -201,10 +201,10 @@ button:hover {
       grid-column: 5;
     }
     .schedule-leaders {
-      grid-column: 6;
+      grid-column: 8;
     }
     .schedule-volunteers {
-      grid-column: 8;
+      grid-column: 9;
     }
     .schedule-volunteers > * {
       grid-column: 9;

@@ -204,13 +204,13 @@ button:hover {
       grid-column: 9;
     }
     .schedule-volunteers {
-      grid-column: 7;
+      grid-column: 8;
     }
     .schedule-volunteers > * {
-      grid-column: 7;
+      grid-column: 8;
     }
     .schedule-horse-info {
-      grid-column: 8;
+      grid-column: 7;
     }
     .schedule-clients {
       grid-column: 6;

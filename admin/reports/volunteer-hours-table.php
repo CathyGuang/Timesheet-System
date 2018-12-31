@@ -5,8 +5,8 @@
   include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
 
   //delete tempfiles from previous reports
-  if (file_exists("tempfile.csv")) {
-    unlink("tempfile.csv");
+  if (file_exists("/tmp/DHStempfile.csv")) {
+    unlink("/tmp/DHStempfile.csv");
   }
 
   //Get table columns for CSV file
@@ -22,7 +22,7 @@
   $data = array_merge($metadata, $result);
 
   //Write data to temporary CSV file on the server
-  $tempfile = fopen('tempfile.csv', 'w');
+  $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
 
   foreach ($data as $line) {
     fputcsv($tempfile, $line);
@@ -33,7 +33,7 @@
 
 
   //Send file to client browser
-  $filename = "tempfile.csv";
+  $filename = "/tmp/DHStempfile.csv";
 
   if(file_exists($filename)){
 

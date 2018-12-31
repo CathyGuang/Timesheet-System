@@ -33,8 +33,8 @@
 
   <?php
     //delete tempfiles from previous reports
-    if (file_exists("tempfile.csv")) {
-      unlink("tempfile.csv");
+    if (file_exists("/tmp/DHStempfile.csv")) {
+      unlink("/tmp/DHStempfile.csv");
     }
 
   ?>

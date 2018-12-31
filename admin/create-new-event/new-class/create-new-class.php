@@ -175,7 +175,7 @@
       }
     }
     if ($abort) {
-      echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>try again</button></h3>";
+      echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button onclick='window.history.back();' style='width: 90pt;'>try again</button></h3>";
       return;
     }
 

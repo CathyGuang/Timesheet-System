@@ -181,7 +181,7 @@ button:hover {
       margin: 0;
       margin-top: 35vh;
       display: grid;
-      grid-template-columns: 5px 1fr 132px 175px 300px 300px 350px 500px 250px 350px 1fr 5px;
+      grid-template-columns: 5px 1fr 132px 175px 300px 250px 500px 300px 350px 350px 1fr 5px;
     }
     .schedule-display > * {
       border: 1px solid black;
@@ -204,14 +204,14 @@ button:hover {
       grid-column: 6;
     }
     .schedule-volunteers {
-      grid-column: 7;
-    }
-    .schedule-volunteers > * {
-      grid-column: 7;
-    }
-    .schedule-horse-info {
       grid-column: 8;
     }
-    .schedule-clients {
+    .schedule-volunteers > * {
       grid-column: 9;
+    }
+    .schedule-horse-info {
+      grid-column: 7;
+    }
+    .schedule-clients {
+      grid-column: 6;
     }

@@ -50,7 +50,7 @@
       <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
 
       <p>Number of hours</p>
-      <input type="number" name="hours" required>
+      <input type="text" name="hours" required>
 
       <br><br>
       <input type="submit" value="Submit">

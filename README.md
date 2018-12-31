@@ -13,6 +13,8 @@
 
 * Fixed permissions issue with reports that caused them to not work
 
+* Clicking on version pulls up README file and update log 
+
 
 ### Version 1.0
   *Complete Functionality*

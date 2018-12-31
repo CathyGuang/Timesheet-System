@@ -44,7 +44,7 @@ EOT;
           while ($row = pg_fetch_row($result)) {
             echo "<option value='{$row[1]}'>";
 
-            $getSubObjectsQuery = "SELECT unnest(enum_range(NULL::{$row[1]}))";
+            $getSubObjectsQuery = "SELECT unnest(enum_range(NULL::{$row[1]}))::text EXCEPT SELECT name FROM archived_enums;";
             $subObjects = pg_query($db_connection, $getSubObjectsQuery);
             $subObjectNames = pg_fetch_all_columns($subObjects);
             $all_objects[$row[1]] = array();
@@ -55,7 +55,7 @@ EOT;
         ?>
       </datalist>
 
-    <?php
+    <?php //Create datalists for all object types
       foreach ($all_objects as $object_type => $subObjects) {
         echo "<datalist id='{$object_type}'>";
         foreach ($subObjects as $key => $value) {
@@ -71,7 +71,7 @@ EOT;
     <p>Change object name:</p>
     <input type="text" name="new-object-name" value="" required>
 
-    <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> (this will not change the object name)</p>
+    <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> (also enter "archive" under 'Change object name'.)</p>
 
     <br><br>
     <input type="submit" value="Submit">

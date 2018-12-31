@@ -201,17 +201,17 @@ button:hover {
       grid-column: 5;
     }
     .schedule-leaders {
-      grid-column: 8;
+      grid-column: 6;
     }
     .schedule-volunteers {
-      grid-column: 9;
-    }
-    .schedule-volunteers > * {
-      grid-column: 9;
-    }
-    .schedule-horse-info {
       grid-column: 7;
     }
+    .schedule-volunteers > * {
+      grid-column: 8;
+    }
+    .schedule-horse-info {
+      grid-column: 8;
+    }
     .schedule-clients {
-      grid-column: 6;
+      grid-column: 8;
     }

@@ -212,7 +212,7 @@
       }
     }
     if ($abort) {
-      echo "<h3 class='main-content-header'><em style='color:red;'>IMPORTANT:</em> <button onclick='window.history.back();' style='width: 80pt;'>REVERT</button> your changes and try again. You must submit the form again, or data from this class will be lost. To keep the class as it was, click 'REVERT' and then 'Submit Changes'.</h3>";
+      echo "<h3 class='main-content-header'><strong style='color:red;'>IMPORTANT:</strong> <button onclick='window.history.back();' style='width: 80pt;'>REVERT</button> your changes and try again. You must submit the form again, or data from this class will be lost. To keep the class as it was, click 'REVERT' and then 'Submit Changes'.</h3>";
       return;
     }
 

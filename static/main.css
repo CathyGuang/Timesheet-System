@@ -201,7 +201,7 @@ button:hover {
       grid-column: 5;
     }
     .schedule-leaders {
-      grid-column: 6;
+      grid-column: 9;
     }
     .schedule-volunteers {
       grid-column: 7;
@@ -213,5 +213,5 @@ button:hover {
       grid-column: 8;
     }
     .schedule-clients {
-      grid-column: 9;
+      grid-column: 6;
     }

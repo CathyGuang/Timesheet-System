@@ -24,12 +24,9 @@
       foreach ($horseData as $key => $data) {
         $allHorses[$data['id']] = $data['name'];
       }
-      var_dump($allHorses);
-      asort($allHorses);
-      var_dump($allHorses);
 
-      foreach ($allHorses as $horse) {
-        echo "<button type='submit' name='buttonInfo' value='{$horse['id']}'>{$horse['name']}</button>";
+      foreach ($allHorses as $id => $name) {
+        echo "<button type='submit' name='buttonInfo' value='{$id}'>{$name}</button>";
       }
     ?>
 

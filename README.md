@@ -7,13 +7,17 @@
 ### Version 1.1
   *Bug fixes and minor improvements*
 
+* Clicking on version pulls up README file and update log
+
 * Volunteer and Horse directories are now password protected by staff credentials
 
 * Hour entries now support decimal numbers
 
-* Fixed permissions issue with reports that caused them to not work
+* Fixed permissions issue that caused reports to not work
 
-* Clicking on version pulls up README file and update log 
+* Previously archived 'other objects' can now be recreated through 'create object' page
+
+
 
 
 ### Version 1.0

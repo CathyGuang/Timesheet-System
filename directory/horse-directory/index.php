@@ -21,6 +21,7 @@
       $query = "SELECT * FROM horses WHERE name != '' AND name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '');";
       $allHorses = pg_fetch_all(pg_query($db_connection, $query));
       var_dump($allHorses);
+      var_dump(asort($allHorses));
 
       foreach ($allHorses as $horse) {
         echo "<button type='submit' name='buttonInfo' value='{$horse['id']}'>{$horse['name']}</button>";

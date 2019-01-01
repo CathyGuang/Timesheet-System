@@ -18,15 +18,13 @@
 
   <form autocomplete="off" action="horse-directory.php" method="post" class="main-form">
     <?php
-      $query = "SELECT * FROM horses WHERE name != '' AND name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '');";
-      $horseData = pg_fetch_all(pg_query($db_connection, $query));
-      $allHorses = array();
-      foreach ($horseData as $key => $data) {
-        $allHorses[$data['id']] = $data['name'];
-      }
+      $query = "SELECT * FROM horses WHERE name != '' AND name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '') ORDER BY name;";
+      $allHorses = pg_fetch_all(pg_query($db_connection, $query));
 
-      foreach ($allHorses as $id => $name) {
-        echo "<button type='submit' name='buttonInfo' value='{$id}'>{$name}</button>";
+      var_dump($allHorses);
+
+      foreach ($allHorses as $horse) {
+        echo "<button type='submit' name='buttonInfo' value='{$horse['id']}'>{$horse['name']}</button>";
       }
     ?>
 

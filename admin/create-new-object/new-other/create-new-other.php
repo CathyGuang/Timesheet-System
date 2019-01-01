@@ -22,7 +22,7 @@
   <?php
     $archivedObjects = pg_fetch_all(pg_query($db_connection, "SELECT name FROM archived_enums;"));
     var_dump($archivedObjects);
-    if (in_array(trim($_POST['new-object-name']), $archivedObjects) {
+    if (in_array(trim($_POST['new-object-name']), $archivedObjects)) {
       echo "TRUEEUEUE";
     }
 

@@ -22,6 +22,9 @@
   <?php
     $archivedObjects = pg_fetch_all(pg_query($db_connection, "SELECT name FROM archived_enums;"));
     var_dump($archivedObjects);
+    if (in_array(trim($_POST['new-object-name']), $archivedObjects) {
+      echo "TRUEEUEUE";
+    }
 
     $objectName = pg_escape_string(trim($_POST['new-object-name']));
     $query = "ALTER TYPE {$_POST['object-type']} ADD VALUE '{$objectName}';";

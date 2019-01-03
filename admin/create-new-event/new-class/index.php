@@ -32,14 +32,14 @@
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
 
     <p>Class Type:</p>
-    <input type="text" name="class-type" list="class-type-list" onclick="select()" required>
+    <input type="text" name="class-type" value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select()" required>
       <datalist id="class-type-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
           $result = pg_query($db_connection, $query);
           $classTypeNames = pg_fetch_all_columns($result);
           foreach ($classTypeNames as $key => $value) {
-            echo "<option value='$value'>";
+            echo "<option value='{$value}'>";
           }
         ?>
       </datalist>
@@ -56,58 +56,58 @@
     <div style="max-width: 440px;">
       <!-- MONDAY-->
       <label for="monday-checkbox">Monday: </label>
-      <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday">
+      <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php if ($oldPostData['monday-checkbox']) {echo "checked";} ?>>
       <label for="monday-start-time">from:</label>
-      <input type="time" id="monday-start-time" name="monday-start-time">
+      <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $oldPostData['monday-start-time']; ?>">
       <label for="monday-end-time">to:</label>
-      <input type="time" id="monday-end-time" name="monday-end-time">
+      <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $oldPostData['monday-end-time']; ?>">
       <!-- TUESDAY-->
       <label for="tuesday-checkbox">Tuesday: </label>
-      <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday">
+      <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php if ($oldPostData['tuesday-checkbox']) {echo "checked";} ?>>
       <label for="tuesday-start-time">from:</label>
-      <input type="time" id="tuesday-start-time" name="tuesday-start-time">
+      <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $oldPostData['tuesday-start-time']; ?>">
       <label for="tuesday-end-time">to:</label>
-      <input type="time" id="tuesday-end-time" name="tuesday-end-time">
+      <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $oldPostData['tuesday-end-time']; ?>">
       <!-- WEDNESDAY-->
       <label for="wednesday-checkbox">Wednesday: </label>
-      <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday">
+      <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php if ($oldPostData['wednesday-checkbox']) {echo "checked";} ?>>
       <label for="wednesday-start-time">from:</label>
-      <input type="time" id="wednesday-start-time" name="wednesday-start-time">
+      <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $oldPostData['wednesday-start-time']; ?>">
       <label for="wednesday-end-time">to:</label>
-      <input type="time" id="wednesday-end-time" name="wednesday-end-time">
+      <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $oldPostData['wednesday-end-time']; ?>">
       <!-- THURSDAY-->
       <label for="thursday-checkbox">Thursday: </label>
-      <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday">
+      <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php if ($oldPostData['thursday-checkbox']) {echo "checked";} ?>>
       <label for="thursday-start-time">from:</label>
-      <input type="time" id="thursday-start-time" name="thursday-start-time">
+      <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $oldPostData['thursday-start-time']; ?>">
       <label for="thursday-end-time">to:</label>
-      <input type="time" id="thursday-end-time" name="thursday-end-time">
+      <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $oldPostData['thursday-end-time']; ?>">
       <!-- FRIDAY-->
       <label for="friday-checkbox">Friday: </label>
-      <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday">
+      <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php if ($oldPostData['friday-checkbox']) {echo "checked";} ?>>
       <label for="friday-start-time">from:</label>
-      <input type="time" id="friday-start-time" name="friday-start-time">
+      <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $oldPostData['friday-start-time']; ?>">
       <label for="friday-end-time">to:</label>
-      <input type="time" id="friday-end-time" name="friday-end-time">
+      <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $oldPostData['friday-end-time']; ?>">
       <!-- SATURDAY-->
       <label for="saturday-checkbox">Saturday: </label>
-      <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday">
+      <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php if ($oldPostData['saturday-checkbox']) {echo "checked";} ?>>
       <label for="saturday-start-time">from:</label>
-      <input type="time" id="saturday-start-time" name="saturday-start-time">
+      <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $oldPostData['saturday-start-time']; ?>">
       <label for="saturday-end-time">to:</label>
-      <input type="time" id="saturday-end-time" name="saturday-end-time">
+      <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $oldPostData['saturday-end-time']; ?>">
       <!-- SUNDAY-->
       <label for="sunday-checkbox">Sunday: </label>
-      <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday">
+      <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php if ($oldPostData['sunday-checkbox']) {echo "checked";} ?>>
       <label for="sunday-start-time">from:</label>
-      <input type="time" id="sunday-start-time" name="sunday-start-time">
+      <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $oldPostData['sunday-start-time']; ?>">
       <label for="sunday-end-time">to:</label>
-      <input type="time" id="sunday-end-time" name="sunday-end-time">
+      <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $oldPostData['sunday-end-time']; ?>">
     </div>
 
 
     <p>Arena:</p>
-    <input type="text" name="arena" list="arena-list" value="" onclick="select();">
+    <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
       <datalist id="arena-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
@@ -123,10 +123,10 @@
 
 
     <p>Tack Notes:</p>
-    <input type="text" name="special-tack">
+    <input type="text" name="special-tack" value="<?php echo $oldPostData['special-tack']; ?>">
 
     <p>Stirrup Leather Length:</p>
-    <input type="text" name="stirrup-leather-length">
+    <input type="text" name="stirrup-leather-length" value="<?php echo $oldPostData['stirrup-leather-length']; ?>">
 
 
 
@@ -136,7 +136,15 @@
         <p>Staff:</p>
 
         <label>Role: </label>
-        <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['staff-roles']) {
+            foreach ($oldPostData['staff-roles'] as $role) {
+              echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="staff-role-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
@@ -150,7 +158,15 @@
 
         <br>
         <label>Staff Member: </label>
-        <input form="class-form" type="text" name="staff[]" list="staff-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['staff']) {
+            foreach ($oldPostData['staff'] as $staff) {
+              echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staff}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="staff-list">
             <?php
               $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
@@ -181,7 +197,15 @@
     <div>
       <div id="horse-section">
         <p>Horse(s):</p>
-        <input form="class-form" type="text" name="horses[]" list="horse-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['horses']) {
+            foreach ($oldPostData['horses'] as $horse) {
+              echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="horse-list">
             <?php
               $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
@@ -200,7 +224,15 @@
     <div>
       <div id="tack-section">
         <p>Tack(s):</p>
-        <input form="class-form" type="text" name="tacks[]" list="tack-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['tacks']) {
+            foreach ($oldPostData['tacks'] as $tack) {
+              echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="tack-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
@@ -219,7 +251,15 @@
     <div>
       <div id="pad-section">
         <p>Pad(s):</p>
-        <input form="class-form" type="text" name="pads[]" list="pad-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['pads']) {
+            foreach ($oldPostData['pads'] as $pad) {
+              echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="pad-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
@@ -240,7 +280,15 @@
     <div>
       <div id="client-section">
         <p>Client(s):</p>
-        <input form="class-form" type="text" name="clients[]" list="client-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['clients']) {
+            foreach ($oldPostData['clients'] as $client) {
+              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="client-list">
             <?php
               $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
@@ -259,7 +307,15 @@
     <div>
       <div id="leader-section">
         <p>Leader(s):</p>
-        <input form="class-form" type="text" name="leaders[]" list="leader-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['leaders']) {
+            foreach ($oldPostData['leaders'] as $leader) {
+              echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='{$leader}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="leader-list">
             <?php
               $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
@@ -279,7 +335,15 @@
     <div>
       <div id="sidewalker-section">
         <p>Sidewalker(s):</p>
-        <input form="class-form" type="text" name="sidewalkers[]" list="sidewalker-list" value="" onclick="select();">
+        <?php
+          if ($oldPostData['sidewalkers']) {
+            foreach ($oldPostData['sidewalkers'] as $sidewalker) {
+              echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='{$sidewalker}' onclick='select();'>"
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='sidewalker[]' list='sidewalker-list' value='' onclick='select();'>"
+          }
+        ?>
           <datalist id="sidewalker-list">
             <?php
               $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";

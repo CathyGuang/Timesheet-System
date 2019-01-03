@@ -341,7 +341,7 @@
               echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='{$sidewalker}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='sidewalker[]' list='sidewalker-list' value='' onclick='select();'>";
+            echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="sidewalker-list">

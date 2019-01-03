@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="horse-directory.php" method="post" class="main-form">
+  <form autocomplete="off" action="horse-directory.php" method="post" class="directory-form">
     <?php
       $query = "SELECT * FROM horses WHERE name != '' AND name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '') ORDER BY name;";
       $allHorses = pg_fetch_all(pg_query($db_connection, $query));

@@ -16,13 +16,13 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="volunteer-directory.php" method="post" class="main-form">
+  <form autocomplete="off" action="volunteer-directory.php" method="post" class="directory-form">
     <?php
       $query = "SELECT * FROM workers WHERE volunteer = TRUE AND name != 'NEEDED' AND (archived IS NULL OR archived = '') ORDER BY name;";
       $allPeople = pg_fetch_all(pg_query($db_connection, $query));
 
       foreach ($allPeople as $person) {
-        echo "<button type='submit' name='buttonInfo' value='{$person['id']}'>{$person['name']}<br><i>{$person['title']}</i></button>";
+        echo "<button class='directory-button' type='submit' name='buttonInfo' value='{$person['id']}'>{$person['name']}<br><i>{$person['title']}</i></button>";
       }
     ?>
 

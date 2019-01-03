@@ -22,17 +22,6 @@
     $oldPostData = unserialize($_POST['old-post']);
     echo "<br>OLDPOSTDATA<br>";
     var_dump($oldPostData);
-    //GATHER OLD POST DATA IF PRESENT
-    /*
-    if ($_POST) {
-      $keyMap = array(0 => 'class-type', 1 => 'start-date', 2 => 'end-date', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', )
-      $oldPostData = explode(',', rtrim(ltrim($_POST['old-post'], '{'), '}'));
-      foreach ($oldPostData as $key => $value) {
-        // code...
-      }
-      var_dump($oldPostData);
-    }
-    */
 
 
 
@@ -59,9 +48,9 @@
     <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></p>
     <div style="max-width: 500px;">
       <label for="start-date">Start date:</label>
-      <input type="date" id="start-date" name="start-date" value="" placeholder="from" required>
+      <input type="date" id="start-date" name="start-date" value="<?php echo $oldPostData['start-date']; ?>" placeholder="from" required>
       <label for="end-date">End date:</label>
-      <input type="date" id="end-date" name="end-date" value="" placeholder="to" required>
+      <input type="date" id="end-date" name="end-date" value="<?php echo $oldPostData['end-date']; ?>" placeholder="to" required>
     </div>
 
     <div style="max-width: 440px;">

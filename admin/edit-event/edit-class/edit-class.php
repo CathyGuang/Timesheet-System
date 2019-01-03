@@ -221,7 +221,7 @@
           pg_query($db_connection, "UPDATE classes SET archived = 'false' WHERE classes.id = {$data['id']};");
         }
       }
-      echo "<h3 class='main-content-header'><strong style='color:red;'>IMPORTANT:</strong> <button onclick='window.history.back();' style='width: 90pt;'>REVERT </button> your changes and try again. You must submit the form again, or data from this class will be lost. To keep the class as it was, click 'REVERT' and then 'Submit Changes'.</h3>";
+      echo "<h3 class='main-content-header'> No changes to the class have been made. It is safe to leave this page. To edit the class, please <button onclick='window.history.back();' style='width: 90pt;'>revert</button> your changes and try again.</h3>";
       return;
     }
 

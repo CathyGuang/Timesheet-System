@@ -139,7 +139,7 @@
         <?php
           if ($oldPostData['staff-roles']) {
             foreach ($oldPostData['staff-roles'] as $index => $role) {
-              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'><br>";
               echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$oldPostData['staff'][$index]}' onclick='select();'>";
             }
           } else {

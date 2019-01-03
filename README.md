@@ -19,6 +19,8 @@
 
 * Directories now display results alphabetically, and the styles have been updated to better display large amounts of data
 
+* Edit-class function is more stable, won't lose class data when conflicts are not properly resolved. (class data remains unchanged instead)
+
 
 
 

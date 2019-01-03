@@ -135,14 +135,16 @@
       <div id="staff-section">
         <p>Staff:</p>
 
-        <label>Role: </label>
+
         <?php
           if ($oldPostData['staff-roles']) {
-            foreach ($oldPostData['staff-roles'] as $role) {
-              echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+            foreach ($oldPostData['staff-roles'] as $index => $role) {
+              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$oldPostData['staff'][$index]}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
+            echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'><br>";
+            echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="staff-role-list">
@@ -156,17 +158,6 @@
             ?>
           </datalist>
 
-        <br>
-        <label>Staff Member: </label>
-        <?php
-          if ($oldPostData['staff']) {
-            foreach ($oldPostData['staff'] as $staff) {
-              echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staff}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
-          }
-        ?>
           <datalist id="staff-list">
             <?php
               $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";

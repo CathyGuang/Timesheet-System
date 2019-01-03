@@ -21,6 +21,8 @@
 
 * Edit-class function is more stable, won't lose class data when conflicts are not properly resolved. (class data remains unchanged instead)
 
+* New-class function is more stable, if class creation fails for any reason, you can go back to the class creation page and the data you entered will still be there
+
 
 
 

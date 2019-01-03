@@ -19,6 +19,9 @@
 
   <?php
     var_dump($_POST);
+    $oldPostData = unserialize($_POST['old-post']);
+    echo "<br>OLDPOSTDATA<br>";
+    var_dump($oldPostData);
     //GATHER OLD POST DATA IF PRESENT
     /*
     if ($_POST) {

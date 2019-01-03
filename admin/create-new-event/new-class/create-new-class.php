@@ -176,7 +176,7 @@
       }
     }
     if ($abort) {
-      $postString = to_pg_array($_POST);
+      $postString = serialize($_POST);
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";
       echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
       return;

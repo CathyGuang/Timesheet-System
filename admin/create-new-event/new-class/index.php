@@ -21,8 +21,11 @@
     var_dump($_POST);
     //GATHER OLD POST DATA IF PRESENT
     if ($_POST) {
+      $keyMap = array(0 => 'class-type', 1 => 'start-date', 2 => 'end-date', 3 => '', 4 => '', 5 => '', 6 => '', 7 => '', 8 => '', )
       $oldPostData = explode(',', rtrim(ltrim($_POST['old-post'], '{'), '}'));
-
+      foreach ($oldPostData as $key => $value) {
+        // code...
+      }
       var_dump($oldPostData);
     }
 

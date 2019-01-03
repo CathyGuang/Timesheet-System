@@ -113,6 +113,12 @@ button:hover {
     }
 
 
+        /* DIRECTORY STYLES */
+
+        .directory-button {
+          margin-right: 5vw;
+        }
+
         /* FORM STYLES */
 
         .main-form {

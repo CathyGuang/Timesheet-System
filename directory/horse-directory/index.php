@@ -22,7 +22,7 @@
       $allHorses = pg_fetch_all(pg_query($db_connection, $query));
 
       foreach ($allHorses as $horse) {
-        echo "<button type='submit' name='buttonInfo' value='{$horse['id']}'>{$horse['name']}</button>";
+        echo "<button class='directory-button' type='submit' name='buttonInfo' value='{$horse['id']}'>{$horse['name']}</button>";
       }
     ?>
 

@@ -139,10 +139,10 @@
         <?php
           if ($oldPostData['staff-roles']) {
             foreach ($oldPostData['staff-roles'] as $role) {
-              echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="staff-role-list">
@@ -161,10 +161,10 @@
         <?php
           if ($oldPostData['staff']) {
             foreach ($oldPostData['staff'] as $staff) {
-              echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staff}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staff}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="staff-list">
@@ -200,10 +200,10 @@
         <?php
           if ($oldPostData['horses']) {
             foreach ($oldPostData['horses'] as $horse) {
-              echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="horse-list">
@@ -227,10 +227,10 @@
         <?php
           if ($oldPostData['tacks']) {
             foreach ($oldPostData['tacks'] as $tack) {
-              echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="tack-list">
@@ -254,10 +254,10 @@
         <?php
           if ($oldPostData['pads']) {
             foreach ($oldPostData['pads'] as $pad) {
-              echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="pad-list">
@@ -283,10 +283,10 @@
         <?php
           if ($oldPostData['clients']) {
             foreach ($oldPostData['clients'] as $client) {
-              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="client-list">
@@ -310,10 +310,10 @@
         <?php
           if ($oldPostData['leaders']) {
             foreach ($oldPostData['leaders'] as $leader) {
-              echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='{$leader}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='{$leader}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="leader-list">
@@ -338,10 +338,10 @@
         <?php
           if ($oldPostData['sidewalkers']) {
             foreach ($oldPostData['sidewalkers'] as $sidewalker) {
-              echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='{$sidewalker}' onclick='select();'>"
+              echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='{$sidewalker}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='sidewalker[]' list='sidewalker-list' value='' onclick='select();'>"
+            echo "<input form='class-form' type='text' name='sidewalker[]' list='sidewalker-list' value='' onclick='select();'>";
           }
         ?>
           <datalist id="sidewalker-list">

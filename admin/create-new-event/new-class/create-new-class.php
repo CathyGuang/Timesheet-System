@@ -175,7 +175,7 @@
       }
     }
     if ($abort) {
-      $postString = implode(';', $_POST);
+      $postString = to_pg_array($_POST);
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";
       echo "<input form='retry-form' value='{$postString}' style='visibility: hidden;'>";
       echo "<form id='retry-form' method='post' action='index.php'></form>";
@@ -212,7 +212,7 @@
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
-      $postString = implode(';', $_POST);
+      $postString = to_pg_array($_POST);
       var_dump($postString);
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please <button form='retry-form' type='submit' style='width: 90pt;'>try again.</button> Ensure that all data is correctly formatted.</p>";
       echo "<input form='retry-form' value='{$postString}' style='visibility: hidden;'>";

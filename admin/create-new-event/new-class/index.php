@@ -18,15 +18,8 @@
   </header>
 
   <?php
-    var_dump($_POST);
+    // CREATE ARRAY FROM OLD POST DATA TO FILL IN FIELDS
     $oldPostData = unserialize($_POST['old-post']);
-    echo "<br>OLDPOSTDATA<br>";
-    var_dump($oldPostData);
-
-
-
-
-
   ?>
 
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
@@ -106,6 +99,7 @@
     </div>
 
 
+
     <p>Arena:</p>
     <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
       <datalist id="arena-list">
@@ -127,7 +121,6 @@
 
     <p>Stirrup Leather Length:</p>
     <input type="text" name="stirrup-leather-length" value="<?php echo $oldPostData['stirrup-leather-length']; ?>">
-
 
 
 

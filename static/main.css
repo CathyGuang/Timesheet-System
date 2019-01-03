@@ -118,6 +118,7 @@ button:hover {
         .directory-button {
           margin-right: 5vw;
           margin-bottom: 5vh;
+          max-width: 25vh;
         }
 
         /* FORM STYLES */

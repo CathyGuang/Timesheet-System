@@ -17,6 +17,7 @@
     </nav>
   </header>
 
+  <?php var_dump($_POST); ?>
 
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
 

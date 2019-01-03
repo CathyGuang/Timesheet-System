@@ -212,7 +212,7 @@
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
-      $postString = to_pg_array($_POST);
+      $postString = serialize($_POST);
       var_dump($postString);
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please <button form='retry-form' type='submit' style='width: 90pt;'>try again.</button> Ensure that all data is correctly formatted.</p>";
       echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";

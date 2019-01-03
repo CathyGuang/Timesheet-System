@@ -42,14 +42,17 @@
       return;
     }
 
+
+
+
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
     $todaysDate = date('Y-m-d');
-    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
     $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
-    $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
-    if ($classIDSQLObject) {
-      foreach ($classIDSQLObject as $row => $data) {
-        pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']}");
+    $oldClassIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
+    if ($oldClassIDSQLObject) {
+      foreach ($oldClassIDSQLObject as $row => $data) {
+        pg_query($db_connection, "UPDATE classes SET archived = 'true' WHERE classes.id = {$data['id']};");
       }
     }
 
@@ -212,8 +215,22 @@
       }
     }
     if ($abort) {
+      //RESTORE OLD CLASS DATA SINCE NO CHANGES ARE BEING MADE
+      if ($oldClassIDSQLObject) {
+        foreach ($oldClassIDSQLObject as $row => $data) {
+          pg_query($db_connection, "UPDATE classes SET archived = 'false' WHERE classes.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'><strong style='color:red;'>IMPORTANT:</strong> <button onclick='window.history.back();' style='width: 90pt;'>REVERT </button> your changes and try again. You must submit the form again, or data from this class will be lost. To keep the class as it was, click 'REVERT' and then 'Submit Changes'.</h3>";
       return;
+    }
+
+
+    //DELETE OLD CLASS DATA TO BE REPLACED WITH NEW DATA
+    if ($oldClassIDSQLObject) {
+      foreach ($oldClassIDSQLObject as $row => $data) {
+        pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']};");
+      }
     }
 
 

@@ -67,10 +67,12 @@
           $weekdaysAdded[] = $dayOfWeek;
         }
       }
-
       //looper
       $date = date ('Y-m-d', strtotime('+1 day', strtotime($date)));
     }
+
+
+    
     //Convert other user selections to database ids
 
     function to_pg_array($set) {

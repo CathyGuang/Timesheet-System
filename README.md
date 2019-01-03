@@ -17,7 +17,7 @@
 
 * Previously archived 'other objects' can now be recreated through 'create object' page
 
-* Directories now display results alphabetically
+* Directories now display results alphabetically, and the styles have been updated to better display large amounts of data
 
 
 

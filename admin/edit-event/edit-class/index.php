@@ -301,7 +301,7 @@ EOT;
         $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
         foreach ($tackList as $name) {
           var_dump($name);
-          $name = trim('"', $name);
+          $name = ltrim(rtrim($name, '\"'), '\"');
           var_dump($name);
           echo <<<EOT
           <input form='class-form' type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">

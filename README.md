@@ -23,7 +23,7 @@
 
 * New-class function is more stable, if class creation fails for any reason, you can go back to the class creation page and the data you entered will still be there
 
-
+* Classes now have a display title to make it easier for users to identify distinct classes
 
 
 ### Version 1.0

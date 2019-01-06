@@ -25,7 +25,7 @@
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
 
     <p>Class Type:</p>
-    <input type="text" name="class-type" value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select()" required>
+    <input type="text" name="class-type" value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
       <datalist id="class-type-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
@@ -36,6 +36,10 @@
           }
         ?>
       </datalist>
+
+    <p>Display Title:</p>
+    <input type="text" name="display-title" value="<?php echo $oldPostData['display-title']; ?>" onclick="select();" required>
+    
 
     <p>Dates: </p>
     <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></p>

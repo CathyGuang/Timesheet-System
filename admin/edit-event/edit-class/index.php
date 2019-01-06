@@ -108,6 +108,10 @@ EOT;
       echo <<<EOT
           </datalist>
 
+        <p>Display Title:</p>
+        <input type="text" name="display-title" value="{$classData['display_title']}" onclick="select();" required>
+
+
         <p>Dates:</p>
         <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE" {$everyOtherWeekCheckbox}></p>
         <div style="max-width: 500px;">

@@ -47,7 +47,6 @@ EOT;
           foreach ($classTuple['clients'] as $name) {
             $clientString = $clientString . $name . ", ";
           }
-          var_dump($classTuple);
           echo "<button type='submit' name='buttonInfo' value='{$classTuple['id']};{$clientString}'>{$classTuple['display_title']}, {$classTuple['date_of_class']}</button>";
         }
 

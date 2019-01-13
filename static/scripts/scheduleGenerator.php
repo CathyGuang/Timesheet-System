@@ -82,7 +82,6 @@
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>
     <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
-    <p class="schedule-leaders" style="height: 5vh;">Volunteers:</p>
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
 EOT;
 
@@ -177,6 +176,7 @@ EOT;
       }
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
+      /*
       //Leaders
       $leaderString = "";
       //Classes with potentially multiple leaders
@@ -202,7 +202,7 @@ EOT;
         $style = "";
       }
       echo "<div class='schedule-leaders' {$style}>{$leaderString}</div>";
-
+      */
 
       //Volunteers
       $volunteerString = "";

@@ -94,14 +94,7 @@
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $volunteerIDList[] = $id;
     }
-/*
-    $sidewalkerIDList = array();
-    foreach ($_POST['sidewalkers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $sidewalkerIDList[] = $id;
-    }
-    $sidewalkerIDList = to_pg_array($sidewalkerIDList);
-*/
+
 
     //Check for double-booking
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
@@ -163,18 +156,6 @@
           }
         }
       }
-      /*
-      if ($sidewalkerIDList != "{1}") {
-        foreach ($_POST['sidewalkers'] as $sidewalkerName) {
-          $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}' AND (archived IS NULL OR archived = '');"))[0];
-          $result = checkAvailability($id, 'workers', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$sidewalkerName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      */
     }
     if ($abort) {
       $postString = serialize($_POST);

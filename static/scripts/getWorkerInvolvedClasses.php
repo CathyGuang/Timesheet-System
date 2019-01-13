@@ -34,8 +34,6 @@ EOT;
 
   if (!$allClasses) {return;}
 
-var_dump($allClasses);
-
   foreach ($allClasses as $key => $specificClass) {
 
     $getClientsQuery = <<<EOT

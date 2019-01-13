@@ -2,7 +2,7 @@
   $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM clients WHERE name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
   $query = <<<EOT
-  SELECT class_type, display_title, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, leaders, sidewalkers, clients, attendance FROM classes WHERE
+  SELECT class_type, display_title, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, leaders, volunteers, attendance FROM classes WHERE
   {$queryID} = ANY(clients) AND
   (archived IS NULL OR archived = '')
   ;

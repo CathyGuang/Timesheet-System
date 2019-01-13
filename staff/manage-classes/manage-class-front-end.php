@@ -20,7 +20,7 @@
     $classID = explode(';', $_GET['buttonInfo'])[0];
     $clientString = explode(';', $_GET['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, staff, leaders, sidewalkers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, staff, volunteers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
     echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
   ?>

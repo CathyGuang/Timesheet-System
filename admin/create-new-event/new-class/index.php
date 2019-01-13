@@ -39,7 +39,7 @@
 
     <p>Display Title:</p>
     <input type="text" name="display-title" value="<?php echo $oldPostData['display-title']; ?>" onclick="select();" required>
-    
+
 
     <p>Dates: </p>
     <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></p>
@@ -293,46 +293,46 @@
     </div>
 
     <div>
-      <div id="leader-section">
-        <p>Leader(s):</p>
+      <div id="volunteer-role-section">
+        <p>Volunteer Role(s):</p>
         <?php
-          if ($oldPostData['leaders']) {
-            foreach ($oldPostData['leaders'] as $leader) {
-              echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='{$leader}' onclick='select();'>";
+          if ($oldPostData['volunteer-roles']) {
+            foreach ($oldPostData['volunteer-roles'] as $role) {
+              echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='leaders[]' list='leader-list' value='' onclick='select();'>";
+            echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
           }
         ?>
-          <datalist id="leader-list">
+          <datalist id="volunteer-role-list">
             <?php
-              $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+              $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
               $result = pg_query($db_connection, $query);
-              $workerNames = pg_fetch_all_columns($result);
-              foreach ($workerNames as $key => $value) {
+              $roleNames = pg_fetch_all_columns($result);
+              foreach ($roleNames as $key => $value) {
                 echo "<option value='$value'>";
               }
             ?>
           </datalist>
         </div>
         <br>
-        <button type="button" id="add-leader-button" onclick="newLeaderFunction();">Add Additional Leader</button>
+        <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
       </div>
 
 
     <div>
-      <div id="sidewalker-section">
-        <p>Sidewalker(s):</p>
+      <div id="volunteer-section">
+        <p>Volunteer(s):</p>
         <?php
-          if ($oldPostData['sidewalkers']) {
-            foreach ($oldPostData['sidewalkers'] as $sidewalker) {
-              echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='{$sidewalker}' onclick='select();'>";
+          if ($oldPostData['volunteers']) {
+            foreach ($oldPostData['volunteers'] as $volunteer) {
+              echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='sidewalkers[]' list='sidewalker-list' value='' onclick='select();'>";
+            echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
           }
         ?>
-          <datalist id="sidewalker-list">
+          <datalist id="volunteer-list">
             <?php
               $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
@@ -344,8 +344,8 @@
           </datalist>
         </div>
         <br>
-        <button type="button" id="add-sidewalker-button" onclick="newSidewalkerFunction();">Add Additional Sidewalker</button>
       </div>
+
 
 
 
@@ -440,29 +440,30 @@
         clientSection.appendChild(newInput);
       };
 
-      function newLeaderFunction() {
+      function newVolunteerFunction() {
+          //Add role selector
           newInput = document.createElement('input');
           newInput.setAttribute('type', 'text');
-          newInput.setAttribute('name', 'leaders[]');
-          newInput.setAttribute('list', 'leader-list');
+          newInput.setAttribute('name', 'volunteer-roles[]');
+          newInput.setAttribute('list', 'volunteer-role-list');
           newInput.setAttribute('value', '');
           newInput.setAttribute('onclick', 'select()');
           newInput.setAttribute('form', 'class-form');
-          var leaderSection = document.getElementById('leader-section');
-          leaderSection.appendChild(newInput);
+          var volunteerRoleSection = document.getElementById('volunteer-role-section');
+          volunteerRoleSection.appendChild(newInput);
+          //Add name selector
+          newInput = document.createElement('input');
+          newInput.setAttribute('type', 'text');
+          newInput.setAttribute('name', 'volunteers[]');
+          newInput.setAttribute('list', 'volunteer-list');
+          newInput.setAttribute('value', '');
+          newInput.setAttribute('onclick', 'select()');
+          newInput.setAttribute('form', 'class-form');
+          var volunteerSection = document.getElementById('volunteer-section');
+          volunteerSection.appendChild(newInput);
         };
 
-    function newSidewalkerFunction() {
-      newInput = document.createElement('input');
-      newInput.setAttribute('type', 'text');
-      newInput.setAttribute('name', 'sidewalkers[]');
-      newInput.setAttribute('list', 'sidewalker-list');
-      newInput.setAttribute('value', '');
-      newInput.setAttribute('onclick', 'select()');
-      newInput.setAttribute('form', 'class-form');
-      var sidewalkerSection = document.getElementById('sidewalker-section');
-      sidewalkerSection.appendChild(newInput);
-    };
+
 
     var today = new Date();
     var dd = today.getDate();

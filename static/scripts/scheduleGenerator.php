@@ -206,19 +206,15 @@ EOT;
 
       //Volunteers
       $volunteerString = "";
-      var_dump($event['volunteers']);
       if ($event['volunteers']) {
-        echo "TRUEUUEUE";
         foreach ($event['volunteers'] as $role => $volunteerName) {
-          var_dump($event['volunteers']);
           if ($volunteerName == "NEEDED") {
-            $volunteerString .= "{$role}<div style='color: yellow;'>{$volunteerName}</div>, ";
+            $volunteerString .= "{$role}<div style='color: yellow;'>{$volunteerName}</div><br>";
           } else {
-            $volunteerString .= $role . ": " . $volunteerName . ", ";
+            $volunteerString .= $role . ": " . $volunteerName . "<br>";
           }
         }
       }
-      var_dump($volunteerString);
       if ($volunteerString == "") {
         $volunteerString = "&#8212";
       }

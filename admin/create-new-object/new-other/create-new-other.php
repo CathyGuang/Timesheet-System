@@ -21,7 +21,6 @@
 
   <?php
     $archivedObjects = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM archived_enums;"), 0);
-    var_dump($archivedObjects);
     $objectName = pg_escape_string(trim($_POST['new-object-name']));
     if (in_array(trim($_POST['new-object-name']), $archivedObjects)) {
       $query = "DELETE FROM archived_enums WHERE name = '{$objectName}';";

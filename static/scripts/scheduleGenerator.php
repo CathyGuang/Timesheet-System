@@ -207,7 +207,7 @@ EOT;
       //Volunteers
       $volunteerString = "";
       var_dump($event['volunteers']);
-      if ($event['volunteers'] && $event['volunteers'][0] != "") {
+      if ($event['volunteers']) {
         echo "TRUEUUEUE";
         foreach ($event['volunteers'] as $role => $volunteerName) {
           var_dump($event['volunteers']);

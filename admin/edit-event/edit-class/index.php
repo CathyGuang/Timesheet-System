@@ -427,9 +427,8 @@ EOT;
             <p>Volunteer(s):</p>
 
 EOT;
-          $volunteerIDList = explode(',', ltrim(rtrim($classData['volunteers'], "}"), '{'));
-          foreach ($volunteerIDList as $id) {
-            $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+          foreach ($volunteerData as $role => $volunteerID) {
+            $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
             echo <<<EOT
             <input form='class-form' type="text" name="volunteers[]" list="volunteer-list" value="{$volunteerName}" onclick="select();">
 EOT;

@@ -26,14 +26,6 @@ EOT;
       clients.id = ANY('{$allClasses[$key]['attendance']}')
       ;
 EOT;
-      if ($specificClass['sidewalkers']) {
-        $getSidewalkersQuery = <<<EOT
-          SELECT id, workers.name FROM workers WHERE
-          workers.id = ANY('{$allClasses[$key]['sidewalkers']}') AND
-          (archived IS NULL OR archived = '')
-          ;
-EOT;
-      }
       if ($specificClass['horses']) {
         $getHorsesQuery = <<<EOT
           SELECT id, name FROM horses WHERE
@@ -42,26 +34,14 @@ EOT;
           ;
 EOT;
       }
-      if ($specificClass['leaders']) {
-        $getLeadersQuery = <<<EOT
-          SELECT id, workers.name FROM workers WHERE
-          workers.id = ANY('{$allClasses[$key]['leaders']}') AND
-          (archived IS NULL OR archived = '')
-          ;
-EOT;
-      }
 
     $clients = pg_fetch_all(pg_query($db_connection, $getClientsQuery));
     $attendance = pg_fetch_all_columns(pg_query($db_connection, $getAttendanceQuery));
-    $sidewalkers = pg_fetch_all(pg_query($db_connection, $getSidewalkersQuery));
     $horses = pg_fetch_all(pg_query($db_connection, $getHorsesQuery));
-    $leaders = pg_fetch_all(pg_query($db_connection, $getLeadersQuery));
 
 
     $clientOrder = explode(',', rtrim(ltrim($allClasses[$key]['clients'], '{'), '}'));
-    $sidewalkerOrder = explode(',', rtrim(ltrim($allClasses[$key]['sidewalkers'], '{'), '}'));
     $horseOrder = explode(',', rtrim(ltrim($allClasses[$key]['horses'], '{'), '}'));
-    $leaderOrder = explode(',', rtrim(ltrim($allClasses[$key]['leaders'], '{'), '}'));
 
     $allClasses[$key]['clients'] = array();
     foreach ($clientOrder as $id) {
@@ -75,29 +55,11 @@ EOT;
     $allClasses[$key]['attendance'] = $attendance;
 
 
-    $allClasses[$key]['sidewalkers'] = array();
-    foreach ($sidewalkerOrder as $id) {
-      foreach ($sidewalkers as $sidewalkerData) {
-        if ($sidewalkerData['id'] == $id) {
-          $allClasses[$key]['sidewalkers'][] = $sidewalkerData['name'];
-        }
-      }
-    }
-
     $allClasses[$key]['horses'] = array();
     foreach ($horseOrder as $id) {
       foreach ($horses as $horseData) {
         if ($horseData['id'] == $id) {
           $allClasses[$key]['horses'][] = $horseData['name'];
-        }
-      }
-    }
-
-    $allClasses[$key]['leaders'] = array();
-    foreach ($leaderOrder as $id) {
-      foreach ($leaders as $leaderData) {
-        if ($leaderData['id'] == $id) {
-          $allClasses[$key]['leaders'][] = $leaderData['name'];
         }
       }
     }
@@ -112,6 +74,14 @@ EOT;
       $allClasses[$key]['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
     }
 
+    $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['volunteers'], '}'), '{'));
+    $allClasses[$key]['volunteers'] = array();
+    foreach ($rawArray as $roleIDString) {
+      $roleIDString = trim($roleIDString);
+      $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
+      $volunteerID = trim(explode(':', $roleIDString)[1]);
+      $allClasses[$key]['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
+    }
 
     $allClasses[$key]['tacks'] = explode(',', rtrim(ltrim($allClasses[$key]['tacks'], '{'), '}'));
     $allClasses[$key]['pads'] = explode(',', rtrim(ltrim($allClasses[$key]['pads'], '{'), '}'));

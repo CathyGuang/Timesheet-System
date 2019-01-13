@@ -208,8 +208,9 @@ EOT;
       $volunteerString = "";
       var_dump($event['volunteers']);
       if ($event['volunteers'] && $event['volunteers'][0] != "") {
+        echo "TRUEUUEUE";
         foreach ($event['volunteers'] as $role => $volunteerName) {
-          var_dump($volunteerName);
+          var_dump($event['volunteers']);
           if ($volunteerName == "NEEDED") {
             $volunteerString .= "{$role}<div style='color: yellow;'>{$volunteerName}</div>, ";
           } else {

@@ -89,19 +89,19 @@
     }
 
 
-    $leaderIDList = array();
-    foreach ($_POST['leaders'] as $key => $value) {
+    $volunteerIDList = array();
+    foreach ($_POST['volunteers'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $leaderIDList[] = $id;
+      $volunteerIDList[] = $id;
     }
-
+/*
     $sidewalkerIDList = array();
     foreach ($_POST['sidewalkers'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $sidewalkerIDList[] = $id;
     }
     $sidewalkerIDList = to_pg_array($sidewalkerIDList);
-
+*/
 
     //Check for double-booking
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
@@ -154,15 +154,16 @@
           }
         }
       }
-      if ($_POST['leaders'] != array()) {
-        foreach ($leaderIDList as $key => $leaderID) {
-          $result = checkAvailability($leaderID, 'workers', $date, $timeArray[0], $timeArray[1]);
+      if ($_POST['volunteers'] != array()) {
+        foreach ($volunteerIDList as $key => $volunteerID) {
+          $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
           if ($result) {
             $abort = true;
             echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
           }
         }
       }
+      /*
       if ($sidewalkerIDList != "{1}") {
         foreach ($_POST['sidewalkers'] as $sidewalkerName) {
           $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$sidewalkerName}' AND (archived IS NULL OR archived = '');"))[0];
@@ -173,6 +174,7 @@
           }
         }
       }
+      */
     }
     if ($abort) {
       $postString = serialize($_POST);
@@ -193,14 +195,21 @@
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
 
+    $volunteerJSON = "{";
+    foreach ($volunteerIDList as $key => $volunteerID) {
+      $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
+    }
+    $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
+
+
     $displayTitle = pg_escape_string(trim($_POST['display-title']));
 
 
 
     //If no conflicts, create SQL query
-    $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, staff, leaders, sidewalkers) VALUES";
+    $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, staff, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$leaderIDList}', '{$sidewalkerIDList}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";
     }
 
     $query = chop($query, ",") . ";";

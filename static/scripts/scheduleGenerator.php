@@ -176,33 +176,6 @@ EOT;
       }
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
-      /*
-      //Leaders
-      $leaderString = "";
-      //Classes with potentially multiple leaders
-      if ($event['leaders'] && $event['leaders'][0] != "") {
-        foreach ($event['leaders'] as $leaderName) {
-          if ($leaderName == "NEEDED"){
-            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
-          } else {
-            $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
-          }
-        }
-      }
-      //Shifts with only one leader
-      if ($event['leader']) {
-        $leaderString .= "<i>Shift Leader/Key Volunteer: </i>" . $event['leader'];
-      }
-      if ($leaderString == "") {
-        $leaderString = "&#8212";
-      }
-      if (strpos($leaderString, $selectedName) !== false) {
-        $style = "style='background-color: var(--accent-purple);'";
-      } else {
-        $style = "";
-      }
-      echo "<div class='schedule-leaders' {$style}>{$leaderString}</div>";
-      */
 
       //Volunteers
       $volunteerString = "";

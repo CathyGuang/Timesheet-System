@@ -166,52 +166,16 @@ EOT;
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
 
-      //Leaders
-      $leaderString = "";
-      //Classes with potentially multiple leaders
-      if ($event['leaders'] && $event['leaders'][0] != "") {
-        foreach ($event['leaders'] as $leaderName) {
-          if ($leaderName == "NEEDED"){
-            $leaderString .= "<i style='float:left;'>Leader:&nbsp</i><div style='color:yellow;'>{$leaderName}</div>";
-          } else {
-            $leaderString .= "<i>Leader: </i>" . $leaderName . "<br>";
-          }
-        }
-      }
-      //Shifts with only one leader
-      if ($event['leader']) {
-        $leaderString .= "<i>Shift Leader/Key Volunteer: </i>" . $event['leader'];
-      }
-      if ($leaderString == "") {
-        $leaderString = "&#8212";
-      }
-      if (strpos($leaderString, $selectedName) !== false) {
-        $style = "style='background-color: var(--accent-purple);'";
-      } else {
-        $style = "";
-      }
-      echo "<div class='schedule-leaders' {$style}>{$leaderString}</div>";
-
-
       //Volunteers
       $volunteerString = "";
-      if ($event['volunteers'] && $event['volunteers'][0] != "") {
-        foreach ($event['volunteers'] as $volunteerName) {
+      if ($event['volunteers']) {
+        foreach ($event['volunteers'] as $role => $volunteerName) {
           if ($volunteerName == "NEEDED") {
-            $volunteerString .= "<div style='color: yellow;'>{$volunteerName}</div>, ";
+            $volunteerString .= "{$role}<div style='color: yellow;'>{$volunteerName}</div><br>";
           } else {
-            $volunteerString .= $volunteerName . ", ";
+            $volunteerString .= $role . ": " . $volunteerName . "<br>";
           }
         }
-      }
-      if ($event['sidewalkers'] && $event['sidewalkers'][0] != "") {
-          foreach ($event['sidewalkers'] as $volunteerName) {
-            if ($volunteerName == "NEEDED") {
-              $volunteerString .= "<i style='float:left;'>Sidewalker:&nbsp;</i><div style='color: yellow;'>{$volunteerName}</div>";
-            } else {
-              $volunteerString .= "<i>Sidewalker: </i>{$volunteerName}" . "<br>";
-            }
-          }
       }
       if ($volunteerString == "") {
         $volunteerString = "&#8212";

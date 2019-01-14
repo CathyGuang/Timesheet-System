@@ -2,6 +2,11 @@
 
 *PHP-based web portal for equine facility schedule management and data tracking.*
 
+**IMPORTANT FUNCTIONALITY NOTES**
+* Do not make two distinct classes that have the exact same class-type AND exact same set of clients. This will cause one of the classes to be overridden
+
+* Do not have multiple staff or volunteers with the same role in a single class, only one person can currently fill a given role. Make roles more specific!
+
 ## Update Log:
 
 ### Version 1.1

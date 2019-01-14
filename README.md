@@ -32,7 +32,7 @@
 
 * Clients are now presented first on the create/edit class pages
 
-* Volunteers now have flexible roles, like staff
+* Volunteers now have flexible class roles, like staff
 
 
 ### Version 1.0

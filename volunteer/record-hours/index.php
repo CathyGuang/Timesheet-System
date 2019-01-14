@@ -43,6 +43,10 @@
             foreach ($officeShiftTypes as $value) {
               echo "<option value='{$value}'>";
             }
+            $classShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE));"));
+            foreach ($classShiftTypes as $value) {
+              echo "<option value='{$value}'>";
+            }
           ?>
         </datalist>
 

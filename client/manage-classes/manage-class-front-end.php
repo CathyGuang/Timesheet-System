@@ -115,7 +115,6 @@ EOT;
           echo <<<EOT
           <p>{$role}:</p>
           <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()" readonly>
-          <input type="text" name="volunteer-roles[]" value="{$role}" style="visibility:hidden;" readonly>
 EOT;
         }
       ?>

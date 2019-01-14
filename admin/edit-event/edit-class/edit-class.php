@@ -236,8 +236,6 @@
     }
     $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
 
-    var_dump($volunteerJSON);
-
 
     $displayTitle = pg_escape_string(trim($_POST['display-title']));
 

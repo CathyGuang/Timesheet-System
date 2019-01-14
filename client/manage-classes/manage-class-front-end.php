@@ -118,17 +118,7 @@ EOT;
 EOT;
         }
       ?>
-      <datalist id="volunteer-list">
-        <?php
-          $query = "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');";
-          $result = pg_query($db_connection, $query);
-          $workerNames = pg_fetch_all_columns($result);
-          foreach ($workerNames as $key => $name) {
-            echo "<option value='$name'>";
-          }
-        ?>
-      </datalist>
-          <br>
+      <br>
 
     <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
     <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?> disabled></p>

@@ -29,26 +29,24 @@
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
       $staffIDList[] = $id;
     }
-
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
 
-    $leaderIDPGArray = "{";
-    foreach ($_POST['leaders'] as $name) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND (archived IS NULL OR archived = '');"))[0];
-      $leaderIDPGArray .= $id . ",";
+    $volunteerIDList = array();
+    foreach ($_POST['volunteers'] as $name) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
+      $volunteerIDList[] = $id;
     }
-    $leaderIDPGArray = rtrim($leaderIDPGArray, ",") . "}";
+    $volunteerJSON = "{";
+    foreach ($volunteerIDList as $key => $volunteerID) {
+      $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
+    }
+    $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
 
-    $sidewalkerIDPGArray = "{";
-    foreach ($_POST['sidewalkers'] as $name) {
-      $sidewalkerID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$name}' AND (archived IS NULL OR archived = '');"))[0];
-      $sidewalkerIDPGArray .= $sidewalkerID . ",";
-    }
-    $sidewalkerIDPGArray = rtrim($sidewalkerIDPGArray, ",") . "}";
+
 
     if ($_POST['cancel'] == "TRUE") {
       $cancel = 'TRUE';

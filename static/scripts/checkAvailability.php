@@ -40,7 +40,7 @@ EOT;
 
       if ($typeOfObject == "workers") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time, value FROM classes, json_each_text(classes.staff)
+        SELECT start_time, end_time, value FROM classes, jsonb_each_text(classes.staff)
         WHERE
         (
         '{$id}' = value
@@ -52,7 +52,7 @@ EOT;
 
         UNION ALL
 
-        SELECT start_time, end_time, value FROM classes, json_each_text(classes.volunteers)
+        SELECT start_time, end_time, value FROM classes, jsonb_each_text(classes.volunteers)
         WHERE
         (
         '{$id}' = value

@@ -8,7 +8,7 @@ EOT;
 
     $query = <<<EOT
     SELECT class_type, display_title, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, volunteers, clients, attendance
-    FROM classes, json_each_text(classes.staff) WHERE
+    FROM classes, jsonb_each_text(classes.staff) WHERE
     (
     '{$queryID}' = value
     ) AND (
@@ -18,7 +18,7 @@ EOT;
     UNION ALL
 
     SELECT class_type, display_title, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, volunteers, clients, attendance
-    FROM classes, json_each_text(classes.volunteers) WHERE
+    FROM classes, jsonb_each_text(classes.volunteers) WHERE
     (
     '{$queryID}' = value
     ) AND (
@@ -84,7 +84,6 @@ EOT;
       }
     }
 
-    var_dump($allClasses[$key]['volunteers']);
 
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
     $allClasses[$key]['staff'] = array();

@@ -84,7 +84,7 @@ EOT;
       }
     }
 
-
+    var_dump($allClasses[$key]['volunteers']);
 
     $rawArray = explode(",", ltrim(rtrim($allClasses[$key]['staff'], '}'), '{'));
     $allClasses[$key]['staff'] = array();

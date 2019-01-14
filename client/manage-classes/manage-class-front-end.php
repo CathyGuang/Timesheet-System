@@ -99,23 +99,35 @@ EOT;
       ?>
 
 
-          <?php $leaderNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE id = ANY('{$classInfo['leaders']}')")); ?>
-          <p>Leader(s):</p>
-          <?php
-            foreach ($leaderNameList as $name) {
-              echo "<input type='text' name='leaders[]' value='{$name}' onclick='select()' readonly>";
-            }
-          ?>
+      <?php
+        $rawArray = explode(",", ltrim(rtrim($classInfo['volunteers'], '}'), '{'));
+        $classInfo['volunteers'] = array();
+        foreach ($rawArray as $roleIDString) {
+          $roleIDString = trim($roleIDString);
+          $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
+          $volunteerID = trim(explode(':', $roleIDString)[1]);
+          $classInfo['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
+        }
 
+        foreach ($classInfo['volunteers'] as $role => $name) {
 
-          <p>Sidewalker(s):</p>
-          <?php
-            $sidewalkerIDList = explode(',', rtrim(ltrim($classInfo['sidewalkers'], "{"), "}"));
-            foreach ($sidewalkerIDList as $id) {
-              $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$id}'"))[0];
-              echo "<input type='text' name='sidewalkers[]' value='{$name}' readonly>";
-            }
-          ?>
+          echo <<<EOT
+          <p>{$role}:</p>
+          <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()" readonly>
+          <input type="text" name="volunteer-roles[]" value="{$role}" style="visibility:hidden;" readonly>
+EOT;
+        }
+      ?>
+      <datalist id="volunteer-list">
+        <?php
+          $query = "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');";
+          $result = pg_query($db_connection, $query);
+          $workerNames = pg_fetch_all_columns($result);
+          foreach ($workerNames as $key => $name) {
+            echo "<option value='$name'>";
+          }
+        ?>
+      </datalist>
           <br>
 
     <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>

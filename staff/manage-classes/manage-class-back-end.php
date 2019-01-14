@@ -64,7 +64,7 @@
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', leaders = '{$leaderIDPGArray}', sidewalkers = '{$sidewalkerIDPGArray}'
+      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
       WHERE id = {$_POST['id']};
 EOT;
 

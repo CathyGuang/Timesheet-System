@@ -183,6 +183,34 @@
   <div style="display:flex; justify-content:space-around;">
 
     <div>
+      <div id="client-section">
+        <p>Client(s):</p>
+        <?php
+          if ($oldPostData['clients']) {
+            foreach ($oldPostData['clients'] as $client) {
+              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
+          }
+        ?>
+          <datalist id="client-list">
+            <?php
+              $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $clientNames = pg_fetch_all_columns($result);
+              foreach ($clientNames as $key => $value) {
+                echo "<option value='{$value}'>";
+              }
+            ?>
+          </datalist>
+      </div>
+      <br>
+      <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
+    </div>
+
+
+    <div>
       <div id="horse-section">
         <p>Horse(s):</p>
         <?php
@@ -263,34 +291,6 @@
       <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
     </div>
 
-
-
-    <div>
-      <div id="client-section">
-        <p>Client(s):</p>
-        <?php
-          if ($oldPostData['clients']) {
-            foreach ($oldPostData['clients'] as $client) {
-              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
-          }
-        ?>
-          <datalist id="client-list">
-            <?php
-              $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $clientNames = pg_fetch_all_columns($result);
-              foreach ($clientNames as $key => $value) {
-                echo "<option value='{$value}'>";
-              }
-            ?>
-          </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
-    </div>
 
     <div>
       <div id="volunteer-role-section">

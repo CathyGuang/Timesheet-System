@@ -263,6 +263,38 @@ EOT;
       <div style="display:flex; justify-content:space-around;">
 
       <div>
+      <div id="client-section">
+        <p>Client(s):</p>
+EOT;
+  $oldClientIDListPGArray = "{";
+  foreach ($clientIDList as $id) {
+    $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+    $oldClientIDListPGArray .= $id .',';
+    echo <<<EOT
+      <input form='class-form' type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
+EOT;
+  }
+  $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
+
+  echo <<<EOT
+
+      <datalist id="client-list">
+EOT;
+          $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+          $result = pg_query($db_connection, $query);
+          $clientNames = pg_fetch_all_columns($result);
+          foreach ($clientNames as $key => $value) {
+            echo "<option value='$value'>";
+          }
+  echo <<<EOT
+      </datalist>
+  </div>
+  <input form='class-form' type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+  <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
+  </div>
+
+      
+      <div>
       <div id="horse-section">
         <p>Horse(s):</p>
 
@@ -355,37 +387,6 @@ EOT;
             <br>
             <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
             </div>
-
-            <div>
-            <div id="client-section">
-              <p>Client(s):</p>
-EOT;
-        $oldClientIDListPGArray = "{";
-        foreach ($clientIDList as $id) {
-          $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
-          $oldClientIDListPGArray .= $id .',';
-          echo <<<EOT
-            <input form='class-form' type="text" name="clients[]" list="client-list" value="{$clientName}" onclick="select();">
-EOT;
-        }
-        $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
-
-        echo <<<EOT
-
-            <datalist id="client-list">
-EOT;
-                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $clientNames = pg_fetch_all_columns($result);
-                foreach ($clientNames as $key => $value) {
-                  echo "<option value='$value'>";
-                }
-        echo <<<EOT
-            </datalist>
-        </div>
-        <input form='class-form' type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
-        <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
-        </div>
 
 
         <div>

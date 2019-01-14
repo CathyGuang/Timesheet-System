@@ -138,7 +138,6 @@ button:hover {
         .full-page-form {
           margin-left: 4%;
           max-height: 115vh;
-          flex-flow: row wrap;
         }
 
         .directory-form {

@@ -133,11 +133,7 @@ EOT;
       </datalist>
 
 
-
-
-
       <?php
-        var_dump($classInfo['volunteers']);
         $rawArray = explode(",", ltrim(rtrim($classInfo['volunteers'], '}'), '{'));
         $classInfo['volunteers'] = array();
         foreach ($rawArray as $roleIDString) {
@@ -168,53 +164,6 @@ EOT;
       </datalist>
 
 
-
-
-
-
-
-
-
-
-
-
-
-      <?php $leaderNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE id = ANY('{$classInfo['leaders']}')")); ?>
-      <p>Leader(s):</p>
-      <?php
-        foreach ($leaderNameList as $name) {
-          echo "<input type='text' list='leader-list' name='leaders[]' value='{$name}' onclick='select()'>";
-        }
-      ?>
-        <datalist id="leader-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
-
-      <p>Sidewalker(s):</p>
-        <datalist id="sidewalker-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
-      <?php
-        $sidewalkerIDList = explode(',', rtrim(ltrim($classInfo['sidewalkers'], "{"), "}"));
-        foreach ($sidewalkerIDList as $id) {
-          $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$id}'"))[0];
-          echo "<input type='text' name='sidewalkers[]' list='sidewalker-list' value='{$name}'>";
-        }
-      ?>
       <br>
 
     <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>

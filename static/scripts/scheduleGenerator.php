@@ -181,7 +181,7 @@ EOT;
       if ($event['volunteers']) {
         foreach ($event['volunteers'] as $role => $volunteerName) {
           if ($volunteerName == "NEEDED") {
-            $volunteerString .= "{$role}<div style='color: yellow;'>{$volunteerName}</div><br>";
+            $volunteerString .= "{$role}<div style='color: yellow; float: left;'>{$volunteerName}</div><br>";
           } else {
             $volunteerString .= $role . ": " . $volunteerName . "<br>";
           }

@@ -176,7 +176,7 @@ EOT;
       }
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
-
+      var_dump($event['volunteers']);
       //Volunteers
       $volunteerString = "";
       if ($event['volunteers']) {

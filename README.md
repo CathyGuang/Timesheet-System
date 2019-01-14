@@ -30,6 +30,10 @@
 
 * Classes now have a display title to make it easier for users to identify distinct classes
 
+* Clients are now presented first on the create/edit class pages
+
+* Volunteers now have flexible roles, like staff
+
 
 ### Version 1.0
   *Complete Functionality*

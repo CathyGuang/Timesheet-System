@@ -210,12 +210,7 @@
     }
 
 
-    //DELETE OLD CLASS DATA TO BE REPLACED WITH NEW DATA
-    if ($oldClassIDSQLObject) {
-      foreach ($oldClassIDSQLObject as $row => $data) {
-        pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']};");
-      }
-    }
+    //OLD LOCATION OF DELETE BLOCK
 
 
     $horseIDList = to_pg_array($horseIDList);
@@ -254,8 +249,20 @@
     //Modify database
     $result = pg_query($db_connection, $query);
     if ($result) {
+      //DELETE OLD CLASS DATA TO BE REPLACED WITH NEW DATA
+      if ($oldClassIDSQLObject) {
+        foreach ($oldClassIDSQLObject as $row => $data) {
+          pg_query($db_connection, "DELETE FROM classes WHERE classes.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
+      //UNARCHIVE OLD CLASS DATA IF ERROR OCCURRED
+      if ($oldClassIDSQLObject) {
+        foreach ($oldClassIDSQLObject as $row => $data) {
+          pg_query($db_connection, "UPDATE classes SET archived = null WHERE classes.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
   ?>

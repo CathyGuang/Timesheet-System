@@ -20,15 +20,12 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
 
   foreach ($period as $dayData) {
     $day = Date('Y-m-d', strtotime($dayData->format('Y-m-d')));
-    var_dump($day);
     foreach ($allClasses as $classData) {
       if ($classData['date_of_class'] == $day) {
         $totalHorseUses++;
       }
     }
   }
-  echo "TOTAL: ";
-  var_dump($totalHorseUses);
   return $totalHorseUses;
 };
 

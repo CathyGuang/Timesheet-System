@@ -5,6 +5,9 @@
     if ($id == "") {return false;}
     //connect to database
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
+    //initialize check horse use by week function
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
+
 
     $tableNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE';"));
     $enumTypeQuery = <<<EOT
@@ -169,7 +172,6 @@ EOT;
         $date1 = Date('Y-m-d', strtotime('last monday', strtotime($date . '+ 1 day')));
         $date2 = Date('Y-m-d', strtotime($date1 . '+ 1 week'));
         //Count horse uses during the time period
-        include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
         $totalHorseUses = getHorseUsesByDateRange($horseInfo['id'], $date1, $date2);
 
         if ($totalHorseUses >= $horseInfo['horse_uses_per_week']) {

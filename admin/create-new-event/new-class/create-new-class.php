@@ -168,7 +168,6 @@
     $tackList = to_pg_array($_POST['tacks']);
     $padList = to_pg_array($_POST['pads']);
 
-    $leaderIDList = to_pg_array($leaderIDList);
 
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {

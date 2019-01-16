@@ -166,8 +166,8 @@ EOT;
         }
 
         //Check if horse is maxed out on uses for the week
-        $date1 = strtotime('last monday', strtotime($date . '+ 1 day'));
-        $date2 = strtotime($date1 . '+ 1 week');
+        $date1 = Date(strtotime('last monday', strtotime($date . '+ 1 day')));
+        $date2 = Date(strtotime($date1 . '+ 1 week'));
         var_dump($date1);
         var_dump($date2);
         //Count horse uses during the time period

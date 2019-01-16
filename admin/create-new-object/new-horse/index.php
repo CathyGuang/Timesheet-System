@@ -35,8 +35,8 @@
     <input type="number" name="horse_uses_per_week" value="" required>
 
     <div>
-    <p>Notes:</p>
-    <input type="text" name="notes" value="">
+      <p>Notes:</p>
+      <input type="text" name="notes" value="">
     </div>
 
     <br><br>

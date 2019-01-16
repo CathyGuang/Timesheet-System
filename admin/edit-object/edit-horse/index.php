@@ -62,9 +62,10 @@ EOT;
         <p>Horse Uses per Week:</p>
         <input type="number" name="horse_uses_per_week" value="{$horseInfo['horse_uses_per_week']}" required>
 
-        <br>
-        <p>Notes:</p>
-        <input type="text" name="notes" value="{$horseInfo['notes']}">
+        <div>
+          <p>Notes:</p>
+          <input type="text" name="notes" value="{$horseInfo['notes']}">
+        </div>
 
         <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
 

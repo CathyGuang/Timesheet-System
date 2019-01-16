@@ -57,6 +57,7 @@
     echo <<<EOT
     <div class="schedule-display">
     <p class="schedule-time" style="height: 5vh;">Time:</p>
+    <p class="schedule-display-title" style="height: 5vh;">Title:</p>
     <p class="schedule-event-type" style="height: 5vh;">Class/Shift:</p>
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>

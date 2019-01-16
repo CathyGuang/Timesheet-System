@@ -198,7 +198,7 @@ button:hover {
       margin: 0;
       margin-top: 35vh;
       display: grid;
-      grid-template-columns: 5px 1fr 132px 175px 300px 350px 550px 350px 1fr 5px;
+      grid-template-columns: 5px 1fr 132px 175px 175px 300px 350px 550px 350px 1fr 5px;
     }
     .schedule-display > * {
       border: 1px solid black;
@@ -211,21 +211,24 @@ button:hover {
     .schedule-time {
       grid-column: 3;
     }
-    .schedule-event-type {
+    .schedule-display-title {
       grid-column: 4;
     }
-    .schedule-staff {
+    .schedule-event-type {
       grid-column: 5;
     }
-    .schedule-clients {
+    .schedule-staff {
       grid-column: 6;
     }
-    .schedule-horse-info {
+    .schedule-clients {
       grid-column: 7;
     }
-    .schedule-volunteers {
+    .schedule-horse-info {
       grid-column: 8;
     }
+    .schedule-volunteers {
+      grid-column: 9;
+    }
     .schedule-volunteers > * {
-      grid-column: 8;
+      grid-column: 9;
     }

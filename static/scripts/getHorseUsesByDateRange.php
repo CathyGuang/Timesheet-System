@@ -8,8 +8,8 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
   include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseInvolvedClasses.php";
 
 
-  $interval = DateInterval::createFromDateString('1 day');
-  $period = new DatePeriod("$date1 1 day $date2");
+  $interval = new DateInterval('P1D');
+  $period = new DatePeriod($date1, $interval, $date2);
 
   foreach ($period as $day) {
     var_dump($day);

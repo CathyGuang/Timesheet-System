@@ -167,9 +167,7 @@ EOT;
 
         //Check if horse is maxed out on uses for the week
         $date1 = Date('Y-m-d', strtotime('last monday', strtotime($date . '+ 1 day')));
-        var_dump($date1);
         $date2 = Date('Y-m-d', strtotime($date1 . '+ 1 week'));
-        var_dump($date2);
         //Count horse uses during the time period
         include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
         $totalHorseUses = getHorseUsesByDateRange($horseInfo['id'], $date1, $date2);

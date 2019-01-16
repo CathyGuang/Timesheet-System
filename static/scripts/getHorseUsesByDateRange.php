@@ -9,7 +9,7 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
 
 
   $interval = DateInterval::createFromDateString('1 day');
-  $period = new DatePeriod($date1 . '1 day' . $date2);
+  $period = new DatePeriod("$date1 1 day $date2");
 
   foreach ($period as $day) {
     var_dump($day);

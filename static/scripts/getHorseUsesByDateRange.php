@@ -16,16 +16,17 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
   //Initialize use counter variable:
   $totalHorseUses = 0;
 
-  //var_dump($allClasses);
-
-  foreach ($period as $dayData) {
-    $day = Date('Y-m-d', strtotime($dayData->format('Y-m-d')));
-    foreach ($allClasses as $classData) {
-      if ($classData['date_of_class'] == $day) {
-        $totalHorseUses++;
+  if ($allClasses) {
+    foreach ($period as $dayData) {
+      $day = Date('Y-m-d', strtotime($dayData->format('Y-m-d')));
+      foreach ($allClasses as $classData) {
+        if ($classData['date_of_class'] == $day) {
+          $totalHorseUses++;
+        }
       }
     }
   }
+  
   return $totalHorseUses;
 };
 

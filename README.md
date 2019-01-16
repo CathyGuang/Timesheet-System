@@ -34,6 +34,8 @@
 
 * Volunteers now have flexible class roles, like staff
 
+* Horses now have horse_uses_per_week field, and this data is taken into account by the conflict checker
+
 
 ### Version 1.0
   *Complete Functionality*

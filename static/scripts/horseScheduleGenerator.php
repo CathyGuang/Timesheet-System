@@ -83,7 +83,7 @@ EOT;
       echo "<p class='schedule-display-title'>{$event['display_title']}</p>";
 
       //Event Type
-      echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
+      echo "<p class='schedule-event-type'>{$event['class_type']}</p>";
 
       //Staff
       $staffString = "";

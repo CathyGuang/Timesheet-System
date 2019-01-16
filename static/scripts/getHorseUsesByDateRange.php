@@ -12,6 +12,8 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
   var_dump($date1);
   var_dump($date2);
   var_dump($interval);
+  $date1 = new DateTime($date1);
+  $date2 = new DateTime($date2);
   $period = new DatePeriod($date1, $interval, $date2);
 
   foreach ($period as $day) {

@@ -31,6 +31,9 @@
     <p>Owner Uses per Day:</p>
     <input type="number" name="owner_uses_per_day" value="" required>
 
+    <p>Horse Uses per Week:</p>
+    <input type="number" name="horse_uses_per_week" value="" required>
+
     <p>Notes:</p>
     <input type="text" name="notes" value="">
 

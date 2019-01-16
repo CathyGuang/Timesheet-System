@@ -210,8 +210,6 @@
     }
 
 
-    //OLD LOCATION OF DELETE BLOCK
-
 
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);

@@ -59,6 +59,10 @@ EOT;
         <p>Owner Uses per Day:</p>
         <input type="number" name="owner_uses_per_day" value="{$horseInfo['owner_uses_per_day']}">
 
+        <p>Horse Uses per Week:</p>
+        <input type="number" name="horse_uses_per_week" value="{$horseInfo['horse_uses_per_week']}" required>
+
+        <br>
         <p>Notes:</p>
         <input type="text" name="notes" value="{$horseInfo['notes']}">
 

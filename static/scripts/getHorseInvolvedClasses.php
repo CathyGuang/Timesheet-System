@@ -1,5 +1,9 @@
 <?php
-  $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM horses WHERE name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+  if (!$QUERY_ID) {
+    $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM horses WHERE name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+  } else {
+    $queryID = $QUERY_ID;
+  }
 
   $query = <<<EOT
   SELECT display_title, class_type, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, volunteers, clients, attendance FROM classes WHERE

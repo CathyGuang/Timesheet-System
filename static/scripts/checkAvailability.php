@@ -1,5 +1,4 @@
 <?php
-error_reporting(E_ALL & ~E_NOTICE);
 
   function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
     //ignore calls for empty fields
@@ -165,6 +164,21 @@ EOT;
             return "{$horseInfo['name']} is already being used {$horseInfo['owner_uses_per_day']} times on {$date} by their owner ({$horseInfo['owner']})!";
           }
         }
+
+        //Check if horse is maxed out on uses for the week
+        $date1 = strtotime('last monday', strtotime($date . '+ 1 day'));
+        $date2 = strtotime($dat1 . '+ 1 week');
+        var_dump($date1);
+        var_dump($date2);
+        //Count horse uses during the time period
+        include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
+        $totalHorseUses = getHorseUsesByDateRange($horseInfo['id'], $date1, $date2);
+
+        if ($totalHorseUses >= $horseInfo['horse_uses_per_week']) {
+          return "{$horseInfo['name']} is already being used {$horseInfo['horse_uses_per_week']} times between {$date1} and {$date2}!";
+        }
+
+
       }
 
 

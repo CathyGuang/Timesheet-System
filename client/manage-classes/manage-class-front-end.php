@@ -20,9 +20,9 @@
     $classID = explode(';', $_POST['buttonInfo'])[0];
     $clientString = explode(';', $_POST['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, staff, volunteers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT display_title, class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, staff, volunteers FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
-    echo "<h3 class='main-content-header'>{$classInfo['class_type']}, {$clientString} {$classInfo['date_of_class']}</h3>";
+    echo "<h3 class='main-content-header'>{$classInfo['display_title']}, {$classInfo['date_of_class']}</h3>";
   ?>
 
   <form autocomplete="off" action="manage-class-back-end.php" method="post" class="main-form" autocomplete="off">

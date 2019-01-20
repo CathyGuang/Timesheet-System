@@ -33,7 +33,7 @@
 
 
       <p>Start Date:</p>
-      <input type="date" name="start-date" value="<?php echo date('Y-m-d', strtotime('two weeks ago')); ?>" required>
+      <input type="date" name="start-date" value="<?php echo date('Y-m-d', strtotime('-2 weeks')); ?>" required>
 
       <p>End Date:</p>
       <input type="date" name="end-date" value="<?php echo date('Y-m-d'); ?>" required>

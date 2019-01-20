@@ -164,23 +164,28 @@ EOT;
       $equipmentString = "";
       if ($event['horses']) {
         foreach (range(0,15,1) as $key) {
+          $newStuff = false;
           if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
             $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
             $equipmentString .= "<i>Tack: </i>" . $tackName . ", ";
+            $newStuff = true;
           }
           if ($event['pads'][$key] and $event['pads'][$key] != "") {
             $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
             $equipmentString .= "<i>Pad: </i>" . $padName . ", ";
+            $newStuff = true;
           }
           if ($event['tack_notes'][$key] and $event['tack_notes'][$key] != "") {
             $tackNotes = rtrim(ltrim($event['tack_notes'][$key], "\""), "\"");
             $equipmentString .= "<i>Notes: </i>" . $tackNotes . ", ";
+            $newStuff = true;
           }
           if ($event['client_equipment_notes'][$key] and $event['client_equipment_notes'][$key] != "") {
             $clientEquipmentNotes = rtrim(ltrim($event['client_equipment_notes'][$key], "\""), "\"");
             $equipmentString .= "<i>Client: </i>" . $clientEquipmentNotes . ', ';
+            $newStuff = true;
           }
-          $equipmentString .= "<br>";
+          if ($newStuff) {$equipmentString .= "<br>";}
         }
       }
       if (strpos($equipmentString, $selectedName) !== false) {

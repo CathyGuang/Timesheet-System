@@ -34,11 +34,11 @@ EOT;
       return;
     }
 
-    var_dump($_POST);
-
-    echo "<br>HOURDATA<br>";
-
     var_dump($hourData);
+
+    foreach ($hourData as $uniqueShift) {
+      echo "<p>{$uniqueShift['date_of_hours']}: {$uniqueShift['shift_type']}, {$uniqueShift['hours']} hrs</p><br>";
+    }
 
 
   ?>

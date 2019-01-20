@@ -528,6 +528,26 @@ EOT;
                 var padSection = document.getElementById('pad-section');
                 padSection.appendChild(newInput);
               };
+              function newTackNotesFunction() {
+                  newInput = document.createElement('input');
+                  newInput.setAttribute('type', 'text');
+                  newInput.setAttribute('name', 'tack-notes[]');
+                  newInput.setAttribute('value', '');
+                  newInput.setAttribute('onclick', 'select()');
+                  newInput.setAttribute('form', 'class-form');
+                  var padSection = document.getElementById('tack-notes-section');
+                  padSection.appendChild(newInput);
+                };
+                function newClientEquipmentNotesFunction() {
+                    newInput = document.createElement('input');
+                    newInput.setAttribute('type', 'text');
+                    newInput.setAttribute('name', 'client-equipment-notes[]');
+                    newInput.setAttribute('value', '');
+                    newInput.setAttribute('onclick', 'select()');
+                    newInput.setAttribute('form', 'class-form');
+                    var padSection = document.getElementById('client-equipment-section');
+                    padSection.appendChild(newInput);
+                  };
         function newClientFunction() {
             newInput = document.createElement('input');
             newInput.setAttribute('type', 'text');

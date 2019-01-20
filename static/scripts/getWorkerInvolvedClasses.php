@@ -17,7 +17,7 @@ EOT;
 
     UNION ALL
 
-    SELECT display_title, class_type, display_title, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, volunteers, clients, attendance
+    SELECT *
     FROM classes, jsonb_each_text(classes.volunteers) WHERE
     (
     '{$queryID}' = value

@@ -311,7 +311,7 @@
 
     <div>
       <div id="client-equipment-section">
-        <p>Client Equipment Note(s):</p>
+        <p>Client Equipment:</p>
         <?php
           if ($oldPostData['client-equipment-notes']) {
             foreach ($oldPostData['client-equipment-notes'] as $note) {

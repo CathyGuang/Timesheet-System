@@ -217,8 +217,9 @@
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
     $padList = to_pg_array($_POST['pads']);
+    $tackNotes = to_pg_array($_POST['tack-notes']);
+    $clientEquipmentNotes = to_pg_array($_POST['client-equipment-notes']);
 
-    $leaderIDList = to_pg_array($leaderIDList);
 
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
@@ -239,9 +240,9 @@
     //If no conflicts, create new entries.
 
     //Create SQL query
-    $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, special_tack, stirrup_leather_length, pads, clients, attendance, staff, volunteers) VALUES";
+    $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$_POST['special-tack']}', '{$_POST['stirrup-leather-length']}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";
+      $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$tackNotes}', '{$clientEquipmentNotes}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";
     }
 
     $query = chop($query, ",") . ";";

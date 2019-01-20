@@ -40,7 +40,7 @@ EOT;
       echo "<p>{$uniqueShift['date_of_hours']}: {$uniqueShift['shift_type']}, {$uniqueShift['hours']} hrs</p><br>";
     }
 
-    echo "<h4 style='position: absolute; top: 30vh; right: 10vw'>Total Hours: {$totalHours}</h4>";
+    echo "<h4 style='position: absolute; top: 25vh; right: 20vw'>Total Hours: {$totalHours}</h4>";
 
   ?>
 

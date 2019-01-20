@@ -387,6 +387,7 @@ EOT;
               <div id="tack-notes-section">
                 <p>Tack Note(s):</p>
 EOT;
+  var_dump($classData);
                   if ($classData['tack_notes']) {
                     foreach ($classData['tack_notes'] as $note) {
                       echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";

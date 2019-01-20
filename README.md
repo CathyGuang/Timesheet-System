@@ -38,6 +38,8 @@
 
 * Tack Notes and Stirrup Leather Length Notes have been changed to an indefinite number of tack notes and client equipment notes per class, fully customizeable
 
+* Volunteers and Staff can now view their hours for customizeable time periods
+
 
 ### Version 1.0
   *Complete Functionality*

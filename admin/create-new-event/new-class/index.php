@@ -119,15 +119,6 @@
 
 
 
-
-    <p>Tack Notes:</p>
-    <input type="text" name="special-tack" value="<?php echo $oldPostData['special-tack']; ?>">
-
-    <p>Stirrup Leather Length:</p>
-    <input type="text" name="stirrup-leather-length" value="<?php echo $oldPostData['stirrup-leather-length']; ?>">
-
-
-
     <div>
       <div id="staff-section">
         <p>Staff:</p>

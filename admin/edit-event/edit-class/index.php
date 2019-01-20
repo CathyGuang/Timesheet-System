@@ -260,7 +260,7 @@ EOT;
 
 
 
-      <div style="display:flex; justify-content:space-around;">
+      <div style="display:flex; justify-content:space-around; max-height: 20vh;">
 
       <div>
       <div id="client-section">
@@ -293,7 +293,7 @@ EOT;
   <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
   </div>
 
-      
+
       <div>
       <div id="horse-section">
         <p>Horse(s):</p>

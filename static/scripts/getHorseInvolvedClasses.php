@@ -89,6 +89,8 @@ EOT;
 
     $allClasses[$key]['tacks'] = explode(',', rtrim(ltrim($allClasses[$key]['tacks'], '{'), '}'));
     $allClasses[$key]['pads'] = explode(',', rtrim(ltrim($allClasses[$key]['pads'], '{'), '}'));
+    $allClasses[$key]['tack_notes'] = explode(',', rtrim(ltrim($allClasses[$key]['tack_notes'], '{'), '}'));
+    $allClasses[$key]['client_equipment_notes'] = explode(',', rtrim(ltrim($allClasses[$key]['client_equipment_notes'], '{'), '}'));
 
 
 

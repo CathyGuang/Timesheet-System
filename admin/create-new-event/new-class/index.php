@@ -180,7 +180,7 @@
 
 
 
-  <div style="display:flex; justify-content:space-around;">
+  <div style="display:flex; justify-content:space-around; max-height: 20vh;">
 
     <div>
       <div id="client-section">

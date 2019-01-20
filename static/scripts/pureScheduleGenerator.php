@@ -163,7 +163,7 @@ EOT;
       //Equipment
       $equipmentString = "";
       if ($event['horses']) {
-        foreach ($event['horses'] as $key => $horseName) {
+        foreach (range(0,15,1) as $key) {
           if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
             $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
             $equipmentString .= "<i>Tack: </i>" . $tackName . ", ";

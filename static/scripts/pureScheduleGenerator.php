@@ -172,32 +172,32 @@ EOT;
         foreach ($event['horses'] as $key => $horseName) {
           if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
             $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
-            $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+            $equipmentString .= "<i>Tack: </i>" . $tackName . ", ";
           }
           if ($event['pads'][$key] and $event['pads'][$key] != "") {
             $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
-            $horseString .= "<i>Pad: </i>" . $padName;
+            $equipmentString .= "<i>Pad: </i>" . $padName;
           }
           if ($event['tack_notes'][$key] and $event['tack_notes'][$key] != "") {
             $tackNotes = rtrim(ltrim($event['tack_notes'][$key], "\""), "\"");
-            $horseString .= "<i>Tack Notes: </i>" . $tackNotes;
+            $equipmentString .= "<i>Tack Notes: </i>" . $tackNotes;
           }
           if ($event['client_equipment_notes'][$key] and $event['client_equipment_notes'][$key] != "") {
             $clientEquipmentNotes = rtrim(ltrim($event['client_equipment_notes'][$key], "\""), "\"");
-            $horseString .= "<i>Client Equipment: </i>" . $clientEquipmentNotes;
+            $equipmentString .= "<i>Client Equipment: </i>" . $clientEquipmentNotes;
           }
-          $horseString .= "<br>";
+          $equipmentString .= "<br>";
         }
       }
-      if (strpos($horseString, $selectedName) !== false) {
+      if (strpos($equipmentString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
         $style = "";
       }
-      if ($horseString == "") {
-        $horseString = "&#8212";
+      if ($equipmentString == "") {
+        $equipmentString = "&#8212";
       }
-      echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
+      echo "<div class='schedule-equipment-info' {$style}>{$equipmentString}</div>";
 
 
 

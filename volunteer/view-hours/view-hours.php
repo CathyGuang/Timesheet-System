@@ -10,7 +10,7 @@
 <body>
 
   <header>
-    <h1>Volunteer Hours</h1>
+    <h1><?php echo $_POST['volunteer']; ?>'s Hours</h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

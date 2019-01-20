@@ -390,6 +390,7 @@ EOT;
                   $tackNotesData = explode(',', ltrim(rtrim($classData['tack_notes'], "}"), '{'));
                   if ($tackNotesData) {
                     foreach ($tackNotesData as $note) {
+                      $note = ltrim(rtrim($note, '"'), '"');
                       echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
                     }
                   } else {
@@ -408,6 +409,7 @@ EOT;
                   $clientEquipmentNotesData = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
                   if ($clientEquipmentNotesData) {
                     foreach ($clientEquipmentNotesData as $note) {
+                      $note = ltrim(rtrim($note, '"'), '"');
                       echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
                     }
                   } else {

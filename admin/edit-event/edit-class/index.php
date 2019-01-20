@@ -387,8 +387,8 @@ EOT;
               <div id="tack-notes-section">
                 <p>Tack Note(s):</p>
 EOT;
-                  if ($classData['tack-notes']) {
-                    foreach ($classData['tack-notes'] as $note) {
+                  if ($classData['tack_notes']) {
+                    foreach ($classData['tack_notes'] as $note) {
                       echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
                     }
                   } else {
@@ -404,8 +404,8 @@ EOT;
               <div id="client-equipment-section">
                 <p>Client Equipment:</p>
 EOT;
-                  if ($classData['client-equipment-notes']) {
-                    foreach ($classData['client-equipment-notes'] as $note) {
+                  if ($classData['client_equipment_notes']) {
+                    foreach ($classData['client_equipment_notes'] as $note) {
                       echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
                     }
                   } else {

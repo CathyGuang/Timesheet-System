@@ -137,11 +137,6 @@ EOT;
       echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
 
-
-
-
-
-
       //Horse
       $horseString = "";
       if ($event['horses']) {
@@ -165,7 +160,6 @@ EOT;
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
 
 
-
       //Equipment
       $equipmentString = "";
       if ($event['horses']) {
@@ -176,7 +170,7 @@ EOT;
           }
           if ($event['pads'][$key] and $event['pads'][$key] != "") {
             $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
-            $equipmentString .= "<i>Pad: </i>" . $padName;
+            $equipmentString .= "<i>Pad: </i>" . $padName . ", ";
           }
           if ($event['tack_notes'][$key] and $event['tack_notes'][$key] != "") {
             $tackNotes = rtrim(ltrim($event['tack_notes'][$key], "\""), "\"");
@@ -198,12 +192,6 @@ EOT;
         $equipmentString = "&#8212";
       }
       echo "<div class='schedule-equipment-info' {$style}>{$equipmentString}</div>";
-
-
-
-
-
-
 
 
       //Volunteers

@@ -136,6 +136,12 @@ EOT;
       }
       echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
+
+
+
+
+
+
       //Horse
       $horseString = "";
       if ($event['horses']) {
@@ -145,21 +151,7 @@ EOT;
           } else {
             $horseString .= "<i>Horse: </i>" . $horseName . ", ";
           }
-          if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
-            $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
-            $horseString .= "<i>Tack: </i>" . $tackName . ", ";
-          }
-          if ($event['pads'][$key] and $event['pads'][$key] != "") {
-            $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
-            $horseString .= "<i>Pad: </i>" . $padName;
-          }
           $horseString .= "<br>";
-        }
-        if ($event['special_tack'] and $event['special_tack'] != "") {
-          $horseString .= "<i><br>Special Tack: </i>" . $event['special_tack'] . ", ";
-        }
-        if ($event['stirrup_leather_length'] and $event['stirrup_leather_length'] != "") {
-          $horseString .= "<i><br>Stirrup Leather Length: </i>" . $event['stirrup_leather_length'] . ", ";
         }
       }
       if (strpos($horseString, $selectedName) !== false) {
@@ -171,6 +163,48 @@ EOT;
         $horseString = "&#8212";
       }
       echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
+
+
+
+      //Equipment
+      $equipmentString = "";
+      if ($event['horses']) {
+        foreach ($event['horses'] as $key => $horseName) {
+          if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+            $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
+            $horseString .= "<i>Tack: </i>" . $tackName . ", ";
+          }
+          if ($event['pads'][$key] and $event['pads'][$key] != "") {
+            $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
+            $horseString .= "<i>Pad: </i>" . $padName;
+          }
+          if ($event['tack_notes'][$key] and $event['tack_notes'][$key] != "") {
+            $tackNotes = rtrim(ltrim($event['tack_notes'][$key], "\""), "\"");
+            $horseString .= "<i>Tack Notes: </i>" . $tackNotes;
+          }
+          if ($event['client_equipment_notes'][$key] and $event['client_equipment_notes'][$key] != "") {
+            $clientEquipmentNotes = rtrim(ltrim($event['client_equipment_notes'][$key], "\""), "\"");
+            $horseString .= "<i>Client Equipment: </i>" . $clientEquipmentNotes;
+          }
+          $horseString .= "<br>";
+        }
+      }
+      if (strpos($horseString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      if ($horseString == "") {
+        $horseString = "&#8212";
+      }
+      echo "<div class='schedule-horse-info' {$style}>{$horseString}</div>";
+
+
+
+
+
+
+
 
       //Volunteers
       $volunteerString = "";
@@ -192,10 +226,6 @@ EOT;
         $style = "";
       }
       echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
-
-
-
-
 
 
     }

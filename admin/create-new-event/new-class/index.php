@@ -356,7 +356,7 @@
 
     <div>
       <div id="volunteer-section">
-        <p>Volunteer(s):</p>
+        
         <?php
           if ($oldPostData['volunteers']) {
             foreach ($oldPostData['volunteers'] as $volunteer) {

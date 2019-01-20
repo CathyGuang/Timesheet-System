@@ -19,6 +19,7 @@
   <div class="main-content-div">
     <a href="volunteer-daily-schedule"><button class="green-button">Daily Schedule</button></a>
     <a href="record-hours"><button class="blue-button">Record Hours</button></a>
+    <a href="view-hours"><button class="green-button">View Hours</button></a>
   </div>
 
 </body>

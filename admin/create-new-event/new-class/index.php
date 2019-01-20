@@ -350,7 +350,7 @@
           </datalist>
         </div>
         <br>
-        <button style="margin-left: 5vw;" type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
+        <button style="margin-left: 3vw;" type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
       </div>
 
 

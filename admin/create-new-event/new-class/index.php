@@ -293,6 +293,40 @@
 
 
     <div>
+      <div id="tack-notes-section">
+        <p>Tack Note(s):</p>
+        <?php
+          if ($oldPostData['tack-notes']) {
+            foreach ($oldPostData['tack-notes'] as $note) {
+              echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='tack-notes[]' value='' onclick='select();'>";
+          }
+        ?>
+      </div>
+      <br>
+      <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Additional Tack Note</button>
+    </div>
+
+    <div>
+      <div id="client-equipment-section">
+        <p>Client Equipment Note(s):</p>
+        <?php
+          if ($oldPostData['client-equipment-notes']) {
+            foreach ($oldPostData['client-equipment-notes'] as $note) {
+              echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='' onclick='select();'>";
+          }
+        ?>
+      </div>
+      <br>
+      <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Client Equipment Note</button>
+    </div>
+
+    <div>
       <div id="volunteer-role-section">
         <p>Volunteer Role(s):</p>
         <?php

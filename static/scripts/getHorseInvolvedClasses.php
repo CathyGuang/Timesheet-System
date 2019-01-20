@@ -6,7 +6,7 @@
   }
 
   $query = <<<EOT
-  SELECT display_title, class_type, classes.id, cancelled, date_of_class, start_time, end_time, lesson_plan, tacks, special_tack, stirrup_leather_length, pads, horses, staff, volunteers, clients, attendance FROM classes WHERE
+  SELECT * FROM classes WHERE
   {$queryID} = ANY(horses) AND
   (archived IS NULL OR archived = '')
   ;

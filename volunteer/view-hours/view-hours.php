@@ -34,6 +34,10 @@ EOT;
       return;
     }
 
+    var_dump($_POST);
+
+    echo "<br>HOURDATA<br>";
+
     var_dump($hourData);
 
 

@@ -1,6 +1,6 @@
 
   <?php
-    
+
     //filter classes by date
     $todaysClasses = array();
     $todaysHorseCareShifts = array();
@@ -74,6 +74,7 @@
     <p class="schedule-staff" style="height: 5vh;">Staff:</p>
     <p class="schedule-clients" style="height: 5vh;">Clients:</p>
     <p class="schedule-horse-info" style="height: 5vh;">Horse:</p>
+    <p class="schedule-equipment-info" style="height: 5vh;">Equipment:</p>
     <p class="schedule-volunteers" style="height: 5vh;">Volunteers:</p>
 EOT;
 

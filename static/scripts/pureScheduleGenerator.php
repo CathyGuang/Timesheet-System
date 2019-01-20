@@ -174,11 +174,11 @@ EOT;
           }
           if ($event['tack_notes'][$key] and $event['tack_notes'][$key] != "") {
             $tackNotes = rtrim(ltrim($event['tack_notes'][$key], "\""), "\"");
-            $equipmentString .= "<i>Tack Notes: </i>" . $tackNotes;
+            $equipmentString .= "<i>Tack Notes: </i>" . $tackNotes . ", ";
           }
           if ($event['client_equipment_notes'][$key] and $event['client_equipment_notes'][$key] != "") {
             $clientEquipmentNotes = rtrim(ltrim($event['client_equipment_notes'][$key], "\""), "\"");
-            $equipmentString .= "<i>Client Equipment: </i>" . $clientEquipmentNotes;
+            $equipmentString .= "<i>Client Equipment: </i>" . $clientEquipmentNotes . ', ';
           }
           $equipmentString .= "<br>";
         }

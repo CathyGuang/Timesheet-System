@@ -28,7 +28,7 @@
     ;
 EOT;
 
-    $hourData = pg_fetch_array(pg_query($db_connection, $query), 0);
+    $hourData = pg_fetch_all(pg_query($db_connection, $query));
     if (!$hourData) {
       echo "<h3 class='main-content-header>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
       return;

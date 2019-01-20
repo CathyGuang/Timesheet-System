@@ -198,7 +198,7 @@ button:hover {
       margin: 0;
       margin-top: 35vh;
       display: grid;
-      grid-template-columns: 5px 1fr 132px 175px 175px 300px 350px 550px 350px 1fr 5px;
+      grid-template-columns: 5px 1fr 132px 175px 175px 300px 350px 150px 400px 350px 1fr 5px;
     }
     .schedule-display > * {
       border: 1px solid black;
@@ -226,9 +226,12 @@ button:hover {
     .schedule-horse-info {
       grid-column: 8;
     }
-    .schedule-volunteers {
+    .schedule-equipment-info {
       grid-column: 9;
     }
+    .schedule-volunteers {
+      grid-column: 10;
+    }
     .schedule-volunteers > * {
-      grid-column: 9;
+      grid-column: 10;
     }

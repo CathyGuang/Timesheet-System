@@ -37,7 +37,7 @@ EOT;
     $totalHours = 0;
     foreach ($hourData as $uniqueShift) {
       $totalHours += $uniqueShift['hours'];
-      echo "<p style='margin-left: 15vw;'>{$uniqueShift['date_of_hours']}: {$uniqueShift['shift_type']}, {$uniqueShift['hours']} hrs</p><br>";
+      echo "<p style='margin-left: 5vw;'>{$uniqueShift['date_of_hours']}: {$uniqueShift['shift_type']}, {$uniqueShift['hours']} hrs</p><br>";
     }
 
     echo "<h3 style='position: absolute; top: 25vh; right: 20vw'>Total Hours: {$totalHours}</h3>";

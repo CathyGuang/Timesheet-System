@@ -10,7 +10,7 @@
 ## Update Log:
 
 ### Version 1.1
-  *Bug fixes and minor improvements*
+  *Bug fixes and improvements*
 
 * Clicking on version pulls up README file and update log
 
@@ -35,6 +35,8 @@
 * Volunteers now have flexible class roles, like staff
 
 * Horses now have horse_uses_per_week field, and this data is taken into account by the conflict checker
+
+* Tack Notes and Stirrup Leather Length Notes have been changed to an indefinite number of tack notes and client equipment notes per class, fully customizeable
 
 
 ### Version 1.0

@@ -188,13 +188,6 @@ EOT;
           </datalist>
 
 
-        <p>Tack Notes:</p>
-        <input type="text" name="special-tack" value="{$classData['special_tack']}">
-
-        <p>Stirrup Leather Length:</p>
-        <input type="text" name="stirrup-leather-length" value="{$classData['stirrup_leather_length']}">
-
-
         <div>
           <div id="staff-section">
             <p>Staff:</p>
@@ -387,6 +380,44 @@ EOT;
             <br>
             <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
             </div>
+
+
+
+            <div>
+              <div id="tack-notes-section">
+                <p>Tack Note(s):</p>
+EOT;
+                  if ($classData['tack-notes']) {
+                    foreach ($classData['tack-notes'] as $note) {
+                      echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
+                    }
+                  } else {
+                    echo "<input form='class-form' type='text' name='tack-notes[]' value='' onclick='select();'>";
+                  }
+            echo <<<EOT
+              </div>
+              <br>
+              <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Additional Tack Note</button>
+            </div>
+
+            <div>
+              <div id="client-equipment-section">
+                <p>Client Equipment:</p>
+EOT;
+                  if ($classData['client-equipment-notes']) {
+                    foreach ($classData['client-equipment-notes'] as $note) {
+                      echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
+                    }
+                  } else {
+                    echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='' onclick='select();'>";
+                  }
+          echo <<< EOT
+              </div>
+              <br>
+              <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Client Equipment Note</button>
+            </div>
+
+
 
 
         <div>

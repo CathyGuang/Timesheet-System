@@ -48,8 +48,11 @@
         $targetType = "pad";
       }
 
-
+      //initialize checkAvailability function
       include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
+      //initialize check horse use by week function
+      include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
+
       $result = checkAvailability($target, $targetType, $_POST['target-date'], $_POST['start-time'], $_POST['end-time']);
       if (!$result) {
         echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-green);'>{$_POST['target-name']} is available on {$_POST['target-date']} from {$_POST['start-time']} to {$_POST['end-time']}.</h3>";
@@ -58,7 +61,6 @@
       } else {
         echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
       }
-      var_dump($result);
     ?>
 
 

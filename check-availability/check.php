@@ -58,6 +58,7 @@
       } else {
         echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
       }
+      var_dump($result);
     ?>
 
 

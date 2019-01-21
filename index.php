@@ -13,7 +13,7 @@
 
   <header>
     <h1><?php echo $organizationName; ?> Web Portal</h1>
-    <label id="version-label"><a href="README.md">v1.0</a></label>
+    <label id="version-label"><a href="README.md">v1.1</a></label>
   </header>
 
 

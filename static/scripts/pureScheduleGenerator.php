@@ -139,7 +139,7 @@ EOT;
 
       //Horse
       $horseString = "";
-      if ($event['horses']) {
+      if ($event['horses'] && $event['horses'][0] != "") {
         foreach ($event['horses'] as $key => $horseName) {
           if ($horseName == "HORSE NEEDED") {
             $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='color: red; float: left;'>{$horseName}</div>, ";

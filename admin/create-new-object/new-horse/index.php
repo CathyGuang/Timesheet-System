@@ -25,7 +25,7 @@
     <label>(Leave blank if owner is this organization)</label>
     <input type="text" name="owner" value="">
 
-    <p>FS Uses per Day:</p>
+    <p>Organization Uses per Day:</p>
     <input type="number" name="org_uses_per_day" value="" required>
 
     <p>Owner Uses per Day:</p>

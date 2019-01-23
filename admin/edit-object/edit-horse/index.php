@@ -53,7 +53,7 @@ EOT;
         <label>(Leave blank if owner is this organization)</label>
         <input type="text" name="owner" value="{$horseInfo['owner']}">
 
-        <p>FS Uses per Day:</p>
+        <p>Organization Uses per Day:</p>
         <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
 
         <p>Owner Uses per Day:</p>

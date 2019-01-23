@@ -163,14 +163,14 @@ EOT;
       //Equipment
       $equipmentString = "";
       if ($event['horses']) {
-        foreach (range(0,15,1) as $key) {
+        foreach (range(0,25,1) as $key) {
           $newStuff = false;
-          if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+          if ($event['tacks'][$key] and $event['tacks'][$key] != "\"\"") {
             $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
             $equipmentString .= "<i>Tack: </i>" . $tackName . ", ";
             $newStuff = true;
           }
-          if ($event['pads'][$key] and $event['pads'][$key] != "") {
+          if ($event['pads'][$key] and $event['pads'][$key] != "\"\"") {
             $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
             $equipmentString .= "<i>Pad: </i>" . $padName . ", ";
             $newStuff = true;

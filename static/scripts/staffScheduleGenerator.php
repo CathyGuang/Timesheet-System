@@ -157,7 +157,7 @@ EOT;
 
       //Horse
       $horseString = "";
-      if ($event['horses']) {
+      if ($event['horses'] && $event['horses'][0] != "") {
         foreach ($event['horses'] as $key => $horseName) {
           if ($horseName == "HORSE NEEDED") {
             $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='color: red; float: left;'>{$horseName}</div>, ";
@@ -181,14 +181,14 @@ EOT;
       //Equipment
       $equipmentString = "";
       if ($event['horses']) {
-        foreach (range(0,15,1) as $key) {
+        foreach (range(0,25,1) as $key) {
           $newStuff = false;
-          if ($event['tacks'][$key] and $event['tacks'][$key] != "") {
+          if ($event['tacks'][$key] and $event['tacks'][$key] != "\"\"") {
             $tackName = rtrim(ltrim($event['tacks'][$key], "\""), "\"");
             $equipmentString .= "<i>Tack: </i>" . $tackName . ", ";
             $newStuff = true;
           }
-          if ($event['pads'][$key] and $event['pads'][$key] != "") {
+          if ($event['pads'][$key] and $event['pads'][$key] != "\"\"") {
             $padName = rtrim(ltrim($event['pads'][$key], "\""), "\"");
             $equipmentString .= "<i>Pad: </i>" . $padName . ", ";
             $newStuff = true;

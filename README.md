@@ -7,6 +7,8 @@
 
 * Do not have multiple staff or volunteers with the same role in a single class, only one person can currently fill a given role. Make roles more specific!
 
+* Be careful of use of apostrophe's in names or other fields -- they can sometimes cause problems
+
 ## Update Log:
 
 ### Version 1.1

@@ -25,6 +25,7 @@
         <?php
           $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');"));
           foreach ($volunteerNames as $name) {
+            $name = htmlspecialchars($name, ENT_QUOTES);
             echo "<option value='$name'>";
           }
         ?>

@@ -27,6 +27,7 @@
 EOT;
             $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');"), 0);
             foreach ($clientNames as $name) {
+              $name = htmlspecialchars($name, ENT_QUOTES);
               echo "<option value='{$name}'>";
             }
             echo <<<EOT
@@ -45,6 +46,7 @@ EOT;
         foreach ($allClasses as $classTuple) {
           $clientString = "";
           foreach ($classTuple['clients'] as $name) {
+            $name = htmlspecialchars($name, ENT_QUOTES);
             $clientString = $clientString . $name . ", ";
           }
           echo "<button type='submit' name='buttonInfo' value='{$classTuple['id']};{$clientString}'>{$classTuple['display_title']}, {$classTuple['date_of_class']}</button>";

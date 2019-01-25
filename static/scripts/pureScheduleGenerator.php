@@ -101,6 +101,7 @@ EOT;
       //Staff
       $staffString = "";
       foreach ($event['staff'] as $role => $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
         if ($name == "") {continue;}
         $staffString .= "<i>{$role}:</i> {$name}<br>";
       }

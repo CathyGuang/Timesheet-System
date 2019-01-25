@@ -40,6 +40,7 @@
     <p>Horse(s):</p>
     <?php
       foreach ($horseNameList as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
         echo "<input type='text' list='horse-list' name='horses[]' value='{$name}' onclick='select()'>";
       }
     ?>
@@ -113,6 +114,7 @@ EOT;
         }
 
         foreach ($classInfo['staff'] as $role => $name) {
+          $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
           <p>{$role}:</p>
@@ -127,6 +129,7 @@ EOT;
           $result = pg_query($db_connection, $query);
           $workerNames = pg_fetch_all_columns($result);
           foreach ($workerNames as $key => $name) {
+            $name = htmlspecialchars($name, ENT_QUOTES);
             echo "<option value='$name'>";
           }
         ?>
@@ -144,6 +147,7 @@ EOT;
         }
 
         foreach ($classInfo['volunteers'] as $role => $name) {
+          $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
           <p>{$role}:</p>
@@ -158,6 +162,7 @@ EOT;
           $result = pg_query($db_connection, $query);
           $workerNames = pg_fetch_all_columns($result);
           foreach ($workerNames as $key => $name) {
+            $name = htmlspecialchars($name, ENT_QUOTES);
             echo "<option value='$name'>";
           }
         ?>

@@ -25,6 +25,7 @@
         <?php
           $horseNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');"));
           foreach ($horseNames as $name) {
+            $name = htmlspecialchars($name, ENT_QUOTES);
             echo "<option value='$name'>";
           }
         ?>

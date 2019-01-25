@@ -34,6 +34,7 @@
             $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::PAD))")));
 
             foreach ($allResources as $key => $name) {
+              $name = htmlspecialchars($name, ENT_QUOTES);
               echo "<option value='$name'>";
             }
           ?>

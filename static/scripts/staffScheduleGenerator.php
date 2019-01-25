@@ -108,6 +108,7 @@ EOT;
       if ($event['clients']) {
         $clientString = "";
         foreach ($event['clients'] as $name) {
+          $name = htmlspecialchars($name, ENT_QUOTES);
           $clientString .= $name . ",";
         }
         $getQuery = http_build_query(array("buttonInfo" => $event['id'] . ";" . $clientString));
@@ -120,6 +121,7 @@ EOT;
       //Staff
       $staffString = "";
       foreach ($event['staff'] as $role => $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
         if ($name == "") {continue;}
         $staffString .= "<i>{$role}:</i> {$name}<br>";
       }

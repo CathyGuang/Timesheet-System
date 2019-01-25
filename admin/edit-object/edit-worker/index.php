@@ -26,7 +26,7 @@
           <datalist id="worker-list">
 EOT;
               $query = "SELECT name FROM workers WHERE name != 'NEEDED' AND (archived IS NULL OR archived = '');";
-              $result = pg_fetch_all(pg_query($db_connection, $query), 1);
+              $result = pg_fetch_all(pg_query($db_connection, $query));
               foreach ($result as $name ) {
                 $name = htmlspecialchars($name, ENT_QUOTES);
                 echo "<option value='{$name}'>";

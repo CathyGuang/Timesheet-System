@@ -53,8 +53,11 @@
       <p>Date:</p>
       <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
 
-      <p>Number of hours</p>
+      <p>Number of hours:</p>
       <input type="text" name="hours" required>
+
+      <p>Notes:</p>
+      <input type="text" name="notes">
 
       <br><br>
       <input type="submit" value="Submit">

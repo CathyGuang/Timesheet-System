@@ -20,9 +20,11 @@
 
     $volunteerID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['volunteer']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
+    $notes = pg_escape_string(trim($_POST['notes']));
+
     $query = <<<EOT
-      INSERT INTO volunteer_hours (volunteer, hours, shift_type, date_of_hours)
-      VALUES ('{$volunteerID}', '{$_POST['hours']}', '{$_POST['shift-type']}', '{$_POST['date-of-hours']}')
+      INSERT INTO volunteer_hours (volunteer, hours, shift_type, date_of_hours, notes)
+      VALUES ('{$volunteerID}', '{$_POST['hours']}', '{$_POST['shift-type']}', '{$_POST['date-of-hours']}', '{$notes}')
       ;
 EOT;
 

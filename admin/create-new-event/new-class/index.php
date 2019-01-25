@@ -127,8 +127,9 @@
         <?php
           if ($oldPostData['staff-roles']) {
             foreach ($oldPostData['staff-roles'] as $index => $role) {
+              $staffName = htmlspecialchars($oldPostData['staff'][$index], ENT_QUOTES);
               echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'><br>";
-              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$oldPostData['staff'][$index]}' onclick='select();'>";
+              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
             }
           } else {
             echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'><br>";
@@ -151,8 +152,9 @@
               $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
               $result = pg_query($db_connection, $query);
               $staffNames = pg_fetch_all_columns($result);
-              foreach ($staffNames as $key => $value) {
-                echo "<option value='$value'>";
+              foreach ($staffNames as $key => $name) {
+                $name = htmlspecialchars($name, ENT_QUOTES);
+                echo "<option value='$name'>";
               }
             ?>
           </datalist>

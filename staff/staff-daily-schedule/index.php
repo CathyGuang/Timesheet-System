@@ -26,6 +26,7 @@
           $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
           foreach ($staffNames as $name) {
             $name = htmlspecialchars($name);
+            var_dump($name);
             echo "<option value='$name'>";
           }
         ?>

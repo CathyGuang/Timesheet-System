@@ -27,8 +27,8 @@
 EOT;
               $query = "SELECT name FROM workers WHERE name != 'NEEDED' AND (archived IS NULL OR archived = '');";
               $result = pg_fetch_all(pg_query($db_connection, $query));
-              foreach ($result as $name ) {
-                $name = htmlspecialchars($name, ENT_QUOTES);
+              foreach ($result as $worker) {
+                $name = htmlspecialchars($worker['name'], ENT_QUOTES);
                 echo "<option value='{$name}'>";
               }
       echo <<<EOT

@@ -20,9 +20,11 @@
 
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
+    $notes = pg_escape_string(trim($_POST['notes']));
+
     $query = <<<EOT
-      INSERT INTO staff_hours (staff, hours, work_type, date_of_hours)
-      VALUES ('{$staffID}', '{$_POST['hours']}', '{$_POST['work-type']}', '{$_POST['date-of-hours']}')
+      INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
+      VALUES ('{$staffID}', '{$_POST['hours']}', '{$_POST['work-type']}', '{$_POST['date-of-hours']}', '{$notes}')
       ;
 EOT;
 

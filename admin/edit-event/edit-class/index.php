@@ -217,6 +217,7 @@ EOT;
         $staffData = json_decode($classData['staff']);
         foreach ($staffData as $role => $staffID) {
           $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
+          $staffName = htmlspecialchars($staffName, ENT_QUOTES);
 
 
           echo <<<EOT

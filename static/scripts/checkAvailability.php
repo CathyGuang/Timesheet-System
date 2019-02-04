@@ -145,6 +145,7 @@ EOT;
         $allEvents[] = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
       }
 
+      var_dump($allEvents);
       //Check all events for availability, return conflicting times if conflict is found
       if ($allEvents) {
         foreach ($allEvents as $key => $timePair) {

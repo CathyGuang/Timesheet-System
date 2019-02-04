@@ -166,8 +166,6 @@ EOT;
           }
         }
 
-        echo "<br>AllEvents:  ";
-        var_dump($allEvents);
         //Check if horse is maxed out on uses for the day
         if ($typeOfObject == "horses") {
           $orgUseCount = 0;

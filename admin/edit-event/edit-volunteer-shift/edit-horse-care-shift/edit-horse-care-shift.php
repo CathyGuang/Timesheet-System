@@ -107,6 +107,9 @@
 
     //Check for double-booking
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
+    //initialize check horse use by week function
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
+
     $abort = false;
     foreach ($dateTimeTriplets as $date => $timeArray) {
       if ($_POST['leader'] != "") {

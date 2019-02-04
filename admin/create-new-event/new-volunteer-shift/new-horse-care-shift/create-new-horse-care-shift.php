@@ -96,7 +96,7 @@
         }
       }
       if ($_POST['horse'] != "") {
-        $result = checkAvailability($_POST['horse'], 'horses', $date, $timeArray[0], $timeArray[1]);
+        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           $abort = true;
           if (is_array($result)) {

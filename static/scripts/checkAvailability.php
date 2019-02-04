@@ -146,12 +146,18 @@ EOT;
       if ($horseCareShiftQuery != "") {
         $horseCareShifts = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));
         if ($horseCareShifts) {
-          array_merge($allEvents, $horseCareShifts);
+          foreach ($horseCareShifts as $shift) {
+            $allEvents[] = $shift;
+          }
         }
       }
       if ($officeShiftQuery != "") {
         $officeShifts = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
-        array_merge($allEvents, $officeShifts);
+        if ($officeShifts) {
+          foreach ($officeShifts as $shift) {
+            $allEvents[] = $shift;
+          }
+        }
       }
 
       //Check all events for availability, return conflicting times if conflict is found

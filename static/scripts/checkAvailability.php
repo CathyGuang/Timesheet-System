@@ -1,6 +1,10 @@
 <?php
 
   function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
+
+    echo "<br>ID: $id";
+    echo "<br>TYPE: $typeOfObject<br>";
+
     //ignore calls for empty fields
     if ($id == "") {return false;}
     //connect to database

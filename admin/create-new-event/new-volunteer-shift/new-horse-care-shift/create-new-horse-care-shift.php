@@ -95,20 +95,6 @@
           }
         }
       }
-      if ($_POST['horse'] != "") {
-        echo "<br> HORSE ID: ";
-        var_dump($horseID);
-        echo "<br>";
-        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          if (is_array($result)) {
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horses'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          } else {
-            echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
-          }
-        }
-      }
     }
     if ($abort) {
       echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";

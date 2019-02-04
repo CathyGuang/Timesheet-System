@@ -178,6 +178,20 @@ EOT;
             <br>
             <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
+            <p>Horse:</p>
+            <input type="text" name="horse" list="horse-list" value="{$shiftData['horse']}" onclick="select();">
+              <datalist id="horse-list">
+EOT;
+                  $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+                  $result = pg_query($db_connection, $query);
+                  $horseNames = pg_fetch_all_columns($result);
+                  foreach ($horseNames as $key => $value) {
+                    echo "<option value='$value'>";
+                  }
+          echo <<<EOT
+              </datalist>
+
+
         <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves shift in database but removes from all schedules and menus</p>
 
         <div>

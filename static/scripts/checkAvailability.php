@@ -146,6 +146,7 @@ EOT;
       }
 
       var_dump($allEvents);
+      echo "<br>";
       //Check all events for availability, return conflicting times if conflict is found
       if ($allEvents) {
         foreach ($allEvents as $key => $timePair) {

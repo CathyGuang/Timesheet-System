@@ -125,6 +125,7 @@
       <br>
       <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
+      <br><br>
 
       <p>Horse:</p>
       <input type="text" name="horse" list="horse-list" value="" onclick="select();">

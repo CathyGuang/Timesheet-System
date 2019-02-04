@@ -230,8 +230,13 @@ EOT;
 
 
       //Shift Leader/Volunteers
-      if($event['leader'] && $event['leader'] != "") {
-        $volunteerString .= "Shift Leader: " . $event['leader'];
+      if ($event['leader'] && $event['leader'] != "") {
+        $volunteerString .= "Shift Leader: " . $event['leader'] . ",<br>";
+      }
+      if ($event['shift-volunteers'] && $event['shift-volunteers'][0] != "") {
+        foreach ($event['shift-volunteers'] as $name) {
+          $volunteerString .= "{$name}, ";
+        }
       }
 
 

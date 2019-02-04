@@ -136,7 +136,7 @@ EOT;
       }
 
 
-      //compile list of all events that involve the target that are on the date of concern
+      // Compile list of all events that involve the target that are on the date of concern
       $allEvents = pg_fetch_all(pg_query($db_connection, $classQuery));
       if ($horseCareShiftQuery != "") {
         $allEvents[] = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));

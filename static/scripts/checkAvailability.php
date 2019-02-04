@@ -144,11 +144,14 @@ EOT;
       // Compile list of all events that involve the target that are on the date of concern
       $allEvents = pg_fetch_all(pg_query($db_connection, $classQuery));
       if ($horseCareShiftQuery != "") {
-        array_merge($allEvents, pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery)));
+        $horseCareShifts = pg_fetch_all(pg_query($db_connection, $horseCareShiftQuery));
+        if ($horseCareShifts) {
+          array_merge($allEvents, $horseCareShifts);
+        }
       }
       if ($officeShiftQuery != "") {
-        array_merge($allEvents, pg_fetch_all(pg_query($db_connection, $officeShiftQuery)));
-
+        $officeShifts = pg_fetch_all(pg_query($db_connection, $officeShiftQuery));
+        array_merge($allEvents, $officeShifts);
       }
 
       //Check all events for availability, return conflicting times if conflict is found

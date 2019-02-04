@@ -150,6 +150,8 @@ EOT;
       //Check all events for availability, return conflicting times if conflict is found
       if ($allEvents) {
         foreach ($allEvents as $key => $timePair) {
+          echo "<br>";
+          var_dump($timePair);
           if ($timePair) {
             if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {
               return array($timePair['start_time'], $timePair['end_time']);

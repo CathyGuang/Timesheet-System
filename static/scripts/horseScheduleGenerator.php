@@ -7,6 +7,7 @@
     $QUERY_NAME = $selectedName;
     //these scripts generate the variables $allClasses,
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseInvolvedClasses.php";
+    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseInvolvedShifts.php";
 
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/pureScheduleGenerator.php";
   ?>

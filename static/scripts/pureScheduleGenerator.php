@@ -205,7 +205,7 @@ EOT;
       echo "<div class='schedule-equipment-info' {$style}>{$equipmentString}</div>";
 
 
-      //Volunteers
+      //Class Volunteers
       var_dump($event['volunteers']);
       $volunteerString = "";
       if ($event['volunteers']) {
@@ -229,6 +229,10 @@ EOT;
       echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
 
 
+      //Shift Leader/Volunteers
+      if($event['leader'] && $event['leader'] != "") {
+        $volunteerString .= "Shift Leader: " . $event['leader'];
+      }
 
 
 

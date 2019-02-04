@@ -72,7 +72,7 @@
     }
 
 
-    
+
     //Convert other user selections to database ids
 
     function to_pg_array($set) {
@@ -101,6 +101,8 @@
       $volunteerIDList[] = $id;
     }
     $volunteerIDList = to_pg_array($volunteerIDList);
+
+    $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND (archived IS NULL OR archived = '');"))[0];
 
 
     //Check for double-booking
@@ -139,9 +141,9 @@
 
 
     //Create SQL query
-    $query = "INSERT INTO horse_care_shifts (care_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";
+    $query = "INSERT INTO horse_care_shifts (care_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers, horse) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}'),";
+      $query = $query . "('{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}', '{$horseID}'),";
     }
 
     $query = chop($query, ",") . ";";

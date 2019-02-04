@@ -206,6 +206,7 @@ EOT;
 
 
       //Volunteers
+      var_dump($event['volunteers']);
       $volunteerString = "";
       if ($event['volunteers']) {
         foreach ($event['volunteers'] as $role => $volunteerName) {
@@ -226,6 +227,12 @@ EOT;
         $style = "";
       }
       echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
+
+
+
+
+
+
 
 
     }

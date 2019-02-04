@@ -169,11 +169,13 @@ EOT;
           $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"))[0];
 
           foreach ($allEvents as $eventInfo) {
-            $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
-            if (in_array($horseInfo['owner'], $clientNames)) {
-              $ownerUseCount++;
-            } else {
-              $orgUseCount++;
+            if ($eventInfo['clients']) {
+              $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
+              if (in_array($horseInfo['owner'], $clientNames)) {
+                $ownerUseCount++;
+              } else {
+                $orgUseCount++;
+              }
             }
           }
 

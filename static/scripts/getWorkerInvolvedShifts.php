@@ -45,6 +45,7 @@ EOT;
       $allHorseCareShifts[$key]['shift-volunteers'] = $volunteers;
 
       $allHorseCareShifts[$key]['leader'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$allHorseCareShifts[$key]['leader']} ;"))['name'];
+      $allHorseCareShifts[$key]['horse'] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$allHorseCareShifts[$key]['horse']} ;"))['name'];
 
     }
   }

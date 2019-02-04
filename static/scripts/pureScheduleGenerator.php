@@ -140,6 +140,7 @@ EOT;
 
       //Horse
       $horseString = "";
+      // For classes
       if ($event['horses'] && $event['horses'][0] != "") {
         foreach ($event['horses'] as $key => $horseName) {
           if ($horseName == "HORSE NEEDED") {
@@ -149,6 +150,10 @@ EOT;
           }
           $horseString .= "<br>";
         }
+      }
+      // For horse care shifts
+      if ($event['horse']) {
+        $horseString .= "<i>Horse: </i>" . $horseName;
       }
       if (strpos($horseString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";

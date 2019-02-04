@@ -217,17 +217,6 @@ EOT;
           }
         }
       }
-      if ($volunteerString == "") {
-        $volunteerString = "&#8212";
-      }
-      if (strpos($volunteerString, $selectedName) !== false) {
-        $style = "style='background-color: var(--accent-purple);'";
-      } else {
-        $style = "";
-      }
-      echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
-
-
       //Shift Leader/Volunteers
       var_dump($event['leader']);
       var_dump($event['shift-volunteers']);
@@ -239,6 +228,16 @@ EOT;
           $volunteerString .= "{$name}, ";
         }
       }
+      if ($volunteerString == "") {
+        $volunteerString = "&#8212";
+      }
+      if (strpos($volunteerString, $selectedName) !== false) {
+        $style = "style='background-color: var(--accent-purple);'";
+      } else {
+        $style = "";
+      }
+      echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
+
 
 
 

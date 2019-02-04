@@ -106,6 +106,19 @@ EOT;
 
         ;
 EOT;
+        $horseCareShiftQuery = <<<EOT
+        SELECT start_time, end_time FROM horse_care_shifts
+        WHERE
+        (
+        {$id} = horse_care_shifts.horse
+        ) AND (
+        '{$date}' = date_of_shift
+        ) AND (
+        (archived IS NULL OR archived = '')
+        )
+
+        ;
+EOT;
       } else if ($typeOfObject == "clients") {
         $classQuery = <<<EOT
         SELECT start_time, end_time FROM classes

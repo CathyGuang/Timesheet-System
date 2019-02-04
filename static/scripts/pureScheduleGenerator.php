@@ -153,7 +153,7 @@ EOT;
       }
       // For horse care shifts
       if ($event['horse']) {
-        $horseString .= "<i>Horse: </i>" . $horseName;
+        $horseString .= "<i>Horse: </i>" . $event['horse'];
       }
       if (strpos($horseString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";

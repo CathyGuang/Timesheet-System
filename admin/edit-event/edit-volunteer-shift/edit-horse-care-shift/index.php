@@ -53,6 +53,7 @@
       }
 
       $leaderName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$shiftData['leader']};"), 0, 1)['name'];
+      $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE horses.id = {$shiftData['horse']};"), 0, 1)['name'];
 
       echo <<<EOT
 

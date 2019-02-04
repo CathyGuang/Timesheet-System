@@ -180,7 +180,7 @@ EOT;
             <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
             <p>Horse:</p>
-            <input type="text" name="horse" list="horse-list" value="{$shiftData['horse']}" onclick="select();">
+            <input type="text" name="horse" list="horse-list" value="{$horseName}" onclick="select();">
               <datalist id="horse-list">
 EOT;
                   $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";

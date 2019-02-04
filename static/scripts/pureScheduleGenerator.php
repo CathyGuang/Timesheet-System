@@ -206,7 +206,6 @@ EOT;
 
 
       //Class Volunteers
-      var_dump($event['volunteers']);
       $volunteerString = "";
       if ($event['volunteers']) {
         foreach ($event['volunteers'] as $role => $volunteerName) {
@@ -230,6 +229,8 @@ EOT;
 
 
       //Shift Leader/Volunteers
+      var_dump($event['leader']);
+      var_dump($event['shift-volunteers']);
       if ($event['leader'] && $event['leader'] != "") {
         $volunteerString .= "Shift Leader: " . $event['leader'] . ",<br>";
       }

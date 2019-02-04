@@ -11,6 +11,11 @@
 
 ## Update Log:
 
+### Version 1.2
+  *More features and bug fixes*
+
+* Horse care shifts now can have horses associated with them, they will show up in the conflict checker, but will not count as a 'use'
+
 ### Version 1.1
   *Bug fixes and improvements*
 

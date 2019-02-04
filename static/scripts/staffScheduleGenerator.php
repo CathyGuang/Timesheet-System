@@ -159,6 +159,7 @@ EOT;
 
       //Horse
       $horseString = "";
+      // For classes
       if ($event['horses'] && $event['horses'][0] != "") {
         foreach ($event['horses'] as $key => $horseName) {
           if ($horseName == "HORSE NEEDED") {
@@ -168,6 +169,10 @@ EOT;
           }
           $horseString .= "<br>";
         }
+      }
+      // For horse care shifts
+      if ($event['horse']) {
+        $horseString .= "<i>Horse: </i>" . $event['horse'];
       }
       if (strpos($horseString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
@@ -218,7 +223,7 @@ EOT;
       }
       echo "<div class='schedule-equipment-info' {$style}>{$equipmentString}</div>";
 
-      //Volunteers
+      //Class Volunteers
       $volunteerString = "";
       if ($event['volunteers']) {
         foreach ($event['volunteers'] as $role => $volunteerName) {
@@ -228,6 +233,16 @@ EOT;
           } else {
             $volunteerString .= $role . ": " . $volunteerName . "<br>";
           }
+        }
+      }
+      //Shift Leader/Volunteers
+      if ($event['leader'] && $event['leader'] != "") {
+        $volunteerString .= "Shift Leader: " . $event['leader'] . ",<br>";
+      }
+      if ($event['shift-volunteers'] && $event['shift-volunteers'][0] != "") {
+        $volunteerString .= "Volunteers: ";
+        foreach ($event['shift-volunteers'] as $name) {
+          $volunteerString .= "{$name}, ";
         }
       }
       if ($volunteerString == "") {

@@ -19,6 +19,9 @@
   </header>
 
   <?php
+  //Get post data
+  $_POST = unserialize($_POST['override-post']);
+
 
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
       $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
@@ -26,7 +29,7 @@
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
       } else {
-        echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+        echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }
       return;
     }
@@ -37,7 +40,7 @@
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
       } else {
-        echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+        echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }
       return;
     }
@@ -135,89 +138,6 @@
     }
 
 
-
-
-    //Check for double-booking
-    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
-    //initialize check horse use by week function
-    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
-
-    $abort = false;
-    foreach ($dateTimeTriplets as $date => $timeArray) {
-      if ($_POST['arena'] != "") {
-        $result = checkAvailability($_POST['arena'], 'arena', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['horses'] != array()) {
-        foreach ($horseIDList as $key => $horseID) {
-          $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            if (is_array($result)) {
-              echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horses'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-            } else {
-              echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
-            }
-          }
-        }
-      }
-      if ($_POST['tacks'] != array()) {
-        foreach ($_POST['tacks'] as $key => $tackName) {
-          $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$tackName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['pads'] != array()) {
-        foreach ($_POST['pads'] as $key => $padName) {
-          $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$padName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['staff'] != array()) {
-        foreach ($staffIDList as $key => $staffID) {
-          $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['volunteers'] != array()) {
-        foreach ($volunteerIDList as $key => $volunteerID) {
-          $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-    }
-    if ($abort) {
-      //RESTORE OLD CLASS DATA SINCE NO CHANGES ARE BEING MADE
-      if ($oldClassIDSQLObject) {
-        foreach ($oldClassIDSQLObject as $row => $data) {
-          pg_query($db_connection, "UPDATE classes SET archived = null WHERE classes.id = {$data['id']};");
-        }
-      }
-      echo "<h3 class='main-content-header'> No changes to the class have been made. It is safe to leave this page. To edit the class, please <button onclick='window.history.back();' style='width: 90pt;'>revert</button> your changes and try again.</h3>";
-
-      echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
-      echo "<form id='override-form' method='post' action='create-new-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
-
-      return;
-    }
-
-
-
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
     $padList = to_pg_array($_POST['pads']);
@@ -241,7 +161,7 @@
     $displayTitle = pg_escape_string(trim($_POST['display-title']));
 
 
-    //If no conflicts, create new entries.
+    // create new entries.
 
     //Create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
@@ -269,7 +189,7 @@
           pg_query($db_connection, "UPDATE classes SET archived = null WHERE classes.id = {$data['id']};");
         }
       }
-      echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
   ?>
 

@@ -19,6 +19,9 @@
   </header>
 
   <?php
+    //Get post data
+    $_POST = unserialize($_POST['override-post']);
+
     //Process form input
     //get array of dates and times
     $date = $_POST['start-date'];
@@ -96,80 +99,6 @@
     }
 
 
-    //Check for double-booking
-    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
-    //initialize check horse use by week function
-    include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getHorseUsesByDateRange.php";
-
-    $abort = false;
-    foreach ($dateTimeTriplets as $date => $timeArray) {
-      if ($_POST['arena'] != "") {
-        $result = checkAvailability($_POST['arena'], 'arena', $date, $timeArray[0], $timeArray[1]);
-        if ($result) {
-          $abort = true;
-          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        }
-      }
-      if ($_POST['horses'] != array()) {
-        foreach ($horseIDList as $key => $horseID) {
-          $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            if (is_array($result)) {
-              echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horses'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-            } else {
-              echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
-            }
-          }
-        }
-      }
-      if ($_POST['tacks'] != array()) {
-        foreach ($_POST['tacks'] as $key => $tackName) {
-          $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$tackName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['pads'] != array()) {
-        foreach ($_POST['pads'] as $key => $padName) {
-          $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$padName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['staff'] != array()) {
-        foreach ($staffIDList as $key => $staffID) {
-          $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-      if ($_POST['volunteers'] != array()) {
-        foreach ($volunteerIDList as $key => $volunteerID) {
-          $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
-          if ($result) {
-            $abort = true;
-            echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          }
-        }
-      }
-    }
-    if ($abort) {
-      $postString = serialize($_POST);
-      echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";
-      echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
-
-      echo "<h3 class='main-content-header>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 90pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
-      echo "<form id='override-form' method='post' action='create-new-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
-      return;
-    }
-
 
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
@@ -195,7 +124,7 @@
 
 
 
-    //If no conflicts, create SQL query
+    // create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
       $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$tackNotes}', '{$clientEquipmentNotes}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";

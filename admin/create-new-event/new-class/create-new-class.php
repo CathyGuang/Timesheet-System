@@ -167,6 +167,7 @@
       return;
     }
 
+
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
     $padList = to_pg_array($_POST['pads']);

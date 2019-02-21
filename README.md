@@ -18,6 +18,8 @@
 
 * Arena is now displayed in schedules.
 
+* Creating and editing classes now grants the ability to override conflicts if necessary.
+
 ### Version 1.1
   *Bug fixes and improvements*
 

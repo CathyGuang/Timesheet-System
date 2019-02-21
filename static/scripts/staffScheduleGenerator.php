@@ -102,7 +102,7 @@ EOT;
       echo "<p class='schedule-time' {$style}>{$newTimeString}{$cancelled}</p>";
 
       //Display title:
-      echo "<p class='schedule-display-title'>{$event['display_title']}<br>{$event['arena']}</p>";
+      echo "<p class='schedule-display-title'>{$event['display_title']}<br><br><i>{$event['arena']}</i></p>";
 
       //Event Type
       if ($event['clients']) {

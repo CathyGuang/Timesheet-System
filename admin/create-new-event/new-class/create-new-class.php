@@ -165,7 +165,7 @@
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";
       echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
 
-      echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 90pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
+      echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
       echo "<form id='override-form' method='post' action='create-new-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
       return;
     }

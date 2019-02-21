@@ -16,9 +16,9 @@
 
 * Horse care shifts now can have horses associated with them, they will show up in the conflict checker, but will not count as a 'use'
 
-* Arena is now displayed in schedules.
+* Arena is now displayed in schedules
 
-* Creating and editing classes now grants the ability to override conflicts if necessary.
+* Creating and editing classes now grants the ability to override conflicts if necessary
 
 ### Version 1.1
   *Bug fixes and improvements*

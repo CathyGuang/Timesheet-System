@@ -32,8 +32,8 @@ EOT;
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3>";
       if ($_POST['send-email'] == 'true') {
-        echo "TRUEEUEUEUE";
-        $currentDate = Date();
+        echo "TRUEEUEUEUE\n";
+        $currentDate = date('j-m-Y, g:iA');
         $emailBody = <<<EOT
 Automatic Message from DHS:
 

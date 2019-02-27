@@ -31,8 +31,10 @@ EOT;
     $result = pg_query($db_connection, $query);
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3>";
-      $currentDate = Date();
-      $emailBody = <<<EOT
+      if ($_POST['send-email'] == 'true') {
+        echo "TRUEEUEUEUE";
+        $currentDate = Date();
+        $emailBody = <<<EOT
 Automatic Message from DHS:
 
 Volunteer hours recorded by: {$_POST['volunteer']}
@@ -44,9 +46,10 @@ Hours: {$_POST['hours']}
 
 Note: {$notes}
 EOT;
-      $emailBody = wordwrap($emailBody, 70);
-      mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody);
-      
+        $emailBody = wordwrap($emailBody, 70);
+        mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody);
+      }
+
     } else {
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }

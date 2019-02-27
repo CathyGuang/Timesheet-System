@@ -189,7 +189,7 @@ EOT;
           if ($orgUseCount >= $horseInfo['org_uses_per_day'] && !in_array($horseInfo['owner'], $_POST['clients'])) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
           }
-          if ($ownerUseCount >= $horseInfo['owner_uses_per_day'] && in_array($horseInfo['owner'], $_POST['clients'])) {
+          if ($horseInfo['owner'] != "" && $ownerUseCount >= $horseInfo['owner_uses_per_day'] && in_array($horseInfo['owner'], $_POST['clients'])) {
             return "{$horseInfo['name']} is already being used {$horseInfo['owner_uses_per_day']} times on {$date} by their owner ({$horseInfo['owner']})!";
           }
 

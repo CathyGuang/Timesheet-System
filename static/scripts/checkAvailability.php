@@ -175,7 +175,7 @@ EOT;
           foreach ($allEvents as $eventInfo) {
             if ($eventInfo['clients']) {
               $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
-              if (in_array($horseInfo['owner'], $clientNames)) {
+              if ($horseInfo['owner'] != "" && in_array($horseInfo['owner'], $clientNames)) {
                 $ownerUseCount++;
               } else {
                 $orgUseCount++;

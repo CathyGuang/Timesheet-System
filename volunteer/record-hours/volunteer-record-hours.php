@@ -47,7 +47,7 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
+        $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com\r\n");
         var_dump($mail);
       }
 

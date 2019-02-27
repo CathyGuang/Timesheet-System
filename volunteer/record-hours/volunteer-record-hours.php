@@ -47,7 +47,7 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com');
+        var_dump(ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com'));
         $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody);
         var_dump($mail);
       }

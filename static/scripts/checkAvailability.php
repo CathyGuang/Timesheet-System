@@ -183,6 +183,8 @@ EOT;
               }
             }
           }
+          var_dump($ownerUseCount);
+          var_dump($orgUseCount);
 
           if ($orgUseCount >= $horseInfo['org_uses_per_day'] && !in_array($horseInfo['owner'], $_POST['clients'])) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";

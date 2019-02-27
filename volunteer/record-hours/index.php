@@ -60,6 +60,9 @@
       <p>Notes:</p>
       <input type="text" name="notes">
 
+      <p>Notify Supervisor:</p>
+      <input type="checkbox" name="send-email" value="true">
+
       <br><br>
       <input type="submit" value="Submit">
     </form>

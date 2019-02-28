@@ -32,7 +32,6 @@ EOT;
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3>";
       if ($_POST['send-email'] == 'true') {
-        echo "TRUEEUEUEUE\n";
         $currentDate = date('j-m-Y, g:iA');
         $emailBody = <<<EOT
 Automatic Message from DHS:
@@ -48,8 +47,7 @@ Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
         //var_dump(ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com'));
-        $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: root@padillac-server.localdomain");
-        var_dump($mail);
+        $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
       }
 
     } else {

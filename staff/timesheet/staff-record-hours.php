@@ -31,6 +31,24 @@ EOT;
     $result = pg_query($db_connection, $query);
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3>";
+      if ($_POST['send-email'] == 'true') {
+        $currentDate = date('j-m-Y, g:iA');
+        $emailBody = <<<EOT
+Automatic Message from DHS:
+
+Staff hours recorded by: {$_POST['staff']}
+at {$currentDate}
+
+Shift: {$_POST['work-type']}
+Date: {$_POST['date-of-hours']}
+Hours: {$_POST['hours']}
+
+Note: {$notes}
+EOT;
+        $emailBody = wordwrap($emailBody, 70);
+        //var_dump(ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com'));
+        $mail = mail("shinimaninima@gmail.com", "Staff Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
+      }
     } else {
       echo "<h3 class='main-content-header>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }

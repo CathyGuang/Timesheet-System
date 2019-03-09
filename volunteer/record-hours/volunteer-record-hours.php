@@ -37,7 +37,7 @@ EOT;
 Automatic Message from DHS:
 
 Volunteer hours recorded by: {$_POST['volunteer']}
-at {$currentDate}
+on {$currentDate}
 
 Shift: {$_POST['shift-type']}
 Date: {$_POST['date-of-hours']}
@@ -46,8 +46,8 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        //var_dump(ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com'));
         $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
+        var_dump($mail);
       }
 
     } else {

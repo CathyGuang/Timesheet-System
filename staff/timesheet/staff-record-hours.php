@@ -37,7 +37,7 @@ EOT;
 Automatic Message from DHS:
 
 Staff hours recorded by: {$_POST['staff']}
-at {$currentDate}
+on {$currentDate}
 
 Shift: {$_POST['work-type']}
 Date: {$_POST['date-of-hours']}
@@ -46,7 +46,6 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        //var_dump(ini_set('sendmail_from', 'From: no-reply@darkhorsescheduling.com'));
         $mail = mail("shinimaninima@gmail.com", "Staff Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
       }
     } else {

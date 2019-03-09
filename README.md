@@ -11,6 +11,11 @@
 
 ## Update Log:
 
+### Version 1.3
+  *Automatic Emails*
+
+* Volunteers and Staff who record their hours can optionally send email updates to coordinators
+
 ### Version 1.2
   *More features and bug fixes*
 

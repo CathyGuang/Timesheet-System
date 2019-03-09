@@ -47,7 +47,11 @@ Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
         $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
-        var_dump($mail);
+        if ($mail) {
+          echo "<p>Email sent successfully.</p>";
+        } else {
+          echo "<p>Email failed to send.</p>";
+        }
       }
 
     } else {

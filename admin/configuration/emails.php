@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | System Emails</title>
 </head>
 
@@ -18,6 +19,11 @@
 
   <div class="main-content-div">
 
+  <?php
+    $volunteerCoordinatorEmail = pg_fetch_all(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"));
+    var_dump($volunteerCoordinatorEmail);
+
+  ?>
 
 
   </div>

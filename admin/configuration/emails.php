@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <title>Admin | Configuration</title>
+  <title>Admin | System Emails</title>
 </head>
 
 <body>
 
   <header>
-    <h1>Configuration</h1>
+    <h1>Configure System Emails</h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
@@ -18,7 +18,7 @@
 
   <div class="main-content-div">
 
-    <a href="emails.php"><button class="blue-button">System Emails</button></a>
+
 
   </div>
 

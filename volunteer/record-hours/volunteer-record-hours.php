@@ -49,7 +49,7 @@ EOT;
 
         $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
         if (!$recipient) {
-          echo "No volunteer coordinator email found. Contact an administrator to change this.";
+          echo "<p class='main-content-header'>No volunteer coordinator email found. Contact an administrator to change this.</p>";
         }
 
         $mail = mail($recipient, "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");

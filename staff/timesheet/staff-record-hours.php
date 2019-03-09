@@ -48,7 +48,7 @@ EOT;
         $emailBody = wordwrap($emailBody, 70);
         $mail = mail("shinimaninima@gmail.com", "Staff Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
         if ($mail) {
-          echo "<p>Email sent successfully.</p>";
+          echo "<p class='main-content-header'>Email sent successfully.</p>";
         } else {
           echo "<p>Email failed to send.</p>";
         }

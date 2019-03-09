@@ -22,6 +22,7 @@
     <a href="reports"><button class="blue-button">Generate Report</button></a>
     <a href="edit-event"><button class="red-button">Edit/Remove Class/Shift</button></a>
     <a href="edit-object"><button class="red-button">Edit/Remove Object</button></a>
+    <a href="configuration"><button class="blue-button">Configuration</button></a>
 
   </div>
 

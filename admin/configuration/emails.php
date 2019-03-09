@@ -25,6 +25,7 @@
 
 
     var_dump($volunteerCoordinatorEmail);
+    var_dump($staffCoordinatorEmail);
 
   ?>
 

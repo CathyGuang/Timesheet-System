@@ -20,7 +20,7 @@
   <div class="main-content-div">
 
   <?php
-    $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"));
+    $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), PGSQL_ASSOC);
     var_dump($volunteerCoordinatorEmail);
 
   ?>

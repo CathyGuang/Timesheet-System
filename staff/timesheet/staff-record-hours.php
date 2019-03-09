@@ -30,7 +30,7 @@ EOT;
 
     $result = pg_query($db_connection, $query);
     if ($result) {
-      echo "<h3 class='main-content-header'>Success</h3>";
+      echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
       if ($_POST['send-email'] == 'true') {
         $currentDate = date('j-m-Y, g:iA');
         $emailBody = <<<EOT

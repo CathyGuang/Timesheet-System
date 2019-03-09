@@ -27,7 +27,8 @@
       <p>Volunteer Coordinator: <input type="email" name="volunteer-coordinator-email" value="<?php echo $volunteerCoordinatorEmail; ?>"></p>
       <p>Staff Coordinator: <input type="email" name="staff-coordinator-email" value="<?php echo $staffCoordinatorEmail; ?>"></p>
 
-      <div><input type="submit" value="Update"><a href="../"><button>Cancel</button></a></div>
+      <input type="submit" value="Update">
+      <a href="../"><button>Cancel</button></a>
 
 
     </form>

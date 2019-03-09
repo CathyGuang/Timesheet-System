@@ -46,7 +46,15 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        $mail = mail("shinimaninima@gmail.com", "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
+
+        $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+        var_dump($recipient);
+        if (!$recipient) {
+          echo "NULLLLLLLLL";
+          
+        }
+
+        $mail = mail($recipient, "Volunteer Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
         if ($mail) {
           echo "<p class='main-content-header'>Email sent successfully.</p>";
         } else {

@@ -28,7 +28,7 @@
       <p>Staff Coordinator: <input type="email" name="staff-coordinator-email" value="<?php echo $staffCoordinatorEmail; ?>"></p>
 
       <input type="submit" value="Update">
-      <a href="../"><button>Cancel</button></a>
+      <button href="../">Cancel</button>
 
 
     </form>

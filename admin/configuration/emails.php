@@ -19,16 +19,21 @@
 
   <div class="main-content-div">
 
-  <?php
-    $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
-    $staffCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+    <?php
+      $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+      $staffCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+
+      var_dump($volunteerCoordinatorEmail);
+      var_dump($staffCoordinatorEmail);
 
 
-    var_dump($volunteerCoordinatorEmail);
-    var_dump($staffCoordinatorEmail);
+    ?>
+    <form autocomplete="off" class="main-form" action="emails2.php" method="post">
+      <p>Volunteer Coordinator: <input type="email" name="volunteer-coordinator-email" value="<?php echo $volunteerCoordinatorEmail; ?>"></p>
+      <p>Staff Coordinator: <input type="email" name="staff-coordinator-email" value="<?php echo $staffCoordinatorEmail; ?>"></p>
 
-  ?>
 
+    </form>
 
   </div>
 

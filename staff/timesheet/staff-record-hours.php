@@ -50,7 +50,7 @@ EOT;
         if ($mail) {
           echo "<p class='main-content-header'>Email sent successfully.</p>";
         } else {
-          echo "<p>Email failed to send.</p>";
+          echo "<p class='main-content-header'>Email failed to send.</p>";
         }
       }
     } else {

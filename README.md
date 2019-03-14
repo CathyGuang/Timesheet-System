@@ -16,6 +16,8 @@
 
 * Volunteers and Staff who record their hours can optionally send email updates to coordinators
 
+* Volunteers and Staff now have a "Submit another shift" button to streamline the process of entering hours
+
 ### Version 1.2
   *More features and bug fixes*
 

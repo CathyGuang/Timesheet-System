@@ -21,10 +21,6 @@
     <form autocomplete="off" class="main-form" action="volunteer-record-hours.php" method="post">
 
 
-      <?php
-      var_dump($_POST);
-      ?>
-
       <p>Name:</p>
       <input type="text" name="volunteer" list="volunteer-list" value="<?php echo $_POST['name']; ?>" required>
         <datalist id="volunteer-list">

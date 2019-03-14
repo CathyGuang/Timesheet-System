@@ -31,7 +31,7 @@ EOT;
     $result = pg_query($db_connection, $query);
     if ($result) {
       echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
-      echo "<form class='main-content-header main-form' action='index.php' method='post'><input name='name' value='{$_POST['volunteer']}' style='visibility: hidden;'><button type='submit' value='Submit another shift'></button></form>";
+      echo "<form class='main-form' action='index.php' method='post'><input name='name' value='{$_POST['volunteer']}' style='visibility: hidden;'><button type='submit' value='Submit another shift'></button></form>";
       if ($_POST['send-email'] == 'true') {
         $currentDate = date('j-m-Y, g:iA');
         $emailBody = <<<EOT

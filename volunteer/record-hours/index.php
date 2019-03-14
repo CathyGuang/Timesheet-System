@@ -26,7 +26,7 @@
       ?>
 
       <p>Name:</p>
-      <input type="text" name="volunteer" list="volunteer-list" name="<?php echo $_POST['name']; ?>" required>
+      <input type="text" name="volunteer" list="volunteer-list" value="<?php echo $_POST['name']; ?>" required>
         <datalist id="volunteer-list">
           <?php
             $volunteerNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');"));

@@ -42,7 +42,7 @@
 
       $date = date('Y-m-d');
       //Use Content-Disposition: attachment to specify the filename
-      header("Content-Disposition: attachment; filename='{$tableName}-table-{$date}.csv'");
+      header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
 
       //No cache
       header('Expires: 0');

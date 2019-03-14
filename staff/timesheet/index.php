@@ -20,7 +20,7 @@
       <form autocomplete="off" class="main-form" action="staff-record-hours.php" method="post">
 
         <p>Name:</p>
-        <input type="text" name="staff" list="staff-list" required>
+        <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
           <datalist id="staff-list">
             <?php
               $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));

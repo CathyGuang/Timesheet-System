@@ -29,7 +29,7 @@ EOT;
           echo "<p>Title: {$personInfo['title']}</p>";
         }
         echo <<<EOT
-          <p>Email: {$personInfo['email']}</p>
+          <a href='mailto: {$personInfo['email']}'>Email: {$personInfo['email']}</p>
           <p>Phone: {$personInfo['phone']}</p>
 EOT;
 

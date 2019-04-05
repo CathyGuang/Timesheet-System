@@ -18,6 +18,8 @@
 
 * Volunteers and Staff now have a "Submit another shift" button to streamline the process of entering hours
 
+* Staff/Volunteer emails in the directory now appear as clickable links
+
 ### Version 1.2
   *More features and bug fixes*
 

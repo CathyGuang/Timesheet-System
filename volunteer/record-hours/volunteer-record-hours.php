@@ -18,7 +18,8 @@
 
   <?php
 
-    $volunteerID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$_POST['volunteer']}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+    $volunteerName = pg_escape_string(trim($_POST['volunteer']));
+    $volunteerID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$volunteerName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
     $notes = pg_escape_string(trim($_POST['notes']));
 

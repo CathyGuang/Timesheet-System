@@ -16,7 +16,7 @@
     //Get table data
     $result = pg_copy_to($db_connection, "{$tableName}", ";", "");
     foreach ($result as $key => $dataString) {
-      $result[$key] = explode(',', trim($dataString));
+      $result[$key] = explode(';', trim($dataString));
     }
 
     $data = array_merge($metadata, $result);

@@ -14,9 +14,9 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
   //Get table data
-  $result = pg_copy_to($db_connection, "{$tableName}", ",", "");
+  $result = pg_copy_to($db_connection, "{$tableName}", "%", "");
   foreach ($result as $key => $dataString) {
-    $result[$key] = explode(',', trim($dataString));
+    $result[$key] = explode('%', trim($dataString));
   }
 
   $data = array_merge($metadata, $result);

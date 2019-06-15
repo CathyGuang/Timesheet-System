@@ -19,7 +19,7 @@
 
     <form action="send-email.php"  class="full-page-form" method="post">
       <p>From:</p>
-      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();">
+      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();" style="width:10vw;">
       <P>To:</p>
       <input type="text" name="to" list="recipient-list">
       <datalist id="recipient-list">

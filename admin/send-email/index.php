@@ -35,6 +35,7 @@
       <p>Message</p>
       <textarea name="message" rows="20" cols="70"></textarea>
 
+      <br><br>
       <input type="submit" value="Send">
 
     </form>

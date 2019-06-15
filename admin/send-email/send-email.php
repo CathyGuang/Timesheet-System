@@ -18,8 +18,6 @@
 
   <div class="main-content-div">
 
-    <?php var_dump($_POST); ?>
-
     <?php
 
       $mailToAddress = "";
@@ -28,21 +26,19 @@
         $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE staff;"), 0);
       }
       if ($_POST["to"] == "Volunteers") {
-        // code...
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE volunteer;"), 0);
       }
       if ($_POST["to"] == "Staff and Volunteers") {
-        // code...
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE staff OR volunteer;"), 0);
       }
       if ($_POST["to"] == "Clients") {
-        // code...
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM clients;"), 0);
       }
       if ($_POST["to"] == "All") {
-        // code...
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE staff OR volunteer;"), 0);
+        $emailArray = array_merge($emailArray, pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM clients;"), 0));
       }
 
-      echo "<br>";
-      var_dump($emailArray);
-      echo "<br>";
 
       $mailToAddress = implode(", ", $emailArray);
 
@@ -55,8 +51,6 @@
       } else {
         echo "<p>Message failed to send.</p>";
       }
-
-
 
     ?>
 

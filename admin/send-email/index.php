@@ -30,7 +30,7 @@
 
       <input type="text" name="subject" value="Subject" onclick="select();">
 
-      <input type="textarea" name="message" rows="30" cols="30">
+      <textarea name="message" rows="30" cols="30"></textarea>
 
     </form>
 

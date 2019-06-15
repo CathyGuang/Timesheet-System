@@ -17,7 +17,7 @@
   </header>
 
 
-    <form action="send-email.php"  class="main-form" method="post">
+    <form action="send-email.php"  class="full-page-form" method="post">
       <p>From:</p>
       <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();">
       <P>To:</p>

@@ -42,9 +42,6 @@
 
       $mailToAddress = implode(", ", $emailArray);
 
-      echo $mailToAddress;
-
-
       $mail = mail($mailToAddress, $_POST['subject'], $_POST['message'], "From: " . $_POST['from'],);
       if ($mail) {
         echo "<p>Success.</p>";

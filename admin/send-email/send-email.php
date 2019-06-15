@@ -22,8 +22,25 @@
 
     <?php
 
-      //set $mailToAddress variable!
+      $mailToAddress = "";
+      $emailArray = [];
+      if ($_POST["to"] == "Staff") {
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE staff;"), 0);
+      }
+      if ($_POST["to"] == "Volunteers") {
+        // code...
+      }
+      if ($_POST["to"] == "Staff and Volunteers") {
+        // code...
+      }
+      if ($_POST["to"] == "Clients") {
+        // code...
+      }
+      if ($_POST["to"] == "All") {
+        // code...
+      }
 
+      var_dump($emailArray);
 
       $mailToAddress = "shinimaninima@gmail.com";
 

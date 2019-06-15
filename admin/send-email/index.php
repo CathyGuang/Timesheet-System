@@ -33,7 +33,7 @@
       <p>Subject:</p>
       <input type="text" name="subject" value="Subject" onclick="select();" style="width:30vw;">
       <p>Message</p>
-      <textarea name="message" rows="20" cols="70"></textarea>
+      <textarea name="message" rows="20" cols="80"></textarea>
 
       <br><br>
       <input type="submit" value="Send">

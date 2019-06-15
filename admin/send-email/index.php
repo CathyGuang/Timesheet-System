@@ -17,7 +17,7 @@
   </header>
 
 
-    <form action="send-email.php"  class="small-form" method="post">
+    <form action="send-email.php"  class="main-form" method="post">
       <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();">
       <input type="text" name="to" list="recipient-list">
       <datalist id="recipient-list">

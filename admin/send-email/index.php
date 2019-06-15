@@ -17,11 +17,11 @@
   </header>
 
 
-    <form action="send-email.php"  class="full-page-form" method="post">
+    <form autocomplete="off" action="send-email.php"  class="full-page-form" method="post">
       <p>From:</p>
-      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();" style="width:10vw;">
+      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();" style="width:35vw;">
       <P>To:</p>
-      <input type="text" name="to" list="recipient-list">
+      <input type="text" name="to" list="recipient-list" style="width:35vw;">
       <datalist id="recipient-list">
         <option value="Staff">
         <option value="Volunteers">
@@ -31,7 +31,7 @@
       </datalist>
 
       <p>Subject:</p>
-      <input type="text" name="subject" value="Subject" onclick="select();">
+      <input type="text" name="subject" value="Subject" onclick="select();" style="width:35vw;">
       <p>Message</p>
       <textarea name="message" rows="20" cols="70"></textarea>
 

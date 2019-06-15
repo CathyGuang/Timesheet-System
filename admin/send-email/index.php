@@ -18,7 +18,9 @@
 
 
     <form action="send-email.php"  class="main-form" method="post">
+      <p>From:</p>
       <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();">
+      <P>To:</p>
       <input type="text" name="to" list="recipient-list">
       <datalist id="recipient-list">
         <option value="Staff">
@@ -28,8 +30,9 @@
         <option value="All">
       </datalist>
 
+      <p>Subject:</p>
       <input type="text" name="subject" value="Subject" onclick="select();">
-
+      <p>Message</p>
       <textarea name="message" rows="30" cols="30"></textarea>
 
     </form>

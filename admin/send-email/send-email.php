@@ -20,6 +20,24 @@
 
     <?php var_dump($_POST); ?>
 
+    <?php
+
+      //set $mailToAddress variable!
+
+
+      $mailToAddress = "shinimaninima@gmail.com";
+
+      $mail = mail($mailToAddress, $_POST['subject'], $_POST['message'], "From: " . $_POST['from'],);
+      if ($mail) {
+        echo "<p>Success.</p>";
+      } else {
+        echo "<p>Message failed to send.</p>";
+      }
+
+
+
+    ?>
+
 
   </div>
 

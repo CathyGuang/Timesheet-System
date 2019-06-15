@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <div class="main-content-div">
+
     <form action="send-email.php" method="post">
       <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System">
       <input type="text" name="to" list="recipient-list">
@@ -33,7 +33,7 @@
 
     </form>
 
-  </div>
+  
 
 
 </body>

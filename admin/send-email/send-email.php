@@ -40,9 +40,14 @@
         // code...
       }
 
+      echo "<br>";
       var_dump($emailArray);
+      echo "<br>";
 
-      $mailToAddress = "shinimaninima@gmail.com";
+      $mailToAddress = implode(", ", $emailArray);
+
+      echo $mailToAddress;
+
 
       $mail = mail($mailToAddress, $_POST['subject'], $_POST['message'], "From: " . $_POST['from'],);
       if ($mail) {

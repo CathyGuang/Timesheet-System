@@ -18,18 +18,19 @@
 
 
     <form action="send-email.php"  class="main-form" method="post">
-      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System">
+      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();">
       <input type="text" name="to" list="recipient-list">
       <datalist id="recipient-list">
         <option value="Staff">
         <option value="Volunteers">
         <option value="Staff and Volunteers">
         <option value="Clients">
+        <option value="All">
       </datalist>
 
       <input type="text" name="subject" value="Subject" onclick="select();">
 
-      <input type="textarea" name="message" rows="15" cols="20">
+      <input type="textarea" name="message" rows="30" cols="30">
 
     </form>
 

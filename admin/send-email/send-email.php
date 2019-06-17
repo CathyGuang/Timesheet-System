@@ -41,10 +41,10 @@
 
 
       $mailToAddress = implode(", ", $emailArray);
+      $emailBody = wordwrap($_POST['message'], 70);
 
-      var_dump($mailToAddress);
 
-      $mail = mail("shinimaninima@gmail.com", $_POST['subject'], $_POST['message'], "From: no-reply@darkhorsescheduling.com");
+      $mail = mail($mailToAddress, $_POST['subject'], $emailBody, "From: no-reply@darkhorsescheduling.com");
       if ($mail) {
         echo "<p>Success.</p>";
       } else {

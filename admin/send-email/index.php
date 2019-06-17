@@ -18,8 +18,6 @@
 
 
     <form autocomplete="off" action="send-email.php"  class="full-page-form" method="post">
-      <p>From:</p>
-      <input type="text" name="from" value="<?php echo $organizationName; ?> Scheduling System" onclick="select();" style="width:30vw;">
       <P>To:</p>
       <input type="text" name="to" list="recipient-list" style="width:30vw;">
       <datalist id="recipient-list">

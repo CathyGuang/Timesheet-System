@@ -20,6 +20,8 @@
 
 * Staff/Volunteer emails in the directory now appear as clickable links
 
+* Administrators can send mass emails to all staff, volunteers, and clients
+
 ### Version 1.2
   *More features and bug fixes*
 

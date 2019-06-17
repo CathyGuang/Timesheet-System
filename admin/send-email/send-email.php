@@ -44,7 +44,7 @@
 
       var_dump($mailToAddress);
 
-      $mail = mail($mailToAddress, $_POST['subject'], $_POST['message'], "From: " . $_POST['from'],);
+      $mail = mail($mailToAddress, $_POST['subject'], $_POST['message'], "From: no-reply@darkhorsescheduling.com");
       if ($mail) {
         echo "<p>Success.</p>";
       } else {

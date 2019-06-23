@@ -40,11 +40,16 @@
       }
 
 
-      $mailToAddress = implode(", ", $emailArray);
+      $mailToAddress = "no-reply@darkhorsescheduling.com";
+      $subject = trim($_POST['subject']);
+      $addressList = implode(", ", $emailArray);
       $emailBody = wordwrap($_POST['message'], 70);
+      $headers = "From: no-reply@darkhorsescheduling.com\r\n";
+      $headers .= "X-Mailer: php\r\n";
+      $headers .= "Bcc: $addressList\r\n";
 
 
-      $mail = mail($mailToAddress, $_POST['subject'], $emailBody, "From: no-reply@darkhorsescheduling.com");
+      $mail = mail($mailToAddress, $subject, $emailBody, $headers);
       if ($mail) {
         echo "<p>Success.</p>";
       } else {

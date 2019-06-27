@@ -43,7 +43,9 @@
       $mailToAddress = "no-reply@darkhorsescheduling.com";
       $subject = trim($_POST['subject']);
       $addressList = implode(", ", $emailArray);
-      $emailBody = wordwrap($_POST['message'], 70);
+      // Add footer to message reminding users not to reply
+      $emailBody = $_POST['message'] . "\n\nThis email was automatically generated, please do not reply.\nReach out to your supervisor with questions.";
+      $emailBody = wordwrap($emailBody, 70);
       $headers = "From: no-reply@darkhorsescheduling.com\r\n";
       $headers .= "X-Mailer: php\r\n";
       $headers .= "Bcc: $addressList\r\n";

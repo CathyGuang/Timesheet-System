@@ -164,6 +164,7 @@
           }
         }
       }
+      var_dump($_POST['tacks']);
       if ($_POST['tacks'] != array()) {
         foreach ($_POST['tacks'] as $key => $tackName) {
           $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);

@@ -174,6 +174,7 @@
           }
         }
       }
+      var_dump($_POST['pads']);
       if ($_POST['pads'] != array()) {
         foreach ($_POST['pads'] as $key => $padName) {
           $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);

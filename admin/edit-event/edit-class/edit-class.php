@@ -164,6 +164,7 @@
           }
         }
       }
+      echo "\ntacks:\n";
       var_dump($_POST['tacks']);
       if ($_POST['tacks'] != array()) {
         foreach ($_POST['tacks'] as $key => $tackName) {
@@ -174,6 +175,7 @@
           }
         }
       }
+      echo "\npads:\n";
       var_dump($_POST['pads']);
       if ($_POST['pads'] != array()) {
         foreach ($_POST['pads'] as $key => $padName) {

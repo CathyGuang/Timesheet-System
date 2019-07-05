@@ -64,6 +64,8 @@
       $todaysDate = date('Y-m-d');
       $classDataQuery = "SELECT * FROM classes WHERE classes.id <@ '{$classIDList}' AND classes.date_of_class >= {$todaysDate};";
 
+      var_dump($classDataQuery);
+
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
       var_dump($classData);

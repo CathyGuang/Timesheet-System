@@ -249,6 +249,7 @@
               $tackNames = pg_fetch_all_columns($result);
               foreach ($tackNames as $key => $value) {
                 $value = htmlspecialchars($value);
+                echo "VALUE = $value";
                 echo "<option value='$value'>";
               }
             ?>

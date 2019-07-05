@@ -220,28 +220,26 @@
     }
 
 
-    var_dump($_POST['tacks']);
 
 
-    $horseIDList = to_pg_array($horseIDList);
+    $horseIDList = pg_escape_string(to_pg_array($horseIDList));
     $tackList = pg_escape_string(to_pg_array($_POST['tacks']));
-    var_dump($tackList);
-    $padList = to_pg_array($_POST['pads']);
-    $tackNotes = to_pg_array($_POST['tack-notes']);
-    $clientEquipmentNotes = to_pg_array($_POST['client-equipment-notes']);
+    $padList = pg_escape_string(to_pg_array($_POST['pads']));
+    $tackNotes = pg_escape_string(to_pg_array($_POST['tack-notes']));
+    $clientEquipmentNotes = pg_escape_string(to_pg_array($_POST['client-equipment-notes']));
 
 
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
-    $staffJSON = rtrim($staffJSON, ',') . "}";
+    $staffJSON = pg_escape_string(rtrim($staffJSON, ',') . "}");
 
     $volunteerJSON = "{";
     foreach ($volunteerIDList as $key => $volunteerID) {
       $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
     }
-    $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
+    $volunteerJSON = pg_escape_string(rtrim($volunteerJSON, ',') . "}");
 
 
     $displayTitle = pg_escape_string(trim($_POST['display-title']));

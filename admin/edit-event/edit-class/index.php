@@ -105,6 +105,7 @@ EOT;
               $result = pg_query($db_connection, $query);
               $classTypeNames = pg_fetch_all_columns($result);
               foreach ($classTypeNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
 
@@ -185,6 +186,7 @@ EOT;
               $result = pg_query($db_connection, $query);
               $arenaNames = pg_fetch_all_columns($result);
               foreach ($arenaNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
         echo <<<EOT
@@ -201,6 +203,7 @@ EOT;
                   $result = pg_query($db_connection, $query);
                   $classTypeNames = pg_fetch_all_columns($result);
                   foreach ($classTypeNames as $key => $value) {
+                    $value = htmlspecialchars($value, ENT_QUOTES);
                     echo "<option value='$value'>";
                   }
         echo <<<EOT
@@ -212,6 +215,7 @@ EOT;
                   $result = pg_query($db_connection, $query);
                   $staffNames = pg_fetch_all_columns($result);
                   foreach ($staffNames as $key => $value) {
+                    $value = htmlspecialchars($value, ENT_QUOTES);
                     echo "<option value='$value'>";
                   }
         echo <<<EOT
@@ -281,6 +285,7 @@ EOT;
           $result = pg_query($db_connection, $query);
           $clientNames = pg_fetch_all_columns($result);
           foreach ($clientNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
             echo "<option value='$value'>";
           }
   echo <<<EOT
@@ -312,6 +317,7 @@ EOT;
               $result = pg_query($db_connection, $query);
               $horseNames = pg_fetch_all_columns($result);
               foreach ($horseNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
 
@@ -343,6 +349,7 @@ EOT;
                 $result = pg_query($db_connection, $query);
                 $tackNames = pg_fetch_all_columns($result);
                 foreach ($tackNames as $key => $value) {
+                  $value = htmlspecialchars($value, ENT_QUOTES);
                   echo "<option value='$value'>";
                 }
 
@@ -375,6 +382,7 @@ EOT;
                   $result = pg_query($db_connection, $query);
                   $padNames = pg_fetch_all_columns($result);
                   foreach ($padNames as $key => $value) {
+                    $value = htmlspecialchars($value, ENT_QUOTES);
                     echo "<option value='$value'>";
                   }
 
@@ -451,6 +459,7 @@ EOT;
               $result = pg_query($db_connection, $query);
               $roleNames = pg_fetch_all_columns($result);
               foreach ($roleNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
 
@@ -482,7 +491,8 @@ EOT;
                   $result = pg_query($db_connection, $query);
                   $workerNames = pg_fetch_all_columns($result);
                   foreach ($workerNames as $key => $value) {
-                    echo "<option value='$value'>";
+                    $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
                   }
 
           echo <<<EOT

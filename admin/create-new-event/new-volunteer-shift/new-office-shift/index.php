@@ -28,7 +28,8 @@
           $result = pg_query($db_connection, $query);
           $careTypeNames = pg_fetch_all_columns($result);
           foreach ($careTypeNames as $key => $value) {
-            echo "<option value='$value'>";
+            $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
           }
         ?>
       </datalist>
@@ -103,7 +104,8 @@
           $result = pg_query($db_connection, $query);
           $workerNames = pg_fetch_all_columns($result);
           foreach ($workerNames as $key => $value) {
-            echo "<option value='$value'>";
+            $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
           }
         ?>
       </datalist>
@@ -117,7 +119,8 @@
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
-                echo "<option value='$value'>";
+                $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
               }
             ?>
           </datalist>

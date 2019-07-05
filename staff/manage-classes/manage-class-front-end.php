@@ -50,7 +50,8 @@
           $result = pg_query($db_connection, $query);
           $horseNames = pg_fetch_all_columns($result);
           foreach ($horseNames as $key => $value) {
-            echo "<option value='$value'>";
+            $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
           }
         ?>
       </datalist>
@@ -63,7 +64,8 @@
             $result = pg_query($db_connection, $query);
             $behaviorNames = pg_fetch_all_columns($result);
             foreach ($behaviorNames as $key => $value) {
-              echo "<option value='$value'>";
+              $value = htmlspecialchars($value, ENT_QUOTES);
+echo "<option value='$value'>";
             }
           ?>
         </datalist>

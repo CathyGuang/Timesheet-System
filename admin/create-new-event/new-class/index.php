@@ -32,13 +32,14 @@
           $result = pg_query($db_connection, $query);
           $classTypeNames = pg_fetch_all_columns($result);
           foreach ($classTypeNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
             echo "<option value='{$value}'>";
           }
         ?>
       </datalist>
 
     <p>Display Title:</p>
-    <input type="text" name="display-title" value="<?php echo $oldPostData['display-title']; ?>" onclick="select();" required>
+    <input type="text" name="display-title" value="<?php echo htmlspecialchars($oldPostData['display-title'], ENT_QUOTES); ?>" onclick="select();" required>
 
 
     <p>Dates: </p>
@@ -112,6 +113,7 @@
           $result = pg_query($db_connection, $query);
           $arenaNames = pg_fetch_all_columns($result);
           foreach ($arenaNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
             echo "<option value='$value'>";
           }
         ?>
@@ -142,6 +144,7 @@
               $result = pg_query($db_connection, $query);
               $classTypeNames = pg_fetch_all_columns($result);
               foreach ($classTypeNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
             ?>
@@ -181,6 +184,7 @@
         <?php
           if ($oldPostData['clients']) {
             foreach ($oldPostData['clients'] as $client) {
+              $client = htmlspecialchars($client, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
             }
           } else {
@@ -193,6 +197,7 @@
               $result = pg_query($db_connection, $query);
               $clientNames = pg_fetch_all_columns($result);
               foreach ($clientNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='{$value}'>";
               }
             ?>
@@ -209,6 +214,7 @@
         <?php
           if ($oldPostData['horses']) {
             foreach ($oldPostData['horses'] as $horse) {
+              $horse = htmlspecialchars($horse, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
             }
           } else {
@@ -221,6 +227,7 @@
               $result = pg_query($db_connection, $query);
               $horseNames = pg_fetch_all_columns($result);
               foreach ($horseNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
             ?>
@@ -236,6 +243,7 @@
         <?php
           if ($oldPostData['tacks']) {
             foreach ($oldPostData['tacks'] as $tack) {
+              $tack = htmlspecialchars($tack, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
             }
           } else {
@@ -264,6 +272,7 @@
         <?php
           if ($oldPostData['pads']) {
             foreach ($oldPostData['pads'] as $pad) {
+              $pad = htmlspecialchars($pad, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
             }
           } else {
@@ -276,6 +285,7 @@
               $result = pg_query($db_connection, $query);
               $padNames = pg_fetch_all_columns($result);
               foreach ($padNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
             ?>
@@ -292,6 +302,7 @@
         <?php
           if ($oldPostData['tack-notes']) {
             foreach ($oldPostData['tack-notes'] as $note) {
+              $note = htmlspecialchars($note, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
             }
           } else {
@@ -309,6 +320,7 @@
         <?php
           if ($oldPostData['client-equipment-notes']) {
             foreach ($oldPostData['client-equipment-notes'] as $note) {
+              $note = htmlspecialchars($note, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
             }
           } else {
@@ -326,6 +338,7 @@
         <?php
           if ($oldPostData['volunteer-roles']) {
             foreach ($oldPostData['volunteer-roles'] as $role) {
+              $role = htmlspecialchars($role, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
             }
           } else {
@@ -338,6 +351,7 @@
               $result = pg_query($db_connection, $query);
               $roleNames = pg_fetch_all_columns($result);
               foreach ($roleNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
             ?>
@@ -354,6 +368,7 @@
         <?php
           if ($oldPostData['volunteers']) {
             foreach ($oldPostData['volunteers'] as $volunteer) {
+              $volunteer = htmlspecialchars($volunteer, ENT_QUOTES);
               echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
             }
           } else {
@@ -366,6 +381,7 @@
               $result = pg_query($db_connection, $query);
               $workerNames = pg_fetch_all_columns($result);
               foreach ($workerNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='$value'>";
               }
             ?>

@@ -28,6 +28,7 @@
           $result = pg_query($db_connection, $query);
           $careTypeNames = pg_fetch_all_columns($result);
           foreach ($careTypeNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
             echo "<option value='$value'>";
           }
         ?>

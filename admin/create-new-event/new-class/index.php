@@ -248,7 +248,8 @@
               $result = pg_query($db_connection, $query);
               $tackNames = pg_fetch_all_columns($result);
               foreach ($tackNames as $key => $value) {
-                echo htmlspecialchars("<option value='$value'>");
+                $value = htmlspecialchars($value);
+                echo "<option value='$value'>";
               }
             ?>
           </datalist>

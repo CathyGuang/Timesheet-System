@@ -220,6 +220,8 @@
     }
 
 
+    var_dump($_POST['tacks']);
+
 
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);

@@ -225,6 +225,7 @@
 
     $horseIDList = to_pg_array($horseIDList);
     $tackList = to_pg_array($_POST['tacks']);
+    var_dump($tackList);
     $padList = to_pg_array($_POST['pads']);
     $tackNotes = to_pg_array($_POST['tack-notes']);
     $clientEquipmentNotes = to_pg_array($_POST['client-equipment-notes']);

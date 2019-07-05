@@ -224,7 +224,7 @@
 
 
     $horseIDList = to_pg_array($horseIDList);
-    $tackList = to_pg_array($_POST['tacks']);
+    $tackList = pg_escape_string(to_pg_array($_POST['tacks']));
     var_dump($tackList);
     $padList = to_pg_array($_POST['pads']);
     $tackNotes = to_pg_array($_POST['tack-notes']);

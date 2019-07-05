@@ -248,7 +248,7 @@
               $result = pg_query($db_connection, $query);
               $tackNames = pg_fetch_all_columns($result);
               foreach ($tackNames as $key => $value) {
-                $value = htmlspecialchars($value);
+                $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "VALUE = $value";
                 echo "<option value='$value'>";
               }

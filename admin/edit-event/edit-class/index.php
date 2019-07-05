@@ -62,6 +62,7 @@
 
       //Get data from the next occurring class so that display information is accurate to edits already made
       $todaysDate = date('Y-m-d');
+      $classIDList = serialize($classIDList);
       $classDataQuery = "SELECT * FROM classes WHERE classes.id <@ '{$classIDList}' AND classes.date_of_class >= {$todaysDate};";
 
       var_dump($classIDList);

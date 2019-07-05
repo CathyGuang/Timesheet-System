@@ -60,7 +60,9 @@
         $classIDList[] = $data['id'];
       }
 
-      $classDataQuery = "SELECT * FROM classes WHERE classes.id = {$classIDList[0]};";
+      //Get data from the next occurring class so that display information is accurate to edits already made
+      $todaysDate = date('Y-m-d');
+      $classDataQuery = "SELECT * FROM classes WHERE classes.id <@ '{$classIDList}' AND classes.date_of_class >= {$todaysDate};";
 
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 

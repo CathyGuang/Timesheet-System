@@ -28,7 +28,7 @@ EOT;
     }
 
 
-    if (in_array($typeOfObject, $tableNameList)) {
+    if (in_array($typeOfObject, $tableNameList)) { //target is in a table
       //ignore calls to check empty fields/null values
       $name = pg_fetch_row(pg_query($db_connection, "SELECT name FROM {$typeOfObject} WHERE id = '{$id}';"))[0];
       if (!$name) {return false;}
@@ -208,9 +208,9 @@ EOT;
 
 
 
-    } elseif (in_array($typeOfObject, $enumTypeList)) {
-      //Ignore calls to check empty fields/null values
-      if (!$id) {return false;}
+    } elseif (in_array($typeOfObject, $enumTypeList)) { //target is an enum
+      //Ignore calls to check empty fields/null/None values
+      if (!$id || $id == "None") {return false;}
 
       //Get all classes on date
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND (archived IS NULL OR archived = '');"));

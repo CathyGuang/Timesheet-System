@@ -1,5 +1,4 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php";
 
 // Goes at the start of every class create/edit page to create an array of class periods from user input
 function getDateTimeArray($startDate, $endDate, $everyOther){

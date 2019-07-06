@@ -52,24 +52,11 @@
       //looper
       $date = date ('Y-m-d', strtotime("+1 day", strtotime($date)));
     }
+
+
+
+
     //Convert other user selections to database ids
-
-    function to_pg_array($set) {
-      settype($set, 'array'); // can be called with a scalar or array
-      $result = array();
-      foreach ($set as $t) {
-          if (is_array($t)) {
-              $result[] = to_pg_array($t);
-          } else {
-              $t = str_replace('"', '\\"', $t); // escape double quote
-              if (! is_numeric($t)) // quote only non-numeric values
-                  $t = '"' . $t . '"';
-              $result[] = $t;
-          }
-      }
-      return '{' . implode(",", $result) . '}'; // format
-    }
-
 
     $horseIDList = array();
     foreach ($_POST['horses'] as $key => $value) {
@@ -100,27 +87,7 @@
 
 
 
-    $horseIDList = to_pg_array($horseIDList);
-    $tackList = to_pg_array($_POST['tacks']);
-    $padList = to_pg_array($_POST['pads']);
-    $tackNotes = to_pg_array($_POST['tack-notes']);
-    $clientEquipmentNotes = to_pg_array($_POST['client-equipment-notes']);
-
-
-    $staffJSON = "{";
-    foreach ($staffIDList as $key => $staffID) {
-      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
-    }
-    $staffJSON = rtrim($staffJSON, ',') . "}";
-
-    $volunteerJSON = "{";
-    foreach ($volunteerIDList as $key => $volunteerID) {
-      $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
-    }
-    $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
-
-
-    $displayTitle = pg_escape_string(trim($_POST['display-title']));
+    prepClassDataForSQL();
 
 
 

@@ -22,6 +22,8 @@
 
 * Administrators can send mass emails to all staff, volunteers, and clients
 
+* Administrators can permanently delete workers, clients, and horses from the database
+
 ### Version 1.2
   *More features and bug fixes*
 

@@ -26,15 +26,12 @@
 
 
     //Convert other user selections to database ids
-     $convertedData = convertSelectionsToDatabaseIDs($db_connection);
-     $horseIDList = $convertedData[0];
-     $clientIDList = $convertedData[1];
-     $staffIDList = $convertedData[2];
-     $volunteerIDList = $convertedData[3];
+    $convertedData = convertSelectionsToDatabaseIDs($db_connection);
+
 
 
     //Check for double-booking
-    $abort = checkForConflicts();
+    $abort = checkForConflicts($convertedData);
     if ($abort) {
       $postString = serialize($_POST);
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";

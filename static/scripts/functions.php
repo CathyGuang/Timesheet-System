@@ -78,7 +78,12 @@ function convertSelectionsToDatabaseIDs($db_connection){
 
 
 //Runs conflict checking for a class, makes sure all selections are available.
-function checkForConflicts(){
+function checkForConflicts($convertedData){
+  //Expand convertedData into named variables
+  $horseIDList = $convertedData[0];
+  $clientIDList = $convertedData[1];
+  $staffIDList = $convertedData[2];
+  $volunteerIDList = $convertedData[3];
   //Initialize checkAvailability function
   include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
   //initialize check horse use by week function

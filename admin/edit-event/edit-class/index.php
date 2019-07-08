@@ -51,6 +51,7 @@
       $classIDList = to_pg_array($classIDList);
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class >= '{$todaysDate}';";
       $classData = pg_fetch_all(pg_query($db_connection, $classDataQuery), PGSQL_ASSOC);
+      var_dump($classData);
 
       //get start and end dates for entire class range
       $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];

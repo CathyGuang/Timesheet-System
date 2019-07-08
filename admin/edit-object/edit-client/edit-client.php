@@ -19,6 +19,20 @@
 
 
   <?php
+    //Delete client if delete requested:
+    if ($_POST['delete']) {
+      $query = "DELETE FROM clients WHERE id = {$_POST['id']};";
+      $result = pg_query($db_connection, $query);
+      if ($result) {
+        echo "<h3 class='main-content-header'>Success</h3";
+      } else {
+        echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      }
+      return;
+    }
+
+
+    //Edit the client
     if ($_POST['archive']) {$archived = "TRUE";} else {$archived = "";}
     $name = pg_escape_string(trim($_POST['name']));
     $email = trim($_POST['email']);

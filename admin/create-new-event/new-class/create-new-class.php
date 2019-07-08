@@ -44,7 +44,17 @@
 
 
     //Convert class data to SQL-syntax arrays and escape the strings
-    prepClassDataForSQL($convertedData);
+    $SQLData = prepClassDataForSQL($convertedData);
+
+    $horseIDList = $SQLData[0];
+    $clientIDList = $SQLData[1];
+    $staffJSON = $SQLData[2];
+    $volunteerJSON = $SQLData[3];
+    $tackList = $SQLData[4];
+    $padList = $SQLData[5];
+    $tackNotes = $SQLData[6];
+    $clientEquipmentNotes = $SQLData[7];
+    $displayTitle = $SQLData[8];
 
 
 

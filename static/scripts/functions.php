@@ -186,6 +186,9 @@ function prepClassDataForSQL($convertedData) {
 
 
   $displayTitle = pg_escape_string(trim($_POST['display-title']));
+
+  //Bundle and return values
+  return [$horseIDList, $clientIDList, $staffJSON, $volunteerJSON, $tackList, $padList, $tackNotes, $clientEquipmentNotes, $displayTitle];
 }
 
 

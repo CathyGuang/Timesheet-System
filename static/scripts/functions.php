@@ -78,7 +78,7 @@ function convertSelectionsToDatabaseIDs($db_connection){
 
 
 //Runs conflict checking for a class, makes sure all selections are available.
-function checkForConflicts($convertedData){
+function checkForConflicts($dateTimeTriplets, $convertedData){
   //Expand convertedData into named variables
   $horseIDList = $convertedData[0];
   $clientIDList = $convertedData[1];

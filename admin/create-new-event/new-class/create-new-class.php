@@ -31,7 +31,7 @@
 
 
     //Check for double-booking
-    $abort = checkForConflicts($convertedData);
+    $abort = checkForConflicts($dateTimeTriplets, $convertedData);
     if ($abort) {
       $postString = serialize($_POST);
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";

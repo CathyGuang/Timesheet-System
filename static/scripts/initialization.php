@@ -9,7 +9,7 @@ date_default_timezone_set($organizationTimeZone);
 $db_connection = pg_connect("host=localhost dbname=$database user=$dbuser password=$dbpassword");
 
 //Load custom functions
-include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/functions.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/functions.php";
 
 
 ?>

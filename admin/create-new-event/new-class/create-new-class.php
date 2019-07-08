@@ -44,7 +44,7 @@
 
 
     //Convert class data to SQL-syntax arrays and escape the strings
-    prepClassDataForSQL();
+    prepClassDataForSQL($convertedData);
 
 
 

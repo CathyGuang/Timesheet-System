@@ -156,7 +156,14 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
 
 
 // Goes at the end of every class create/edit page to prepare the data for the sql query
-function prepClassDataForSQL() {
+function prepClassDataForSQL($convertedData) {
+  //Expand convertedData into named variables
+  $horseIDList = $convertedData[0];
+  $clientIDList = $convertedData[1];
+  $staffIDList = $convertedData[2];
+  $volunteerIDList = $convertedData[3];
+
+  //Convert to sql syntax
   $clientIDList = pg_escape_string(to_pg_array($clientIDList));
   $horseIDList = pg_escape_string(to_pg_array($horseIDList));
   $tackList = pg_escape_string(to_pg_array($_POST['tacks']));

@@ -19,6 +19,19 @@
 
 
   <?php
+    //Delete worker if delete requested:
+    if ($_POST['delete']) {
+      $query = "DELETE FROM workers WHERE id = {$_POST['id']};";
+      $result = pg_query($db_connection, $query);
+      if ($result) {
+        echo "<h3 class='main-content-header'>Success</h3";
+      } else {
+        echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      }
+      return;
+    }
+
+    //Edit the worker
     $staffbool = 'FALSE';
     $volunteerbool = 'FALSE';
     if ($_POST['staff']) {

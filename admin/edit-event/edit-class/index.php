@@ -37,21 +37,7 @@
         $clientIDList[] = 1;
       }
 
-      function to_pg_array($set) {
-        settype($set, 'array'); // can be called with a scalar or array
-        $result = array();
-        foreach ($set as $t) {
-            if (is_array($t)) {
-                $result[] = to_pg_array($t);
-            } else {
-                $t = str_replace('"', '\\"', $t); // escape double quote
-                if (! is_numeric($t)) // quote only non-numeric values
-                    $t = '"' . $t . '"';
-                $result[] = $t;
-            }
-        }
-        return '{' . implode(",", $result) . '}'; // format
-      }
+    
       $clientIDPGArray = to_pg_array($clientIDList);
       $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));

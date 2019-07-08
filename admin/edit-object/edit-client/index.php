@@ -55,9 +55,9 @@ EOT;
         <p>Phone Number:</p>
         <input type="number" name="phone" maxlength="10" value="{$clientInfo['phone']}">
 
-        <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
-        <p style='color: var(--dark-red)'>Delete: <input type="checkbox" name="delete" value="TRUE"></p>
-        <p style='font-size: 12;'>(Cannot be undone)</p>
+        <p style='color: var(--dark-red);'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
+        <p style='color: var(--dark-red);'>Delete: <input type="checkbox" name="delete" value="TRUE"></p>
+        <p style='font-size: 8; color: var(--dark-red);'>(Cannot be undone)</p>
 
 
         <br><br>

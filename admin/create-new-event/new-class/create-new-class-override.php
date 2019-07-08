@@ -20,7 +20,7 @@
 
   <?php
     //Get post data
-    $_POST = unserialize($_POST['override-post']);
+    $_POST = unserialize(base64_decode($_POST['override-post']));
 
     //Get Date/Time array of all class times.
     $dateData = getDateTimeArray($_POST['start-date'], $_POST['end-date'], $_POST['every-other-week']);

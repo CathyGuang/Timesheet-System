@@ -118,6 +118,7 @@
 
     $query = chop($query, ",") . ";";
 
+    var_dump($query);
 
     //Modify database
     $result = pg_query($db_connection, $query);

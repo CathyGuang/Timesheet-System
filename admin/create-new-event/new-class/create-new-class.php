@@ -26,8 +26,11 @@
 
 
     //Convert other user selections to database ids
-    $horseIDList, $clientIDList, $staffIDList, $volunteerIDList = convertSelectionsToDatabaseIDs($db_connection);
-
+     $convertedData = convertSelectionsToDatabaseIDs($db_connection);
+     $horseIDList = $convertedData[0];
+     $clientIDList = $convertedData[1];
+     $staffIDList = $convertedData[2];
+     $volunteerIDList = $convertedData[3];
 
 
     //Check for double-booking

@@ -26,7 +26,7 @@
 
 
     //Convert other user selections to database ids
-    convertSelectionsToDatabaseIDs();
+    convertSelectionsToDatabaseIDs($db_connection);
 
 
 

@@ -39,8 +39,8 @@ function getDateTimeArray($startDate, $endDate, $everyOther){
 
 
 
-// Converts user selection of horses, clients, staf, and volunteers to arrays of respective database ids.
-function convertSelectionsToDatabaseIDs(){
+// Converts user selection of horses, clients, staff, and volunteers to arrays of respective database ids.
+function convertSelectionsToDatabaseIDs($db_connection){
   $horseIDList = array();
   foreach ($_POST['horses'] as $key => $value) {
     $value = pg_escape_string($value);

@@ -21,7 +21,6 @@
   <?php
   //Get post data
   $_POST = unserialize(base64_decode($_POST['override-post']));
-  var_dump($_POST);
 
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
     $todaysDate = date('Y-m-d');

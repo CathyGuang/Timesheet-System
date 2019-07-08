@@ -22,7 +22,7 @@
       echo <<<EOT
       <form autocomplete="off" action="" method="post" class="main-form">
         <p>Select a horse to edit:</p>
-        <input type="text" name="selected-horse" list="horse-list">
+        <input type="text" name="selected-horse" list="horse-list" onclick='select();'>
           <datalist id="horse-list">
 EOT;
               $query = "SELECT name FROM horses WHERE name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '');";

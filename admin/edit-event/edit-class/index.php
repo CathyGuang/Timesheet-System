@@ -666,7 +666,7 @@ EOT;
     echo <<<EOT
       <form autocomplete="off" action="" method="post" class="main-form">
         <p>Select a class to edit:</p>
-        <input type="text" name="selected-class" list="class-list">
+        <input type="text" name="selected-class" list="class-list" onclick='select();'>
           <datalist id="class-list">
 EOT;
           $query = "SELECT DISTINCT class_type, clients, display_title FROM classes WHERE (archived IS NULL OR archived = '');";

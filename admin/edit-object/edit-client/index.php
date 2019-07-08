@@ -22,7 +22,7 @@
     echo <<<EOT
     <form autocomplete="off" action="" method="post" class="main-form">
       <p>Select a client to edit:</p>
-      <input type="text" name="selected-client" list="client-list">
+      <input type="text" name="selected-client" list="client-list" onclick='select();'>
         <datalist id="client-list">
 EOT;
           $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";

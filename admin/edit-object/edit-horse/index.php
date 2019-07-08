@@ -68,6 +68,8 @@ EOT;
         </div>
 
         <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
+        <p style='color: var(--dark-red);'>Delete: <input type="checkbox" name="delete" value="TRUE"></p>
+        <p style='font-size: 10pt; color: var(--dark-red); margin-top: 0;'>(Cannot be undone)</p>
 
         <br><br>
         <input type="submit" value="Update">

@@ -37,7 +37,7 @@
         $clientIDList[] = 1;
       }
 
-    
+
       $clientIDPGArray = to_pg_array($clientIDList);
       $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
@@ -49,7 +49,7 @@
       //Get data from the next occurring class so that display information is accurate to edits already made
       $todaysDate = date('Y-m-d');
       $classIDList = to_pg_array($classIDList);
-      $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class >= '{$todaysDate}';";
+      $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class > '{$todaysDate}';";
       $classData = pg_fetch_array(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
       //get start and end dates for entire class range

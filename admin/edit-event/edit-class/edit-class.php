@@ -83,7 +83,7 @@
         }
       }
       //serialize post in case user wants to override
-      $postString = serialize($_POST);
+      $postString = base64_encode(serialize($_POST));
 
       echo "<h3 class='main-content-header'> No changes to the class have been made. It is safe to leave this page. To edit the class, please <button onclick='window.history.back();' style='width: 90pt;'>revert</button> your changes and try again.</h3>";
 

@@ -59,109 +59,35 @@
       }
     }
 
-    //ADD NEW VALUES
 
-    //Process form input
-    //get array of dates and times
-    $date = $todaysDate;
-    $end_date = $_POST['end-date'];
-    $dateTimeTriplets = array();
-    if ($_POST['every-other-week'] == "TRUE") {
-      $everyOtherWeek = true;
-    } else {$everyOtherWeek = false;}
+    //Get Date/Time array of class times after today's date.
+    $dateData = getDateTimeArray($todaysDate, $_POST['end-date'], $_POST['every-other-week']);
+    $dateTimeTriplets = $dateData[0];
+    $all_weekdays_times = $dateData[1];
 
-    $all_weekdays_times = "";
-    if ($everyOtherWeek) {
-      $all_weekdays_times = "EO;";
-    }
-    $weekdaysAdded = array();
-    $datesAdded = array();
-    while (strtotime($date) <= strtotime($end_date)) {
-      $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST) and (!$everyOtherWeek or !in_array(date('Y-m-d', strtotime("-1 week" . $date)), $datesAdded))) {
-        $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
-        $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
-        $dateTimeTriplets[$date] = array($startTime, $endTime);
-        $datesAdded[] = $date;
-        if (!in_array($dayOfWeek, $weekdaysAdded)){
-          $all_weekdays_times .= $dayOfWeek . "," . $startTime . "," . $endTime . ";";
-          $weekdaysAdded[] = $dayOfWeek;
-        }
-      }
-      //looper
-      $date = date ('Y-m-d', strtotime("+1 day", strtotime($date)));
-    }
+
     //Convert other user selections to database ids
-
-    function to_pg_array($set) {
-      settype($set, 'array'); // can be called with a scalar or array
-      $result = array();
-      foreach ($set as $t) {
-          if (is_array($t)) {
-              $result[] = to_pg_array($t);
-          } else {
-              $t = str_replace('"', '\\"', $t); // escape double quote
-              if (! is_numeric($t)) // quote only non-numeric values
-                  $t = '"' . $t . '"';
-              $result[] = $t;
-          }
-      }
-      return '{' . implode(",", $result) . '}'; // format
-    }
+    $convertedData = convertSelectionsToDatabaseIDs($db_connection);
 
 
-    $horseIDList = array();
-    foreach ($_POST['horses'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $horseIDList[] = $id;
-    }
-
-    $clientIDList = array();
-    foreach ($_POST['clients'] as $key => $value) {
-      $value = pg_escape_string($value);
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $clientIDList[] = $id;
-    }
-    $clientIDList = to_pg_array($clientIDList);
-
-    $staffIDList = array();
-    foreach ($_POST['staff'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $staffIDList[] = $id;
-    }
+    //Don't check for conflicts
 
 
-    $volunteerIDList = array();
-    foreach ($_POST['volunteers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $volunteerIDList[] = $id;
-    }
+    //Convert class data to SQL-syntax arrays and escape the strings
+    $SQLData = prepClassDataForSQL($convertedData);
+
+    $horseIDList = $SQLData[0];
+    $clientIDList = $SQLData[1];
+    $staffJSON = $SQLData[2];
+    $volunteerJSON = $SQLData[3];
+    $tackList = $SQLData[4];
+    $padList = $SQLData[5];
+    $tackNotes = $SQLData[6];
+    $clientEquipmentNotes = $SQLData[7];
+    $displayTitle = $SQLData[8];
 
 
-    $horseIDList = to_pg_array($horseIDList);
-    $tackList = to_pg_array($_POST['tacks']);
-    $padList = to_pg_array($_POST['pads']);
-    $tackNotes = to_pg_array($_POST['tack-notes']);
-    $clientEquipmentNotes = to_pg_array($_POST['client-equipment-notes']);
 
-
-    $staffJSON = "{";
-    foreach ($staffIDList as $key => $staffID) {
-      $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
-    }
-    $staffJSON = rtrim($staffJSON, ',') . "}";
-
-    $volunteerJSON = "{";
-    foreach ($volunteerIDList as $key => $volunteerID) {
-      $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
-    }
-    $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
-
-
-    $displayTitle = pg_escape_string(trim($_POST['display-title']));
-
-
-    // create new entries.
 
     //Create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";

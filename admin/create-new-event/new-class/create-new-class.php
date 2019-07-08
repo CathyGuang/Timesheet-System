@@ -21,8 +21,9 @@
   <?php
 
     //Get Date/Time array of all class times.
-    $dateTimeTriplets = getDateTimeArray($_POST['start-date'], $_POST['end-date'], $_POST['every-other-week']);
-
+    $dateData = getDateTimeArray($_POST['start-date'], $_POST['end-date'], $_POST['every-other-week']);
+    $dateTimeTriplets = $dateData[0];
+    $all_weekdays_times = $dateData[1];
 
 
     //Convert other user selections to database ids

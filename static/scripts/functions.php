@@ -30,7 +30,7 @@ function getDateTimeArray($startDate, $endDate, $everyOther){
     //looper
     $date = date ('Y-m-d', strtotime("+1 day", strtotime($date)));
   }
-  return $dateTimeTriplets;
+  return [$dateTimeTriplets, $all_weekdays_times];
 }
 
 

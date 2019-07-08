@@ -22,76 +22,34 @@
     //Get post data
     $_POST = unserialize($_POST['override-post']);
 
-    //Process form input
-    //get array of dates and times
-    $date = $_POST['start-date'];
-    $end_date = $_POST['end-date'];
-    $dateTimeTriplets = array();
-    if ($_POST['every-other-week'] == "TRUE") {
-      $everyOtherWeek = true;
-    } else {$everyOtherWeek = false;}
-
-    $all_weekdays_times = "";
-    if ($everyOtherWeek) {
-      $all_weekdays_times = "EO;";
-    }
-    $weekdaysAdded = array();
-    $datesAdded = array();
-    while (strtotime($date) <= strtotime($end_date)) {
-      $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST) and (!$everyOtherWeek or !in_array(date('Y-m-d', strtotime("-1 week" . $date)), $datesAdded))) {
-        $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
-        $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
-        $dateTimeTriplets[$date] = array($startTime, $endTime);
-        $datesAdded[] = $date;
-        if (!in_array($dayOfWeek, $weekdaysAdded)){
-          $all_weekdays_times .= $dayOfWeek . "," . $startTime . "," . $endTime . ";";
-          $weekdaysAdded[] = $dayOfWeek;
-        }
-      }
-      //looper
-      $date = date ('Y-m-d', strtotime("+1 day", strtotime($date)));
-    }
+    //Get Date/Time array of all class times.
+    $dateTimeTriplets = getDateTimeArray($_POST['start-date'], $_POST['end-date'], $_POST['every-other-week']);
 
 
 
 
     //Convert other user selections to database ids
+    $convertedData = convertSelectionsToDatabaseIDs($db_connection);
 
-    $horseIDList = array();
-    foreach ($_POST['horses'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $horseIDList[] = $id;
-    }
-
-    $clientIDList = array();
-    foreach ($_POST['clients'] as $key => $value) {
-      $value = pg_escape_string($value);
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $clientIDList[] = $id;
-    }
-    $clientIDList = to_pg_array($clientIDList);
-
-    $staffIDList = array();
-    foreach ($_POST['staff'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $staffIDList[] = $id;
-    }
+    //Don't check for conflicts
 
 
-    $volunteerIDList = array();
-    foreach ($_POST['volunteers'] as $key => $value) {
-      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
-      $volunteerIDList[] = $id;
-    }
+    //Convert class data to SQL-syntax arrays and escape the strings
+    $SQLData = prepClassDataForSQL($convertedData);
+
+    $horseIDList = $SQLData[0];
+    $clientIDList = $SQLData[1];
+    $staffJSON = $SQLData[2];
+    $volunteerJSON = $SQLData[3];
+    $tackList = $SQLData[4];
+    $padList = $SQLData[5];
+    $tackNotes = $SQLData[6];
+    $clientEquipmentNotes = $SQLData[7];
+    $displayTitle = $SQLData[8];
 
 
 
-    prepClassDataForSQL();
-
-
-
-    // create SQL query
+    //Create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
       $query = $query . "('{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$tackNotes}', '{$clientEquipmentNotes}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";

@@ -26,7 +26,7 @@
 
 
     //Convert other user selections to database ids
-    convertSelectionsToDatabaseIDs($db_connection);
+    $horseIDList, $clientIDList, $staffIDList, $volunteerIDList = convertSelectionsToDatabaseIDs($db_connection);
 
 
 

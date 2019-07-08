@@ -68,6 +68,7 @@ function convertSelectionsToDatabaseIDs($db_connection){
     $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
     $volunteerIDList[] = $id;
   }
+  return $horseIDList, $clientIDList, $staffIDList, $volunteerIDList;
 }
 
 

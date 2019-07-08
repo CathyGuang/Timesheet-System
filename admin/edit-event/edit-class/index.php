@@ -46,6 +46,10 @@
         $classIDList[] = $data['id'];
       }
 
+      echo "\nclassIDList: ";
+      var_dump($classIDList);
+      echo "\n";
+      
       //Get data from the next occurring class so that display information is accurate to edits already made
       $todaysDate = date('Y-m-d');
       $classIDList = to_pg_array($classIDList);

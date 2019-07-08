@@ -20,7 +20,7 @@
 
   <?php
   //Get post data
-  $_POST = unserialize($_POST['override-post']);
+  $_POST = unserialize(base64_decode($_POST['override-post']));
   var_dump($_POST);
 
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE

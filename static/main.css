@@ -67,6 +67,11 @@ button:hover {
       right: 5px;
       top: 5px;
     }
+    #dhs-website-label {
+      position: absolute;
+      right: 5px;
+      top: 10px;
+    }
 
     nav {
       margin-top: 45px;

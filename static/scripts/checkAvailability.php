@@ -40,7 +40,7 @@ EOT;
 
       if ($typeOfObject == "workers") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time, value FROM classes, jsonb_each_text(classes.staff)
+        SELECT start_time, end_time, cancelled, value FROM classes, jsonb_each_text(classes.staff)
         WHERE
         (
         '{$id}' = value
@@ -52,7 +52,7 @@ EOT;
 
         UNION ALL
 
-        SELECT start_time, end_time, value FROM classes, jsonb_each_text(classes.volunteers)
+        SELECT start_time, end_time, cancelled, value FROM classes, jsonb_each_text(classes.volunteers)
         WHERE
         (
         '{$id}' = value
@@ -94,7 +94,7 @@ EOT;
 EOT;
       } else if ($typeOfObject == "horses") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time, clients FROM classes
+        SELECT start_time, end_time, clients, cancelled FROM classes
         WHERE
         (
         {$id} = ANY(classes.horses)
@@ -122,7 +122,7 @@ EOT;
 
       } else if ($typeOfObject == "clients") {
         $classQuery = <<<EOT
-        SELECT start_time, end_time FROM classes
+        SELECT start_time, end_time, cancelled FROM classes
         WHERE
         (
         {$id} = ANY(classes.clients)
@@ -156,9 +156,10 @@ EOT;
         }
       }
 
-      //Check all events for availability, return conflicting times if conflict is found
+      //Check all events for availability (skipping events that are cancelled), return conflicting times if conflict is found
       if ($allEvents) {
         foreach ($allEvents as $key => $timePair) {
+          if ($timePair['cancelled'] == 't') {continue;}
           if ($timePair) {
             if (strtotime($timePair['start_time']) < strtotime($time2) and strtotime($timePair['end_time']) > strtotime($time1)) {
               return array($timePair['start_time'], $timePair['end_time']);
@@ -173,6 +174,7 @@ EOT;
           $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"))[0];
 
           foreach ($allEvents as $eventInfo) {
+            if ($eventInfo['cancelled'] == 't') {continue;}
             if ($eventInfo['clients']) {
               $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
               if ($horseInfo['owner'] != "" && in_array($horseInfo['owner'], $clientNames)) {

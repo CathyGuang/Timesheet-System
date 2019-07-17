@@ -20,13 +20,13 @@ function getHorseUsesByDateRange($id, $date1, $date2) {
     foreach ($period as $dayData) {
       $day = Date('Y-m-d', strtotime($dayData->format('Y-m-d')));
       foreach ($allClasses as $classData) {
-        if ($classData['date_of_class'] == $day) {
+        if ($classData['date_of_class'] == $day && $classData['cancelled'] != 't') {
           $totalHorseUses++;
         }
       }
     }
   }
-  
+
   return $totalHorseUses;
 };
 

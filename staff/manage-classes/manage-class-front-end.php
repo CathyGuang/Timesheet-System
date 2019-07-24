@@ -30,7 +30,7 @@
     <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
 
     <p>Lesson Plan:</p>
-    <textarea name="lesson-plan" rows="15" cols="30">
+    <textarea name="lesson-plan" rows="8" cols="30">
       <?php
         echo trim($classInfo['lesson_plan']);
       ?>
@@ -72,7 +72,7 @@ echo "<option value='$value'>";
 
       <br><br>
       <p>Horse Behavior Notes:</p>
-      <textarea name="horse-behavior-notes" rows="12" cols="30">
+      <textarea name="horse-behavior-notes" rows="8" cols="30">
         <?php
           echo trim($classInfo['horse_behavior_notes']);
         ?>

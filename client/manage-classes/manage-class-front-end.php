@@ -55,7 +55,7 @@ echo "<option value='$value'>";
 
       <br>
       <p>Horse Behavior Notes:</p>
-      <textarea name="horse-behavior-notes" rows="12" cols="30">
+      <textarea name="horse-behavior-notes" rows="8" cols="30">
         <?php
           echo trim($classInfo['horse_behavior_notes']);
         ?>

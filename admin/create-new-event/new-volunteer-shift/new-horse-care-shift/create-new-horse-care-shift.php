@@ -21,42 +21,31 @@
 
   <?php
     //Process form input
+
     //get array of dates and times
-    $date = $_POST['start-date'];
-    $end_date = $_POST['end-date'];
-    $dateTimeTriplets = array();
+    $dates = getDateTimeArray($_POST['start-date'], $_POST['end-date'], false);
+    $dateTimeTriplets = $dates[0];
+    $all_weekdays_times = $dates[1];
 
-    $all_weekdays_times = "";
-    $weekdaysAdded = array();
-    while (strtotime($date) <= strtotime($end_date)) {
-      $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST)) {
-        $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
-        $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
-        $dateTimeTriplets[$date] = array($startTime, $endTime);
-        if (!in_array($dayOfWeek, $weekdaysAdded)){
-          $all_weekdays_times = $all_weekdays_times . $dayOfWeek . "," . $startTime . "," . $endTime . ";";
-          $weekdaysAdded[] = $dayOfWeek;
-        }
-      }
 
-      //looper
-      $date = date ('Y-m-d', strtotime('+1 day', strtotime($date)));
-    }
+
     //Convert other user selections to database ids
-
     $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
     }
+
     $volunteerIDList = array();
     foreach ($_POST['volunteers'] as $key => $value) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$value}' AND (archived IS NULL OR archived = '');"))[0];
       $volunteerIDList[] = $id;
     }
+
     $volunteerIDList = to_pg_array($volunteerIDList);
 
     $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND (archived IS NULL OR archived = '');"))[0];
+
+
 
     //Check for double-booking
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/checkAvailability.php";
@@ -98,7 +87,6 @@
       echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
       return;
     }
-
 
 
 

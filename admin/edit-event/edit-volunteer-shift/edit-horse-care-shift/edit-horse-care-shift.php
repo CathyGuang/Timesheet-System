@@ -44,12 +44,24 @@
 
 
 
-    //ONLY EDIT FUTURE CLASSES
+    //ONLY EDIT FUTURE SHIFTS
     $todaysDate = date('Y-m-d');
     //get array of dates and times
     $dates = getDateTimeArray($todaysDate, $_POST['end-date'], false);
     $dateTimeTriplets = $dates[0];
     $all_weekdays_times = $dates[1];
+
+
+
+    //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $oldLeaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (archived IS NULL OR archived = '');"))[0];
+    $getShiftIDsQuery = "SELECT id FROM horse_care_shifts WHERE care_type = '{$_POST['old-shift-type']}' AND leader = '{$oldLeaderID}' AND date_of_shift >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
+    $oldShiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
+    if ($oldShiftIDSQLObject) {
+      foreach ($oldShiftIDSQLObject as $row => $data) {
+        pg_query($db_connection, "UPDATE horse_care_shifts SET archived = 'true' WHERE horse_care_shifts.id = {$data['id']};");
+      }
+    }
 
 
 
@@ -131,8 +143,20 @@
     //Modify database
     $result = pg_query($db_connection, $query);
     if ($result) {
+      //DELETE OLD SHIFT DATA TO BE REPLACED WITH NEW DATA
+      if ($oldShiftIDSQLObject) {
+        foreach ($oldShiftIDSQLObject as $row => $data) {
+          pg_query($db_connection, "DELETE FROM horse_care_shifts WHERE horse_care_shifts.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
+      //UNARCHIVE OLD CLASS DATA IF ERROR OCCURRED
+      if ($oldShiftIDSQLObject) {
+        foreach ($oldShiftIDSQLObject as $row => $data) {
+          pg_query($db_connection, "UPDATE horse_care_shifts SET archived = null WHERE horse_care_shifts.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
   ?>

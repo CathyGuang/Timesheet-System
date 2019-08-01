@@ -44,7 +44,7 @@
 
 
 
-    //ONLY EDIT FUTURE CLASSES
+    //ONLY EDIT FUTURE SHIFTS
     $todaysDate = date('Y-m-d');
     //get array of dates and times
     $dates = getDateTimeArray($todaysDate, $_POST['end-date'], false);

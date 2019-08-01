@@ -43,54 +43,17 @@
     }
 
 
+
     //ONLY EDIT FUTURE CLASSES
     $todaysDate = date('Y-m-d');
-
-    //ADD NEW VALUES
-
-    //Process form input
     //get array of dates and times
-    $date = $todaysDate;
-    $end_date = $_POST['end-date'];
-    $dateTimeTriplets = array();
-
-    $all_weekdays_times = "";
-    $weekdaysAdded = array();
-    while (strtotime($date) <= strtotime($end_date)) {
-      $dayOfWeek = date('l', strtotime($date));
-      if (in_array($dayOfWeek, $_POST)) {
-        $startTime =  $_POST[strtolower($dayOfWeek).'-start-time'];
-        $endTime = $_POST[strtolower($dayOfWeek).'-end-time'];
-        $dateTimeTriplets[$date] = array($startTime, $endTime);
-        if (!in_array($dayOfWeek, $weekdaysAdded)){
-          $all_weekdays_times = $all_weekdays_times . $dayOfWeek . "," . $startTime . "," . $endTime . ";";
-          $weekdaysAdded[] = $dayOfWeek;
-        }
-      }
-      //looper
-      $date = date ('Y-m-d', strtotime('+1 day', strtotime($date)));
-    }
+    $dates = getDateTimeArray($todaysDate, $_POST['end-date'], false);
+    $dateTimeTriplets = $dates[0];
+    $all_weekdays_times = $dates[1];
 
 
 
     //Convert other user selections to database ids
-
-    function to_pg_array($set) {
-      settype($set, 'array'); // can be called with a scalar or array
-      $result = array();
-      foreach ($set as $t) {
-          if (is_array($t)) {
-              $result[] = to_pg_array($t);
-          } else {
-              $t = str_replace('"', '\\"', $t); // escape double quote
-              if (! is_numeric($t)) // quote only non-numeric values
-                  $t = '"' . $t . '"';
-              $result[] = $t;
-          }
-      }
-      return '{' . implode(",", $result) . '}'; // format
-    }
-
     $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$leaderID) {
       $leaderID = 'null';
@@ -103,6 +66,7 @@
     $volunteerIDList = to_pg_array($volunteerIDList);
 
     $horseID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$_POST['horse']}' AND (archived IS NULL OR archived = '');"))[0];
+
 
 
     //Check for double-booking

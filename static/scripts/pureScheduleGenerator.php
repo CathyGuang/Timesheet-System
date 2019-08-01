@@ -146,7 +146,7 @@ EOT;
           if ($horseName == "HORSE NEEDED") {
             $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='color: red; float: left;'>{$horseName}</div>, ";
           } else {
-            $horseString .= "<i>Horse: </i>" . $horseName . ", ";
+            $horseString .= "<i>Horse: </i>" . $horseName;
           }
           $horseString .= "<br>";
         }

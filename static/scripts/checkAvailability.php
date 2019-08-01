@@ -185,6 +185,11 @@ EOT;
             }
           }
 
+          echo "orgUseCount: ";
+          var_dump($orgUseCount);
+          echo "\nownerUseCount: ";
+          var_dump($ownerUseCount);
+
           if ($orgUseCount >= $horseInfo['org_uses_per_day'] && !in_array($horseInfo['owner'], $_POST['clients'])) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
           }

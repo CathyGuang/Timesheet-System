@@ -219,13 +219,14 @@ EOT;
       }
       //Shift Leader/Volunteers
       if ($event['leader'] && $event['leader'] != "") {
-        $volunteerString .= "Shift Leader: " . $event['leader'] . ",<br>";
+        $volunteerString .= "Shift Leader: " . $event['leader'] . "<br>";
       }
       if ($event['shift-volunteers'] && $event['shift-volunteers'][0] != "") {
         $volunteerString .= "Volunteers: ";
         foreach ($event['shift-volunteers'] as $name) {
           $volunteerString .= "{$name}, ";
         }
+      $volunteerString = rtrim($volunteerString, ", ");
       }
       if ($volunteerString == "") {
         $volunteerString = "&#8212";

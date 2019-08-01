@@ -129,8 +129,20 @@
     //Modify database
     $result = pg_query($db_connection, $query);
     if ($result) {
+      //DELETE OLD SHIFT DATA TO BE REPLACED WITH NEW DATA
+      if ($oldShiftIDSQLObject) {
+        foreach ($oldShiftIDSQLObject as $row => $data) {
+          pg_query($db_connection, "DELETE FROM office_shifts WHERE office_shifts.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
+      //UNARCHIVE OLD CLASS DATA IF ERROR OCCURRED
+      if ($oldShiftIDSQLObject) {
+        foreach ($oldShiftIDSQLObject as $row => $data) {
+          pg_query($db_connection, "UPDATE office_shifts SET archived = null WHERE office_shifts.id = {$data['id']};");
+        }
+      }
       echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
   ?>

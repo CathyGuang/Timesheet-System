@@ -53,6 +53,17 @@
 
 
 
+    //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
+    $getShiftIDsQuery = "SELECT id FROM office_shifts WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = '{$_POST['old-leader']}' AND date_of_shift >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
+    $oldShiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
+    if ($oldShiftIDSQLObject) {
+      foreach ($oldShiftIDSQLObject as $row => $data) {
+        pg_query($db_connection, "UPDATE office_shifts SET archived = 'true' WHERE office_shifts.id = {$data['id']};");
+      }
+    }
+
+
+
     //Convert other user selections to database ids
     $leaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['leader']}' AND (archived IS NULL OR archived = '');"))[0];
     if (!$leaderID) {

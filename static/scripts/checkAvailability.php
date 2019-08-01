@@ -192,7 +192,7 @@ EOT;
           echo "<br>clients list: ";
           var_dump($_POST['clients']);
 
-          if ($orgUseCount >= $horseInfo['org_uses_per_day'] && (!in_array($horseInfo['owner'], $_POST['clients']) || $horseInfo['owner'] != "")) {
+          if ($orgUseCount >= $horseInfo['org_uses_per_day'] && (!in_array($horseInfo['owner'], $_POST['clients']) || $horseInfo['owner'] == "")) {
             return "{$horseInfo['name']} is already being used {$horseInfo['org_uses_per_day']} times on {$date} by {$organizationName}!";
           }
           if ($horseInfo['owner'] != "" && $ownerUseCount >= $horseInfo['owner_uses_per_day'] && in_array($horseInfo['owner'], $_POST['clients'])) {

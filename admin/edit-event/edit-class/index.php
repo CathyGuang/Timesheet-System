@@ -688,6 +688,7 @@ EOT;
 
             //Get staff names
             $staffJSON = json_decode($row[3], true);
+            var_dump($staffJSON);
             $getStaffQuery = <<<EOT
               SELECT clients.name FROM clients WHERE
               clients.id = ANY('{$staffJSON}')

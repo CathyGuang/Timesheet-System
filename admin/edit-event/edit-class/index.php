@@ -26,8 +26,6 @@
       $selectedClassType = explode('; ', $_POST['selected-class'])[2];
       $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
 
-      var_dump($selectedClassType);
-      var_dump($selectedClientNames);
 
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
@@ -689,13 +687,13 @@ EOT;
             $clientString = rtrim($clientString, ", ");
 
             //Get staff names
-            var_dump($row[3]);
+            $staffJSON = json_decode($row[3], true);
             $getStaffQuery = <<<EOT
               SELECT clients.name FROM clients WHERE
-              clients.id = ANY('{$row[1]}')
+              clients.id = ANY('{$staffJSON}')
               ;
 EOT;
-            //$staffData = pg_fetch_all_columns(pg_query($db_connection, $getStaffQuery));
+            $staffData = pg_fetch_all_columns(pg_query($db_connection, $getStaffQuery));
             $staffString = "";
             foreach ($staffData as $name) {
               $staffString .= $name . ", ";

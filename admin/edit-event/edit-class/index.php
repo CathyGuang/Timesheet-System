@@ -694,8 +694,8 @@ EOT;
             }
             $staffIDList = to_pg_array($staffIDList);
             $getStaffQuery = <<<EOT
-              SELECT clients.name FROM clients WHERE
-              clients.id = ANY('{$staffIDList}')
+              SELECT workers.name FROM workers WHERE
+              workers.id = ANY('{$staffIDList}')
               ;
 EOT;
             $staffData = pg_fetch_all_columns(pg_query($db_connection, $getStaffQuery));

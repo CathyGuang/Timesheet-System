@@ -26,6 +26,9 @@
       $selectedClassType = explode('; ', $_POST['selected-class'])[1];
       $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[2]);
 
+      var_dump($selectedClassType);
+      var_dump($selectedClientNames);
+
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
         if ($name == "") {continue;}

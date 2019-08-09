@@ -24,7 +24,7 @@
       echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
 
       $selectedClassType = explode('; ', $_POST['selected-class'])[1];
-      $selectedClientNames = explode(', ', rtrim(ltrim(explode('; ', $_POST['selected-class'])[2], '<!--'), '-->'));
+      $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[2]);
 
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
@@ -698,7 +698,7 @@ EOT;
               $staffString .= $name . ", ";
             }
             $staffString = rtrim($staffString, ", ");
-            echo "<option value='$row[2]; $row[0]; <!--$clientString-->; STAFFSTRING'>";
+            echo "<option value='$row[2]; $row[0]; $clientString; STAFFSTRING'>";
           }
 
     echo <<<EOT

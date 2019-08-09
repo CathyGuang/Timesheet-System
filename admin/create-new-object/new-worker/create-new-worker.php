@@ -41,7 +41,7 @@
     if ($result) {
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
-      echo "<h3 class='main-content-header'>An error occured.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
     }
   ?>
 

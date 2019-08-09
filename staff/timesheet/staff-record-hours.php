@@ -24,7 +24,7 @@
     $notes = pg_escape_string(trim($_POST['notes']));
 
     if ($_POST['send-email'] == 'true') {
-      $notes .= "&#8212 Hours complete for pay period.";
+      $notes .= " &#8212Hours complete for pay period.";
     }
 
     $query = <<<EOT

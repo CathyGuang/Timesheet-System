@@ -23,6 +23,10 @@
 
     $notes = pg_escape_string(trim($_POST['notes']));
 
+    if ($_POST['send-email'] == 'true') {
+      $notes .= "&#8212 Hours complete for pay period.";
+    }
+
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
       VALUES ('{$staffID}', '{$_POST['hours']}', '{$_POST['work-type']}', '{$_POST['date-of-hours']}', '{$notes}')
@@ -39,7 +43,9 @@ EOT;
 Automatic Message from DHS:
 
 Staff hours recorded by: {$_POST['staff']}
-on {$currentDate}
+on {$currentDate}.
+
+Hours complete for pay period.
 
 Shift: {$_POST['work-type']}
 Date: {$_POST['date-of-hours']}

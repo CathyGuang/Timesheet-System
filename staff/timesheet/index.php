@@ -51,7 +51,7 @@
         <p>Notes:</p>
         <input type="text" name="notes">
 
-        <p>Notify Supervisor: <input type="checkbox" name="send-email" value="true"></p>
+        <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
 
         <br><br>
         <input type="submit" value="Submit">

@@ -699,7 +699,7 @@ EOT;
               $staffString .= $name . ", ";
             }
             $staffString = rtrim($staffString, ", ");
-            echo "<option value='STAFFSTRING; $row[2]; $row[0]; $clientString'>";
+            echo "<option value='$staffString; $row[2]; $row[0]; $clientString'>";
           }
 
     echo <<<EOT

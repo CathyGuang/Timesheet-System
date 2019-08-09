@@ -23,8 +23,8 @@
     if ($_POST['selected-class']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
 
-      $selectedClassType = explode('; ', $_POST['selected-class'])[1];
-      $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[2]);
+      $selectedClassType = explode('; ', $_POST['selected-class'])[2];
+      $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
 
       var_dump($selectedClassType);
       var_dump($selectedClientNames);
@@ -701,7 +701,7 @@ EOT;
               $staffString .= $name . ", ";
             }
             $staffString = rtrim($staffString, ", ");
-            echo "<option value='$row[2]; $row[0]; $clientString; STAFFSTRING'>";
+            echo "<option value='STAFFSTRING; $row[2]; $row[0]; $clientString'>";
           }
 
     echo <<<EOT

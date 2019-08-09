@@ -682,6 +682,7 @@ EOT;
             foreach ($clients as $name) {
               $clientString .= $name . ", ";
             }
+            $clientString = rtrim($clientString, ", ");
             echo "<option value='$row[2]; $row[0]; $clientString'>";
           }
 

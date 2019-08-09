@@ -692,10 +692,10 @@ EOT;
             foreach ($staffJSON as $key => $id) {
               $staffIDList[] = $id;
             }
-            var_dump($staffIDList);
+            $staffIDList = to_pg_array($staffIDList);
             $getStaffQuery = <<<EOT
               SELECT clients.name FROM clients WHERE
-              clients.id = ANY('{$staffJSON}')
+              clients.id = ANY('{$staffIDList}')
               ;
 EOT;
             $staffData = pg_fetch_all_columns(pg_query($db_connection, $getStaffQuery));

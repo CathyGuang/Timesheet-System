@@ -1,8 +1,13 @@
 <?php
 
   function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
-    //ignore calls for empty fields
-    if ($id == "") {return false;}
+
+    //ignore calls for empty/ignored fields
+    if ($id == "") {return false;} // no object
+    if ($id == "2" && $typeOfObject == "horses") {return false;} // 'HORSE NEEDED' horse
+
+
+
     //connect to database
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
 

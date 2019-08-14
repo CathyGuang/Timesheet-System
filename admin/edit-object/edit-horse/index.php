@@ -53,6 +53,9 @@ EOT;
         <label>(Leave blank if owner is this organization)</label>
         <input type="text" name="owner" value="{$horseInfo['owner']}">
 
+        <p>Owner email address:</p>
+        <input type="email" name="owner-email" value="{$horseInfo['owner_email']}">
+
         <p>Organization Uses per Day:</p>
         <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
 

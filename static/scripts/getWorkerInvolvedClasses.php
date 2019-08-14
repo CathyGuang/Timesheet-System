@@ -11,19 +11,32 @@ EOT;
     FROM classes, jsonb_each_text(classes.staff) WHERE
     (
     '{$queryID}' = value
-    ) AND (
-    (archived IS NULL OR archived = '')
     )
-
+EOT;
+    if (!$FETCH_OLD_CLASSES) {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to true
+      $query .= <<<EOT
+      AND (
+      (archived IS NULL OR archived = '')
+      )
+EOT;
+    }
+    $query .= <<<EOT
     UNION ALL
 
     SELECT *
     FROM classes, jsonb_each_text(classes.volunteers) WHERE
     (
     '{$queryID}' = value
-    ) AND (
-    (archived IS NULL OR archived = '')
     )
+EOT;
+    if (!$FETCH_OLD_CLASSES) {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to true
+      $query .= <<<EOT
+      AND (
+      (archived IS NULL OR archived = '')
+      )
+EOT;
+    }
+    $query .= <<<EOT
     ;
 EOT;
   }

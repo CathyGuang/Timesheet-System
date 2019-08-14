@@ -39,6 +39,9 @@ EOT;
 EOT;
     } else {
       $QUERY_NAME = $_POST['selected-worker'];
+      if ($_POST['show-old-classes'] == 'true') {
+        $FETCH_OLD_CLASSES = true;
+      }
       include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/getWorkerInvolvedClasses.php";
       echo <<<EOT
         <form autocomplete="off" action="manage-class-front-end.php" method="get" class="main-form">

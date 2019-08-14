@@ -40,7 +40,7 @@ EOT;
     } else {
       $QUERY_NAME = $_POST['selected-worker'];
       if ($_POST['show-old-classes'] == 'true') {
-        $FETCH_OLD_CLASSES = true;
+        $FETCH_OLD_CLASSES = 'yes';
       }
       include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/getWorkerInvolvedClasses.php";
       echo <<<EOT

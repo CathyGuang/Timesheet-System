@@ -13,7 +13,7 @@ EOT;
     '{$queryID}' = value
     )
 EOT;
-    if (!$FETCH_OLD_CLASSES) {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to true
+    if ($FETCH_OLD_CLASSES != 'yes') {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to 'yes'
       $query .= <<<EOT
       AND (
       (archived IS NULL OR archived = '')
@@ -29,7 +29,7 @@ EOT;
     '{$queryID}' = value
     )
 EOT;
-    if (!$FETCH_OLD_CLASSES) {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to true
+    if ($FETCH_OLD_CLASSES != 'yes') {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to 'yes'
       $query .= <<<EOT
       AND (
       (archived IS NULL OR archived = '')

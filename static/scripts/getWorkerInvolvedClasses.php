@@ -14,6 +14,7 @@ EOT;
     )
 EOT;
     if ($FETCH_OLD_CLASSES != 'yes') {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to 'yes'
+      echo "OK1";
       $query .= <<<EOT
       AND (
       (archived IS NULL OR archived = '')
@@ -30,6 +31,7 @@ EOT;
     )
 EOT;
     if ($FETCH_OLD_CLASSES != 'yes') {// only ignore archived classes if $FETCH_OLD_CLASSES is not set to 'yes'
+      echo 'OK2';
       $query .= <<<EOT
       AND (
       (archived IS NULL OR archived = '')

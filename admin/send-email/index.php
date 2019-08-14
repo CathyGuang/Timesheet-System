@@ -25,6 +25,7 @@
         <option value="Volunteers">
         <option value="Staff and Volunteers">
         <option value="Clients">
+        <option value="Horse Owners">
         <option value="All">
       </datalist>
 

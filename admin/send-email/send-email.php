@@ -34,9 +34,13 @@
       if ($_POST["to"] == "Clients") {
         $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM clients;"), 0);
       }
+      if ($_POST["to"] == "Horse Owners") {
+        $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT owner_email FROM horses;"), 0);
+      }
       if ($_POST["to"] == "All") {
         $emailArray = pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM workers WHERE staff OR volunteer;"), 0);
         $emailArray = array_merge($emailArray, pg_fetch_all_columns(pg_query($db_connection, "SELECT email FROM clients;"), 0));
+        $emailArray = array_merge($emailArray, pg_fetch_all_columns(pg_query($db_connection, "SELECT owner_email FROM horses;"), 0));
       }
 
 

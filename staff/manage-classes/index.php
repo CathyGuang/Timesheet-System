@@ -32,6 +32,7 @@ EOT;
             }
             echo <<<EOT
             </datalist>
+          <p>Show old classes: <input type="checkbox" name="show-old-classes" value="true"></p>
           <input type="submit" value="Submit">
         </form>
       </div>

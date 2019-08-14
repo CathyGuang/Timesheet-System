@@ -25,6 +25,9 @@
     <label>(Leave blank if owner is this organization)</label>
     <input type="text" name="owner" value="">
 
+    <p>Owner email address:</p>
+    <input type="email" name="owner-email" value="">
+
     <p>Organization Uses per Day:</p>
     <input type="number" name="org_uses_per_day" value="" required>
 

@@ -20,7 +20,7 @@
     // PROCESS USER INPUT
     if ($_POST['attendance']) {
       var_dump($_POST['attendance']);
-      to_pg_array($_POST['attendance']);
+      $attendance = to_pg_array($_POST['attendance']);
     } else {
       $attendance = "{}";
     }

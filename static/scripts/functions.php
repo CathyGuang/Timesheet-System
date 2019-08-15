@@ -94,7 +94,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       $result = checkAvailability($_POST['arena'], 'arena', $date, $timeArray[0], $timeArray[1]);
       if ($result) {
         echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-        return true;
+        $conflict = true;
       }
     }
     if ($_POST['horses'] != array()) {
@@ -106,7 +106,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
           } else {
             echo "<br><h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red);'>{$result}</p>";
           }
-          return true;
+          $conflict = true;
         }
       }
     }
@@ -115,7 +115,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$tackName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          return true;
+          $conflict = true;
         }
       }
     }
@@ -124,7 +124,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$padName} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          return true;
+          $conflict = true;
         }
       }
     }
@@ -133,7 +133,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          return true;
+          $conflict = true;
         }
       }
     }
@@ -142,9 +142,12 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$result[0]} to {$result[1]}.</h3>";
-          return true;
+          $conflict = true;
         }
       }
+    }
+    if ($conflict) {
+      return true;
     }
   }
   echo "ALLLLL GOOOOOOD!!!";

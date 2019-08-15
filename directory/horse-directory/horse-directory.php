@@ -26,6 +26,8 @@
           <p>Name: {$horseInfo['name']}</p>
           <p>Owner: {$horseInfo['owner']}</p>
           <p>Owner email address: <a href="mailto: {$horseInfo['owner_email']}">{$horseInfo['owner_email']}</a></p>
+          <p>Veterinarian name: {$horseInfo['vet_name']}</p>
+          <p>Veterinarian email: <a href="mailto: {$horseInfo['vet_email']}">{$horseInfo['vet_email']}</a></p>
           <p>Organization Uses per Day: {$horseInfo['org_uses_per_day']}</p>
           <p>Owner Uses per Day: {$horseInfo['owner_uses_per_day']}</p>
           <p>Notes: {$horseInfo['notes']}</p>

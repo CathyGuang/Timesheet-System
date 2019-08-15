@@ -138,9 +138,10 @@ EOT;
       //Clients
       $clientString = "";
       if ($event['clients'][0] != "") {
-        foreach ($event['clients'] as $clientName) {
+        foreach ($event['clients'] as $fullClientName) {
+          $clientName = explode(" ", $fullClientName)[0];
           $clientString .= "<i>Clients: </i>";
-          if (in_array($clientName, $event['attendance'])) {
+          if (in_array($fullClientName, $event['attendance'])) {
             $clientString .= $clientName . "<br>";
           } else {
             $clientString .= "<s style='color: red;'>" . $clientName . "</s><br>";

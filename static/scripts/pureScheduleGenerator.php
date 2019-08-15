@@ -119,6 +119,7 @@ EOT;
       $clientString = "";
       if ($event['clients'][0] != "") {
         foreach ($event['clients'] as $clientName) {
+          $clientName = explode(" ", $clientName)[0];
           $clientString .= "<i>Clients: </i>";
           if (in_array($clientName, $event['attendance'])) {
             $clientString .= $clientName . "<br>";

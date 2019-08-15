@@ -93,8 +93,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
     if ($_POST['arena'] != "") {
       $result = checkAvailability($_POST['arena'], 'arena', $date, $timeArray[0], $timeArray[1]);
       if ($result) {
-        $time1 = date('ga', strtotime($result[0]));
-        $time2 = date('ga', strtotime($result[1]));
+        $time1 = date('g:ia', strtotime($result[0]));
+        $time2 = date('g:ia', strtotime($result[1]));
         echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['arena']} has another event on {$date} from {$time1} to {$time2}.</h3>";
         $conflict = true;
       }
@@ -103,8 +103,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($horseIDList as $key => $horseID) {
         $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           if (is_array($result)) {
             echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['horses'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
           } else {
@@ -118,8 +118,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($_POST['tacks'] as $key => $tackName) {
         $result = checkAvailability($tackName, 'tack', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$tackName} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }
@@ -129,8 +129,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($_POST['pads'] as $key => $padName) {
         $result = checkAvailability($padName, 'pad', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$padName} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }
@@ -140,8 +140,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($staffIDList as $key => $staffID) {
         $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['staff'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }
@@ -151,8 +151,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($volunteerIDList as $key => $volunteerID) {
         $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }
@@ -162,8 +162,8 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       foreach ($clientIDList as $key => $clientID) {
         $result = checkAvailability($clientID, 'clients', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
-          $time1 = date('ga', strtotime($result[0]));
-          $time2 = date('ga', strtotime($result[1]));
+          $time1 = date('g:ia', strtotime($result[0]));
+          $time2 = date('g:ia', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['clients'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }

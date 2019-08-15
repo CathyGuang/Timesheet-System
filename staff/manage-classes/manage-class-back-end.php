@@ -17,7 +17,6 @@
   </header>
 
   <?php
-    var_dump($_POST);
     // PROCESS USER INPUT
 
     $horseIDList = array();

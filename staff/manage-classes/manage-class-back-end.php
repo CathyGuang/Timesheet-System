@@ -74,6 +74,8 @@
     echo "<br>";
     $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
     var_dump($dateTimeTriplets);
+    echo "<br>";
+    var_dump($convertedData);
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
     if ($abort) {
       $postString = base64_encode(serialize($_POST));

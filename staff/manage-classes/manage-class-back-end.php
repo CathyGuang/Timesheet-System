@@ -68,6 +68,10 @@
 
     // Check for conflicts
     var_dump($_POST);
+    echo "<br>";
+    $classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
+    var_dump($classTimeData);
+    
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
     if ($abort) {
       $postString = base64_encode(serialize($_POST));

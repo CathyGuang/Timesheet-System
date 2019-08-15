@@ -60,6 +60,15 @@
     $escapedClientNotes = pg_escape_string($_POST['client-notes']);
 
 
+    // Check for conflicts
+    var_dump($_POST);
+    $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+    if ($abort) {
+      $postString = base64_encode(serialize($_POST));
+      echo "<h3 class='main-content-header'>The database has not been changed. Please <button style='width: 90pt;' onclick='window.history.back()'>try again</button></h3>";
+      return;
+    }
+
 
     // ADD TO DATABASE
     $query = <<<EOT

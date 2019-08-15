@@ -52,6 +52,10 @@
       $classIDList = to_pg_array($classIDList);
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class >= '{$todaysDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
+      //If all class dates have past, get data from last class date.
+       if (!$classData) {
+         echo 'HAHAHAHA';
+       }
 
 
       //get start and end dates for entire class range

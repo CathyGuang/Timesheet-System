@@ -150,7 +150,6 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
       return true;
     }
   }
-  echo "ALLLLL GOOOOOOD!!!";
 }
 
 

@@ -37,7 +37,7 @@
     foreach ($_POST['clients'] as $name) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
       $clientIDList[] = $id;
-      $clientIDPGList = to_pg_array($horseIDList);
+      $clientIDPGList = to_pg_array($clientIDList);
     }
 
     $staffIDList = array();

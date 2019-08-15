@@ -30,6 +30,9 @@
       $horseIDList[] = $id;
       $horseIDPGList = to_pg_array($horseIDList);
     }
+    $clientIDList = array();
+    //CLIENT STUFF
+
     $staffIDList = array();
     foreach ($_POST['staff'] as $name) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
@@ -75,6 +78,7 @@
     $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
     var_dump($dateTimeTriplets);
     echo "<br>";
+    $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
     var_dump($convertedData);
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
     if ($abort) {

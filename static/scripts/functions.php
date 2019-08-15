@@ -99,7 +99,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         $conflict = true;
       }
     }
-    if ($_POST['horses'] != array()) {
+    if ($horseIDList != array()) {
       foreach ($horseIDList as $key => $horseID) {
         $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
@@ -136,7 +136,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         }
       }
     }
-    if ($_POST['staff'] != array()) {
+    if ($staffIDList != array()) {
       foreach ($staffIDList as $key => $staffID) {
         $result = checkAvailability($staffID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
@@ -147,13 +147,24 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
         }
       }
     }
-    if ($_POST['volunteers'] != array()) {
+    if ($volunteerIDList != array()) {
       foreach ($volunteerIDList as $key => $volunteerID) {
         $result = checkAvailability($volunteerID, 'workers', $date, $timeArray[0], $timeArray[1]);
         if ($result) {
           $time1 = date('ga', strtotime($result[0]));
           $time2 = date('ga', strtotime($result[1]));
           echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['leaders'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
+          $conflict = true;
+        }
+      }
+    }
+    if ($clientIDList != array()) {
+      foreach ($clientIDList as $key => $clientID) {
+        $result = checkAvailability($clientID, 'clients', $date, $timeArray[0], $timeArray[1]);
+        if ($result) {
+          $time1 = date('ga', strtotime($result[0]));
+          $time2 = date('ga', strtotime($result[1]));
+          echo "<h3 class='main-content-header' style='font-size: 25pt; color: var(--dark-red)'>CONFLICT: {$_POST['clients'][$key]} has another event on {$date} from {$time1} to {$time2}.</h3>";
           $conflict = true;
         }
       }

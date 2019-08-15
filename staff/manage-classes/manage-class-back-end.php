@@ -73,13 +73,8 @@
     var_dump($_POST);
     echo "<br>";
     $classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
-    var_dump($classTimeData);
-    echo "<br>";
     $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
-    var_dump($dateTimeTriplets);
-    echo "<br>";
     $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
-    var_dump($convertedData);
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
     if ($abort) {
       $postString = base64_encode(serialize($_POST));

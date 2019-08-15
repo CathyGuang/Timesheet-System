@@ -30,8 +30,13 @@
       $horseIDList[] = $id;
       $horseIDPGList = to_pg_array($horseIDList);
     }
+
     $clientIDList = array();
-    //CLIENT STUFF
+    foreach ($_POST['clients'] as $name) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM clients WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
+      $clientIDList[] = $id;
+      $clientIDPGList = to_pg_array($horseIDList);
+    }
 
     $staffIDList = array();
     foreach ($_POST['staff'] as $name) {
@@ -55,13 +60,13 @@
     }
     $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
 
-
-
     if ($_POST['cancel'] == "TRUE") {
       $cancel = 'TRUE';
     } else {
       $cancel = 'FALSE';
     }
+
+
 
     // Escape user input strings for postgres
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
@@ -84,7 +89,7 @@
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horses = '{$horseIDPGList}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
+      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horses = '{$horseIDPGList}', clients = '{$clientIDPGList}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
       WHERE id = {$_POST['id']};
 EOT;
 

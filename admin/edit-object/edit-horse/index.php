@@ -56,6 +56,12 @@ EOT;
         <p>Owner email address:</p>
         <input type="email" name="owner-email" value="{$horseInfo['owner_email']}">
 
+        <p>Veterinarian name:</p>
+        <input type="text" name="vet-name" value="{$horseInfo['vet_name']}">
+
+        <p>Veterinarian email address:</p>
+        <input type="email" name="vet-email" value="{$horseInfo['vet_email']}">
+
         <p>Organization Uses per Day:</p>
         <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
 

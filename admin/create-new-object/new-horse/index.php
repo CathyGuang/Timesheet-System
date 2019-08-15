@@ -28,6 +28,12 @@
     <p>Owner email address:</p>
     <input type="email" name="owner-email" value="">
 
+    <p>Veterinarian name:</p>
+    <input type="text" name="vet-name" value="">
+
+    <p>Veterinarian email address:</p>
+    <input type="email" name="vet-email" value="">
+
     <p>Organization Uses per Day:</p>
     <input type="number" name="org_uses_per_day" value="" required>
 

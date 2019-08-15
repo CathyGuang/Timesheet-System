@@ -36,9 +36,11 @@
     $name = pg_escape_string(trim($_POST['name']));
     $owner = pg_escape_string(trim($_POST['owner']));
     $owner_email = pg_escape_string(trim($_POST['owner-email']));
+    $vet_name = pg_escape_string(trim($_POST['vet-name']));
+    $vet_email = pg_escape_string(trim($_POST['vet-email']));
     $notes = pg_escape_string(trim($_POST['notes']));
 
-    $query = "UPDATE horses SET name = '{$name}', owner = '{$owner}', owner_email = '{$owner_email}', org_uses_per_day = '{$_POST['org_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', horse_uses_per_week = '{$_POST['horse_uses_per_week']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
+    $query = "UPDATE horses SET name = '{$name}', owner = '{$owner}', owner_email = '{$owner_email}', vet_name = '{$vet_name}', vet_email = '{$vet_email}', org_uses_per_day = '{$_POST['org_uses_per_day']}', owner_uses_per_day = '{$_POST['owner_uses_per_day']}', horse_uses_per_week = '{$_POST['horse_uses_per_week']}', notes = '{$notes}', archived = '{$archived}' WHERE id = {$_POST['id']};";
 
     $result = pg_query($db_connection, $query);
 

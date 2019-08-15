@@ -90,12 +90,24 @@ echo "<option value='$value'>";
           }
           echo <<<EOT
           <div>
-            <label>{$clientNameList[$index]}</label>
+            <input type='text' list='client-list' name='clients[]' value='{$clientNameList[$index]}' onclick='select()'>
             <input type="checkbox" name="attendance[]" value="$id" style="position: absolute; margin-left: 15px;" {$checked}>
           </div>
 EOT;
         }
       ?>
+      <datalist id="client-list">
+        <?php
+          $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+          $result = pg_query($db_connection, $query);
+          $clientNames = pg_fetch_all_columns($result);
+          foreach ($clientNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+      
 
       <p>Client Notes:</p>
       <textarea name="client-notes" rows="10" cols="30">

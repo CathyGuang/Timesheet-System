@@ -54,7 +54,8 @@
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
       //If all class dates have past, get data from last class date.
        if (!$classData) {
-         echo 'HAHAHAHA';
+         $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = MAX(classes.date_of_class);";
+         $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
        }
 
 

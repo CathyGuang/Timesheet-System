@@ -74,11 +74,20 @@
     $escapedClientNotes = pg_escape_string($_POST['client-notes']);
 
 
+
     // Check for conflicts
+
+    //archive class temporarily
+    pg_query($db_connection, "UPDATE classes SET archived = 'true' WHERE classes.id = {$_POST['id']};");
+
     $classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
     $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
     $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+
+    //unarchive class
+    pg_query($db_connection, "UPDATE classes SET archived = 'false' WHERE classes.id = {$_POST['id']};");
+
     if ($abort) {
       $postString = base64_encode(serialize($_POST));
       echo "<h3 class='main-content-header'>The database has not been changed. Please <button style='width: 90pt;' onclick='window.history.back()'>try again</button></h3>";

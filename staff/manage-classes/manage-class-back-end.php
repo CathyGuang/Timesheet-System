@@ -19,12 +19,6 @@
   <?php
     var_dump($_POST);
     // PROCESS USER INPUT
-    if ($_POST['attendance']) {
-      var_dump($_POST['attendance']);
-      $attendance = to_pg_array($_POST['attendance']);
-    } else {
-      $attendance = "{}";
-    }
 
     $horseIDList = array();
     foreach ($_POST['horses'] as $name) {
@@ -39,6 +33,14 @@
       $clientIDList[] = $id;
       $clientIDPGList = to_pg_array($clientIDList);
     }
+
+    $attendance = array();
+    foreach ($clientIDList as $index => $id) {
+      if (in_array($index, $_POST['attendance'])) {
+        $attendance[] = $id;
+      }
+    }
+    $attendance = to_pg_array($attendance);
 
     $staffIDList = array();
     foreach ($_POST['staff'] as $name) {

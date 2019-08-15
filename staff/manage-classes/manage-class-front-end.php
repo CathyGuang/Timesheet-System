@@ -91,7 +91,7 @@ echo "<option value='$value'>";
           echo <<<EOT
           <div>
             <input type='text' list='client-list' name='clients[]' value='{$clientNameList[$index]}' onclick='select()'>
-            <input type="checkbox" name="attendance[]" value="$id" style="position: absolute; margin-left: 15px;" {$checked}>
+            <input type="checkbox" name="attendance[]" value="$index" style="position: absolute; margin-left: 15px;" {$checked}>
           </div>
 EOT;
         }
@@ -107,7 +107,7 @@ EOT;
           }
         ?>
       </datalist>
-      
+
 
       <p>Client Notes:</p>
       <textarea name="client-notes" rows="10" cols="30">

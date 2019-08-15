@@ -24,6 +24,12 @@
       $attendance = "{}";
     }
 
+    $horseIDList = array();
+    foreach ($_POST['horses'] as $name) {
+      $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM horses WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
+      $horseIDList[] = $id;
+      $horseIDPGList = to_pg_array($horseIDList);
+    }
     $staffIDList = array();
     foreach ($_POST['staff'] as $name) {
       $id = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');"))[0];
@@ -73,7 +79,7 @@
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
+      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horses = '{$horseIDPGList}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
       WHERE id = {$_POST['id']};
 EOT;
 

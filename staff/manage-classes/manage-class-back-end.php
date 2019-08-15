@@ -70,8 +70,6 @@
 
 
     // Check for conflicts
-    var_dump($_POST);
-    echo "<br>";
     $classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
     $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
     $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);

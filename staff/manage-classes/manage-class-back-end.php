@@ -86,7 +86,7 @@
     $abort = checkForConflicts($dateTimeTriplets, $convertedData);
 
     //unarchive class
-    pg_query($db_connection, "UPDATE classes SET archived = 'false' WHERE classes.id = {$_POST['id']};");
+    pg_query($db_connection, "UPDATE classes SET archived = NULL WHERE classes.id = {$_POST['id']};");
 
     if ($abort) {
       $postString = base64_encode(serialize($_POST));

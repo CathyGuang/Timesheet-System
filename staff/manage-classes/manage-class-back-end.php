@@ -17,6 +17,7 @@
   </header>
 
   <?php
+    var_dump($_POST);
     // PROCESS USER INPUT
     if ($_POST['attendance']) {
       var_dump($_POST['attendance']);

@@ -50,7 +50,6 @@
       $masterList[] = $value;
     }
     //sort masterlist by time.
-    //ksort($masterList);
     function compare($a, $b) {
       if ($a['start_time'] < $b['start_time']) {
         return -1;

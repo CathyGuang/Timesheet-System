@@ -19,7 +19,7 @@
   <?php
     // PROCESS USER INPUT
     if ($_POST['attendance']) {
-      $attendance = "{" . implode(",", $_POST['attendance']) . "}";
+      to_pg_array($_POST['attendance']);
     } else {
       $attendance = "{}";
     }

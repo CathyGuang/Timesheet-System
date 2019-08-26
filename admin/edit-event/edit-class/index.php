@@ -37,9 +37,9 @@
       if (!$clientIDList) {
         $clientIDList[] = 1;
       }
-
-
       $clientIDPGArray = to_pg_array($clientIDList);
+
+      //Get class IDs
       $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       $classIDList = array();

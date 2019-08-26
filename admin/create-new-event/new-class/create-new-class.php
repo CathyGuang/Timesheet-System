@@ -77,7 +77,7 @@
       $postString = serialize($_POST);
       echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please <button form='retry-form' type='submit' style='width: 90pt;'>try again.</button> Ensure that all data is correctly formatted.</p>";
       echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
-    }
+    }    
   ?>
 
 

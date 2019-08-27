@@ -19,7 +19,7 @@
 
   <?php
     // CREATE ARRAY FROM OLD POST DATA TO FILL IN FIELDS
-    $oldPostData = unserialize($_POST['old-post']);
+    $oldPostData = unserialize(base64_decode($_POST['old-post']));
   ?>
 
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">

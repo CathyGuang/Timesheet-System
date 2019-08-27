@@ -222,7 +222,7 @@ function prepClassDataForSQL($convertedData) {
 
 
 // Function to generate unique class code for creating and editing classes
-function generateClassCode() {
+function generateClassCode($db_connection) {
   var_dump($db_connection);
   $classCode = pg_query($db_connection, "SELECT MAX(class_code) FROM classes;");
   var_dump($classCode);

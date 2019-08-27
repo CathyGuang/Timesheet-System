@@ -64,6 +64,8 @@
 
       <form autocomplete="off" action="edit-horse-care-shift.php" method="post" class="main-form full-page-form">
 
+        <input type="text" name="shift-code" value="{$shiftCode}" style="visibility: hidden;">
+
         <p>Shift Type:</p>
         <input type="text" name="old-shift-type" value="{$shiftData['care_type']}" style="visibility: hidden;">
         <input type="text" name="shift-type" list="shift-type-list" value="{$shiftData['care_type']}" onclick="select()" required>

@@ -24,7 +24,7 @@
       echo "<h3 class='main-content-header'>{$_POST['selected-shift']}</h3>";
       //$selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
       //$selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
-      $shiftCode = explode(': ', explode(', ', $_POST['selected-shift'])[2]);
+      $shiftCode = explode(': ', explode(', ', $_POST['selected-shift'])[2])[1];
       var_dump($shiftCode);
 
       $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (workers.archived IS NULL OR workers.archived = '')) AND (horse_care_shifts.archived IS NULL OR horse_care_shifts.archived = '');";

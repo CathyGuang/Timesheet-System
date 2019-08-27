@@ -60,7 +60,6 @@
 
     // Generate new unique class code
     $classCode = generateClassCode($db_connection);
-    var_dump($classCode);
 
     //Create SQL query
     $query = "INSERT INTO classes (class_code, class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";

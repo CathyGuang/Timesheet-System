@@ -22,8 +22,6 @@
   <?php
     if ($_POST['selected-shift']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-shift']}</h3>";
-      //$selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
-      //$selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
       $shiftCode = explode(': ', explode(', ', $_POST['selected-shift'])[2])[1];
 
       $getShiftIDsQuery = "SELECT id FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');";
@@ -42,8 +40,8 @@
 
 
 
-      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM office_shifts WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
-      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM office_shifts WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];
+      $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
+      $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];
 
 
       $weekdaysBlocks = explode(";", $shiftData['all_weekdays_times']);

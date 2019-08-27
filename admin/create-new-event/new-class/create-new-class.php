@@ -59,7 +59,12 @@
 
 
     // Generate new unique class code
-    $classCode = pg_fetch_row(pg_query($db_connection, "SELECT MAX(class_code) FROM classes;"), 0);
+    $classCode = pg_fetch_row(pg_query($db_connection, "SELECT MAX(class_code) FROM classes;"), 0)[0];
+    if ($classCode) {
+      $classCode++;
+    } else {
+      $classCode = 1;
+    }
     var_dump($classCode);
 
     //Create SQL query

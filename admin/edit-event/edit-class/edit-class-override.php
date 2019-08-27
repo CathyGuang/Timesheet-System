@@ -62,6 +62,7 @@
 
 
 
+    // TODO: add class code to new insert statements
 
     //Create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";

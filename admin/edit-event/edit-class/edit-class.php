@@ -20,6 +20,8 @@
 
   <?php
 
+    // TODO: USE CLASS CODE
+
     if ($_POST['DELETE']) { //DELETE CLASS IF DELETE IS REQUESTED
       $query = "DELETE FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND (archived IS NULL OR archived = '');";
       $result = pg_query($db_connection, $query);
@@ -30,6 +32,8 @@
       }
       return;
     }
+
+    // TODO: USE CLASS CODE
 
     if ($_POST['archive']) { //ARCHIVE CLASS IF REQUESTED
       $query = "UPDATE classes SET archived = 'TRUE' WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}';";
@@ -47,6 +51,8 @@
 
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
     $todaysDate = date('Y-m-d');
+
+    // TODO: USE CLASS CODE
 
     //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
     $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
@@ -110,6 +116,7 @@
 
 
 
+    // TODO: add class code to new insert statements
 
     //Create SQL query
     $query = "INSERT INTO classes (class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";

@@ -23,13 +23,14 @@
     if ($_POST['selected-class']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
 
-      $selectedClassType = explode('; ', $_POST['selected-class'])[2];
-      $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
+      //$selectedClassType = explode('; ', $_POST['selected-class'])[2];
+      //$selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
       $selectedClassCode = explode(': ', explode('; ', $_POST['selected-class'])[4])[1];
 
       echo "<br>CLASS CODE:";
       var_dump($selectedClassCode);
 
+      /*
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
         if ($name == "") {continue;}
@@ -41,9 +42,10 @@
         $clientIDList[] = 1;
       }
       $clientIDPGArray = to_pg_array($clientIDList);
+      */
 
       //Get class IDs
-      $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$selectedClassType}' AND clients <@ '{$clientIDPGArray}' AND (archived IS NULL OR archived = '');";
+      $getClassIDsQuery = "SELECT id FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');";
       $classIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
       $classIDList = array();
       foreach ($classIDSQLObject as $row => $data) {
@@ -55,6 +57,7 @@
       $classIDList = to_pg_array($classIDList);
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class >= '{$todaysDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
+
       //If all class dates have past, do something???
 
 
@@ -261,7 +264,7 @@ EOT;
         <p>Client(s):</p>
 EOT;
   $oldClientIDListPGArray = "{";
-  foreach ($clientIDList as $id) {
+  foreach ($classData['clients'] as $id) {
     $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
     $oldClientIDListPGArray .= $id .',';
     echo <<<EOT

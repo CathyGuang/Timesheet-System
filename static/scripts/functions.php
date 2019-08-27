@@ -221,6 +221,21 @@ function prepClassDataForSQL($convertedData) {
 
 
 
+// Function to generate unique class code for creating and editing classes
+function generateClassCode() {
+  $classCode = pg_fetch_row(pg_query($db_connection, "SELECT MAX(class_code) FROM classes;"), 0)[0];
+  if ($classCode) {
+    $classCode++;
+  } else {
+    $classCode = 1;
+  }
+  return $classCode;
+}
+
+
+
+
+
 
 // Function to convert from PHP array to PG array
 function to_pg_array($set) {

@@ -27,13 +27,24 @@
 
       $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (workers.archived IS NULL OR workers.archived = '')) AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
+      $shiftIDList = array();
       foreach ($shiftIDSQLObject as $row => $data) {
         $shiftIDList[] = $data['id'];
       }
 
-      $shiftDataQuery = "SELECT * FROM office_shifts WHERE office_shifts.id = {$shiftIDList[0]};";
 
-      $shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
+      //Get data from the next occurring shift so that display information is accurate to edits already made
+      $todaysDate = date('Y-m-d');
+      $PGshiftIDList = to_pg_array($shiftIDList);
+      $shiftDataQuery = "SELECT * FROM horse_care_shifts WHERE horse_care_shifts.id = ANY('{$PGshiftIDList}') AND horse_care_shifts.date_of_shift >= '{$todaysDate}';";
+      $shiftData = pg_fetch_row(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
+
+
+      //$shiftDataQuery = "SELECT * FROM office_shifts WHERE office_shifts.id = {$shiftIDList[0]};";
+      //$shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
+
+
+
 
       $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM office_shifts WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
       $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM office_shifts WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];

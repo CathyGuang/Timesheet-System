@@ -237,6 +237,8 @@ function generateClassCode($db_connection) {
 
 
 
+
+
 // Function to convert from PHP array to PG array
 function to_pg_array($set) {
   settype($set, 'array'); // can be called with a scalar or array

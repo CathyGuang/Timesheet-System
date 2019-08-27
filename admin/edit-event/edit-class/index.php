@@ -25,7 +25,10 @@
 
       $selectedClassType = explode('; ', $_POST['selected-class'])[2];
       $selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
+      $selectedClassCode = explode(': ', explode('; ', $_POST['selected-class'])[4])[1];
 
+      echo "<br>CLASS CODE:";
+      var_dump($selectedClassCode);
 
       $clientIDList = array();
       foreach ($selectedClientNames as $name) {
@@ -672,7 +675,7 @@ EOT;
         <input type="text" name="selected-class" list="class-list" onclick='select();'>
           <datalist id="class-list">
 EOT;
-          $query = "SELECT DISTINCT class_type, clients, display_title, staff FROM classes WHERE (archived IS NULL OR archived = '');";
+          $query = "SELECT DISTINCT class_type, clients, display_title, staff, class_code FROM classes WHERE (archived IS NULL OR archived = '');";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
             //Get client names
@@ -706,7 +709,7 @@ EOT;
               $staffString .= $name . ", ";
             }
             $staffString = rtrim($staffString, ", ");
-            echo "<option value='$staffString; $row[2]; $row[0]; $clientString'>";
+            echo "<option value='$staffString; $row[2]; $row[0]; $clientString; class code: $row[4]'>";
           }
 
     echo <<<EOT

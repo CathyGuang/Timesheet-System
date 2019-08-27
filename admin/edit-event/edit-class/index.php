@@ -89,7 +89,7 @@
 
       <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
 
-
+        <input type="text" name="class-code" value="{$selectedClassCode}" style="visibility: hidden;">
 
         <p>Class Type:</p>
         <input type="text" name="old-class-type" value="{$classData['class_type']}" style="visibility: hidden;">

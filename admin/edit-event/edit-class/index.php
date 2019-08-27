@@ -23,26 +23,8 @@
     if ($_POST['selected-class']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-class']}</h3>";
 
-      //$selectedClassType = explode('; ', $_POST['selected-class'])[2];
-      //$selectedClientNames = explode(', ', explode('; ', $_POST['selected-class'])[3]);
       $selectedClassCode = explode(': ', explode('; ', $_POST['selected-class'])[4])[1];
 
-      echo "<br>CLASS CODE:";
-      var_dump($selectedClassCode);
-
-      /*
-      $clientIDList = array();
-      foreach ($selectedClientNames as $name) {
-        if ($name == "") {continue;}
-        $IDQuery = "SELECT id FROM clients WHERE name LIKE '{$name}' AND (archived IS NULL OR archived = '');";
-        $id = pg_fetch_row(pg_query($db_connection, $IDQuery))[0];
-        $clientIDList[] = $id;
-      }
-      if (!$clientIDList) {
-        $clientIDList[] = 1;
-      }
-      $clientIDPGArray = to_pg_array($clientIDList);
-      */
 
       //Get class IDs
       $getClassIDsQuery = "SELECT id FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');";

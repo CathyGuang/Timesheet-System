@@ -73,11 +73,13 @@
     }
 
 
+    //Generate unique shift code
+    $shiftCode = generateShiftCode($db_connection);
 
     //Create SQL query
-    $query = "INSERT INTO office_shifts (office_shift_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";
+    $query = "INSERT INTO office_shifts (shift_code, office_shift_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}'),";
+      $query = $query . "('{$shiftCode}', '{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";

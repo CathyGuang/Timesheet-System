@@ -36,13 +36,8 @@
       //Get data from the next occurring shift so that display information is accurate to edits already made
       $todaysDate = date('Y-m-d');
       $PGshiftIDList = to_pg_array($shiftIDList);
-      $shiftDataQuery = "SELECT * FROM horse_care_shifts WHERE horse_care_shifts.id = ANY('{$PGshiftIDList}') AND horse_care_shifts.date_of_shift >= '{$todaysDate}';";
+      $shiftDataQuery = "SELECT * FROM office_shifts WHERE office_shifts.id = ANY('{$PGshiftIDList}') AND office_shifts.date_of_shift >= '{$todaysDate}';";
       $shiftData = pg_fetch_row(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
-
-
-      //$shiftDataQuery = "SELECT * FROM office_shifts WHERE office_shifts.id = {$shiftIDList[0]};";
-      //$shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
-
 
 
 

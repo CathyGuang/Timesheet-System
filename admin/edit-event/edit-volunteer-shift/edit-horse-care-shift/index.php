@@ -40,10 +40,6 @@
       $shiftData = pg_fetch_row(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
 
 
-      //$shiftDataQuery = "SELECT * FROM horse_care_shifts WHERE horse_care_shifts.id = {$shiftIDList[0]};";
-      //$shiftData = pg_fetch_array(pg_query($db_connection, $shiftDataQuery), 0, PGSQL_ASSOC);
-
-
 
       $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_shift) AS start_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
       $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_shift) AS end_date FROM horse_care_shifts WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];

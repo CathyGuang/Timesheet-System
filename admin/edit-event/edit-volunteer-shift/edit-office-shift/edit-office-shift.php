@@ -18,10 +18,11 @@
   </header>
 
   <?php
-
+    //Get shift code
+    $shiftCode = $_POST['shift-code'];
 
     if ($_POST['DELETE']) { //DELETE SHIFT IF DELETE IS REQUESTED
-      $query = "DELETE FROM office_shifts WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (archived IS NULL OR archived = '')) AND (archived IS NULL OR archived = '');";
+      $query = "DELETE FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
@@ -32,7 +33,7 @@
     }
 
     if ($_POST['archive']) { //ARCHIVE SHIFT IF REQUESTED
-      $query = "UPDATE office_shifts SET archived = 'TRUE' WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (archived IS NULL OR archived = ''));";
+      $query = "UPDATE office_shifts SET archived = 'TRUE' WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');";
       $result = pg_query($db_connection, $query);
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3";
@@ -53,13 +54,21 @@
 
 
 
-    //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $oldLeaderID = pg_fetch_row(pg_query($db_connection, "SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (archived IS NULL OR archived = '');"))[0];
-    $getShiftIDsQuery = "SELECT id FROM office_shifts WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = '{$oldLeaderID}' AND date_of_shift >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
+    //Get list of old shift IDs
+    $getShiftIDsQuery = "SELECT id FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');";
     $oldShiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
+    $oldShiftIDList = array();
     if ($oldShiftIDSQLObject) {
       foreach ($oldShiftIDSQLObject as $row => $data) {
-        pg_query($db_connection, "UPDATE office_shifts SET archived = 'true' WHERE office_shifts.id = {$data['id']};");
+        $oldShiftIDList[] = $data['id'];
+      }
+    }
+
+
+    //ARCHIVE ALL ROWS OF SELECTED SHIFT SO THEY CAN BE REPLACED WITH THE NEW ONES
+    if ($oldShiftIDList) {
+      foreach ($oldShiftIDList as $id) {
+        pg_query($db_connection, "UPDATE office_shifts SET archived = 'true' WHERE office_shifts.id = {$id} AND date_of_shift >= '{$todaysDate}';");
       }
     }
 
@@ -108,19 +117,10 @@
 
 
 
-    //DELETE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '{$_POST['old-shift-type']}' AND leader = (SELECT id FROM workers WHERE name LIKE '{$_POST['old-leader']}' AND (workers.archived IS NULL OR workers.archived = '')) AND date_of_shift >= '{$todaysDate}' AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
-    $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
-    foreach ($shiftIDSQLObject as $row => $data) {
-      pg_query($db_connection, "DELETE FROM office_shifts WHERE office_shifts.id = {$data['id']}");
-    }
-
-
-
     //Create SQL query
-    $query = "INSERT INTO office_shifts (office_shift_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";
+    $query = "INSERT INTO office_shifts (shift_code, office_shift_type, date_of_shift, start_time, end_time, all_weekdays_times, leader, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}'),";
+      $query = $query . "('{$shiftCode}', '{$_POST['shift-type']}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', {$leaderID}, '{$volunteerIDList}'),";
     }
 
     $query = chop($query, ",") . ";";
@@ -131,17 +131,15 @@
     $result = pg_query($db_connection, $query);
     if ($result) {
       //DELETE OLD SHIFT DATA TO BE REPLACED WITH NEW DATA
-      if ($oldShiftIDSQLObject) {
-        foreach ($oldShiftIDSQLObject as $row => $data) {
-          pg_query($db_connection, "DELETE FROM office_shifts WHERE office_shifts.id = {$data['id']};");
-        }
+      foreach ($oldShiftIDList as $id) {
+        pg_query($db_connection, "DELETE FROM office_shifts WHERE office_shifts.id = {$id} AND date_of_shift >= '{$todaysDate}';");
       }
       echo "<h3 class='main-content-header'>Success</h3";
     } else {
       //UNARCHIVE OLD CLASS DATA IF ERROR OCCURRED
-      if ($oldShiftIDSQLObject) {
-        foreach ($oldShiftIDSQLObject as $row => $data) {
-          pg_query($db_connection, "UPDATE office_shifts SET archived = null WHERE office_shifts.id = {$data['id']};");
+      if ($oldShiftIDList) {
+        foreach ($oldShiftIDList as $id) {
+          pg_query($db_connection, "UPDATE office_shifts SET archived = null WHERE office_shifts.id = {$id};");
         }
       }
       echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";

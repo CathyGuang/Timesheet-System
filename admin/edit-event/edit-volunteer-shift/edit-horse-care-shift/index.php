@@ -22,8 +22,10 @@
   <?php
     if ($_POST['selected-shift']) {
       echo "<h3 class='main-content-header'>{$_POST['selected-shift']}</h3>";
-      $selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
-      $selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
+      //$selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
+      //$selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
+      $shiftCode = explode(': ', explode(', ', $_POST['selected-shift'])[2]);
+      var_dump($shiftCode);
 
       $getShiftIDsQuery = "SELECT DISTINCT horse_care_shifts.id FROM horse_care_shifts, workers WHERE care_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (workers.archived IS NULL OR workers.archived = '')) AND (horse_care_shifts.archived IS NULL OR horse_care_shifts.archived = '');";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
@@ -276,10 +278,10 @@ EOT;
         <input type="text" name="selected-shift" list="shift-list">
           <datalist id="shift-list">
 EOT;
-          $query = "SELECT DISTINCT care_type, name FROM horse_care_shifts, workers WHERE workers.id = horse_care_shifts.leader AND (horse_care_shifts.archived IS NULL OR horse_care_shifts.archived = '');";
+          $query = "SELECT DISTINCT care_type, name, shift_code FROM horse_care_shifts, workers WHERE workers.id = horse_care_shifts.leader AND (horse_care_shifts.archived IS NULL OR horse_care_shifts.archived = '');";
           $result = pg_query($db_connection, $query);
           while ($row = pg_fetch_row($result)) {
-            echo "<option value='$row[0], $row[1]'>";
+            echo "<option value='$row[0], $row[1], shift code: $row[2]'>";
           }
 
     echo <<<EOT

@@ -25,9 +25,8 @@
       //$selectedShiftType = explode(', ', $_POST['selected-shift'])[0];
       //$selectedLeaderName = explode(', ', $_POST['selected-shift'])[1];
       $shiftCode = explode(': ', explode(', ', $_POST['selected-shift'])[2])[1];
-      var_dump($shiftCode);
 
-      $getShiftIDsQuery = "SELECT DISTINCT office_shifts.id FROM office_shifts, workers WHERE office_shift_type = '$selectedShiftType' AND leader = (SELECT id FROM workers WHERE name LIKE '$selectedLeaderName' AND (workers.archived IS NULL OR workers.archived = '')) AND (office_shifts.archived IS NULL OR office_shifts.archived = '');";
+      $getShiftIDsQuery = "SELECT id FROM office_shifts WHERE shift_code = '{$shiftCode}' AND (archived IS NULL OR archived = '');";
       $shiftIDSQLObject = pg_fetch_all(pg_query($db_connection, $getShiftIDsQuery));
       $shiftIDList = array();
       foreach ($shiftIDSQLObject as $row => $data) {

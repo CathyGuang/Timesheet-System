@@ -264,7 +264,8 @@ EOT;
         <p>Client(s):</p>
 EOT;
   $oldClientIDListPGArray = "{";
-  foreach ($classData['clients'] as $id) {
+  $clientIDList = explode(',', ltrim(rtrim($classData['clients'], "}"), '{'));
+  foreach ($clientIDList as $id) {
     $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
     $oldClientIDListPGArray .= $id .',';
     echo <<<EOT

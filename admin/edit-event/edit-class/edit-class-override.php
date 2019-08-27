@@ -19,13 +19,15 @@
   </header>
 
   <?php
-  //Get post data
-  $_POST = unserialize(base64_decode($_POST['override-post']));
+    //Get post data
+    $_POST = unserialize(base64_decode($_POST['override-post']));
+
+    $classCode = $_POST['class-code'];
 
     //GET TODAYS' DATE AND ONLY MODIFY CLASSES AFTER TODAYS DATE
     $todaysDate = date('Y-m-d');
     //ARCHIVE ALL ROWS OF SELECTED CLASS SO THEY CAN BE REPLACED WITH THE NEW ONES
-    $getClassIDsQuery = "SELECT id FROM classes WHERE class_type = '{$_POST['old-class-type']}' AND clients <@ '{$_POST['old-client-id-list']}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
+    $getClassIDsQuery = "SELECT id FROM classes WHERE class_code = '{$classCode}' AND date_of_class >= '{$todaysDate}' AND (archived IS NULL OR archived = '');";
     $oldClassIDSQLObject = pg_fetch_all(pg_query($db_connection, $getClassIDsQuery));
     if ($oldClassIDSQLObject) {
       foreach ($oldClassIDSQLObject as $row => $data) {

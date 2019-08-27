@@ -233,7 +233,16 @@ function generateClassCode($db_connection) {
 }
 
 
-
+// Function to generate unique shift code for creating and editing volunteer shifts
+function generateShiftCode($db_connection) {
+  $shiftCode = pg_fetch_row(pg_query($db_connection, "SELECT MAX(shift_code) FROM (SELECT shift_code FROM horse_care_shifts UNION SELECT shift_code FROM office_shifts) AS shift_code;"), 0)[0];
+  if ($shiftCode) {
+    $shiftCode++;
+  } else {
+    $shiftCode = 1;
+  }
+  return $shiftCode;
+}
 
 
 

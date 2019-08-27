@@ -59,7 +59,7 @@
 
 
     // Generate new unique class code
-    $classCode = generateClassCode();
+    $classCode = generateClassCode($db_connection);
     var_dump($classCode);
 
     //Create SQL query

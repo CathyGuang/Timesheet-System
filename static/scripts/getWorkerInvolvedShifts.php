@@ -1,7 +1,7 @@
 <?php
   if ($QUERY_NAME == "ALL") {
-    $horseCareQuery = "SELECT * FROM horse_care_shifts;";
-    $officeShiftQuery = "SELECT * FROM office_shifts;";
+    $horseCareQuery = "SELECT * FROM horse_care_shifts WHERE (archived IS NULL OR archived = '');";
+    $officeShiftQuery = "SELECT * FROM office_shifts WHERE (archived IS NULL OR archived = '');";
   } else {
     //Get id of worker being requested in $QUERY_NAME
     $queryID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE workers.name = '{$QUERY_NAME}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];

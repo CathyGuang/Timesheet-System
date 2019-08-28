@@ -20,7 +20,8 @@
 
   <div class="main-content-div">
     <a href="edit-class"><button class="blue-button">Class</button></a>
-    <a href="edit-volunteer-shift"><button class="blue-button">Volunteer Shift</button></a>
+    <a href="edit-horse-care-shift"><button class="blue-button">Horse Care Shift</button></a>
+    <a href="edit-office-shift"><button class="blue-button">Office Shift</button></a>
 
   </div>
 

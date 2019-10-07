@@ -11,8 +11,15 @@
 
 ## Update Log:
 
+### Version 1.4
+  *More robust schedule editing*
+
+* Staff now have more streamlined interfacing between their daily schedule and the manage classes page
+
+* Admin now have access to an editable daily schedule, so any specific class can be edited at a glance
+
 ### Version 1.3
-  *Automatic Emails*
+  *Automatic emails*
 
 * Volunteers and Staff who record their hours can optionally send email updates to coordinators
 

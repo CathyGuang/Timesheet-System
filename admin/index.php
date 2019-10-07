@@ -27,7 +27,7 @@
     <a href="send-email"><button class="blue-button">Send Email</button></a>
   </div>
 
-  <form autocomplete="off" action="editable-daily-schedule/index.php" method="post" id="editable-daily-schedule-form" style="visibility: hidden">
+  <form autocomplete="off" action="editable-daily-schedule/" method="post" id="editable-daily-schedule-form" style="visibility: hidden">
     <input type="text" name="selected-name" value="ALL">
   </form>
 

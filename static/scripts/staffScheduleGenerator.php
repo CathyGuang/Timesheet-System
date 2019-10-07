@@ -5,7 +5,6 @@
     $selectedDate = $_POST['selected-date'];
 
     $QUERY_NAME = $selectedName;
-    var_dump($QUERY_NAME);
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedClasses.php";
     include $_SERVER['DOCUMENT_ROOT']."/static/scripts/getWorkerInvolvedShifts.php";
     //these scripts generate the variables $allClasses, $allOfficeShifts, $allHorseCareShifts

@@ -9,10 +9,6 @@
 </head>
 
 <body>
-  <?php
-    $_POST['selected-name'] = "ALL";
-    $_POST['selected-date'] = date('Y-m-d');
-  ?>
   <div class="schedule-header">
     <header>
       <h1>Editable Daily Schedule</h1>

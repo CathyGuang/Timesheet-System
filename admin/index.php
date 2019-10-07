@@ -23,9 +23,13 @@
     <a href="edit-event"><button class="red-button">Edit/Remove Class/Shift</button></a>
     <a href="edit-object"><button class="red-button">Edit/Remove Object</button></a>
     <a href="configuration"><button class="blue-button">Configuration</button></a>
+    <button type="submit" form="editable-daily-schedule-form" name="selected-date" value="<?php echo date('Y-m-d'); ?>" class="blue-button">Editable Daily Schedule</button>
     <a href="send-email"><button class="blue-button">Send Email</button></a>
-
   </div>
+
+  <form autocomplete="off" action="/editable-daily-schedule/index.php" method="post" id="editable-daily-schedule-form" style="visibility: hidden">
+    <input type="text" name="selected-name" value="ALL">
+  </form>
 
 
 </body>

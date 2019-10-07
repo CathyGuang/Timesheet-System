@@ -9,10 +9,13 @@
 </head>
 
 <body>
-  <?php $_POST['selected-name'] = "ALL"; ?>
+  <?php
+    $_POST['selected-name'] = "ALL";
+    $_POST['selected-date'] = date('Y-m-d');
+  ?>
   <div class="schedule-header">
     <header>
-      <h1><?php echo $_POST['selected-name'] ?>'s Daily Schedule</h1>
+      <h1>Editable Daily Schedule</h1>
       <nav> <a href="../"><button id="back-button">Back</button></a>
         <a href="/"><button id="home-button">Home</button></a>
       </nav>

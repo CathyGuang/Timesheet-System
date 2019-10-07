@@ -11,7 +11,9 @@
 
   <header>
     <h1>Manage Classes</h1>
-    <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/includes/nav.php"?>
+    <nav> <a href="../"><button id="back-button">Back</button></a>
+      <a href="/"><button id="home-button">Home</button></a>
+    </nav>
   </header>
 
   <?php

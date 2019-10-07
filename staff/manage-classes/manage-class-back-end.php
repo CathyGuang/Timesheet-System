@@ -11,7 +11,7 @@
 
   <header>
     <h1>Manage Classes</h1>
-    <nav> <button id="back-button" onclick="window.history.back()">Back</button>
+    <nav> <button id="back-button" onclick="window.history.back();window.history.back()">Back</button>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

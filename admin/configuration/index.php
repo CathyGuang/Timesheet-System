@@ -19,6 +19,7 @@
   <div class="main-content-div">
 
     <a href="emails"><button class="blue-button">System Emails</button></a>
+    <a href="class-colors"><button class="blue-button">Class Colors</button></a>
 
   </div>
 

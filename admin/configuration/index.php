@@ -18,7 +18,7 @@
 
   <div class="main-content-div">
 
-    <a href="emails.php"><button class="blue-button">System Emails</button></a>
+    <a href="emails"><button class="blue-button">System Emails</button></a>
 
   </div>
 

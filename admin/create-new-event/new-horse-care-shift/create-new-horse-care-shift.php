@@ -84,7 +84,9 @@
       }
     }
     if ($abort) {
-      echo "<h3 class='main-content-header'>The database has not been changed. Please <button onclick='window.history.back();' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
+      $postString = base64_encode(serialize($_POST));
+      echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
+      echo "<h3 class='main-content-header'>The database has not been changed. Please <button form='retry-form' type='submit' style='width: 80pt;'>resolve</button> double-bookings and try again.</h3>";
       return;
     }
 

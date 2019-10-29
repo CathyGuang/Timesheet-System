@@ -18,10 +18,12 @@
   </header>
 
 
+  <?php if ($_POST['old-post']) {$oldPostData = unserialize(base64_decode($_POST['old-post']));} ?>
+
   <form autocomplete="off" action="create-new-horse-care-shift.php" method="post" class="main-form full-page-form">
 
     <p>Shift Type:</p>
-    <input type="text" name="shift-type" list="shift-type-list" onclick="select()" required>
+    <input type="text" name="shift-type" value="<?php echo $oldPostData['shift-type']; ?>" list="shift-type-list" onclick="select()" required>
       <datalist id="shift-type-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::CARE_TYPE))::text EXCEPT SELECT name FROM archived_enums;";

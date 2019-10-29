@@ -164,11 +164,11 @@ EOT;
       if ($event['horses'] && $event['horses'][0] != "") {
         foreach ($event['horses'] as $key => $horseName) {
           if ($horseName == "HORSE NEEDED") {
-            $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='color: red; float: left;'>{$horseName}</div>, ";
+            $horseString .= "<i style='float:left;'>Horse:&nbsp</i><div style='width: 240px; color: red;'>{$horseName}</div>";
           } else {
             $horseString .= "<i>Horse: </i>" . $horseName . ", ";
+            $horseString .= "<br>";
           }
-          $horseString .= "<br>";
         }
       }
       // For horse care shifts

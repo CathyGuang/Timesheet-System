@@ -64,7 +64,7 @@
 
 
     //Get Date/Time array of class times after today's date.
-    $dateData = getDateTimeArray($todaysDate, $_POST['end-date'], $_POST['every-other-week']);
+    $dateData = getDateTimeArray(max($todaysDate, $_POST['start-date']), $_POST['end-date'], $_POST['every-other-week']);
     $dateTimeTriplets = $dateData[0];
     $all_weekdays_times = $dateData[1];
 

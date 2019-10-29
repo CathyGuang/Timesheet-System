@@ -35,6 +35,8 @@
       return;
     }
 
+
+
     //CREATE AND DISPLAY SCHEDULE FOR GIVEN WORKER AND DATE
 
     //an array containing all class and shift data indexed by start time.

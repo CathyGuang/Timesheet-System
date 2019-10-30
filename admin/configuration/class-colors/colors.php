@@ -22,6 +22,8 @@
     <?php
 
 
+      var_dump($_POST);
+
       $result = true;
 
       if ($result) {

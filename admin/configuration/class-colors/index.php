@@ -20,9 +20,9 @@
 
     <form class="main-form small-form" action="colors.php" method="post">
       <div>
-        <p>Class Type:</p>
+        <p>Class Type: </p>
 
-        <p>Color:<input id="color-picker" type="color" name="color" value=""></p>
+        <p>Color: <input id="color-picker" type="color" name="color" value=""></p>
       </div>
 
     </form>

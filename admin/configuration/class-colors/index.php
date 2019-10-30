@@ -20,10 +20,10 @@
 
     <form class="main-form small-form" action="colors.php" method="post">
       <div>
-        <label for="color-picker">Color:</label>
+        <p>Color:</p>
         <input id="color-picker" type="color" name="color" value="">
       </div>
-      
+
     </form>
 
   </div>

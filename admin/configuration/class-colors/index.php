@@ -19,7 +19,8 @@
   <div class="main-content-div">
 
     <form class="main-form small-form" action="colors.php" method="post">
-      <input type="color" name="color" value="">
+      <label for="color-picker"></label>
+      <input id="color-picker" type="color" name="color" value="">
     </form>
 
   </div>

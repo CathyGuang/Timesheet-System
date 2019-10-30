@@ -23,7 +23,7 @@
         <p>Class Type: <input type="text" name="class-type" value="" list="class-type-list"></p>
         <datalist id="class-type-list">
           <?php
-            $getClassTypesQuery = "SELECT unnest(enum_range(NULL::class_type))::text EXCEPT SELECT name FROM archived_enums;";
+            $getClassTypesQuery = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
             $classTypeNames = pg_fetch_all_columns(pg_query($db_connection, $getClassTypesQuery));
             var_dump($classTypeNames);
             foreach ($classTypeNames as $name) {

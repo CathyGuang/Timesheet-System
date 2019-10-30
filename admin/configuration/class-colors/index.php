@@ -20,9 +20,17 @@
 
     <form class="main-form small-form" action="colors.php" method="post">
       <div>
-        <p>Class Type: </p>
-
-        <p>Color: <input id="color-picker" type="color" name="color" value=""></p>
+        <p>Class Type: <input type="text" name="class-type" value="" list="class-type-list"></p>
+        <datalist id="class-type-list">
+          <?php
+            $getClassTypesQuery = "SELECT unnest(enum_range(NULL::class_type))::text EXCEPT SELECT name FROM archived_enums;";
+            $classTypeNames = pg_fetch_all_columns(pg_query($db_connection, $getClassTypesQuery));
+            foreach ($classTypeNames as $name) {
+              echo "<option value='{$name}'>";
+            }
+          ?>
+        </datalist>
+        <p>Color: <input type="color" name="color" value=""></p>
       </div>
 
     </form>

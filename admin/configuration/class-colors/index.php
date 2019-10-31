@@ -25,7 +25,7 @@
         <datalist id="class-type-list">
           <?php
             $getClassTypesQuery = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
-            $classTypeNames = pg_fetch_all(pg_query($db_connection, $getClassTypesQuery));
+            $classTypeNames = pg_fetch_all_columns(pg_query($db_connection, $getClassTypesQuery));
             var_dump($classTypeNames);
             foreach ($classTypeNames as $name) {
               echo "<option value='{$name}'>";

@@ -23,8 +23,13 @@
 
 
       var_dump($_POST);
+      $classType = pg_escape_string(trim($_POST['class-type']));
+      $colorCode = pg_escape_string(trim($_POST['color-code']));
 
-      $result = true;
+      $query = "INSERT INTO class_type_colors (class_type, color_code) VALUES ({$classType}, {$colorCode})
+      ON CONFLICT (class_type) DO NOTHING;"
+
+      $result = pg_query($db_connection, $query);
 
       if ($result) {
         echo "<h3 class='main-content-header'>Success</h3>";

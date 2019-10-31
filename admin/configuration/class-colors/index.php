@@ -32,7 +32,7 @@
             }
           ?>
         </datalist>
-        <p>Color: <input type="color" name="color" value=""></p>
+        <p>Color: <input type="color" name="color-code" value=""></p>
         <input type="submit" value="Update">
       </div>
 

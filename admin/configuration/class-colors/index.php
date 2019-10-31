@@ -33,6 +33,7 @@
           ?>
         </datalist>
         <p>Color: <input type="color" name="color" value=""></p>
+        <input type="submit" value="Update">
       </div>
 
     </form>

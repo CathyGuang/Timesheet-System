@@ -87,7 +87,6 @@ EOT;
       } else {
         $classColor = "style='background-color: {$classColor};'";
       }
-      var_dump($classColor);
 
       //Time
       $time = $event['start_time'];
@@ -96,16 +95,16 @@ EOT;
         $style = "style='background-color: var(--dark-red);'";
         $cancelled = "<br>CANCELLED";
       } else {
-        $style = "";
+        $style = $classColor;
         $cancelled = "";
       }
       echo "<p class='schedule-time' {$style}>{$newTimeString}{$cancelled}</p>";
 
       //Display title:
-      echo "<p class='schedule-display-title'>{$event['display_title']}<br><br><i>{$event['arena']}</i></p>";
+      echo "<p class='schedule-display-title' {$classColor}>{$event['display_title']}<br><br><i>{$event['arena']}</i></p>";
 
       //Event Type
-      echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
+      echo "<p class='schedule-event-type' {$classColor}>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
 
       //Staff
       $staffString = "";

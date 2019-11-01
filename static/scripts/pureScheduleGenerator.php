@@ -81,7 +81,7 @@ EOT;
 
     foreach ($masterList as $event) {
 
-      $classColor = pg_fetch_row(pg_query($db_connection, "SELECT color_code FROM class_type_colors WHERE class_type = '{$event['class_type']}';"));
+      $classColor = pg_fetch_row(pg_query($db_connection, "SELECT color_code FROM class_type_colors WHERE class_type = '{$event['class_type']}';"))[0];
       if (!$classColor) {
         $classColor = '';
       } else {

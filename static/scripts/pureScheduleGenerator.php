@@ -81,6 +81,13 @@ EOT;
 
     foreach ($masterList as $event) {
 
+      $classColor = pg_fetch_row(pg_query($db_connection, "SELECT color_code FROM class_type_colors WHERE class_type = '{$event['class_type']}';"));
+      if (!$classColor) {
+        $classColor = '';
+      } else {
+        $classColor = "style='background-color: {$classColor};'";
+      }
+
       //Time
       $time = $event['start_time'];
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));

@@ -89,6 +89,13 @@ EOT;
 
     foreach ($masterList as $event) {
 
+      $classColor = pg_fetch_row(pg_query($db_connection, "SELECT color_code FROM class_type_colors WHERE class_type = '{$event['class_type']}';"))[0];
+      if (!$classColor) {
+        $classColor = '';
+      } else {
+        $classColor = "style='background-color: {$classColor};'";
+      }
+
       //Time
       $time = $event['start_time'];
       $newTimeString = date("g:i a", strtotime($time)) . "<br> &#8212 <br>" . date("g:i a", strtotime($event['end_time']));
@@ -96,13 +103,13 @@ EOT;
         $style = "style='background-color: var(--dark-red);'";
         $cancelled = "<br>CANCELLED";
       } else {
-        $style = "";
+        $style = $classColor;
         $cancelled = "";
       }
       echo "<p class='schedule-time' {$style}>{$newTimeString}{$cancelled}</p>";
 
       //Display title:
-      echo "<p class='schedule-display-title'>{$event['display_title']}<br><br><i>{$event['arena']}</i></p>";
+      echo "<p class='schedule-display-title' {$classColor}>{$event['display_title']}<br><br><i>{$event['arena']}</i></p>";
 
       //Event Type
       if ($event['clients']) {
@@ -112,9 +119,9 @@ EOT;
           $clientString .= $name . ",";
         }
         $getQuery = http_build_query(array("buttonInfo" => $event['id'] . ";" . $clientString));
-        echo "<a class='schedule-event-type' href='/staff/manage-classes/manage-class-front-end.php?{$getQuery}'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</a>";
+        echo "<a class='schedule-event-type' href='/staff/manage-classes/manage-class-front-end.php?{$getQuery}' {$classColor}>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</a>";
       } else {
-        echo "<p class='schedule-event-type'>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
+        echo "<p class='schedule-event-type' {$classColor}>{$event['class_type']}{$event['care_type']}{$event['office_shift_type']}</p>";
       }
 
 
@@ -131,7 +138,7 @@ EOT;
       if (strpos($staffString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<p class='schedule-staff' {$style}>{$staffString}</p>";
 
@@ -154,7 +161,7 @@ EOT;
       if (strpos($clientString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
@@ -178,7 +185,7 @@ EOT;
       if (strpos($horseString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       if ($horseString == "") {
         $horseString = "&#8212";
@@ -217,7 +224,7 @@ EOT;
       if (strpos($equipmentString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       if ($equipmentString == "") {
         $equipmentString = "&#8212";
@@ -252,7 +259,7 @@ EOT;
       if (strpos($volunteerString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
 

@@ -21,8 +21,6 @@
 
     <?php
 
-
-      var_dump($_POST);
       $classType = pg_escape_string(trim($_POST['class-type']));
       $colorCode = pg_escape_string(trim($_POST['color-code']));
 

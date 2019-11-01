@@ -119,7 +119,7 @@ EOT;
       if (strpos($staffString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<p class='schedule-staff' {$style}>{$staffString}</p>";
 
@@ -142,7 +142,7 @@ EOT;
       if (strpos($clientString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<p class='schedule-clients' {$style}>{$clientString}</p>";
 
@@ -167,7 +167,7 @@ EOT;
       if (strpos($horseString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       if ($horseString == "") {
         $horseString = "&#8212";
@@ -206,7 +206,7 @@ EOT;
       if (strpos($equipmentString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       if ($equipmentString == "") {
         $equipmentString = "&#8212";
@@ -243,7 +243,7 @@ EOT;
       if (strpos($volunteerString, $selectedName) !== false) {
         $style = "style='background-color: var(--accent-purple);'";
       } else {
-        $style = "";
+        $style = $classColor;
       }
       echo "<div class='schedule-volunteers' {$style}>{$volunteerString}</div>";
 

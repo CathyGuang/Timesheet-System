@@ -87,6 +87,7 @@ EOT;
       } else {
         $classColor = "style='background-color: {$classColor};'";
       }
+      var_dump($classColor);
 
       //Time
       $time = $event['start_time'];

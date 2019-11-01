@@ -26,7 +26,7 @@
       $classType = pg_escape_string(trim($_POST['class-type']));
       $colorCode = pg_escape_string(trim($_POST['color-code']));
 
-      $query = "INSERT INTO class_type_colors (class_type, color_code) VALUES ('{$classType}', '{$colorCode}');";
+      $query = "DELETE FROM class_type_colors WHERE class_type = '{$classType}'; INSERT INTO class_type_colors (class_type, color_code) VALUES ('{$classType}', '{$colorCode}');";
 
       $result = pg_query($db_connection, $query);
 

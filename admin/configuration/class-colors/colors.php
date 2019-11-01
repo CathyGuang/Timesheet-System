@@ -26,7 +26,7 @@
       $classType = pg_escape_string(trim($_POST['class-type']));
       $colorCode = pg_escape_string(trim($_POST['color-code']));
 
-      $query = "INSERT INTO class_type_colors (class_type, color_code) VALUES ('{$classType}', '{$colorCode}') ON CONFLICT (class_type) DO SET class_type = '{$colorCode}';";
+      $query = "INSERT INTO class_type_colors (class_type, color_code) VALUES ('{$classType}', '{$colorCode}') ON CONFLICT (class_type) DO UPDATE SET class_type = '{$colorCode}';";
 
       $result = pg_query($db_connection, $query);
 

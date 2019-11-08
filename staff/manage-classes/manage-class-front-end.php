@@ -36,6 +36,16 @@
 
 
 
+    <label for="start-time">from:</label>
+    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start-time'] ?>">
+    <label for="end-time">to:</label>
+    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end-time'] ?>">
+
+
+
+
+
+
     <p>Lesson Plan:</p>
     <textarea name="lesson-plan" rows="8" cols="30">
       <?php

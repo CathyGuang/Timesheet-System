@@ -37,9 +37,9 @@
 
 
     <label for="start-time">from:</label>
-    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start-time'] ?>">
+    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start_time'] ?>">
     <label for="end-time">to:</label>
-    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end-time'] ?>">
+    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end_time'] ?>">
 
 
 

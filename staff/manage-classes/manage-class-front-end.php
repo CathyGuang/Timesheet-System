@@ -159,9 +159,6 @@ EOT;
 
 
 
-
-
-
       <p>Client Notes:</p>
       <textarea name="client-notes" rows="10" cols="30">
         <?php
@@ -169,6 +166,15 @@ EOT;
         ?>
       </textarea>
       <br>
+
+
+
+
+
+
+
+
+
 
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
@@ -234,12 +240,23 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>{$role}:</p>
+          <p>Volunteer:</p>
+          <input type="text" name="volunteer-roles[]" list="volunter-role-list" value="{$role}" onclick="select()">
           <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-          <input type="text" name="volunteer-roles[]" value="{$role}" style="visibility:hidden;">
 EOT;
         }
       ?>
+      <datalist id="volunteer-role-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $roleNames = pg_fetch_all_columns($result);
+          foreach ($roleNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
       <datalist id="volunteer-list">
         <?php
           $query = "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');";

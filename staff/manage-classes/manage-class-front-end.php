@@ -186,12 +186,12 @@ EOT;
           $classInfo['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
         }
 
-        echo "<div id='staff-section'>";
+        echo "<div id='staff-section'><p>Staff:</p>";
         foreach ($classInfo['staff'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <p>Staff:</p>
+            <br>
             <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
             <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
 EOT;
@@ -238,12 +238,12 @@ EOT;
           $classInfo['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
         }
 
-        echo "<div id='volunteer-section'>";
+        echo "<div id='volunteer-section'><p>Volunteer:</p>";
         foreach ($classInfo['volunteers'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <p>Volunteer:</p>
+            <br>
             <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
             <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
 
@@ -251,7 +251,7 @@ EOT;
         }
         echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Additional Volunteer</button>";
       ?>
-      
+
       <datalist id="volunteer-role-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";

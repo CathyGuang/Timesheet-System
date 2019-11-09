@@ -190,9 +190,12 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>Staff:</p>
-          <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
-          <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
+          <div id="staff-section">
+            <p>Staff:</p>
+            <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
+            <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
+            <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff Member</button>
+          </div>
 EOT;
         }
       ?>
@@ -240,9 +243,12 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>Volunteer:</p>
-          <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
-          <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
+          <div id="volunteer-section">
+            <p>Volunteer:</p>
+            <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
+            <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
+            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
+          </div>
 EOT;
         }
       ?>
@@ -289,6 +295,141 @@ EOT;
     <br><br>
     <input type="submit" value="Submit">
   </form>
+
+
+  <footer>
+    <script type="text/javascript">
+    function newStaffFunction() {
+        newInput = document.createElement('br');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
+        //add role selector
+        newInput = document.createElement('label');
+        newInput.innerHTML = "Role: ";
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staff-roles[]');
+        newInput.setAttribute('list', 'staff-role-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+        //Add name selector
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('label');
+        newInput.innerHTML = "Staff Member: ";
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staff[]');
+        newInput.setAttribute('list', 'staff-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var staffSection = document.getElementById('staff-section');
+        staffSection.appendChild(newInput);
+    };
+
+    function newHorseFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'horses[]');
+        newInput.setAttribute('list', 'horse-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var horseSection = document.getElementById('horse-section');
+        horseSection.appendChild(newInput);
+    };
+
+    function newTackFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tacks[]');
+        newInput.setAttribute('list', 'tack-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var tackSection = document.getElementById('tack-section');
+        tackSection.appendChild(newInput);
+    };
+
+    function newPadFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'pads[]');
+        newInput.setAttribute('list', 'pad-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('pad-section');
+        padSection.appendChild(newInput);
+    };
+    function newTackNotesFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tack-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('tack-notes-section');
+        padSection.appendChild(newInput);
+    };
+    function newClientEquipmentNotesFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'client-equipment-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('client-equipment-section');
+        padSection.appendChild(newInput);
+    };
+    function newClientFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'clients[]');
+        newInput.setAttribute('list', 'client-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var clientSection = document.getElementById('client-section');
+        clientSection.appendChild(newInput);
+    };
+
+    function newVolunteerFunction() {
+        //Add role selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'volunteer-roles[]');
+        newInput.setAttribute('list', 'volunteer-role-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var volunteerRoleSection = document.getElementById('volunteer-role-section');
+        volunteerRoleSection.appendChild(newInput);
+        //Add name selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'volunteers[]');
+        newInput.setAttribute('list', 'volunteer-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var volunteerSection = document.getElementById('volunteer-section');
+        volunteerSection.appendChild(newInput);
+    };
+
+
+    </script>
+  </footer>
+
+
 
 
 </body>

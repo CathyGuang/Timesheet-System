@@ -16,6 +16,8 @@
 
 * Both the staff manage class page and the editable daily schedule now have the ability to edit more aspects of a class, such as date and time, as well as adding additional staff and volunteers
 
+* Class types can now be custom-color coded in the schedule
+
 ### Version 1.4
   *More robust schedule editing*
 

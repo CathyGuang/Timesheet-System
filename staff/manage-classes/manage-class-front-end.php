@@ -20,14 +20,29 @@
     $classID = explode(';', $_GET['buttonInfo'])[0];
     $clientString = explode(';', $_GET['buttonInfo'])[1];
 
-    $getClassInfoQuery = "SELECT display_title, class_type, cancelled, date_of_class, lesson_plan, horses, horse_behavior, horse_behavior_notes, clients, attendance, client_notes, staff, volunteers FROM classes WHERE id = {$classID}";
+    $getClassInfoQuery = "SELECT * FROM classes WHERE id = {$classID}";
     $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
     echo "<h3 class='main-content-header'>{$classInfo['display_title']}, {$classInfo['date_of_class']}</h3>";
   ?>
 
-  <form autocomplete="off" action="manage-class-back-end.php" method="post" class="main-form">
+  <form autocomplete="off" id="class-form" action="manage-class-back-end.php" method="post" class="main-form">
 
-    <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="id" value="<?php echo $classID; ?>" style="visibility: hidden; height: 1px;">
+
+
+
+    <p>Date of Class:</p>
+    <input type="date" id="date-of-class" name="date-of-class" value="<?php echo $classInfo['date_of_class']; ?>" required>
+
+
+
+    <label for="start-time">from:</label>
+    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start_time']; ?>">
+    <label for="end-time">to:</label>
+    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end_time']; ?>">
+
+
+
 
     <p>Lesson Plan:</p>
     <textarea name="lesson-plan" rows="8" cols="30">
@@ -35,6 +50,28 @@
         echo trim($classInfo['lesson_plan']);
       ?>
     </textarea>
+
+
+
+
+    <p>Arena:</p>
+    <input type="text" name="arena" list="arena-list" value="<?php echo $classInfo['arena']; ?>" onclick="select();">
+      <datalist id="arena-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $arenaNames = pg_fetch_all_columns($result);
+          foreach ($arenaNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+
+
+
+
+
 
     <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
     <p>Horse(s):</p>
@@ -56,6 +93,10 @@ echo "<option value='$value'>";
         ?>
       </datalist>
 
+
+
+
+
       <p>Horse Behavior:</p>
       <input type="text" name="horse-behavior" list="horse-behavior-enum" value="<?php echo $classInfo['horse_behavior']; ?>">
         <datalist id="horse-behavior-enum">
@@ -70,13 +111,18 @@ echo "<option value='$value'>";
           ?>
         </datalist>
 
-      <br><br>
+
+      <br>
       <p>Horse Behavior Notes:</p>
       <textarea name="horse-behavior-notes" rows="8" cols="30">
         <?php
           echo trim($classInfo['horse_behavior_notes']);
         ?>
       </textarea>
+
+
+
+
 
       <p>Attendance:</p>
       <?php
@@ -109,6 +155,10 @@ EOT;
       </datalist>
 
 
+
+
+
+
       <p>Client Notes:</p>
       <textarea name="client-notes" rows="10" cols="30">
         <?php
@@ -117,6 +167,15 @@ EOT;
       </textarea>
       <br>
 
+
+
+
+
+
+
+
+
+      <!-- STAFF -->
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
         $classInfo['staff'] = array();
@@ -127,16 +186,29 @@ EOT;
           $classInfo['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
         }
 
+        echo "<div id='staff-section'><p>Staff:</p>";
         foreach ($classInfo['staff'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>{$role}:</p>
-          <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
-          <input type="text" name="staff-roles[]" value="{$role}" style="visibility:hidden;">
+            <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
+            <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
+            <br><br>
 EOT;
         }
+        echo "</div><button type='button' id='add-staff-button' onclick='newStaffFunction();'>Add Staff Member</button>";
       ?>
+      <datalist id="staff-role-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $classTypeNames = pg_fetch_all_columns($result);
+          foreach ($classTypeNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
       <datalist id="staff-list">
         <?php
           $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
@@ -150,6 +222,12 @@ EOT;
       </datalist>
 
 
+
+
+
+
+
+      <!-- VOLUNTEERS -->
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['volunteers'], '}'), '{'));
         $classInfo['volunteers'] = array();
@@ -160,16 +238,30 @@ EOT;
           $classInfo['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
         }
 
+        echo "<div id='volunteer-section'><p>Volunteer:</p>";
         foreach ($classInfo['volunteers'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>{$role}:</p>
-          <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-          <input type="text" name="volunteer-roles[]" value="{$role}" style="visibility:hidden;">
+            <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
+            <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
+            <br><br>
 EOT;
         }
+        echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Additional Volunteer</button>";
       ?>
+
+      <datalist id="volunteer-role-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $roleNames = pg_fetch_all_columns($result);
+          foreach ($roleNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
       <datalist id="volunteer-list">
         <?php
           $query = "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');";
@@ -183,15 +275,151 @@ EOT;
       </datalist>
 
 
-      <br>
+
+
+
+
+
+
 
     <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
     <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
 
 
+
+
+
+
+
     <br><br>
     <input type="submit" value="Submit">
   </form>
+
+
+  <footer>
+    <script type="text/javascript">
+    function newStaffFunction() {
+        var staffSection = document.getElementById('staff-section');
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
+        //add role selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staff-roles[]');
+        newInput.setAttribute('list', 'staff-role-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        staffSection.appendChild(newInput);
+        //add name selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'staff[]');
+        newInput.setAttribute('list', 'staff-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        staffSection.appendChild(newInput);
+    };
+
+    function newHorseFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'horses[]');
+        newInput.setAttribute('list', 'horse-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var horseSection = document.getElementById('horse-section');
+        horseSection.appendChild(newInput);
+    };
+
+    function newTackFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tacks[]');
+        newInput.setAttribute('list', 'tack-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var tackSection = document.getElementById('tack-section');
+        tackSection.appendChild(newInput);
+    };
+
+    function newPadFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'pads[]');
+        newInput.setAttribute('list', 'pad-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('pad-section');
+        padSection.appendChild(newInput);
+    };
+    function newTackNotesFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tack-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('tack-notes-section');
+        padSection.appendChild(newInput);
+    };
+    function newClientEquipmentNotesFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'client-equipment-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var padSection = document.getElementById('client-equipment-section');
+        padSection.appendChild(newInput);
+    };
+    function newClientFunction() {
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'clients[]');
+        newInput.setAttribute('list', 'client-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        var clientSection = document.getElementById('client-section');
+        clientSection.appendChild(newInput);
+    };
+
+    function newVolunteerFunction() {
+        var volunteerSection = document.getElementById('volunteer-section');
+        newInput = document.createElement('br');
+        volunteerSection.appendChild(newInput);
+        //Add role selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'volunteer-roles[]');
+        newInput.setAttribute('list', 'volunteer-role-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        volunteerSection.appendChild(newInput);
+        //Add name selector
+        newInput = document.createElement('input');
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'volunteers[]');
+        newInput.setAttribute('list', 'volunteer-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        volunteerSection.appendChild(newInput);
+    };
+
+
+    </script>
+  </footer>
+
+
 
 
 </body>

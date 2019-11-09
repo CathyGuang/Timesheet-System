@@ -11,6 +11,11 @@
 
 ## Update Log:
 
+### Version 1.5
+  *Even more robust editing!*
+
+* Both the staff manage class page and the editable daily schedule now have the ability to edit more aspects of a class, such as date and time, as well as adding additional staff and volunteers
+
 ### Version 1.4
   *More robust schedule editing*
 

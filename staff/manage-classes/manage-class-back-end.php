@@ -67,6 +67,7 @@
     }
     $volunteerJSON = "{";
     foreach ($volunteerIDList as $key => $volunteerID) {
+      if ($volunteerID == 1) {continue;}
       $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
     }
     $volunteerJSON = rtrim($volunteerJSON, ',') . "}";

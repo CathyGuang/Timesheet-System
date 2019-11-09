@@ -200,12 +200,14 @@ function prepClassDataForSQL($convertedData) {
 
   $staffJSON = "{";
   foreach ($staffIDList as $key => $staffID) {
+    if ($staffID == 1) {continue;}
     $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
   }
   $staffJSON = pg_escape_string(rtrim($staffJSON, ',') . "}");
 
   $volunteerJSON = "{";
   foreach ($volunteerIDList as $key => $volunteerID) {
+    if ($volunteerID == 1) {continue;}
     $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
   }
   $volunteerJSON = pg_escape_string(rtrim($volunteerJSON, ',') . "}");

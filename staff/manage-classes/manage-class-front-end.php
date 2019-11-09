@@ -175,7 +175,7 @@ EOT;
 
 
 
-
+      <!-- STAFF -->
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
         $classInfo['staff'] = array();
@@ -186,18 +186,17 @@ EOT;
           $classInfo['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
         }
 
+        echo "<div id='staff-section'>";
         foreach ($classInfo['staff'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <div id="staff-section">
             <p>Staff:</p>
             <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
             <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
-          </div>
-          <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff Member</button>
 EOT;
         }
+        echo "</div><button type='button' id='add-staff-button' onclick='newStaffFunction();'>Add Staff Member</button>";
       ?>
       <datalist id="staff-role-list">
         <?php
@@ -228,7 +227,7 @@ EOT;
 
 
 
-
+      <!-- VOLUNTEERS -->
       <?php
         $rawArray = explode(",", ltrim(rtrim($classInfo['volunteers'], '}'), '{'));
         $classInfo['volunteers'] = array();
@@ -239,20 +238,20 @@ EOT;
           $classInfo['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
         }
 
+        echo "<div id='volunteer-section'>";
         foreach ($classInfo['volunteers'] as $role => $name) {
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <div id="volunteer-section">
             <p>Volunteer:</p>
             <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
             <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-          </div>
-          <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
 
 EOT;
         }
+        echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Additional Volunteer</button>";
       ?>
+      
       <datalist id="volunteer-role-list">
         <?php
           $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";

@@ -241,7 +241,7 @@ EOT;
 
           echo <<<EOT
           <p>Volunteer:</p>
-          <input type="text" name="volunteer-roles[]" list="volunter-role-list" value="{$role}" onclick="select()">
+          <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
           <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
 EOT;
         }

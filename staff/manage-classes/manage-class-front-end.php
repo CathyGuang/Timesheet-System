@@ -191,7 +191,7 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <br>
+            <br><br>
             <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
             <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
 EOT;
@@ -243,7 +243,7 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <br>
+            <br><br>
             <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
             <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
 

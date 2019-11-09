@@ -55,6 +55,7 @@
     }
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
+      if ($staffID == 1) {continue;}
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";

@@ -304,6 +304,8 @@ EOT;
         var staffSection = document.getElementById('staff-section');
         newInput = document.createElement('br');
         staffSection.appendChild(newInput);
+        newInput = document.createElement('br');
+        staffSection.appendChild(newInput);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');

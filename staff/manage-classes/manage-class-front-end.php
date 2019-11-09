@@ -191,9 +191,9 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <br><br>
             <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
             <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
+            <br><br>
 EOT;
         }
         echo "</div><button type='button' id='add-staff-button' onclick='newStaffFunction();'>Add Staff Member</button>";
@@ -243,10 +243,9 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-            <br><br>
             <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
             <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-
+            <br><br>
 EOT;
         }
         echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Additional Volunteer</button>";

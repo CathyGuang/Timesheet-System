@@ -306,6 +306,7 @@ EOT;
         staffSection.appendChild(newInput);
         newInput = document.createElement('br');
         staffSection.appendChild(newInput);
+        //add role selector
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');
@@ -314,6 +315,7 @@ EOT;
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
         staffSection.appendChild(newInput);
+        //add name selector
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff[]');
@@ -392,6 +394,9 @@ EOT;
     };
 
     function newVolunteerFunction() {
+        var volunteerSection = document.getElementById('volunteer-section');
+        newInput = document.createElement('br');
+        volunteerSection.appendChild(newInput);
         //Add role selector
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
@@ -400,8 +405,7 @@ EOT;
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        var volunteerRoleSection = document.getElementById('volunteer-section');
-        volunteerRoleSection.appendChild(newInput);
+        volunteerSection.appendChild(newInput);
         //Add name selector
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
@@ -410,7 +414,6 @@ EOT;
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        var volunteerSection = document.getElementById('volunteer-section');
         volunteerSection.appendChild(newInput);
     };
 

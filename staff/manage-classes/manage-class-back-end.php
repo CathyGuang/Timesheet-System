@@ -77,6 +77,9 @@
     }
 
 
+    // Other simple fields
+    $arena = $_POST['arena'];
+
 
     // Escape user input strings for postgres
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
@@ -117,6 +120,7 @@
       end_time = '{$endTime}',
       lesson_plan = '{$escapedLessonPlan}',
       cancelled = '{$cancel}',
+      arena = '{$arena}',
       horses = '{$horseIDPGList}',
       clients = '{$clientIDPGList}',
       horse_behavior = '{$_POST['horse-behavior']}',

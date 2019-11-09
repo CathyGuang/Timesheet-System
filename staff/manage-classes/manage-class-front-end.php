@@ -32,16 +32,14 @@
 
 
     <p>Date of Class:</p>
-    <input type="date" id="date-of-class" name="date-of-class" value="<?php echo $classInfo['date_of_class'] ?>" required>
+    <input type="date" id="date-of-class" name="date-of-class" value="<?php echo $classInfo['date_of_class']; ?>" required>
 
 
 
     <label for="start-time">from:</label>
-    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start_time'] ?>">
+    <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start_time']; ?>">
     <label for="end-time">to:</label>
-    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end_time'] ?>">
-
-
+    <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end_time']; ?>">
 
 
 
@@ -53,6 +51,22 @@
       ?>
     </textarea>
 
+
+
+
+    <p>Arena:</p>
+    <input type="text" name="arena" list="arena-list" value="<?php echo $classInfo['arena']; ?>" onclick="select();">
+      <datalist id="arena-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $arenaNames = pg_fetch_all_columns($result);
+          foreach ($arenaNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
 
 
 

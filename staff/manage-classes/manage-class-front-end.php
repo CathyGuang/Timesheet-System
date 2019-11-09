@@ -194,8 +194,8 @@ EOT;
             <p>Staff:</p>
             <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
             <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
-            <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff Member</button>
           </div>
+          <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff Member</button>
 EOT;
         }
       ?>
@@ -247,8 +247,9 @@ EOT;
             <p>Volunteer:</p>
             <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
             <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
           </div>
+          <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
+
 EOT;
         }
       ?>

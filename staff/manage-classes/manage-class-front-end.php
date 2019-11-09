@@ -184,9 +184,9 @@ EOT;
           $name = htmlspecialchars($name, ENT_QUOTES);
 
           echo <<<EOT
-          <p>{$role}:</p>
+          <p>Staff:</p>
           <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
-          <input type="text" name="staff-roles[]" value="{$role}" style="visibility:hidden;">
+          <input type="text" name="staff-roles[]" value="{$role}" onclick="select()">
 EOT;
         }
       ?>

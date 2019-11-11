@@ -128,6 +128,7 @@ EOT;
 
 
 
+
     <div id="pad-section">
       <p>Pad(s):</p>
       <?php
@@ -153,7 +154,6 @@ EOT;
     </div>
     <br>
     <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
-
 
 
 

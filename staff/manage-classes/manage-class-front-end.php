@@ -128,6 +128,32 @@ EOT;
 
 
 
+    <div id="pad-section">
+      <p>Pad(s):</p>
+      <?php
+        $padList = explode(',', ltrim(rtrim($classInfo['pads'], "}"), '{'));
+        foreach ($padList as $key => $name) {
+          $padList[$key] = rtrim(ltrim($name, "\""), "\"");
+          echo <<<EOT
+          <input form='class-form' type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
+EOT;
+        }
+      ?>
+      <datalist id="pad-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $padNames = pg_fetch_all_columns($result);
+          foreach ($padNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+    </div>
+    <br>
+    <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
+
 
 
 

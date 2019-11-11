@@ -87,6 +87,8 @@
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
     $escapedHorseBehaviorNotes = pg_escape_string($_POST['horse-behavior-notes']);
     $escapedClientNotes = pg_escape_string($_POST['client-notes']);
+    $tackList = pg_escape_string(to_pg_array($_POST['tacks']));
+    $padList = pg_escape_string(to_pg_array($_POST['pads']));
 
 
 
@@ -125,6 +127,8 @@
       cancelled = '{$cancel}',
       arena = '{$arena}',
       horses = '{$horseIDPGList}',
+      tacks = '{$tackList}',
+      pads = '{$padList}',
       clients = '{$clientIDPGList}',
       horse_behavior = '{$_POST['horse-behavior']}',
       horse_behavior_notes = '{$escapedHorseBehaviorNotes}',

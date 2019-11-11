@@ -82,23 +82,49 @@
           echo "<input type='text' list='horse-list' name='horses[]' value='{$name}' onclick='select()'>";
         }
       ?>
-        <datalist id="horse-list">
-          <?php
-            $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $horseNames = pg_fetch_all_columns($result);
-            foreach ($horseNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Horse</button>
+      <datalist id="horse-list">
+        <?php
+          $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+          $result = pg_query($db_connection, $query);
+          $horseNames = pg_fetch_all_columns($result);
+          foreach ($horseNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+    </div>
+    <br>
+    <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Horse</button>
 
 
 
+
+    <div id="tack-section">
+      <p>Tack(s):</p>
+      <?php
+        $tackList = explode(',', ltrim(rtrim($classInfo['tacks'], "}"), '{'));
+        foreach ($tackList as $name) {
+          $name = ltrim(rtrim($name, '\"'), '\"');
+          echo <<<EOT
+          <input form='class-form' type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
+EOT;
+        }
+      ?>
+      <datalist id="tack-list">
+        <?php
+          $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
+          $result = pg_query($db_connection, $query);
+          $tackNames = pg_fetch_all_columns($result);
+          foreach ($tackNames as $key => $value) {
+            $value = htmlspecialchars($value, ENT_QUOTES);
+            echo "<option value='$value'>";
+          }
+        ?>
+      </datalist>
+    </div>
+    <br>
+    <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Tack</button>
 
 
 

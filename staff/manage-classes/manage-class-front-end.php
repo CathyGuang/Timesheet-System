@@ -310,7 +310,7 @@ EOT;
             <br><br>
 EOT;
         }
-        echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Additional Volunteer</button>";
+        echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Volunteer</button>";
       ?>
 
       <datalist id="volunteer-role-list">

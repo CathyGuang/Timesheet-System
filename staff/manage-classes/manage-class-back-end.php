@@ -90,27 +90,28 @@
 
 
 
-    // Check for conflicts
+    // Check for conflicts unless class is being cancelled
+    if ($cancel == "FALSE") {
+      //archive class temporarily
+      pg_query($db_connection, "UPDATE classes SET archived = 'true' WHERE classes.id = {$_POST['id']};");
 
-    //archive class temporarily
-    pg_query($db_connection, "UPDATE classes SET archived = 'true' WHERE classes.id = {$_POST['id']};");
+      #$classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
+      $classTimeData = array($dateOfClass, $startTime, $endTime);
+      $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
+      $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
+      $abort = checkForConflicts($dateTimeTriplets, $convertedData);
 
-    #$classTimeData = pg_fetch_row(pg_query($db_connection, "SELECT date_of_class, start_time, end_time FROM classes WHERE classes.id = '{$_POST['id']}';"), 0);
-    $classTimeData = array($dateOfClass, $startTime, $endTime);
-    $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
-    $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
-    $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+      //unarchive class
+      pg_query($db_connection, "UPDATE classes SET archived = NULL WHERE classes.id = {$_POST['id']};");
 
-    //unarchive class
-    pg_query($db_connection, "UPDATE classes SET archived = NULL WHERE classes.id = {$_POST['id']};");
+      if ($abort) {
+        $postString = base64_encode(serialize($_POST));
+        echo "<h3 class='main-content-header'>The database has not been changed. Please <button style='width: 90pt;' onclick='window.history.back()'>try again</button></h3>";
 
-    if ($abort) {
-      $postString = base64_encode(serialize($_POST));
-      echo "<h3 class='main-content-header'>The database has not been changed. Please <button style='width: 90pt;' onclick='window.history.back()'>try again</button></h3>";
-
-      echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
-      echo "<form id='override-form' method='post' action='manage-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
-      return;
+        echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
+        echo "<form id='override-form' method='post' action='manage-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
+        return;
+      }
     }
 
 

@@ -6,10 +6,13 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
   <script>
-    if(performance.getEntriesByType("navigation")[0].type === 'back_forward'){
-      alert("accessed with back!");
-      location.reload(true);
-    }
+    window.addEventListener( "pageshow", function ( event ) {
+      var historyTraversal = event.persisted ||
+          ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
+      if ( historyTraversal ) {
+        window.location.reload();
+      }
+    });
   </script>
 </head>
 

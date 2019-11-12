@@ -56,11 +56,17 @@ EOT;
         <p>Owner email address:</p>
         <input type="email" name="owner-email" value="{$horseInfo['owner_email']}">
 
+        <p>Owner phone number:</p>
+        <input type="phone" name="owner-phone" value="{$horseInfo['owner_phone']}">
+
         <p>Veterinarian name:</p>
         <input type="text" name="vet-name" value="{$horseInfo['vet_name']}">
 
         <p>Veterinarian email address:</p>
         <input type="email" name="vet-email" value="{$horseInfo['vet_email']}">
+
+        <p>Veterinarian phone number:</p>
+        <input type="phone" name="vet-phone" value="{$horseInfo['vet_phone']}">
 
         <p>Organization Uses per Day:</p>
         <input type="number" name="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">

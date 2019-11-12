@@ -8,8 +8,10 @@
   <script>
     window.onload = function() {
       if(!window.location.hash) {
+          oldLocation = window.location;
           window.location = window.location + '#loaded';
           window.location.reload();
+          window.location = oldLocation;
       }
     }
   </script>

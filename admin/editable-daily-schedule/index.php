@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
-  <?php error_reporting(E_ALL & ~E_NOTICE); ?>
   <title>Editable Daily Schedule</title>
+  <script>alert(document.referrer);</script>
 </head>
 
 <body>

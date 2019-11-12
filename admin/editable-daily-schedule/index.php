@@ -7,7 +7,9 @@
   <title>Editable Daily Schedule</title>
   <script>
     window.onload = function() {
-      alert(window.history.next);
+      if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
+          alert('Got here using the browser "Back" or "Forward" button.');
+      }
     }
   </script>
 </head>

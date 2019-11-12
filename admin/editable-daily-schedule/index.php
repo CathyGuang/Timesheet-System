@@ -6,11 +6,8 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
   <script>
-    window.addEventListener( "pageshow", function ( event ) {
-      var historyTraversal = event.persisted ||
-          ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
-      if ( historyTraversal ) {
-        alert("it works");
+    $(window).bind("pageshow", function(event) {
+      if (event.originalEvent.persisted) {
         window.location.reload();
       }
     });

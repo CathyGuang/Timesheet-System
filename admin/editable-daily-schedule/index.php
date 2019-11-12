@@ -5,7 +5,11 @@
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
-  <meta http-equiv="Cache-control" content="No-Cache">
+  <script>
+    if(performance.navigation.type == 2){
+      location.reload(true);
+    }
+  </script>
 </head>
 
 <body>

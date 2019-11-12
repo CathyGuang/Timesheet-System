@@ -7,13 +7,7 @@
   <title>Editable Daily Schedule</title>
   <script>
     window.onload = function() {
-      if(!window.location.hash) {
-          oldLocation = window.location;
-          alert(oldLocation);
-          window.location = window.location + '#loaded';
-          window.location.reload();
-          window.location = oldLocation;
-      }
+      alert(window.history.next);
     }
   </script>
 </head>

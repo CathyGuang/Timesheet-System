@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
-  <script>location.reload();</script>
+  <script>alert(window.history.back());</script>
 </head>
 
 <body>

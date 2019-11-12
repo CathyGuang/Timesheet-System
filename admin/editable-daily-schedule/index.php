@@ -6,7 +6,8 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
   <script>
-    if(performance.navigation.type == 2){
+    if(performance.getEntriesByType("navigation")[0].type === 'back_forward'){
+      alert("accessed with back!");
       location.reload(true);
     }
   </script>

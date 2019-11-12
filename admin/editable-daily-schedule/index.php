@@ -10,6 +10,7 @@
       var historyTraversal = event.persisted ||
           ( typeof window.performance != "undefined" && window.performance.navigation.type === 2 );
       if ( historyTraversal ) {
+        alert("it works");
         window.location.reload();
       }
     });

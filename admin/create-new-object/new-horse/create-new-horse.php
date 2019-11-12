@@ -24,11 +24,13 @@
     $name = pg_escape_string(trim($_POST['name']));
     $owner = pg_escape_string(trim($_POST['owner']));
     $owner_email = pg_escape_string(trim($_POST['owner-email']));
+    $owner_phone = pg_escape_string(trim($_POST['owner-phone']));
     $vet_name = pg_escape_string(trim($_POST['vet-name']));
     $vet_email = pg_escape_string(trim($_POST['vet-email']));
+    $vet_phone = pg_escape_string(trim($_POST['vet-phone']));
     $notes = pg_escape_string(trim($_POST['notes']));
 
-    $query = "INSERT INTO horses(name, owner, owner_email, vet_name, vet_email, org_uses_per_day, owner_uses_per_day, horse_uses_per_week, notes) VALUES ('{$name}', '{$owner}', '{$owner_email}', '{$vet_name}', '{$vet_email}', '{$_POST['org_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$_POST['horse_uses_per_week']}', '{$notes}');";
+    $query = "INSERT INTO horses(name, owner, owner_email, owner_phone, vet_name, vet_email, vet_phone, org_uses_per_day, owner_uses_per_day, horse_uses_per_week, notes) VALUES ('{$name}', '{$owner}', '{$owner_email}', '{$owner_phone}', '{$vet_name}', '{$vet_email}', '{$vet_phone}', '{$_POST['org_uses_per_day']}', '{$_POST['owner_uses_per_day']}', '{$_POST['horse_uses_per_week']}', '{$notes}');";
 
     $result = pg_query($db_connection, $query);
 

@@ -8,6 +8,7 @@
   <script>
     $(window).bind("pageshow", function(event) {
       if (event.originalEvent.persisted) {
+        alert("it works");
         window.location.reload();
       }
     });

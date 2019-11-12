@@ -5,13 +5,7 @@
   <link rel="stylesheet" href="/static/main.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Editable Daily Schedule</title>
-  <script>
-    window.onload = function() {
-      if (window.performance && window.performance.navigation.type == window.performance.navigation.TYPE_BACK_FORWARD) {
-          alert('Got here using the browser "Back" or "Forward" button.');
-      }
-    }
-  </script>
+  <meta http-equiv="Cache-control" content="No-Cache">
 </head>
 
 <body>

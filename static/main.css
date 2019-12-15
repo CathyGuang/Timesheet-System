@@ -172,6 +172,7 @@ button:hover {
 
         .cancel-form {
          background-color: var(--background-red); 
+         width: 50%;
         }
         .cancel-form:hover {
           background-color: var(--dark-red);

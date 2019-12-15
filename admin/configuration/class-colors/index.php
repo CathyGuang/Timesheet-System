@@ -40,11 +40,11 @@
       <div class="form-section">
         <div class="form-element">
           <label for="color-code">Color:</label>
-          <input type="color" name="color-code" id="color-code" value="">
+          <input type="color" name="color-code" id="color-code">
         </div>
       </div>
       <div class="form section">
-        <a href="../"><button class="cancel-form">Cancel</button></a>
+        <button class="cancel-form" onclick="window.history.back()">Cancel</button>
         <input type="submit" value="Update">
       </div>
       

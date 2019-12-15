@@ -213,7 +213,7 @@
             }
           } else {
             echo "<div class='form-section'><div class='form-element'>";
-            echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'><br>";
+            echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
             echo "</div><div class='form-element'";
             echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
             echo "</div></div>";

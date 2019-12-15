@@ -50,13 +50,21 @@
       </div>
     </div>
 
-    <p>Dates: </p>
-    <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></p>
-    <div style="max-width: 500px;">
-      <label for="start-date">Start date:</label>
-      <input type="date" id="start-date" name="start-date" value="<?php echo $oldPostData['start-date']; ?>" placeholder="from" required>
-      <label for="end-date">End date:</label>
-      <input type="date" id="end-date" name="end-date" value="<?php echo $oldPostData['end-date']; ?>" placeholder="to" required>
+    <div class="form-section">
+      <h3>Dates: </h3>
+    </div>
+    <div class="form-section">
+      <div class="form-element">
+        <label style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></label>
+      </div>
+        <div class="form-element">
+        <label for="start-date">Start date:</label>
+        <input type="date" id="start-date" name="start-date" value="<?php echo $oldPostData['start-date']; ?>" placeholder="from" required>
+      </div>
+      <div class="form-element">
+        <label for="end-date">End date:</label>
+        <input type="date" id="end-date" name="end-date" value="<?php echo $oldPostData['end-date']; ?>" placeholder="to" required>
+      </div>
     </div>
 
     <div style="max-width: 440px;">

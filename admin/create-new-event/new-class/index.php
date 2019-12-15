@@ -217,7 +217,6 @@
             echo "</div></div>";
           }
         ?>
-          
       </div>
       <div class="form-section">
         <div class="form-element">
@@ -234,7 +233,6 @@
         <div class="form-section">
           <h3>Client(s)/Horse(s):</h3>
         </div>
-
 
         <?php 
         $index = 0;
@@ -276,8 +274,6 @@
           } else {
             $clientNote = "";
           }
-
-
 
 
           echo <<<EOF
@@ -358,53 +354,40 @@ EOF;
 
      
 
-
-
-
-
-
-
-
-
-
-
-
-    <div>
-      <div id="volunteer-role-section">
-        <p>Role(s):</p>
-        <?php
-          if ($oldPostData['volunteer-roles']) {
-            foreach ($oldPostData['volunteer-roles'] as $role) {
-              $role = htmlspecialchars($role, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
-          }
-        ?>
-          
-        </div>
-        <br>
-        <button style="margin-left: 3vw;" type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
-      </div>
-
-
     <div>
       <div id="volunteer-section">
-        <p>Volunteer(s):</p>
+        <div class="form-section">
+          <h3>Volunteers:</h3>
+        </div>
         <?php
-          if ($oldPostData['volunteers']) {
-            foreach ($oldPostData['volunteers'] as $volunteer) {
-              $volunteer = htmlspecialchars($volunteer, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+          if ($oldPostData['volunteer-roles']) {
+            foreach ($oldPostData['volunteer-roles'] as $index => $role) {
+              $volunteer = htmlspecialchars($oldPostData['volunteers'][$index], ENT_QUOTES);
+              $role = htmlspecialchars($role, ENT_QUOTES);
+              echo "<div class='form-section'><div class='form-element'>";
+              echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
+              echo "</div></div class='form-element'>";
+              echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+              echo "</div></div>";
             }
           } else {
-            echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+            echo "<div class='form-section'><div class='form-element'>";
+              echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
+              echo "</div></div class='form-element'>";
+              echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+              echo "</div></div>";
           }
         ?>
-          
+        </div>
+        <div class="form-section">
+          <div class="form-element">
+            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+          </div>
         </div>
       </div>
+
+
+
 
 
     <div class="form-section">
@@ -415,14 +398,6 @@ EOF;
 
   </form>
   </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -526,19 +501,6 @@ EOF;
               }
             ?>
           </datalist>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

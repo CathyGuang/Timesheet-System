@@ -44,6 +44,7 @@
         </div>
       </div>
       <div class="form section">
+        <a href="../"><button class="cancel-form">Cancel</button></a>
         <input type="submit" value="Update">
       </div>
       

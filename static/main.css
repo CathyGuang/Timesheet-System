@@ -136,6 +136,7 @@ button:hover {
           border-radius: 4px;
           width: 75vw;
           margin:auto;
+          margin-top: 5vh;
           font-family: "Nunito", sans-serif;
         }
 
@@ -168,6 +169,14 @@ button:hover {
         }
         
         
+
+        .cancel-form {
+         background-color: var(--background-red); 
+        }
+        .cancel-form:hover {
+          background-color: var(--dark-red);
+          color: white;
+        }
 
         input[type='submit'] {
           height: 40px;

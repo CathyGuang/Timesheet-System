@@ -28,7 +28,7 @@
     <div class="form-section">
       <div class="form-element">
         <label for="class-type">Class Type:</label>
-        <select type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
+        <select type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required />
           <datalist id="class-type-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";

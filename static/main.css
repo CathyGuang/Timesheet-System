@@ -169,6 +169,14 @@ button:hover {
         }
         
         
+        input[type='date'] {
+          width: fit-content;
+        }
+
+        input[type='time'] {
+          width: fit-content;
+        }
+
 
         .cancel-form {
          background-color: var(--background-red); 

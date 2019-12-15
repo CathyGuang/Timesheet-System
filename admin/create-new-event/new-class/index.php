@@ -336,7 +336,7 @@
             </div>
 
             <div class="form-element">
-              <label>Client Equipment Notes:</label>
+              <label>Equipment Notes:</label>
               <input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>
             </div>
 

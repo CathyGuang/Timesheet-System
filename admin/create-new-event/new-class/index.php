@@ -69,21 +69,33 @@
 
     <div class="form-section">         
         <!-- MONDAY-->
+      <div class="form-element">
         <label for="monday-checkbox">Monday: </label>
         <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php if ($oldPostData['monday-checkbox']) {echo "checked";} ?>>
+      </div>
+      <div class="form-element">
         <label for="monday-start-time">from:</label>
         <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $oldPostData['monday-start-time']; ?>">
+      </div>
+      <div class="form-element">
         <label for="monday-end-time">to:</label>
         <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $oldPostData['monday-end-time']; ?>">
+      </div>
     </div>
     <div class="form-section">
         <!-- TUESDAY-->
+      <div class="form-element">
         <label for="tuesday-checkbox">Tuesday: </label>
         <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php if ($oldPostData['tuesday-checkbox']) {echo "checked";} ?>>
+      </div>
+      <div class="form-element">
         <label for="tuesday-start-time">from:</label>
         <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $oldPostData['tuesday-start-time']; ?>">
+      </div>
+      <div class="form-element">
         <label for="tuesday-end-time">to:</label>
         <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $oldPostData['tuesday-end-time']; ?>">
+      </div>
     </div>
     <div class="form-section">
         <!-- WEDNESDAY-->

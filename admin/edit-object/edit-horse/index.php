@@ -20,7 +20,7 @@
   <?php
     if (!$_POST['selected-horse']) {
       echo <<<EOT
-      <form autocomplete="off" action="" method="post" class="main-form">
+      <form autocomplete="off" action="" method="post" class="standard-form">
         <p>Select a horse to edit:</p>
         <input type="text" name="selected-horse" list="horse-list" onclick='select();'>
           <datalist id="horse-list">
@@ -43,7 +43,7 @@ EOT;
       $horseInfo = pg_fetch_array($horseInfoSQL, 0, PGSQL_ASSOC);
 
       echo <<<EOT
-      <form autocomplete="off" action="edit-horse.php" method="post" class="main-form" style="margin-top: 2vh;">
+      <form autocomplete="off" action="edit-horse.php" method="post" class="standard-form" style="margin-top: 2vh;">
 
 
         <p>Name:</p>

@@ -62,7 +62,7 @@
 
       echo <<<EOT
 
-      <form autocomplete="off" action="edit-horse-care-shift.php" method="post" class="main-form full-page-form">
+      <form autocomplete="off" action="edit-horse-care-shift.php" method="post" class="standard-form standard-form">
 
         <input type="text" name="shift-code" value="{$shiftCode}" style="visibility: hidden;">
 
@@ -272,7 +272,7 @@ EOT;
     } else {
 
     echo <<<EOT
-      <form autocomplete="off" action="" method="post" class="main-form">
+      <form autocomplete="off" action="" method="post" class="standard-form">
         <p>Select a shift to edit:</p>
         <input type="text" name="selected-shift" list="shift-list">
           <datalist id="shift-list">

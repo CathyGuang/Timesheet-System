@@ -19,7 +19,7 @@
 
   <div class="main-content-div">
 
-    <form class="main-form small-form" action="colors.php" method="post">
+    <form class="standard-form standard-form" action="colors.php" method="post">
       <div>
         <p>Class Type: <input type="text" name="class-type" value="" list="class-type-list"></p>
         <datalist id="class-type-list">

@@ -20,7 +20,7 @@
 
   <?php if ($_POST['old-post']) {$oldPostData = unserialize(base64_decode($_POST['old-post']));} ?>
 
-  <form autocomplete="off" action="create-new-horse-care-shift.php" method="post" class="main-form full-page-form">
+  <form autocomplete="off" action="create-new-horse-care-shift.php" method="post" class="standard-form standard-form">
 
     <p>Shift Type:</p>
     <input type="text" name="shift-type" value="<?php echo $oldPostData['shift-type']; ?>" list="shift-type-list" onclick="select()" required>

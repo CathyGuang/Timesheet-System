@@ -18,7 +18,7 @@
 
   <div class="main-content-div">
 
-    <form autocomplete="off" action="schedule.php" method="post" class="main-form small-form">
+    <form autocomplete="off" action="schedule.php" method="post" class="standard-form standard-form">
       <p>Select horse's name:</p>
       <input name="selected-name" list="horses">
       <datalist id="horses">

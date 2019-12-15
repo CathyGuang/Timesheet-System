@@ -22,7 +22,7 @@
     $oldPostData = unserialize(base64_decode($_POST['old-post']));
   ?>
 
-  <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="main-form full-page-form">
+  <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
 
     <p>Class Type:</p>
     <input type="text" name="class-type" value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>

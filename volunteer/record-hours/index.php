@@ -18,7 +18,7 @@
 
 
 
-    <form autocomplete="off" class="main-form" action="volunteer-record-hours.php" method="post">
+    <form autocomplete="off" class="standard-form" action="volunteer-record-hours.php" method="post">
 
 
       <p>Name:</p>

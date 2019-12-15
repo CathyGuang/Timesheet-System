@@ -129,7 +129,7 @@ button:hover {
 
         /* FORM STYLES */
 
-        .main-form {
+        .standard-form {
           display: flex;
           flex-flow: column wrap;
           justify-content: space-around;
@@ -137,31 +137,15 @@ button:hover {
           margin-left: 8%;
           margin-top: 5vh;
         }
-        .small-form {
-          max-height: 40vh
-        }
+        
 
-        .full-page-form {
-          margin-left: 4%;
-          max-height: 115vh;
-        }
-
-        .directory-form {
-          display: flex;
-          flex-flow: row wrap;
-          justify-content: center;
-          max-width: 100vw;
-          margin-left: 5vw;
-          margin-top: 5vh;
-        }
-
-        .main-form > * {
+        .standard-form > * {
           max-width: 300px;
         }
-        .main-form > p {
+        .standard-form > p {
           margin-bottom: 3px;
         }
-        .main-form > button {
+        .standard-form > button {
           margin-bottom: 1vh;
         }
         input {

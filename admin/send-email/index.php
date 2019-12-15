@@ -17,7 +17,7 @@
   </header>
 
 
-    <form autocomplete="off" action="send-email.php"  class="full-page-form" method="post">
+    <form autocomplete="off" action="send-email.php"  class="standard-form" method="post">
       <P>To:</p>
       <input type="text" name="to" list="recipient-list" style="width:30vw;">
       <datalist id="recipient-list">

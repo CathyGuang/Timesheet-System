@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="staff-directory.php" method="post" class="directory-form">
+  <form autocomplete="off" action="staff-directory.php" method="post" class="standard-form">
     <?php
       $query = "SELECT * FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '') ORDER BY name;";
       $allPeople = pg_fetch_all(pg_query($db_connection, $query));

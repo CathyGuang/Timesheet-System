@@ -69,7 +69,7 @@
 
       echo <<<EOT
 
-      <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="main-form full-page-form">
+      <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="standard-form standard-form">
 
         <input type="text" name="class-code" value="{$selectedClassCode}" style="visibility: hidden;">
 
@@ -656,7 +656,7 @@ EOT;
 } else { //IF CLASS HAS NOT YET BEEN SELECTED
 
     echo <<<EOT
-      <form autocomplete="off" action="" method="post" class="main-form">
+      <form autocomplete="off" action="" method="post" class="standard-form">
         <p>Select a class to edit:</p>
         <input type="text" name="selected-class" list="class-list" onclick='select();'>
           <datalist id="class-list">

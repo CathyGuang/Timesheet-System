@@ -16,7 +16,7 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="create-new-worker.php" method="post" class="main-form">
+  <form autocomplete="off" action="create-new-worker.php" method="post" class="standard-form">
 
     <p>Name:</p>
     <input type="text" name="name" value="" required>

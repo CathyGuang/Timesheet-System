@@ -18,7 +18,7 @@
   </header>
 
 
-  <form autocomplete="off" action="edit-other.php" method="post" class="main-form">
+  <form autocomplete="off" action="edit-other.php" method="post" class="standard-form">
 
     <p>Select object type:</p>
     <input id="object-type-selector" name="object-type" list="object-type-list" value="" onclick="select();" required>

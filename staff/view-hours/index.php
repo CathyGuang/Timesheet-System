@@ -18,7 +18,7 @@
 
 
 
-    <form autocomplete="off" class="main-form" action="view-hours.php" method="post">
+    <form autocomplete="off" class="standard-form" action="view-hours.php" method="post">
 
       <p>Name:</p>
       <input type="text" name="staff" list="staff-list" required>

@@ -17,7 +17,7 @@
   </header>
 
 
-  <form autocomplete="off" action="create-new-client.php" method="post" class="main-form">
+  <form autocomplete="off" action="create-new-client.php" method="post" class="standard-form">
 
     <p>Name/Initials:</p>
     <input type="text" name="name" value="" required>

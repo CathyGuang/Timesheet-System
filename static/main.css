@@ -131,7 +131,7 @@ button:hover {
 
         .standard-form {
           margin: auto;
-          flex-flow: column;
+          display: block;
           justify-content: space-around;
           max-height: 77vh;
         }

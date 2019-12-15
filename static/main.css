@@ -147,10 +147,9 @@ button:hover {
         }
 
         .form-section {
-          display: flex;
-          flex-flow: row;
-          justify-content: space-evenly;
-          padding-bottom: 20px;
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          padding-bottom: 10px;
         }
 
         .form-element {
@@ -158,6 +157,7 @@ button:hover {
           flex-flow: column;
           font-size: 14pt;
           justify-content: space-between;
+          padding-left: 10px
         }
 
         .form-header {

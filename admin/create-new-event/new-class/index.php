@@ -55,7 +55,7 @@
     </div>
     <div class="form-section">
       <div class="form-element">
-        <label style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></label>
+        <label>Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></label>
       </div>
         <div class="form-element">
         <label for="start-date">Start date:</label>

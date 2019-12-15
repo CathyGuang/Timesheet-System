@@ -133,6 +133,7 @@ button:hover {
           background-color: red;
           width: 75vw;
           margin:auto;
+          font-family: "Nunito", sans-serif;
         }
 
         .standard-form {
@@ -144,14 +145,20 @@ button:hover {
         .form-section {
           display: flex;
           flex-flow: row;
-          justify-content:space-around;
+          justify-content: space-evenly;
+          padding-bottom: 20px;
         }
 
         .form-element {
           display: flex;
           flex-flow: column;
+          font-size: 14pt;
+          justify-content: space-between;
         }
 
+        label {
+          padding-bottom: 5px;
+        }
         
         
 

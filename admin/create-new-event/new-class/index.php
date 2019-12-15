@@ -356,7 +356,80 @@ EOF;
     </div>
 
 
-     <!-- DATA LISTS -->
+     
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+      <div id="volunteer-role-section">
+        <p>Role(s):</p>
+        <?php
+          if ($oldPostData['volunteer-roles']) {
+            foreach ($oldPostData['volunteer-roles'] as $role) {
+              $role = htmlspecialchars($role, ENT_QUOTES);
+              echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
+          }
+        ?>
+          
+        </div>
+        <br>
+        <button style="margin-left: 3vw;" type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
+      </div>
+
+
+    <div>
+      <div id="volunteer-section">
+        <p>Volunteer(s):</p>
+        <?php
+          if ($oldPostData['volunteers']) {
+            foreach ($oldPostData['volunteers'] as $volunteer) {
+              $volunteer = htmlspecialchars($volunteer, ENT_QUOTES);
+              echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+            }
+          } else {
+            echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+          }
+        ?>
+          
+        </div>
+      </div>
+
+
+    <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Update</button>
+    </div>
+
+
+  </form>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- DATA LISTS -->
 
           <datalist id="staff-role-list">
             <?php
@@ -430,38 +503,6 @@ EOF;
             ?>
           </datalist>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div>
-      <div id="volunteer-role-section">
-        <p>Role(s):</p>
-        <?php
-          if ($oldPostData['volunteer-roles']) {
-            foreach ($oldPostData['volunteer-roles'] as $role) {
-              $role = htmlspecialchars($role, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
-          }
-        ?>
           <datalist id="volunteer-role-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
@@ -473,25 +514,7 @@ EOF;
               }
             ?>
           </datalist>
-        </div>
-        <br>
-        <button style="margin-left: 3vw;" type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
-      </div>
 
-
-    <div>
-      <div id="volunteer-section">
-        <p>Volunteer(s):</p>
-        <?php
-          if ($oldPostData['volunteers']) {
-            foreach ($oldPostData['volunteers'] as $volunteer) {
-              $volunteer = htmlspecialchars($volunteer, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
-          }
-        ?>
           <datalist id="volunteer-list">
             <?php
               $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
@@ -503,18 +526,22 @@ EOF;
               }
             ?>
           </datalist>
-        </div>
-      </div>
 
 
-    <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Update</button>
-    </div>
 
 
-  </form>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -569,7 +596,7 @@ EOF;
 
 
 
-      
+
     function newHorseFunction() {
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');

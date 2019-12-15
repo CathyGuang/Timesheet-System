@@ -492,7 +492,7 @@
         newFormSection.appendChild(newFormElement);
         newLabel = document.createElement('label');
         newLabel.innerHTML = "Role: ";
-        newFormElement.appendChild(newInput);
+        newFormElement.appendChild(newLabel);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');
@@ -500,7 +500,7 @@
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        newFormElement.appendChild(newInput)
+        newFormElement.appendChild(newInput);
         //Add name selector
         newFormElement2 = document.createElement('div');
         newFormElement2.setAttribute('class', 'form-element');

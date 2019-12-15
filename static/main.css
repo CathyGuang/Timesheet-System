@@ -172,7 +172,9 @@ button:hover {
 
         .cancel-form {
          background-color: var(--background-red); 
-         width: 50%;
+         height: 40px;
+         width: 49.1%;
+         padding: 0;
         }
         .cancel-form:hover {
           background-color: var(--dark-red);
@@ -181,6 +183,7 @@ button:hover {
 
         input[type='submit'] {
           height: 40px;
+          width: 50%;
           border: 2px solid #4829ad;
           border-radius: 2px;
           transition-duration: .25s;

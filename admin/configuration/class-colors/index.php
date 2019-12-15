@@ -24,7 +24,7 @@
       <div class="form-section">
         <div class="form-element">
           <label for="class-type">Class Type:</label>
-          <input type="text" name="class-type" id="class-type" value="" list="class-type-list">
+          <input type="text" name="class-type" id="class-type" value="" list="class-type-list" required>
           <datalist id="class-type-list">
             <?php
               $getClassTypesQuery = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";

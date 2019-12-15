@@ -22,6 +22,7 @@
     $oldPostData = unserialize(base64_decode($_POST['old-post']));
   ?>
 
+  <div class="form-container">
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
     <div class="form-section">
       <p>Class Type:</p>
@@ -174,6 +175,7 @@
     <input type="submit" value="Create">
 
   </form>
+  </div>
 
 
 

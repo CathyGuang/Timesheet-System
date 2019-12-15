@@ -35,7 +35,7 @@ EOT;
         </datalist>
 
         <br><br>
-        <input type="submit" value="Submit">
+        <button type="submit">Submit</button>
     </form>
 EOT;
 
@@ -62,7 +62,7 @@ EOT;
 
 
         <br><br>
-        <input type="submit" value="Update">
+        <button type="submit">Update</button>
 
         <input type="number" name="id" value="{$clientInfo['id']}" readonly style='visibility: hidden;'>
 

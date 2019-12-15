@@ -154,7 +154,7 @@
 
 
     <br><br>
-    <input type="submit" value="Create">
+    <button type="submit">Create</button>
 
   </form>
 

@@ -198,7 +198,7 @@ echo "<option value='$value'>";
         </div>
 
         <br><br>
-        <input type="submit" value="Submit Changes">
+        <button type="submit">Submit Changes</button>
 
       </form>
 
@@ -271,7 +271,7 @@ EOT;
     echo <<<EOT
           </datalist>
           <br><br>
-          <input type="submit" value="Submit">
+          <button type="submit">Submit</button>
       </form>
 EOT;
     }

@@ -33,7 +33,7 @@
       </datalist>
       <input type="date" name="selected-date" value="<?php echo date('Y-m-d') ?>">
 
-      <input type="submit" value="Search">
+      <button type="submit">Search</button>
     </form>
 
   </div>

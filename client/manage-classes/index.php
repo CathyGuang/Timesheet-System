@@ -33,7 +33,7 @@ EOT;
             }
             echo <<<EOT
             </datalist>
-          <input type="submit" value="Submit">
+          <button type="submit">Submit</button>
         </form>
       </div>
 EOT;

@@ -51,7 +51,7 @@
         <input type="time" id="end-time" name="end-time" value="<?php echo date('h:i', strtotime('+1 hour')) ?>" required>
       </div>
 
-      <input type="submit" value="Check Availability">
+      <button type="submit">Check Availability</button>
     </form>
 
   </div>

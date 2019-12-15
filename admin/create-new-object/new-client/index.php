@@ -30,7 +30,7 @@
     <input type="number" name="phone" maxlength="10" value="">
 
     <br><br>
-    <input type="submit" value="Create">
+    <button type="submit">Create</button>
 
   </form>
 

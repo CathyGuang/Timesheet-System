@@ -75,7 +75,7 @@ EOT;
     <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> (also enter "archive" under 'Change object name'.)</p>
 
     <br><br>
-    <input type="submit" value="Submit">
+    <button type="submit">Submit</button>
 
   </form>
 

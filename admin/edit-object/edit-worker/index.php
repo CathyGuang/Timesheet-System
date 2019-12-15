@@ -36,7 +36,7 @@ EOT;
           </datalist>
 
           <br><br>
-          <input type="submit" value="Submit">
+          <button type="submit">Submit</button>
       </form>
 EOT;
 
@@ -93,7 +93,7 @@ EOT;
         <p style='font-size: 10pt; color: var(--dark-red); margin-top: 0;'>(Cannot be undone)</p>
 
         <br><br>
-        <input type="submit" value="Update">
+        <button type="submit">Update</button>
 
         <input type="number" name="id" value="{$workerInfo['id']}" style="visibility: hidden;">
 

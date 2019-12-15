@@ -41,7 +41,7 @@
       <input type="date" name="end-date" value="<?php echo date('Y-m-d'); ?>" required>
 
       <br><br>
-      <input type="submit" value="Submit">
+      <button type="submit">Submit</button>
     </form>
 
 

@@ -55,7 +55,7 @@
         <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
 
         <br><br>
-        <input type="submit" value="Submit">
+        <button type="submit">Submit</button>
       </form>
 
 

@@ -244,7 +244,9 @@
           </datalist>
       </div>
       <div class="form-section">
-       <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
+        <div class="form-element">
+          <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
+        </div>
       </div>
     </div>
 

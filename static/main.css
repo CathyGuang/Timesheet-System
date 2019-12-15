@@ -137,24 +137,6 @@ button:hover {
         }
         
 
-        .standard-form > * {
-          max-width: 300px;
-        }
-        .standard-form > p {
-          margin-bottom: 3px;
-        }
-        .standard-form > button {
-          margin-bottom: 1vh;
-        }
-        input {
-          height: 30px;
-        }
-        input[type='checkbox' i] {
-          transform: scale(2);
-        }
-        input[type='time'] {
-          width: 90px;
-        }
         input[type='submit'] {
           height: 40px;
           border: 2px solid #4829ad;
@@ -168,9 +150,7 @@ button:hover {
           background-color: var(--dark-blue);
           color: white;
         }
-        label {
-          font-size: 12pt;
-        }
+       
 
 
     /* SCHEDULE DISPLAY STYLES */

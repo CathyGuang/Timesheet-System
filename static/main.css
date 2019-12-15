@@ -148,7 +148,8 @@ button:hover {
         }
 
         .form-element {
-          
+          display: flex;
+          flex-flow: column;
         }
 
         

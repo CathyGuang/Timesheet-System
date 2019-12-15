@@ -482,15 +482,17 @@
   <footer>
     <script type="text/javascript">
     function newStaffFunction() {
-        newInput = document.createElement('br');
+        newFormSection = document.createElement('div');
+        newFormSection.setAttribute('class', 'form-section');
         var staffSection = document.getElementById('staff-section');
-        staffSection.appendChild(newInput);
-        newInput = document.createElement('br');
-        staffSection.appendChild(newInput);
+        staffSection.appendChild(newFormSection);
         //add role selector
-        newInput = document.createElement('label');
-        newInput.innerHTML = "Role: ";
-        staffSection.appendChild(newInput);
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newFormSection.appendChild(newFormElement);
+        newLabel = document.createElement('label');
+        newLabel.innerHTML = "Role: ";
+        newFormElement.appendChild(newInput);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');
@@ -498,23 +500,22 @@
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        var staffSection = document.getElementById('staff-section');
-        staffSection.appendChild(newInput);
+        newFormElement.appendChild(newInput)
         //Add name selector
-        newInput = document.createElement('br');
-        staffSection.appendChild(newInput);
-        newInput = document.createElement('label');
-        newInput.innerHTML = "Staff Member: ";
-        staffSection.appendChild(newInput);
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'staff[]');
-        newInput.setAttribute('list', 'staff-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var staffSection = document.getElementById('staff-section');
-        staffSection.appendChild(newInput);
+        newFormElement2 = document.createElement('div');
+        newFormElement2.setAttribute('class', 'form-element');
+        newFormSection.appendChild(newFormElement2);
+        newLabel2 = document.createElement('label');
+        newLabel2.innerHTML = "Staff Member: ";
+        newFormElement2.appendChild(newLabel2);
+        newInput2 = document.createElement('input');
+        newInput2.setAttribute('type', 'text');
+        newInput2.setAttribute('name', 'staff[]');
+        newInput2.setAttribute('list', 'staff-list');
+        newInput2.setAttribute('value', '');
+        newInput2.setAttribute('onclick', 'select()');
+        newInput2.setAttribute('form', 'class-form');
+        newFormElement2.appendChild(newInput2);
       };
 
 

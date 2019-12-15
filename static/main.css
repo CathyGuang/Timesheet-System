@@ -130,14 +130,11 @@ button:hover {
         /* FORM STYLES */
 
         .form-container {
+          background-color: red;
           margin: auto;
         }
 
         .standard-form {
-          margin: auto;
-          display: ;
-          justify-content: space-around;
-          max-height: 77vh;
         }
 
         .form-section {

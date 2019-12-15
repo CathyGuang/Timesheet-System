@@ -176,6 +176,10 @@ button:hover {
         }
         
         
+        input {
+          border: 1px solid var(--dark-purple);
+        }
+
         input[type='date'] {
           width: fit-content;
         }

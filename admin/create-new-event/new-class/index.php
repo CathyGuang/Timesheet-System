@@ -193,13 +193,11 @@
       </div>
 
 
-
     <div>
       <div id="staff-section">
         <div class="form-section">
           <h3>Staff:</h3>
         </div>
-
 
         <?php
           if ($oldPostData['staff-roles']) {
@@ -219,29 +217,7 @@
             echo "</div></div>";
           }
         ?>
-          <datalist id="staff-role-list">
-            <?php
-              $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
-              $result = pg_query($db_connection, $query);
-              $classTypeNames = pg_fetch_all_columns($result);
-              foreach ($classTypeNames as $key => $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES);
-                echo "<option value='$value'>";
-              }
-            ?>
-          </datalist>
-
-          <datalist id="staff-list">
-            <?php
-              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $staffNames = pg_fetch_all_columns($result);
-              foreach ($staffNames as $key => $name) {
-                $name = htmlspecialchars($name, ENT_QUOTES);
-                echo "<option value='$name'>";
-              }
-            ?>
-          </datalist>
+          
       </div>
       <div class="form-section">
         <div class="form-element">
@@ -249,9 +225,6 @@
         </div>
       </div>
     </div>
-
-
-
 
 
 
@@ -341,7 +314,6 @@
             </div>
 
 
-
           </div>
 EOF;
 
@@ -385,6 +357,30 @@ EOF;
 
 
      <!-- DATA LISTS -->
+
+          <datalist id="staff-role-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $classTypeNames = pg_fetch_all_columns($result);
+              foreach ($classTypeNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
+                echo "<option value='$value'>";
+              }
+            ?>
+          </datalist>
+
+          <datalist id="staff-list">
+            <?php
+              $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $staffNames = pg_fetch_all_columns($result);
+              foreach ($staffNames as $key => $name) {
+                $name = htmlspecialchars($name, ENT_QUOTES);
+                echo "<option value='$name'>";
+              }
+            ?>
+          </datalist>
          
           <datalist id="client-list">
             <?php
@@ -434,6 +430,19 @@ EOF;
             ?>
           </datalist>
  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -554,6 +563,13 @@ EOF;
 
     
 
+
+
+
+
+
+
+      
     function newHorseFunction() {
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');

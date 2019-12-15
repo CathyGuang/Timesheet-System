@@ -373,7 +373,7 @@ EOF;
           } else {
             echo "<div class='form-section'><div class='form-element'>";
               echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
-              echo "</div></div class='form-element'>";
+              echo "</div><div class='form-element'>";
               echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
               echo "</div></div>";
           }

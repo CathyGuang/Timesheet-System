@@ -266,9 +266,44 @@
         <?php 
         $index = 0;
         while (true) {
-          
           var_dump($index);
           
+
+          if ($oldPostData['clients'][$index]) {
+            $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
+          } else {
+            $client = "";
+          }
+
+
+
+
+          echo <<<EOF
+          <div class="client-horse-form-section">
+            
+            <div class="form-element">
+              <label>Client:</label>
+              <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
+            </div>
+
+            
+
+
+
+
+
+          </div>
+EOF;
+
+
+
+
+
+
+
+
+
+          // Check for remaining POST data, if done, exit loop
           if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
             echo "ALL DONE";
             break;
@@ -284,7 +319,7 @@
 
         ?>
 
-        <div class="client-horse-form-section">
+        
 
 
 

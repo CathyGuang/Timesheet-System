@@ -252,37 +252,85 @@
 
 
 
-  </form>
-  </div>
-
-
-
-  <div style="display:flex; justify-content:space-around; max-height: 20vh;">
 
     <div>
-      <div id="client-section">
-        <p>Client(s):</p>
-        <?php
-          if ($oldPostData['clients']) {
-            foreach ($oldPostData['clients'] as $client) {
-              $client = htmlspecialchars($client, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
+      <div id="client-horse-section">
+        <div class="form-section">
+          <h3>Client(s)/Horse(s):</h3>
+        </div>
+
+
+
+
+
+        <?php 
+        $index = 0;
+        while (true) {
+          
+          var_dump($index);
+          
+          if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
+            echo "ALL DONE";
+            break;
           }
+          $index++;
+        }
+
+
+
+
+
+
+
         ?>
-          <datalist id="client-list">
-            <?php
-              $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-              $result = pg_query($db_connection, $query);
-              $clientNames = pg_fetch_all_columns($result);
-              foreach ($clientNames as $key => $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES);
-                echo "<option value='{$value}'>";
+
+        <div class="client-horse-form-section">
+
+
+
+          <?php
+            if ($oldPostData['clients']) {
+              foreach ($oldPostData['clients'] as $client) {
+                $client = htmlspecialchars($client, ENT_QUOTES);
+                echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
               }
-            ?>
-          </datalist>
+            } else {
+              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
+            }
+          ?>
+            <datalist id="client-list">
+              <?php
+                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+                $result = pg_query($db_connection, $query);
+                $clientNames = pg_fetch_all_columns($result);
+                foreach ($clientNames as $key => $value) {
+                  $value = htmlspecialchars($value, ENT_QUOTES);
+                  echo "<option value='{$value}'>";
+                }
+              ?>
+            </datalist>
+     
+     
+     
+
+
+
+
+
+
+        
+
+
+        </div>
+     
+     
+
+
+
+
+
+
+
       </div>
       <br>
       <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
@@ -468,13 +516,13 @@
             ?>
           </datalist>
         </div>
-        <br>
       </div>
 
-
-
-
+  </form>
   </div>
+
+
+
 
 
 
@@ -518,6 +566,7 @@
         newFormElement2.appendChild(newInput2);
       };
 
+    
 
     function newHorseFunction() {
         newInput = document.createElement('input');

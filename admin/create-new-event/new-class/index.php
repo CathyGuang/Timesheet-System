@@ -354,7 +354,7 @@ EOF;
         ?>
 
       </div>
-      <div class="form-section">
+      <div class="client-horse-form-section">
 
         <div class="form-element">
           <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
@@ -438,7 +438,7 @@ EOF;
 
 
 
-          
+
 
     <div>
       <div id="volunteer-role-section">

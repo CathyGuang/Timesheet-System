@@ -154,7 +154,7 @@ button:hover {
 
         .client-horse-form-section {
           display: grid;
-          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+          grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
           padding-bottom: 10px;
           height: max-content;
         }
@@ -196,7 +196,7 @@ button:hover {
           color: white;
         }
 
-        .standard-form > button[type='submit'] {
+        .form-section > button[type='submit'] {
           height: 40px;
           grid-column: 3 / 5;
           border: 2px solid #4829ad;

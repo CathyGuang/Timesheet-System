@@ -131,14 +131,20 @@ button:hover {
 
         .form-container {
           background-color: red;
-          margin: auto;
+          width: 75vw;
+          margin:auto;
         }
 
         .standard-form {
+          display: flex;
+          flex-flow: column;
+          justify-content: space-evenly;
         }
 
         .form-section {
-
+          display: flex;
+          flex-flow: row;
+          justify-content:space-around;
         }
 
         

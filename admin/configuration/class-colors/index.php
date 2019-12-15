@@ -18,25 +18,35 @@
     </nav>
   </header>
 
-  <div class="main-content-div">
+  <div class="form-container">
 
-    <form class="standard-form standard-form" action="colors.php" method="post">
-      <div>
-        <p>Class Type: <input type="text" name="class-type" value="" list="class-type-list"></p>
-        <datalist id="class-type-list">
-          <?php
-            $getClassTypesQuery = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
-            $classTypeNames = pg_fetch_all_columns(pg_query($db_connection, $getClassTypesQuery));
-            var_dump($classTypeNames);
-            foreach ($classTypeNames as $name) {
-              echo "<option value='{$name}'>";
-            }
-          ?>
-        </datalist>
-        <p>Color: <input type="color" name="color-code" value=""></p>
+    <form class="standard-form" action="colors.php" method="post">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="class-type">Class Type:</label>
+          <input type="text" name="class-type" id="class-type" value="" list="class-type-list">
+          <datalist id="class-type-list">
+            <?php
+              $getClassTypesQuery = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
+              $classTypeNames = pg_fetch_all_columns(pg_query($db_connection, $getClassTypesQuery));
+              var_dump($classTypeNames);
+              foreach ($classTypeNames as $name) {
+                echo "<option value='{$name}'>";
+              }
+            ?>
+          </datalist>
+        </div>
+      </div>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="color-code">Color:</label>
+          <input type="color" name="color-code" id="color-code" value="">
+        </div>
+      </div>
+      <div class="form section">
         <input type="submit" value="Update">
       </div>
-
+      
     </form>
 
   </div>

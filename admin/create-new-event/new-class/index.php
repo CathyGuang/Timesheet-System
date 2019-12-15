@@ -253,6 +253,9 @@
 
 
 
+
+
+
     <div>
       <div id="client-horse-section">
         <div class="form-section">
@@ -260,19 +263,45 @@
         </div>
 
 
-
-
-
         <?php 
         $index = 0;
         while (true) {
-          var_dump($index);
           
 
           if ($oldPostData['clients'][$index]) {
             $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
           } else {
             $client = "";
+          }
+
+          if ($oldPostData['horses']) {
+            $horse = htmlspecialchars($oldPostData['horses'][$index], ENT_QUOTES);
+          } else {
+            $horse = "";
+          }
+
+          if ($oldPostData['tacks']) {
+            $tack = htmlspecialchars($oldPostData['tacks'][$index], ENT_QUOTES);
+          } else {
+            $tack = "";
+          }
+
+          if ($oldPostData['pads']) {
+            $pad = htmlspecialchars($oldPostData['pads'][$index], ENT_QUOTES);
+          } else {
+            $pad = "";
+          }
+
+          if ($oldPostData['tack-notes']) {
+            $note = htmlspecialchars($oldPostData['tack-notes'][$index], ENT_QUOTES);
+          } else {
+            $note = "";
+          }
+
+          if ($oldPostData['client-equipment-notes']) {
+            $clientNote = htmlspecialchars($oldPostData['client-equipment-notes'][$index], ENT_QUOTES);
+          } else {
+            $clientNote = "";
           }
 
 
@@ -286,105 +315,89 @@
               <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
             </div>
 
+            <div class="form-element">
+              <label>Horse:</label>
+              <input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
+            </div>
 
+            <div class="form-element">
+              <label>Tack:</label>
+              <input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
+            </div>
 
+            <div class="form-element">
+              <label>Pad:</label>
+              <input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
+            </div>
 
+            <div class="form-element">
+              <label>Tack Notes:</label>
+              <input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
+            </div>
+
+            <div class="form-element">
+              <label>Client Equipment Notes:</label>
+              <input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>
+            </div>
 
 
 
           </div>
 EOF;
 
-
-
-
-
-
-
-
-
           // Check for remaining POST data, if done, exit loop
           if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
-            echo "ALL DONE";
             break;
           }
           $index++;
         }
-
-
-
-
-
-
-
         ?>
 
-        
+      </div>
+      <div class="form-section">
 
-
-
-          <?php
-            if ($oldPostData['clients']) {
-              foreach ($oldPostData['clients'] as $client) {
-                $client = htmlspecialchars($client, ENT_QUOTES);
-                echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
-              }
-            } else {
-              echo "<input form='class-form' type='text' name='clients[]' list='client-list' value='' onclick='select();'>";
-            }
-          ?>
-            <datalist id="client-list">
-              <?php
-                $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-                $result = pg_query($db_connection, $query);
-                $clientNames = pg_fetch_all_columns($result);
-                foreach ($clientNames as $key => $value) {
-                  $value = htmlspecialchars($value, ENT_QUOTES);
-                  echo "<option value='{$value}'>";
-                }
-              ?>
-            </datalist>
-     
-     
-     
-
-
-
-
-
-
-        
-
-
+        <div class="form-element">
+          <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
         </div>
-     
-     
 
+        <div class="form-element">
+          <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Horse</button>
+        </div>
 
+        <div class="form-element">
+          <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Tack</button>
+        </div>
 
+        <div class="form-element">
+          <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Pad</button>
+        </div>
 
+        <div class="form-element">
+          <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Tack Note</button>
+        </div>
 
-
+        <div class="form-element">
+          <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Equipment Note</button>
+        </div>
 
       </div>
-      <br>
-      <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
     </div>
 
 
-    <div>
-      <div id="horse-section">
-        <p>Horse(s):</p>
-        <?php
-          if ($oldPostData['horses']) {
-            foreach ($oldPostData['horses'] as $horse) {
-              $horse = htmlspecialchars($horse, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='horses[]' list='horse-list' value='' onclick='select();'>";
-          }
-        ?>
+     <!-- DATA LISTS -->
+         
+          <datalist id="client-list">
+            <?php
+              $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+              $result = pg_query($db_connection, $query);
+              $clientNames = pg_fetch_all_columns($result);
+              foreach ($clientNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
+                echo "<option value='{$value}'>";
+              }
+            ?>
+          </datalist>
+    
           <datalist id="horse-list">
             <?php
               $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
@@ -396,24 +409,7 @@ EOF;
               }
             ?>
           </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
-    </div>
-
-    <div>
-      <div id="tack-section">
-        <p>Tack(s):</p>
-        <?php
-          if ($oldPostData['tacks']) {
-            foreach ($oldPostData['tacks'] as $tack) {
-              $tack = htmlspecialchars($tack, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='tacks[]' list='tack-list' value='' onclick='select();'>";
-          }
-        ?>
+    
           <datalist id="tack-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
@@ -425,24 +421,7 @@ EOF;
               }
             ?>
           </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
-    </div>
 
-    <div>
-      <div id="pad-section">
-        <p>Pad(s):</p>
-        <?php
-          if ($oldPostData['pads']) {
-            foreach ($oldPostData['pads'] as $pad) {
-              $pad = htmlspecialchars($pad, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='pads[]' list='pad-list' value='' onclick='select();'>";
-          }
-        ?>
           <datalist id="pad-list">
             <?php
               $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
@@ -454,47 +433,12 @@ EOF;
               }
             ?>
           </datalist>
-      </div>
-      <br>
-      <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
-    </div>
+ 
 
 
-    <div>
-      <div id="tack-notes-section">
-        <p>Tack Note(s):</p>
-        <?php
-          if ($oldPostData['tack-notes']) {
-            foreach ($oldPostData['tack-notes'] as $note) {
-              $note = htmlspecialchars($note, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='tack-notes[]' value='' onclick='select();'>";
-          }
-        ?>
-      </div>
-      <br>
-      <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Additional Tack Note</button>
-    </div>
 
-    <div>
-      <div id="client-equipment-section">
-        <p>Client Equipment:</p>
-        <?php
-          if ($oldPostData['client-equipment-notes']) {
-            foreach ($oldPostData['client-equipment-notes'] as $note) {
-              $note = htmlspecialchars($note, ENT_QUOTES);
-              echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
-            }
-          } else {
-            echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='' onclick='select();'>";
-          }
-        ?>
-      </div>
-      <br>
-      <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Client Equipment Note</button>
-    </div>
+
+          
 
     <div>
       <div id="volunteer-role-section">

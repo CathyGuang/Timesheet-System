@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <div class="form section">
+      <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <input type="submit" value="Update">
       </div>

@@ -286,7 +286,7 @@
               <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
             </div>
 
-            
+
 
 
 
@@ -552,6 +552,13 @@ EOF;
           </datalist>
         </div>
       </div>
+
+
+    <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <input type="submit" value="Update">
+    </div>
+
 
   </form>
   </div>

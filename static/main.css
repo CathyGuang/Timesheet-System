@@ -156,6 +156,10 @@ button:hover {
           justify-content: space-between;
         }
 
+        .form-header {
+          text-align: left;
+        }
+
         label {
           padding-bottom: 5px;
         }

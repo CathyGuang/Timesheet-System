@@ -51,7 +51,7 @@
     </div>
 
     <div class="form-section">
-      <h3>Dates: </h3>
+      <h3 class="form-header">Dates: </h3>
     </div>
     <div class="form-section">
       <div class="form-element">

@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="form section">
-        <button class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <input type="submit" value="Update">
       </div>
       

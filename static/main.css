@@ -1,6 +1,7 @@
 /* ROOT STYLES */
 :root {
   --background-purple: #b099ff;
+  --light-purple: #ccbdff;
   --dark-purple: #321c77;
   --accent-purple: #24f4ff;
   --background-blue: #91ecff;
@@ -130,7 +131,9 @@ button:hover {
         /* FORM STYLES */
 
         .form-container {
-          background-color: red;
+          background-color: var(--light-purple);
+          border: 1px solid var(--dark-purple);
+          border-radius: 2px;
           width: 75vw;
           margin:auto;
           font-family: "Nunito", sans-serif;

@@ -18,11 +18,11 @@
   </header>
 
   <div class="main-content-div">
-    <a href="create-new-event"><button class="green-button">Create new Class/Shift</button></a>
+    <a href="create-new-event/new-class"><button class="green-button">Create new Class/Event</button></a>
     <a href="create-new-object"><button class="green-button">Create new Person/Object</button></a>
     <a href="reports"><button class="blue-button">Generate Report</button></a>
-    <a href="edit-event"><button class="red-button">Edit/Remove Class/Shift</button></a>
-    <a href="edit-object"><button class="red-button">Edit/Remove Object</button></a>
+    <a href="edit-event/edit-class"><button class="red-button">Edit Class/Event</button></a>
+    <a href="edit-object"><button class="red-button">Edit Object</button></a>
     <a href="configuration"><button class="blue-button">Configuration</button></a>
     <button type="submit" form="editable-daily-schedule-form" name="selected-date" value="<?php echo date('Y-m-d'); ?>" class="blue-button">Editable Daily Schedule</button>
     <a href="send-email"><button class="blue-button">Send Email</button></a>

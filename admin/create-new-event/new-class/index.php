@@ -639,32 +639,43 @@ EOF;
 
 
 
-
       function newVolunteerFunction() {
+          newFormSection = document.createElement('div');
+          newFormSection.setAttribute('class', 'form-section');
           //Add role selector
+          newFormElement = document.createElement('div');
+          newFormSection.appendChild(newFormElement);
+          newFormElement.setAttribute('class', 'form-element');
           newInput = document.createElement('input');
+          newFormElement.appendChild(newInput);
           newInput.setAttribute('type', 'text');
           newInput.setAttribute('name', 'volunteer-roles[]');
           newInput.setAttribute('list', 'volunteer-role-list');
           newInput.setAttribute('value', '');
           newInput.setAttribute('onclick', 'select()');
           newInput.setAttribute('form', 'class-form');
-          var volunteerRoleSection = document.getElementById('volunteer-role-section');
-          volunteerRoleSection.appendChild(newInput);
           //Add name selector
-          newInput = document.createElement('input');
-          newInput.setAttribute('type', 'text');
-          newInput.setAttribute('name', 'volunteers[]');
-          newInput.setAttribute('list', 'volunteer-list');
-          newInput.setAttribute('value', '');
-          newInput.setAttribute('onclick', 'select()');
-          newInput.setAttribute('form', 'class-form');
+          newFormElement2 = document.createElement('div');
+          newFormSection.appendChild(newFormElement2);
+          newFormElement2.setAttribute('class', 'form-element');
+          newInput2 = document.createElement('input');
+          newFormElement2.appendChild(newInput2);
+          newInput2.setAttribute('type', 'text');
+          newInput2.setAttribute('name', 'volunteers[]');
+          newInput2.setAttribute('list', 'volunteer-list');
+          newInput2.setAttribute('value', '');
+          newInput2.setAttribute('onclick', 'select()');
+          newInput2.setAttribute('form', 'class-form');
           var volunteerSection = document.getElementById('volunteer-section');
-          volunteerSection.appendChild(newInput);
+          volunteerSection.appendChild(newFormSection);
         };
 
 
 
+
+
+
+    // VALIDATE START AND END DATE SELECTIONS
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!

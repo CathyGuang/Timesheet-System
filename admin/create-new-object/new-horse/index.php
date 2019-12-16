@@ -28,37 +28,49 @@
       </div>
 
       <div class='form-section'>
+        <h3>Owner:</h3>
+      </div>
+
+      <div class='form-section'>
         <div class='form-element'>
-          <label for="owner">Owner: (Leave blank for organization)</label>
+          <label for="owner">Name: (Leave blank for organization)</label>
           <input type="text" name="owner" id="owner" value="">
         </div>
 
         <div class='form-element'>
-          <label for="owner-email">Owner email address:</label>
+          <label for="owner-email">Email:</label>
           <input type="email" name="owner-email" id="owner-email" value="">
         </div>
 
         <div class='form-element'>
-          <label for="owner-phone">Owner phone number:</label>
+          <label for="owner-phone">Phone:</label>
           <input type="phone" name="owner-phone" id="owner-phone" value="">
         </div>
       </div>
 
       <div class='form-section'>
+        <h3>Veterinarian:</h3>
+      </div>
+
+      <div class='form-section'>
         <div class='form-element'>
-          <label for="vet-name">Veterinarian name:</label>
+          <label for="vet-name">Name:</label>
           <input type="text" name="vet-name" id="vet-name" value="">
         </div>
 
         <div class='form-element'>
-          <label for="vet-email">Veterinarian email address:</label>
+          <label for="vet-email">Email:</label>
           <input type="email" name="vet-email" id="vet-email" value="">
         </div>
 
         <div class='form-element'>
-          <label for="vet-phone">Veterinarian phone number:</label>
+          <label for="vet-phone">Phone:</label>
           <input type="phone" name="vet-phone" id="vet-phone" value="">
         </div>
+      </div>
+
+      <div class='form-section'>
+        <h3>Use:</h3>
       </div>
 
       <div class='form-section'>

@@ -20,17 +20,31 @@
 
   <form autocomplete="off" action="create-new-client.php" method="post" class="standard-form">
 
-    <p>Name/Initials:</p>
-    <input type="text" name="name" value="" required>
+    <div class="form-section">
+      <div class="form-element">
+        <label for="name">Name/Initials:</label>
+        <input type="text" name="name" id="name" value="" required>
+      </div>
+    </div>
 
-    <p>Email:</p>
-    <input type="email" name="email" value="">
+    <div class="form-section">
+      <div class="form-element">  
+        <p>Email:</p>
+        <input type="email" name="email" value="">
+      </div>
+    </div>
 
-    <p>Phone Number:</p>
-    <input type="number" name="phone" maxlength="10" value="">
+    <div class="form-section">
+      <div class="form-element">  
+        <p>Phone Number:</p>
+        <input type="number" name="phone" maxlength="10" value="">
+      </div>
+    </div>
 
-    <br><br>
-    <button type="submit">Create</button>
+    <div class="form-section">
+      <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+      <button type="submit">Create</button>
+    </div>
 
   </form>
 

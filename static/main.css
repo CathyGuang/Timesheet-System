@@ -12,7 +12,7 @@
   --dark-green: #0f771b;
 
   font-family: Verdana, sans-serif;
-  font-size: 18pt;
+  font-size: 18px;
 }
 
 /* BODY STYLES */
@@ -69,7 +69,7 @@ button:hover {
       top: 25px;
     }
     #dhs-website-label {
-      font-size: 10pt;
+      font-size: .6em;
       position: absolute;
       right: 5px;
       top: 5px;
@@ -162,7 +162,7 @@ button:hover {
         .form-element {
           display: flex;
           flex-flow: column;
-          font-size: 14pt;
+          font-size: .8em;
           justify-content: space-between;
           padding-left: 10px
         }
@@ -207,7 +207,7 @@ button:hover {
           border-radius: 2px;
           transition-duration: .25s;
           -webkit-transition-duration: .25s;
-          font-size: 18pt;
+          /* font-size: 18pt; */
           background-color: var(--background-blue);
         }
        
@@ -234,7 +234,7 @@ button:hover {
       padding-left: 8px;
       padding-top: 5px;
       /*height: 20vh;*/
-      font-size: 15pt;
+      /* font-size: 15pt; */
     }
     .schedule-time {
       grid-column: 3;

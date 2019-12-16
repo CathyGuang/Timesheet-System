@@ -555,65 +555,83 @@ EOF;
 
 
     function newClient(section) {
+      newFormElement = document.createElement('div');
+      newFormElement.setAttribute('class', 'form-element');
       newInput = document.createElement('input');
+      newFormElement.appendChild(newInput);
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'clients[]');
       newInput.setAttribute('list', 'client-list');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       newInput.setAttribute('form', 'class-form');
-      section.appendChild(newInput);
+      section.appendChild(newFormElement);
     };
 
     function newHorse(section) {
+      newFormElement = document.createElement('div');
+      newFormElement.setAttribute('class', 'form-element');
       newInput = document.createElement('input');
+      newFormElement.appendChild(newInput);
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'horses[]');
       newInput.setAttribute('list', 'horse-list');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       newInput.setAttribute('form', 'class-form');
-      section.appendChild(newInput);
+      section.appendChild(newFormElement);
     };
 
     function newTack(section) {
+      newFormElement = document.createElement('div');
+      newFormElement.setAttribute('class', 'form-element');
       newInput = document.createElement('input');
+      newFormElement.appendChild(newInput);
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'tacks[]');
       newInput.setAttribute('list', 'tack-list');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       newInput.setAttribute('form', 'class-form');
-      section.appendChild(newInput);
+      section.appendChild(newFormElement);
     };
 
     function newPad(section) {
+      newFormElement = document.createElement('div');
+      newFormElement.setAttribute('class', 'form-element');
       newInput = document.createElement('input');
+      newFormElement.appendChild(newInput);
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'pads[]');
       newInput.setAttribute('list', 'pad-list');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       newInput.setAttribute('form', 'class-form');
-      section.appendChild(newInput);
+      section.appendChild(newFormElement);
     };
     function newTackNotes(section) {
+      newFormElement = document.createElement('div');
+      newFormElement.setAttribute('class', 'form-element');
       newInput = document.createElement('input');
+      newFormElement.appendChild(newInput);
       newInput.setAttribute('type', 'text');
       newInput.setAttribute('name', 'tack-notes[]');
       newInput.setAttribute('value', '');
       newInput.setAttribute('onclick', 'select()');
       newInput.setAttribute('form', 'class-form');
-      section.appendChild(newInput);
+      section.appendChild(newFormElement);
     };
       function newEquipmentNotes(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
         newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'client-equipment-notes[]');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        section.appendChild(newInput);
+        section.appendChild(newFormElement);
       };
   
 

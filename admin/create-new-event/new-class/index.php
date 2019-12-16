@@ -322,30 +322,10 @@ EOF;
         ?>
 
       </div>
-      <div class="client-horse-form-section">
+      <div class="form-section">
 
         <div class="form-element">
-          <button type="button" id="add-client-button" onclick="newClientFunction();">Add Client</button>
-        </div>
-
-        <div class="form-element">
-          <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Horse</button>
-        </div>
-
-        <div class="form-element">
-          <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Tack</button>
-        </div>
-
-        <div class="form-element">
-          <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Pad</button>
-        </div>
-
-        <div class="form-element">
-          <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Tack Note</button>
-        </div>
-
-        <div class="form-element">
-          <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Equipment Note</button>
+          <button type="button" id="add-client-horse-section-button" onclick="newClientHorseSection();">Add Client/Horse</button>
         </div>
 
       </div>
@@ -554,77 +534,93 @@ EOF;
 
 
 
+    function newClientHorseSection() {
+      newSection = document.createElement('div');
+      newSection.setAttribute('class', 'client-horse-form-section');
+      parent = document.getElementById('client-horse-section');
+      parent.appendChild(newSection);
+      //Add client
+      newClient(newSection);
+      //Add Horse
+      newHorse(newSection);
+      //Add Tack
+      newTack(newSection);
+      //Add Pad
+      newPad(newSection);
+      //Add Tack Notes
+      newTackNotes(newSection);
+      //Add Equipment Notes
+      newEquipmentNotes(newSection);
+    };
 
 
+    function newClient(section) {
+      newInput = document.createElement('input');
+      newInput.setAttribute('type', 'text');
+      newInput.setAttribute('name', 'clients[]');
+      newInput.setAttribute('list', 'client-list');
+      newInput.setAttribute('value', '');
+      newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
+      section.appendChild(newInput);
+    };
 
+    function newHorse(section) {
+      newInput = document.createElement('input');
+      newInput.setAttribute('type', 'text');
+      newInput.setAttribute('name', 'horses[]');
+      newInput.setAttribute('list', 'horse-list');
+      newInput.setAttribute('value', '');
+      newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
+      section.appendChild(newInput);
+    };
 
+    function newTack(section) {
+      newInput = document.createElement('input');
+      newInput.setAttribute('type', 'text');
+      newInput.setAttribute('name', 'tacks[]');
+      newInput.setAttribute('list', 'tack-list');
+      newInput.setAttribute('value', '');
+      newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
+      section.appendChild(newInput);
+    };
 
-    function newHorseFunction() {
+    function newPad(section) {
+      newInput = document.createElement('input');
+      newInput.setAttribute('type', 'text');
+      newInput.setAttribute('name', 'pads[]');
+      newInput.setAttribute('list', 'pad-list');
+      newInput.setAttribute('value', '');
+      newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
+      section.appendChild(newInput);
+    };
+    function newTackNotes(section) {
+      newInput = document.createElement('input');
+      newInput.setAttribute('type', 'text');
+      newInput.setAttribute('name', 'tack-notes[]');
+      newInput.setAttribute('value', '');
+      newInput.setAttribute('onclick', 'select()');
+      newInput.setAttribute('form', 'class-form');
+      section.appendChild(newInput);
+    };
+      function newEquipmentNotes(section) {
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'horses[]');
-        newInput.setAttribute('list', 'horse-list');
+        newInput.setAttribute('name', 'client-equipment-notes[]');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        var horseSection = document.getElementById('horse-section');
-        horseSection.appendChild(newInput);
+        section.appendChild(newInput);
       };
+  
 
-      function newTackFunction() {
-          newInput = document.createElement('input');
-          newInput.setAttribute('type', 'text');
-          newInput.setAttribute('name', 'tacks[]');
-          newInput.setAttribute('list', 'tack-list');
-          newInput.setAttribute('value', '');
-          newInput.setAttribute('onclick', 'select()');
-          newInput.setAttribute('form', 'class-form');
-          var tackSection = document.getElementById('tack-section');
-          tackSection.appendChild(newInput);
-        };
 
-      function newPadFunction() {
-          newInput = document.createElement('input');
-          newInput.setAttribute('type', 'text');
-          newInput.setAttribute('name', 'pads[]');
-          newInput.setAttribute('list', 'pad-list');
-          newInput.setAttribute('value', '');
-          newInput.setAttribute('onclick', 'select()');
-          newInput.setAttribute('form', 'class-form');
-          var padSection = document.getElementById('pad-section');
-          padSection.appendChild(newInput);
-        };
-        function newTackNotesFunction() {
-            newInput = document.createElement('input');
-            newInput.setAttribute('type', 'text');
-            newInput.setAttribute('name', 'tack-notes[]');
-            newInput.setAttribute('value', '');
-            newInput.setAttribute('onclick', 'select()');
-            newInput.setAttribute('form', 'class-form');
-            var padSection = document.getElementById('tack-notes-section');
-            padSection.appendChild(newInput);
-          };
-          function newClientEquipmentNotesFunction() {
-              newInput = document.createElement('input');
-              newInput.setAttribute('type', 'text');
-              newInput.setAttribute('name', 'client-equipment-notes[]');
-              newInput.setAttribute('value', '');
-              newInput.setAttribute('onclick', 'select()');
-              newInput.setAttribute('form', 'class-form');
-              var padSection = document.getElementById('client-equipment-section');
-              padSection.appendChild(newInput);
-            };
-    function newClientFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'clients[]');
-        newInput.setAttribute('list', 'client-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var clientSection = document.getElementById('client-section');
-        clientSection.appendChild(newInput);
-      };
+
+
+
 
       function newVolunteerFunction() {
           //Add role selector

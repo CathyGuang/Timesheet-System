@@ -13,7 +13,7 @@
 
   <header>
     <h1>New Class</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav> <a href="../../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
@@ -371,7 +371,7 @@ EOF;
 
 
     <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
         <button type="submit">Update</button>
     </div>
 

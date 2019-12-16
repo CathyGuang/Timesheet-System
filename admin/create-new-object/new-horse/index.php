@@ -85,7 +85,7 @@
         </div>
 
         <div class='form-element'>
-          <label for="horse_uses_per_week">Horse Uses per Week:</label>
+          <label for="horse_uses_per_week">Total Uses per Week:</label>
           <input type="number" name="horse_uses_per_week" id="horse_uses_per_week" value="" required>
         </div>
       </div>

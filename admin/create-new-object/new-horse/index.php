@@ -17,48 +17,93 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="create-new-horse.php" method="post" class="standard-form">
+  <div class='form-container'>
+    <form autocomplete="off" action="create-new-horse.php" method="post" class="standard-form">
 
-    <p>Name:</p>
-    <input type="text" name="name" value="" required>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" value="" required>
+        </div>
+      </div>
 
-    <p>Owner:</p>
-    <label>(Leave blank if owner is this organization)</label>
-    <input type="text" name="owner" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="owner">Owner: (Leave blank for organization)</label>
+          <input type="text" name="owner" id="owner" value="">
+        </div>
+      </div>
 
-    <p>Owner email address:</p>
-    <input type="email" name="owner-email" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="owner-email">Owner email address:</label>
+          <input type="email" name="owner-email" id="owner-email" value="">
+        </div>
+      </div>
 
-    <p>Owner phone number:</p>
-    <input type="phone" name="owner-phone" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="owner-phone">Owner phone number:</label>
+          <input type="phone" name="owner-phone" id="owner-phone" value="">
+        </div>
+      </div>
 
-    <p>Veterinarian name:</p>
-    <input type="text" name="vet-name" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="vet-name">Veterinarian name:</label>
+          <input type="text" name="vet-name" id="vet-name" value="">
+        </div>
+      </div>
 
-    <p>Veterinarian email address:</p>
-    <input type="email" name="vet-email" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="vet-email">Veterinarian email address:</label>
+          <input type="email" name="vet-email" id="vet-email" value="">
+        </div>
+      </div>
 
-    <p>Veterinarian phone number:</p>
-    <input type="phone" name="vet-phone" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="vet-phone">Veterinarian phone number:</label>
+          <input type="phone" name="vet-phone" id="vet-phone" value="">
+        </div>
+      </div>
 
-    <p>Organization Uses per Day:</p>
-    <input type="number" name="org_uses_per_day" value="" required>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="org_uses_per_day">Organization Uses per Day:</label>
+          <input type="number" name="org_uses_per_day" id="org_uses_per_day" value="" required>
+        </div>
+      </div>
 
-    <p>Owner Uses per Day:</p>
-    <input type="number" name="owner_uses_per_day" value="" required>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="owner_uses_per_day">Owner Uses per Day:</label>
+          <input type="number" name="owner_uses_per_day" id="owner_uses_per_day" value="" required>
+        </div>
+      </div>
 
-    <p>Horse Uses per Week:</p>
-    <input type="number" name="horse_uses_per_week" value="" required>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="horse_uses_per_week">Horse Uses per Week:</label>
+          <input type="number" name="horse_uses_per_week" id="horse_uses_per_week" value="" required>
+        </div>
+      </div>
 
-    <div>
-      <p>Notes:</p>
-      <input type="text" name="notes" value="">
-    </div>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="notes">Notes:</label>
+          <input type="text" name="notes" id="notes" value="">
+        </div>
+      </div>
 
-    <br><br>
-    <button type="submit">Create</button>
+      <div class='form-section'>
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Create</button>
+      </div>
 
-  </form>
+    </form>
+  </div>
 
 
 

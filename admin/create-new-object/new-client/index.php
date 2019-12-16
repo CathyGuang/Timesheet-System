@@ -29,15 +29,15 @@
 
       <div class="form-section">
         <div class="form-element">  
-          <p>Email:</p>
-          <input type="email" name="email" value="">
+          <label for='email'>Email:</label>
+          <input type="email" name="email" id="email" value="">
         </div>
       </div>
 
       <div class="form-section">
         <div class="form-element">  
-          <p>Phone Number:</p>
-          <input type="number" name="phone" maxlength="10" value="">
+          <label for="phone">Phone Number:</label>
+          <input type="number" name="phone" id="phone" maxlength="10" value="">
         </div>
       </div>
 

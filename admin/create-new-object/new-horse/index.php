@@ -32,16 +32,12 @@
           <label for="owner">Owner: (Leave blank for organization)</label>
           <input type="text" name="owner" id="owner" value="">
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="owner-email">Owner email address:</label>
           <input type="email" name="owner-email" id="owner-email" value="">
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="owner-phone">Owner phone number:</label>
           <input type="phone" name="owner-phone" id="owner-phone" value="">
@@ -53,16 +49,12 @@
           <label for="vet-name">Veterinarian name:</label>
           <input type="text" name="vet-name" id="vet-name" value="">
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="vet-email">Veterinarian email address:</label>
           <input type="email" name="vet-email" id="vet-email" value="">
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="vet-phone">Veterinarian phone number:</label>
           <input type="phone" name="vet-phone" id="vet-phone" value="">
@@ -74,16 +66,12 @@
           <label for="org_uses_per_day">Organization Uses per Day:</label>
           <input type="number" name="org_uses_per_day" id="org_uses_per_day" value="" required>
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="owner_uses_per_day">Owner Uses per Day:</label>
           <input type="number" name="owner_uses_per_day" id="owner_uses_per_day" value="" required>
         </div>
-      </div>
 
-      <div class='form-section'>
         <div class='form-element'>
           <label for="horse_uses_per_week">Horse Uses per Week:</label>
           <input type="number" name="horse_uses_per_week" id="horse_uses_per_week" value="" required>

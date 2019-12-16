@@ -67,6 +67,7 @@ button:hover {
       position: absolute;
       right: 5px;
       top: 25px;
+      font-size: 0.8em;
     }
     #dhs-website-label {
       font-size: .6em;

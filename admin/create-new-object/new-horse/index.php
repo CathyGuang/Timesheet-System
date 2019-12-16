@@ -22,7 +22,7 @@
 
       <div class='form-section'>
         <div class='form-element'>
-          <label for="name">Name:</label>
+          <label for="name">Horse Name:</label>
           <input type="text" name="name" id="name" value="" required>
         </div>
       </div>

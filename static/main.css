@@ -162,7 +162,7 @@ button:hover {
         .form-element {
           display: flex;
           flex-flow: column;
-          font-size: .8em;
+          font-size: 1em;
           justify-content: space-between;
           padding-left: 10px
         }

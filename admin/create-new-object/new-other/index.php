@@ -61,6 +61,7 @@ EOT;
       </div>
 
       <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <button type="submit">Submit</button>
       </div>
 

@@ -13,7 +13,7 @@
 
   <header>
     <h1>Edit Class</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav> <a href="../../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

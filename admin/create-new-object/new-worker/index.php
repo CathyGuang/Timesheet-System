@@ -17,7 +17,7 @@
     </nav>
   </header>
 
-  <div class-"form-container">
+  <div class="form-container">
     <form autocomplete="off" action="create-new-worker.php" method="post" class="standard-form">
 
       <div class="form-section">
@@ -59,7 +59,7 @@
           <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE"></p>
         </div>
       </div>
-      
+
       <div class="form-section">
           <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
           <button type="submit">Create</button>

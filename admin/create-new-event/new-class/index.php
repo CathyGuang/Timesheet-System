@@ -495,6 +495,7 @@ EOF;
 
   <footer>
     <script type="text/javascript">
+    
     function newStaffFunction() {
         newFormSection = document.createElement('div');
         newFormSection.setAttribute('class', 'form-section');

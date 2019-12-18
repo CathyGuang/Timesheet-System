@@ -25,21 +25,11 @@
 
   <div class="form-container">
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
+    
     <div class="form-section">
       <div class="form-element">
         <label for="class-type">Class Type:</label>
         <input type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
-          <datalist id="class-type-list">
-            <?php
-              $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
-              $result = pg_query($db_connection, $query);
-              $classTypeNames = pg_fetch_all_columns($result);
-              foreach ($classTypeNames as $key => $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES);
-                echo "<option value='{$value}'>";
-              }
-            ?>
-          </datalist>
       </div>
     </div>
 
@@ -385,6 +375,18 @@ EOF;
 
 
         <!-- DATA LISTS -->
+
+          <datalist id="class-type-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $classTypeNames = pg_fetch_all_columns($result);
+              foreach ($classTypeNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
+                echo "<option value='{$value}'>";
+              }
+            ?>
+          </datalist>
 
           <datalist id="staff-role-list">
             <?php

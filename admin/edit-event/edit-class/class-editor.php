@@ -217,11 +217,13 @@
 
 
 
+      <div class="form-section">
+        <div class="form-element">
+          <label>Arena:</label>
+          <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
+        </div>
+      </div>
 
-
-      <p>Arena:</p>
-      <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
-        
 
 
       <div>

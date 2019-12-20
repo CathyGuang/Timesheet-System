@@ -276,38 +276,6 @@
 
 
 
-      <div>
-        <div id="staff-section">
-          <p>OLD Staff:</p>
-
-            
-
-      <?php   
-          $staffData = json_decode($classData['staff']);
-          foreach ($staffData as $role => $staffID) {
-              $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
-              $staffName = htmlspecialchars($staffName, ENT_QUOTES);
-              //PRINT STAFF FIELDS FOR EACH NAME
-          }
-      ?>
-
-        <label>Role: </label>
-        <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="<?php echo $role; ?>" onclick="select();">
-        <br>
-        <label>Staff Member: </label>
-        <input form="class-form" type="text" name="staff[]" list="staff-list" value="<?php echo $staffName; ?>" onclick="select();">
-
-
-        </div>
-        <br>
-        <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
-      </div>
-
-
-
-
-
-
 
 
 

@@ -27,6 +27,10 @@
   <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
     
     <div class="form-section">
+      <h3 class="form-header">Class Info: </h3>
+    </div>
+
+    <div class="form-section">
       <div class="form-element">
         <label for="class-type">Class Type:</label>
         <input type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
@@ -164,6 +168,10 @@
     </div>
 
 
+
+    <div class="form-section">
+      <h3 class="form-header">Location: </h3>
+    </div>
 
     <div class="form-section">
       <div class="form-element">

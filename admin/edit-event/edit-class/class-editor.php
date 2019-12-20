@@ -313,6 +313,13 @@
               $tackNotesList = explode(',', ltrim(rtrim($classData['tack_notes'], "}"), '{'));
 
               $clientEquipmentNotesList = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
+
+              var_dump($clientIDList);
+              var_dump($horseIDList);
+              var_dump($tackList);
+              var_dump($padList);
+              var_dump($tackNotesList);
+              var_dump($clientEquipmentNotesList);
           
           ?>
           <!-- hidden id list of original clients for class identification if clients change -->

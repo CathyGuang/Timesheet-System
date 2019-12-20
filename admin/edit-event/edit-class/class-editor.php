@@ -358,7 +358,7 @@
 
             if ($clientEquipmentNotesList[$index]) {
               $clientNote = ltrim(rtrim($clientEquipmentNotesList[$index], '"'), '"');
-              $clientNote = htmlspecialchars($note, ENT_QUOTES);
+              $clientNote = htmlspecialchars($clientNote, ENT_QUOTES);
             } else {
               $clientNote = "";
             }

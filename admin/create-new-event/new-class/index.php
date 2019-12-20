@@ -169,9 +169,8 @@
       <div class="form-element">
         <label>Arena:</label>
         <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
-          
-        </div>
       </div>
+    </div>
 
 
     <div>

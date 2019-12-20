@@ -233,9 +233,52 @@
 
 
 
+
+
+
+
+
       <div>
         <div id="staff-section">
-          <p>Staff:</p>
+          <div class="form-section">
+            <h3>Staff:</h3>
+          </div>
+
+          <?php
+            $staffData = json_decode($classData['staff']);
+            if ($staffData) {
+              foreach ($staffData as $role => $staffID) {
+                $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
+                $staffName = htmlspecialchars($staffName, ENT_QUOTES);
+                echo "<div class='form-section'><div class='form-element'>";
+                echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+                echo "</div><div class='form-element'";
+                echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
+                echo "</div></div>";
+              }
+            } else {
+              echo "<div class='form-section'><div class='form-element'>";
+              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
+              echo "</div><div class='form-element'";
+              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
+              echo "</div></div>";
+            }
+          ?>
+        </div>
+        <div class="form-section">
+          <div class="form-element">
+            <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <div>
+        <div id="staff-section">
+          <p>OLD Staff:</p>
 
             
 
@@ -254,12 +297,25 @@
         <label>Staff Member: </label>
         <input form="class-form" type="text" name="staff[]" list="staff-list" value="<?php echo $staffName; ?>" onclick="select();">
 
-      }
 
         </div>
         <br>
         <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Additional Staff Member</button>
       </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -272,6 +328,16 @@
       </div>
 
     
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -382,6 +448,14 @@
             <br>
             <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Client Equipment Note</button>
           </div>
+
+
+
+
+
+
+
+
 
 
 

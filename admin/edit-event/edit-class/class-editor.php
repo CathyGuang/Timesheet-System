@@ -107,59 +107,117 @@
         </div>
       </div>
 
-      
 
-      <div style="max-width: 430px;">
-        <!-- MONDAY-->
-        <label for="monday-checkbox">Monday: </label>
-        <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php echo $checkboxList['Monday']; ?>>
-        <label for="monday-start-time">from:</label>
-        <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $allWeekdaysTimesList['Monday'][0]; ?>">
-        <label for="monday-end-time">to:</label>
-        <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $allWeekdaysTimesList['Monday'][1]; ?>">
-        <!-- TUESDAY-->
-        <label for="tuesday-checkbox">Tuesday: </label>
-        <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php echo $checkboxList['Tuesday']; ?>>
-        <label for="tuesday-start-time">from:</label>
-        <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][0]; ?>">
-        <label for="tuesday-end-time">to:</label>
-        <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][1]; ?>">
-        <!-- WEDNESDAY-->
-        <label for="wednesday-checkbox">Wednesday: </label>
-        <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php echo $checkboxList['Wednesday']; ?>>
-        <label for="wednesday-start-time">from:</label>
-        <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][0]; ?>">
-        <label for="wednesday-end-time">to:</label>
-        <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][1]; ?>">
-        <!-- THURSDAY-->
-        <label for="thursday-checkbox">Thursday: </label>
-        <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php echo $checkboxList['Thursday']; ?>>
-        <label for="thursday-start-time">from:</label>
-        <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $allWeekdaysTimesList['Thursday'][0]; ?>">
-        <label for="thursday-end-time">to:</label>
-        <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $allWeekdaysTimesList['Thursday'][1]; ?>">
-        <!-- FRIDAY-->
-        <label for="friday-checkbox">Friday: </label>
-        <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php echo $checkboxList['Friday']; ?>>
-        <label for="friday-start-time">from:</label>
-        <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $allWeekdaysTimesList['Friday'][0]; ?>">
-        <label for="friday-end-time">to:</label>
-        <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $allWeekdaysTimesList['Friday'][1]; ?>">
-        <!-- SATURDAY-->
-        <label for="saturday-checkbox">Saturday: </label>
-        <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php echo $checkboxList['Saturday']; ?>>
-        <label for="saturday-start-time">from:</label>
-        <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $allWeekdaysTimesList['Saturday'][0]; ?>">
-        <label for="saturday-end-time">to:</label>
-        <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $allWeekdaysTimesList['Saturday'][1]; ?>">
-        <!-- SUNDAY-->
-        <label for="sunday-checkbox">Sunday: </label>
-        <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php echo $checkboxList['Sunday']; ?>>
-        <label for="sunday-start-time">from:</label>
-        <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $allWeekdaysTimesList['Sunday'][0]; ?>">
-        <label for="sunday-end-time">to:</label>
-        <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $allWeekdaysTimesList['Sunday'][1]; ?>">
+
+      <div class="form-section">         
+          <!-- MONDAY-->
+        <div class="form-element">
+          <label for="monday-checkbox">Monday: </label>
+          <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php echo $checkboxList['Monday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="monday-start-time">from:</label>
+          <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $allWeekdaysTimesList['Monday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="monday-end-time">to:</label>
+          <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $allWeekdaysTimesList['Monday'][1]; ?>">
+        </div>
       </div>
+      <div class="form-section">
+          <!-- TUESDAY-->
+        <div class="form-element">
+          <label for="tuesday-checkbox">Tuesday: </label>
+          <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php echo $checkboxList['Tuesday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="tuesday-start-time">from:</label>
+          <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="tuesday-end-time">to:</label>
+          <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][1]; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- WEDNESDAY-->
+        <div class="form-element">
+          <label for="wednesday-checkbox">Wednesday: </label>
+          <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php echo $checkboxList['Wednesday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="wednesday-start-time">from:</label>
+          <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="wednesday-end-time">to:</label>
+          <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][1]; ?>">
+        </div>
+        </div>
+      <div class="form-section">
+          <!-- THURSDAY-->
+        <div class="form-element">
+          <label for="thursday-checkbox">Thursday: </label>
+          <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php echo $checkboxList['Thursday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="thursday-start-time">from:</label>
+          <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $allWeekdaysTimesList['Thursday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="thursday-end-time">to:</label>
+          <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $allWeekdaysTimesList['Thursday'][1]; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- FRIDAY-->
+        <div class="form-element">
+          <label for="friday-checkbox">Friday: </label>
+          <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php echo $checkboxList['Friday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="friday-start-time">from:</label>
+          <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $allWeekdaysTimesList['Friday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="friday-end-time">to:</label>
+          <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $allWeekdaysTimesList['Friday'][1]; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- SATURDAY-->
+        <div class="form-element">
+          <label for="saturday-checkbox">Saturday: </label>
+          <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php echo $checkboxList['Saturday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="saturday-start-time">from:</label>
+          <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $allWeekdaysTimesList['Saturday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="saturday-end-time">to:</label>
+          <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $allWeekdaysTimesList['Saturday'][1]; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- SUNDAY-->
+        <div class="form-element">
+          <label for="sunday-checkbox">Sunday: </label>
+          <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php echo $checkboxList['Sunday']; ?>>
+        </div>
+        <div class="form-element">
+          <label for="sunday-start-time">from:</label>
+          <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $allWeekdaysTimesList['Sunday'][0]; ?>">
+        </div>
+        <div class="form-element">
+          <label for="sunday-end-time">to:</label>
+          <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $allWeekdaysTimesList['Sunday'][1]; ?>">
+        </div>
+      </div>
+
+
+
+
 
       <p>Arena:</p>
       <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">

@@ -324,14 +324,14 @@
             
 
             if ($clientIDList[$index]) {
-              $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+              $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$clientIDList[$index]}") , 0, 1)['name'];
               $client = htmlspecialchars($clientName, ENT_QUOTES);
             } else {
               $client = "";
             }
 
             if ($horseIDList[$index]) {
-              $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+              $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$horseIDList[$index]} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
               $horse = htmlspecialchars($horseName, ENT_QUOTES);
             } else {
               $horse = "";

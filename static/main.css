@@ -179,6 +179,12 @@ button:hover {
         
         input {
           border: 1px solid var(--dark-purple);
+          font-size: .8em;
+        }
+
+        input[type='checkbox'] {
+          height: 1.3em;
+          width: 1.3em;
         }
 
         input[type='date'] {

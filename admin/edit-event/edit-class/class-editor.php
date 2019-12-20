@@ -72,80 +72,80 @@
   <div class="form-container">
     <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="standard-form">
 
-      <input type="text" name="class-code" value="{$selectedClassCode}" style="visibility: hidden;">
+      <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" style="visibility: hidden;">
 
       <p>Class Type:</p>
-      <input type="text" name="old-class-type" value="{$classData['class_type']}" style="visibility: hidden;">
-      <input type="text" name="class-type" list="class-type-list" value="{$classData['class_type']}" onclick="select()" required>
+      <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" style="visibility: hidden;">
+      <input type="text" name="class-type" list="class-type-list" value="<?php echo $classData['class_type']; ?>" onclick="select()" required>
         
 
       <p>Display Title:</p>
-      <input type="text" name="display-title" value="{$classData['display_title']}" onclick="select();" required>
+      <input type="text" name="display-title" value="<?php echo $classData['display_title']; ?>" onclick="select();" required>
 
 
       <p>Dates:</p>
-      <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE" {$everyOtherWeekCheckbox}></p>
+      <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE" <?php echo $everyOtherWeekCheckbox; ?>></p>
       <div style="max-width: 500px;">
         <label for="start-date">Start date:</label>
-        <input type="date" id="start-date" name="start-date" value="{$startDate}" placeholder="from" required>
+        <input type="date" id="start-date" name="start-date" value="<?php echo $startDate; ?>" placeholder="from" required>
         <label for="end-date">End date:</label>
-        <input type="date" id="end-date" name="end-date" value="{$endDate}" placeholder="to" required>
+        <input type="date" id="end-date" name="end-date" value="<?php echo $endDate; ?>" placeholder="to" required>
       </div>
 
       <div style="max-width: 430px;">
         <!-- MONDAY-->
         <label for="monday-checkbox">Monday: </label>
-        <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" {$checkboxList['Monday']}>
+        <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php echo $checkboxList['Monday']; ?>>
         <label for="monday-start-time">from:</label>
-        <input type="time" id="monday-start-time" name="monday-start-time" value="{$allWeekdaysTimesList['Monday'][0]}">
+        <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $allWeekdaysTimesList['Monday'][0]; ?>">
         <label for="monday-end-time">to:</label>
-        <input type="time" id="monday-end-time" name="monday-end-time" value="{$allWeekdaysTimesList['Monday'][1]}">
+        <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $allWeekdaysTimesList['Monday'][1]; ?>">
         <!-- TUESDAY-->
         <label for="tuesday-checkbox">Tuesday: </label>
-        <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" {$checkboxList['Tuesday']}>
+        <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php echo $checkboxList['Tuesday']; ?>>
         <label for="tuesday-start-time">from:</label>
-        <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="{$allWeekdaysTimesList['Tuesday'][0]}">
+        <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][0]; ?>">
         <label for="tuesday-end-time">to:</label>
-        <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="{$allWeekdaysTimesList['Tuesday'][1]}">
+        <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $allWeekdaysTimesList['Tuesday'][1]; ?>">
         <!-- WEDNESDAY-->
         <label for="wednesday-checkbox">Wednesday: </label>
-        <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" {$checkboxList['Wednesday']}>
+        <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php echo $checkboxList['Wednesday']; ?>>
         <label for="wednesday-start-time">from:</label>
-        <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="{$allWeekdaysTimesList['Wednesday'][0]}">
+        <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][0]; ?>">
         <label for="wednesday-end-time">to:</label>
-        <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="{$allWeekdaysTimesList['Wednesday'][1]}">
+        <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $allWeekdaysTimesList['Wednesday'][1]; ?>">
         <!-- THURSDAY-->
         <label for="thursday-checkbox">Thursday: </label>
-        <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" {$checkboxList['Thursday']}>
+        <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php echo $checkboxList['Thursday']; ?>>
         <label for="thursday-start-time">from:</label>
-        <input type="time" id="thursday-start-time" name="thursday-start-time" value="{$allWeekdaysTimesList['Thursday'][0]}">
+        <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $allWeekdaysTimesList['Thursday'][0]; ?>">
         <label for="thursday-end-time">to:</label>
-        <input type="time" id="thursday-end-time" name="thursday-end-time" value="{$allWeekdaysTimesList['Thursday'][1]}">
+        <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $allWeekdaysTimesList['Thursday'][1]; ?>">
         <!-- FRIDAY-->
         <label for="friday-checkbox">Friday: </label>
-        <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" {$checkboxList['Friday']}>
+        <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php echo $checkboxList['Friday']; ?>>
         <label for="friday-start-time">from:</label>
-        <input type="time" id="friday-start-time" name="friday-start-time" value="{$allWeekdaysTimesList['Friday'][0]}">
+        <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $allWeekdaysTimesList['Friday'][0]; ?>">
         <label for="friday-end-time">to:</label>
-        <input type="time" id="friday-end-time" name="friday-end-time" value="{$allWeekdaysTimesList['Friday'][1]}">
+        <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $allWeekdaysTimesList['Friday'][1]; ?>">
         <!-- SATURDAY-->
         <label for="saturday-checkbox">Saturday: </label>
-        <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" {$checkboxList['Saturday']}>
+        <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php echo $checkboxList['Saturday']; ?>>
         <label for="saturday-start-time">from:</label>
-        <input type="time" id="saturday-start-time" name="saturday-start-time" value="{$allWeekdaysTimesList['Saturday'][0]}">
+        <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $allWeekdaysTimesList['Saturday'][0]; ?>">
         <label for="saturday-end-time">to:</label>
-        <input type="time" id="saturday-end-time" name="saturday-end-time" value="{$allWeekdaysTimesList['Saturday'][1]}">
+        <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $allWeekdaysTimesList['Saturday'][1]; ?>">
         <!-- SUNDAY-->
         <label for="sunday-checkbox">Sunday: </label>
-        <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" {$checkboxList['Sunday']}>
+        <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php echo $checkboxList['Sunday']; ?>>
         <label for="sunday-start-time">from:</label>
-        <input type="time" id="sunday-start-time" name="sunday-start-time" value="{$allWeekdaysTimesList['Sunday'][0]}">
+        <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $allWeekdaysTimesList['Sunday'][0]; ?>">
         <label for="sunday-end-time">to:</label>
-        <input type="time" id="sunday-end-time" name="sunday-end-time" value="{$allWeekdaysTimesList['Sunday'][1]}">
+        <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $allWeekdaysTimesList['Sunday'][1]; ?>">
       </div>
 
       <p>Arena:</p>
-      <input type="text" name="arena" list="arena-list" value="{$classData['arena']}" onclick="select();">
+      <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
         
 
 
@@ -165,10 +165,10 @@
       ?>
 
         <label>Role: </label>
-        <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select();">
+        <input form="class-form" type="text" name="staff-roles[]" list="staff-role-list" value="<?php echo $role; ?>" onclick="select();">
         <br>
         <label>Staff Member: </label>
-        <input form="class-form" type="text" name="staff[]" list="staff-list" value="{$staffName}" onclick="select();">
+        <input form="class-form" type="text" name="staff[]" list="staff-list" value="<?php echo $staffName; ?>" onclick="select();">
 
       }
 
@@ -207,7 +207,7 @@
           ?>
 
       </div>
-      <input form='class-form' type="text" name="old-client-id-list" value="{$oldClientIDListPGArray}" style="visibility: hidden; height: 1px;">
+      <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" style="visibility: hidden; height: 1px;">
       <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
     </div>
 

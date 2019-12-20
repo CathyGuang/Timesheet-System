@@ -34,7 +34,7 @@
           
         <div class="form-section">
           <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-          <button type="submit">Submit</button>
+          <button type="submit">Go</button>
         </div>
          
       </form>

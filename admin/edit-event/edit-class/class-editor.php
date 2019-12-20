@@ -288,7 +288,7 @@
           </div>
 
           <?php
-              // INITIALIZE LISTS OF 
+              // INITIALIZE LISTS OF VALUES
 
               $oldClientIDListPGArray = '{';
               $clientIDList = explode(',', ltrim(rtrim($classData['clients'], '}'), '{'));
@@ -357,7 +357,7 @@
             }
 
             if ($clientEquipmentNotesList[$index]) {
-              $note = ltrim(rtrim($clientEquipmentNotesList[$index], '"'), '"');
+              $clientNote = ltrim(rtrim($clientEquipmentNotesList[$index], '"'), '"');
               $clientNote = htmlspecialchars($note, ENT_QUOTES);
             } else {
               $clientNote = "";

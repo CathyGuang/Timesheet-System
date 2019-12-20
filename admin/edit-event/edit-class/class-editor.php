@@ -314,13 +314,6 @@
 
               $clientEquipmentNotesList = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
 
-              var_dump($clientIDList);
-              var_dump($horseIDList);
-              var_dump($tackList);
-              var_dump($padList);
-              var_dump($tackNotesList);
-              var_dump($clientEquipmentNotesList);
-          
           ?>
           <!-- hidden id list of original clients for class identification if clients change -->
           <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
@@ -437,112 +430,7 @@ EOF;
 
 
 
-
-
-
-
-    <div>
-      <div id="client-section">
-          <p>Client(s):</p>
-          <?php
-              $oldClientIDListPGArray = "{";
-              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], "}"), '{'));
-              foreach ($clientIDList as $id) {
-                  $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
-                  $oldClientIDListPGArray .= $id .',';
-                  }
-              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
-          ?>
-
-      </div>
-    </div>
-
-
-    <div>
-    <div id="horse-section">
-      <p>Horse(s):</p>
-      <?php
-          $horseIDList = explode(',', ltrim(rtrim($classData['horses'], "}"), '{'));
-          foreach ($horseIDList as $id) {
-              $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
-          }
-      ?>
-    
-      </div>
-      </div>
-
-      <div>
-      <div id="tack-section">
-        <p>Tack(s):</p>
-          <?php
-              $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
-              foreach ($tackList as $name) {
-                $name = ltrim(rtrim($name, '\"'), '\"');
-              }
-          ?>
-
       
-        </div>
-        </div>
-
-
-        <div>
-        <div id="pad-section">
-          <p>Pad(s):</p>
-              <?php
-              $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
-              foreach ($padList as $key => $name) {
-                  $padList[$key] = rtrim(ltrim($name, "\""), "\"");
-              }
-              ?>
-
-          </div>
-          </div>
-
-
-
-          <div>
-            <div id="tack-notes-section">
-              <p>Tack Note(s):</p>
-              <?php
-                $tackNotesData = explode(',', ltrim(rtrim($classData['tack_notes'], "}"), '{'));
-                if ($tackNotesData) {
-                  foreach ($tackNotesData as $note) {
-                    $note = ltrim(rtrim($note, '"'), '"');
-                    echo "<input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
-                  }
-                } else {
-                  echo "<input form='class-form' type='text' name='tack-notes[]' value='' onclick='select();'>";
-                }
-                ?>
-            </div>
-          </div>
-
-          <div>
-            <div id="client-equipment-section">
-              <p>Client Equipment:</p>
-              <?php
-                $clientEquipmentNotesData = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
-                if ($clientEquipmentNotesData) {
-                  foreach ($clientEquipmentNotesData as $note) {
-                    $note = ltrim(rtrim($note, '"'), '"');
-                    echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>";
-                  }
-                } else {
-                  echo "<input form='class-form' type='text' name='client-equipment-notes[]' value='' onclick='select();'>";
-                }
-              ?>
-            </div>
-          </div>
-
-
-
-
-
-
-
-
-
 
 
 

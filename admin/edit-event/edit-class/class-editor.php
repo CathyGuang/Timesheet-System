@@ -74,13 +74,20 @@
 
       <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" style="visibility: hidden;">
 
-      <p>Class Type:</p>
-      <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" style="visibility: hidden;">
-      <input type="text" name="class-type" list="class-type-list" value="<?php echo $classData['class_type']; ?>" onclick="select()" required>
-        
+      <div class="form-section">
+        <div class="form-element">
+          <label for="class-type">Class Type:</label>
+          <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" style="visibility: hidden;">
+          <input type="text" name="class-type" list="class-type-list" value="<?php echo $classData['class_type']; ?>" onclick="select()" required>
+        </div>
+      </div>
 
-      <p>Display Title:</p>
-      <input type="text" name="display-title" value="<?php echo $classData['display_title']; ?>" onclick="select();" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="display-title">Display Title:</label>
+          <input type="text" name="display-title" id="display-title" value="<?php echo $classData['display_title']; ?>" onclick="select();" required>
+        </div>
+      </div>
 
 
       <p>Dates:</p>

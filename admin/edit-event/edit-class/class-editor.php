@@ -75,6 +75,10 @@
       <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" hidden>
 
       <div class="form-section">
+        <h3 class="form-header">Class Info: </h3>
+      </div>
+
+      <div class="form-section">
         <div class="form-element">
           <label for="class-type">Class Type:</label>
           <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" hidden>
@@ -216,6 +220,9 @@
       </div>
 
 
+      <div class="form-section">
+        <h3 class="form-header">Location: </h3>
+      </div>
 
       <div class="form-section">
         <div class="form-element">

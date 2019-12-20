@@ -302,7 +302,7 @@
 EOF;
 
           // Check for remaining POST data, if done, exit loop
-          if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
+          if (empty($oldPostData['clients'][$index+1]) && empty($oldPostData['horses'][$index+1]) && empty($oldPostData['tacks'][$index+1]) && empty($oldPostData['pads'][$index+1]) && empty($oldPostData['tack-notes'][$index+1]) && empty($oldPostData['client-equipment-notes'][$index+1])) {
             break;
           }
           $index++;

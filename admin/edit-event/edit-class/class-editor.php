@@ -409,7 +409,7 @@
 EOF;
 
             // Check for remaining POST data, if done, exit loop
-            if (empty($clientIDList[$index]) && empty($horseIDList[$index]) && empty($tackList[$index]) && empty($padList[$index]) && empty($tackNotesList[$index]) && empty($clientEquipmentNotesList[$index])) {
+            if (empty($clientIDList[$index+1]) && empty($horseIDList[$index+1]) && empty($tackList[$index+1]) && empty($padList[$index+1]) && empty($tackNotesList[$index+1]) && empty($clientEquipmentNotesList[$index+1])) {
               break;
             }
             $index++;

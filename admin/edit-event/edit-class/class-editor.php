@@ -20,7 +20,7 @@
 
 
 
-  <h3 class='main-content-header'><?php echo $_POST['selected-class']; ?></h3>"
+  <h3 class='main-content-header'><?php echo $_POST['selected-class']; ?></h3>
 
   <?php 
     $selectedClassCode = explode(': ', $_POST['selected-class'])[1];

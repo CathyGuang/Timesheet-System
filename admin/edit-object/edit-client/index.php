@@ -64,7 +64,7 @@ EOT;
         <br><br>
         <button type="submit">Update</button>
 
-        <input type="number" name="id" value="{$clientInfo['id']}" readonly style='visibility: hidden;'>
+        <input type="number" name="id" value="{$clientInfo['id']}" readonly hidden>
 
       </form>
 EOT;

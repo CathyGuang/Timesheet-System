@@ -112,7 +112,7 @@
         echo "<h3 class='main-content-header'>The database has not been changed. Please <button style='width: 90pt;' onclick='window.history.back()'>try again</button></h3>";
 
         echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
-        echo "<form id='override-form' method='post' action='manage-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
+        echo "<form id='override-form' method='post' action='manage-class-override.php'><input name='override-post' value='{$postString}' hidden></form>";
         return;
       }
     }

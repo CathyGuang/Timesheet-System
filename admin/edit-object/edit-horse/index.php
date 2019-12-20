@@ -90,7 +90,7 @@ EOT;
         <br><br>
         <button type="submit">Update</button>
 
-        <input type="number" name="id" value="{$horseInfo['id']}" style='visibility: hidden;'>
+        <input type="number" name="id" value="{$horseInfo['id']}" hidden>
 
       </form>
 EOT;

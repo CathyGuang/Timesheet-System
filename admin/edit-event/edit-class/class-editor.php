@@ -72,7 +72,7 @@
   <div class="form-container">
     <form id="class-form" autocomplete="off" action="edit-class.php" method="post" class="standard-form">
 
-      <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" style="visibility: hidden;">
+      <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" hidden>
 
       <div class="form-section">
         <div class="form-element">

@@ -95,7 +95,7 @@ EOT;
         <br><br>
         <button type="submit">Update</button>
 
-        <input type="number" name="id" value="{$workerInfo['id']}" style="visibility: hidden;">
+        <input type="number" name="id" value="{$workerInfo['id']}" hidden>
 
       </form>
 EOT;

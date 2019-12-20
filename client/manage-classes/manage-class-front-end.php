@@ -28,7 +28,7 @@
 
   <form autocomplete="off" action="manage-class-back-end.php" method="post" class="standard-form" autocomplete="off">
 
-    <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="id" value="<?php echo $classID ?>" hidden>
 
 
     <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>

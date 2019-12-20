@@ -28,7 +28,7 @@
 
   <form autocomplete="off" id="class-form" action="manage-class-back-end.php" method="post" class="standard-form">
 
-    <input type="text" name="id" value="<?php echo $classID; ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="id" value="<?php echo $classID; ?>" hidden>
 
 
 

@@ -281,6 +281,133 @@
 
 
 
+      <div>
+        <div id="client-horse-section">
+          <div class="form-section">
+            <h3>Client(s)/Horse(s):</h3>
+          </div>
+
+          <?php
+              $oldClientIDListPGArray = "{";
+              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], "}"), '{'));
+              foreach ($clientIDList as $id) {
+                  $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+                  $oldClientIDListPGArray .= $id .',';
+                  }
+              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
+          ?>
+
+          <?php 
+          $index = 0;
+          while (true) {
+            
+
+            if ($oldPostData['clients'][$index]) {
+              $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
+            } else {
+              $client = "";
+            }
+
+            if ($oldPostData['horses']) {
+              $horse = htmlspecialchars($oldPostData['horses'][$index], ENT_QUOTES);
+            } else {
+              $horse = "";
+            }
+
+            if ($oldPostData['tacks']) {
+              $tack = htmlspecialchars($oldPostData['tacks'][$index], ENT_QUOTES);
+            } else {
+              $tack = "";
+            }
+
+            if ($oldPostData['pads']) {
+              $pad = htmlspecialchars($oldPostData['pads'][$index], ENT_QUOTES);
+            } else {
+              $pad = "";
+            }
+
+            if ($oldPostData['tack-notes']) {
+              $note = htmlspecialchars($oldPostData['tack-notes'][$index], ENT_QUOTES);
+            } else {
+              $note = "";
+            }
+
+            if ($oldPostData['client-equipment-notes']) {
+              $clientNote = htmlspecialchars($oldPostData['client-equipment-notes'][$index], ENT_QUOTES);
+            } else {
+              $clientNote = "";
+            }
+
+
+            echo <<<EOF
+            <div class="client-horse-form-section">
+              
+              <div class="form-element">
+                <label>Client:</label>
+                <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
+              </div>
+
+              <div class="form-element">
+                <label>Horse:</label>
+                <input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
+              </div>
+
+              <div class="form-element">
+                <label>Tack:</label>
+                <input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
+              </div>
+
+              <div class="form-element">
+                <label>Pad:</label>
+                <input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
+              </div>
+
+              <div class="form-element">
+                <label>Tack Notes:</label>
+                <input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
+              </div>
+
+              <div class="form-element">
+                <label>Equipment Notes:</label>
+                <input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>
+              </div>
+
+
+            </div>
+EOF;
+
+            // Check for remaining POST data, if done, exit loop
+            if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
+              break;
+            }
+            $index++;
+          }
+          ?>
+
+        </div>
+        <div class="form-section">
+
+          <div class="form-element">
+            <button type="button" id="add-client-horse-section-button" onclick="newClientHorseSection();">Add Client/Horse</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -306,7 +433,7 @@
           ?>
 
       </div>
-      <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" style="visibility: hidden; height: 1px;">
+      <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
       <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
     </div>
 

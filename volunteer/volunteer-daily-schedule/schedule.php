@@ -34,10 +34,10 @@
 
 
   <form autocomplete="off" id="new-schedule" method="post" action="" hidden>
-    <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" hidden>
   </form>
   <form autocomplete="off" id="new-schedule2" method="post" action="" hidden>
-    <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="selected-name" value="<?php echo $_POST['selected-name']; ?>" hidden>
   </form>
 
 

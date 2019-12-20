@@ -90,14 +90,24 @@
       </div>
 
 
-      <p>Dates:</p>
-      <p style="font-size: 12pt; margin-top: 0; margin-bottom: 12px;">Every other week: <input type="checkbox" name="every-other-week" value="TRUE" <?php echo $everyOtherWeekCheckbox; ?>></p>
-      <div style="max-width: 500px;">
-        <label for="start-date">Start date:</label>
-        <input type="date" id="start-date" name="start-date" value="<?php echo $startDate; ?>" placeholder="from" required>
-        <label for="end-date">End date:</label>
-        <input type="date" id="end-date" name="end-date" value="<?php echo $endDate; ?>" placeholder="to" required>
+      <div class="form-section">
+        <h3 class="form-header">Dates: </h3>
       </div>
+      <div class="form-section">
+        <div class="form-element">
+          <label>Every other week: <input type="checkbox" name="every-other-week" value="TRUE" <?php echo $everyOtherWeekCheckbox; ?>></label>
+        </div>
+          <div class="form-element">
+          <label for="start-date">Start date:</label>
+          <input type="date" id="start-date" name="start-date" value="<?php echo $startDate; ?>" placeholder="from" required>
+        </div>
+        <div class="form-element">
+          <label for="end-date">End date:</label>
+          <input type="date" id="end-date" name="end-date" value="<?php echo $endDate; ?>" placeholder="to" required>
+        </div>
+      </div>
+
+      
 
       <div style="max-width: 430px;">
         <!-- MONDAY-->

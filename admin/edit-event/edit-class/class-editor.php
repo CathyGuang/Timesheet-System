@@ -20,10 +20,11 @@
 
 
 
-  <h3 class='main-content-header'>{$_POST['selected-class']}</h3>"
+  <h3 class='main-content-header'><?php echo $_POST['selected-class']; ?></h3>"
 
     <?php 
-      $selectedClassCode = explode(': ', explode('; ', $_POST['selected-class'])[4])[1];
+      $selectedClassCode = explode(': ', $_POST['selected-class'])[1];
+      var_dump($selectedClassCode);
 
 
       //Get class IDs

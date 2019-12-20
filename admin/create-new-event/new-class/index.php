@@ -269,32 +269,32 @@
             
             <div class="form-element">
               <label>Client:</label>
-              <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
+              <input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
             </div>
 
             <div class="form-element">
               <label>Horse:</label>
-              <input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
+              <input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
             </div>
 
             <div class="form-element">
               <label>Tack:</label>
-              <input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
+              <input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
             </div>
 
             <div class="form-element">
               <label>Pad:</label>
-              <input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
+              <input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
             </div>
 
             <div class="form-element">
               <label>Tack Notes:</label>
-              <input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
+              <input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
             </div>
 
             <div class="form-element">
               <label>Equipment Notes:</label>
-              <input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>
+              <input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>
             </div>
 
 

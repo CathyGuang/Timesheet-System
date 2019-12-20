@@ -288,52 +288,77 @@
           </div>
 
           <?php
-              $oldClientIDListPGArray = "{";
-              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], "}"), '{'));
+              // INITIALIZE LISTS OF 
+
+              $oldClientIDListPGArray = '{';
+              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], '}'), '{'));
               foreach ($clientIDList as $id) {
-                  $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
                   $oldClientIDListPGArray .= $id .',';
                   }
-              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . "}";
+              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . '}';
+          
+
+              $horseIDList = explode(',', ltrim(rtrim($classData['horses'], '}'), '{'));
+
+              $tackList = explode(',', ltrim(rtrim($classData['tacks'], '}'), '{'));
+              foreach ($tackList as $index => $name) {
+                $tackList[$index] = ltrim(rtrim($name, '\"'), '\"');
+              }
+
+              $padList = explode(',', ltrim(rtrim($classData['pads'], '}'), '{'));
+              foreach ($padList as $index => $name) {
+                  $padList[$index] = rtrim(ltrim($name, '\"'), '\"');
+              }
+
+              $tackNotesList = explode(',', ltrim(rtrim($classData['tack_notes'], "}"), '{'));
+
+              $clientEquipmentNotesList = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
+          
           ?>
+          <!-- hidden id list of original clients for class identification if clients change -->
+          <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
 
           <?php 
           $index = 0;
           while (true) {
             
 
-            if ($oldPostData['clients'][$index]) {
-              $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
+            if ($clientIDList[$index]) {
+              $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$id}") , 0, 1)['name'];
+              $client = htmlspecialchars($clientName, ENT_QUOTES);
             } else {
               $client = "";
             }
 
-            if ($oldPostData['horses']) {
-              $horse = htmlspecialchars($oldPostData['horses'][$index], ENT_QUOTES);
+            if ($horseIDList[$index]) {
+              $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+              $horse = htmlspecialchars($horseName, ENT_QUOTES);
             } else {
               $horse = "";
             }
 
-            if ($oldPostData['tacks']) {
-              $tack = htmlspecialchars($oldPostData['tacks'][$index], ENT_QUOTES);
+            if ($tackList[$index]) {
+              $tack = htmlspecialchars($tackList[$index], ENT_QUOTES);
             } else {
               $tack = "";
             }
 
-            if ($oldPostData['pads']) {
-              $pad = htmlspecialchars($oldPostData['pads'][$index], ENT_QUOTES);
+            if ($padList[$index]) {
+              $pad = htmlspecialchars($padList[$index], ENT_QUOTES);
             } else {
               $pad = "";
             }
 
-            if ($oldPostData['tack-notes']) {
-              $note = htmlspecialchars($oldPostData['tack-notes'][$index], ENT_QUOTES);
+            if ($tackNotesList[$index]) {
+              $note = ltrim(rtrim($tackNotesList[$index], '"'), '"');
+              $note = htmlspecialchars($note, ENT_QUOTES);
             } else {
               $note = "";
             }
 
-            if ($oldPostData['client-equipment-notes']) {
-              $clientNote = htmlspecialchars($oldPostData['client-equipment-notes'][$index], ENT_QUOTES);
+            if ($clientEquipmentNotesList[$index]) {
+              $note = ltrim(rtrim($clientEquipmentNotesList[$index], '"'), '"');
+              $clientNote = htmlspecialchars($note, ENT_QUOTES);
             } else {
               $clientNote = "";
             }
@@ -344,32 +369,32 @@
               
               <div class="form-element">
                 <label>Client:</label>
-                <input form='class-form' type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
+                <input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
               </div>
 
               <div class="form-element">
                 <label>Horse:</label>
-                <input form='class-form' type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
+                <input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
               </div>
 
               <div class="form-element">
                 <label>Tack:</label>
-                <input form='class-form' type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
+                <input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
               </div>
 
               <div class="form-element">
                 <label>Pad:</label>
-                <input form='class-form' type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
+                <input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
               </div>
 
               <div class="form-element">
                 <label>Tack Notes:</label>
-                <input form='class-form' type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
+                <input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
               </div>
 
               <div class="form-element">
                 <label>Equipment Notes:</label>
-                <input form='class-form' type='text' name='client-equipment-notes[]' value='{$note}' onclick='select();'>
+                <input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>
               </div>
 
 
@@ -377,7 +402,7 @@
 EOF;
 
             // Check for remaining POST data, if done, exit loop
-            if (empty($oldPostData['clients'][$index]) && empty($oldPostData['horses'][$index]) && empty($oldPostData['tacks'][$index]) && empty($oldPostData['pads'][$index]) && empty($oldPostData['tack-notes'][$index]) && empty($oldPostData['client-equipment-notes'][$index])) {
+            if (empty($clientIDList[$index]) && empty($horseIDList[$index]) && empty($tackList[$index]) && empty($padList[$index]) && empty($tackNotesList[$index]) && empty($clientEquipmentNotesList[$index])) {
               break;
             }
             $index++;
@@ -409,16 +434,6 @@ EOF;
 
 
 
-
-
-
-
-
-
-
-
-
-
     <div>
       <div id="client-section">
           <p>Client(s):</p>
@@ -433,8 +448,6 @@ EOF;
           ?>
 
       </div>
-      <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
-      <button type="button" id="add-client-button" onclick="newClientFunction();">Add Additional Client</button>
     </div>
 
 
@@ -449,8 +462,6 @@ EOF;
       ?>
     
       </div>
-      <br>
-      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Additional Horse</button>
       </div>
 
       <div>
@@ -459,14 +470,12 @@ EOF;
           <?php
               $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
               foreach ($tackList as $name) {
-              $name = ltrim(rtrim($name, '\"'), '\"');
+                $name = ltrim(rtrim($name, '\"'), '\"');
               }
           ?>
 
       
         </div>
-        <br>
-        <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Additional Tack</button>
         </div>
 
 
@@ -481,8 +490,6 @@ EOF;
               ?>
 
           </div>
-          <br>
-          <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
           </div>
 
 
@@ -502,8 +509,6 @@ EOF;
                 }
                 ?>
             </div>
-            <br>
-            <button type="button" id="add-tack-notes-button" onclick="newTackNotesFunction();">Add Additional Tack Note</button>
           </div>
 
           <div>
@@ -521,8 +526,6 @@ EOF;
                 }
               ?>
             </div>
-            <br>
-            <button type="button" id="add-client-equipment-notes-button" onclick="newClientEquipmentNotesFunction();">Add Client Equipment Note</button>
           </div>
 
 

@@ -164,22 +164,12 @@
     </div>
 
 
-    
+
     <div class="form-section">
       <div class="form-element">
         <label>Arena:</label>
         <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
-          <datalist id="arena-list">
-            <?php
-              $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
-              $result = pg_query($db_connection, $query);
-              $arenaNames = pg_fetch_all_columns($result);
-              foreach ($arenaNames as $key => $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES);
-                echo "<option value='$value'>";
-              }
-            ?>
-          </datalist>
+          
         </div>
       </div>
 
@@ -385,6 +375,18 @@ EOF;
               foreach ($classTypeNames as $key => $value) {
                 $value = htmlspecialchars($value, ENT_QUOTES);
                 echo "<option value='{$value}'>";
+              }
+            ?>
+          </datalist>
+
+          <datalist id="arena-list">
+            <?php
+              $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
+              $result = pg_query($db_connection, $query);
+              $arenaNames = pg_fetch_all_columns($result);
+              foreach ($arenaNames as $key => $value) {
+                $value = htmlspecialchars($value, ENT_QUOTES);
+                echo "<option value='$value'>";
               }
             ?>
           </datalist>

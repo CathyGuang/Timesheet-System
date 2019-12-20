@@ -77,7 +77,7 @@
       <div class="form-section">
         <div class="form-element">
           <label for="class-type">Class Type:</label>
-          <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" style="visibility: hidden;">
+          <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" hidden>
           <input type="text" name="class-type" list="class-type-list" value="<?php echo $classData['class_type']; ?>" onclick="select()" required>
         </div>
       </div>

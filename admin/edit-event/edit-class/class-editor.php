@@ -467,7 +467,7 @@
       <div class="form-section">
         <h3>Remove Class:</h3>
       </div>
-      <div class="form-section">
+      <div class="form-section remove-section">
         <div class="form-element">
           <h4>Archive:</h4>
           <input type="checkbox" name="archive" value="TRUE">

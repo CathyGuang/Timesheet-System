@@ -24,329 +24,195 @@
   ?>
 
   <div class="form-container">
-  <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
-    
-    <div class="form-section">
-      <h3 class="form-header">Class Info: </h3>
-    </div>
-
-    <div class="form-section">
-      <div class="form-element">
-        <label for="class-type">Class Type:</label>
-        <input type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
+    <form autocomplete="off" id="class-form" action="create-new-class.php" method="post" class="standard-form standard-form">
+      
+      <div class="form-section">
+        <h3 class="form-header">Class Info: </h3>
       </div>
-    </div>
 
-    <div class="form-section">
-      <div class="form-element">
-        <label for="display-title">Display Title:</label>
-        <input type="text" name="display-title" id="display-title" value="<?php echo htmlspecialchars($oldPostData['display-title'], ENT_QUOTES); ?>" onclick="select();" required>
-      </div>
-    </div>
-
-    <div class="form-section">
-      <h3 class="form-header">Dates: </h3>
-    </div>
-    <div class="form-section">
-      <div class="form-element">
-        <label>Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></label>
-      </div>
+      <div class="form-section">
         <div class="form-element">
-        <label for="start-date">Start date:</label>
-        <input type="date" id="start-date" name="start-date" value="<?php echo $oldPostData['start-date']; ?>" placeholder="from" required>
-      </div>
-      <div class="form-element">
-        <label for="end-date">End date:</label>
-        <input type="date" id="end-date" name="end-date" value="<?php echo $oldPostData['end-date']; ?>" placeholder="to" required>
-      </div>
-    </div>
-
-    <div class="form-section">         
-        <!-- MONDAY-->
-      <div class="form-element">
-        <label for="monday-checkbox">Monday: </label>
-        <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php if ($oldPostData['monday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="monday-start-time">from:</label>
-        <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $oldPostData['monday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="monday-end-time">to:</label>
-        <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $oldPostData['monday-end-time']; ?>">
-      </div>
-    </div>
-    <div class="form-section">
-        <!-- TUESDAY-->
-      <div class="form-element">
-        <label for="tuesday-checkbox">Tuesday: </label>
-        <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php if ($oldPostData['tuesday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="tuesday-start-time">from:</label>
-        <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $oldPostData['tuesday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="tuesday-end-time">to:</label>
-        <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $oldPostData['tuesday-end-time']; ?>">
-      </div>
-    </div>
-    <div class="form-section">
-        <!-- WEDNESDAY-->
-      <div class="form-element">
-        <label for="wednesday-checkbox">Wednesday: </label>
-        <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php if ($oldPostData['wednesday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="wednesday-start-time">from:</label>
-        <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $oldPostData['wednesday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="wednesday-end-time">to:</label>
-        <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $oldPostData['wednesday-end-time']; ?>">
-      </div>
-      </div>
-    <div class="form-section">
-        <!-- THURSDAY-->
-      <div class="form-element">
-        <label for="thursday-checkbox">Thursday: </label>
-        <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php if ($oldPostData['thursday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="thursday-start-time">from:</label>
-        <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $oldPostData['thursday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="thursday-end-time">to:</label>
-        <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $oldPostData['thursday-end-time']; ?>">
-      </div>
-    </div>
-    <div class="form-section">
-        <!-- FRIDAY-->
-      <div class="form-element">
-        <label for="friday-checkbox">Friday: </label>
-        <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php if ($oldPostData['friday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="friday-start-time">from:</label>
-        <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $oldPostData['friday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="friday-end-time">to:</label>
-        <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $oldPostData['friday-end-time']; ?>">
-      </div>
-    </div>
-    <div class="form-section">
-        <!-- SATURDAY-->
-      <div class="form-element">
-        <label for="saturday-checkbox">Saturday: </label>
-        <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php if ($oldPostData['saturday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="saturday-start-time">from:</label>
-        <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $oldPostData['saturday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="saturday-end-time">to:</label>
-        <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $oldPostData['saturday-end-time']; ?>">
-      </div>
-    </div>
-    <div class="form-section">
-        <!-- SUNDAY-->
-      <div class="form-element">
-        <label for="sunday-checkbox">Sunday: </label>
-        <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php if ($oldPostData['sunday-checkbox']) {echo "checked";} ?>>
-      </div>
-      <div class="form-element">
-        <label for="sunday-start-time">from:</label>
-        <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $oldPostData['sunday-start-time']; ?>">
-      </div>
-      <div class="form-element">
-        <label for="sunday-end-time">to:</label>
-        <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $oldPostData['sunday-end-time']; ?>">
-      </div>
-    </div>
-
-
-
-    <div class="form-section">
-      <h3 class="form-header">Location: </h3>
-    </div>
-
-    <div class="form-section">
-      <div class="form-element">
-        <label>Arena:</label>
-        <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
-      </div>
-    </div>
-
-
-    <div>
-      <div id="staff-section">
-        <div class="form-section">
-          <h3>Staff:</h3>
+          <label for="class-type">Class Type:</label>
+          <input type="text" name="class-type" id="class-type"value="<?php echo $oldPostData['class-type']; ?>" list="class-type-list" onclick="select();" required>
         </div>
+      </div>
 
-        <?php
-          if ($oldPostData['staff-roles']) {
-            $firstIndex = true;
-            foreach ($oldPostData['staff-roles'] as $index => $role) {
-              $staffName = htmlspecialchars($oldPostData['staff'][$index], ENT_QUOTES);
-              echo "<div class='form-section'><div class='form-element'>";
-              if ($firstIndex) {echo "<label>Role:</label>";}
-              echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
-              echo "</div><div class='form-element'>";
-              if ($firstIndex) {echo "<label>Staff Member:</label>";}
-              echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
-              echo "</div></div>";
-              $firstIndex = false;
-            }
-          } else {
-            echo "<div class='form-section'><div class='form-element'>";
-            echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
-            echo "</div><div class='form-element'";
-            echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
-            echo "</div></div>";
-          }
-        ?>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="display-title">Display Title:</label>
+          <input type="text" name="display-title" id="display-title" value="<?php echo htmlspecialchars($oldPostData['display-title'], ENT_QUOTES); ?>" onclick="select();" required>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <h3 class="form-header">Dates: </h3>
       </div>
       <div class="form-section">
         <div class="form-element">
-          <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
+          <label>Every other week: <input type="checkbox" name="every-other-week" value="TRUE"></label>
+        </div>
+          <div class="form-element">
+          <label for="start-date">Start date:</label>
+          <input type="date" id="start-date" name="start-date" value="<?php echo $oldPostData['start-date']; ?>" placeholder="from" required>
+        </div>
+        <div class="form-element">
+          <label for="end-date">End date:</label>
+          <input type="date" id="end-date" name="end-date" value="<?php echo $oldPostData['end-date']; ?>" placeholder="to" required>
         </div>
       </div>
-    </div>
 
-
-
-
-    <div>
-      <div id="client-horse-section">
-        <div class="form-section">
-          <h3>Client(s)/Horse(s):</h3>
+      <div class="form-section">         
+          <!-- MONDAY-->
+        <div class="form-element">
+          <label for="monday-checkbox">Monday: </label>
+          <input type="checkbox" id="monday-checkbox" name="monday-checkbox" value="Monday" <?php if ($oldPostData['monday-checkbox']) {echo "checked";} ?>>
         </div>
-
-        <?php 
-        $index = 0;
-        while (true) {
-          
-
-          if ($oldPostData['clients'][$index]) {
-            $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
-          } else {
-            $client = "";
-          }
-
-          if ($oldPostData['horses']) {
-            $horse = htmlspecialchars($oldPostData['horses'][$index], ENT_QUOTES);
-          } else {
-            $horse = "";
-          }
-
-          if ($oldPostData['tacks']) {
-            $tack = htmlspecialchars($oldPostData['tacks'][$index], ENT_QUOTES);
-          } else {
-            $tack = "";
-          }
-
-          if ($oldPostData['pads']) {
-            $pad = htmlspecialchars($oldPostData['pads'][$index], ENT_QUOTES);
-          } else {
-            $pad = "";
-          }
-
-          if ($oldPostData['tack-notes']) {
-            $note = htmlspecialchars($oldPostData['tack-notes'][$index], ENT_QUOTES);
-          } else {
-            $note = "";
-          }
-
-          if ($oldPostData['client-equipment-notes']) {
-            $clientNote = htmlspecialchars($oldPostData['client-equipment-notes'][$index], ENT_QUOTES);
-          } else {
-            $clientNote = "";
-          }
-
-
-          echo "<div class='client-horse-form-section'><div class='form-element'>";
-            if ($index == 0) {echo "<label>Client:</label>";}
-            echo "<input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
-            
-            echo "</div><div class='form-element'>";
-            if ($index == 0) {echo "<label>Horse:</label>";}
-            echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
-              
-            echo "</div><div class='form-element'>";
-            if ($index == 0) {echo "<label>Tack:</label>";}
-            echo "<input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
-            
-            echo "</div><div class='form-element'>";
-            if ($index == 0) {echo "<label>Pad:</label>";}
-            echo "<input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
-            
-            echo "</div><div class='form-element'>";
-            if ($index == 0) {echo "<label>Tack Notes:</label>";}
-            echo "<input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
-            
-            echo "</div><div class='form-element'>";
-            if ($index == 0) {echo "<label>Equipment Notes:</label>";}
-            echo "<input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>";
-            
-            echo "</div></div>";
-
-          // Check for remaining POST data, if done, exit loop
-          if (empty($oldPostData['clients'][$index+1]) && empty($oldPostData['horses'][$index+1]) && empty($oldPostData['tacks'][$index+1]) && empty($oldPostData['pads'][$index+1]) && empty($oldPostData['tack-notes'][$index+1]) && empty($oldPostData['client-equipment-notes'][$index+1])) {
-            break;
-          }
-          $index++;
-        }
-        ?>
-
+        <div class="form-element">
+          <label for="monday-start-time">from:</label>
+          <input type="time" id="monday-start-time" name="monday-start-time" value="<?php echo $oldPostData['monday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="monday-end-time">to:</label>
+          <input type="time" id="monday-end-time" name="monday-end-time" value="<?php echo $oldPostData['monday-end-time']; ?>">
+        </div>
       </div>
       <div class="form-section">
-
+          <!-- TUESDAY-->
         <div class="form-element">
-          <button type="button" id="add-client-horse-section-button" onclick="newClientHorseSection();">Add Client/Horse</button>
+          <label for="tuesday-checkbox">Tuesday: </label>
+          <input type="checkbox" id="tuesday-checkbox" name="tuesday-checkbox" value="Tuesday" <?php if ($oldPostData['tuesday-checkbox']) {echo "checked";} ?>>
         </div>
-
+        <div class="form-element">
+          <label for="tuesday-start-time">from:</label>
+          <input type="time" id="tuesday-start-time" name="tuesday-start-time" value="<?php echo $oldPostData['tuesday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="tuesday-end-time">to:</label>
+          <input type="time" id="tuesday-end-time" name="tuesday-end-time" value="<?php echo $oldPostData['tuesday-end-time']; ?>">
+        </div>
       </div>
-    </div>
-
-
-     
-
-    <div>
-      <div id="volunteer-section">
-        <div class="form-section">
-          <h3>Volunteers:</h3>
+      <div class="form-section">
+          <!-- WEDNESDAY-->
+        <div class="form-element">
+          <label for="wednesday-checkbox">Wednesday: </label>
+          <input type="checkbox" id="wednesday-checkbox" name="wednesday-checkbox" value="Wednesday" <?php if ($oldPostData['wednesday-checkbox']) {echo "checked";} ?>>
         </div>
-        <?php
-          if ($oldPostData['volunteer-roles']) {
-            $firstIndex = true;
-            foreach ($oldPostData['volunteer-roles'] as $index => $role) {
-              $volunteer = htmlspecialchars($oldPostData['volunteers'][$index], ENT_QUOTES);
-              $role = htmlspecialchars($role, ENT_QUOTES);
+        <div class="form-element">
+          <label for="wednesday-start-time">from:</label>
+          <input type="time" id="wednesday-start-time" name="wednesday-start-time" value="<?php echo $oldPostData['wednesday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="wednesday-end-time">to:</label>
+          <input type="time" id="wednesday-end-time" name="wednesday-end-time" value="<?php echo $oldPostData['wednesday-end-time']; ?>">
+        </div>
+        </div>
+      <div class="form-section">
+          <!-- THURSDAY-->
+        <div class="form-element">
+          <label for="thursday-checkbox">Thursday: </label>
+          <input type="checkbox" id="thursday-checkbox" name="thursday-checkbox" value="Thursday" <?php if ($oldPostData['thursday-checkbox']) {echo "checked";} ?>>
+        </div>
+        <div class="form-element">
+          <label for="thursday-start-time">from:</label>
+          <input type="time" id="thursday-start-time" name="thursday-start-time" value="<?php echo $oldPostData['thursday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="thursday-end-time">to:</label>
+          <input type="time" id="thursday-end-time" name="thursday-end-time" value="<?php echo $oldPostData['thursday-end-time']; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- FRIDAY-->
+        <div class="form-element">
+          <label for="friday-checkbox">Friday: </label>
+          <input type="checkbox" id="friday-checkbox" name="friday-checkbox" value="Friday" <?php if ($oldPostData['friday-checkbox']) {echo "checked";} ?>>
+        </div>
+        <div class="form-element">
+          <label for="friday-start-time">from:</label>
+          <input type="time" id="friday-start-time" name="friday-start-time" value="<?php echo $oldPostData['friday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="friday-end-time">to:</label>
+          <input type="time" id="friday-end-time" name="friday-end-time" value="<?php echo $oldPostData['friday-end-time']; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- SATURDAY-->
+        <div class="form-element">
+          <label for="saturday-checkbox">Saturday: </label>
+          <input type="checkbox" id="saturday-checkbox" name="saturday-checkbox" value="Saturday" <?php if ($oldPostData['saturday-checkbox']) {echo "checked";} ?>>
+        </div>
+        <div class="form-element">
+          <label for="saturday-start-time">from:</label>
+          <input type="time" id="saturday-start-time" name="saturday-start-time" value="<?php echo $oldPostData['saturday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="saturday-end-time">to:</label>
+          <input type="time" id="saturday-end-time" name="saturday-end-time" value="<?php echo $oldPostData['saturday-end-time']; ?>">
+        </div>
+      </div>
+      <div class="form-section">
+          <!-- SUNDAY-->
+        <div class="form-element">
+          <label for="sunday-checkbox">Sunday: </label>
+          <input type="checkbox" id="sunday-checkbox" name="sunday-checkbox" value="Sunday" <?php if ($oldPostData['sunday-checkbox']) {echo "checked";} ?>>
+        </div>
+        <div class="form-element">
+          <label for="sunday-start-time">from:</label>
+          <input type="time" id="sunday-start-time" name="sunday-start-time" value="<?php echo $oldPostData['sunday-start-time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="sunday-end-time">to:</label>
+          <input type="time" id="sunday-end-time" name="sunday-end-time" value="<?php echo $oldPostData['sunday-end-time']; ?>">
+        </div>
+      </div>
+
+
+
+      <div class="form-section">
+        <h3 class="form-header">Location: </h3>
+      </div>
+
+      <div class="form-section">
+        <div class="form-element">
+          <label>Arena:</label>
+          <input type="text" name="arena" list="arena-list" value="<?php echo $oldPostData['arena']; ?>" onclick="select();">
+        </div>
+      </div>
+
+
+      <div>
+        <div id="staff-section">
+          <div class="form-section">
+            <h3>Staff:</h3>
+          </div>
+
+          <?php
+            if ($oldPostData['staff-roles']) {
+              $firstIndex = true;
+              foreach ($oldPostData['staff-roles'] as $index => $role) {
+                $staffName = htmlspecialchars($oldPostData['staff'][$index], ENT_QUOTES);
+                echo "<div class='form-section'><div class='form-element'>";
+                if ($firstIndex) {echo "<label>Role:</label>";}
+                echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+                echo "</div><div class='form-element'>";
+                if ($firstIndex) {echo "<label>Staff Member:</label>";}
+                echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
+                echo "</div></div>";
+                $firstIndex = false;
+              }
+            } else {
               echo "<div class='form-section'><div class='form-element'>";
-              if ($firstIndex) {echo "<label>Role:</label>";}
-              echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
-              echo "</div><div class='form-element'>";
-              if ($firstIndex) {echo "<label>Volunteer:</label>";}
-              echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
+              echo "</div><div class='form-element'";
+              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
               echo "</div></div>";
-              $firstIndex = false;
             }
-          } else {
-            echo "<div class='form-section'><div class='form-element'>";
-              echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
-              echo "</div><div class='form-element'>";
-              echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
-              echo "</div></div>";
-          }
-        ?>
+          ?>
         </div>
         <div class="form-section">
           <div class="form-element">
-            <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+            <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
           </div>
         </div>
       </div>
@@ -354,14 +220,148 @@
 
 
 
+      <div>
+        <div id="client-horse-section">
+          <div class="form-section">
+            <h3>Client(s)/Horse(s):</h3>
+          </div>
 
-    <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
-        <button type="submit">Create</button>
-    </div>
+          <?php 
+          $index = 0;
+          while (true) {
+            
+
+            if ($oldPostData['clients'][$index]) {
+              $client = htmlspecialchars($oldPostData['clients'][$index], ENT_QUOTES);
+            } else {
+              $client = "";
+            }
+
+            if ($oldPostData['horses']) {
+              $horse = htmlspecialchars($oldPostData['horses'][$index], ENT_QUOTES);
+            } else {
+              $horse = "";
+            }
+
+            if ($oldPostData['tacks']) {
+              $tack = htmlspecialchars($oldPostData['tacks'][$index], ENT_QUOTES);
+            } else {
+              $tack = "";
+            }
+
+            if ($oldPostData['pads']) {
+              $pad = htmlspecialchars($oldPostData['pads'][$index], ENT_QUOTES);
+            } else {
+              $pad = "";
+            }
+
+            if ($oldPostData['tack-notes']) {
+              $note = htmlspecialchars($oldPostData['tack-notes'][$index], ENT_QUOTES);
+            } else {
+              $note = "";
+            }
+
+            if ($oldPostData['client-equipment-notes']) {
+              $clientNote = htmlspecialchars($oldPostData['client-equipment-notes'][$index], ENT_QUOTES);
+            } else {
+              $clientNote = "";
+            }
 
 
-  </form>
+            echo "<div class='client-horse-form-section'><div class='form-element'>";
+              if ($index == 0) {echo "<label>Client:</label>";}
+              echo "<input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
+              
+              echo "</div><div class='form-element'>";
+              if ($index == 0) {echo "<label>Horse:</label>";}
+              echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
+                
+              echo "</div><div class='form-element'>";
+              if ($index == 0) {echo "<label>Tack:</label>";}
+              echo "<input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
+              
+              echo "</div><div class='form-element'>";
+              if ($index == 0) {echo "<label>Pad:</label>";}
+              echo "<input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
+              
+              echo "</div><div class='form-element'>";
+              if ($index == 0) {echo "<label>Tack Notes:</label>";}
+              echo "<input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
+              
+              echo "</div><div class='form-element'>";
+              if ($index == 0) {echo "<label>Equipment Notes:</label>";}
+              echo "<input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>";
+              
+              echo "</div></div>";
+
+            // Check for remaining POST data, if done, exit loop
+            if (empty($oldPostData['clients'][$index+1]) && empty($oldPostData['horses'][$index+1]) && empty($oldPostData['tacks'][$index+1]) && empty($oldPostData['pads'][$index+1]) && empty($oldPostData['tack-notes'][$index+1]) && empty($oldPostData['client-equipment-notes'][$index+1])) {
+              break;
+            }
+            $index++;
+          }
+          ?>
+
+        </div>
+        <div class="form-section">
+
+          <div class="form-element">
+            <button type="button" id="add-client-horse-section-button" onclick="newClientHorseSection();">Add Client/Horse</button>
+          </div>
+
+        </div>
+      </div>
+
+
+      
+
+      <div>
+        <div id="volunteer-section">
+          <div class="form-section">
+            <h3>Volunteers:</h3>
+          </div>
+          <?php
+            if ($oldPostData['volunteer-roles']) {
+              $firstIndex = true;
+              foreach ($oldPostData['volunteer-roles'] as $index => $role) {
+                $volunteer = htmlspecialchars($oldPostData['volunteers'][$index], ENT_QUOTES);
+                $role = htmlspecialchars($role, ENT_QUOTES);
+                echo "<div class='form-section'><div class='form-element'>";
+                if ($firstIndex) {echo "<label>Role:</label>";}
+                echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
+                echo "</div><div class='form-element'>";
+                if ($firstIndex) {echo "<label>Volunteer:</label>";}
+                echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+                echo "</div></div>";
+                $firstIndex = false;
+              }
+            } else {
+              echo "<div class='form-section'><div class='form-element'>";
+                echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
+                echo "</div><div class='form-element'>";
+                echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+                echo "</div></div>";
+            }
+          ?>
+          </div>
+          <div class="form-section">
+            <div class="form-element">
+              <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      <div class="form-section">
+          <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+          <button type="submit">Create</button>
+      </div>
+
+
+    </form>
   </div>
 
 

@@ -252,10 +252,11 @@
                 $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
                 $staffName = htmlspecialchars($staffName, ENT_QUOTES);
                 echo "<div class='form-section'><div class='form-element'>";
-                if ($firstIndex) {echo "<label>Role: </label>";}
+                if ($firstIndex) {echo "<label>Role:</label>";}
                 echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
                 echo "</div><div class='form-element'";
-                if ($firstIndex) {echo "<label>Staff Member: </label>";}
+                if ($firstIndex) {echo "<label>Staff Member:</label>";}
+                echo "YEET";
                 echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
                 echo "</div></div>";
                 $firstIndex = false;

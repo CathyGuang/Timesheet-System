@@ -469,13 +469,16 @@
       </div>
       <div class="form-section remove-section">
         <div class="form-element">
-          <h4>Archive:</h4>
-          <input type="checkbox" name="archive" value="TRUE">
+          <h4>Archive:
+            <input type="checkbox" name="archive" value="TRUE">
+          </h4>
           <p>Saves class in database but removes from all schedules and menus</p>
         </div>
         <div class="form-element">
-          <h4>Delete</h4>
-          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+          <h4>
+            Delete:
+            <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+          </h4>
           <p>WARNING: this will permanently delete all record of the class</p>
         </div>
       </div>

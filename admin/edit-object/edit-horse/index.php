@@ -136,7 +136,7 @@ EOT;
           <div class="form-section">
             <div class="form-element">
               <div>
-                <textarea name="notes" rows=5 cols=20>{$horseInfo['notes']}</textarea>
+                <textarea name="notes" rows=5 cols=30>{$horseInfo['notes']}</textarea>
               </div>
 
           <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>

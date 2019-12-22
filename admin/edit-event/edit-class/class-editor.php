@@ -247,14 +247,18 @@
           <?php
             $staffData = json_decode($classData['staff']);
             if ($staffData) {
+              $firstIndex = true;
               foreach ($staffData as $role => $staffID) {
                 $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
                 $staffName = htmlspecialchars($staffName, ENT_QUOTES);
                 echo "<div class='form-section'><div class='form-element'>";
-                echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+                if ($firstIndex) {echo "<label>Role: </label>";}
+                echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
                 echo "</div><div class='form-element'";
-                echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
+                if ($firstIndex) {echo "<label>Staff Member: </label>";}
+                echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
                 echo "</div></div>";
+                $firstIndex = false;
               }
             } else {
               echo "<div class='form-section'><div class='form-element'>";
@@ -364,42 +368,31 @@
             }
 
 
-            echo <<<EOF
-            <div class="client-horse-form-section">
+            echo "<div class='client-horse-form-section'><div class='form-element'>";
+            if ($index == 0) {echo "<label>Client:</label>";}
+            echo "<input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Horse:</label>";}
+            echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
               
-              <div class="form-element">
-                <label>Client:</label>
-                <input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>
-              </div>
-
-              <div class="form-element">
-                <label>Horse:</label>
-                <input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>
-              </div>
-
-              <div class="form-element">
-                <label>Tack:</label>
-                <input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>
-              </div>
-
-              <div class="form-element">
-                <label>Pad:</label>
-                <input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>
-              </div>
-
-              <div class="form-element">
-                <label>Tack Notes:</label>
-                <input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>
-              </div>
-
-              <div class="form-element">
-                <label>Equipment Notes:</label>
-                <input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>
-              </div>
-
-
-            </div>
-EOF;
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Tack:</label>";}
+            echo "<input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Pad:</label>";}
+            echo "<input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Tack Notes:</label>";}
+            echo "<input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Equipment Notes:</label>";}
+            echo "<input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>";
+            
+            echo "</div></div>";
 
             // Check for remaining POST data, if done, exit loop
             if (empty($clientIDList[$index+1]) && empty($horseIDList[$index+1]) && empty($tackList[$index+1]) && empty($padList[$index+1]) && empty($tackNotesList[$index+1]) && empty($clientEquipmentNotesList[$index+1])) {

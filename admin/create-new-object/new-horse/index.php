@@ -96,7 +96,7 @@
 
       <div class='form-section'>
         <div class='form-element'>
-          <input type="textarea" name="notes" id="notes" value="">
+          <input type="textarea" rows=3 name="notes" id="notes" value="">
         </div>
       </div>
 

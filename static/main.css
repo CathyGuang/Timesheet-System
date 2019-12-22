@@ -185,6 +185,10 @@ button:hover {
           font-size: .8em;
         }
 
+        textarea {
+          width: 100%;
+        }
+
         input[type='checkbox'] {
           height: 1.3em;
           width: 1.3em;

@@ -635,9 +635,9 @@
         newFormElement = document.createElement('div');
         newFormElement.setAttribute('class', 'form-element');
         newFormSection.appendChild(newFormElement);
-        newLabel = document.createElement('label');
-        newLabel.innerHTML = "Role: ";
-        newFormElement.appendChild(newLabel);
+        // newLabel = document.createElement('label');
+        // newLabel.innerHTML = "Role: ";
+        // newFormElement.appendChild(newLabel);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');

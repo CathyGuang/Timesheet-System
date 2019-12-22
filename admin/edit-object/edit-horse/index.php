@@ -59,18 +59,18 @@ EOT;
       <div class="form-container">
         <form autocomplete="off" action="edit-horse.php" method="post" class="standard-form" style="margin-top: 2vh;">
 
-          <div class=form=section>
+          <div class="form=section">
             <div class="form-element">
               <label for="name">Name:</label>
               <input type="text" name="name" id="name" value="{$horseInfo['name']}" required>
             </div>
           </div>
 
-          <div class='form-section'>
+          <div class="form-section">
             <h3>Owner:</h3>
           </div>
 
-          <div class=form=section>
+          <div class="form=section">
             <div class="form-element">
               <label for="owner">Owner: (Leave blank for organization)</label>
               <input type="text" name="owner" id="owner" value="{$horseInfo['owner']}">
@@ -87,11 +87,11 @@ EOT;
             </div>
           </div>
 
-          <div class='form-section'>
+          <div class="form-section">
             <h3>Veterinarian:</h3>
           </div>
 
-          <div class=form=section>
+          <div class="form-section">
             <div class="form-element">
               <label for="vet-name">Veterinarian name:</label>
               <input type="text" name="vet-name" id="vet-name" value="{$horseInfo['vet_name']}">
@@ -108,11 +108,11 @@ EOT;
             </div>
           </div>
 
-          <div class='form-section'>
+          <div class="form-section">
             <h3>Use:</h3>
           </div>
 
-          <div class=form=section>
+          <div class="form-section">
             <div class="form-element">
               <label for="org_uses_per_day">Organization Uses per Day:</label>
               <input type="number" name="org_uses_per_day" id="org_uses_per_day" value="{$horseInfo['org_uses_per_day']}">
@@ -129,11 +129,11 @@ EOT;
             </div>
           </div>
 
-          <div class='form-section'>
+          <div class="form-section">
             <h3>Notes:</h3>
           </div>
 
-          <div class=form=section>
+          <div class="form-section">
             <div class="form-element">
               <div>
                 <textarea name="notes">{$horseInfo['notes']}</textarea>

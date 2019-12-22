@@ -485,57 +485,6 @@ EOF;
 
 
 
-
-      <div>
-      <div id="volunteer-role-section">
-        <p>Volunteer Role(s):</p>
-      <?php
-      $volunteerData = json_decode($classData['volunteers']);
-      foreach ($volunteerData as $role => $volunteerID) {
-        $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];
-
-        echo <<<EOT
-        <input form="class-form" type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select();">
-
-EOT;
-      }
-      ?>
-
-        </div>
-        <br>
-        <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Additional Volunteer</button>
-        </div>
-
-
-        <div>
-        <div id="volunteer-section">
-          <p>Volunteer(s):</p>
-          <?php
-
-          foreach ($volunteerData as $role => $volunteerID) {
-              $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
-              echo <<<EOT
-              <input form='class-form' type="text" name="volunteers[]" list="volunteer-list" value="{$volunteerName}" onclick="select();">
-EOT;
-          }
-          ?>
-
-          </div>
-          <br>
-          </div>
-
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
   
 
       <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>

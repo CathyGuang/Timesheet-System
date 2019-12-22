@@ -253,18 +253,18 @@
                 $staffName = htmlspecialchars($staffName, ENT_QUOTES);
                 echo "<div class='form-section'><div class='form-element'>";
                 if ($firstIndex) {echo "<label>Role: </label>";}
-                echo "<input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+                echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
                 echo "</div><div class='form-element'";
                 if ($firstIndex) {echo "<label>Staff Member: </label>";}
-                echo "<input form='class-form' type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
+                echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
                 echo "</div></div>";
                 $firstIndex = false;
               }
             } else {
               echo "<div class='form-section'><div class='form-element'>";
-              echo "<label>Role: </label><input form='class-form' type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
+              echo "<label>Role: </label><input type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
               echo "</div><div class='form-element'";
-              echo "<label>Staff Member: </label><input form='class-form' type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
+              echo "<label>Staff Member: </label><input type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
               echo "</div></div>";
             }
           ?>
@@ -320,7 +320,7 @@
 
           ?>
           <!-- hidden id list of original clients for class identification if clients change -->
-          <input form='class-form' type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
+          <input type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
 
           <?php 
           $index = 0;
@@ -437,18 +437,18 @@
                 $role = htmlspecialchars($role, ENT_QUOTES);
                 echo "<div class='form-section'><div class='form-element'>";
                 if ($firstIndex) {echo "<label>Role:</label>";}
-                echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
+                echo "<input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
                 echo "</div><div class='form-element'>";
                 if ($firstIndex) {echo "<label>Volunteer:</label>";}
-                echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+                echo "<input type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
                 echo "</div></div>";
                 $firstIndex = false;
               }
             } else {
               echo "<div class='form-section'><div class='form-element'>";
-              echo "<label>Role:</label><input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
+              echo "<label>Role:</label><input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
               echo "</div><div class='form-element'>";
-              echo "<label>Volunteer:</label><input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+              echo "<label>Volunteer:</label><input type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
               echo "</div></div>";
             }
           ?>

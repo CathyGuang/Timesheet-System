@@ -55,7 +55,7 @@ EOT;
       $clientInfo = pg_fetch_array($clientInfoSQL, 0, PGSQL_ASSOC);
 
       echo <<<EOT
-      <div class="form-element">
+      <div class="form-container">
         <form autocomplete="off" action="edit-client.php" method="post" class="standard-form" style="margin-top: 2vh;">
 
           <div class=form=section>

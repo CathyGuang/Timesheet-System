@@ -255,9 +255,7 @@
                 if ($firstIndex) {echo "<label>Role:</label>";}
                 echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
                 echo "</div><div class='form-element'";
-                echo "YEET1"
                 if ($firstIndex) {echo "<label>Staff Member:</label>";}
-                echo "YEET2";
                 echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
                 echo "</div></div>";
                 $firstIndex = false;

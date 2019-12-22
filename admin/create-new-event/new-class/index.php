@@ -195,9 +195,8 @@
               echo "<div class='form-section'><div class='form-element'>";
               if ($firstIndex) {echo "<label>Role:</label>";}
               echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
-              echo "</div><div class='form-element'";
+              echo "</div><div class='form-element'>";
               if ($firstIndex) {echo "<label>Staff Member:</label>";}
-              echo "YEEEEEEEET";
               echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
               echo "</div></div>";
               $firstIndex = false;

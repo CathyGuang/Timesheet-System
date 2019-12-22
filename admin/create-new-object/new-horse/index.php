@@ -91,9 +91,12 @@
       </div>
 
       <div class='form-section'>
+        <h3>Notes:</h3>
+      </div>
+
+      <div class='form-section'>
         <div class='form-element'>
-          <label for="notes">Notes:</label>
-          <input type="text" name="notes" id="notes" value="">
+          <input type="textarea" name="notes" id="notes" value="">
         </div>
       </div>
 

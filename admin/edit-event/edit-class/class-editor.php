@@ -635,9 +635,6 @@
         newFormElement = document.createElement('div');
         newFormElement.setAttribute('class', 'form-element');
         newFormSection.appendChild(newFormElement);
-        // newLabel = document.createElement('label');
-        // newLabel.innerHTML = "Role: ";
-        // newFormElement.appendChild(newLabel);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');
@@ -650,9 +647,6 @@
         newFormElement2 = document.createElement('div');
         newFormElement2.setAttribute('class', 'form-element');
         newFormSection.appendChild(newFormElement2);
-        newLabel2 = document.createElement('label');
-        newLabel2.innerHTML = "Staff Member: ";
-        newFormElement2.appendChild(newLabel2);
         newInput2 = document.createElement('input');
         newInput2.setAttribute('type', 'text');
         newInput2.setAttribute('name', 'staff[]');

@@ -70,7 +70,7 @@ EOT;
             <h3>Owner:</h3>
           </div>
 
-          <div class="form=section">
+          <div class="form-section">
             <div class="form-element">
               <label for="owner">Owner: (Leave blank for organization)</label>
               <input type="text" name="owner" id="owner" value="{$horseInfo['owner']}">

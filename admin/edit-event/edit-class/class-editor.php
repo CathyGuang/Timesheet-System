@@ -483,9 +483,16 @@
         </div>
       </div>
 
-    
-          <!-- CLOSE FORM AND FORM CONTAINER DIV -->
 
+
+      <div class="form-section">
+          <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+          <button type="submit">Create</button>
+      </div>      
+
+
+    </form>
+  </div>
 
 
 

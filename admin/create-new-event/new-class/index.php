@@ -193,10 +193,11 @@
             foreach ($oldPostData['staff-roles'] as $index => $role) {
               $staffName = htmlspecialchars($oldPostData['staff'][$index], ENT_QUOTES);
               echo "<div class='form-section'><div class='form-element'>";
-              if ($firstIndex) {echo "<label>Role: </label>";}
+              if ($firstIndex) {echo "<label>Role:</label>";}
               echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
               echo "</div><div class='form-element'";
-              if ($firstIndex) {echo "<label>Staff Member: </label>";}
+              if ($firstIndex) {echo "<label>Staff Member:</label>";}
+              echo "YEEEEEEEET";
               echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
               echo "</div></div>";
               $firstIndex = false;
@@ -331,7 +332,6 @@
               echo "<input form='class-form' type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
               echo "</div><div class='form-element'>";
               if ($firstIndex) {echo "<label>Volunteer:</label>";}
-              echo "YEEEEEEEET";
               echo "<input form='class-form' type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
               echo "</div></div>";
               $firstIndex = false;

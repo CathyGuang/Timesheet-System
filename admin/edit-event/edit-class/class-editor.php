@@ -465,15 +465,17 @@
 
 
       <div class="form-section">
-            
+        <h3>Remove Class:</h3>
       </div>
-
-      <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>
-
-      <div>
-        <p style='font-size: 12pt; color: var(--dark-red)'>Delete Class?
-        <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
-        WARNING: this will permanently delete all record of the class</p>
+      <div class="form-section">
+        <div class="form-element">
+          <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>
+        </div>
+        <div class="form-element">
+          <p style='font-size: 12pt; color: var(--dark-red)'>Delete Class?
+          <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+          WARNING: this will permanently delete all record of the class</p>
+        </div>
       </div>
 
     

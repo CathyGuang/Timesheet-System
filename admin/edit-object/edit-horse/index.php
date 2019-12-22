@@ -139,12 +139,29 @@ EOT;
                 <textarea name="notes" rows=5>{$horseInfo['notes']}</textarea>
               </div>
 
-          <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
-          <p style='color: var(--dark-red);'>Delete: <input type="checkbox" name="delete" value="TRUE"></p>
-          <p style='font-size: 10pt; color: var(--dark-red); margin-top: 0;'>(Cannot be undone)</p>
+         <div class="form-section">
+            <h3>Remove Horse:</h3>
+          </div>
+          <div class="form-section remove-section">
+            <div class="form-element">
+              <h4>Archive:
+                <input type="checkbox" name="archive" value="TRUE">
+              </h4>
+              <p>Saves client in database but removes from all menus</p>
+            </div>
+            <div class="form-element">
+              <h4>
+                Delete:
+                <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+              </h4>
+              <p>WARNING: only delete clients that are not currently in any classes</p>
+            </div>
+          </div>
 
-          <br><br>
-          <button type="submit">Update</button>
+          <div class="form-section">
+            <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+            <button type="submit">Submit</button>
+          </div>
 
           <input type="number" name="id" value="{$horseInfo['id']}" hidden>
 

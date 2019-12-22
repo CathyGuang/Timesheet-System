@@ -172,6 +172,9 @@ button:hover {
           padding-bottom: 5px;
         }
         
+        .remove-section {
+          color: var(--dark-red);
+        }
         
         input {
           border: 1px solid var(--dark-purple);

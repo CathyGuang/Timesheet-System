@@ -75,7 +75,7 @@
       <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" hidden>
 
       <div class="form-section">
-        <h3 class="form-header">Class Info: </h3>
+        <h3>Class Info: </h3>
       </div>
 
       <div class="form-section">
@@ -95,7 +95,7 @@
 
 
       <div class="form-section">
-        <h3 class="form-header">Dates: </h3>
+        <h3>Dates: </h3>
       </div>
       <div class="form-section">
         <div class="form-element">
@@ -221,7 +221,7 @@
 
 
       <div class="form-section">
-        <h3 class="form-header">Location: </h3>
+        <h3>Location: </h3>
       </div>
 
       <div class="form-section">
@@ -464,25 +464,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+      <div class="form-section">
+            
+      </div>
 
       <p style='font-size: 12pt; color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"> Saves class in database but removes from all schedules and menus</p>
 

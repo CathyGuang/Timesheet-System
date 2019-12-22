@@ -59,7 +59,7 @@ EOT;
       <div class="form-container">
         <form autocomplete="off" action="edit-horse.php" method="post" class="standard-form" style="margin-top: 2vh;">
 
-          <div class="form=section">
+          <div class="form-section">
             <div class="form-element">
               <label for="name">Name:</label>
               <input type="text" name="name" id="name" value="{$horseInfo['name']}" required>

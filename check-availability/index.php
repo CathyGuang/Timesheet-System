@@ -49,6 +49,7 @@
       </div>
 
       <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <button type="submit">Check Availability</button>
       </div>
     

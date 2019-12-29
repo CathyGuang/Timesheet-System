@@ -20,41 +20,59 @@
 
   <h3 class="main-content-header">Search for anything to check its availability!</h3>
 
-  <div class="main-content-div">
-
+  <div class="form-container">
     <form autocomplete="off" action="check.php" method="post" class="standard-form standard-form">
-      <p>Select any person/arena/resource:</p>
-      <input type="text" name="target-name" list="all-objects-list" required>
-        <datalist id="all-objects-list">
-          <?php
-            $allResources = array();
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');")));
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');")));
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::ARENA))")));
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::TACK))")));
-            $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::PAD))")));
+      
+      <div class="form-section">
+        <div class="form-element">
+          <label for="target-name">Select any person/arena/resource:</label>
+          <input type="text" name="target-name" id="target-name" list="all-objects-list" required>
+        </div>
+      </div>
 
-            foreach ($allResources as $key => $name) {
-              $name = htmlspecialchars($name, ENT_QUOTES);
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="target-date">Select date to check:</label>
+          <input type="date" name="target-date" id="target-date" value="<?php echo date('Y-m-d'); ?>" required>
+        </div>
+      </div>
 
-      <p>Select date to check:</p>
-      <input type="date" name="target-date" value="<?php echo date('Y-m-d'); ?>" required>
 
-      <div>
-        <label for="start-time">from:</label>
-        <input type="time" id="start-time" name="start-time" value="<?php echo date('h:i') ?>" required>
-        <label for="end-time">to:</label>
-        <input type="time" id="end-time" name="end-time" value="<?php echo date('h:i', strtotime('+1 hour')) ?>" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="start-time">from:</label>
+          <input type="time" id="start-time" name="start-time" value="<?php echo date('h:i') ?>" required>
+        </div>
+        <div class="form-element">
+          <label for="end-time">to:</label>
+          <input type="time" id="end-time" name="end-time" value="<?php echo date('h:i', strtotime('+1 hour')) ?>" required>
+        </div>
       </div>
 
       <button type="submit">Check Availability</button>
+    
     </form>
-
   </div>
+
+
+  <!-- DATALISTS -->
+  <datalist id="all-objects-list">
+    <?php
+      $allResources = array();
+      $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');")));
+      $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');")));
+      $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::ARENA))")));
+      $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::TACK))")));
+      $allResources = array_merge($allResources, pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::PAD))")));
+
+      foreach ($allResources as $key => $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='$name'>";
+      }
+    ?>
+  </datalist>
+
+
 
 
 </body>

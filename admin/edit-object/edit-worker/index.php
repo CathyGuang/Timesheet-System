@@ -21,23 +21,31 @@
   <?php
     if (!$_POST['selected-worker']) {
       echo <<<EOT
-      <form autocomplete="off" action="" method="post" class="standard-form">
-        <p>Select a worker to edit:</p>
-        <input type="text" name="selected-worker" list="worker-list" onclick='select();'>
-          <datalist id="worker-list">
+      <div class="form-container">
+        <form autocomplete="off" action="" method="post" class="standard-form">
+          <div class="form-section">
+            <div class="form-element">
+              <label for="selected-worker">Select a worker to edit:</label>
+              <input type="text" name="selected-worker" id="selected-worker" list="worker-list" onclick='select();'>
+                <datalist id="worker-list">
 EOT;
-              $query = "SELECT name FROM workers WHERE name != 'NEEDED' AND (archived IS NULL OR archived = '');";
-              $result = pg_fetch_all(pg_query($db_connection, $query));
-              foreach ($result as $worker) {
-                $name = htmlspecialchars($worker['name'], ENT_QUOTES);
-                echo "<option value='{$name}'>";
-              }
-      echo <<<EOT
-          </datalist>
+                    $query = "SELECT name FROM workers WHERE name != 'NEEDED' AND (archived IS NULL OR archived = '');";
+                    $result = pg_fetch_all(pg_query($db_connection, $query));
+                    foreach ($result as $worker) {
+                      $name = htmlspecialchars($worker['name'], ENT_QUOTES);
+                      echo "<option value='{$name}'>";
+                    }
+            echo <<<EOT
+                </datalist>
+            </div>
+          </div>
 
-          <br><br>
-          <button type="submit">Submit</button>
-      </form>
+          <div class="form-section">
+            <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+            <button type="submit">Go</button>
+          </div>
+        </form>
+      </div>
 EOT;
 
     } else {
@@ -45,59 +53,89 @@ EOT;
       $workerInfoSQL = pg_query($db_connection, $workerInfoQuery);
       $workerInfo = pg_fetch_array($workerInfoSQL, 0, PGSQL_ASSOC);
       echo <<<EOT
-      <form autocomplete="off" action="edit-worker.php" method="post" class="standard-form" style="margin-top: 2vh;">
+      <div class="form-container">
+        <form autocomplete="off" action="edit-worker.php" method="post" class="standard-form" style="margin-top: 2vh;">
 
+          <div class="form-section">
+            <div class="form-element">
+              <label for="name">Name:</label>
+              <input type="text" name="name" id="name" value="{$workerInfo['name']}" required>
+            </div>
+          </div>
 
-        <p>Name:</p>
-        <input type="text" name="name" value="{$workerInfo['name']}" required>
+          <div class="form-section">
+            <div class="form-element">
+              <label for="title">Title:</label>
+              <input type="text" name="title" id="title" value="{$workerInfo['title']}">
+            </div>
+          </div>
 
-        <p>Title:</p>
-        <input type="text" name="title" value="{$workerInfo['title']}">
+          <div class="form-section">
+            <div class="form-element">
+              <label for="email">Email:</label>
+              <input type="email" name="email" id="email" value="{$workerInfo['email']}">
+            </div>
+          </div>
 
-        <p>Email:</p>
-        <input type="email" name="email" value="{$workerInfo['email']}">
-
-        <p>Phone Number:</p>
-        <input type="number" name="phone" maxlength="10" value="{$workerInfo['phone']}">
-EOT;
-      if ($workerInfo['staff'] == 't') {
-        echo <<<EOT
-        <div>
-          <p>Staff: <input type="checkbox" name="staff" value="TRUE" checked></p>
-        </div>
-EOT;
-      } else {
-          echo <<<EOT
-          <div>
-            <p>Staff: <input type="checkbox" name="staff" value="TRUE"></p>
+          <div class="form-section">
+            <div class="form-element">
+              <label for="phone">Phone Number:</label>
+              <input type="number" name="phone" id="phone" maxlength="10" value="{$workerInfo['phone']}">
+            </div>
           </div>
 EOT;
-      }
-      if ($workerInfo['volunteer'] == 't') {
+        if ($workerInfo['staff'] == 't') {
+          $checked = "checked";
+        } else {
+          $checked = "";
+        }
         echo <<<EOT
-        <div>
-          <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE" checked></p>
+        <div class="form-section">
+          <div class="form-element">
+            <p>Staff: <input type="checkbox" name="staff" value="TRUE" {$checked}></p>
+          </div>
         </div>
 EOT;
-      } else {
-        echo <<<EOT
-        <div>
-          <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE"></p>
-        </div>
-EOT;
-      }
-      echo <<<EOT
+        if ($workerInfo['volunteer'] == 't') {
+          $checked = "checked";
+        } else {
+          $checked = "";
+        }
+          echo <<<EOT
+          <div class="form-section">
+            <div class="form-element">
+              <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE" {$checked}></p>
+            </div>
+          </div>
 
-        <p style='color: var(--dark-red)'>Archive: <input type="checkbox" name="archive" value="TRUE"></p>
-        <p style='color: var(--dark-red);'>Delete: <input type="checkbox" name="delete" value="TRUE"></p>
-        <p style='font-size: 10pt; color: var(--dark-red); margin-top: 0;'>(Cannot be undone)</p>
+          <div class="form-section">
+            <h3>Remove Worker:</h3>
+          </div>
+          <div class="form-section remove-section">
+            <div class="form-element">
+              <h4>Archive:
+                <input type="checkbox" name="archive" value="TRUE">
+              </h4>
+              <p>Saves worker in database but removes from all menus</p>
+            </div>
+            <div class="form-element">
+              <h4>
+                Delete:
+                <input type="checkbox" id="delete-checkbox" name="DELETE" value="TRUE">
+              </h4>
+              <p>WARNING: only delete workers that are not currently in any classes</p>
+            </div>
+          </div>
 
-        <br><br>
-        <button type="submit">Update</button>
+          <div class="form-section">
+            <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+            <button type="submit">Update</button>
+          </div>
 
-        <input type="number" name="id" value="{$workerInfo['id']}" hidden>
+          <input type="number" name="id" value="{$workerInfo['id']}" hidden>
 
-      </form>
+        </form>
+      </div>
 EOT;
     }
   ?>

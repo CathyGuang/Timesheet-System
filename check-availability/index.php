@@ -48,7 +48,9 @@
         </div>
       </div>
 
-      <button type="submit">Check Availability</button>
+      <div class="form-section">
+        <button type="submit">Check Availability</button>
+      </div>
     
     </form>
   </div>

@@ -40,11 +40,11 @@
       <div class="form-section">
         <div class="form-element">
           <label for="start-time">from:</label>
-          <input type="time" id="start-time" name="start-time" value="<?php echo date('h:i A') ?>" required>
+          <input type="time" id="start-time" name="start-time" value="<?php echo date('H:i') ?>" required>
         </div>
         <div class="form-element">
           <label for="end-time">to:</label>
-          <input type="time" id="end-time" name="end-time" value="<?php echo date('h:i A', strtotime('+1 hour')) ?>" required>
+          <input type="time" id="end-time" name="end-time" value="<?php echo date('H:i', strtotime('+1 hour')) ?>" required>
         </div>
       </div>
 

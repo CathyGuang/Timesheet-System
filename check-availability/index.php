@@ -18,14 +18,13 @@
     </nav>
   </header>
 
-  <h3 class="main-content-header">Search for anything to check its availability!</h3>
 
   <div class="form-container">
     <form autocomplete="off" action="check.php" method="post" class="standard-form standard-form">
       
       <div class="form-section">
         <div class="form-element">
-          <label for="target-name">Select any person/arena/resource:</label>
+          <label for="target-name">Search for any person/arena/resource:</label>
           <input type="text" name="target-name" id="target-name" list="all-objects-list" required>
         </div>
       </div>

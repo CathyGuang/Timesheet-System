@@ -17,28 +17,50 @@
     </nav>
   </header>
 
-
+  <div class="form-container">
     <form autocomplete="off" action="send-email.php"  class="standard-form" method="post">
-      <P>To:</p>
-      <input type="text" name="to" list="recipient-list" style="width:30vw;">
-      <datalist id="recipient-list">
-        <option value="Staff">
-        <option value="Volunteers">
-        <option value="Staff and Volunteers">
-        <option value="Clients">
-        <option value="Horse Owners">
-        <option value="All">
-      </datalist>
 
-      <p>Subject:</p>
-      <input type="text" name="subject" value="Subject" onclick="select();" style="width:30vw;">
-      <p>Message</p>
-      <textarea name="message" rows="20" cols="80"></textarea>
 
-      <br><br>
-      <button type="submit">Send</button>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="to">To:</label>
+          <input type="text" name="to" id="to" list="recipient-list" style="width:30vw;">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-element">
+          <label for="subject">Subject:</label>
+          <input type="text" name="subject" id="subject" value="Subject" onclick="select();" style="width:30vw;">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-element">
+          <label for="message">Message</label>
+          <textarea name="message" id="message"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+        <button type="submit">Send</button>
+      </div>
 
     </form>
+  </div>
+
+
+  
+  <!-- DATALISTS -->
+  <datalist id="recipient-list">
+    <option value="Staff">
+    <option value="Volunteers">
+    <option value="Staff and Volunteers">
+    <option value="Clients">
+    <option value="Horse Owners">
+    <option value="All">
+  </datalist>
 
 
 

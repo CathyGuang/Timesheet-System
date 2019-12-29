@@ -102,8 +102,8 @@ EOT;
           
           <div class="form-section">
             <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
-            <button type="submit">Submit</button>
-          </div>   
+            <button type="submit">Update</button>
+          </div>
 
           <input type="number" name="id" value="{$clientInfo['id']}" readonly hidden>
 

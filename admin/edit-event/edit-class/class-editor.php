@@ -486,8 +486,8 @@
 
 
       <div class="form-section">
-          <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
-          <button type="submit">Submit</button>
+        <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+        <button type="submit">Submit</button>
       </div>      
 
 

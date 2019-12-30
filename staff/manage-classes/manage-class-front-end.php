@@ -326,11 +326,6 @@ EOT;
 
 
 
-
-
-
-
-
         <div>
           <div id="volunteer-section">
             <div class="form-section">
@@ -373,57 +368,25 @@ EOT;
 
 
 
+      <div class="form-section">
+        <h3>Cancel Class:</h3>
+      </div>
+      <div class="form-section">
+        <div class="form-element">
+          <?php if ($classData['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
+          <p>Canceled: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
+        </div>
+      </div>
 
 
 
 
 
-        <!-- VOLUNTEERS -->
-        <?php
-          $rawArray = explode(",", ltrim(rtrim($classData['volunteers'], '}'), '{'));
-          $classData['volunteers'] = array();
-          foreach ($rawArray as $roleIDString) {
-            $roleIDString = trim($roleIDString);
-            $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
-            $volunteerID = trim(explode(':', $roleIDString)[1]);
-            $classData['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
-          }
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back(2)">Cancel</button>
+        <button type="submit">Submit</button>
+      </div> 
 
-          echo "<div id='volunteer-section'><p>Volunteer:</p>";
-          foreach ($classData['volunteers'] as $role => $name) {
-            $name = htmlspecialchars($name, ENT_QUOTES);
-
-            echo <<<EOT
-              <input type="text" name="volunteer-roles[]" list="volunteer-role-list" value="{$role}" onclick="select()">
-              <input type="text" name="volunteers[]" list="volunteer-list" value="{$name}" onclick="select()">
-              <br><br>
-EOT;
-          }
-          echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Volunteer</button>";
-        ?>
-
-        
-
-
-
-
-
-
-
-
-
-
-      <?php if ($classData['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
-      <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
-
-
-
-
-
-
-
-      <br><br>
-      <button type="submit">Submit</button>
     </form>
   </div>
 

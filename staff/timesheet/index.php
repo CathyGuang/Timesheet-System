@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff Timesheet</title>
 </head>
@@ -17,7 +18,7 @@
   </header>
 
 
-      <form autocomplete="off" class="main-form" action="staff-record-hours.php" method="post">
+      <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
 
         <p>Name:</p>
         <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
@@ -54,7 +55,7 @@
         <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
 
         <br><br>
-        <input type="submit" value="Submit">
+        <button type="submit">Submit</button>
       </form>
 
 

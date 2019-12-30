@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff Timesheet</title>
 </head>
@@ -36,7 +37,7 @@ EOT;
     $result = pg_query($db_connection, $query);
     if ($result) {
       echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
-      echo "<form class='main-form' action='index.php' method='post'><input name='name' value='{$_POST['staff']}' style='visibility: hidden;'><button type='submit'>Submit another shift</button></form>";
+      echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['staff']}' hidden><button type='submit'>Submit another shift</button></form>";
       if ($_POST['send-email'] == 'true') {
         $currentDate = date('j-m-Y, g:iA');
         $emailBody = <<<EOT

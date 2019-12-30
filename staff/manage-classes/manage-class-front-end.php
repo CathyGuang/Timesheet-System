@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php INCLUDE $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Staff Manage Classes</title>
 </head>
@@ -25,9 +26,9 @@
     echo "<h3 class='main-content-header'>{$classInfo['display_title']}, {$classInfo['date_of_class']}</h3>";
   ?>
 
-  <form autocomplete="off" id="class-form" action="manage-class-back-end.php" method="post" class="main-form">
+  <form autocomplete="off" id="class-form" action="manage-class-back-end.php" method="post" class="standard-form">
 
-    <input type="text" name="id" value="<?php echo $classID; ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="id" value="<?php echo $classID; ?>" hidden>
 
 
 
@@ -354,7 +355,7 @@ EOT;
 
 
     <br><br>
-    <input type="submit" value="Submit">
+    <button type="submit">Submit</button>
   </form>
 
 

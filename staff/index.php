@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff | <?php echo $organizationName; ?> Web Portal</title>
 </head>
@@ -18,7 +19,6 @@
 
   <div class="main-content-div">
     <a href="staff-daily-schedule"><button class="green-button">Daily Schedule</button></a>
-    <a href="manage-classes"><button class="blue-button">Manage Classes</button></a>
     <a href="timesheet"><button class="blue-button">Timesheets</button></a>
     <a href="view-hours"><button class="green-button">View Hours</button></a>
   </div>

@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <title>Admin | New Worker</title>
 </head>
 
@@ -16,32 +17,56 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="create-new-worker.php" method="post" class="main-form">
+  <div class="form-container">
+    <form autocomplete="off" action="create-new-worker.php" method="post" class="standard-form">
 
-    <p>Name:</p>
-    <input type="text" name="name" value="" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="name">Name:</label>
+          <input type="text" name="name" id="name" value="" required>
+        </div>
+      </div>
 
-    <p>Title:</p>
-    <input type="text" name="title" value="">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" value="">
+        </div>
+      </div>
 
-    <p>Email:</p>
-    <input type="email" name="email" value="">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="email">Email:</label>
+          <input type="email" name="email" id="email" value="">
+        </div>
+      </div>
 
-    <p>Phone Number:</p>
-    <input type="number" name="phone" maxlength="10" value="">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="phone">Phone Number:</label>
+          <input type="number" name="phone" id="phone" maxlength="10" value="">
+        </div>
+      </div>
 
-    <div>
-      <p>Staff: <input type="checkbox" name="staff" value="TRUE"></p>
-    </div>
+      <div class="form-section">
+        <div class="form-element">
+          <p>Staff: <input type="checkbox" name="staff" value="TRUE"></p>
+        </div>
+      </div>
 
-    <div>
-      <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE"></p>
-    </div>
+      <div class="form-section">
+        <div class="form-element">
+          <p>Volunteer: <input type="checkbox" name="volunteer" value="TRUE"></p>
+        </div>
+      </div>
 
-    <br><br>
-    <input type="submit" value="Create">
+      <div class="form-section">
+          <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+          <button type="submit">Create</button>
+        </div>
 
-  </form>
+    </form>
+  </div>
 
 
 

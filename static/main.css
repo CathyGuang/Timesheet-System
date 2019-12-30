@@ -1,6 +1,7 @@
 /* ROOT STYLES */
 :root {
   --background-purple: #b099ff;
+  --light-purple: #c6b5ff;
   --dark-purple: #321c77;
   --accent-purple: #24f4ff;
   --background-blue: #91ecff;
@@ -11,7 +12,7 @@
   --dark-green: #0f771b;
 
   font-family: Verdana, sans-serif;
-  font-size: 18pt;
+  font-size: 20px;
 }
 
 /* BODY STYLES */
@@ -29,8 +30,8 @@ button {
   border-radius: 2px;
   transition-duration: .25s;
   -webkit-transition-duration: .25s;
-  font-size: 18pt;
-
+  font-family: inherit;
+  font-size: inherit;
 }
 button:hover {
   background-color: var(--dark-purple);
@@ -66,9 +67,10 @@ button:hover {
       position: absolute;
       right: 5px;
       top: 25px;
+      font-size: 0.8em;
     }
     #dhs-website-label {
-      font-size: 10pt;
+      font-size: .6em;
       position: absolute;
       right: 5px;
       top: 5px;
@@ -129,66 +131,103 @@ button:hover {
 
         /* FORM STYLES */
 
-        .main-form {
-          display: flex;
-          flex-flow: column wrap;
-          justify-content: space-around;
-          max-height: 77vh;
-          margin-left: 8%;
+        .form-container {
+          background-color: var(--light-purple);
+          border: 1px solid var(--dark-purple);
+          border-radius: 4px;
+          width: 75vw;
+          margin:auto;
           margin-top: 5vh;
-        }
-        .small-form {
-          max-height: 40vh
+          font-family: "Nunito", sans-serif;
         }
 
-        .full-page-form {
-          margin-left: 4%;
-          max-height: 115vh;
-        }
-
-        .directory-form {
+        .standard-form {
           display: flex;
-          flex-flow: row wrap;
-          justify-content: center;
-          max-width: 100vw;
-          margin-left: 5vw;
-          margin-top: 5vh;
+          flex-flow: column;
+          justify-content: space-evenly;
         }
 
-        .main-form > * {
-          max-width: 300px;
+        .form-section {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          padding-bottom: 10px;
         }
-        .main-form > p {
-          margin-bottom: 3px;
+
+        .client-horse-form-section {
+          display: grid;
+          grid-template-columns: 16.6% 16.6% 16.6% 16.6% 16.6% 16.6%;
+          padding-bottom: 10px;
+          height: max-content;
         }
-        .main-form > button {
-          margin-bottom: 1vh;
+
+        .form-element {
+          display: flex;
+          flex-flow: column;
+          font-size: 1em;
+          justify-content: space-between;
+          padding-left: 10px
         }
+
+        label {
+          padding-bottom: 5px;
+        }
+
+        .standard-form h4 {
+          margin: 0;
+        }
+        
+        .remove-section {
+          color: var(--dark-red);
+        }
+        
         input {
-          height: 30px;
+          border: 1px solid var(--dark-purple);
+          font-size: .8em;
         }
-        input[type='checkbox' i] {
-          transform: scale(2);
+
+        textarea {
+          width: 100%;
         }
+
+        input[type='checkbox'] {
+          height: 1.3em;
+          width: 1.3em;
+        }
+
+        input[type='date'] {
+          width: fit-content;
+        }
+
         input[type='time'] {
-          width: 90px;
+          width: fit-content;
         }
-        input[type='submit'] {
+
+
+        .cancel-form {
+         background-color: var(--background-red); 
+         height: 40px;
+         grid-column: 1 / 3;
+         padding: 0;
+        }
+        .cancel-form:hover {
+          background-color: var(--dark-red);
+          color: white;
+        }
+
+        .form-section > button[type='submit'] {
           height: 40px;
+          grid-column: 3 / 5;
           border: 2px solid #4829ad;
           border-radius: 2px;
           transition-duration: .25s;
           -webkit-transition-duration: .25s;
-          font-size: 18pt;
+          /* font-size: 18pt; */
           background-color: var(--background-blue);
         }
-        input[type='submit']:hover {
+        .form-section > button[type='submit']:hover {
           background-color: var(--dark-blue);
-          color: white;
         }
-        label {
-          font-size: 12pt;
-        }
+       
 
 
     /* SCHEDULE DISPLAY STYLES */
@@ -212,7 +251,7 @@ button:hover {
       padding-left: 8px;
       padding-top: 5px;
       /*height: 20vh;*/
-      font-size: 15pt;
+      /* font-size: 15pt; */
     }
     .schedule-time {
       grid-column: 3;

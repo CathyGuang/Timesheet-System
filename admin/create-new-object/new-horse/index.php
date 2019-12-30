@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <title>Admin | New Horse</title>
 </head>
 
@@ -16,48 +17,96 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="create-new-horse.php" method="post" class="main-form">
+  <div class='form-container'>
+    <form autocomplete="off" action="create-new-horse.php" method="post" class="standard-form">
 
-    <p>Name:</p>
-    <input type="text" name="name" value="" required>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="name">Horse Name:</label>
+          <input type="text" name="name" id="name" value="" required>
+        </div>
+      </div>
 
-    <p>Owner:</p>
-    <label>(Leave blank if owner is this organization)</label>
-    <input type="text" name="owner" value="">
+      <div class='form-section'>
+        <h3>Owner:</h3>
+      </div>
 
-    <p>Owner email address:</p>
-    <input type="email" name="owner-email" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="owner">Name: (Leave blank for organization)</label>
+          <input type="text" name="owner" id="owner" value="">
+        </div>
 
-    <p>Owner phone number:</p>
-    <input type="phone" name="owner-phone" value="">
+        <div class='form-element'>
+          <label for="owner-email">Email:</label>
+          <input type="email" name="owner-email" id="owner-email" value="">
+        </div>
 
-    <p>Veterinarian name:</p>
-    <input type="text" name="vet-name" value="">
+        <div class='form-element'>
+          <label for="owner-phone">Phone:</label>
+          <input type="phone" name="owner-phone" id="owner-phone" value="">
+        </div>
+      </div>
 
-    <p>Veterinarian email address:</p>
-    <input type="email" name="vet-email" value="">
+      <div class='form-section'>
+        <h3>Veterinarian:</h3>
+      </div>
 
-    <p>Veterinarian phone number:</p>
-    <input type="phone" name="vet-phone" value="">
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="vet-name">Name:</label>
+          <input type="text" name="vet-name" id="vet-name" value="">
+        </div>
 
-    <p>Organization Uses per Day:</p>
-    <input type="number" name="org_uses_per_day" value="" required>
+        <div class='form-element'>
+          <label for="vet-email">Email:</label>
+          <input type="email" name="vet-email" id="vet-email" value="">
+        </div>
 
-    <p>Owner Uses per Day:</p>
-    <input type="number" name="owner_uses_per_day" value="" required>
+        <div class='form-element'>
+          <label for="vet-phone">Phone:</label>
+          <input type="phone" name="vet-phone" id="vet-phone" value="">
+        </div>
+      </div>
 
-    <p>Horse Uses per Week:</p>
-    <input type="number" name="horse_uses_per_week" value="" required>
+      <div class='form-section'>
+        <h3>Use:</h3>
+      </div>
 
-    <div>
-      <p>Notes:</p>
-      <input type="text" name="notes" value="">
-    </div>
+      <div class='form-section'>
+        <div class='form-element'>
+          <label for="org_uses_per_day">Organization Uses per Day:</label>
+          <input type="number" name="org_uses_per_day" id="org_uses_per_day" value="" required>
+        </div>
 
-    <br><br>
-    <input type="submit" value="Create">
+        <div class='form-element'>
+          <label for="owner_uses_per_day">Owner Uses per Day:</label>
+          <input type="number" name="owner_uses_per_day" id="owner_uses_per_day" value="" required>
+        </div>
 
-  </form>
+        <div class='form-element'>
+          <label for="horse_uses_per_week">Total Uses per Week:</label>
+          <input type="number" name="horse_uses_per_week" id="horse_uses_per_week" value="" required>
+        </div>
+      </div>
+
+      <div class='form-section'>
+        <h3>Notes:</h3>
+      </div>
+
+      <div class='form-section'>
+        <div class='form-element'>
+          <textarea rows=5 name="notes" id="notes"></textarea>
+        </div>
+      </div>
+
+      <div class='form-section'>
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Create</button>
+      </div>
+
+    </form>
+  </div>
 
 
 

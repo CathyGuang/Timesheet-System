@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>View Volunteer Hours</title>
 </head>
@@ -18,7 +19,7 @@
 
 
 
-    <form autocomplete="off" class="main-form" action="view-hours.php" method="post">
+    <form autocomplete="off" class="standard-form" action="view-hours.php" method="post">
 
       <p>Name:</p>
       <input type="text" name="volunteer" list="volunteer-list" required>
@@ -40,7 +41,7 @@
       <input type="date" name="end-date" value="<?php echo date('Y-m-d'); ?>" required>
 
       <br><br>
-      <input type="submit" value="Submit">
+      <button type="submit">Submit</button>
     </form>
 
 

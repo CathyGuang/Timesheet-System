@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <title>Admin | New Client</title>
 </head>
 
@@ -16,22 +17,37 @@
     </nav>
   </header>
 
+  <div class="form-container">
+    <form autocomplete="off" action="create-new-client.php" method="post" class="standard-form">
 
-  <form autocomplete="off" action="create-new-client.php" method="post" class="main-form">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="name">Name/Initials:</label>
+          <input type="text" name="name" id="name" value="" required>
+        </div>
+      </div>
 
-    <p>Name/Initials:</p>
-    <input type="text" name="name" value="" required>
+      <div class="form-section">
+        <div class="form-element">  
+          <label for='email'>Email:</label>
+          <input type="email" name="email" id="email" value="">
+        </div>
+      </div>
 
-    <p>Email:</p>
-    <input type="email" name="email" value="">
+      <div class="form-section">
+        <div class="form-element">  
+          <label for="phone">Phone Number:</label>
+          <input type="number" name="phone" id="phone" maxlength="10" value="">
+        </div>
+      </div>
 
-    <p>Phone Number:</p>
-    <input type="number" name="phone" maxlength="10" value="">
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Create</button>
+      </div>
 
-    <br><br>
-    <input type="submit" value="Create">
-
-  </form>
+    </form>
+  </div>
 
 
 

@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php INCLUDE $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Client Manage Classes</title>
 </head>
@@ -25,9 +26,9 @@
     echo "<h3 class='main-content-header'>{$classInfo['display_title']}, {$classInfo['date_of_class']}</h3>";
   ?>
 
-  <form autocomplete="off" action="manage-class-back-end.php" method="post" class="main-form" autocomplete="off">
+  <form autocomplete="off" action="manage-class-back-end.php" method="post" class="standard-form" autocomplete="off">
 
-    <input type="text" name="id" value="<?php echo $classID ?>" style="visibility: hidden; height: 1px;">
+    <input type="text" name="id" value="<?php echo $classID ?>" hidden>
 
 
     <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
@@ -130,7 +131,7 @@ EOT;
 
 
     <br><br>
-    <input type="submit" value="Submit">
+    <button type="submit">Submit</button>
   </form>
 
 

@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Admin | New Class</title>
 </head>
@@ -69,7 +70,7 @@
     } else {
       $postString = serialize($_POST);
       echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please <button form='retry-form' type='submit' style='width: 90pt;'>try again.</button> Ensure that all data is correctly formatted.</p>";
-      echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' style='visibility: hidden;'></form>";
+      echo "<form id='retry-form' method='post' action='index.php'><input name='old-post' value='{$postString}' hidden></form>";
     }
   ?>
 

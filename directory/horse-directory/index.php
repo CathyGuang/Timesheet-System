@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Horse Directory | <?php echo $organizationName; ?> Web Portal</title>
 </head>
@@ -16,7 +17,7 @@
     </nav>
   </header>
 
-  <form autocomplete="off" action="horse-directory.php" method="post" class="directory-form">
+  <form autocomplete="off" action="horse-directory.php" method="post" class="standard-form">
     <?php
       $query = "SELECT * FROM horses WHERE name != '' AND name != 'HORSE NEEDED' AND (archived IS NULL OR archived = '') ORDER BY name;";
       $allHorses = pg_fetch_all(pg_query($db_connection, $query));

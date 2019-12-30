@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Admin | Edit Class</title>
 </head>
@@ -13,7 +14,7 @@
   <header>
     <h1>Edit Class</h1>
     <nav>
-      <a href="../"><button id="back-button">Back</button></a>
+      <a href="../../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
@@ -92,7 +93,7 @@
       echo "<h3 class='main-content-header'> No changes to the class have been made. It is safe to leave this page. To edit the class, please <button onclick='window.history.back();' style='width: 90pt;'>revert</button> your changes and try again.</h3>";
 
       echo "<h3 class='main-content-header'>Override:</h3><p class='main-content-header'><button form='override-form' type='submit' style='width: 110pt;'>OVERRIDE</button> conflicts if you are sure.</p>";
-      echo "<form id='override-form' method='post' action='edit-class-override.php'><input name='override-post' value='{$postString}' style='visibility: hidden;'></form>";
+      echo "<form id='override-form' method='post' action='edit-class-override.php'><input name='override-post' value='{$postString}' hidden></form>";
 
       return;
     }

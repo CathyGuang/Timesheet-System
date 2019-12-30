@@ -4,6 +4,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Admin | Edit Class</title>
 </head>
@@ -13,7 +14,7 @@
   <header>
     <h1>Edit Class</h1>
     <nav>
-      <a href="../"><button id="back-button">Back</button></a>
+      <a href="../../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

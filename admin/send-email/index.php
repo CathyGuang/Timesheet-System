@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Email | <?php echo $organizationName; ?> Web Portal</title>
 </head>
@@ -16,28 +17,50 @@
     </nav>
   </header>
 
+  <div class="form-container">
+    <form autocomplete="off" action="send-email.php"  class="standard-form" method="post">
 
-    <form autocomplete="off" action="send-email.php"  class="full-page-form" method="post">
-      <P>To:</p>
-      <input type="text" name="to" list="recipient-list" style="width:30vw;">
-      <datalist id="recipient-list">
-        <option value="Staff">
-        <option value="Volunteers">
-        <option value="Staff and Volunteers">
-        <option value="Clients">
-        <option value="Horse Owners">
-        <option value="All">
-      </datalist>
 
-      <p>Subject:</p>
-      <input type="text" name="subject" value="Subject" onclick="select();" style="width:30vw;">
-      <p>Message</p>
-      <textarea name="message" rows="20" cols="80"></textarea>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="to">To:</label>
+          <input type="text" name="to" id="to" list="recipient-list" style="width:30vw;">
+        </div>
+      </div>
 
-      <br><br>
-      <input type="submit" value="Send">
+      <div class="form-section">
+        <div class="form-element">
+          <label for="subject">Subject:</label>
+          <input type="text" name="subject" id="subject" value="Subject" onclick="select();" style="width:30vw;">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <div class="form-element">
+          <label for="message">Message</label>
+          <textarea name="message" id="message"></textarea>
+        </div>
+      </div>
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Send</button>
+      </div>
 
     </form>
+  </div>
+
+
+  
+  <!-- DATALISTS -->
+  <datalist id="recipient-list">
+    <option value="Staff">
+    <option value="Volunteers">
+    <option value="Staff and Volunteers">
+    <option value="Clients">
+    <option value="Horse Owners">
+    <option value="All">
+  </datalist>
 
 
 

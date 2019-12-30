@@ -287,6 +287,57 @@ EOT;
 
 
 
+        <div>
+          <div id="staff-section">
+            <div class="form-section">
+              <h3>Staff:</h3>
+            </div>
+
+            <?php
+              $staffData = json_decode($classData['staff']);
+              if ($staffData) {
+                $firstIndex = true;
+                foreach ($staffData as $role => $staffID) {
+                  $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$staffID};"), 0, 1)['name'];
+                  $staffName = htmlspecialchars($staffName, ENT_QUOTES);
+                  echo "<div class='form-section'><div class='form-element'>";
+                  if ($firstIndex) {echo "<label>Role:</label>";}
+                  echo "<input type='text' name='staff-roles[]' list='staff-role-list' value='{$role}' onclick='select();'>";
+                  echo "</div><div class='form-element'>";
+                  if ($firstIndex) {echo "<label>Staff Member:</label>";}
+                  echo "<input type='text' name='staff[]' list='staff-list' value='{$staffName}' onclick='select();'>";
+                  echo "</div></div>";
+                  $firstIndex = false;
+                }
+              } else {
+                echo "<div class='form-section'><div class='form-element'>";
+                echo "<label>Role: </label><input type='text' name='staff-roles[]' list='staff-role-list' value='' onclick='select();'>";
+                echo "</div><div class='form-element'";
+                echo "<label>Staff Member: </label><input type='text' name='staff[]' list='staff-list' value='' onclick='select();'>";
+                echo "</div></div>";
+              }
+            ?>
+          </div>
+          <div class="form-section">
+            <div class="form-element">
+              <button type="button" id="add-staff-button" onclick="newStaffFunction();">Add Staff</button>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <!-- STAFF -->

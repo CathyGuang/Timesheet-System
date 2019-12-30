@@ -230,9 +230,7 @@
           <label for="horse-behavior">Behavior:</label>
           <input type="text" name="horse-behavior" id="horse-behavior" list="horse-behavior-enum" value="<?php echo $classData['horse_behavior']; ?>">
         </div>
-      </div>
-
-      <div class="form-section">
+      
         <div class="form-element">
           <label for="horse-behavior-notes">Horse Behavior Notes:</label>
           <textarea name="horse-behavior-notes" id="horse-behavior-notes" rows="8" cols="30"><?php

@@ -233,7 +233,7 @@
       
         <div class="form-element">
           <label for="horse-behavior-notes">Horse Behavior Notes:</label>
-          <textarea name="horse-behavior-notes" id="horse-behavior-notes" rows="8" cols="30"><?php
+          <textarea name="horse-behavior-notes" id="horse-behavior-notes"><?php
               echo trim($classData['horse_behavior_notes']);
             ?></textarea>
         </div>

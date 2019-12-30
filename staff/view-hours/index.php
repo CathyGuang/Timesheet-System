@@ -18,31 +18,50 @@
   </header>
 
 
-
+  <div class="form-container">
     <form autocomplete="off" class="standard-form" action="view-hours.php" method="post">
 
-      <p>Name:</p>
-      <input type="text" name="staff" list="staff-list" required>
-        <datalist id="staff-list">
-          <?php
-            $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
-            foreach ($staffNames as $name) {
-              $name = htmlspecialchars($name, ENT_QUOTES);
-              echo "<option value='{$name}'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="staff">Name:</label>
+          <input type="text" name="staff" list="staff-list" required>
+        </div>
+      </div>
+          
+      <div class="form-section">
+        <div class="form-element">
+          <label for="start-date">Start Date:</label>
+          <input type="date" name="start-date" value="<?php echo date('Y-m-d', strtotime('-2 weeks')); ?>" required>
+        </div>
+      </div>
+          
+      <div class="form-section">
+        <div class="form-element">
+          <label for="end-date">End Date:</label>
+          <input type="date" name="end-date" value="<?php echo date('Y-m-d'); ?>" required>
+        </div>
+      </div>
+      
+      
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Go</button>
+      </div>
 
-
-      <p>Start Date:</p>
-      <input type="date" name="start-date" value="<?php echo date('Y-m-d', strtotime('-2 weeks')); ?>" required>
-
-      <p>End Date:</p>
-      <input type="date" name="end-date" value="<?php echo date('Y-m-d'); ?>" required>
-
-      <br><br>
-      <button type="submit">Submit</button>
     </form>
+  </div>
+
+
+  <!-- DATALISTS -->
+  <datalist id="staff-list">
+    <?php
+      $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
+      foreach ($staffNames as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='{$name}'>";
+      }
+    ?>
+  </datalist>
 
 
 </body>

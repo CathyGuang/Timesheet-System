@@ -9,6 +9,11 @@
 
 ## Update Log:
 
+### Version 1.6
+  *Visual Rework*
+
+* New look to all forms
+
 ### Version 1.5
   *Even more robust editing!*
 

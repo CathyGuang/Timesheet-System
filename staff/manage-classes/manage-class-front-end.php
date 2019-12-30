@@ -241,26 +241,30 @@
 
 
 
-
-
-        <p>Attendance:</p>
-        <?php
-          $clientIDList = explode(',', rtrim(ltrim($classData['clients'], '{'), '}'));
-          $clientNameList = explode(',', $clientString);
-          $clientAttendanceList = explode(',', rtrim(ltrim($classData['attendance'], '{'), '}'));
-          foreach ($clientIDList as $index => $id) {
-            $checked = "";
-            if (in_array($id, $clientAttendanceList)) {
-              $checked = "checked";
-            }
-            echo <<<EOT
-            <div>
-              <input type='text' list='client-list' name='clients[]' value='{$clientNameList[$index]}' onclick='select()'>
-              <input type="checkbox" name="attendance[]" value="$index" style="position: absolute; margin-left: 15px;" {$checked}>
-            </div>
-EOT;
+      <div class="form-section">
+        <h3>Attendance:</h3>
+      </div> 
+      <?php
+        $clientIDList = explode(',', rtrim(ltrim($classData['clients'], '{'), '}'));
+        $clientNameList = explode(',', $clientString);
+        $clientAttendanceList = explode(',', rtrim(ltrim($classData['attendance'], '{'), '}'));
+        foreach ($clientIDList as $index => $id) {
+          $checked = "";
+          if (in_array($id, $clientAttendanceList)) {
+            $checked = "checked";
           }
-        ?>
+          echo <<<EOT
+          <div class="form-section">
+            <div class-"form-element">
+              <div>
+                <input type='text' list='client-list' name='clients[]' value='{$clientNameList[$index]}' onclick='select()'>
+                <input type="checkbox" name="attendance[]" value="$index" style="position: absolute; margin-left: 15px;" {$checked}>
+              </div>
+            </div>
+          </div>
+EOT;
+        }
+      ?>
         <datalist id="client-list">
           <?php
             $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";

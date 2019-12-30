@@ -269,7 +269,6 @@ EOT;
 
 
 
-
         <div class="form-section">
           <h3>Client Notes:</h3>
         </div>
@@ -280,8 +279,6 @@ EOT;
               ?></textarea>
           </div>
         </div>
-
-
 
 
 
@@ -338,53 +335,6 @@ EOT;
 
 
 
-
-
-        <!-- STAFF -->
-        <?php
-          $rawArray = explode(",", ltrim(rtrim($classData['staff'], '}'), '{'));
-          $classData['staff'] = array();
-          foreach ($rawArray as $roleIDString) {
-            $roleIDString = trim($roleIDString);
-            $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
-            $staffID = trim(explode(':', $roleIDString)[1]);
-            $classData['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
-          }
-
-          echo "<div id='staff-section'><p>Staff:</p>";
-          foreach ($classData['staff'] as $role => $name) {
-            $name = htmlspecialchars($name, ENT_QUOTES);
-
-            echo <<<EOT
-              <input type="text" name="staff-roles[]" list="staff-role-list" value="{$role}" onclick="select()">
-              <input type="text" name="staff[]" list="staff-list" value="{$name}" onclick="select()">
-              <br><br>
-EOT;
-          }
-          echo "</div><button type='button' id='add-staff-button' onclick='newStaffFunction();'>Add Staff Member</button>";
-        ?>
-        <datalist id="staff-role-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $classTypeNames = pg_fetch_all_columns($result);
-            foreach ($classTypeNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-        <datalist id="staff-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              $name = htmlspecialchars($name, ENT_QUOTES);
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
 
 
 

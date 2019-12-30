@@ -22,7 +22,7 @@
     <h2 class="main-content-header"><?php if ($_POST['selected-date'] == date('Y-m-d')) {echo "TODAY: " . date('l, Y-m-d');} else {echo "For " . date('l, ', strtotime($_POST['selected-date'])) . "{$_POST['selected-date']}";} ?></h2>
 
 
-    <div style="display: flex; justify-content: space-between; background-color: var(--background-purple);">
+    <div style="display: flex; justify-content: space-between;">
       <button class="green-button" type="submit" form="new-schedule2" name="selected-date" value="<?php echo date("Y-m-d", strtotime($_POST['selected-date'] . " -1 day")); ?>" style="height: 40pt; max-width: 300px;">PREVIOUS DAY</button>
       <div style="display: inherit;">
         <input type="date" form="new-schedule" name="selected-date" value="<?php echo $_POST['selected-date']; ?>" style="height: 40pt; max-width: 300px;">

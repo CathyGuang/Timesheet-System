@@ -17,48 +17,89 @@
     </nav>
   </header>
 
+  <div class="form-container">
+    <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
 
-      <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
+      <div class="form-section">
+        <div class="form-element">
+          <label>Name:</label>
+          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+        </div>
+      </div>
 
-        <p>Name:</p>
-        <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
-          <datalist id="staff-list">
-            <?php
-              $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
-              foreach ($staffNames as $name) {
-                $name = htmlspecialchars($name, ENT_QUOTES);
-                echo "<option value='{$name}'>";
-              }
-            ?>
-          </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label>Type of Work:</label>
+          <input type="text" name="work-type" list="work-type-list" required>
+        </div>
+      </div>
 
-        <p>Type of Work:</p>
-        <input type="text" name="work-type" list="work-type-list" required>
-          <datalist id="work-type-list">
-            <?php
-              $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
-              foreach ($staffShiftTypes as $value) {
-                echo "<option value='{$value}'>";
-              }
-            ?>
-          </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label>Date:</label>
+          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+        </div>
+      </div>
 
-        <p>Date:</p>
-        <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label>Number of hours:</label>
+          <input type="text" name="hours" required>
+        </div>
+      </div>
 
-        <p>Number of hours:</p>
-        <input type="text" name="hours" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label>Notes:</label>
+          <input type="text" name="notes">
+        </div>
+      </div>
 
-        <p>Notes:</p>
-        <input type="text" name="notes">
+      <div class="form-section">
+        <div class="form-element">
+          <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
+        </div>
+      </div>
 
-        <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
 
-        <br><br>
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <button type="submit">Submit</button>
-      </form>
+      </div>
+
+    </form>
+  </div>
 
 
+
+  <!-- DATALISTS -->
+  <datalist id="staff-list">
+    <?php
+      $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
+      foreach ($staffNames as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='{$name}'>";
+      }
+    ?>
+  </datalist>
+
+  <datalist id="work-type-list">
+    <?php
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+      foreach ($staffShiftTypes as $value) {
+        echo "<option value='{$value}'>";
+      }
+    ?>
+  </datalist>
+
+  <datalist id="work-type-list">
+    <?php
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+      foreach ($staffShiftTypes as $value) {
+        echo "<option value='{$value}'>";
+      }
+    ?>
+  </datalist>
 
 </body>
 

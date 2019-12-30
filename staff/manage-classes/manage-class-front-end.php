@@ -648,13 +648,16 @@ EOT;
 
   <footer>
     <script type="text/javascript">
+
     function newStaffFunction() {
+        newFormSection = document.createElement('div');
+        newFormSection.setAttribute('class', 'form-section');
         var staffSection = document.getElementById('staff-section');
-        newInput = document.createElement('br');
-        staffSection.appendChild(newInput);
-        newInput = document.createElement('br');
-        staffSection.appendChild(newInput);
+        staffSection.appendChild(newFormSection);
         //add role selector
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newFormSection.appendChild(newFormElement);
         newInput = document.createElement('input');
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'staff-roles[]');
@@ -662,108 +665,163 @@ EOT;
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        staffSection.appendChild(newInput);
-        //add name selector
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'staff[]');
-        newInput.setAttribute('list', 'staff-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        staffSection.appendChild(newInput);
+        newFormElement.appendChild(newInput);
+        //Add name selector
+        newFormElement2 = document.createElement('div');
+        newFormElement2.setAttribute('class', 'form-element');
+        newFormSection.appendChild(newFormElement2);
+        newInput2 = document.createElement('input');
+        newInput2.setAttribute('type', 'text');
+        newInput2.setAttribute('name', 'staff[]');
+        newInput2.setAttribute('list', 'staff-list');
+        newInput2.setAttribute('value', '');
+        newInput2.setAttribute('onclick', 'select()');
+        newInput2.setAttribute('form', 'class-form');
+        newFormElement2.appendChild(newInput2);
+      };
+
+    
+
+
+
+    function newClientHorseSection() {
+        newSection = document.createElement('div');
+        newSection.setAttribute('class', 'client-horse-form-section');
+        parent = document.getElementById('client-horse-section');
+        parent.appendChild(newSection);
+        //Add client
+        newClient(newSection);
+        //Add Horse
+        newHorse(newSection);
+        //Add Tack
+        newTack(newSection);
+        //Add Pad
+        newPad(newSection);
+        //Add Tack Notes
+        newTackNotes(newSection);
+        //Add Equipment Notes
+        newEquipmentNotes(newSection);
     };
 
-    function newHorseFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'horses[]');
-        newInput.setAttribute('list', 'horse-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var horseSection = document.getElementById('horse-section');
-        horseSection.appendChild(newInput);
-    };
 
-    function newTackFunction() {
+    function newClient(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
         newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'tacks[]');
-        newInput.setAttribute('list', 'tack-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var tackSection = document.getElementById('tack-section');
-        tackSection.appendChild(newInput);
-    };
-
-    function newPadFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'pads[]');
-        newInput.setAttribute('list', 'pad-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var padSection = document.getElementById('pad-section');
-        padSection.appendChild(newInput);
-    };
-    function newTackNotesFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'tack-notes[]');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var padSection = document.getElementById('tack-notes-section');
-        padSection.appendChild(newInput);
-    };
-    function newClientEquipmentNotesFunction() {
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'client-equipment-notes[]');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        var padSection = document.getElementById('client-equipment-section');
-        padSection.appendChild(newInput);
-    };
-    function newClientFunction() {
-        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'clients[]');
         newInput.setAttribute('list', 'client-list');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        var clientSection = document.getElementById('client-section');
-        clientSection.appendChild(newInput);
+        section.appendChild(newFormElement);
     };
 
-    function newVolunteerFunction() {
-        var volunteerSection = document.getElementById('volunteer-section');
-        newInput = document.createElement('br');
-        volunteerSection.appendChild(newInput);
-        //Add role selector
+    function newHorse(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
         newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'horses[]');
+        newInput.setAttribute('list', 'horse-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        section.appendChild(newFormElement);
+    };
+
+    function newTack(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tacks[]');
+        newInput.setAttribute('list', 'tack-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        section.appendChild(newFormElement);
+    };
+
+    function newPad(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'pads[]');
+        newInput.setAttribute('list', 'pad-list');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        section.appendChild(newFormElement);
+    };
+    function newTackNotes(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'tack-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        section.appendChild(newFormElement);
+    };
+    function newEquipmentNotes(section) {
+        newFormElement = document.createElement('div');
+        newFormElement.setAttribute('class', 'form-element');
+        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
+        newInput.setAttribute('type', 'text');
+        newInput.setAttribute('name', 'client-equipment-notes[]');
+        newInput.setAttribute('value', '');
+        newInput.setAttribute('onclick', 'select()');
+        newInput.setAttribute('form', 'class-form');
+        section.appendChild(newFormElement);
+    };
+
+
+
+
+
+
+    function newVolunteerFunction() {
+        newFormSection = document.createElement('div');
+        newFormSection.setAttribute('class', 'form-section');
+        //Add role selector
+        newFormElement = document.createElement('div');
+        newFormSection.appendChild(newFormElement);
+        newFormElement.setAttribute('class', 'form-element');
+        newInput = document.createElement('input');
+        newFormElement.appendChild(newInput);
         newInput.setAttribute('type', 'text');
         newInput.setAttribute('name', 'volunteer-roles[]');
         newInput.setAttribute('list', 'volunteer-role-list');
         newInput.setAttribute('value', '');
         newInput.setAttribute('onclick', 'select()');
         newInput.setAttribute('form', 'class-form');
-        volunteerSection.appendChild(newInput);
         //Add name selector
-        newInput = document.createElement('input');
-        newInput.setAttribute('type', 'text');
-        newInput.setAttribute('name', 'volunteers[]');
-        newInput.setAttribute('list', 'volunteer-list');
-        newInput.setAttribute('value', '');
-        newInput.setAttribute('onclick', 'select()');
-        newInput.setAttribute('form', 'class-form');
-        volunteerSection.appendChild(newInput);
+        newFormElement2 = document.createElement('div');
+        newFormSection.appendChild(newFormElement2);
+        newFormElement2.setAttribute('class', 'form-element');
+        newInput2 = document.createElement('input');
+        newFormElement2.appendChild(newInput2);
+        newInput2.setAttribute('type', 'text');
+        newInput2.setAttribute('name', 'volunteers[]');
+        newInput2.setAttribute('list', 'volunteer-list');
+        newInput2.setAttribute('value', '');
+        newInput2.setAttribute('onclick', 'select()');
+        newInput2.setAttribute('form', 'class-form');
+        var volunteerSection = document.getElementById('volunteer-section');
+        volunteerSection.appendChild(newFormSection);
     };
+
+
+
 
 
     </script>

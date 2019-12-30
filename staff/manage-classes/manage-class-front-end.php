@@ -331,7 +331,43 @@ EOT;
 
 
 
-
+        <div>
+          <div id="volunteer-section">
+            <div class="form-section">
+              <h3>Volunteers:</h3>
+            </div>
+            <?php
+              $volunteerData = json_decode($classData['volunteers']);
+              if ($volunteerData) {
+                $firstIndex = true;
+                foreach ($volunteerData as $role => $volunteerID) {
+                  $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];
+                  $volunteer = htmlspecialchars($volunteerName, ENT_QUOTES);
+                  $role = htmlspecialchars($role, ENT_QUOTES);
+                  echo "<div class='form-section'><div class='form-element'>";
+                  if ($firstIndex) {echo "<label>Role:</label>";}
+                  echo "<input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";
+                  echo "</div><div class='form-element'>";
+                  if ($firstIndex) {echo "<label>Volunteer:</label>";}
+                  echo "<input type='text' name='volunteers[]' list='volunteer-list' value='{$volunteer}' onclick='select();'>";
+                  echo "</div></div>";
+                  $firstIndex = false;
+                }
+              } else {
+                echo "<div class='form-section'><div class='form-element'>";
+                echo "<label>Role:</label><input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
+                echo "</div><div class='form-element'>";
+                echo "<label>Volunteer:</label><input type='text' name='volunteers[]' list='volunteer-list' value='' onclick='select();'>";
+                echo "</div></div>";
+              }
+            ?>
+          </div>
+          <div class="form-section">
+            <div class="form-element">
+              <button type="button" id="add-volunteer-button" onclick="newVolunteerFunction();">Add Volunteer</button>
+            </div>
+          </div>
+        </div>
 
 
 
@@ -366,28 +402,8 @@ EOT;
           echo "</div><button type='button' id='add-volunteer-button' onclick='newVolunteerFunction();'>Add Volunteer</button>";
         ?>
 
-        <datalist id="volunteer-role-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $roleNames = pg_fetch_all_columns($result);
-            foreach ($roleNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
-        <datalist id="volunteer-list">
-          <?php
-            $query = "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $workerNames = pg_fetch_all_columns($result);
-            foreach ($workerNames as $key => $name) {
-              $name = htmlspecialchars($name, ENT_QUOTES);
-              echo "<option value='$name'>";
-            }
-          ?>
-        </datalist>
+        
+
 
 
 

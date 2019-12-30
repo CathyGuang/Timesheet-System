@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php INCLUDE $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Staff Manage Classes</title>
 </head>
@@ -22,8 +22,8 @@
     $clientString = explode(';', $_GET['buttonInfo'])[1];
 
     $getClassInfoQuery = "SELECT * FROM classes WHERE id = {$classID}";
-    $classInfo = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
-    echo "<h3 class='main-content-header'>{$classInfo['display_title']}, {$classInfo['date_of_class']}</h3>";
+    $classData = pg_fetch_all(pg_query($db_connection, $getClassInfoQuery))[0];
+    echo "<h3 class='main-content-header'>{$classData['display_title']}, {$classData['date_of_class']}</h3>";
   ?>
 
   <div class="form-container">
@@ -32,24 +32,42 @@
       <input type="text" name="id" value="<?php echo $classID; ?>" hidden>
 
 
+      <div class="form-section">
+        <h3>Class Info:</h3>
+      </div>
 
-      <p>Date of Class:</p>
-      <input type="date" id="date-of-class" name="date-of-class" value="<?php echo $classInfo['date_of_class']; ?>" required>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="date-of-class">Date of Class:</label>
+          <input type="date" id="date-of-class" name="date-of-class" value="<?php echo $classData['date_of_class']; ?>" required>
+        </div>
+        <div class="form-element">
+          <label for="start-time">from:</label>
+          <input type="time" id="start-time" name="start-time" value="<?php echo $classData['start_time']; ?>">
+        </div>
+        <div class="form-element">
+          <label for="end-time">to:</label>
+          <input type="time" id="end-time" name="end-time" value="<?php echo $classData['end_time']; ?>">
+        </div>
+      </div>
 
-
-
-      <label for="start-time">from:</label>
-      <input type="time" id="start-time" name="start-time" value="<?php echo $classInfo['start_time']; ?>">
-      <label for="end-time">to:</label>
-      <input type="time" id="end-time" name="end-time" value="<?php echo $classInfo['end_time']; ?>">
-
-
+      <div class="form-section">
+        <div class="form-element">
+          <label for="class-type">Class Type:</label>
+          <input type="text" name="old-class-type" value="<?php echo $classData['class_type']; ?>" hidden>
+          <input type="text" name="class-type" list="class-type-list" value="<?php echo $classData['class_type']; ?>" onclick="select()" required>
+        </div>
+        <div class="form-element">
+          <label for="display-title">Display Title:</label>
+          <input type="text" name="display-title" id="display-title" value="<?php echo $classData['display_title']; ?>" onclick="select();" required>
+        </div>
+      </div>
 
 
       <p>Lesson Plan:</p>
       <textarea name="lesson-plan" rows="8" cols="30">
         <?php
-          echo trim($classInfo['lesson_plan']);
+          echo trim($classData['lesson_plan']);
         ?>
       </textarea>
 
@@ -57,7 +75,7 @@
 
 
       <p>Arena:</p>
-      <input type="text" name="arena" list="arena-list" value="<?php echo $classInfo['arena']; ?>" onclick="select();">
+      <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
         <datalist id="arena-list">
           <?php
             $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
@@ -75,7 +93,7 @@
 
 
 
-      <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classInfo['horses']}');")); ?>
+      <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classData['horses']}');")); ?>
       <div id="horse-section">
         <p>Horse(s):</p>
         <?php
@@ -105,7 +123,7 @@
       <div id="tack-section">
         <p>Tack(s):</p>
         <?php
-          $tackList = explode(',', ltrim(rtrim($classInfo['tacks'], "}"), '{'));
+          $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
           foreach ($tackList as $name) {
             $name = ltrim(rtrim($name, '\"'), '\"');
             echo <<<EOT
@@ -134,7 +152,7 @@ EOT;
       <div id="pad-section">
         <p>Pad(s):</p>
         <?php
-          $padList = explode(',', ltrim(rtrim($classInfo['pads'], "}"), '{'));
+          $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
           foreach ($padList as $key => $name) {
             $padList[$key] = rtrim(ltrim($name, "\""), "\"");
             echo <<<EOT
@@ -162,7 +180,7 @@ EOT;
 
 
         <p>Horse Behavior:</p>
-        <input type="text" name="horse-behavior" list="horse-behavior-enum" value="<?php echo $classInfo['horse_behavior']; ?>">
+        <input type="text" name="horse-behavior" list="horse-behavior-enum" value="<?php echo $classData['horse_behavior']; ?>">
           <datalist id="horse-behavior-enum">
             <?php
               $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";
@@ -180,7 +198,7 @@ EOT;
         <p>Horse Behavior Notes:</p>
         <textarea name="horse-behavior-notes" rows="8" cols="30">
           <?php
-            echo trim($classInfo['horse_behavior_notes']);
+            echo trim($classData['horse_behavior_notes']);
           ?>
         </textarea>
 
@@ -190,9 +208,9 @@ EOT;
 
         <p>Attendance:</p>
         <?php
-          $clientIDList = explode(',', rtrim(ltrim($classInfo['clients'], '{'), '}'));
+          $clientIDList = explode(',', rtrim(ltrim($classData['clients'], '{'), '}'));
           $clientNameList = explode(',', $clientString);
-          $clientAttendanceList = explode(',', rtrim(ltrim($classInfo['attendance'], '{'), '}'));
+          $clientAttendanceList = explode(',', rtrim(ltrim($classData['attendance'], '{'), '}'));
           foreach ($clientIDList as $index => $id) {
             $checked = "";
             if (in_array($id, $clientAttendanceList)) {
@@ -226,7 +244,7 @@ EOT;
         <p>Client Notes:</p>
         <textarea name="client-notes" rows="10" cols="30">
           <?php
-            echo $classInfo['client_notes'];
+            echo $classData['client_notes'];
           ?>
         </textarea>
         <br>
@@ -241,17 +259,17 @@ EOT;
 
         <!-- STAFF -->
         <?php
-          $rawArray = explode(",", ltrim(rtrim($classInfo['staff'], '}'), '{'));
-          $classInfo['staff'] = array();
+          $rawArray = explode(",", ltrim(rtrim($classData['staff'], '}'), '{'));
+          $classData['staff'] = array();
           foreach ($rawArray as $roleIDString) {
             $roleIDString = trim($roleIDString);
             $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
             $staffID = trim(explode(':', $roleIDString)[1]);
-            $classInfo['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
+            $classData['staff'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$staffID} ;"))['name'];
           }
 
           echo "<div id='staff-section'><p>Staff:</p>";
-          foreach ($classInfo['staff'] as $role => $name) {
+          foreach ($classData['staff'] as $role => $name) {
             $name = htmlspecialchars($name, ENT_QUOTES);
 
             echo <<<EOT
@@ -293,17 +311,17 @@ EOT;
 
         <!-- VOLUNTEERS -->
         <?php
-          $rawArray = explode(",", ltrim(rtrim($classInfo['volunteers'], '}'), '{'));
-          $classInfo['volunteers'] = array();
+          $rawArray = explode(",", ltrim(rtrim($classData['volunteers'], '}'), '{'));
+          $classData['volunteers'] = array();
           foreach ($rawArray as $roleIDString) {
             $roleIDString = trim($roleIDString);
             $role = rtrim(ltrim(explode(':', $roleIDString)[0], '"'), '"');
             $volunteerID = trim(explode(':', $roleIDString)[1]);
-            $classInfo['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
+            $classData['volunteers'][$role] = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = {$volunteerID} ;"))['name'];
           }
 
           echo "<div id='volunteer-section'><p>Volunteer:</p>";
-          foreach ($classInfo['volunteers'] as $role => $name) {
+          foreach ($classData['volunteers'] as $role => $name) {
             $name = htmlspecialchars($name, ENT_QUOTES);
 
             echo <<<EOT
@@ -346,7 +364,7 @@ EOT;
 
 
 
-      <?php if ($classInfo['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
+      <?php if ($classData['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
       <p>Cancel Class: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
 
 

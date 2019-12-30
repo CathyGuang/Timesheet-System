@@ -274,7 +274,7 @@ EOT;
         </div>
         <div class="form-section">
           <div class="form-element">
-            <textarea name="client-notes" rows="10" cols="30"><?php
+            <textarea name="client-notes"><?php
                 echo $classData['client_notes'];
               ?></textarea>
           </div>

@@ -234,6 +234,7 @@ button:hover {
 
     .schedule-header {
       position: fixed;
+      background-color: var(--background-purple);
       top: 0;
       left: 0;
       width: 100vw;

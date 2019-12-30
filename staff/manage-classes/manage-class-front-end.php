@@ -338,7 +338,7 @@ EOT;
             </div>
             <?php
               $volunteerData = json_decode($classData['volunteers']);
-              var_dump(true && $volunteerData);
+              var_dump(count($volunteerData));
               if ($volunteerData) {
                 $firstIndex = true;
                 foreach ($volunteerData as $role => $volunteerID) {

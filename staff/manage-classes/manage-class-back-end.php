@@ -25,6 +25,9 @@
     $startTime = $_POST['start-time'];
     $endTime = $_POST['end-time'];
 
+    $classType = $_POST['class-type'];
+    $displayTitle = pg_escape_string($_POST['display-title']);
+
 
 
     $horseIDList = array();
@@ -124,6 +127,8 @@
       date_of_class = '{$dateOfClass}',
       start_time = '{$startTime}',
       end_time = '{$endTime}',
+      class_type = {$classType},
+      display_title = {$displayTitle},
       lesson_plan = '{$escapedLessonPlan}',
       cancelled = '{$cancel}',
       arena = '{$arena}',

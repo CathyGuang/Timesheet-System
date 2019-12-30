@@ -76,19 +76,16 @@
 
 
 
-      <p>Arena:</p>
-      <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
-        <datalist id="arena-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::ARENA))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $arenaNames = pg_fetch_all_columns($result);
-            foreach ($arenaNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <h3>Location: </h3>
+      </div>
+
+      <div class="form-section">
+        <div class="form-element">
+          <label>Arena:</label>
+          <input type="text" name="arena" list="arena-list" value="<?php echo $classData['arena']; ?>" onclick="select();">
+        </div>
+      </div>
 
 
 
@@ -379,6 +376,125 @@ EOT;
       <button type="submit">Submit</button>
     </form>
   </div>
+
+
+
+
+
+
+  <!-- DATA LISTS -->
+
+  <datalist id="class-type-list">
+  <?php
+      $query = "SELECT unnest(enum_range(NULL::CLASS_TYPE))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $classTypeNames = pg_fetch_all_columns($result);
+      foreach ($classTypeNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='{$value}'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="staff-role-list">
+  <?php
+      $query = "SELECT unnest(enum_range(NULL::STAFF_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $classTypeNames = pg_fetch_all_columns($result);
+      foreach ($classTypeNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="staff-list">
+  <?php
+      $query = "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');";
+      $result = pg_query($db_connection, $query);
+      $staffNames = pg_fetch_all_columns($result);
+      foreach ($staffNames as $key => $name) {
+      $name = htmlspecialchars($name, ENT_QUOTES);
+      echo "<option value='$name'>";
+      }
+  ?>
+  </datalist>
+  
+  <datalist id="client-list">
+  <?php
+      $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
+      $result = pg_query($db_connection, $query);
+      $clientNames = pg_fetch_all_columns($result);
+      foreach ($clientNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='{$value}'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="horse-list">
+  <?php
+      $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
+      $result = pg_query($db_connection, $query);
+      $horseNames = pg_fetch_all_columns($result);
+      foreach ($horseNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="tack-list">
+  <?php
+      $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $tackNames = pg_fetch_all_columns($result);
+      foreach ($tackNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="pad-list">
+  <?php
+      $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $padNames = pg_fetch_all_columns($result);
+      foreach ($padNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="volunteer-role-list">
+  <?php
+      $query = "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $roleNames = pg_fetch_all_columns($result);
+      foreach ($roleNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+  <datalist id="volunteer-list">
+  <?php
+      $query = "SELECT name FROM workers WHERE (archived IS NULL OR archived = '');";
+      $result = pg_query($db_connection, $query);
+      $workerNames = pg_fetch_all_columns($result);
+      foreach ($workerNames as $key => $value) {
+      $value = htmlspecialchars($value, ENT_QUOTES);
+      echo "<option value='$value'>";
+      }
+  ?>
+  </datalist>
+
+
+
+
 
 
   <footer>

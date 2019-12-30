@@ -64,12 +64,14 @@
       </div>
 
 
-      <p>Lesson Plan:</p>
-      <textarea name="lesson-plan" rows="8" cols="30">
-        <?php
-          echo trim($classData['lesson_plan']);
-        ?>
-      </textarea>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="lesson-plan">Lesson Plan:</label>
+          <textarea name="lesson-plan" rows="8" cols="30"><?php
+              echo trim($classData['lesson_plan']);
+            ?></textarea>
+        </div>
+      </div>
 
 
 

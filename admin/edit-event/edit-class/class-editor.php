@@ -429,7 +429,7 @@
           </div>
           <?php
             $volunteerData = json_decode($classData['volunteers']);
-            if ($volunteerData) {
+            if (count($volunteerData) > 1) {
               $firstIndex = true;
               foreach ($volunteerData as $role => $volunteerID) {
                 $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];

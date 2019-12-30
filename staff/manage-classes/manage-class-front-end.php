@@ -338,12 +338,9 @@ EOT;
             </div>
             <?php
               $volunteerData = json_decode($classData['volunteers']);
-              var_dump(count($volunteerData));
               if (count($volunteerData) > 1) {
-                echo "TRUE";
                 $firstIndex = true;
                 foreach ($volunteerData as $role => $volunteerID) {
-                  echo "HELLO";
                   $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];
                   $volunteer = htmlspecialchars($volunteerName, ENT_QUOTES);
                   $role = htmlspecialchars($role, ENT_QUOTES);

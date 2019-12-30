@@ -89,10 +89,7 @@
 
 
 
-      
 
-
-      
 
       <div>
         <div id="client-horse-section">
@@ -225,130 +222,24 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <?php $horseNameList = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE id = ANY('{$classData['horses']}');")); ?>
-      <div id="horse-section">
-        <p>Horse(s):</p>
-        <?php
-          foreach ($horseNameList as $name) {
-            $name = htmlspecialchars($name, ENT_QUOTES);
-            echo "<input type='text' list='horse-list' name='horses[]' value='{$name}' onclick='select()'>";
-          }
-        ?>
-        <datalist id="horse-list">
-          <?php
-            $query = "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $horseNames = pg_fetch_all_columns($result);
-            foreach ($horseNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <h3>Horse Behavior:</h3>
       </div>
-      <br>
-      <button type="button" id="add-horse-button" onclick="newHorseFunction();">Add Horse</button>
-
-
-
-
-      <div id="tack-section">
-        <p>Tack(s):</p>
-        <?php
-          $tackList = explode(',', ltrim(rtrim($classData['tacks'], "}"), '{'));
-          foreach ($tackList as $name) {
-            $name = ltrim(rtrim($name, '\"'), '\"');
-            echo <<<EOT
-            <input form='class-form' type="text" name="tacks[]" list="tack-list" value="{$name}" onclick="select();">
-EOT;
-          }
-        ?>
-        <datalist id="tack-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::TACK))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $tackNames = pg_fetch_all_columns($result);
-            foreach ($tackNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="horse-behavior">Behavior:</label>
+          <input type="text" name="horse-behavior" id="horse-behavior" list="horse-behavior-enum" value="<?php echo $classData['horse_behavior']; ?>">
+        </div>
       </div>
-      <br>
-      <button type="button" id="add-tack-button" onclick="newTackFunction();">Add Tack</button>
 
-
-
-
-      <div id="pad-section">
-        <p>Pad(s):</p>
-        <?php
-          $padList = explode(',', ltrim(rtrim($classData['pads'], "}"), '{'));
-          foreach ($padList as $key => $name) {
-            $padList[$key] = rtrim(ltrim($name, "\""), "\"");
-            echo <<<EOT
-            <input form='class-form' type="text" name="pads[]" list="pad-list" value="{$padList[$key]}" onclick="select();">
-EOT;
-          }
-        ?>
-        <datalist id="pad-list">
-          <?php
-            $query = "SELECT unnest(enum_range(NULL::PAD))::text EXCEPT SELECT name FROM archived_enums;";
-            $result = pg_query($db_connection, $query);
-            $padNames = pg_fetch_all_columns($result);
-            foreach ($padNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+      <div class="form-section">
+        <div class="form-element">
+          <label for="horse-behavior-notes">Horse Behavior Notes:</label>
+          <textarea name="horse-behavior-notes" id="horse-behavior-notes" rows="8" cols="30"><?php
+              echo trim($classData['horse_behavior_notes']);
+            ?></textarea>
+        </div>
       </div>
-      <br>
-      <button type="button" id="add-pad-button" onclick="newPadFunction();">Add Additional Pad</button>
-
-
-
-
-
-        <p>Horse Behavior:</p>
-        <input type="text" name="horse-behavior" list="horse-behavior-enum" value="<?php echo $classData['horse_behavior']; ?>">
-          <datalist id="horse-behavior-enum">
-            <?php
-              $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";
-              $result = pg_query($db_connection, $query);
-              $behaviorNames = pg_fetch_all_columns($result);
-              foreach ($behaviorNames as $key => $value) {
-                $value = htmlspecialchars($value, ENT_QUOTES);
-  echo "<option value='$value'>";
-              }
-            ?>
-          </datalist>
-
-
-        <br>
-        <p>Horse Behavior Notes:</p>
-        <textarea name="horse-behavior-notes" rows="8" cols="30">
-          <?php
-            echo trim($classData['horse_behavior_notes']);
-          ?>
-        </textarea>
 
 
 
@@ -639,6 +530,18 @@ EOT;
       echo "<option value='$value'>";
       }
   ?>
+  </datalist>
+
+  <datalist id="horse-behavior-enum">
+    <?php
+      $query = "SELECT unnest(enum_range(NULL::HORSE_BEHAVIOR))::text EXCEPT SELECT name FROM archived_enums;";
+      $result = pg_query($db_connection, $query);
+      $behaviorNames = pg_fetch_all_columns($result);
+      foreach ($behaviorNames as $key => $value) {
+        $value = htmlspecialchars($value, ENT_QUOTES);
+        echo "<option value='$value'>";
+      }
+    ?>
   </datalist>
 
 

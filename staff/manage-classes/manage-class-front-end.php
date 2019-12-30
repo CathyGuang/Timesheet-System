@@ -265,30 +265,21 @@
 EOT;
         }
       ?>
-        <datalist id="client-list">
-          <?php
-            $query = "SELECT name FROM clients WHERE (archived IS NULL OR archived = '');";
-            $result = pg_query($db_connection, $query);
-            $clientNames = pg_fetch_all_columns($result);
-            foreach ($clientNames as $key => $value) {
-              $value = htmlspecialchars($value, ENT_QUOTES);
-              echo "<option value='$value'>";
-            }
-          ?>
-        </datalist>
+        
 
 
 
 
-
-
-        <p>Client Notes:</p>
-        <textarea name="client-notes" rows="10" cols="30">
-          <?php
-            echo $classData['client_notes'];
-          ?>
-        </textarea>
-        <br>
+        <div class="form-section">
+          <h3>Client Notes:</h3>
+        </div>
+        <div class="form-section">
+          <div class="form-element">
+            <textarea name="client-notes" rows="10" cols="30"><?php
+                echo $classData['client_notes'];
+              ?></textarea>
+          </div>
+        </div>
 
 
 

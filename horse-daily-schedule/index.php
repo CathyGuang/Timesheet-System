@@ -17,26 +17,42 @@
     </nav>
   </header>
 
-  <div class="main-content-div">
-
+  <div class="form-container">
     <form autocomplete="off" action="schedule.php" method="post" class="standard-form standard-form">
-      <p>Select horse's name:</p>
-      <input name="selected-name" list="horses">
-      <datalist id="horses">
-        <?php
-          $horseNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');"));
-          foreach ($horseNames as $name) {
-            $name = htmlspecialchars($name, ENT_QUOTES);
-            echo "<option value='$name'>";
-          }
-        ?>
-      </datalist>
-      <input type="date" name="selected-date" value="<?php echo date('Y-m-d') ?>">
+      
+      <div class="form-section">
+        <div class="form-element">
+          <label for="selected-name">Select horse's name:</label>
+          <input name="selected-name" id="selected-name" list="horses">
+        </div>
+      </div>
 
-      <button type="submit">Search</button>
+      <div class="form-section">
+        <div class="form-element">
+          <input type="date" name="selected-date" value="<?php echo date('Y-m-d') ?>">
+        </div>
+      </div>
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Go</button>
+      </div>
+
     </form>
-
   </div>
+
+
+  <!-- DATALISTS -->
+  <datalist id="horses">
+    <?php
+      $horseNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM horses WHERE (archived IS NULL OR archived = '');"));
+      foreach ($horseNames as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='$name'>";
+      }
+    ?>
+  </datalist>
+
 
 
 </body>

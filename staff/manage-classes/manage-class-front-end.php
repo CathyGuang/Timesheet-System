@@ -89,6 +89,155 @@
 
 
 
+      
+
+
+      
+
+      <div>
+        <div id="client-horse-section">
+          <div class="form-section">
+            <h3>Client(s)/Horse(s):</h3>
+          </div>
+
+          <?php
+              // INITIALIZE LISTS OF VALUES
+
+              $oldClientIDListPGArray = '{';
+              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], '}'), '{'));
+              foreach ($clientIDList as $id) {
+                  $oldClientIDListPGArray .= $id .',';
+                  }
+              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . '}';
+          
+
+              $horseIDList = explode(',', ltrim(rtrim($classData['horses'], '}'), '{'));
+
+              $tackList = explode(',', ltrim(rtrim($classData['tacks'], '}'), '{'));
+              foreach ($tackList as $index => $name) {
+                $tackList[$index] = ltrim(rtrim($name, '\"'), '\"');
+              }
+
+              $padList = explode(',', ltrim(rtrim($classData['pads'], '}'), '{'));
+              foreach ($padList as $index => $name) {
+                  $padList[$index] = rtrim(ltrim($name, '\"'), '\"');
+              }
+
+              $tackNotesList = explode(',', ltrim(rtrim($classData['tack_notes'], "}"), '{'));
+
+              $clientEquipmentNotesList = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
+
+          ?>
+          <!-- hidden id list of original clients for class identification if clients change -->
+          <input type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
+
+          <?php 
+          $index = 0;
+          while (true) {
+            
+
+            if ($clientIDList[$index]) {
+              $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$clientIDList[$index]}") , 0, 1)['name'];
+              $client = htmlspecialchars($clientName, ENT_QUOTES);
+            } else {
+              $client = "";
+            }
+
+            if ($horseIDList[$index]) {
+              $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$horseIDList[$index]} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
+              $horse = htmlspecialchars($horseName, ENT_QUOTES);
+            } else {
+              $horse = "";
+            }
+
+            if ($tackList[$index]) {
+              $tack = htmlspecialchars($tackList[$index], ENT_QUOTES);
+            } else {
+              $tack = "";
+            }
+
+            if ($padList[$index]) {
+              $pad = htmlspecialchars($padList[$index], ENT_QUOTES);
+            } else {
+              $pad = "";
+            }
+
+            if ($tackNotesList[$index]) {
+              $note = ltrim(rtrim($tackNotesList[$index], '"'), '"');
+              $note = htmlspecialchars($note, ENT_QUOTES);
+            } else {
+              $note = "";
+            }
+
+            if ($clientEquipmentNotesList[$index]) {
+              $clientNote = ltrim(rtrim($clientEquipmentNotesList[$index], '"'), '"');
+              $clientNote = htmlspecialchars($clientNote, ENT_QUOTES);
+            } else {
+              $clientNote = "";
+            }
+
+
+            echo "<div class='client-horse-form-section'><div class='form-element'>";
+            if ($index == 0) {echo "<label>Client:</label>";}
+            echo "<input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Horse:</label>";}
+            echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
+              
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Tack:</label>";}
+            echo "<input type='text' name='tacks[]' list='tack-list' value='{$tack}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Pad:</label>";}
+            echo "<input type='text' name='pads[]' list='pad-list' value='{$pad}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Tack Notes:</label>";}
+            echo "<input type='text' name='tack-notes[]' value='{$note}' onclick='select();'>";
+            
+            echo "</div><div class='form-element'>";
+            if ($index == 0) {echo "<label>Equipment Notes:</label>";}
+            echo "<input type='text' name='client-equipment-notes[]' value='{$clientNote}' onclick='select();'>";
+            
+            echo "</div></div>";
+
+            // Check for remaining POST data, if done, exit loop
+            if (empty($clientIDList[$index+1]) && empty($horseIDList[$index+1]) && empty($tackList[$index+1]) && empty($padList[$index+1]) && empty($tackNotesList[$index+1]) && empty($clientEquipmentNotesList[$index+1])) {
+              break;
+            }
+            $index++;
+          }
+          ?>
+
+        </div>
+        <div class="form-section">
+
+          <div class="form-element">
+            <button type="button" id="add-client-horse-section-button" onclick="newClientHorseSection();">Add Client/Horse</button>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

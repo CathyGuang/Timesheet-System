@@ -67,7 +67,7 @@
       <div class="form-section">
         <div class="form-element">
           <label for="lesson-plan">Lesson Plan:</label>
-          <textarea name="lesson-plan" rows="8" cols="30"><?php
+          <textarea name="lesson-plan"><?php
               echo trim($classData['lesson_plan']);
             ?></textarea>
         </div>

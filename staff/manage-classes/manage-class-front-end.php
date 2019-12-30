@@ -340,6 +340,7 @@ EOT;
               $volunteerData = json_decode($classData['volunteers']);
               var_dump(count($volunteerData));
               if (count($volunteerData) >= 1) {
+                echo "TRUE";
                 $firstIndex = true;
                 foreach ($volunteerData as $role => $volunteerID) {
                   echo "HELLO";

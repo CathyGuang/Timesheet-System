@@ -374,7 +374,7 @@ EOT;
       <div class="form-section">
         <div class="form-element">
           <?php if ($classData['cancelled'] == "t") {$checked = "checked";} else {$checked = "";} ?>
-          <p>Canceled: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></p>
+          <label>Canceled: <input type="checkbox" name="cancel" value="TRUE" <?php echo $checked; ?>></label>
         </div>
       </div>
 

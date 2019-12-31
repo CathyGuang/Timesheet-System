@@ -220,6 +220,19 @@ function prepClassDataForSQL($convertedData) {
 }
 
 
+// Preps just the tack and equipment notes fields for postgres
+function prepTackNotesForSQL() {
+  //Convert to sql syntax
+  $tackNotes = pg_escape_string(to_pg_array($_POST['tack-notes']));
+  $clientEquipmentNotes = pg_escape_string(to_pg_array($_POST['client-equipment-notes']));
+
+
+  
+  //Bundle and return values
+  return [$tackNotes, $clientEquipmentNotes];
+}
+
+
 
 
 

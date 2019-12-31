@@ -94,6 +94,11 @@
     $tackList = pg_escape_string(to_pg_array($_POST['tacks']));
     $padList = pg_escape_string(to_pg_array($_POST['pads']));
 
+    //Notes
+    $SQLData = prepTackNotesForSQL();
+    $tackNotes = $SQLData[0];
+    $clientEquipmentNotes = $SQLData[1];
+
 
 
     // Check for conflicts unless class is being cancelled
@@ -135,8 +140,8 @@
       horses = '{$horseIDPGList}',
       tacks = '{$tackList}',
       pads = '{$padList}',
-      tack_notes = '{}',
-      client_equipment_notes = '{}',
+      tack_notes = '{$tackNotes}',
+      client_equipment_notes = '{$clientEquipmentNotes}',
       clients = '{$clientIDPGList}',
       horse_behavior = '{$_POST['horse-behavior']}',
       horse_behavior_notes = '{$escapedHorseBehaviorNotes}',

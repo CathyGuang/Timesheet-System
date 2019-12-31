@@ -94,19 +94,13 @@
       <div>
         <div id="client-horse-section">
           <div class="form-section">
-            <h3>Client(s)/Horse(s):</h3>
+            <h3>Horse(s):</h3>
           </div>
 
           <?php
               // INITIALIZE LISTS OF VALUES
 
-              $oldClientIDListPGArray = '{';
-              $clientIDList = explode(',', ltrim(rtrim($classData['clients'], '}'), '{'));
-              foreach ($clientIDList as $id) {
-                  $oldClientIDListPGArray .= $id .',';
-                  }
-              $oldClientIDListPGArray = rtrim($oldClientIDListPGArray, ',') . '}';
-          
+              // No clients section because those get edited in attendance section
 
               $horseIDList = explode(',', ltrim(rtrim($classData['horses'], '}'), '{'));
 
@@ -125,20 +119,10 @@
               $clientEquipmentNotesList = explode(',', ltrim(rtrim($classData['client_equipment_notes'], "}"), '{'));
 
           ?>
-          <!-- hidden id list of original clients for class identification if clients change -->
-          <input type="text" name="old-client-id-list" value="<?php echo $oldClientIDListPGArray; ?>" hidden>
-
+         
           <?php 
           $index = 0;
           while (true) {
-            
-
-            if ($clientIDList[$index]) {
-              $clientName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM clients WHERE clients.id = {$clientIDList[$index]}") , 0, 1)['name'];
-              $client = htmlspecialchars($clientName, ENT_QUOTES);
-            } else {
-              $client = "";
-            }
 
             if ($horseIDList[$index]) {
               $horseName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM horses WHERE id = {$horseIDList[$index]} AND (archived IS NULL OR archived = '');") , 0, 1)['name'];
@@ -174,10 +158,6 @@
             }
 
 
-            echo "<div class='client-horse-form-section'><div class='form-element'>";
-            if ($index == 0) {echo "<label>Client:</label>";}
-            echo "<input type='text' name='clients[]' list='client-list' value='{$client}' onclick='select();'>";
-            
             echo "</div><div class='form-element'>";
             if ($index == 0) {echo "<label>Horse:</label>";}
             echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";

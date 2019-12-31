@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php INCLUDE $_SERVER['DOCUMENT_ROOT'] . "/static/scripts/initialization.php"; ?>
   <title>Staff Manage Classes</title>
 </head>
@@ -127,14 +127,16 @@
       date_of_class = '{$dateOfClass}',
       start_time = '{$startTime}',
       end_time = '{$endTime}',
-      class_type = {$classType},
-      display_title = {$displayTitle},
+      class_type = '{$classType}',
+      display_title = '{$displayTitle}',
       lesson_plan = '{$escapedLessonPlan}',
       cancelled = '{$cancel}',
       arena = '{$arena}',
       horses = '{$horseIDPGList}',
       tacks = '{$tackList}',
       pads = '{$padList}',
+      tack_notes = '{}',
+      client_equipment_notes = '{}',
       clients = '{$clientIDPGList}',
       horse_behavior = '{$_POST['horse-behavior']}',
       horse_behavior_notes = '{$escapedHorseBehaviorNotes}',

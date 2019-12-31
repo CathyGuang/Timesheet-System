@@ -158,7 +158,7 @@
             }
 
 
-            echo "</div><div class='form-element'>";
+            echo "<div class='form-section'><div class='form-element'>";
             if ($index == 0) {echo "<label>Horse:</label>";}
             echo "<input type='text' name='horses[]' list='horse-list' value='{$horse}' onclick='select();'>";
               

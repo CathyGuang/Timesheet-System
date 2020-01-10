@@ -428,9 +428,9 @@
             <h3>Volunteers:</h3>
           </div>
           <?php
-            $volunteerData = json_decode($classData['volunteers']);
+            $volunteerData = convert_object_to_array(json_decode($classData['volunteers']));
             var_dump($volunteerData);
-            var_dump(iterator_count($volunteerData));
+            var_dump(count($volunteerData));
             if ($volunteerData != []) {
               echo "YES";
               $firstIndex = true;

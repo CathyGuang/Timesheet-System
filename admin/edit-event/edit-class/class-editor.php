@@ -430,9 +430,8 @@
           <?php
             $volunteerData = json_decode($classData['volunteers']);
             var_dump($volunteerData);
-            var_dump(count($volunteerData[0]));
-            var_dump(sizeof($volunteerData[0]));
-            if (count($volunteerData) > 1) {
+            var_dump(iterator_count($volunteerData));
+            if ($volunteerData != []) {
               echo "YES";
               $firstIndex = true;
               foreach ($volunteerData as $role => $volunteerID) {

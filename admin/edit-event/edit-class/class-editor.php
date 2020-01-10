@@ -44,6 +44,12 @@
 
     //If all class dates have past, do something???
     // Automatically archive class?
+    if (!$classData) {
+      $pastClass = true;
+      $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = max(classes.date_of_class);";
+      $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
+      var_dump($classData);
+    }
 
 
 

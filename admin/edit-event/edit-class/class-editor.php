@@ -431,15 +431,12 @@
             $volunteerData = convert_object_to_array(json_decode($classData['volunteers']));
             var_dump($volunteerData);
             var_dump(count($volunteerData));
-            if ($volunteerData != []) {
-              echo "YES";
+            if ($volunteerData) {
               $firstIndex = true;
               foreach ($volunteerData as $role => $volunteerID) {
                 $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];
                 $volunteer = htmlspecialchars($volunteerName, ENT_QUOTES);
                 $role = htmlspecialchars($role, ENT_QUOTES);
-                var_dump($role);
-                var_dump($volunteer);
                 echo "<div class='form-section'><div class='form-element'>";
                 if ($firstIndex) {echo "<label>Role:</label>";}
                 echo "<input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='{$role}' onclick='select();'>";

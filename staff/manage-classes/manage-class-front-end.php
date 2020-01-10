@@ -312,8 +312,8 @@ EOT;
               <h3>Volunteers:</h3>
             </div>
             <?php
-              $volunteerData = json_decode($classData['volunteers']);
-              if (count($volunteerData) > 1) {
+              $volunteerData = convert_object_to_array(json_decode($classData['volunteers']));
+              if ($volunteerData) {
                 $firstIndex = true;
                 foreach ($volunteerData as $role => $volunteerID) {
                   $volunteerName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE workers.id = {$volunteerID};"), 0, 1)['name'];

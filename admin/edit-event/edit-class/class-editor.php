@@ -34,6 +34,11 @@
       $classIDList[] = $data['id'];
     }
 
+    //get start and end dates for entire class range
+    $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
+    $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];
+
+
     //Get data from the next occurring class so that display information is accurate to edits already made
     $todaysDate = date('Y-m-d');
     $classIDList = to_pg_array($classIDList);
@@ -46,17 +51,14 @@
     // Automatically archive class?
     if (!$classData) {
       $pastClass = true;
-      $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = max(classes.date_of_class);";
+      $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = '{$endDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
       var_dump($classData);
     }
 
 
 
-    //get start and end dates for entire class range
-    $startDate = pg_fetch_array(pg_query($db_connection, "SELECT MIN (date_of_class) AS start_date FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['start_date'];
-    $endDate = pg_fetch_array(pg_query($db_connection, "SELECT MAX (date_of_class) AS end_date FROM classes WHERE class_code = '{$selectedClassCode}' AND (archived IS NULL OR archived = '');"), 0, 1)['end_date'];
-
+    
 
     $weekdaysBlocks = explode(";", $classData['all_weekdays_times']);
     if ($weekdaysBlocks[0] == "EO") {

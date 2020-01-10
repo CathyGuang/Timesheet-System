@@ -86,6 +86,8 @@
         <h3>Class Info: </h3>
         <div class="form-element" style="color: red;">
           <h3>This class is over</h3>
+        </div>
+        <div class="form-element" style="color: red;">
           <p>You cannot edit this class. Consider archiving this class to remove it from menus.</p>
         </div>
       </div>

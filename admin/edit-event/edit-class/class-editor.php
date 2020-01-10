@@ -430,8 +430,8 @@
           <?php
             $volunteerData = json_decode($classData['volunteers']);
             var_dump($volunteerData);
-            var_dump(count($volunteerData));
-            var_dump(sizeof($volunteerData));
+            var_dump(count($volunteerData[0]));
+            var_dump(sizeof($volunteerData[0]));
             if (count($volunteerData) > 1) {
               echo "YES";
               $firstIndex = true;

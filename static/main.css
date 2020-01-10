@@ -224,7 +224,7 @@ button:hover {
           /* font-size: 18pt; */
           background-color: var(--background-blue);
         }
-        .form-section > button[type='submit']:hover {
+        .form-section > button[type='submit']:hover:enabled {
           background-color: var(--dark-blue);
         }
        

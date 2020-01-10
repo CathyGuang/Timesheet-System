@@ -447,6 +447,7 @@
                 $firstIndex = false;
               }
             } else {
+              echo "false";
               echo "<div class='form-section'><div class='form-element'>";
               echo "<label>Role:</label><input type='text' name='volunteer-roles[]' list='volunteer-role-list' value='' onclick='select();'>";
               echo "</div><div class='form-element'>";

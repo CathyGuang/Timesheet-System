@@ -429,6 +429,7 @@
           </div>
           <?php
             $volunteerData = json_decode($classData['volunteers']);
+            var_dump($volunteerData);
             if (count($volunteerData) > 1) {
               $firstIndex = true;
               foreach ($volunteerData as $role => $volunteerID) {

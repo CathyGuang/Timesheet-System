@@ -45,7 +45,6 @@
     $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class >= '{$todaysDate}';";
     $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
-    var_dump($classData);
 
     //If all class dates have past, do something???
     // Automatically archive class?
@@ -53,7 +52,6 @@
       $pastClass = true;
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = '{$endDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
-      var_dump($classData);
     }
 
 
@@ -86,6 +84,10 @@
 
       <div class="form-section">
         <h3>Class Info: </h3>
+        <div class="form-element" style="color: red;">
+          <h3>This class is over</h3>
+          <p>You cannot edit this class. Consider archiving this class to remove it from menus.</p>
+        </div>
       </div>
 
       <div class="form-section">

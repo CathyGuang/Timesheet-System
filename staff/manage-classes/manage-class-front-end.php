@@ -201,7 +201,7 @@
 
       <div class="form-section">
         <div class="form-element">
-          <p>Ignore horse use for this class: <input type="checkbox" name="ignore-horse-use" <?php if ($classData['ignore_horse_use']) {echo "checked";} ?>></p>
+          <p>Ignore horse use for this date only: <input type="checkbox" name="ignore-horse-use" <?php if ($classData['ignore_horse_use']) {echo "checked";} ?>></p>
         </div>
       </div>
 

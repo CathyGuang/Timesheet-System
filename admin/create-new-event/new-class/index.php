@@ -313,6 +313,13 @@
       </div>
 
 
+      <div class="form-section">
+        <div class="form-element">
+          <p>Ignore horse use for this class: <input type="checkbox" name="ignore-horse-use" <?php if ($oldPostData['ignore-horse-use']) {echo "checked";} ?>></p>
+        </div>
+      </div>
+
+
       
 
       <div>

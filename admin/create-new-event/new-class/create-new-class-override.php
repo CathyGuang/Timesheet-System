@@ -49,14 +49,20 @@
     $clientEquipmentNotes = $SQLData[7];
     $displayTitle = $SQLData[8];
 
+    // Convert simple data
+    $ignoreHorseUse = 'FALSE';
+    if ($_POST['ignore-horse-use']) {
+      $ignoreHorseUse = 'TRUE';
+    }
+
 
     // Generate new unique class code
     $classCode = generateClassCode($db_connection);
 
     //Create SQL query
-    $query = "INSERT INTO classes (class_code, class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
+    $query = "INSERT INTO classes (class_code, class_type, display_title, date_of_class, start_time, end_time, all_weekdays_times, arena, horses, ignore_horse_use, tacks, tack_notes, client_equipment_notes, pads, clients, attendance, staff, volunteers) VALUES";
     foreach ($dateTimeTriplets as $date => $timeArray) {
-      $query = $query . "('{$classCode}', '{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', '{$tackList}', '{$tackNotes}', '{$clientEquipmentNotes}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";
+      $query = $query . "('{$classCode}', '{$_POST['class-type']}', '{$displayTitle}', '{$date}', '{$timeArray[0]}', '{$timeArray[1]}', '$all_weekdays_times', '{$_POST['arena']}', '{$horseIDList}', {$ignoreHorseUse}, '{$tackList}', '{$tackNotes}', '{$clientEquipmentNotes}', '{$padList}', '{$clientIDList}', '{$clientIDList}', '{$staffJSON}', '{$volunteerJSON}'),";
     }
 
     $query = chop($query, ",") . ";";

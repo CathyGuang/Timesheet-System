@@ -20,8 +20,8 @@
 
 
   <?php
-      $ignoreTack = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_tack_conflicts';"), 0)['value'];
-      $ignorePad = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_pad_conflicts';"), 0)['value'];
+      $ignoreTack = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_tack_conflicts';"), 0);
+      $ignorePad = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_pad_conflicts';"), 0);
       var_dump($ignorePad);
       var_dump($ignoreTack);
     ?>

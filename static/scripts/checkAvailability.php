@@ -180,7 +180,7 @@ EOT;
 
           foreach ($allEvents as $eventInfo) {
             if ($eventInfo['cancelled'] == 't') {continue;}
-            if ($eventInfo['ignore_horse_hours'] == 't') {continue;}
+            if ($eventInfo['ignore_horse_use'] == 't') {continue;}
             if ($eventInfo['clients']) {
               $clientNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM clients WHERE id = ANY('{$eventInfo['clients']}');"));
               if ($horseInfo['owner'] != "" && in_array($horseInfo['owner'], $clientNames)) {

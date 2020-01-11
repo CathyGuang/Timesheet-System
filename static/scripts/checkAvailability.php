@@ -223,9 +223,8 @@ EOT;
       //Check for ignore tack/pad settings
       $ignoreTack = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_tack_conflicts';"), 0, PGSQL_ASSOC)['value'];
       $ignorePad = pg_fetch_row(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_pad_conflicts';"), 0, PGSQL_ASSOC)['value'];
-
-      var_dump($ignoreTack);
-      var_dump($ignorePad);
+      if ($typeOfObject == "tack" && $ignoreTack == "TRUE") {return false;}
+      if ($typeOfObject == "pad" && $ignoreTack == "TRUE") {return false;}
 
       //Get all classes on date
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND (archived IS NULL OR archived = '');"));

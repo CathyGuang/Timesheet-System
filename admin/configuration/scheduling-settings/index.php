@@ -32,14 +32,12 @@
       </div>
       <div class="form-section">
         <div class="form-element">
-          <label for="ignore_tack_conflicts">Ignore Tack Conflicts: </label>
-          <input type="checkbox" name="ignore_tack_conflicts" id="ignore_tack_conflicts" <?php if ($ignoreTack == "true") {echo "checked";} ?>>
+          <p>Ignore Tack Conflicts: <input type="checkbox" name="ignore_tack_conflicts" <?php if ($ignoreTack == "true") {echo "checked";} ?>></p>
         </div>
       </div>
       <div class="form-section">
         <div class="form-element">
-          <label for="ignore_pad_conflicts">Ignore Pad Conflicts: </label>
-          <input type="checkbox" name="ignore_pad_conflicts" id="ignore_pad_conflicts" <?php if ($ignorePad == "true") {echo "checked";} ?>>
+          <p>Ignore Pad Conflicts: <input type="checkbox" name="ignore_pad_conflicts" <?php if ($ignorePad == "true") {echo "checked";} ?>></p>
         </div>
       </div>
 

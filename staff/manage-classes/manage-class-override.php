@@ -18,8 +18,15 @@
   </header>
 
   <?php
-    //Get post data
-    $_POST = unserialize(base64_decode($_POST['override-post']));
+    // PROCESS USER INPUT
+
+    # Get date and time
+    $dateOfClass = $_POST['date-of-class'];
+    $startTime = $_POST['start-time'];
+    $endTime = $_POST['end-time'];
+
+    $classType = $_POST['class-type'];
+    $displayTitle = pg_escape_string($_POST['display-title']);
 
 
 
@@ -52,6 +59,7 @@
     }
     $staffJSON = "{";
     foreach ($staffIDList as $key => $staffID) {
+      if ($staffID == 1) {continue;}
       $staffJSON .= "\"{$_POST['staff-roles'][$key]}\": {$staffID},";
     }
     $staffJSON = rtrim($staffJSON, ',') . "}";
@@ -63,6 +71,7 @@
     }
     $volunteerJSON = "{";
     foreach ($volunteerIDList as $key => $volunteerID) {
+      if ($volunteerID == 1) {continue;}
       $volunteerJSON .= "\"{$_POST['volunteer-roles'][$key]}\": {$volunteerID},";
     }
     $volunteerJSON = rtrim($volunteerJSON, ',') . "}";
@@ -74,19 +83,56 @@
     }
 
 
+    // Other simple fields
+    $arena = $_POST['arena'];
+
+    $ignoreHorseUse = 'FALSE';
+    if ($_POST['ignore-horse-use']) {
+      $ignoreHorseUse = 'TRUE';
+    }
+
 
     // Escape user input strings for postgres
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
     $escapedHorseBehaviorNotes = pg_escape_string($_POST['horse-behavior-notes']);
     $escapedClientNotes = pg_escape_string($_POST['client-notes']);
+    $tackList = pg_escape_string(to_pg_array($_POST['tacks']));
+    $padList = pg_escape_string(to_pg_array($_POST['pads']));
+
+    //Notes
+    $SQLData = prepTackNotesForSQL();
+    $tackNotes = $SQLData[0];
+    $clientEquipmentNotes = $SQLData[1];
 
 
+
+    // Don't check for conflicts
 
 
     // ADD TO DATABASE
     $query = <<<EOT
       UPDATE classes SET
-      lesson_plan = '{$escapedLessonPlan}', cancelled = '{$cancel}', horses = '{$horseIDPGList}', clients = '{$clientIDPGList}', horse_behavior = '{$_POST['horse-behavior']}', horse_behavior_notes = '{$escapedHorseBehaviorNotes}', attendance = '{$attendance}', client_notes = '{$escapedClientNotes}', staff = '{$staffJSON}', volunteers = '{$volunteerJSON}'
+      date_of_class = '{$dateOfClass}',
+      start_time = '{$startTime}',
+      end_time = '{$endTime}',
+      class_type = '{$classType}',
+      display_title = '{$displayTitle}',
+      lesson_plan = '{$escapedLessonPlan}',
+      cancelled = '{$cancel}',
+      arena = '{$arena}',
+      horses = '{$horseIDPGList}',
+      ignore_horse_use = {$ignoreHorseUse},
+      tacks = '{$tackList}',
+      pads = '{$padList}',
+      tack_notes = '{$tackNotes}',
+      client_equipment_notes = '{$clientEquipmentNotes}',
+      clients = '{$clientIDPGList}',
+      horse_behavior = '{$_POST['horse-behavior']}',
+      horse_behavior_notes = '{$escapedHorseBehaviorNotes}',
+      attendance = '{$attendance}',
+      client_notes = '{$escapedClientNotes}',
+      staff = '{$staffJSON}',
+      volunteers = '{$volunteerJSON}'
       WHERE id = {$_POST['id']};
 EOT;
 

@@ -86,6 +86,11 @@
     // Other simple fields
     $arena = $_POST['arena'];
 
+    $ignoreHorseUse = 'FALSE';
+    if ($_POST['ignore-horse-use']) {
+      $ignoreHorseUse = 'TRUE';
+    }
+
 
     // Escape user input strings for postgres
     $escapedLessonPlan = pg_escape_string($_POST['lesson-plan']);
@@ -138,6 +143,7 @@
       cancelled = '{$cancel}',
       arena = '{$arena}',
       horses = '{$horseIDPGList}',
+      ignore_horse_use = {$ignoreHorseUse},
       tacks = '{$tackList}',
       pads = '{$padList}',
       tack_notes = '{$tackNotes}',

@@ -50,7 +50,7 @@ Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
 
-        $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+        $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
         if (!$recipient) {
           echo "<p class='main-content-header'>No volunteer coordinator email found. Contact an administrator to change this.</p>";
         }

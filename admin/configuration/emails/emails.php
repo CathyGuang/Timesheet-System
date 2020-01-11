@@ -21,11 +21,11 @@
   <div class="main-content-div">
 
     <?php
-      $volunteerCoordinatorEmail = pg_escape_string($_POST['volunteer-coordinator-email']);
-      $staffCoordinatorEmail = pg_escape_string($_POST['staff-coordinator-email']);
+      $volunteerCoordinatorEmail = pg_escape_string($_POST['volunteer_coordinator_email']);
+      $staffCoordinatorEmail = pg_escape_string($_POST['staff_coordinator_email']);
 
-      $volunteerCoordinatorEmailQuery = "UPDATE misc_data SET value = '{$volunteerCoordinatorEmail}' WHERE key LIKE 'volunteer-coordinator-email';";
-      $staffCoordinatorEmailQuery = "UPDATE misc_data SET value = '{$staffCoordinatorEmail}' WHERE key LIKE 'staff-coordinator-email';";
+      $volunteerCoordinatorEmailQuery = "UPDATE misc_data SET value = '{$volunteerCoordinatorEmail}' WHERE key LIKE 'volunteer_coordinator_email';";
+      $staffCoordinatorEmailQuery = "UPDATE misc_data SET value = '{$staffCoordinatorEmail}' WHERE key LIKE 'staff_coordinator_email';";
 
       $result1 = pg_query($db_connection, $volunteerCoordinatorEmailQuery);
       $result2 = pg_query($db_connection, $staffCoordinatorEmailQuery);

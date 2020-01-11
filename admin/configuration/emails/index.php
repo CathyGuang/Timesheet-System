@@ -20,8 +20,8 @@
 
 
   <?php
-      $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
-      $staffCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff-coordinator-email';"), 0, PGSQL_ASSOC)['value'];
+      $volunteerCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'volunteer_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
+      $staffCoordinatorEmail = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
     ?>
 
   <div class="form-container">
@@ -29,14 +29,14 @@
     <form autocomplete="off" class="standard-form standard-form" action="emails.php" method="post">
       <div class="form-section">
         <div class="form-element">
-          <label for="volunteer-coordinator-email">Volunteer Coordinator: </label>
-          <input type="email" name="volunteer-coordinator-email" id="volunteer-coordinator-email" value="<?php echo $volunteerCoordinatorEmail; ?>">
+          <label for="volunteer_coordinator_email">Volunteer Coordinator: </label>
+          <input type="email" name="volunteer_coordinator_email" id="volunteer_coordinator_email" value="<?php echo $volunteerCoordinatorEmail; ?>">
         </div>
       </div>
       <div class="form-section">
         <div class="form-element">
-          <label for="staff-coordinator-email">Staff Coordinator: </label>
-          <input type="email" name="staff-coordinator-email" id="staff-coordinator-email" value="<?php echo $staffCoordinatorEmail; ?>">
+          <label for="staff_coordinator_email">Staff Coordinator: </label>
+          <input type="email" name="staff_coordinator_email" id="staff_coordinator_email" value="<?php echo $staffCoordinatorEmail; ?>">
         </div>
       </div>
 

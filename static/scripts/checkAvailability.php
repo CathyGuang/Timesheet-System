@@ -220,6 +220,13 @@ EOT;
       //Ignore calls to check empty fields/null/None values
       if (!$id || $id == "None") {return false;}
 
+      //Check for ignore tack/pad settings
+      $ignoreTack = pg_fetch_all(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_tack_conflicts';"));
+      $ignorePad = pg_fetch_all(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'ignore_pad_conflicts';"));
+
+      var_dump($ignoreTack);
+      var_dump($ignorePad);
+
       //Get all classes on date
       $allClasses = pg_fetch_all(pg_query($db_connection, "SELECT * FROM classes WHERE date_of_class = '{$date}' AND (archived IS NULL OR archived = '');"));
 

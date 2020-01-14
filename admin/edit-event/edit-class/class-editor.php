@@ -91,7 +91,8 @@
               <h3>This Class Is Over.</h3>
             </div>
             <div class="form-element" style="color: red;">
-              <p>You cannot edit this class. Consider archiving this class to remove it from menus.</p>
+              <form id="archive-form" method="post" action="edit-class.php"><input type="text" name="archive" value="true"></form>
+              <p>You cannot edit this class. <button form="archive-form" type="submit">Archive</button> this class to remove it from menus.</p>
             </div>
 EOT;
           }

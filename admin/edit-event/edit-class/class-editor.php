@@ -54,7 +54,7 @@
       echo <<<EOT
       <form id='archive-form' method='post' action='edit-class.php' hidden>
         <input type='text' name='archive' value='true'>
-        <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" hidden>
+        <input type="text" name="class-code" value="{$selectedClassCode}" hidden>
       </form>
 EOT;
     }

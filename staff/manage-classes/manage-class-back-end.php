@@ -86,9 +86,12 @@
     // Other simple fields
     $arena = $_POST['arena'];
 
+   // Convert simple data
     $ignoreHorseUse = 'FALSE';
+    $skipHorse = false;
     if ($_POST['ignore-horse-use']) {
       $ignoreHorseUse = 'TRUE';
+      $skipHorse = true;
     }
 
 
@@ -115,7 +118,7 @@
       $classTimeData = array($dateOfClass, $startTime, $endTime);
       $dateTimeTriplets = array($classTimeData[0]=>[$classTimeData[1], $classTimeData[2]]);
       $convertedData = array($horseIDList, $clientIDList, $staffIDList, $volunteerIDList);
-      $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+      $abort = checkForConflicts($dateTimeTriplets, $convertedData, $skipHorse);
 
       //unarchive class
       pg_query($db_connection, "UPDATE classes SET archived = NULL WHERE classes.id = {$_POST['id']};");

@@ -75,11 +75,18 @@
     $convertedData = convertSelectionsToDatabaseIDs($db_connection);
 
 
+    // Convert simple data
+    $ignoreHorseUse = 'FALSE';
+    $skipHorse = false;
+    if ($_POST['ignore-horse-use']) {
+      $ignoreHorseUse = 'TRUE';
+      $skipHorse = true;
+    }
 
 
 
     //Check for double-booking
-    $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+    $abort = checkForConflicts($dateTimeTriplets, $convertedData, $skipHorse);
     if ($abort) {
       //RESTORE OLD CLASS DATA SINCE NO CHANGES ARE BEING MADE
       if ($oldClassIDSQLObject) {
@@ -113,11 +120,7 @@
     $clientEquipmentNotes = $SQLData[7];
     $displayTitle = $SQLData[8];
 
-    // Convert simple data
-    $ignoreHorseUse = 'FALSE';
-    if ($_POST['ignore-horse-use']) {
-      $ignoreHorseUse = 'TRUE';
-    }
+   
 
 
 

@@ -31,9 +31,18 @@
     $convertedData = convertSelectionsToDatabaseIDs($db_connection);
 
 
+    // Convert simple data
+    $ignoreHorseUse = 'FALSE';
+    $skipHorse = false;
+    if ($_POST['ignore-horse-use']) {
+      $ignoreHorseUse = 'TRUE';
+      $skipHorse = true;
+    }
+
+
 
     //Check for double-booking
-    $abort = checkForConflicts($dateTimeTriplets, $convertedData);
+    $abort = checkForConflicts($dateTimeTriplets, $convertedData, $skipHorse);
     if ($abort) {
       $postString = base64_encode(serialize($_POST));
       echo "<h3 class='main-content-header'>No class has been added, the database has not been changed. Please <button form='retry-form' type='submit' style='width: 90pt;'>try again</button></h3>";
@@ -58,11 +67,7 @@
     $clientEquipmentNotes = $SQLData[7];
     $displayTitle = $SQLData[8];
 
-    // Convert simple data
-    $ignoreHorseUse = 'FALSE';
-    if ($_POST['ignore-horse-use']) {
-      $ignoreHorseUse = 'TRUE';
-    }
+    
 
 
     // Generate new unique class code

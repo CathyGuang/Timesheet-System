@@ -52,6 +52,7 @@
       $pastClass = true;
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = '{$endDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
+      echo "<form id='archive-form' method='post' action='edit-class.php' hidden><input type='text' name='archive' value='true'></form>";
     }
 
 
@@ -91,7 +92,6 @@
               <h3>This Class Is Over.</h3>
             </div>
             <div class="form-element" style="color: red;">
-              <form id="archive-form" method="post" action="edit-class.php"><input type="text" name="archive" value="true"></form>
               <p>You cannot edit this class. <button form="archive-form" type="submit">Archive</button> this class to remove it from menus.</p>
             </div>
 EOT;

@@ -506,7 +506,7 @@
 
 
       <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.location.href = ../">Cancel</button>
+        <a href="../"><button type="button" class="cancel-form">Cancel</button></a>
         <button type="submit" <?php if ($pastClass) {echo "disabled";} ?>>Submit</button>
       </div>      
 

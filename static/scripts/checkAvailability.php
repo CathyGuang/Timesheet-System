@@ -1,6 +1,6 @@
 <?php
 
-  function checkAvailability($id, $typeOfObject, $date, $time1, $time2) {
+  function checkAvailability($id, $typeOfObject, $date, $time1, $time2, $skipHorse = false) {
 
     //ignore calls for empty/ignored fields
     if ($id == "") {return false;} // no object
@@ -173,7 +173,7 @@ EOT;
         }
 
         //Check if horse is maxed out on uses for the day
-        if ($typeOfObject == "horses") {
+        if ($typeOfObject == "horses" && !$skipHorse) {
           $orgUseCount = 0;
           $ownerUseCount = 0;
           $horseInfo = pg_fetch_all(pg_query($db_connection, "SELECT * FROM horses WHERE id = {$id} AND (archived IS NULL OR archived = '');"))[0];

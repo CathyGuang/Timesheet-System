@@ -78,7 +78,7 @@ function convertSelectionsToDatabaseIDs($db_connection){
 
 
 //Runs conflict checking for a class, makes sure all selections are available.
-function checkForConflicts($dateTimeTriplets, $convertedData){
+function checkForConflicts($dateTimeTriplets, $convertedData, $skipHorse = false){
   //Expand convertedData into named variables
   $horseIDList = $convertedData[0];
   $clientIDList = $convertedData[1];
@@ -101,7 +101,7 @@ function checkForConflicts($dateTimeTriplets, $convertedData){
     }
     if ($horseIDList != array()) {
       foreach ($horseIDList as $key => $horseID) {
-        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1]);
+        $result = checkAvailability($horseID, 'horses', $date, $timeArray[0], $timeArray[1], $skipHorse);
         if ($result) {
           $time1 = date('g:ia', strtotime($result[0]));
           $time2 = date('g:ia', strtotime($result[1]));

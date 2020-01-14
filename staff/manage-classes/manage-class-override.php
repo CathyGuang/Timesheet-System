@@ -19,6 +19,8 @@
 
   <?php
     // PROCESS USER INPUT
+    $_POST = unserialize(base64_decode($_POST['override-post']));
+    var_dump($_POST);
 
     # Get date and time
     $dateOfClass = $_POST['date-of-class'];

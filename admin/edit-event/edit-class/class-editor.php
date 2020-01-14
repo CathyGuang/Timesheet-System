@@ -46,13 +46,17 @@
     $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
 
 
-    //If all class dates have past, do something???
-    // Automatically archive class?
+    //If all class dates have past, create alert that class is over and create archive button. Also disable editing.
     if (!$classData) {
       $pastClass = true;
       $classDataQuery = "SELECT * FROM classes WHERE classes.id = ANY('{$classIDList}') AND classes.date_of_class = '{$endDate}';";
       $classData = pg_fetch_row(pg_query($db_connection, $classDataQuery), 0, PGSQL_ASSOC);
-      echo "<form id='archive-form' method='post' action='edit-class.php' hidden><input type='text' name='archive' value='true'></form>";
+      echo <<<EOT
+      <form id='archive-form' method='post' action='edit-class.php' hidden>
+        <input type='text' name='archive' value='true'>
+        <input type="text" name="class-code" value="<?php echo $selectedClassCode; ?>" hidden>
+      </form>
+EOT;
     }
 
 

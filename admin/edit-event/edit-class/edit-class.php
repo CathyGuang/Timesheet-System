@@ -35,6 +35,7 @@
     }
 
 
+    var_dump($_POST);
     if ($_POST['archive']) { //ARCHIVE CLASS IF REQUESTED
       $query = "UPDATE classes SET archived = 'TRUE' WHERE class_code = '{$classCode}';";
       $result = pg_query($db_connection, $query);

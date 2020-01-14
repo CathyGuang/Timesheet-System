@@ -506,7 +506,7 @@
 
 
       <div class="form-section">
-        <a href="../"><button type="button" class="cancel-form">Cancel</button></a>
+        <button type="button" class="cancel-form" onclick="window.location.href = darkhorsescheduling.com/admin/edit-event/edit-class">Cancel</button>
         <button type="submit" <?php if ($pastClass) {echo "disabled";} ?>>Submit</button>
       </div>      
 

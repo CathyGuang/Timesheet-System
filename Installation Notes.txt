@@ -1,0 +1,81 @@
+----------------------------------------------------------
+SOFTWARE NOTES
+--------------
+
+CREATE NEW DIRECTORY FOR NEW CLIENT
+  - CREATE NEW APACHE VIRTUAL SERVER FOR DIRECTORY
+  - CONFIGURE DNS RECORDS
+  - RUN CERTBOT TO ENABLE SSL
+
+MAKE SURE TO INCLUDE AND CUSTOMIZE Org-Specific-Info folder
+  - info.php
+  - htaccess files usernames
+  - add htpasswd entries in global /HTPASSWD/.htpasswd file
+
+
+ADD NEW CLIENT DIRECTORY (OR SERVER) TO AUTOMATIC UPDATE SCRIPT
+
+
+
+
+
+
+-------------------------------------------------------
+SERVER CONFIG NOTES
+-------------------
+
+INSTALL PRIMARY SOFTWARE PACKAGES:
+  - APACHE
+  - POSTGRESQL
+  - PHP
+    - php_pgsql
+  - GIT
+
+
+MAKE SURE APACHE IS PROPERLY CONFIGURED
+  - NO INDEXING
+  - NEED TO ADD .PHP FILES TO DirectoryIndex variable to serve php files.
+  - MAKE SURE ACCESS TO .ht* FILES IS PROHIBITED
+  - IN <Directory "${SRVROOT}/htdocs"> BLOCK, SET "AllowOverride All" TO ALLOW .htaccess FILES TO WORK
+  - DISABLE CENTOS 7 FIREWALL FOR APACHE:
+      - sudo firewall-cmd --add-service=http --permanent && sudo firewall-cmd --add-service=https --permanent
+      - sudo systemctl restart firewalld
+
+
+
+MAKE SURE PHP IS PROPERLY CONFIGURED
+  - MAKE SURE TO USE PRODUCTION PHP.INI FILE (NO ERROR-REPORTING) (SHOULD BE DEFAULT)
+
+MAKE SURE PostgreSQL IS PROPERLY CONFIGURED
+  - MAKE SURE TO INSTALL POSTGRESQL 11
+  - MAKE SURE
+              # "local" is for Unix domain socket connections only
+              local   all             postgres                                peer
+              local   all             all                                     md5
+              # IPv4 local connections:
+              host    all             all             127.0.0.1/32            md5
+      ARE BOTH IN PostgreSQL\11\data\pg_hba.conf FILE AT THE END
+
+  - ALSO MAKE SURE THE LINES TO ALLOW CONNECTIONS FROM LOCALHOST ARE UNCOMMENTED AND SET TO ALL USERS AND MD5
+              # Allow replication connections from localhost, by a user with the
+              # replication privilege.
+              host    all             all             127.0.0.1/32            md5
+              host    all             all             ::1/128                 md5
+
+  - ENABLE HTTPD ACCESS TO DATABASE THROUGH SELINUX:
+              - setsebool -P httpd_can_network_connect_db 1
+          check with:
+              - getsebool httpd_can_network_connect_db
+
+
+GIT CONFIGURATION:
+  - create deployment key for new client on new server
+    - save in user's .ssh folder
+    - attach public key to DHS repository
+  - make sure user ssh config file (~/.ssh/config) has an entry for github.com:
+        Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/DEPLOYKEYNAME
+  - remember to clone into repository using ssh address
+        - git@github.com:padillac/Dark-Horse-Scheduling.git

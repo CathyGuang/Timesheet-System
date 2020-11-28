@@ -1,0 +1,216 @@
+-----------------------------------------
+-- MANUAL SECTION: MAKE SURE ALL DATABASE AND USER VALUES ARE CORRECT
+
+/* CREATE USER */
+
+CREATE USER "DarkHorseAdmin" WITH -- WHEN INSTALLING ON PADILLAC-SERVER USE ORG-SPECIFIC USER NAME
+  LOGIN
+  SUPERUSER
+  INHERIT
+  CREATEDB
+  CREATEROLE
+  NOREPLICATION
+  ENCRYPTED PASSWORD 'PASSWORD';
+
+/* SWITCH USER */
+
+\c postgres DarkHorseAdmin
+
+/* CREATE DATABASE */
+
+CREATE DATABASE "DarkHorseDatabase" -- WHEN INSTALLING ON PADILLAC-SERVER USE ORG-SPECIFIC DATABASE NAME
+    WITH
+    OWNER = "DarkHorseAdmin"
+    ENCODING = 'UTF8'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1
+    TEMPLATE = template0;
+
+/* CONNECT TO NEW DATABASE */
+
+\c DarkHorseDatabase
+
+-------------------------------------------------------------------
+
+-- AUTOMATIC SECTION
+
+/* CREATE MISCELLANEOUS DATA TABLE */
+
+CREATE TABLE misc_data (
+  key TEXT,
+  value TEXT
+);
+INSERT INTO misc_data (key) VALUES ('volunteer_coordinator_email'), ('staff_coordinator_email');
+
+INSERT INTO misc_data (key, value) VALUES ('ignore_tack_conflicts', 'false'), ('ignore_pad_conflicts', 'false');
+
+/* CREATE WORKERS TABLE */
+
+CREATE TABLE workers (
+  id SERIAL PRIMARY KEY,
+  archived TEXT,
+  title TEXT,
+  name TEXT,
+  email TEXT,
+  phone TEXT,
+  staff BOOLEAN,
+  volunteer BOOLEAN
+);
+
+
+/* CREATE CLIENTS TABLE */
+
+CREATE TABLE clients (
+  id SERIAL PRIMARY KEY,
+  archived TEXT,
+  name TEXT,
+  email TEXT,
+  phone TEXT
+);
+
+
+/* CREATE HORSES TABLE */
+
+CREATE TABLE horses (
+  id SERIAL PRIMARY KEY,
+  archived TEXT,
+  name TEXT,
+  owner TEXT,
+  owner_email TEXT,
+  owner_phone TEXT,
+  vet_name TEXT,
+  vet_email TEXT,
+  vet_phone TEXT,
+  org_uses_per_day INT,
+  owner_uses_per_day INT,
+  horse_uses_per_week INT,
+  notes TEXT
+);
+
+
+/* CREATE HORSE CARE TABLE */
+
+CREATE TYPE CARE_TYPE AS ENUM();
+
+CREATE TABLE horse_care_shifts (
+  id SERIAL PRIMARY KEY,
+  shift_code INT,
+  archived TEXT,
+  care_type CARE_TYPE,
+  date_of_shift DATE,
+  start_time TIME,
+  end_time TIME,
+  all_weekdays_times TEXT,
+  leader INT REFERENCES workers(id),
+  volunteers INT [],
+  horse INT REFERENCES horses(id)
+);
+
+
+/* CREATE OFFICE SHIFT TABLE */
+
+CREATE TYPE OFFICE_SHIFT_TYPE AS ENUM();
+
+CREATE TABLE office_shifts (
+  id SERIAL PRIMARY KEY,
+  shift_code INT,
+  archived TEXT,
+  office_shift_type OFFICE_SHIFT_TYPE,
+  date_of_shift DATE,
+  start_time TIME,
+  end_time TIME,
+  all_weekdays_times TEXT,
+  leader INT REFERENCES workers(id),
+  volunteers INT []
+);
+
+
+/* CREATE VOLUNTEER HOURS TABLE */
+
+CREATE TABLE volunteer_hours (
+  id SERIAL PRIMARY KEY,
+  volunteer INT REFERENCES workers(id),
+  hours NUMERIC,
+  shift_type TEXT,
+  date_of_hours DATE,
+  notes TEXT
+);
+
+
+/* CREATE STAFF HOURS TABLE */
+CREATE TYPE STAFF_WORK_TYPE AS ENUM();
+
+CREATE TABLE staff_hours (
+  id SERIAL PRIMARY KEY,
+  staff INT REFERENCES workers(id),
+  hours NUMERIC,
+  work_type STAFF_WORK_TYPE,
+  date_of_hours DATE,
+  notes TEXT
+);
+
+
+/* INITIALIZE NECESSARY NULL VALUES */
+INSERT INTO workers (name) VALUES ('');
+INSERT INTO workers (name, staff, volunteer) VALUES ('NEEDED', true, true);
+
+INSERT INTO clients (name) VALUES ('');
+INSERT INTO horses (name) VALUES ('');
+INSERT INTO horses (name) VALUES ('HORSE NEEDED');
+
+/* CREATE CLASS TABLE */
+
+CREATE TYPE CLASS_TYPE AS ENUM();
+CREATE TYPE STAFF_CLASS_ROLE AS ENUM();
+CREATE TYPE VOLUNTEER_CLASS_ROLE AS ENUM();
+CREATE TYPE ARENA AS ENUM();
+CREATE TYPE HORSE_BEHAVIOR AS ENUM();
+CREATE TYPE TACK AS ENUM();
+CREATE TYPE PAD AS ENUM();
+
+ALTER TYPE ARENA ADD VALUE '';
+ALTER TYPE HORSE_BEHAVIOR ADD VALUE '';
+ALTER TYPE TACK ADD VALUE '';
+ALTER TYPE TACK ADD VALUE 'None';
+ALTER TYPE PAD ADD VALUE '';
+ALTER TYPE PAD ADD VALUE 'None';
+
+CREATE TABLE classes (
+  id SERIAL PRIMARY KEY,
+  class_code INT,
+  archived TEXT,
+  class_type CLASS_TYPE,
+  display_title TEXT,
+  date_of_class DATE,
+  cancelled BOOLEAN,
+  start_time TIME,
+  end_time TIME,
+  all_weekdays_times TEXT,
+  arena ARENA,
+  lesson_plan TEXT,
+  horses INT [],
+  ignore_horse_use BOOLEAN,
+  horse_behavior HORSE_BEHAVIOR,
+  horse_behavior_notes TEXT,
+  tacks TACK [],
+  tack_notes TEXT [],
+  client_equipment_notes TEXT [],
+  pads PAD [],
+  clients INT [],
+  attendance INT [],
+  client_notes TEXT,
+  staff jsonb,
+  volunteers jsonb
+);
+
+/* CREATE CLASS TYPE COLORS TABLE */
+CREATE TABLE class_type_colors (
+  class_type TEXT,
+  color_code TEXT
+);
+
+
+/* CREATE ARCHIVED ENUMS TABLE */
+CREATE TABLE archived_enums (
+  name TEXT
+);

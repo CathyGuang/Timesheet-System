@@ -13,7 +13,7 @@
   <img src="/static/logo.png.ln" alt="<?php echo $organizationName; ?> Logo" style="position: absolute;">
 
   <header>
-    <h1><?php echo $organizationName; ?> Web Portal</h1>
+    <h1><?php echo $organizationName; ?> Wep Portal</h1>
     <label id="version-label"><a href="README.md">v1.6</a></label>
     <label id="dhs-website-label"><a href="https://www.darkhorsescheduling.com/">darkhorsescheduling.com</a></label>
   </header>

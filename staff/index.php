@@ -21,7 +21,6 @@
     <a href="staff-daily-schedule"><button class="green-button">Daily Schedule</button></a>
     <a href="timesheet"><button class="blue-button">Timesheets</button></a>
     <a href="view-hours"><button class="green-button">View Hours</button></a>
-    <a href="full-time"><button class="blue-button">Full—time</button></a>
   </div>
 
 </body>

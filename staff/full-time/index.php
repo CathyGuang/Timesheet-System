@@ -33,10 +33,12 @@
   </div>
 
   <div id="time-range">
-    <p>Time Range: <span class="slider-time">9:00 AM</span> - <span class="slider-time2">5:00 PM</span>
+    <p>Time Range:
+      <span class="slider-time">9:00 AM</span> -
+      <span class="slider-time2">5:00 PM</span>
     </p>
     <div class="sliders_step1">
-        <div id="slider-range"></div>
+        <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"></div>
     </div>
   </div>
 

@@ -19,14 +19,16 @@
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
+  
+  <div class="top_grid">
+    <form class="form-inline" action="full-time.php" autocomplete="off">
+      <label for="Name">Name:</label>
+      <input type="Name" id="Name" placeholder="Enter name" name="name">
+      <label>Date:</label>
+      <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
 
-  <form class="form-inline" action="full-time.php">
-    <label for="Name">Name:</label>
-    <input type="Name" id="Name" placeholder="Enter name" name="name">
-    <label>Date:</label>
-    <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
-
-  </form>
+    </form>
+  </div>
 
 
 

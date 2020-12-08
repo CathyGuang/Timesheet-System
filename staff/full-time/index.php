@@ -31,6 +31,7 @@
           
     <form class="form-inline" action="/full-time.php">
       <label for="Name">Name:</label>
+      <input type="text" id="Name" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
       <input type="Name" id="Name" placeholder="Enter name" name="Name">
       <label for="Date">Date:</label>
       <input type="Date" name="Date" value="<?php echo date('Y-m-d'); ?>" required>

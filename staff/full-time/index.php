@@ -31,9 +31,9 @@
           
     <form class="form-inline" action="/full-time.php">
       <label for="Name">Name:</label>
-      <input type="text" id="Name" name="staff" placeholder="Select name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+      <input type="text" name="staff" placeholder="Select name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
       <label for="Date">Date:</label>
-      <input type="Date" name="Date" value="<?php echo date('Y-m-d'); ?>" required>
+      <input type="date" name="date-of-work" value="<?php echo date('Y-m-d'); ?>" required>
     
     </form>
 
@@ -151,6 +151,16 @@
 
         </section> 
 
+
+        <section class="send_email">
+          <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
+      </section>
+
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
 
 
       </div>

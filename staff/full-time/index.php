@@ -39,9 +39,9 @@
     </p>
     <div class="sliders_step1">
         <div id="slider-range" class="ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all"aria-disabled="false">
-          <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 37.5%; width: 33.3333%;"></div>
-          <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 37.5%;"></a>
-          <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 70.8333%;"></a>
+          <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
+          <a class="ui-slider-handle ui-state-default ui-corner-all" ></a>
+          <a class="ui-slider-handle ui-state-default ui-corner-all" ></a>
         </div>
     </div>
   </div>

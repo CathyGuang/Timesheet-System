@@ -17,7 +17,7 @@
  
 </head>
 
-<body>
+<body style="background-color:white">
 
   <header>
     <h1>Full-time</h1>

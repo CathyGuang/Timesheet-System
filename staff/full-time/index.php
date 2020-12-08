@@ -26,6 +26,15 @@
     </nav>
   </header>
 
+  <form class="form-inline" action="/full-time.php">
+    <label for="Name">Name</label>
+    <input type="Name" id="Name" placeholder="Enter name" name="Name">
+    <label for="Date">Date:</label>
+    <input type="Date" name="Date" value="<?php echo date('Y-m-d'); ?>" required>
+  
+  </form>
+
+
   <div class="time-range" style="right:25em;">
      <p class="time-range-time"> <span class="slider-time">10:00 AM</span> - <span class="slider-time2">12:00 PM</span>
 

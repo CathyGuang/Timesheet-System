@@ -9,10 +9,16 @@
 
 .worktype{
 
-    padding-top: 150px;
+    padding-top: 30px;
+    padding-left: 30px;
     width:250px;
 
 
+}
+
+.time-range-container{
+
+  position:relative;
 }
 
 .time-range-time{
@@ -21,8 +27,9 @@
 
 .time-range{
 
+    position:absolute;
     width:250px;
-    display:inline-block
+    display:inline-block;
 }
 
 

@@ -34,25 +34,29 @@
   
   </form>
 
+  <div class="time-range-container">
+    <div class="time-range">
+      <p class="time-range-time"> <span class="slider-time">10:00 AM</span> - <span class="slider-time2">12:00 PM</span>
 
-  <div class="time-range" style="right:25em;">
-     <p class="time-range-time"> <span class="slider-time">10:00 AM</span> - <span class="slider-time2">12:00 PM</span>
+      </p>
+      <div class="sliders_step1">
+          <div id="slider-range"></div>
+      </div>
+    </div>
 
-     </p>
-     <div class="sliders_step1">
-         <div id="slider-range"></div>
-     </div>
+    <div class="time-range">
+      <p class="time-range-time"> <span class="slider-time1">10:00 AM</span> - <span class="slider-time3">12:00 PM</span>
+
+      </p>
+      <div class="sliders_step1">
+          <div id="slider-range1"></div>
+      </div>
+    </div>
+
   </div>
 
-  <div class="time-range" style="right:48em;">
-     <p class="time-range-time"> <span class="slider-time1">10:00 AM</span> - <span class="slider-time3">12:00 PM</span>
 
-     </p>
-     <div class="sliders_step1">
-         <div id="slider-range1"></div>
-     </div>
-  </div>
-
+  
  
   
 

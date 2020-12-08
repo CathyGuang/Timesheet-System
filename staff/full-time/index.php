@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="/static/slider.css">
   <link rel="stylesheet" href="/static/jquery-ui.css">
   <link rel="stylesheet" href="/static/rangeslider.css">
-  <link rel="stylesheet" href="/static/main.css">
   <link rel="stylesheet" href="/static/added.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?> 
   <title>Full time</title>

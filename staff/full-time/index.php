@@ -57,9 +57,11 @@
       </div>
 
     </div>
+
     <div class= "worktype_row_container">
       <div class="worktype" style="left:22em">
         <section class="indirectadmin">
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range1"
             type="range"
@@ -75,6 +77,7 @@
         </section> 
 
         <section class="riding">
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range2"
             type="range"
@@ -90,6 +93,7 @@
         </section> 
 
         <section class="vaulting admin" >
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range3"
             type="range"
@@ -104,9 +108,10 @@
 
         </section> 
       </div>
+      
       <div class="worktype" style="left:42em">
         <section class="vaulting">
-        <input type="text" name="work-type" list="work-type-list" required>
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range4"
             type="range"
@@ -122,6 +127,7 @@
         </section> 
 
         <section class="PTO">
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range5"
             type="range"
@@ -137,6 +143,7 @@
         </section> 
 
         <section class="Holiday">
+        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range6"
             type="range"
@@ -170,10 +177,34 @@
   
   </div>
 
-  
-  
+  <!-- DATALISTS -->
+  <datalist id="staff-list">
+    <?php
+      $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
+      foreach ($staffNames as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='{$name}'>";
+      }
+    ?>
+  </datalist>
 
+  <datalist id="work-type-list">
+    <?php
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+      foreach ($staffShiftTypes as $value) {
+        echo "<option value='{$value}'>";
+      }
+    ?>
+  </datalist>
 
+  <datalist id="work-type-list">
+    <?php
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+      foreach ($staffShiftTypes as $value) {
+        echo "<option value='{$value}'>";
+      }
+    ?>
+  </datalist>
 
 </body>
 

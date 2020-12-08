@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/main.css">
-  <link rel="stylesheet" href="/static/added.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <script type="text/javascript" src="/static/TimeSlider.js"></script>
+  <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/static/added.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?> 
   <title>Full time</title>
  
@@ -34,7 +34,6 @@
 
   <div id="time-range">
     <p>Time Range: <span class="slider-time">9:00 AM</span> - <span class="slider-time2">5:00 PM</span>
-
     </p>
     <div class="sliders_step1">
         <div id="slider-range"></div>

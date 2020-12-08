@@ -1,44 +1,4 @@
 
-.output_hours{
-
-    padding-top:20px;
-    padding-bottom:20px;
-
-
-}
-
-.worktype{
-
-    padding-top: 30px;
-    padding-left: 30px;
-    width:250px;
-
-
-}
-
-.time-range-container{
-
-  position:relative;
-}
-
-.time-range-time{
-    text-align: center;
-}
-
-.time-range{
-
-    position:absolute;
-    width:250px;
-    display:inline-block;
-}
-
-
-
-.time-range p {
-  font-family: "Arial", sans-serif;
-  font-size: 14px;
-  color: #333;
-}
 
 .ui-slider-horizontal {
   height: 8px;

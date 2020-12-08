@@ -6,7 +6,7 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <script type="text/javascript" src="https://rangeslider.js.org/assets/rangeslider.js/dist/rangeslider.min.js"></script>
-  <script type="text/javascript" src="rangeslider.js"></script>
+  <script type="text/javascript" src="/static/rangeslider.js"></script>
   <link rel="stylesheet" href="/static/slider.css">
   <link rel="stylesheet" href="/static/jquery-ui.css">
   <link rel="stylesheet" href="/static/rangeslider.css">

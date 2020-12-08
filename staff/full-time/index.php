@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="/static/main.css">
   <link rel="stylesheet" href="/static/added.css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript" src="/static/TimeSlider.js"></script>
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?> 
   <title>Full time</title>

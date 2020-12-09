@@ -23,7 +23,7 @@
     <a href="reports"><button class="blue-button">Generate Report</button></a>
     <a href="edit-event/edit-class"><button class="red-button">Edit Class/Event</button></a>
     <a href="edit-object"><button class="red-button">Edit Object</button></a>
-    <a href="configuration"><button class="blue-button">Configuration</button></a>
+    <a href="system-email"><button class="blue-button">System Email</button></a>
     <button type="submit" form="editable-daily-schedule-form" name="selected-date" value="<?php echo date('Y-m-d'); ?>" class="blue-button">Editable Daily Schedule</button>
     <a href="send-email"><button class="blue-button">Send Email</button></a>
   </div>

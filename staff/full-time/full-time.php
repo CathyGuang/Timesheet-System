@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/main.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/added.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>

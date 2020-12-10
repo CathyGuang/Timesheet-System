@@ -34,14 +34,12 @@
       <input type="text" name="staff" placeholder="Select name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
       <label for="Date">Date:</label>
       <input type="date" name="date-of-work" value="<?php echo date('Y-m-d'); ?>" required>
-    
-    </form>
 
-    <div class="time-range-container">
-      <div class="time-range">
-        <p class="time-range-time"> <span class="slider-time">10:00 AM</span> - <span class="slider-time2">12:00 PM</span>
+      <div class="time-range-container">
+        <div class="time-range">
+          <p class="time-range-time"> <span class="slider-time">10:00 AM</span> - <span class="slider-time2">12:00 PM</span>
 
-        </p>
+          </p>
         <div class="sliders_step1">
             <div id="slider-range"></div>
         </div>
@@ -56,12 +54,10 @@
         </div>
       </div>
 
-    </div>
-
-    <div class= "worktype_row_container">
-      <div class="worktype" style="left:22em">
+      <div class= "worktype_row_container">
+        <div class="worktype" style="left:22em">
         <section class="indirectadmin">
-        <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
+          <input type="text" name="work-type" placeholder="Select work types" list="work-type-list" required>
             <input
             name="range1"
             type="range"
@@ -164,16 +160,13 @@
       </section>
 
 
-      <div class="form-section">
+      <section class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <button type="submit">Submit</button>
-      </div>
+      </section>
 
+    </form>
 
-      </div>
-
-    </div>
-    
   
   </div>
 

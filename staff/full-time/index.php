@@ -29,7 +29,7 @@
 
   <div class= "fulltime-form-container">
           
-    <form class="form-inline" action="/full-time.php">
+    <form class="form-inline" action="full-time.php">
       <label for="Name">Name:</label>
       <input type="text" name="staff" placeholder="Select name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
       <label for="Date">Date:</label>

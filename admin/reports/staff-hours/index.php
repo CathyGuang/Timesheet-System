@@ -22,28 +22,28 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>">
         </div>
       </div>
 
       <div class="form-section">
         <div class="form-element">
           <label>Type of Work:</label>
-          <input type="text" name="work-type" list="work-type-list" required>
+          <input type="text" name="work-type" list="work-type-list">
         </div>
       </div>
 
       <div class="form-section">
         <div class="form-element">
           <label>Start Date:</label>
-          <input type="date" name="start-date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+          <input type="date" name="start-date-of-hours" value="<?php echo date('Y-m-d'); ?>">
         </div>
       </div>
 
       <div class="form-section">
         <div class="form-element">
           <label>End Date:</label>
-          <input type="date" name="end-date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+          <input type="date" name="end-date-of-hours" value="<?php echo date('Y-m-d'); ?>">
         </div>
       </div>
 

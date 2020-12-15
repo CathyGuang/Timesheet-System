@@ -23,7 +23,7 @@
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
   echo $staffName."<br>";
-  echo $staffID." <br>";
+  echo isset($staffID)." <br>";
   echo $_POST['work-type'];
 
   //initialize target table name
@@ -48,47 +48,42 @@
 
   $data = array_merge($metadata, $result);
 
-  
-  foreach ($data as $line) {
-    echo $line;
-  }
   //Write data to temporary CSV file on the server
-  // $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
+  $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
 
-  // foreach ($data as $line) {
-  //   echo $line;
-  //   fputcsv($tempfile, $line);
-  // }
+  foreach ($data as $line) {
+    fputcsv($tempfile, $line);
+  }
 
-  // fclose($tempfile);
-
+  fclose($tempfile);
 
 
-  // //Send file to client browser
-  // $filename = "/tmp/DHStempfile.csv";
 
-  // if(file_exists($filename)){
+  //Send file to client browser
+  $filename = "/tmp/DHStempfile.csv";
 
-  //     //Get file type and set it as Content Type
-  //     header('Content-Type: application/csv');
+  if(file_exists($filename)){
 
-  //     $date = date('Y-m-d');
-  //     //Use Content-Disposition: attachment to specify the filename
-  //     header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
+      //Get file type and set it as Content Type
+      header('Content-Type: application/csv');
 
-  //     //No cache
-  //     header('Expires: 0');
-  //     header('Cache-Control: must-revalidate');
-  //     header('Pragma: public');
+      $date = date('Y-m-d');
+      //Use Content-Disposition: attachment to specify the filename
+      header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
 
-  //     //Define file size
-  //     header('Content-Length: ' . filesize($filename));
+      //No cache
+      header('Expires: 0');
+      header('Cache-Control: must-revalidate');
+      header('Pragma: public');
 
-  //     ob_clean();
-  //     flush();
-  //     readfile($filename);
-  //     exit;
-  // }
+      //Define file size
+      header('Content-Length: ' . filesize($filename));
+
+      ob_clean();
+      flush();
+      readfile($filename);
+      exit;
+  }
 
 ?>
 

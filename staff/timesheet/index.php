@@ -23,7 +23,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+          <input type="text" name="staff" list="staff-list" required>
         </div>
       </div>
 

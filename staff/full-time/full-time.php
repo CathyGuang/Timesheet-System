@@ -32,8 +32,6 @@
     echo $staffName;
     echo "rhrhrhh";
 
-
-
     $one = $_POST['one'];
     
     echo $one;

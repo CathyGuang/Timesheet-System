@@ -1279,6 +1279,14 @@ function canceled(){
 
 function submitted() {
 
+    var worker_date= document.getElementById('selected-name').value;
+    var worker_name= document.getElementById('work_date').value;
+
+    document.getElementById("StaffName").value = worker_name;
+    document.getElementById("StaffDate").value = worker_date;
+
+    
+
     checkName();
     checkJobSelect();
     checkTimeAligned();

@@ -33,7 +33,7 @@
 
     <div class="white-background">
 
-      <form class="form-inline" id="name_date" action="/full-time.php">
+      <form class="form-inline" >
 
         <div id="name_select_reminder"></div>
 
@@ -44,7 +44,7 @@
         
         <div class="labelBar" style="left:350px;">
           <label for="Date" class="label-element" >Date:</label>
-          <input type="Date"  name="Date" value="<?php echo date('Y-m-d'); ?>" required class="input-element" >
+          <input type="Date" id="work_date"  name="Date" value="<?php echo date('Y-m-d'); ?>" required class="input-element" >
         </div>
         
         
@@ -334,8 +334,8 @@
             </div>
 
             
-            <input type="hidden" name="one" id="one" value = "hello1">
-            <input type="hidden" name="two" id="two" value="hhhh2">
+            <input type="hidden" name="StaffName" id="StaffName" value = "NAME">
+            <input type="hidden" name="StaffDate" id="StaffDate" value="DATE">
             <div class="submit_and_cancel">
                 <button type="button" class="cancel" >Cancel</button>
                 <button type="submit" class="submit" onclick="submitted();" >Submit</button>

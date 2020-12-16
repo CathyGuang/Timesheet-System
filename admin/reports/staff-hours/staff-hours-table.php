@@ -38,17 +38,16 @@
 
   //Get table columns for CSV file
   $metadata = array();
-  print_r($metadata);
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
-  print_r($metadata[0]);
+
   //Get table data
   $result = pg_copy_to($db_connection, "{$tableName}", "%", "");
   print_r($result);
-  echo "<br/>";
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
+    echo $result[$key]."<br>";
   }
-  print_r($result);
+  
   $rawData = array_merge($metadata, $result);
 
   echo "<table>";

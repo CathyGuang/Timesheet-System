@@ -1218,7 +1218,7 @@ function checkName(){
 
     }
     
-    console.log[nameList];
+    console.log(nameList);
     var nameEntry =  document.getElementById("selected-name");
 
     if(nameEntry.value ==""){

@@ -1320,11 +1320,13 @@ function submitted() {
     
     else{
 
+        var totalminString = totalmin.toString();
+
         var confirmed = confirm('Are you sure you want to submit?');
 
         if (confirmed == true){
 
-            window.location.href = 'full-time.php?totalmin='+totalmin;
+            window.location.href = 'full-time.php?totalmin='+totalminString;
         }
 
 

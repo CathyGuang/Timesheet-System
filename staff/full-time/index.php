@@ -334,7 +334,7 @@
             </div>
 
             
-            <input type="hidden" name="one" id="one" value = "hhhh1">
+            <input type="hidden" name="one" id="one" value = "hello1">
             <input type="hidden" name="two" id="two" value="hhhh2">
             <div class="submit_and_cancel">
                 <button type="button" class="cancel" >Cancel</button>
@@ -365,13 +365,6 @@
       }
     ?>
   </datalist>
-
-  <form  method="post" name="myform" action="/full-time.php">
-    <input type="hidden" name="one" id="one" value="hh1">
-    <input type="hidden" name="two" id="two" value="hh2">
-  </form>
-
-
 </body>
 
 <script type="text/javascript" src="js/query.js"></script>

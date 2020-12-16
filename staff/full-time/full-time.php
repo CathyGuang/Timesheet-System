@@ -28,11 +28,6 @@
     // echo $_GET['totalmin'];
     // echo $notes;
     // echo $staffID;
-    echo $date;
-    echo $staffName;
-    echo "rhrhrhh";
-
-
 
     $one = $_POST['one'];
     

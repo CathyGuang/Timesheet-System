@@ -1326,8 +1326,6 @@ function submitted() {
 
         if (confirmed == true){
 
-            document.getElementById("name_date").submit();
-
             window.location.href = 'full-time.php?totalmin='+totalmin;
         }
 

@@ -44,10 +44,11 @@
   //Get table data
   $result = pg_copy_to($db_connection, "{$tableName}", "%", "");
   print_r($result);
+  echo "<br/>";
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
   }
-
+  print_r($result);
   $rawData = array_merge($metadata, $result);
 
   echo "<table>";

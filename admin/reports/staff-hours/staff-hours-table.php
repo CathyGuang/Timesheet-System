@@ -56,9 +56,11 @@
   echo "<td>Date</td>";
   echo "<td>Note</td>";
   
+  print_r(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"));
+  
   array_shift($rawData);
   foreach ($rawData as $line) {
-    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+    // $staffID = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
 
   
     echo "<tr>";

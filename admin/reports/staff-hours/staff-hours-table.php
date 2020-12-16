@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
 </head>
 
@@ -49,9 +50,12 @@
   //Get table data
   $query = "SELECT * FROM staff_hours WHERE work_type = '{$workType}' AND '{$startDate}' <= date_of_hours <= '{$endDate}'";
   $test = pg_query($db_connection, $query);
-
-  print_r($test);
   
+  while ($row = pg_fetch_row($test)) {
+    echo "$row[0] $row[1] $row[2]\n";
+  }
+  print_r($test[0]);
+
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
     print_r($result[$key]);

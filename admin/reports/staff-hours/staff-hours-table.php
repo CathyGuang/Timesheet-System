@@ -46,7 +46,7 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
   print_r($metadata);
   //Get table data
-  $query = "SELECT * FROM staff_hours WHERE work_type = '{$workType}' AND '{$startDate}' <= date_of_hours <= '{$endDate}'";
+  $query = "SELECT * FROM staff_hours WHERE work_type = '{$workType}'";
   $test = pg_query($db_connection, $query);
   
   $status = pg_result_status($test);

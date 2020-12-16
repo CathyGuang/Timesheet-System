@@ -1207,7 +1207,7 @@ function checkJobSelect(){
 //checks if name is correctly in list
 function checkName(){
 
-    var nameList = document.getElementById("staff-list").value;
+    var nameList = document.getElementById("staff-list");
 
     var nameEntry =  document.getElementById("selected-name");
 

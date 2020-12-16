@@ -1207,8 +1207,17 @@ function checkJobSelect(){
 //checks if name is correctly in list
 function checkName(){
 
-    var nameList = document.getElementById("staff-list");
 
+    var nameList = [];
+    
+    var optional = document.getElementById("staff-list").options
+    for(var i=0;i<optional.length;i++){
+
+        nameList[i] = optional[i].value;
+
+
+    }
+     console.log[nameList];
     var nameEntry =  document.getElementById("selected-name");
 
     if(nameEntry.value ==""){

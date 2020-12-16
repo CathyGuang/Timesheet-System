@@ -48,20 +48,13 @@
 
   //Get table data
   $queryResult = pg_query($db_connection, "SELECT id, work_type FROM staff_hours WHERE work_type = '{$workType}'");
-  $rawDate = pg_fetch_array($queryResult,0,1);
-  echo $rawData['id']."hahaha";
 
 
-  // while ($row = pg_fetch_row($test)) {
-  //   echo "$row[0] $row[1] $row[2]\n";
-  // }
-  // print_r($test[0]);
-
-  // foreach ($result as $key => $dataString) {
-  //   $result[$key] = explode('%', trim($dataString));
-  //   print_r($result[$key]);
-  //   echo "<br>";
-  // }
+  foreach ($queryResult as $key => $dataString) {
+    $queryResult[$key] = explode('%', trim($dataString));
+    print_r($queryResult[$key]);
+    echo "<br>";
+  }
 
   // $rawData = array_merge($metadata, $result);
 

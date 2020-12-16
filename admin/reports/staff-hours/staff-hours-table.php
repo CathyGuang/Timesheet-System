@@ -45,9 +45,10 @@
   print_r($result);
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
-    echo $result[$key]."<br>";
+    print_r($result[$key]);
+    echo "<br>";
   }
-  
+
   $rawData = array_merge($metadata, $result);
 
   echo "<table>";

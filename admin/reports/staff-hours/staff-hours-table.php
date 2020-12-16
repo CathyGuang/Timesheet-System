@@ -49,8 +49,10 @@
   $data = array_merge($metadata, $result);
 
   print_r($data);
+  echo "<br><br>";
   foreach ($data as $line) {
     // if ($_POST['start-date-of-hours'] <= $line )
+    print_r($line);
     
   }
 

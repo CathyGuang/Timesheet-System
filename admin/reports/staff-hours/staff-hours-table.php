@@ -46,27 +46,46 @@
     $result[$key] = explode('%', trim($dataString));
   }
 
-  $data = array_merge($metadata, $result);
+  $rawData = array_merge($metadata, $result);
 
-  print_r($data);
-  echo "<br><br>";
-  foreach ($data as $line) {
-    // if ($_POST['start-date-of-hours'] <= $line )
-    print_r($line);
-    
+  echo "<table>";
+  echo "<tr>";
+  echo "<td>Staff Name</td>";
+  echo "<td>Hours</td>";
+  echo "<td>Work Type</td>";
+  echo "<td>Date</td>";
+  echo "<td>Note</td>";
+  
+  array_shift($rawData);
+  foreach ($rawData as $line) {
+    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+
+  
+    echo "<tr>";
+    echo "<td>$line[1]</td>";
+    echo "<td>Hours</td>";
+    echo "<td>Work Type</td>";
+    echo "<td>Date</td>";
+    echo "<td>Note</td>";
   }
-
 
   // //Write data to temporary CSV file on the server
   // $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
+
+  // //Add column title
+  // fputcsv($tempfile, $rawData[0]);
+  
+  // foreach ($data as $line) {
+  //   if ($_POST['start-date-of-hours'] <= $line[4]  )
+    
+  // }
+
 
   // foreach ($data as $line) {
   //   fputcsv($tempfile, $line);
   // }
 
   // fclose($tempfile);
-
-
 
   // //Send file to client browser
   // $filename = "/tmp/DHStempfile.csv";

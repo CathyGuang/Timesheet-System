@@ -20,9 +20,9 @@
 
   <?php
 
-    $staffDayRange = pg_escape_string(trim($_POST['staff']));
+    $staffName = pg_escape_string(trim($_POST['selected-name']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-
+    $date = $_POST['Date'];
     $notes = pg_escape_string(trim($_POST['notes']));
 
     if ($_POST['send-email'] == 'true') {

@@ -1255,10 +1255,19 @@ function checkName(){
 
 //reminders while submition:
 
-function submitted() {
+function canceled(){
 
-    console.log("totalselected"+totalWorktimeSelected);
-    console.log("totalmin"+totalmin);
+    var confirmed = confirm('Are you sure you want to cancel?');
+
+        if (confirmed == true){
+
+            window.location.href = '/staff/index.php';
+        }
+
+
+}
+
+function submitted() {
 
     checkName();
     checkJobSelect();

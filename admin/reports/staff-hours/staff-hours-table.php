@@ -58,11 +58,11 @@
   
   array_shift($rawData);
   foreach ($rawData as $line) {
-    $staffName = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
     
   
     echo "<tr>";
-    echo "<td>$staffName</td>";
+    echo "<td>$allStaff</td>";
     echo "<td>$line[2]</td>";
     echo "<td>$line[3]</td>";
     echo "<td>$line[4]</td>";

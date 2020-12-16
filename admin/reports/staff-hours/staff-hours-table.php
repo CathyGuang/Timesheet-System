@@ -62,7 +62,7 @@
     
   
     echo "<tr>";
-    echo "<td>$line[1]</td>";
+    echo "<td>$staffName</td>";
     echo "<td>$line[2]</td>";
     echo "<td>$line[3]</td>";
     echo "<td>$line[4]</td>";

@@ -21,9 +21,6 @@
 
     $staffName = pg_escape_string(trim($_POST['staff']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-    
-    echo $staffID;
-    echo $staffName;
 
     $notes = pg_escape_string(trim($_POST['notes']));
 

@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+<?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
 </head>
 
@@ -22,7 +23,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>">
+          <input name="staff" list="staff-list" id="selected-name">
         </div>
       </div>
 

@@ -20,15 +20,14 @@
 
   <?php
 
-    $staffName = $_POST['StaffName'];
+    $staffName = pg_escape_string(trim($_POST['StaffName']));
     $date = $_POST['StaffDate'];
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
     $notes = $_POST['Notes'];
-    // echo "hoohohoho";
-    // echo $_GET['totalmin'];
-    // echo $notes;
-    // echo $staffID;
 
+    $totalmin = $_POST['TotalTime'];
+    $totalhour = $totalmin/60; 
+    
     
     
     echo $staffName;
@@ -38,6 +37,9 @@
     echo $staffID;
     echo "<br>";
     echo $notes;
+    echo "<br>";
+    echo $totalhour." hrs";
+
 
 
 

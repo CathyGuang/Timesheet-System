@@ -1286,6 +1286,7 @@ function submitted() {
     document.getElementById("StaffName").value = worker_name;
     document.getElementById("StaffDate").value = worker_date;
     document.getElementById("Notes").value = worker_notes;
+    document.getElementById("TotalTime").value = totalmin;
 
     
 

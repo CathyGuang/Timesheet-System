@@ -23,7 +23,9 @@
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
   $startDate = $_POST['start-date-of-hours'];
   $endDate = $_POST['end-date-of-hours'];
-  
+  print_r($staffID);
+  echo $startDate."<br>";
+  echo $endDate." <br>";
 
 
   echo $staffName."<br>";
@@ -45,11 +47,10 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
   print_r($metadata);
   //Get table data
-  $result = pg_fetch_all_columns(pg_query($db_connection, "SELECT * 
-  FROM $tableName
-  WHERE staff = $staffID
-  AND work_type = $workType
-  AND $startDate <= date_of_hours <= $endDate;"));
+  echo pg_field_is_null(pg_query($db_connection, "SELECT id, staff, hours, work_type, date_of_hours, notes
+  FROM staff_hours
+  WHERE work_type = '{$workType}'
+  AND '{$startDate}' <= date_of_hours <= '{$endDate};"));
 
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));

@@ -39,7 +39,7 @@
 
         <div class="labelBar">
           <label for="Name" class="label-element"  >Name:</label>
-          <select name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element"><select>
+          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element">
         </div>
         
         <div class="labelBar" style="left:350px;">

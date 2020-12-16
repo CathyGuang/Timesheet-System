@@ -22,7 +22,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>">
+          <input name="staff" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element">
         </div>
       </div>
 

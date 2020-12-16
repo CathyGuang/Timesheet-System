@@ -21,10 +21,14 @@
 
   $staffName = pg_escape_string(trim($_POST['staff']));
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+  $startDate = $_POST['start-date-of-hours'];
+  $endDate = $_POST['end-date-of-hours'];
+  
+
 
   echo $staffName."<br>";
-  echo isset($staffID)." <br>";
-  echo $_POST['work-type'];
+  echo $staffID." <br>";
+  $workType = $_POST['work-type'];
 
   //initialize target table name
   $tableName = "staff_hours";
@@ -41,7 +45,11 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
   print_r($metadata);
   //Get table data
-  $result = pg_copy_to($db_connection, "{$tableName}", "%", "");
+  $result = pg_fetch_all_columns(pg_query($db_connection, "SELECT * 
+  FROM $tableName
+  WHERE staff = $staffID
+  AND work_type = $workType
+  AND $startDate <= date_of_hours <= $endDate;"));
 
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));

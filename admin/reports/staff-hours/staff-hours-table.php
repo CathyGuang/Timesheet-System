@@ -30,6 +30,7 @@
   echo $staffName."<br>";
   echo $staffID." <br>";
   $workType = $_POST['work-type'];
+  echo $workType;
 
   //initialize target table name
   $tableName = "staff_hours";

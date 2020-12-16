@@ -23,7 +23,9 @@
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
   $startDate = $_POST['start-date-of-hours'];
   $endDate = $_POST['end-date-of-hours'];
-  
+  print_r($staffID);
+  echo $startDate."<br>";
+  echo $endDate." <br>";
 
 
   echo $staffName."<br>";

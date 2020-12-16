@@ -25,12 +25,22 @@
     $date = $_POST['Date'];
     $notes = pg_escape_string(trim($_POST['notes']));
     echo "hoohohoho";
-    $one = $_POST['one'];
     echo $_GET['totalmin'];
     echo $notes;
     echo $staffID;
+    echo $staffName;
     echo "rhrhrhh";
+
+
+
+    $one = $_POST['one'];
+    
     echo $one;
+
+
+
+
+
 
     if ($_POST['send-email'] == 'true') {
       $notes .= " &#8212Hours complete for pay period.";

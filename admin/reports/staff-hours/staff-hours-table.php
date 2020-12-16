@@ -49,9 +49,8 @@
   //Get table data
   $result = pg_fetch_all_columns(pg_query($db_connection, "SELECT * 
   FROM $tableName
-  WHERE staff = $staffID
-  AND work_type = $workType
-  AND $startDate <= date_of_hours <= $endDate;"));
+  WHERE work_type = '{$workType}'
+  AND '{$startDate}' <= date_of_hours <= $endDate;"));
 
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));

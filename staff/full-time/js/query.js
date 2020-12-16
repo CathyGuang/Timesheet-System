@@ -1292,11 +1292,11 @@ function submitted() {
             alert("please make sure that total work time equals total time reported in jobs!");
         }
     
-        if(ZeroJobTime == true){
+        // if(ZeroJobTime == true){
     
-            alert("please select the time you've worked at each job!");
+        //     alert("please select the time you've worked at each job!");
     
-        }
+        // }
     
         if(ZeroTotalTime == true){
     

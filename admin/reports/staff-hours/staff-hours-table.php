@@ -24,11 +24,9 @@
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
   $startDate = $_POST['start-date-of-hours'];
   $endDate = $_POST['end-date-of-hours'];
-  print_r($staffID);
+
   echo $startDate."<br>";
   echo $endDate." <br>";
-
-
   echo $staffName."<br>";
   echo $staffID." <br>";
   $workType = $_POST['work-type'];
@@ -51,42 +49,50 @@
   $query = "SELECT * FROM staff_hours WHERE work_type = '{$workType}' AND '{$startDate}' <= date_of_hours <= '{$endDate}'";
   $test = pg_query($db_connection, $query);
   
-  while ($row = pg_fetch_row($test)) {
-    echo "$row[0] $row[1] $row[2]\n";
-  }
-  print_r($test[0]);
+  $status = pg_result_status($test);
 
-  foreach ($result as $key => $dataString) {
-    $result[$key] = explode('%', trim($dataString));
-    print_r($result[$key]);
-    echo "<br>";
-  }
+  // Determine status
+  if ($status == PGSQL_COPY_IN)
+     echo "Copy began.";
+  else
+     echo "Copy failed.";
 
-  $rawData = array_merge($metadata, $result);
+  // while ($row = pg_fetch_row($test)) {
+  //   echo "$row[0] $row[1] $row[2]\n";
+  // }
+  // print_r($test[0]);
 
-  echo "<table>";
-  echo "<tr>";
-  echo "<td>Staff Name</td>";
-  echo "<td>Hours</td>";
-  echo "<td>Work Type</td>";
-  echo "<td>Date</td>";
-  echo "<td>Note</td>";
+  // foreach ($result as $key => $dataString) {
+  //   $result[$key] = explode('%', trim($dataString));
+  //   print_r($result[$key]);
+  //   echo "<br>";
+  // }
+
+  // $rawData = array_merge($metadata, $result);
+
+  // echo "<table>";
+  // echo "<tr>";
+  // echo "<td>Staff Name</td>";
+  // echo "<td>Hours</td>";
+  // echo "<td>Work Type</td>";
+  // echo "<td>Date</td>";
+  // echo "<td>Note</td>";
   
-  array_shift($rawData);
-  foreach ($rawData as $line) {
-    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+  // array_shift($rawData);
+  // foreach ($rawData as $line) {
+  //   $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
     
   
-    echo "<tr>";
-    echo "<td>$allStaff</td>";
-    echo "<td>$line[2]</td>";
-    echo "<td>$line[3]</td>";
-    echo "<td>$line[4]</td>";
-    echo "<td>$line[5]</td>";
-    echo "<td>$line[6]</td>";
-    echo "</tr>";
-  }
-  echo "</table>";
+  //   echo "<tr>";
+  //   echo "<td>$allStaff</td>";
+  //   echo "<td>$line[2]</td>";
+  //   echo "<td>$line[3]</td>";
+  //   echo "<td>$line[4]</td>";
+  //   echo "<td>$line[5]</td>";
+  //   echo "<td>$line[6]</td>";
+  //   echo "</tr>";
+  // }
+  // echo "</table>";
 
 
   // //Write data to temporary CSV file on the server

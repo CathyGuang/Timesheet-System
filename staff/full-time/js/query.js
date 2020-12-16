@@ -1324,7 +1324,7 @@ function submitted() {
 
         if (confirmed == true){
 
-            window.location.href = 'full-time.php?a=12';
+            window.location.href = 'full-time.php?totalmin='+totalmin;
         }
 
 

@@ -20,38 +20,36 @@
 
   <?php
 
+    $sss = pg_escape_string(trim($_POST['selected-name']));
+    $iii = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+
     $staffName = trim($_POST['StaffName']);
     $date = $_POST['StaffDate'];
-    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' 
-    AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
     
 
-    $idresult = pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');");
-    $arr = pg_fetch_array($idresult, 0, PGSQL_NUM);
+    
+
     
     $notes = $_POST['Notes'];
 
     $totalmin = $_POST['TotalTime'];
     $totalhour = $totalmin/60; 
 
-    var_dump($staffID);
+    echo $iii;
     
     
-    
+    echo $sss;
     echo $staffName;
     echo "<br>";
     echo $date;
     echo "<br>";
-    echo $staffID;
-    echo "<br>";
+    
     echo $notes;
     echo "<br>";
     echo $totalhour." hrs";
 
     echo "<br>";
     echo "hereee";
-
-    echo $arr[0]
 
 
 

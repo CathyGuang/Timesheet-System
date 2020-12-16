@@ -31,15 +31,15 @@
 
   <div class= "fulltime-form-container" >
 
-    <div class="white-background">
+    <form class="white-background" method="post" name="myform" action="full-time.php">
 
-      <form class="form-inline" >
+      <div class="form-inline" >
 
         <div id="name_select_reminder"></div>
 
         <div class="labelBar">
           <label for="Name" class="label-element"  >Name:</label>
-          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element"  required>
+          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element"  value="<?php echo $_POST['name']; ?>" required>
         </div>
         
         <div class="labelBar" style="left:350px;">
@@ -49,7 +49,7 @@
         
         
         
-      </form>
+      </div>
 
       <hr class="line_below_form_inline">
 
@@ -322,35 +322,35 @@
         </div>
 
         
-
+      </div>
       
-          <form  method="post" name="myform" action="full-time.php">
+        
 
-            <div class="payroll_complete_check">
-            <p class="payroll_text">Hours complete for pay period: 
-              <input type="checkbox" name="send-email" value="true">
-              <span class="checkmark"></span>
-            </p>
-            </div>
+      <div class="payroll_complete_check">
+        <p class="payroll_text">Hours complete for pay period: 
+          <input type="checkbox" name="send-email" value="true">
+          <span class="checkmark"></span>
+        </p>
+      </div>
 
             
-            <input type="hidden" name="StaffName" id="StaffName" value = "NAME">
-            <input type="hidden" name="StaffDate" id="StaffDate" value="DATE">
-            <input type="hidden" name="Notes" id="Notes" value="NOTES">
-            <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">
+      <input type="hidden" name="StaffName" id="StaffName" value = "NAME">
+      <input type="hidden" name="StaffDate" id="StaffDate" value="DATE">
+      <input type="hidden" name="Notes" id="Notes" value="NOTES">
+      <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">
 
-            <div class="submit_and_cancel">
-                <button type="button" class="cancel" >Cancel</button>
-                <button type="submit" class="submit" onclick="submitted();" >Submit</button>
-            </div>
-          </form>
+      <div class="submit_and_cancel">
+          <button type="button" class="cancel" >Cancel</button>
+          <button type="submit" class="submit" onclick="submitted();" >Submit</button>
+      </div>
+          
         
 
 
 
-      </div>
+      
     
-    </div>
+    </form>
           
    
 

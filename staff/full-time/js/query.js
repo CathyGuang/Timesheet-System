@@ -1281,9 +1281,11 @@ function submitted() {
 
     var worker_date= document.getElementById('selected-name').value;
     var worker_name= document.getElementById('work_date').value;
+    var worker_notes= document.getElementById('notes').value;
 
     document.getElementById("StaffName").value = worker_name;
     document.getElementById("StaffDate").value = worker_date;
+    document.getElementById("Notes").value = worker_notes;
 
     
 

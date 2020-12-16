@@ -336,6 +336,7 @@
             
             <input type="hidden" name="StaffName" id="StaffName" value = "NAME">
             <input type="hidden" name="StaffDate" id="StaffDate" value="DATE">
+            <input type="hidden" name="Notes" id="Notes" value="NOTES">
             <div class="submit_and_cancel">
                 <button type="button" class="cancel" >Cancel</button>
                 <button type="submit" class="submit" onclick="submitted();" >Submit</button>

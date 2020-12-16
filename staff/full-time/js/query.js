@@ -1254,7 +1254,7 @@ function checkName(){
 
 
 
-    console.log(nameEntry);
+    console.log(workList);
 
 
 }
@@ -1277,7 +1277,11 @@ function canceled(){
 
 }
 
+
+
 function submitted() {
+
+    var totalminString = totalmin.toString();
 
     checkName();
     checkJobSelect();
@@ -1320,7 +1324,6 @@ function submitted() {
     
     else{
 
-        var totalminString = totalmin.toString();
 
         var confirmed = confirm('Are you sure you want to submit?');
 

@@ -356,6 +356,11 @@
     ?>
   </datalist>
 
+  <form  method="post" name="myform" action="full-time.php">
+    <input type="hidden" name="one" id="one" value="hh1">
+    <input type="hidden" name="two" id="two" value="hh2">
+  </form>
+
 
 </body>
 

@@ -25,6 +25,7 @@
     $date = $_POST['Date'];
     $notes = pg_escape_string(trim($_POST['notes']));
     echo $_GET['totalmin'];
+    echo $notes;
     echo $staffID;
 
     if ($_POST['send-email'] == 'true') {

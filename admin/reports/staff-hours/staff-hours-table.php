@@ -48,9 +48,9 @@
   print_r($metadata);
   //Get table data
   $result = pg_fetch_all_columns(pg_query($db_connection, "SELECT * 
-  FROM $tableName
+  FROM '{$tableName}'
   WHERE work_type = '{$workType}'
-  AND '{$startDate}' <= date_of_hours <= $endDate;"));
+  AND '{$startDate}' <= date_of_hours <= '{$endDate};"));
 
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));

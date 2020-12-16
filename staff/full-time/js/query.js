@@ -1254,7 +1254,7 @@ function checkName(){
 
 
 
-    console.log(workList);
+    console.log(nameEntry);
 
 
 }
@@ -1277,11 +1277,7 @@ function canceled(){
 
 }
 
-
-
 function submitted() {
-
-    var totalminString = totalmin.toString();
 
     checkName();
     checkJobSelect();
@@ -1324,12 +1320,15 @@ function submitted() {
     
     else{
 
+        var totalminString =totalmin.toString();
 
         var confirmed = confirm('Are you sure you want to submit?');
 
         if (confirmed == true){
 
-            window.location.href = 'full-time.php?totalmin='+totalminString;
+            document.getElementById("name_date").submit();
+
+            window.location.href = 'full-time.php?totalmin='+totalmin;
         }
 
 

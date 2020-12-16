@@ -29,11 +29,11 @@
     </nav>
   </div>
 
-  <div class= "fulltime-form-container" action="/full-time.php">
+  <div class= "fulltime-form-container" >
 
     <div class="white-background">
 
-      <form class="form-inline">
+      <form class="form-inline" id="name_date" action="/full-time.php">
 
         <div id="name_select_reminder"></div>
 
@@ -321,17 +321,27 @@
 
         </div>
 
-        <div class="payroll_complete_check">
-          <p class="payroll_text">Hours complete for pay period: 
-            <input type="checkbox" name="send-email" value="true">
-            <span class="checkmark"></span>
-          </p>
-        </div>
+        
 
-        <div class="submit_and_cancel">
-        <button type="button" class="cancel" onclick="canceled();">Cancel</button>
-        <button type="submit" class="submit" onclick="submitted();" >Submit</button>
-        </div>
+      
+          <form  method="post" name="myform" action="full-time.php">
+
+            <div class="payroll_complete_check">
+            <p class="payroll_text">Hours complete for pay period: 
+              <input type="checkbox" name="send-email" value="true">
+              <span class="checkmark"></span>
+            </p>
+            </div>
+
+            
+            <input type="hidden" name="one" id="one" value = "hhhh1">
+            <input type="hidden" name="two" id="two" value="hhhh2">
+            <div class="submit_and_cancel">
+                <button type="button" class="cancel" >Cancel</button>
+                <button type="submit" class="submit" onclick="submitted();" >Submit</button>
+            </div>
+          </form>
+        
 
 
 

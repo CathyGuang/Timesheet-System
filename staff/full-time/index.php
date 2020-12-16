@@ -39,7 +39,7 @@
 
         <div class="labelBar">
           <label for="Name" class="label-element"  >Name:</label>
-          <input name="selected-name" list="staff" id="selected-name"  placeholder="Enter name" class="input-element">
+          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element">
         </div>
         
         <div class="labelBar" style="left:350px;">
@@ -346,9 +346,14 @@
 
   <!-- data list -->
 
-  <datalist id="staff">
-    <option value='Cathy'> 
-    <option value='Lily'>
+  <datalist id="staff-list">
+    <?php
+      $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE staff = TRUE AND (archived IS NULL OR archived = '');"));
+      foreach ($staffNames as $name) {
+        $name = htmlspecialchars($name, ENT_QUOTES);
+        echo "<option value='{$name}'>";
+      }
+    ?>
   </datalist>
 
 

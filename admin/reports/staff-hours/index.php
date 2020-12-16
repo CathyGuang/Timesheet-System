@@ -23,7 +23,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input name="staff" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element">
+          <input name="staff" list="staff-list" id="selected-name">
         </div>
       </div>
 

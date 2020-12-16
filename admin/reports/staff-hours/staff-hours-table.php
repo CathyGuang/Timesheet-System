@@ -47,8 +47,11 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
   print_r($metadata);
   //Get table data
-  $test = pg_field_is_null(pg_query($db_connection, "SELECT id, staff, hours, work_type, date_of_hours, notes FROM staff_hours WHERE work_type = '{$workType}' AND '{$startDate}' <= date_of_hours <= '{$endDate};"));
-  echo $test;
+  $query = "SELECT * FROM staff_hours WHERE work_type = '{$workType}' AND '{$startDate}' <= date_of_hours <= '{$endDate}'";
+  $test = pg_query($db_connection, $query);
+
+  print_r($test);
+  
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
     print_r($result[$key]);

@@ -43,6 +43,7 @@
   print_r($metadata[0]);
   //Get table data
   $result = pg_copy_to($db_connection, "{$tableName}", "%", "");
+  print_r($result);
   foreach ($result as $key => $dataString) {
     $result[$key] = explode('%', trim($dataString));
   }

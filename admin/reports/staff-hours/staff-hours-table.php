@@ -48,7 +48,7 @@
 
   //Get table data
   $queryResult = pg_query($db_connection, "SELECT id, work_type FROM staff_hours WHERE work_type = '{$workType}'");
-  $rawDate = pg_fetch_array($queryResult);
+  $rawDate = pg_fetch_array($queryResult,0,1);
   echo $rawData['id']."hahaha";
 
 

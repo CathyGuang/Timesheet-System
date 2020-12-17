@@ -8,15 +8,19 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
   <style type="text/css">
-    table, th, td {
+    table {
       border-collapse: collapse;
-      border-spacing: 0;
       width: 100%;
-      border: 1px solid #ddd;
-      margin: 0 auto;
-      margin-bottom: 100px;
-}
+    }
+    
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
 
+    tr:hover {background-color: #f5f5f5;}
 </style>
 </head>
 
@@ -30,11 +34,11 @@
 
   <table>
     <tr>
-    <td>Name</td>
-    <td>Date</td>
-    <td>Work Type</td>
-    <td>Hours</td>
-    <td>Notes</td>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Work Type</th>
+    <th>Hours</th>
+    <th>Notes</th>
 
 <?php
 

@@ -40,116 +40,59 @@
     <th>Hours</th>
     <th>Notes</th>
 
-<?php
-  $staffName = pg_escape_string(trim($_POST['staff']));
-  if (empty($staffName)){
-    echo "bal";
-    //Get table data without name restriction
-    $query = <<<EOT
-  SELECT * FROM staff_hours
-  WHERE '{$_POST['start-date-of-hours']}' <= date_of_hours AND
-  '{$_POST['end-date-of-hours']}' >= date_of_hours
-  ;
-  EOT;
-  } else{
-    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+  <?php
+    $staffName = pg_escape_string(trim($_POST['staff']));
+    if (empty($staffName)){
+      echo "bal";
+      //Get table data without name restriction
+      $query = <<<EOT
+    SELECT * FROM staff_hours
+    WHERE '{$_POST['start-date-of-hours']}' <= date_of_hours AND
+    '{$_POST['end-date-of-hours']}' >= date_of_hours
+    ;
+    EOT;
+    } else{
+      $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+      
+      echo $staffName;
+      //Get table data with certain staff name
+      $query = <<<EOT
+    SELECT * FROM staff_hours
+    WHERE staff = '{$staffID}' AND
+    '{$_POST['start-date-of-hours']}' <= date_of_hours AND
+    '{$_POST['end-date-of-hours']}' >= date_of_hours
+    ;
+    EOT;
+    }
     
-    echo $staffName;
-    //Get table data with certain staff name
-    $query = <<<EOT
-  SELECT * FROM staff_hours
-  WHERE staff = '{$staffID}' AND
-  '{$_POST['start-date-of-hours']}' <= date_of_hours AND
-  '{$_POST['end-date-of-hours']}' >= date_of_hours
-  ;
-  EOT;
-  }
-  
-  $hourData = pg_fetch_all(pg_query($db_connection, $query));
-
-  if (!$hourData) {
-    echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
-    return;
-  }
-  
-  foreach ($hourData as $line) {
-    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-  
-    echo "<tr>";
-    echo "<td>$allStaff</td>";
-    echo "<td>{$line['date_of_hours']}</td>";
-    echo "<td>{$line['work_type']}</td>";
-    echo "<td>{$line['hours']}</td>";
-    echo "<td>{$line['notes']}</td>";
-    echo "</tr>";
-  }
-
-  echo "</table>";
-
-  //initialize target table name
-  $tableName = "staff_hours";
-
-  //delete tempfiles from previous reports
-  if (file_exists("/tmp/DHStempfile.csv")) {
-    unlink("/tmp/DHStempfile.csv");
-  }
-
-  //Get table columns for CSV file
-  $metadata = array();
-  $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
+    $hourData = pg_fetch_all(pg_query($db_connection, $query));
+    
+    //Pass $hourData to the next page for download
 
 
-  // foreach ($queryResult as $key => $dataString) {
-  //   $queryResult[$key] = explode('%', trim($dataString));
-  //   print_r($queryResult[$key]);
-  //   echo "<br>";
-  // }
+    if (!$hourData) {
+      echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
+      return;
+    }
+    
+    foreach ($hourData as $line) {
+      $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+    
+      echo "<tr>";
+      echo "<td>$allStaff</td>";
+      echo "<td>{$line['date_of_hours']}</td>";
+      echo "<td>{$line['work_type']}</td>";
+      echo "<td>{$line['hours']}</td>";
+      echo "<td>{$line['notes']}</td>";
+      echo "</tr>";
+    }
+  ?>
+  </table>
 
-  // $rawData = array_merge($metadata, $hourData);
-  
-
-
-  // //Write data to temporary CSV file on the server
-  // $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
-
-  // //Add column title
-  // fputcsv($tempfile, $rawData[0]);
-
-  // foreach ($data as $line) {
-  //   fputcsv($tempfile, $line);
-  // }
-
-  // fclose($tempfile);
-
-  // //Send file to client browser
-  // $filename = "/tmp/DHStempfile.csv";
-
-  // if(file_exists($filename)){
-
-  //     //Get file type and set it as Content Type
-  //     header('Content-Type: application/csv');
-
-  //     $date = date('Y-m-d');
-  //     //Use Content-Disposition: attachment to specify the filename
-  //     header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
-
-  //     //No cache
-  //     header('Expires: 0');
-  //     header('Cache-Control: must-revalidate');
-  //     header('Pragma: public');
-
-  //     //Define file size
-  //     header('Content-Length: ' . filesize($filename));
-
-  //     ob_clean();
-  //     flush();
-  //     readfile($filename);
-  //     exit;
-  // }
-
-?>
-
-  <a href="staff-hours"><button class="blue-button">Export Staff Hours Data</button></a>
+  <form method="post" action="staff-csv-download.php">
+    <input type="hidden" name="hourData" value= "<?php echo $hourData; ?>">
+    <button class="blue-button" type="submit">Export Staff Hours Data</button>
+  </form>
 
 </body>
 

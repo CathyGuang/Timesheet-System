@@ -13,12 +13,6 @@
     text-align: center;
     width: 80%;
     margin: 0 auto;
-  }
-
-#country_race,
-#twentieth_race_table,
-#twentyfirst_race_table,
-#country_driver {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;

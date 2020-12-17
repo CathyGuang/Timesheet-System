@@ -66,7 +66,7 @@
             <button type = "button" class= "add_button" onclick="addTimeRange()" id = "add_button"><i class="fas fa-plus"></i></button>
         
       
-            <button type = "button" sclass= "delete_button" onclick="minusTimeRange()" id = "delete_button" ><i class="fas fa-minus"></i></button>
+            <button type = "button" class= "delete_button" onclick="minusTimeRange()" id = "delete_button" ><i class="fas fa-minus"></i></button>
     
         </div>
 

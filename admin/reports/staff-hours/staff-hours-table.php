@@ -74,7 +74,7 @@ EOT;
 
   // $rawData = array_merge($metadata, $hourData);
   // print_r($rawData);
-
+  print_r($hourData);
   echo "<table>";
   echo "<tr>";
   echo "<td>Staff Name</td>";

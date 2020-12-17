@@ -23,10 +23,10 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input name="staff" list="staff-list" id="selected-name" required>
+          <input name="staff" list="staff-list" id="selected-name">
         </div>
       </div>
-      
+
       <div class="form-section">
         <div class="form-element">
           <label>Start Date:</label>

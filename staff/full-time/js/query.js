@@ -900,6 +900,8 @@ var workInfo=[
     { value: '20', label: 'BUILD' },
     { value: '21', label: 'Major Gift' },
   ];
+
+console.log(workInfo);
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {

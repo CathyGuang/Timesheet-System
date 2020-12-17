@@ -1,37 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="/static/main.css">
-<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
-  <title>Admin | Generate Report</title>
-  <style type="text/css">
-    table {
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    
-    th, td {
-      padding: 8px;
-      text-align: left;
-      border-bottom: 1px solid #ddd;
-    }
-
-    tr:hover {background-color: #f5f5f5;}
-</style>
-</head>
-
-<body>
-  <header>
-    <h1>Generate Staff Hour Report</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
-      <a href="/"><button id="home-button">Home</button></a>
-    </nav>
-  </header>
-
 <?php
   //initialize target table name
   $tableName = "staff_hours";
@@ -88,6 +54,3 @@
   }
 
 ?>
-</body>
-
-</html>

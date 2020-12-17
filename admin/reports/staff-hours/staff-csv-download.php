@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
+  <title>Admin | Generate Report</title>
+  <style type="text/css">
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {background-color: #f5f5f5;}
+</style>
+</head>
+
+<body>
+  <header>
+    <h1>Generate Staff Hour Report</h1>
+    <nav> <a href="../"><button id="back-button">Back</button></a>
+      <a href="/"><button id="home-button">Home</button></a>
+    </nav>
+  </header>
+
 <?php
   //initialize target table name
   $tableName = "staff_hours";
@@ -19,39 +53,42 @@
 
   print_r($data);
   
-  //Write data to temporary CSV file on the server
-  $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
+//   //Write data to temporary CSV file on the server
+//   $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
 
-  foreach ($data as $line) {
-    fputcsv($tempfile, $line);
-  }
+//   foreach ($data as $line) {
+//     fputcsv($tempfile, $line);
+//   }
 
-  fclose($tempfile);
+//   fclose($tempfile);
 
-  //Send file to client browser
-  $filename = "/tmp/DHStempfile.csv";
+//   //Send file to client browser
+//   $filename = "/tmp/DHStempfile.csv";
 
-  if(file_exists($filename)){
+//   if(file_exists($filename)){
 
-      //Get file type and set it as Content Type
-      header('Content-Type: application/csv');
+//       //Get file type and set it as Content Type
+//       header('Content-Type: application/csv');
 
-      $date = date('Y-m-d');
-      //Use Content-Disposition: attachment to specify the filename
-      header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
+//       $date = date('Y-m-d');
+//       //Use Content-Disposition: attachment to specify the filename
+//       header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
 
-      //No cache
-      header('Expires: 0');
-      header('Cache-Control: must-revalidate');
-      header('Pragma: public');
+//       //No cache
+//       header('Expires: 0');
+//       header('Cache-Control: must-revalidate');
+//       header('Pragma: public');
 
-      //Define file size
-      header('Content-Length: ' . filesize($filename));
+//       //Define file size
+//       header('Content-Length: ' . filesize($filename));
 
-      ob_clean();
-      flush();
-      readfile($filename);
-      exit;
-  }
+//       ob_clean();
+//       flush();
+//       readfile($filename);
+//       exit;
+//   }
 
 ?>
+</body>
+
+</html>

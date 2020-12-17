@@ -47,7 +47,7 @@
   $metadata = array();
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
-  $result = $_POST['hourData'];
+  $result = unserialize($_POST['hourData']);
   print_r($result);
   echo "haha";
   foreach ($result as $line) {

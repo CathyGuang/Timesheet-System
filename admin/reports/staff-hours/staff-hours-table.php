@@ -87,7 +87,7 @@
   </table>
 
   <form method="post" action="staff-csv-download.php">
-    <input type="hidden" name="hourData" value= "<?php print_r($hourData); ?>">
+    <input type="hidden" name="hourData" value= "<?php serialize($hourData); ?>">
     <button class="blue-button" type="submit">Export Staff Hours Data</button>
   </form>
 

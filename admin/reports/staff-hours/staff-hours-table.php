@@ -7,6 +7,27 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
+  <style type="text/css">
+table {
+margin: 8px;
+}
+
+th {
+font-family: Arial, Helvetica, sans-serif;
+font-size: .7em;
+background: #666;
+color: #FFF;
+padding: 2px 6px;
+border-collapse: separate;
+border: 1px solid #000;
+}
+
+td {
+font-family: Arial, Helvetica, sans-serif;
+font-size: .7em;
+border: 1px solid #DDD;
+}
+</style>
 </head>
 
 <body>
@@ -16,6 +37,14 @@
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
+
+  <table>
+    <tr>
+    <td>Name</td>
+    <td>Date</td>
+    <td>Work Type</td>
+    <td>Hours</td>
+    <td>Notes</td>
 
 <?php
 
@@ -73,14 +102,14 @@ EOT;
 
   // $rawData = array_merge($metadata, $hourData);
   // print_r($rawData);
-  print_r($hourData);
-  echo "<table style=\"border=1px; top:15px; left:10px;\">";
-  echo "<tr>";
-  echo "<td>Name</td>";
-  echo "<td>Date</td>";
-  echo "<td>Work Type</td>";
-  echo "<td>Hours</td>";
-  echo "<td>Notes</td>";
+  // print_r($hourData);
+  // echo "<table border=1>";
+  // echo "<tr>";
+  // echo "<td>Name</td>";
+  // echo "<td>Date</td>";
+  // echo "<td>Work Type</td>";
+  // echo "<td>Hours</td>";
+  // echo "<td>Notes</td>";
   
   foreach ($hourData as $line) {
     $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];

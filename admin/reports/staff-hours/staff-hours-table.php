@@ -76,6 +76,8 @@
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
 
       $line['staff'] = $name;
+      echo $line['staff'];
+      echo "enter";
 
       echo "<tr>";
       echo "<td>$name</td>";
@@ -87,7 +89,7 @@
     }
     echo '</table>';
     echo 'haha';
-    print_r($hourData);
+    print_r($hourData)
   ?>
   
 

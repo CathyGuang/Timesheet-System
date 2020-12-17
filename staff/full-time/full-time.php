@@ -23,7 +23,6 @@
     $staffName = pg_escape_string(trim($_POST['selected-name']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
-    $staffName = trim($_POST['StaffName']);
     $date = $_POST['Date'];
     
 

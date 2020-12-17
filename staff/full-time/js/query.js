@@ -1267,7 +1267,7 @@ function checkName(){
 
 function canceled(){
 
-    var confirmed = confirm('Are you sure you want to cancel?');
+    var confirmed = confirm('Are you sure you want to cancel? Your input would not be saved');
 
         if (confirmed == true){
 
@@ -1284,7 +1284,7 @@ function submitted() {
     // var worker_notes= document.getElementById('notes').value;
 
     // document.getElementById("Notes").value = worker_notes;
-    // document.getElementById("TotalTime").value = totalmin;
+    document.getElementById("TotalTime").value = totalmin;
 
     
 

@@ -51,6 +51,7 @@
   echo $result[0]['hours'];
   echo "success. <br>";
   print_r($metadata);
+  echo "success2. <br>";
   $data = array_merge($metadata, $result);
 
   print_r($data);

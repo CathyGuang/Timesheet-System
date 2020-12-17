@@ -7,9 +7,31 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
-</head>
 <style type=”text/css”>
-  table {
+table {
+margin: 8px;
+}
+
+th {
+font-family: Arial, Helvetica, sans-serif;
+font-size: .7em;
+background: #666;
+color: #FFF;
+padding: 2px 6px;
+border-collapse: separate;
+border: 1px solid #000;
+}
+
+td {
+font-family: Arial, Helvetica, sans-serif;
+font-size: .7em;
+border: 1px solid #DDD;
+}
+</style>
+</head>
+
+<body>
+  /* table {
     text-align: center;
     width: 80%;
     margin: 0 auto;
@@ -33,11 +55,7 @@ td {
     overflow: hidden;
     color: white;
     text-decoration: none;
-}
-
-</style>
-
-<body>
+} */
 
   <header>
     <h1>Generate Staff Hour Report</h1>
@@ -47,6 +65,7 @@ td {
   </header>
 
 <?php
+  header("Content-type: text/css; charset: UTF-8");
 
   $staffName = pg_escape_string(trim($_POST['staff']));
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];

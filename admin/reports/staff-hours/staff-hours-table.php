@@ -72,12 +72,8 @@
       return;
     }
     
-    foreach ($hourData as $line) {
+    foreach ($hourData as &$line) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-
-      $line['staff'] = $name;
-      echo $line['staff'];
-      echo "enter";
 
       echo "<tr>";
       echo "<td>$name</td>";

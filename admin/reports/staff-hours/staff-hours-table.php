@@ -44,7 +44,7 @@
   $staffName = pg_escape_string(trim($_POST['staff']));
   if (empty($staffName)){
     echo "bal";
-    //Get table data
+    //Get table data without name restriction
     $query = <<<EOT
   SELECT * FROM staff_hours
   WHERE '{$_POST['start-date-of-hours']}' <= date_of_hours AND
@@ -55,7 +55,7 @@
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
     
     echo $staffName;
-    //Get table data
+    //Get table data with certain staff name
     $query = <<<EOT
   SELECT * FROM staff_hours
   WHERE staff = '{$staffID}' AND
@@ -71,41 +71,6 @@
     echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
     return;
   }
-
-  //initialize target table name
-  $tableName = "staff_hours";
-
-  //delete tempfiles from previous reports
-  if (file_exists("/tmp/DHStempfile.csv")) {
-    unlink("/tmp/DHStempfile.csv");
-  }
-
-  //Get table columns for CSV file
-  $metadata = array();
-  $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
-
-
-  
-  foreach ($hourData as $uniqueShift) {
-    echo "<p style='margin-left: 2vw;'>{$uniqueShift['date_of_hours']}: {$uniqueShift['work_type']}, {$uniqueShift['hours']} hrs, {$uniqueShift['notes']}</p><br>";
-  }
-  
-  // foreach ($queryResult as $key => $dataString) {
-  //   $queryResult[$key] = explode('%', trim($dataString));
-  //   print_r($queryResult[$key]);
-  //   echo "<br>";
-  // }
-
-  // $rawData = array_merge($metadata, $hourData);
-  // print_r($rawData);
-  // print_r($hourData);
-  // echo "<table border=1>";
-  // echo "<tr>";
-  // echo "<td>Name</td>";
-  // echo "<td>Date</td>";
-  // echo "<td>Work Type</td>";
-  // echo "<td>Hours</td>";
-  // echo "<td>Notes</td>";
   
   foreach ($hourData as $line) {
     $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
@@ -121,18 +86,34 @@
 
   echo "</table>";
 
+  //initialize target table name
+  $tableName = "staff_hours";
+
+  //delete tempfiles from previous reports
+  if (file_exists("/tmp/DHStempfile.csv")) {
+    unlink("/tmp/DHStempfile.csv");
+  }
+
+  //Get table columns for CSV file
+  $metadata = array();
+  $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
+
+
+  // foreach ($queryResult as $key => $dataString) {
+  //   $queryResult[$key] = explode('%', trim($dataString));
+  //   print_r($queryResult[$key]);
+  //   echo "<br>";
+  // }
+
+  // $rawData = array_merge($metadata, $hourData);
+  
+
 
   // //Write data to temporary CSV file on the server
   // $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
 
   // //Add column title
   // fputcsv($tempfile, $rawData[0]);
-  
-  // foreach ($data as $line) {
-  //   if ($_POST['start-date-of-hours'] <= $line[4]  )
-    
-  // }
-
 
   // foreach ($data as $line) {
   //   fputcsv($tempfile, $line);
@@ -167,6 +148,8 @@
   // }
 
 ?>
+
+  <a href="staff-hours"><button class="blue-button">Export Staff Hours Data</button></a>
 
 </body>
 

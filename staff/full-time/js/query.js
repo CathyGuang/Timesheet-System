@@ -1267,7 +1267,7 @@ function checkName(){
 
 function canceled(){
 
-    var confirmed = confirm('Are you sure you want to cancel?');
+    var confirmed = confirm('Are you sure you want to cancel? Your input would not be saved');
 
         if (confirmed == true){
 

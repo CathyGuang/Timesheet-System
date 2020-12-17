@@ -63,10 +63,10 @@
         
 
         <div class = "add_minus_button">
-            <button class= "add_button" onclick="addTimeRange()" id = "add_button"><i class="fas fa-plus"></i></button>
+            <button type = "button" class= "add_button" onclick="addTimeRange()" id = "add_button"><i class="fas fa-plus"></i></button>
         
       
-            <button class= "delete_button" onclick="minusTimeRange()" id = "delete_button" ><i class="fas fa-minus"></i></button>
+            <button type = "button" sclass= "delete_button" onclick="minusTimeRange()" id = "delete_button" ><i class="fas fa-minus"></i></button>
     
         </div>
 
@@ -340,7 +340,7 @@
       <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">
 
       <div class="submit_and_cancel">
-          <button type="button" class="cancel" >Cancel</button>
+          <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
           <button type="submit" class="submit" onclick="submitted();" >Submit</button>
       </div>
           

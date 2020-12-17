@@ -22,7 +22,7 @@
 
     $staffName = trim($_POST['StaffName']);
     $date = $_POST['StaffDate'];
-    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+    $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '$staffName' ;"), 0, 1)['id'];
     
 
     $idresult = pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');");

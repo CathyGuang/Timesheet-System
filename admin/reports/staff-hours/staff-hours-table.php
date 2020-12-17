@@ -8,7 +8,7 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
   <style type="text/css">
-    table {
+    table, th, td {
       border-collapse: collapse;
       border-spacing: 0;
       width: 100%;

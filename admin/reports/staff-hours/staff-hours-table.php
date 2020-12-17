@@ -7,56 +7,9 @@
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
-<style type=”text/css”>
-#my_table {
-margin: 15px;
-}
-
-th {
-font-family: Arial, Helvetica, sans-serif;
-font-size: .7em;
-background: #666;
-color: #FFF;
-padding: 2px 6px;
-border-collapse: separate;
-border: 1px solid #000;
-}
-
-td {
-font-family: Arial, Helvetica, sans-serif;
-font-size: .7em;
-border: 1px solid #DDD;
-}
-</style>
 </head>
 
 <body>
-  /* table {
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-    margin: 0 auto;
-    margin-bottom: 100px;
-}
-
-th {
-    background-color: #730A0A;
-    color: white;
-}
-
-td {
-    text-align: center;
-    padding: 3px;
-    white-space: nowrap;
-    overflow: hidden;
-    color: white;
-    text-decoration: none;
-} */
-
   <header>
     <h1>Generate Staff Hour Report</h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
@@ -121,7 +74,7 @@ EOT;
   // $rawData = array_merge($metadata, $hourData);
   // print_r($rawData);
   print_r($hourData);
-  echo "<table id=\"my_table\" border=1>";
+  echo "<table style=\"border=1px; top:15px; left:10px;\">";
   echo "<tr>";
   echo "<td>Name</td>";
   echo "<td>Date</td>";

@@ -39,7 +39,7 @@
 
         <div class="labelBar">
           <label for="Name" class="label-element"  >Name:</label>
-          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element">
+          <input name="selected-name" list="staff-list" id="selected-name"  placeholder="Enter name" class="input-element" value="<?php echo $_POST['name']; ?>" required>
         </div>
         
         <div class="labelBar" style="left:350px;">

@@ -72,31 +72,31 @@ EOT;
   //   echo "<br>";
   // }
 
-  // $rawData = array_merge($metadata, $result);
+  $rawData = array_merge($metadata, $hourData);
 
-  // echo "<table>";
-  // echo "<tr>";
-  // echo "<td>Staff Name</td>";
-  // echo "<td>Hours</td>";
-  // echo "<td>Work Type</td>";
-  // echo "<td>Date</td>";
-  // echo "<td>Note</td>";
+  echo "<table>";
+  echo "<tr>";
+  echo "<td>Staff Name</td>";
+  echo "<td>Hours</td>";
+  echo "<td>Work Type</td>";
+  echo "<td>Date</td>";
+  echo "<td>Note</td>";
   
-  // array_shift($rawData);
-  // foreach ($rawData as $line) {
-  //   $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+  foreach ($rawData as $line) {
+    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
     
   
-  //   echo "<tr>";
-  //   echo "<td>$allStaff</td>";
-  //   echo "<td>$line[2]</td>";
-  //   echo "<td>$line[3]</td>";
-  //   echo "<td>$line[4]</td>";
-  //   echo "<td>$line[5]</td>";
-  //   echo "<td>$line[6]</td>";
-  //   echo "</tr>";
-  // }
-  // echo "</table>";
+    echo "<tr>";
+    echo "<td>$allStaff</td>";
+    echo "<td>$line[2]</td>";
+    echo "<td>$line[3]</td>";
+    echo "<td>$line[4]</td>";
+    echo "<td>$line[5]</td>";
+    echo "<td>$line[6]</td>";
+    echo "</tr>";
+  }
+
+  echo "</table>";
 
 
   // //Write data to temporary CSV file on the server

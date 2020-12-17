@@ -1284,7 +1284,7 @@ function submitted() {
     // var worker_notes= document.getElementById('notes').value;
 
     // document.getElementById("Notes").value = worker_notes;
-    // document.getElementById("TotalTime").value = totalmin;
+    document.getElementById("TotalTime").value = totalmin;
 
     
 

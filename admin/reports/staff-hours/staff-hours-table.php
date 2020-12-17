@@ -27,7 +27,7 @@
 <body>
   <header>
     <h1>Generate Staff Hour Report</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
+    <nav> <a href=".../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
@@ -43,7 +43,6 @@
   <?php
     $staffName = pg_escape_string(trim($_POST['staff']));
     if (empty($staffName)){
-      echo "bal";
       //Get table data without name restriction
       $query = <<<EOT
     SELECT * FROM staff_hours
@@ -54,7 +53,6 @@
     } else{
       $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
       
-      echo $staffName;
       //Get table data with certain staff name
       $query = <<<EOT
     SELECT * FROM staff_hours

@@ -9,7 +9,7 @@
   <title>Admin | Generate Report</title>
 <style type=”text/css”>
 #my_table {
-margin: 8px;
+margin: 15px;
 }
 
 th {

@@ -65,7 +65,7 @@ td {
   </header>
 
 <?php
-  header("Content-type: text/css; charset: UTF-8");
+  // header("Content-type: text/css; charset: UTF-8");
 
   $staffName = pg_escape_string(trim($_POST['staff']));
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];

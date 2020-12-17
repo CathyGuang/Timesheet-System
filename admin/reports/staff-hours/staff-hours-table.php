@@ -8,7 +8,7 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
 <style type=”text/css”>
-table {
+#my_table {
 margin: 8px;
 }
 
@@ -65,7 +65,6 @@ td {
   </header>
 
 <?php
-  // header("Content-type: text/css; charset: UTF-8");
 
   $staffName = pg_escape_string(trim($_POST['staff']));
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
@@ -122,7 +121,7 @@ EOT;
   // $rawData = array_merge($metadata, $hourData);
   // print_r($rawData);
   print_r($hourData);
-  echo "<table>";
+  echo "<table id=\"my_table\" border=1>";
   echo "<tr>";
   echo "<td>Name</td>";
   echo "<td>Date</td>";

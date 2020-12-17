@@ -8,25 +8,15 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
   <style type="text/css">
-table {
-margin: 15px;
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      width: 100%;
+      border: 1px solid #ddd;
+      margin: 0 auto;
+      margin-bottom: 100px;
 }
 
-th {
-font-family: Arial, Helvetica, sans-serif;
-font-size: .7em;
-background: #666;
-color: #FFF;
-padding: 2px 6px;
-border-collapse: separate;
-border: 1px solid #000;
-}
-
-td {
-font-family: Arial, Helvetica, sans-serif;
-font-size: .7em;
-border: 1px solid #DDD;
-}
 </style>
 </head>
 

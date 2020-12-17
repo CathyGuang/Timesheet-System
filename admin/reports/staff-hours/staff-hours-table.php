@@ -73,6 +73,7 @@ EOT;
   // }
 
   $rawData = array_merge($metadata, $hourData);
+  print_r($rawData);
 
   echo "<table>";
   echo "<tr>";

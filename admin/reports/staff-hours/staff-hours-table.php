@@ -84,16 +84,14 @@ EOT;
   echo "<td>Note</td>";
   
   foreach ($hourData as $line) {
-    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-    
+    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
   
     echo "<tr>";
     echo "<td>$allStaff</td>";
-    echo "<td>$line[2]</td>";
-    echo "<td>$line[3]</td>";
-    echo "<td>$line[4]</td>";
-    echo "<td>$line[5]</td>";
-    echo "<td>$line[6]</td>";
+    echo "<td>{$line['date_of_hours']}: </td>";
+    echo "<td>{$line['work_type']}</td>";
+    echo "<td>{$line['hours']}</td>";
+    echo "<td>{$line['notes']}</td>";
     echo "</tr>";
   }
 

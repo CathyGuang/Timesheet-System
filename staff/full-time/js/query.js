@@ -877,7 +877,7 @@ console.log(worktypearray);
 
 // initiate multiple job select
 var isfirst = true;
-var workInfo=[{value:"huhu",label:"huhu"}];
+var workInfo=worktypearray;
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {

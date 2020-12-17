@@ -48,6 +48,17 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
   $result = $_POST['hourData'];
+  foreach ($result as $line) {
+    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+  
+    echo "<tr>";
+    echo "<td>$allStaff</td>";
+    echo "<td>{$line['date_of_hours']}</td>";
+    echo "<td>{$line['work_type']}</td>";
+    echo "<td>{$line['hours']}</td>";
+    echo "<td>{$line['notes']}</td>";
+    echo "</tr>";
+  }
   echo $result[0]['hours'];
   echo "success. <br>";
   print_r($metadata);

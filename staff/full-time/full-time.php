@@ -46,6 +46,7 @@
     echo $totalhour." hrs";
 
     echo "<br>";
+    echo "hereee";
 
     echo $arr[0]
 

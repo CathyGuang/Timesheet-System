@@ -83,7 +83,7 @@ EOT;
   echo "<td>Date</td>";
   echo "<td>Note</td>";
   
-  foreach ($rawData as $line) {
+  foreach ($hourData as $line) {
     $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '$line[1]' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
     
   

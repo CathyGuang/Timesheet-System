@@ -854,11 +854,12 @@ function worktime_reminder(){
 
 }
 
-var workkk = document.getElementById("work-type-list").innerHTML;
+var worktypes = document.getElementById("work-type-list").innerHTML;
 
-var arr = workkk.split('#');
+var workarray = worktypes.split(',');
 
-console.log(arr);
+
+console.log(workarray);
 
 // initiate multiple job select
 var isfirst = true;

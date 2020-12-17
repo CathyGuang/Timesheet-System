@@ -856,11 +856,13 @@ function worktime_reminder(){
 
 var workkk = document.getElementById("work-type-list").innerHTML;
 
-console.log(workkk);
+var arr = workkk.split('#');
+
+console.log(arr);
 
 // initiate multiple job select
 var isfirst = true;
-var workInfo="["+workkk+"]";
+var workInfo=[{value:"huhu",label:"huhu"}];
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {

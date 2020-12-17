@@ -48,7 +48,7 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
   $result = $_POST['hourData'];
-  print_r($result);
+  print_r($result[0]);
   echo "success. <br>";
   print_r($metadata);
   $data = array_merge($metadata, $result);

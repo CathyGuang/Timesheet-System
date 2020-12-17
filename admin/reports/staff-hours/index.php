@@ -23,17 +23,10 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input name="staff" list="staff-list" id="selected-name">
+          <input name="staff" list="staff-list" id="selected-name" required>
         </div>
       </div>
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Type of Work:</label>
-          <input type="text" name="work-type" list="work-type-list">
-        </div>
-      </div>
-
+      
       <div class="form-section">
         <div class="form-element">
           <label>Start Date:</label>

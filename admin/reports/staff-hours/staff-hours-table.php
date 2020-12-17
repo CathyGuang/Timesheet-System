@@ -44,20 +44,11 @@
 
   $staffName = pg_escape_string(trim($_POST['staff']));
   $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-  $startDate = $_POST['start-date-of-hours'];
-  $endDate = $_POST['end-date-of-hours'];
-
-  echo $startDate."<br>";
-  echo $endDate." <br>";
-  echo $staffName."<br>";
-  echo $staffID." <br>";
-  $workType = $_POST['work-type'];
-  echo $workType;
 
   //initialize target table name
   $tableName = "staff_hours";
   //Connect to database
-  include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
+  // include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php";
 
   //delete tempfiles from previous reports
   if (file_exists("/tmp/DHStempfile.csv")) {
@@ -110,7 +101,7 @@ EOT;
   
     echo "<tr>";
     echo "<td>$allStaff</td>";
-    echo "<td>{$line['date_of_hours']}: </td>";
+    echo "<td>{$line['date_of_hours']}</td>";
     echo "<td>{$line['work_type']}</td>";
     echo "<td>{$line['hours']}</td>";
     echo "<td>{$line['notes']}</td>";

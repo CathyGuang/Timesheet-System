@@ -66,10 +66,6 @@
     }
     
     $hourData = pg_fetch_all(pg_query($db_connection, $query));
-    
-    // //Pass $hourData to the next page for download
-    // session_start();
-    // $_SESSION['hourData'] = $hourData;
 
     if (!$hourData) {
       echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -78,7 +74,10 @@
     
     foreach ($hourData as $line) {
       $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-    
+      echo $line['staff'];
+      echo "hahaha"
+      $line['staff'] = $allStaff;
+      echo $line['staff'];
       echo "<tr>";
       echo "<td>$allStaff</td>";
       echo "<td>{$line['date_of_hours']}</td>";

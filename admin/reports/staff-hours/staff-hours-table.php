@@ -30,6 +30,7 @@
   echo $staffName."<br>";
   echo $staffID." <br>";
   $workType = $_POST['work-type'];
+  echo $workType;
 
   //initialize target table name
   $tableName = "staff_hours";
@@ -44,18 +45,12 @@
   //Get table columns for CSV file
   $metadata = array();
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
-  print_r($metadata);
-  //Get table data
-  $query = "SELECT id FROM staff_hours WHERE work_type = '{$workType}';";
-  $test = pg_query($db_connection, $query);
-  
-  $status = pg_result_status($test);
 
-  // Determine status
-  if ($status == PGSQL_COPY_IN)
-     echo "Copy began.";
-  else
-     echo "Copy failed.";
+  //Get table data
+  $queryResult = pg_query($db_connection, "SELECT id, work_type FROM staff_hours WHERE work_type = '{$workType}'");
+  $rawDate = pg_fetch_array($queryResult,0,1);
+  echo $rawData['id']."hahaha";
+
 
   // while ($row = pg_fetch_row($test)) {
   //   echo "$row[0] $row[1] $row[2]\n";

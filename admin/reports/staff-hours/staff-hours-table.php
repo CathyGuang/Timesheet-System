@@ -66,6 +66,10 @@
     }
     
     $hourData = pg_fetch_all(pg_query($db_connection, $query));
+    
+    // //Pass $hourData to the next page for download
+    // session_start();
+    // $_SESSION['hourData'] = $hourData;
 
     if (!$hourData) {
       echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -87,7 +91,7 @@
   </table>
 
   <form method="post" action="staff-csv-download.php">
-    <input type="hidden" name="hourData" value= "<?php echo serialize($hourData); ?>">
+    <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($hourData)); ?>">
     <button class="blue-button" type="submit">Export Staff Hours Data</button>
   </form>
 

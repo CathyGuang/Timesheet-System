@@ -860,12 +860,12 @@ var workarray = worktypes.split(',');
 
 var worktypearray = [];
 
-for (i = 0; i < workarray.length -1; i++){
+for (i = 1; i < workarray.length -1; i++){
 
-    var dic = {value:workarray[i],label:workarray[i]};
+    var dic = {value:i,label:workarray[i]};
     console.log(dic);
 
-    worktypearray[i]= dic
+    worktypearray[i-1]= dic
 
 
 
@@ -877,7 +877,29 @@ console.log(worktypearray);
 
 // initiate multiple job select
 var isfirst = true;
-var workInfo=worktypearray;
+var workInfo=[ 
+    { value: '1', label: 'Admin' },
+    { value: '2', label: 'Riding'},
+    { value: '3', label: 'Riding Admin' },
+    { value: '4', label: 'Vaulting' },
+    { value: '5', label: 'Vaulting Admin' },
+    { value: '6', label: 'Rehab Clinical' },
+    { value: '7', label: 'Rehab Clinical TH' },
+    { value: '8', label: 'Rehab Admin' },
+    { value: '9', label: 'EFP Clinical' },
+    { value: '10', label: 'EFP Clinical TH' },
+    { value: '11', label: 'EFP Supervisor' },
+    { value: '12', label: 'EFP Admin' },
+    { value: '13', label: 'EFL Admin' },
+    { value: '14', label: 'Volunterring Admin' },
+    { value: '15', label: 'Volunteering -barn' },
+    { value: '16', label: 'Vocational Admin' },
+    { value: '17', label: 'Vocational Barn' },
+    { value: '18', label: 'Fundraising' },
+    { value: '19', label: 'Indirect' },
+    { value: '20', label: 'BUILD' },
+    { value: '21', label: 'Major Gift' },
+  ];
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {

@@ -41,9 +41,17 @@
     <th>Notes</th>
 
 <?php
-
-  if (isset($_POST['staff'])){
-    $staffName = pg_escape_string(trim($_POST['staff']));
+  $staffName = pg_escape_string(trim($_POST['staff']));
+  if (empty($staffName)){
+    echo "bal";
+    //Get table data
+    $query = <<<EOT
+  SELECT * FROM staff_hours
+  WHERE '{$_POST['start-date-of-hours']}' <= date_of_hours AND
+  '{$_POST['end-date-of-hours']}' >= date_of_hours
+  ;
+  EOT;
+  } else{
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
     
     echo $staffName;
@@ -52,15 +60,6 @@
   SELECT * FROM staff_hours
   WHERE staff = '{$staffID}' AND
   '{$_POST['start-date-of-hours']}' <= date_of_hours AND
-  '{$_POST['end-date-of-hours']}' >= date_of_hours
-  ;
-  EOT;
-  } else{
-    echo "bal";
-    //Get table data
-    $query = <<<EOT
-  SELECT * FROM staff_hours
-  WHERE '{$_POST['start-date-of-hours']}' <= date_of_hours AND
   '{$_POST['end-date-of-hours']}' >= date_of_hours
   ;
   EOT;

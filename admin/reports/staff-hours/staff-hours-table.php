@@ -8,6 +8,40 @@
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Admin | Generate Report</title>
 </head>
+<style type=”text/css”>
+  table {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+#country_race,
+#twentieth_race_table,
+#twentyfirst_race_table,
+#country_driver {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    margin-bottom: 100px;
+}
+
+th {
+    background-color: #730A0A;
+    color: white;
+}
+
+td {
+    text-align: center;
+    padding: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: white;
+    text-decoration: none;
+}
+
+</style>
 
 <body>
 
@@ -77,11 +111,11 @@ EOT;
   print_r($hourData);
   echo "<table>";
   echo "<tr>";
-  echo "<td>Staff Name</td>";
-  echo "<td>Hours</td>";
-  echo "<td>Work Type</td>";
+  echo "<td>Name</td>";
   echo "<td>Date</td>";
-  echo "<td>Note</td>";
+  echo "<td>Work Type</td>";
+  echo "<td>Hours</td>";
+  echo "<td>Notes</td>";
   
   foreach ($hourData as $line) {
     $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];

@@ -47,13 +47,30 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
   //Get table data
-  $queryResult = pg_fetch_all(pg_query($db_connection, "SELECT * FROM staff_hours WHERE '{$endDate}' >= date_of_hours AND '{$startDate}' <= date_of_hours ;"));
+  $query = <<<EOT
+  SELECT * FROM staff_hours
+  WHERE staff = '{$staffID}' AND
+  '{$_POST['start-date-of-hours']}' <= date_of_hours AND
+  '{$_POST['end-date-of-hours']}' >= date_of_hours
+  ;
+EOT;
 
-  foreach ($queryResult as $key => $dataString) {
-    $queryResult[$key] = explode('%', trim($dataString));
-    print_r($queryResult[$key]);
-    echo "<br>";
+  $hourData = pg_fetch_all(pg_query($db_connection, $query));
+
+  if (!$hourData) {
+    echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
+    return;
   }
+  
+  foreach ($hourData as $uniqueShift) {
+    echo "<p style='margin-left: 2vw;'>{$uniqueShift['date_of_hours']}: {$uniqueShift['work_type']}, {$uniqueShift['hours']} hrs, {$uniqueShift['notes']}</p><br>";
+  }
+  
+  // foreach ($queryResult as $key => $dataString) {
+  //   $queryResult[$key] = explode('%', trim($dataString));
+  //   print_r($queryResult[$key]);
+  //   echo "<br>";
+  // }
 
   // $rawData = array_merge($metadata, $result);
 

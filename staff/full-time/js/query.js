@@ -865,7 +865,7 @@ for (i = 1; i < workarray.length -1; i++){
     var dic = {value:i,label:workarray[i]};
     console.log(dic);
 
-    worktypearray[i]= dic
+    worktypearray[i-1]= dic
 
 
 

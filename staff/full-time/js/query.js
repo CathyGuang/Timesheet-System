@@ -1342,7 +1342,7 @@ function submitted() {
         }
     
         if(ZeroJobTime == true){
-
+            console.log(totalWorktimeSelected);
             console.log(ZeroJobTime);
             console.log("Innnnn2");
     

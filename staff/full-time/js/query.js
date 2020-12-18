@@ -1378,7 +1378,7 @@ function in_out_time_dictionary_list(){
     return in_out_array;
 }
 
-function submitted() {
+function transformValue(){
 
     var In_out_array = in_out_time_dictionary_list();
 
@@ -1396,8 +1396,13 @@ function submitted() {
 
     console.log(In_out_array);
 
-    
 
+
+}
+
+function submitted() {
+
+    transformValue();
     
 
     checkName();

@@ -48,61 +48,44 @@
   $metadata[0] = pg_fetch_all_columns(pg_query($db_connection, "SELECT column_name FROM information_schema.columns WHERE table_schema = 'public' AND table_name = '{$tableName}';"));
 
   $result = unserialize($_POST['hour_data']);
-  print_r($result);
-  echo "haha";
-  foreach ($result as $line) {
-    $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-  
-    echo "<tr>";
-    echo "<td>$allStaff</td>";
-    echo "<td>{$line['date_of_hours']}</td>";
-    echo "<td>{$line['work_type']}</td>";
-    echo "<td>{$line['hours']}</td>";
-    echo "<td>{$line['notes']}</td>";
-    echo "</tr>";
-  }
-  echo $result[0]['hours'];
-  echo "success. <br>";
-  print_r($metadata);
-  echo "success2. <br>";
+
   $data = array_merge($metadata, $result);
 
-  print_r($data);
   
-//   //Write data to temporary CSV file on the server
-//   $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
+  //Write data to temporary CSV file on the server
+  $tempfile = fopen('/tmp/DHStempfile.csv', 'w');
 
-//   foreach ($data as $line) {
-//     fputcsv($tempfile, $line);
-//   }
+  foreach ($data as $line) {
+    fputcsv($tempfile, $line);
+  }
 
-//   fclose($tempfile);
+  fclose($tempfile);
 
-//   //Send file to client browser
-//   $filename = "/tmp/DHStempfile.csv";
+  //Send file to client browser
+  $filename = "/tmp/DHStempfile.csv";
 
-//   if(file_exists($filename)){
+  if(file_exists($filename)){
 
-//       //Get file type and set it as Content Type
-//       header('Content-Type: application/csv');
+      //Get file type and set it as Content Type
+      header('Content-Type: application/csv');
 
-//       $date = date('Y-m-d');
-//       //Use Content-Disposition: attachment to specify the filename
-//       header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
+      $date = date('Y-m-d');
+      //Use Content-Disposition: attachment to specify the filename
+      header("Content-Disposition: attachment; filename={$tableName}-table-{$date}.csv");
 
-//       //No cache
-//       header('Expires: 0');
-//       header('Cache-Control: must-revalidate');
-//       header('Pragma: public');
+      //No cache
+      header('Expires: 0');
+      header('Cache-Control: must-revalidate');
+      header('Pragma: public');
 
-//       //Define file size
-//       header('Content-Length: ' . filesize($filename));
+      //Define file size
+      header('Content-Length: ' . filesize($filename));
 
-//       ob_clean();
-//       flush();
-//       readfile($filename);
-//       exit;
-//   }
+      ob_clean();
+      flush();
+      readfile($filename);
+      exit;
+  }
 
 ?>
 </body>

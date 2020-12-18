@@ -1299,6 +1299,17 @@ function canceled(){
 
 }
 
+function in_out_time_dictionary_list(){
+
+    for (var j=1;j<7;j++){
+        if("worktotal"+ i != "N/A"){
+
+            console.log("worktotal"+i);
+        }
+
+    }
+}
+
 function submitted() {
 
     // var worker_date= document.getElementById('selected-name').value;
@@ -1311,6 +1322,8 @@ function submitted() {
 
     var timerange1 = document.getElementById("range1").innerHTML;
     console.log(timerange1);
+
+    in_out_time_dictionary_list();
 
     
 

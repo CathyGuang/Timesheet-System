@@ -41,7 +41,7 @@
     print_r($workTypeHourArray);
     echo "<br>";
     $order2 = array("worktype",":","\"","time");
-    foreach ($workTypeHourArray as &$line) {
+    foreach ($workTypeHourArray as $line) {
       $line = explode(",", str_replace($order2, $replace, $line));
     }
 

@@ -66,10 +66,6 @@
       $inOutResult = pg_query($db_connection, $inOutQuery);
     }
 
-    echo "<br>";
-
-    echo $workTypeHourArray. "hhhhh";
-    
     foreach ($workTypeHourArray as $line){
       $workType = $line[0];
       $hours = $line[1];

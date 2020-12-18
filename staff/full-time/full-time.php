@@ -59,7 +59,7 @@
       $outTime = $line[1];
       echo $inTime."+".$outTime;
       $inOutQuery = <<<EOT
-          INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
+          INSERT INTO in_out_times (staff, date_of_shift, in_time, out_time)
           VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
           ;
     EOT;
@@ -71,7 +71,7 @@
       $hours = $row[1];
       echo $workType."+".$hours;
       $workTypeQuery = <<<EOT
-          INSERT INTO full_total_hours (staff, date_of_shift, work_type, hours)
+          INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')
           ;
     EOT;

@@ -87,21 +87,22 @@
     $inOutData = pg_fetch_all(pg_query($db_connection, $inOutQuery));
 
     if (!$coreData) {
-      echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
-      return;
+        echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
+        return;
     }
     
     foreach ($coreData as &$line) {
-      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-      $line['staff'] = $name;
-
-      echo "<tr>";
-      echo "<td>$name</td>";
-      echo "<td>{$line['date_of_shift']}</td>";
-      echo "<td>{$line['total_hour']}</td>";
-      echo "<td>{$line['work_type']}</td>";
-      echo "<td>{$line['hours']}</td>";
-      echo "</tr>";
+        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+        $line['staff'] = $name;
+        unset($line['id']);
+    
+        echo "<tr>";
+        echo "<td>$name</td>";
+        echo "<td>{$line['date_of_shift']}</td>";
+        echo "<td>{$line['total_hour']}</td>";
+        echo "<td>{$line['work_type']}</td>";
+        echo "<td>{$line['hours']}</td>";
+        echo "</tr>";
     }
     unset($line);
 

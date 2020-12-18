@@ -50,7 +50,7 @@
     $order = array("intime",":","\"","outtime");
     $replace = '';
     foreach ($inOutTimeStr as &$line) {
-      $line = explode(".", str_replace($order, $replace, $line));
+      $line = explode(",", str_replace($order, $replace, $line));
     }
     print_r($inOutTimeStr);
 

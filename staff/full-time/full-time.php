@@ -44,7 +44,7 @@
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
     $order2 = array("worktype",":","\"","time");
     foreach ($workTypeHourArray as &$row) {
-      $row = explode(",", str_replace($order2, $replace, $line));
+      $row = explode(",", str_replace($order2, $replace, $row));
     }
     unset($row);
     print_r($workTypeHourArray);

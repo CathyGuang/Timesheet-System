@@ -57,6 +57,7 @@
     foreach ($inOutTimeArray as $line){
       $inTime = $line[0];
       $outTime = $line[1];
+      echo $inTime."+".$outTime;
       $inOutQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
           VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
@@ -70,7 +71,7 @@
       $hours = $line[1];
       echo $workType."+".$hours;
       $workTypeQuery = <<<EOT
-          INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
+          INSERT INTO full_total_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')
           ;
     EOT;

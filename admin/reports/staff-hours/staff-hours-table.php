@@ -85,11 +85,8 @@
       echo "<td>{$line['notes']}</td>";
       echo "</tr>";
     }
-    echo '</table>';
-    echo 'haha';
-    print_r($hourData)
   ?>
-  
+  </table>
 
   <form method="post" action="staff-csv-download.php">
     <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($hourData)); ?>">

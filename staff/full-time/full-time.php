@@ -56,8 +56,9 @@
 
     echo "<br>";
     echo $workTimeHour;
-
-    $trimedWTH = trim($workTimeHour,"[]");
+    
+    echo "<br>";
+    $trimedWTH = trim($workTimeHour,"[worktype"":time{}]");
     echo $trimedWTH;
 
         // query to be implemented------------------

@@ -36,9 +36,9 @@
     <tr>
     <th>Name</th>
     <th>Date</th>
-    <th>Total Hours This Day</th>
     <th>Work Types</th>
     <th>Hours</th>
+    <th>Total Hours This Day</th>
 
   <?php
     $staffName = pg_escape_string(trim($_POST['staff']));
@@ -99,9 +99,9 @@
         echo "<tr>";
         echo "<td>$name</td>";
         echo "<td>{$line['date_of_shift']}</td>";
-        echo "<td>{$line['total_hour']}</td>";
         echo "<td>{$line['work_type']}</td>";
         echo "<td>{$line['hours']}</td>";
+        echo "<td>{$line['total_hour']}</td>";
         echo "</tr>";
     }
     unset($line);

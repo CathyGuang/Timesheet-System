@@ -352,16 +352,6 @@
     
     </form>
 
-    <script type="text/javascript">
-
-      var WORK = <?php $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
-      foreach ($staffShiftTypes as $value) { echo "{value:''{$value}'', label:''{$value}''},";}?>;
-
-      console.log(WORK);
-
-
-
-    </script>
 
 
 

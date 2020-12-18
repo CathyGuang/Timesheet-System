@@ -854,7 +854,9 @@ function worktime_reminder(){
 
 }
 
+var workkk = document.getElementById("work-type-list");
 
+console.log(workkk);
 
 // initiate multiple job select
 var isfirst = true;

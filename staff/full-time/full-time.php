@@ -60,9 +60,9 @@
     EOT;
 
         $totalHourResult = pg_query($db_connection, $query);
-    //     if ($totalHourResult) {
-    //       echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
-    //       echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['staff']}' hidden><button type='submit'>Submit another shift</button></form>";
+        if ($totalHourResult) {
+          echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
+          echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
     
     //       if ($_POST['send-email'] == 'true') {
     //         $currentDate = date('j-m-Y, g:iA');

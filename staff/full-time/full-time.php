@@ -70,7 +70,7 @@
       $workType = $row[0];
       $hours = $row[1];
       echo $workType."+".$hours;
-      echo ""
+      echo "";
       $workTypeQuery = <<<EOT
           INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')

@@ -24,17 +24,9 @@
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
     $date = $_POST['Date'];
-    
-
-    
-
-    
     $notes = $_POST['notes'];
-
-    $totalmin = $_POST['TotalTime'];
-    $totalhour = $totalmin/60; 
-
-    
+    $totalMin = $_POST['TotalTime'];
+    $totalHour = $totalMin/60; 
     
     echo $staffName;
     echo "<br>";
@@ -48,7 +40,7 @@
     
     echo $notes;
     echo "<br>";
-    echo $totalhour." hrs";
+    echo $totalHour." hrs";
 
     echo "<br>";
     echo "hereee";
@@ -60,17 +52,18 @@
     //       $notes .= " &#8212Hours complete for pay period.";
     //     }
 
-    //     // query to be implemented------------------
-    //     $query = <<<EOT
-    //     //   INSERT INTO staff_hours (staff, hours, work_type, date_of_work, notes)
-    //       VALUES ('{$staffID}', '{$_POST['hours']}', '{$_POST['work-type']}', '{$_POST['date-of-work']}', '{$notes}')
-    //       ;
-    // EOT;
+        // query to be implemented------------------
+        $totalHourQuery = <<<EOT
+          INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
+          VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
+          ;
+    EOT;
 
-    //     $result = pg_query($db_connection, $query);
-    //     if ($result) {
-    //       echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
-    //       echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['staff']}' hidden><button type='submit'>Submit another shift</button></form>";
+        $totalHourResult = pg_query($db_connection, $query);
+        if ($totalHourResult) {
+          echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
+          echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['staff']}' hidden><button type='submit'>Submit another shift</button></form>";
+    
     //       if ($_POST['send-email'] == 'true') {
     //         $currentDate = date('j-m-Y, g:iA');
     //         $emailBody = <<<EOT

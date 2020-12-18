@@ -50,7 +50,7 @@
     echo $inOutTime;
 
     $inOutTimeFinal = explode("\"},{\"", trim($inOutTime, "[{\"}]"));
-    echo $inOutTimeFinal;
+    print_r($inOutTimeFinal);
 
     echo "<br>";
     echo $workTimeHour;

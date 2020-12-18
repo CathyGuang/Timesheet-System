@@ -858,8 +858,22 @@ var worktypes = document.getElementById("work-type-list").innerHTML;
 
 var workarray = worktypes.split(',');
 
+var worktypearray = [];
+
+for (i = 0; i < workarray.length -1; i++){
+
+    var dic = {value:workarray[i],label:workarray[i]};
+    console.log(dic);
+
+    worktypearray[i]= dic
+
+
+
+}
+
 
 console.log(workarray);
+console.log(worktypearray);
 
 // initiate multiple job select
 var isfirst = true;

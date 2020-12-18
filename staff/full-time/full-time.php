@@ -45,7 +45,7 @@
     echo $totalHour." hrs";
 
     echo "<br>";
-    var_dump ($inOutTime);
+    echo $inOutTime;
 
 
         // query to be implemented------------------

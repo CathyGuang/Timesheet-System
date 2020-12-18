@@ -1378,7 +1378,7 @@ function in_out_time_dictionary_list(){
     return in_out_array;
 }
 
-function submitted() {
+function transformValue(){
 
     var In_out_array = in_out_time_dictionary_list();
 
@@ -1388,10 +1388,22 @@ function submitted() {
 
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
-    document.getElementById("InOutTime").value = In_out_array;
+    document.getElementById("InOutTime").value = JSON.stringify(In_out_array);
 
-    
 
+    var jjj = JSON.stringify(In_out_array);
+
+    console.log(jjj);
+
+    console.log(In_out_array);
+
+
+
+}
+
+function submitted() {
+
+    transformValue();
     
 
     checkName();

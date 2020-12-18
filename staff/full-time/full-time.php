@@ -37,8 +37,6 @@
       $line = explode(",", str_replace($order1, $replace, $line));
     }
     unset($line);
-    print_r($inOutTimeArray);
-    echo "<br>";
 
 
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
@@ -47,8 +45,7 @@
       $row = explode(",", str_replace($order2, $replace, $row));
     }
     unset($row);
-    print_r($workTypeHourArray);
-    echo "<br>";
+    
     $totalHourQuery = <<<EOT
       INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
       VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')

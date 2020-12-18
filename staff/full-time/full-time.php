@@ -45,7 +45,7 @@
     echo $totalHour." hrs";
 
     echo "<br>";
-    echo $inOutTime;
+    var_dump ($inOutTime);
 
 
 

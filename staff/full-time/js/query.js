@@ -1293,7 +1293,7 @@ function canceled(){
 
         if (confirmed == true){
 
-            window.location.href = '/staff/index.php';
+            window.location.href = '/staff/core-staff-choice.php';
         }
 
 

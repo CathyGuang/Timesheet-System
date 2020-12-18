@@ -66,10 +66,6 @@
     }
     
     $hourData = pg_fetch_all(pg_query($db_connection, $query));
-    
-    // //Pass $hourData to the next page for download
-    // session_start();
-    // $_SESSION['hourData'] = $hourData;
 
     if (!$hourData) {
       echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -77,18 +73,25 @@
     }
     
     foreach ($hourData as $line) {
-      $allStaff = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
-    
+      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+
+      $line['staff'] = $name;
+      echo $line['staff'];
+      echo "enter";
+
       echo "<tr>";
-      echo "<td>$allStaff</td>";
+      echo "<td>$name</td>";
       echo "<td>{$line['date_of_hours']}</td>";
       echo "<td>{$line['work_type']}</td>";
       echo "<td>{$line['hours']}</td>";
       echo "<td>{$line['notes']}</td>";
       echo "</tr>";
     }
+    echo '</table>';
+    echo 'haha';
+    print_r($hourData)
   ?>
-  </table>
+  
 
   <form method="post" action="staff-csv-download.php">
     <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($hourData)); ?>">

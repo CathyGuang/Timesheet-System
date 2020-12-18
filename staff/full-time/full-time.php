@@ -57,6 +57,9 @@
     echo "<br>";
     echo $workTimeHour;
 
+    $trimedWTH = trim($workTimeHour,"[]");
+    echo $trimedWTH;
+
         // query to be implemented------------------
         $totalHourQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)

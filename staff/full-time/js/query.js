@@ -1371,11 +1371,16 @@ function submitted() {
 
         if (confirmed == true){
 
-            document.getElementById('myform').submit();
+            document.getElementById('myform').submit(function(e){
+
+                console.log(e);
+
+                window.location.href = 'full-time.php'; 
+            });
 
     
 
-            window.location.href = 'full-time.php?totalmin='+totalminString ;
+            // window.location.href = 'full-time.php' ;
         }
 
 

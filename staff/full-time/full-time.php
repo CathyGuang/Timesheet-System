@@ -24,11 +24,7 @@
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
     $date = $_POST['Date'];
-    
-
-    
-
-    
+        
     $notes = $_POST['notes'];
 
     $totalmin = $_POST['TotalTime'];

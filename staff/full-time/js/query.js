@@ -1390,18 +1390,16 @@ function transformValue(){
     document.getElementById("TotalTime").value = totalmin;
     document.getElementById("InOutTime").value = JSON.stringify(In_out_array);
 
+    
 
-    var jjj = JSON.stringify(In_out_array);
-
-    console.log(jjj);
-
-    console.log(In_out_array);
 
 
 
 }
 
 function submitted() {
+
+    console.log(workList);
 
     transformValue();
     

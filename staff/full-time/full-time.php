@@ -33,16 +33,14 @@
     $inOutTimeArray = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
     $order1 = array("intime\":","\"","outtime:");
     $replace = '';
-    foreach ($inOutTimeArray as $line) {
+    foreach ($inOutTimeArray as &$line) {
       $line = explode(",", str_replace($order1, $replace, $line));
     }
     
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
-    print_r($workTypeHourArray);
-    echo "<br>";
     $order2 = array("worktype",":","\"","time");
-    foreach ($workTypeHourArray as $line) {
-      $line = explode(",", str_replace($order2, $replace, $line));
+    foreach ($workTypeHourArray as &$row) {
+      $row = explode(",", str_replace($order2, $replace, $line));
     }
 
     $totalHourQuery = <<<EOT

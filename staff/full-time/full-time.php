@@ -44,9 +44,7 @@
       $line = explode(",", str_replace($order2, $replace, $line));
     }
 
-<<<<<<< HEAD
     $totalHourQuery = <<<EOT
-=======
     echo count($order2);
 
     // for($x = 0; $x < count($order2),$x++){
@@ -58,7 +56,6 @@
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT
->>>>>>> 5694cf6cfe0dec431a7f69537931b5f8b93c5945
           INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
           VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
           ;

@@ -30,6 +30,8 @@
 
     $inOutTime = $_POST['InOutTime'];
 
+    $workTimeHour = $_POST['WorkTypeHour'];
+
     echo $staffName;
     echo "<br>";
 
@@ -49,6 +51,9 @@
 
     $inOutTimeFinal = explode("\"},{\"", trim($inOutTime, "[{\"}]"));
     echo $inOutTimeFinal;
+
+    echo "<br>";
+    echo $workTimeHour;
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT

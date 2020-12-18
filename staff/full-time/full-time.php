@@ -36,13 +36,19 @@
     foreach ($inOutTimeArray as &$line) {
       $line = explode(",", str_replace($order1, $replace, $line));
     }
-    
+    unset($line);
+    print_r($inOutTimeArray);
+    echo "<br>";
+
+
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
     $order2 = array("worktype",":","\"","time");
     foreach ($workTypeHourArray as &$row) {
       $row = explode(",", str_replace($order2, $replace, $line));
     }
-
+    unset($row);
+    print_r($workTypeHourArray);
+    echo "<br>";
     $totalHourQuery = <<<EOT
       INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
       VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
@@ -51,7 +57,6 @@
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
-    print_r($workTypeHourArray);
     foreach ($inOutTimeArray as $line){
       $inTime = $line[0];
       $outTime = $line[1];

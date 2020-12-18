@@ -41,7 +41,7 @@
     print_r($workTypeHourArray);
     echo "<br>";
     $order2 = array("worktype",":","\"","time");
-    foreach ($workTypeHourArray as &$line) {
+    foreach ($workTypeHourArray as $line) {
       $line = explode(",", str_replace($order2, $replace, $line));
     }
 
@@ -70,6 +70,7 @@
       $workType = $row[0];
       $hours = $row[1];
       echo $workType."+".$hours;
+      echo ""
       $workTypeQuery = <<<EOT
           INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')

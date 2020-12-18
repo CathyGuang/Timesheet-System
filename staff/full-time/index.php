@@ -341,7 +341,7 @@
 
       <div class="submit_and_cancel">
           <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
-          <button type="submit" class="submit" onclick="submitted();" >Submit</button>
+          <button type="button" class="submit" onclick="submitted();" >Submit</button>
       </div>
           
         

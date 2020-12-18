@@ -856,7 +856,7 @@ function worktime_reminder(){
 
 var worktypes = document.getElementById("work-type-list").innerHTML;
 
-var workarray = wortypes.split(',');
+var workarray = worktypes.split(',');
 
 
 console.log(workarray);

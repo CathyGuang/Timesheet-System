@@ -855,12 +855,13 @@ function worktime_reminder(){
 }
 
 var workkk = document.getElementById("work-type-list").innerHTML;
+var arr = workkk.split('#');
 
-console.log(workkk);
+console.log(arr);
 
 // initiate multiple job select
 var isfirst = true;
-var workInfo="["+workkk+"]";
+var workInfo=arr;
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {

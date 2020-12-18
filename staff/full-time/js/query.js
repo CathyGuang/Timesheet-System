@@ -878,7 +878,7 @@ console.log(worktypearray);
 // initiate multiple job select
 var isfirst = true;
 var workInfo=[ 
-    { value: '1', label: 'Admin' },
+    { value: '1', label: 'Adminwwww' },
     { value: '2', label: 'Riding'},
     { value: '3', label: 'Riding Admin' },
     { value: '4', label: 'Vaulting' },

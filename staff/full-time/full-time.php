@@ -49,11 +49,11 @@
     echo "<br>";
     echo $inOutTime;
 
+    $inOutTimeFinal = explode("\"},{\"", trim($inOutTime, "[{\"}]"));
+    print_r($inOutTimeFinal);
+
     echo "<br>";
     echo $workTimeHour;
-
-    $inOutTimeFinal = trim($inOutTime, "[{\"}]");
-    echo $inOutTimeFinal;
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT

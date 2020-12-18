@@ -1346,7 +1346,7 @@ function in_out_time_dictionary_list(){
 
         in_out_array.push(dic);
 
-        console.log(dic);
+       
        
     }
 
@@ -1359,7 +1359,7 @@ function in_out_time_dictionary_list(){
 
         in_out_array.push(dic);
 
-        console.log(dic);
+       
     
     }
 
@@ -1372,9 +1372,10 @@ function in_out_time_dictionary_list(){
 
         in_out_array.push(dic);
 
-        console.log(dic);
-        console.log(in_out_array);
+    
     }
+
+    return in_out_array;
 }
 
 function submitted() {
@@ -1390,7 +1391,9 @@ function submitted() {
     var timerange1 = document.getElementById("range1").innerHTML;
     console.log(timerange1);
 
-    in_out_time_dictionary_list();
+    var In_out_array = in_out_time_dictionary_list();
+
+    console.log(In_out_array);
 
     
 

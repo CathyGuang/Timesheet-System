@@ -1413,6 +1413,8 @@ function transformValue(){
     document.getElementById("InOutTime").value = JSON.stringify(In_out_array);
     document.getElementById("WorkTypeHour").value = JSON.stringify(work_type_hour);
 
+    console.log(work_type_hour);
+
     
 
 

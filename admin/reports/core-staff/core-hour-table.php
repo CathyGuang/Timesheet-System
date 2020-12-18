@@ -36,7 +36,7 @@
     <tr>
     <th>Name</th>
     <th>Date</th>
-    <th>Total Hours</th>
+    <th>Total Hours This Day</th>
     <th>Work Types</th>
     <th>Hours</th>
 
@@ -103,6 +103,14 @@
       echo "<td>{$line['hours']}</td>";
       echo "</tr>";
     }
+    unset($line);
+
+    foreach ($inOutData as &$row) {
+        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$row['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+        $row['staff'] = $name;
+    }
+    unset($row);
+    print_r($inOutData);
   ?>
   </table>
 
@@ -112,7 +120,7 @@
   </form>
 
   <form method="post" action="in-out-csv-download.php">
-    <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($coreData)); ?>">
+    <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($inOutData)); ?>">
   <button class="blue-button" type="submit">Export In Out Time</button>
   </form>
 

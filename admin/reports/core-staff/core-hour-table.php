@@ -76,7 +76,7 @@
 
         $inOutQuery = <<<EOT
     SELECT * FROM in_out_times
-    WHERE full_job_hours.staff = '{$staffID}' AND
+    WHERE in_out_times.staff = '{$staffID}' AND
     '{$_POST['start-date-of-hours']}' <= in_out_times.date_of_shift AND
     '{$_POST['end-date-of-hours']}' >= in_out_times.date_of_shift
     ;

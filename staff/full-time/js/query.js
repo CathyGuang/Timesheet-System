@@ -1378,9 +1378,30 @@ function in_out_time_dictionary_list(){
     return in_out_array;
 }
 
+function work_type_and_hour(){
+
+    var workTH = []
+
+    for(var i=0;i<workList.length;i++){
+
+        var dic = workList[i]
+        var Time = dic["time"];
+        var work = dic["label"];
+
+        console.log(dic);
+        console.log(Time);
+        console.log(work);
+
+
+    }
+
+
+}
+
 function transformValue(){
 
     var In_out_array = in_out_time_dictionary_list();
+    work_type_and_hour();
 
     // var worker_date= document.getElementById('selected-name').value;
     // var worker_name= document.getElementById('work_date').value;
@@ -1399,7 +1420,6 @@ function transformValue(){
 
 function submitted() {
 
-    console.log(workList);
 
     transformValue();
     

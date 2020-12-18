@@ -27,7 +27,7 @@
     $notes = $_POST['notes'];
     $totalMin = $_POST['TotalTime'];
     $totalHour = $totalMin/60; 
-    
+
     echo $staffName;
     echo "<br>";
 

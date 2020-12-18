@@ -1336,23 +1336,20 @@ function submitted() {
     
         if(Timealigned == false){
 
-            console.log("Innnnn1");
+           
     
             alert("please make sure that total work time equals total time reported in jobs!");
         }
     
         if(ZeroJobTime == true){
-            console.log(totalWorktimeSelected);
-            console.log(ZeroJobTime);
-            console.log("Innnnn2");
-    
+            
             alert("please select the time you've worked at each job!");
     
         }
     
         if(ZeroTotalTime == true){
 
-            console.log("Innnnn3");
+         
     
             alert("please select your worktime!");
     
@@ -1363,7 +1360,7 @@ function submitted() {
 
     
     else{
-        console.log("lahhhhhh")
+        
 
         var totalminString =totalmin.toString();
 
@@ -1373,14 +1370,14 @@ function submitted() {
 
             document.getElementById('myform').submit(function(e){
 
-                console.log(e);
+               
 
                 window.location.href = 'full-time.php'; 
             });
 
     
 
-            // window.location.href = 'full-time.php' ;
+        
         }
 
 

@@ -1388,7 +1388,9 @@ function submitted() {
 
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
-    document.getElementById("InOutTime").value = In_out_array;
+    document.getElementById("InOutTime").value = In_out_array.toString();
+
+    console.log(In_out_array.toString());
 
     
 

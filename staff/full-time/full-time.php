@@ -37,8 +37,9 @@
       $line = explode(",", str_replace($order1, $replace, $line));
     }
     
-    echo "<br>";
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
+    print_r($workTypeHourArray);
+    echo "<br>";
     $order2 = array("worktype",":","\"","time");
     foreach ($workTypeHourArray as &$line) {
       $line = explode(",", str_replace($order2, $replace, $line));
@@ -52,6 +53,7 @@
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
+    print_r($workTypeHourArray);
     foreach ($inOutTimeArray as $line){
       $inTime = $line[0];
       $outTime = $line[1];

@@ -1301,9 +1301,16 @@ function canceled(){
 
 function in_out_time_dictionary_list(){
 
+    var in_out_array = [];
+
     if(worktotal1 != "N/A"){
 
-        console.log(worktotal1);
+        var InTime = $('.slider-time').html();
+        var OutTime = $('.slider-time2').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        console.log(dic);
     }
 }
 

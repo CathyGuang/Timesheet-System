@@ -65,9 +65,11 @@
       $line = explode(",", str_replace($order2, $replace, $line));
     }
     
+    echo $order2
     echo "<br>";
     echo count($order2)."worktypelogg";
     echo "<br>";
+    
     // for($x = 0; $x < count($order2),$x++){
 
     //   echo "wow";

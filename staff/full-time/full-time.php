@@ -47,23 +47,25 @@
     echo $totalHour." hrs";
     echo $inOutTimeRaw;
 
-    $inOutTimeStr = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
+    $inOutTimeArray = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
     $order1 = array("intime\":","\"","outtime:");
     $replace = '';
-    foreach ($inOutTimeStr as &$line) {
+    foreach ($inOutTimeArray as &$line) {
       $line = explode(",", str_replace($order1, $replace, $line));
     }
-    print_r($inOutTimeStr);
+    print_r($inOutTimeArray);
 
     echo "<br>";
     echo $workTypeHourRaw;
     
     echo "<br>";
-    $workTypeHourStr = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
+    $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
     $order2 = array("worktype",":","\"","time");
-    foreach ($workTypeHourStr as &$line) {
+    foreach ($workTypeHourArray as &$line) {
       $line = explode(",", str_replace($order2, $replace, $line));
     }
+
+    print_r($workTypeHourArray);
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT

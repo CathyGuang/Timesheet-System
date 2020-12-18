@@ -45,34 +45,16 @@
     }
 
     $totalHourQuery = <<<EOT
-    echo count($order2);
-
-    
-    echo $order2;
-    echo "<br>";
-    echo count($order2)."worktypelogg";
-    echo "<br>";
-    
-    // for($x = 0; $x < count($order2),$x++){
-
-    //   echo "wow";
-    // }
-
-    print_r($workTypeHourArray);
-
-        // query to be implemented------------------
-        $totalHourQuery = <<<EOT
-          INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
-          VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
-          ;
-    EOT;
+      INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
+      VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
+      ;
+  EOT;
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     foreach ($inOutTimeArray as $line){
       $inTime = $line[0];
       $outTime = $line[1];
-      echo $inTime. "+".$outTime;
       $inOutQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
           VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
@@ -81,6 +63,17 @@
       $inOutResult = pg_query($db_connection, $inOutQuery);
     }
     
+    foreach ($workTypeHourArray as $line){
+      $workType = $line[0];
+      $hours = $line[1];
+      echo $workType."+".$hours;
+      $workTypeQuery = <<<EOT
+          INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
+          VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')
+          ;
+    EOT;
+      $workTypeResult = pg_query($db_connection, $workTypeQuery);
+    }
 
         if ($totalHourResult) {
           echo "<div class='another_shift_title'>Hours recorded successfully.</div>";

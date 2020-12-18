@@ -30,7 +30,7 @@
 
     $inOutTimeRaw = $_POST['InOutTime'];
 
-    $workTimeHour = $_POST['WorkTypeHour'];
+    $workTypeHourRaw = $_POST['WorkTypeHour'];
 
     echo $staffName;
     echo "<br>";
@@ -48,19 +48,22 @@
     echo $inOutTimeRaw;
 
     $inOutTimeStr = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
-    $order = array("intime\":","\"","outtime:");
+    $order1 = array("intime\":","\"","outtime:");
     $replace = '';
     foreach ($inOutTimeStr as &$line) {
-      $line = explode(",", str_replace($order, $replace, $line));
+      $line = explode(",", str_replace($order1, $replace, $line));
     }
     print_r($inOutTimeStr);
 
     echo "<br>";
-    echo $workTimeHour;
+    echo $workTypeHourRaw;
     
     echo "<br>";
-    $trimedWTH = trim($workTimeHour,"[worktype:time{}]");
-    echo $trimedWTH;
+    $workTypeHourStr = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
+    $order2 = array("worktype",":","\"","time");
+    foreach ($workTypeHourStr as &$line) {
+      $line = explode(",", str_replace($order2, $replace, $line));
+    }
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT

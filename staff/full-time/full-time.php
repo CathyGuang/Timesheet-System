@@ -47,7 +47,7 @@
     echo "<br>";
     echo $inOutTime;
 
-    $inOutTimeFinal = trim($inOutTime, "[{\"}]");
+    $inOutTimeFinal = explode("\"},{\"", trim($inOutTime, "[{\"}]"));
     echo $inOutTimeFinal;
 
         // query to be implemented------------------

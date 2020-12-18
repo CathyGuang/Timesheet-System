@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/main.css">
 <link rel="stylesheet" href="/static/added.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Full time</title>
@@ -62,8 +61,8 @@
 
         $totalHourResult = pg_query($db_connection, $totalHourQuery);
         if ($totalHourResult) {
-          echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
-          echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
+          echo "<h3 class='another_shift_title'>Hours recorded successfully.</h3>";
+          echo "<form class='submit_and_cancel' action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
         }
     //       if ($_POST['send-email'] == 'true') {
     //         $currentDate = date('j-m-Y, g:iA');

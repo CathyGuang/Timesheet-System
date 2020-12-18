@@ -31,7 +31,7 @@
 
   <div class= "fulltime-form-container" >
 
-    <form class="white-background" method="post" name="myform" action="full-time.php">
+    <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
 
       <div class="form-inline" >
 
@@ -341,7 +341,7 @@
 
       <div class="submit_and_cancel">
           <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
-          <button type="submit" class="submit" onclick="submitted();" >Submit</button>
+          <button type="button" class="submit" onclick="submitted();" >Submit</button>
       </div>
           
         

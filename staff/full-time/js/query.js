@@ -1371,6 +1371,8 @@ function submitted() {
 
         if (confirmed == true){
 
+            document.getElementById('myform').submit();
+
     
 
             window.location.href = 'full-time.php?totalmin='+totalminString ;

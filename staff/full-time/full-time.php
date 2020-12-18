@@ -28,7 +28,7 @@
     $totalMin = $_POST['TotalTime'];
     $totalHour = $totalMin/60; 
 
-    $inOutTime = $_POST['InOutTime'];
+    $inOutTimeRaw = $_POST['InOutTime'];
 
     $workTimeHour = $_POST['WorkTypeHour'];
 
@@ -46,11 +46,13 @@
     echo "<br>";
     echo $totalHour." hrs";
 
-    echo "<br>";
-    echo $inOutTime;
-
-    $inOutTimeFinal = explode("\"},{\"", trim($inOutTime, "[{\"}]"));
-    print_r($inOutTimeFinal);
+    $inOutTimeStr = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
+    $order = array("intime",":","\"","outtime");
+    $replace = '';
+    foreach ($inOutTimeStr as &$line) {
+      $line = str_replace($order, $replace, $inOutTimeStr);
+    }
+    print_r($inOutTimeStr);
 
     echo "<br>";
     echo $workTimeHour;

@@ -1170,7 +1170,7 @@ var ZeroTotalTime = false;
 
 function checkTotalAndJobTime(){
 
-    zeroJobTime = false;
+    ZeroJobTime = false;
     ZeroTotalTime = false;
 
     

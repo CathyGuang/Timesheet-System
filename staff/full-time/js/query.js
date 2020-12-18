@@ -1310,6 +1310,12 @@ function submitted() {
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
 
+
+    var timerange1 = document.getElementById("range1").innerHTML;
+    console.log(timerange1);
+
+    
+
     
 
     checkName();

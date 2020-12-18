@@ -1385,15 +1385,16 @@ function work_type_and_hour(){
     for(var i=0;i<workList.length;i++){
 
         var dic = workList[i]
-        var Time = dic["time"];
+        var Time = dic["time"]/60;
         var work = dic["label"];
 
-        console.log(dic);
-        console.log(Time);
-        console.log(work);
+        var dic2 = {worktype : work, time : Time };
 
+        workTH.push(dic2);
 
     }
+
+    return workTH;
 
 
 }
@@ -1401,7 +1402,7 @@ function work_type_and_hour(){
 function transformValue(){
 
     var In_out_array = in_out_time_dictionary_list();
-    work_type_and_hour();
+    var work_type_hour = work_type_and_hour();
 
     // var worker_date= document.getElementById('selected-name').value;
     // var worker_name= document.getElementById('work_date').value;
@@ -1410,6 +1411,7 @@ function transformValue(){
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
     document.getElementById("InOutTime").value = JSON.stringify(In_out_array);
+    document.getElementById("WorkTypeHour").value = JSON.stringify(work_type_hour);
 
     
 

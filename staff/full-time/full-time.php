@@ -30,6 +30,8 @@
 
     $inOutTime = $_POST['InOutTime'];
 
+    $workTimeHour = $_POST['WorkTypeHour'];
+
     echo $staffName;
     echo "<br>";
 
@@ -46,6 +48,9 @@
 
     echo "<br>";
     echo $inOutTime;
+
+    echo "<br>";
+    echo $workTimeHour;
 
     $inOutTimeFinal = trim($inOutTime, "[{\"}]");
     echo $inOutTimeFinal;

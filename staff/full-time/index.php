@@ -333,7 +333,7 @@
       </div>
 
             
-      <input type="hidden" name="StaffName" id="StaffName" value = "NAME">
+      <input type="hidden" name="WorkTypeHour" id="WorkTypeHour" value = "WorkTypeHour">
       <input type="hidden" name="InOutTime" id="InOutTime" value="INOUTTIME">
       <input type="hidden" name="Notes" id="Notes" value="NOTES">
       <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">

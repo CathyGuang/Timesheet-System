@@ -28,6 +28,8 @@
     $totalMin = $_POST['TotalTime'];
     $totalHour = $totalMin/60; 
 
+    $inOutTime = $_POST['InOutTime'];
+
     echo $staffName;
     echo "<br>";
 
@@ -43,7 +45,7 @@
     echo $totalHour." hrs";
 
     echo "<br>";
-    echo "hereee";
+    echo $inOutTime;
 
 
 

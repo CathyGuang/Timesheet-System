@@ -1380,20 +1380,15 @@ function in_out_time_dictionary_list(){
 
 function submitted() {
 
+    var In_out_array = in_out_time_dictionary_list();
+
     // var worker_date= document.getElementById('selected-name').value;
     // var worker_name= document.getElementById('work_date').value;
     // var worker_notes= document.getElementById('notes').value;
 
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
-
-
-    var timerange1 = document.getElementById("range1").innerHTML;
-    console.log(timerange1);
-
-    var In_out_array = in_out_time_dictionary_list();
-
-    console.log(In_out_array);
+    document.getElementById("InOutTime").value = In_out_array;
 
     
 

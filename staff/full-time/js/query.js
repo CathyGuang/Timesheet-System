@@ -1301,12 +1301,9 @@ function canceled(){
 
 function in_out_time_dictionary_list(){
 
-    for (var j=1;j<7;j++){
-        if("worktotal"+ i != "N/A"){
+    if(worktotal1 != "N/A"){
 
-            console.log("worktotal"+i);
-        }
-
+        console.log(worktotal1);
     }
 }
 

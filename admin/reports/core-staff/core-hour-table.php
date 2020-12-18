@@ -110,17 +110,16 @@
         $row['staff'] = $name;
     }
     unset($row);
-    print_r($inOutData);
   ?>
   </table>
 
   <form method="post" action="core-csv-download.php">
-    <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($coreData)); ?>">
+    <input type="hidden" name="core_data" value= "<?php echo htmlentities(serialize($coreData)); ?>">
     <button class="blue-button" type="submit">Export Table Data</button>
   </form>
 
   <form method="post" action="in-out-csv-download.php">
-    <input type="hidden" name="hour_data" value= "<?php echo htmlentities(serialize($inOutData)); ?>">
+    <input type="hidden" name="in_out_data" value= "<?php echo htmlentities(serialize($inOutData)); ?>">
   <button class="blue-button" type="submit">Export In Out Time</button>
   </form>
 

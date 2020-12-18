@@ -1390,6 +1390,10 @@ function submitted() {
     document.getElementById("TotalTime").value = totalmin;
     document.getElementById("InOutTime").value = In_out_array.toString();
 
+    var kkk = In_out_array.toString();
+
+    console.log(kkk);
+
     console.log(In_out_array);
 
     

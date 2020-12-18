@@ -1388,14 +1388,11 @@ function transformValue(){
 
     // document.getElementById("Notes").value = worker_notes;
     document.getElementById("TotalTime").value = totalmin;
-    document.getElementById("InOutTime").value = In_out_array.toString();
+    document.getElementById("InOutTime").value = JSON.stringify(In_out_array);
 
-    JSON.stringify
 
-    var kkk = In_out_array.toString();
     var jjj = JSON.stringify(In_out_array);
 
-    console.log(kkk);
     console.log(jjj);
 
     console.log(In_out_array);

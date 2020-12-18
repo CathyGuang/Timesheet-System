@@ -338,10 +338,12 @@
       <input type="hidden" name="StaffDate" id="StaffDate" value="DATE">
       <input type="hidden" name="Notes" id="Notes" value="NOTES">
       <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">
+      
 
       <div class="submit_and_cancel">
           <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
           <button type="button" class="submit" onclick="submitted();" >Submit</button>
+          <button type="submit"></button>
       </div>
           
         

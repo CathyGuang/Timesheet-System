@@ -42,7 +42,7 @@
 
   <?php
     $staffName = pg_escape_string(trim($_POST['staff']));
-    echo $staffName;
+
     if (empty($staffName)){
         //Get table data without name restriction
         $query = <<<EOT
@@ -62,11 +62,11 @@
 
     } else{
         $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-        echo $staffID;
+
       //Get table data with certain staff name
         $query = <<<EOT
     SELECT * FROM full_job_hours, full_total_hours
-    WHERE staff = '{$staffID}' AND
+    WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date-of-hours']}' <= full_job_hours.date_of_shift AND
     '{$_POST['end-date-of-hours']}' >= full_job_hours.date_of_shift AND
     full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
@@ -76,7 +76,7 @@
 
         $inOutQuery = <<<EOT
     SELECT * FROM in_out_times
-    WHERE staff = '{$staffID}' AND
+    WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date-of-hours']}' <= in_out_times.date_of_shift AND
     '{$_POST['end-date-of-hours']}' >= in_out_times.date_of_shift
     ;

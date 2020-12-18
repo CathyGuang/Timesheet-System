@@ -65,6 +65,11 @@
       $line = explode(",", str_replace($order2, $replace, $line));
     }
 
+    for($x = 0; $x < count($order2),$x++){
+
+      echo "wow";
+    }
+
     print_r($workTypeHourArray);
 
         // query to be implemented------------------

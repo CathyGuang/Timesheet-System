@@ -27,25 +27,8 @@
     $notes = $_POST['notes'];
     $totalMin = $_POST['TotalTime'];
     $totalHour = $totalMin/60; 
-
     $inOutTimeRaw = $_POST['InOutTime'];
-
     $workTypeHourRaw = $_POST['WorkTypeHour'];
-
-    echo $staffName;
-    echo "<br>";
-
-    echo $staffID;
-    echo "<br>";
-
-
-    echo $date;
-    echo "<br>";
-    
-    echo $notes;
-    echo "<br>";
-    echo $totalHour." hrs";
-    echo $inOutTimeRaw;
 
     $inOutTimeArray = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
     $order1 = array("intime\":","\"","outtime:");
@@ -53,10 +36,6 @@
     foreach ($inOutTimeArray as &$line) {
       $line = explode(",", str_replace($order1, $replace, $line));
     }
-    print_r($inOutTimeArray);
-
-    echo "<br>";
-    echo $workTypeHourRaw;
     
     echo "<br>";
     $workTypeHourArray = explode("},{\"", trim($workTypeHourRaw,"[{\"}]"));
@@ -65,16 +44,27 @@
       $line = explode(",", str_replace($order2, $replace, $line));
     }
 
-    print_r($workTypeHourArray);
-
-        // query to be implemented------------------
-        $totalHourQuery = <<<EOT
+    $totalHourQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
           VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
           ;
     EOT;
 
-        $totalHourResult = pg_query($db_connection, $totalHourQuery);
+    $totalHourResult = pg_query($db_connection, $totalHourQuery);
+
+    foreach ($inOutTimeArray as $line){
+      $inTime = $line[0];
+      $outTime = $line[1];
+      echo $inTime. "+".$outTime;
+      $inOutQuery = <<<EOT
+          INSERT INTO full_total_hours (staff, date_of_shift, in_time, out_time)
+          VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
+          ;
+    EOT;
+      $inOutResult = pg_query($db_connection, $inOutQuery);
+    }
+    
+
         if ($totalHourResult) {
           echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
           echo "<form class='submit_and_cancel' action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";

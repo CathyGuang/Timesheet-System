@@ -47,7 +47,7 @@
     echo $totalHour." hrs";
 
     $inOutTimeStr = explode("\"},{\"", trim($inOutTimeRaw, "[{\"}]"));
-    $order = array("intime",":","\"","outtime");
+    $order = array("intime\":","\"","outtime\":");
     $replace = '';
     foreach ($inOutTimeStr as &$line) {
       $line = explode(",", str_replace($order, $replace, $line));

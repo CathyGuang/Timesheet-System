@@ -571,7 +571,7 @@ function setEachWorkTime(value,num){
 
         var oneWork = workList[i];
         var oneWorkTime = oneWork.time;
-        console.log(oneWorkTime);   
+    
         totalWorktimeSelected = totalWorktimeSelected + oneWorkTime;
             
     }

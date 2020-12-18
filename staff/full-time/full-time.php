@@ -59,7 +59,7 @@
           ;
     EOT;
 
-        $totalHourResult = pg_query($db_connection, $query);
+        $totalHourResult = pg_query($db_connection, $totalHourQuery);
         if ($totalHourResult) {
           echo "<h3 class='main-content-header'>Hours recorded successfully.</h3>";
           echo "<form class='standard-form' action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";

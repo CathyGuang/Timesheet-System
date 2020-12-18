@@ -854,7 +854,7 @@ function worktime_reminder(){
 
 }
 
-var workkk = document.getElementById("work-type-list");
+var workkk = document.getElementById("work-type-list").value;
 
 console.log(workkk);
 

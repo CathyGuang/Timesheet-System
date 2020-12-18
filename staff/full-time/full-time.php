@@ -54,7 +54,7 @@
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     print_r($workTypeHourArray);
-    foreach ($inOutTimeArray as $line){
+    foreach ($inOutTimeArray as &$line){
       $inTime = $line[0];
       $outTime = $line[1];
       echo $inTime."+".$outTime;
@@ -66,10 +66,13 @@
       $inOutResult = pg_query($db_connection, $inOutQuery);
     }
 
-    foreach ($workTypeHourArray as $row){
+    unset($line);
+
+    foreach ($workTypeHourArray as &$row){
       $workType = $row[0];
       $hours = $row[1];
       echo $workType."+".$hours;
+      echo ""
       $workTypeQuery = <<<EOT
           INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')
@@ -77,6 +80,7 @@
     EOT;
       $workTypeResult = pg_query($db_connection, $workTypeQuery);
     }
+    unset($row);
 
         if ($totalHourResult) {
           echo "<div class='another_shift_title'>Hours recorded successfully.</div>";

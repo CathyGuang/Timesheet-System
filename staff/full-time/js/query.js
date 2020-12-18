@@ -865,7 +865,7 @@ for (i = 0; i < workarray.length -1; i++){
     var q = i+1;
 
     var dic = {value:q,label:workarray[i]};
-    console.log(dic);
+
 
     worktypearray[i]= dic;
 
@@ -874,8 +874,6 @@ for (i = 0; i < workarray.length -1; i++){
 }
 
 
-console.log(workarray);
-console.log(worktypearray);
 
 // initiate multiple job select
 var isfirst = true;
@@ -904,7 +902,7 @@ var workInfo = worktypearray;
 //     { value: '21', label: 'Major Gift' },
 //   ];
 
-console.log(workInfo);
+
 var multipleCancelButton = new Choices(
     '#choices-multiple-remove-button',
     {
@@ -1324,7 +1322,7 @@ function submitted() {
     checkTotalAndJobTime();
 
     if(NameReady == false||Jobselected == false|| Timealigned == false|| ZeroJobTime == true||ZeroTotalTime == true ){
-
+        console.log("innn");
         if(NameReady == false){
 
             alert("Please select or enter a name in the staff list");
@@ -1358,6 +1356,7 @@ function submitted() {
 
     
     else{
+        console.log("lahhhhhh")
 
         var totalminString =totalmin.toString();
 

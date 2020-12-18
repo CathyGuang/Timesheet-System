@@ -54,7 +54,7 @@
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     print_r($workTypeHourArray);
-    foreach ($inOutTimeArray as &$line){
+    foreach ($inOutTimeArray as $line){
       $inTime = $line[0];
       $outTime = $line[1];
       echo $inTime."+".$outTime;
@@ -68,7 +68,7 @@
 
     unset($line);
 
-    foreach ($workTypeHourArray as &$row){
+    foreach ($workTypeHourArray as $row){
       $workType = $row[0];
       $hours = $row[1];
       echo $workType."+".$hours;

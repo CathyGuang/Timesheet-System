@@ -216,7 +216,7 @@ CREATE TABLE archived_enums (
 );
 
 /* CREATE FULL TIME STAFF TABLE */
-CREATE TABLE full_time_hours (
+CREATE TABLE full_total_hours (
   id SERIAL PRIMARY KEY,
   staff INT REFERENCES workers(id),
   date_of_shift DATE,
@@ -231,7 +231,7 @@ CREATE TABLE in_out_times (
   out_time TIME
 );
 
-CREATE TABLE full_time_job_hours (
+CREATE TABLE full_job_hours (
   staff INT REFERENCES workers(id),
   date_of_shift DATE,
   work_type STAFF_WORK_TYPE,

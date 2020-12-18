@@ -66,9 +66,6 @@
     }
     
     $hourData = pg_fetch_all(pg_query($db_connection, $query));
-    
-    //Pass $hourData to the next page for download
-
 
     if (!$hourData) {
       echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -90,7 +87,7 @@
   </table>
 
   <form method="post" action="staff-csv-download.php">
-    <input type="hidden" name="hourData" value= "<?php echo $hourData; ?>">
+    <input type="hidden" name="hourData" value= "<?php print_r($hourData); ?>">
     <button class="blue-button" type="submit">Export Staff Hours Data</button>
   </form>
 

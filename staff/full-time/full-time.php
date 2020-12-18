@@ -48,12 +48,6 @@
     var_dump ($inOutTime);
 
 
-
-
-        if ($_POST['send-email'] == 'true') {
-          $notes .= " &#8212Hours complete for pay period.";
-        }
-
         // query to be implemented------------------
         $totalHourQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
@@ -69,9 +63,12 @@
             $currentDate = date('j-m-Y, g:iA');
             $emailBody = <<<EOT
     Automatic Message from DHS:
+
     Staff hours recorded by: {$_POST['selected-name']} 
     on {$currentDate}.
+
     Full time staff hours complete for pay period.
+
     Date: {$_POST['Date']}
     Note: {$notes}
     EOT;

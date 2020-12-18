@@ -55,8 +55,8 @@ Hours: {$_POST['hours']}
 Note: {$notes}
 EOT;
         $emailBody = wordwrap($emailBody, 70);
-        $recipient = "guangc2@carleton.edu";
-        // $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
+
+        $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
         if (!$recipient) {
           echo "<p class='main-content-header'>No staff coordinator email found. Contact an administrator to change this.</p>";
         }

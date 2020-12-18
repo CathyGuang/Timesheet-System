@@ -19,7 +19,7 @@
   </header>
 
   <div class="form-container">
-    <form autocomplete="off" class="standard-form" action="staff-hours-table.php" method="post">
+    <form autocomplete="off" class="standard-form" action="core-hour-table.php" method="post">
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>

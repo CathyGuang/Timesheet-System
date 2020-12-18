@@ -1310,7 +1310,20 @@ function in_out_time_dictionary_list(){
 
         var dic = {intime : InTime, outtime : OutTime };
 
+        in_out_array.push(dic);
+    }
+
+    if(worktotal2 != "N/A"){
+
+        var InTime = $('.slider-time1').html().slice(0, -3);
+        var OutTime = $('.slider-time3').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        in_out_array.push(dic);
+
         console.log(dic);
+        console.log(in_out_array);
     }
 }
 

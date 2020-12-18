@@ -1321,6 +1321,56 @@ function in_out_time_dictionary_list(){
         var dic = {intime : InTime, outtime : OutTime };
 
         in_out_array.push(dic);
+        
+    }
+
+    if(worktotal3 != "N/A"){
+
+        var InTime = $('.slider-time4').html().slice(0, -3);
+        var OutTime = $('.slider-time5').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        in_out_array.push(dic);
+
+       
+     
+    }
+
+    if(worktotal4 != "N/A"){
+
+        var InTime = $('.slider-time6').html().slice(0, -3);
+        var OutTime = $('.slider-time7').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        in_out_array.push(dic);
+
+        console.log(dic);
+       
+    }
+
+    if(worktotal5 != "N/A"){
+
+        var InTime = $('.slider-time8').html().slice(0, -3);
+        var OutTime = $('.slider-time9').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        in_out_array.push(dic);
+
+        console.log(dic);
+    
+    }
+
+    if(worktotal6 != "N/A"){
+
+        var InTime = $('.slider-time10').html().slice(0, -3);
+        var OutTime = $('.slider-time11').html();
+
+        var dic = {intime : InTime, outtime : OutTime };
+
+        in_out_array.push(dic);
 
         console.log(dic);
         console.log(in_out_array);

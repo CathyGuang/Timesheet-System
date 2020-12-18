@@ -47,6 +47,8 @@
     echo "<br>";
     echo $inOutTime;
 
+    $inOutTimeFinal = trim($inOutTime, "[{\"}]");
+    echo $inOutTimeFinal;
 
         // query to be implemented------------------
         $totalHourQuery = <<<EOT
@@ -70,6 +72,7 @@
     Full time staff hours complete for pay period.
 
     Date: {$_POST['Date']}
+    In and Out Time: {$inOutTime}
     Note: {$notes}
     EOT;
             $emailBody = wordwrap($emailBody, 70);

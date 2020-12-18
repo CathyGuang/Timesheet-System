@@ -66,9 +66,9 @@
       $inOutResult = pg_query($db_connection, $inOutQuery);
     }
 
-    foreach ($workTypeHourArray as $line){
-      $workType = $line[0];
-      $hours = $line[1];
+    foreach ($workTypeHourArray as $row){
+      $workType = $row[0];
+      $hours = $row[1];
       echo $workType."+".$hours;
       $workTypeQuery = <<<EOT
           INSERT INTO full_total_hours (staff, date_of_shift, work_type, hours)

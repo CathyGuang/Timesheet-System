@@ -1305,7 +1305,7 @@ function in_out_time_dictionary_list(){
 
     if(worktotal1 != "N/A"){
 
-        var InTime = $('.slider-time').html();
+        var InTime = $('.slider-time').html.slice(0, -1);
         var OutTime = $('.slider-time2').html();
 
         var dic = {intime : InTime, outtime : OutTime };

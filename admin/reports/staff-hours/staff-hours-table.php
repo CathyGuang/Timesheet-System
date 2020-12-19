@@ -75,7 +75,7 @@
       $sortarray[$key] = strtotime($row['date_of_hours']);
       echo $sortarray[$key]."<br>";
     }
-    array_multisort($sortarray, SORT_DESC, $hourDate);
+    array_multisort($sortarray, SORT_DESC, $hourData);
 
     foreach ($hourData as &$line) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];

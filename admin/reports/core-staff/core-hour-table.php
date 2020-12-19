@@ -91,15 +91,19 @@
         return;
     }
     
-    $sortarray = array();
+    $sortarray1 = array();
     foreach ($coreData as $key => $row){
-      $sortarray[$key] = strtotime($row['date_of_shift']);
+      $sortarray1[$key] = strtotime($row['date_of_shift']);
     }
-    array_multisort($sortarray, SORT_DESC, $coreData);
+    array_multisort($sortarray1, SORT_DESC, $coreData);
     print_r($sortarray);
-    print_r($inOutData);
-    array_multisort($sortarray, SORT_DESC, $inOutData);
+    
+    $sortarray2 = array();
+    foreach ($coreData as $key => $row){
+      $sortarray2[$key] = strtotime($row['date_of_shift']);
+    }
 
+    array_multisort($sortarray2, SORT_DESC, $inOutData);
     print_r($inOutData);
 
     

@@ -44,7 +44,7 @@
     $staffName = pg_escape_string(trim($_POST['staff']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
-    $query = <<<EOT
+      $query = <<<EOT
     SELECT * FROM full_job_hours, full_total_hours
     WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date']}' <= full_job_hours.date_of_shift AND
@@ -54,14 +54,13 @@
     ;
     EOT;
 
-        $inOutQuery = <<<EOT
+      $inOutQuery = <<<EOT
     SELECT * FROM in_out_times
     WHERE in_out_times.staff = '{$staffID}' AND
     '{$_POST['start-date']}' <= in_out_times.date_of_shift AND
     '{$_POST['end-date']}' >= in_out_times.date_of_shift
     ;
     EOT;
-    }
     
     $coreData = pg_fetch_all(pg_query($db_connection, $query));
     $inOutData = pg_fetch_all(pg_query($db_connection, $inOutQuery));

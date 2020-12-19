@@ -26,7 +26,7 @@
   <div class="submit_background">
     
     <div class = "submitted_date_and_hours">
-      <p class="submitted_date">2019-10-08</p>
+      <p class="submitted_date"><?php echo $date ?></p>
       <p class="submitted_hours_title">TOTAL HOURS</p>
       <p class="submitted_hours">7.5</p>
     </div>

@@ -22,8 +22,8 @@
 
   <div class="main-content-div">
     <a href="/volunteer"><button class="green-button">Volunteer</button></a>
-    <a href="/staff"><button class="green-button">Staff</button></a>
-    <a href="/horse-daily-schedule"><button class="green-button">Horse Daily Schedule</button></a>
+    <a href="/part-time-staff"><button class="green-button">Part Time Staff</button></a>
+    <a href="/full-time-staff"><button class="green-button">Full Time Staff</button></a>
     <a href="/directory"><button class="blue-button">Directories</button></a>
     <a href="/admin"><button class="red-button">Admin</button></a>
   </div>

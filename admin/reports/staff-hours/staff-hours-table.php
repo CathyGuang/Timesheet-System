@@ -73,6 +73,7 @@
     $sortarray = array();
     foreach ($hourDate as $key => $row){
       $sortarray[$key] = $row['date_of_hours'];
+      echo $sortarray[$key];
     }
     array_multisort($date, SORT_ASC, $hourDate);
 

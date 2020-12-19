@@ -70,12 +70,12 @@
       return;
     }
     
-    $date = array();
+    $sortarray = array();
     foreach ($hourDate as $key => $row){
-      $date[$key] = $row['date_of_hours'];
+      $sortarray[$key] = $row['date_of_hours'];
     }
-    array_multisort($date, SORT_DESC, $hourDate);
-    
+    array_multisort($date, SORT_ASC, $hourDate);
+
     foreach ($hourData as &$line) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
 

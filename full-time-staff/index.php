@@ -12,8 +12,8 @@
 
   <header>
     <h1>Full Time Staff</h1>
-    <nav> <a href="./"><button id="back-button">Back</button></a>
-      <a href="./"><button id="home-button">Home</button></a>
+    <nav> <a href="../"><button id="back-button">Back</button></a>
+      <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
 

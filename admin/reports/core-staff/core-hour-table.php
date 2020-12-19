@@ -99,7 +99,7 @@
     print_r($sortarray);
     
     $sortarray2 = array();
-    foreach ($coreData as $key => $row){
+    foreach ($inOutData as $key => $row){
       $sortarray2[$key] = strtotime($row['date_of_shift']);
     }
 

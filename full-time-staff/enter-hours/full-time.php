@@ -23,6 +23,38 @@
   <div class="submit_background">
 
     
+  <div class="submit_background">
+    
+    <div class = "submitted_date_and_hours">
+      <p class="submitted_date">2019-10-08</p>
+      <p class="submitted_hours_title">TOTAL HOURS</p>
+      <p class="submitted_hours">7.5</p>
+    </div>
+
+    <table class="table-fill">
+    <thead>
+    <tr>
+    <th class="text-left">Month</th>
+    <th class="text-left">Sales</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+    <tr>
+    <td class="text-left">January</td>
+    <td class="text-left">$ 50,000.00</td>
+    </tr>
+    <tr>
+    <td class="text-left">February</td>
+    <td class="text-left">$ 10,000.00</td>
+    </tr>
+    <tr>
+    <td class="text-left">February</td>
+    <td class="text-left">$ 10,000.00</td>
+    </tr>
+    </tbody>
+    </table>
+
+    
 
   
 

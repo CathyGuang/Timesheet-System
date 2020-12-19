@@ -42,6 +42,13 @@
       </div>
 
       <div class="form-section">
+        <div class="form-element">
+          <label>Sort Method:</label>
+          <input name="sort" list="sort-list">
+        </div>
+      </div>
+
+      <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
         <button type="submit">Submit</button>
       </div>
@@ -78,6 +85,12 @@
         echo "<option value='{$value}'>";
       }
     ?>
+  </datalist>
+
+  <datalist id="sort-list">
+    <option value='date_of_shift'>
+    <option value='staff'>
+    <option value='work_type'>
   </datalist>
 
   <?php

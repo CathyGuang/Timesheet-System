@@ -93,17 +93,9 @@
     
     $sortarray1 = array();
     foreach ($coreData as $key => $row){
-      $sortarray1[$key] = strtotime($row['date_of_shift']);
+      $sortarray1[$key] = strtotime($row["{$_POST['sort']}"]);
     }
     array_multisort($sortarray1, SORT_DESC, $coreData);
-    
-    $sortarray2 = array();
-    foreach ($inOutData as $key => $row){
-      $sortarray2[$key] = strtotime($row['date_of_shift']);
-    }
-
-    array_multisort($sortarray2, SORT_DESC, $inOutData);
-
     
     foreach ($coreData as &$line) {
         $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
@@ -119,6 +111,14 @@
         echo "</tr>";
     }
     unset($line);
+
+    //Sort inOutData array according to date
+    $sortarray2 = array();
+    foreach ($inOutData as $key => $row){
+      $sortarray2[$key] = strtotime($row['date_of_shift']);
+    }
+
+    array_multisort($sortarray2, SORT_DESC, $inOutData);
 
     foreach ($inOutData as &$row) {
         $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$row['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];

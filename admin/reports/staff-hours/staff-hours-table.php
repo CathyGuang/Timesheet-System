@@ -71,7 +71,7 @@
     }
     
     $sortarray = array();
-    foreach ($hourDate as $key => $row){
+    foreach ($hourData as $key => $row){
       $sortarray[$key] = $row['date_of_hours'];
       echo $sortarray[$key];
     }

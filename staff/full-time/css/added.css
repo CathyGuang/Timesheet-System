@@ -541,6 +541,7 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
     outline: none;
     margin: 10px;
+    width:250px;
 }
 
 .submit_another:hover {

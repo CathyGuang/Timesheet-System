@@ -509,12 +509,9 @@ input::-webkit-inner-spin-button {
 
 /* submit another shift */
 
-.another_shift_title {
-    text-align: center;
-    font-size: 28px;
-    font-family: 'Trebuchet MS', sans-serif;
-    color: #272933;
-    position: relative;
-    top: 1em;
-    padding-bottom: 50px;
+.submit_another{
+
+    color:red;
+
+
 }

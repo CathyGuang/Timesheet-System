@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/added.css">
+<link rel="stylesheet" href="/css/added.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Full time</title>
 </head>
@@ -11,7 +11,7 @@
 <body style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
 <header class="full-time-header">
-    <p class="full-time-title">Full-time Staff Timesheet</p>
+    <p class="full-time-title">You have successfully submitted your timesheet!</p>
     <nav class="button-container"> 
       <a href="../"><button class="back-button">Back</button></a>
       <a href="/"><button class="home-button">Home</button></a>
@@ -81,7 +81,7 @@
 
         if ($totalHourResult) {
           echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
-          echo "<form action='index.php' method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
+          echo "<form action='index.php' method='post'><input name='name' class='submit_another' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
           if ($_POST['send-email'] == 'true') {
             $currentDate = date('j-m-Y, g:iA');
             $emailBody = <<<EOT

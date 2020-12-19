@@ -30,7 +30,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Start Date:</label>
-          <input type="date" name="start-date-of-hours" value="<?php echo date('Y-m-d'); ?>">
+          <input type="date" name="start-date-of-hours" value="<?php echo date('Y-m-d', strtotime('-2 weeks')); ?>">
         </div>
       </div>
 

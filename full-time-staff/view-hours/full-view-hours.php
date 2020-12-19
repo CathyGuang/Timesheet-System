@@ -83,7 +83,7 @@
   ?>
   </table>
   <br>
-<!-- 
+
   <table>
   <tr>
     <th>Date</th>
@@ -92,18 +92,20 @@
   </tr>
 
   <?php
+    print_r($inOutData);
+    // foreach ($inOutData as $row) {
 
-    foreach ($inOutData as $row) {
-
-      echo "<tr>";
-      echo "<td>{$line['date_of_shift']}</td>";
-      echo "<td>{$line['work_type']}</td>";
-      echo "<td>{$line['hours']}</td>";
-      echo "<td>{$line['total_hour']}</td>";
-      echo "</tr>";
-    }
+    //   echo "<tr>";
+    //   echo "<td>{$line['date_of_shift']}</td>";
+    //   echo "<td>{$line['work_type']}</td>";
+    //   echo "<td>{$line['hours']}</td>";
+    //   echo "<td>{$line['total_hour']}</td>";
+    //   echo "</tr>";
+    // }
     
-  ?> -->
+  ?>
+  </table>
+  <br>
 
 
 

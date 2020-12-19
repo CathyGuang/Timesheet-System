@@ -92,9 +92,18 @@
     }
     
     $sortarray1 = array();
-    foreach ($coreData as $key => $row){
-      $sortarray1[$key] = strtotime($row["{$_POST['sort']}"]);
+
+    if ($_POST['sort'] == 'date_of_shift'){
+      foreach ($coreData as $key => $row){
+        $sortarray1[$key] = strtotime($row["{$_POST['sort']}"]);
+      }
+    }else {
+      foreach ($coreData as $key => $row){
+        $sortarray1[$key] = $row["{$_POST['sort']}"];
+      }
     }
+    
+    
     array_multisort($sortarray1, SORT_DESC, $coreData);
     
     foreach ($coreData as &$line) {

@@ -92,13 +92,13 @@
   </tr>
 
   <?php
-  
+
     foreach ($inOutData as $row) {
 
       echo "<tr>";
-      echo "<td>{$line['date_of_shift']}</td>";
-      echo "<td>{$line['in_time']}</td>";
-      echo "<td>{$line['out_time']}</td>";
+      echo "<td>{$row['date_of_shift']}</td>";
+      echo "<td>{$row['in_time']}</td>";
+      echo "<td>{$row['out_time']}</td>";
       echo "</tr>";
     }
     

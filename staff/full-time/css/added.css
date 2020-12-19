@@ -515,3 +515,8 @@ input::-webkit-inner-spin-button {
 
 
 }
+
+.submit_another_form{
+
+    color:red;
+}

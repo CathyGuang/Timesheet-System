@@ -20,11 +20,11 @@
     
   </header>
 
-  <div>
+  <div class="submit_background">
 
     
 
-  </div>
+  
 
   <?php
 
@@ -125,6 +125,8 @@
 
 
 ?>
+
+</div>
 
 
 </body>

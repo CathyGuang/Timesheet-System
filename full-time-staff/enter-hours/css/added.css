@@ -514,6 +514,7 @@ input::-webkit-inner-spin-button {
     position: relative;
     display: flex;
     justify-content: center;
+    top:3em;
 }
 
 .submit_another {
@@ -565,3 +566,16 @@ input::-webkit-inner-spin-button {
     background-color: #29ff9b;
     box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.11), 0 2px 2px 0 rgba(0, 0, 0, 0.089);
 }
+
+.submit_background{
+
+
+    width:800px;
+    min-height:100px;
+    position:relative;
+    margin: 0 auto;
+    background-color:#f0f5ff;
+    border: 2px solid #BD9DEA;
+}
+  
+  

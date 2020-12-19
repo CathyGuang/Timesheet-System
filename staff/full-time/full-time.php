@@ -22,10 +22,10 @@
 
   <div>
 
-    <form action='index.php' class='submit_another_form' method='post'>
+    <!-- <form action='index.php' class='submit_another_form' method='post'>
       <input name='name' value='<?php echo $pstaffName; ?>' hidden>
       <button class='submit_another' type='submit'>Submit another shift</button>
-    </form>
+    </form> -->
 
   </div>
 
@@ -91,8 +91,8 @@
     }
 
         if ($totalHourResult) {
-          // echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
-          // echo "<form action='index.php' class='submit_another_form' method='post'><input name='name' class='submit_another' value='{$_POST['selected-name']}' hidden><button type='submit'>Submit another shift</button></form>";
+          echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
+          echo "<form action='index.php' method='post'><input name='name' class='submit_another' value='{$_POST['selected-name']}' hidden><button  class='submit_another_form' type='submit'>Submit another shift</button></form>";
           if ($_POST['send-email'] == 'true') {
             $currentDate = date('j-m-Y, g:iA');
             $emailBody = <<<EOT

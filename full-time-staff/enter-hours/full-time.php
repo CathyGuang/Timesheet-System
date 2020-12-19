@@ -77,8 +77,8 @@
     foreach ($workTypeHourArray as $data){
       $workType = $data[0];
       $hours = $data[1];
-      echo $workType."+".$hours;
-      echo "";
+      // echo $workType."+".$hours;
+      // echo "";
       $workTypeQuery = <<<EOT
           INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
           VALUES ('{$staffID}', '{$date}', '{$workType}', '{$hours}')
@@ -88,7 +88,6 @@
     }
 
         if ($totalHourResult) {
-          echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
           echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><button  class='view_hours' type='button'>View my hours</button></form>";
           if ($_POST['send-email'] == 'true') {
             $currentDate = date('j-m-Y, g:iA');

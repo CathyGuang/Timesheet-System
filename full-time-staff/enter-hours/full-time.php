@@ -65,7 +65,7 @@
     foreach ($inOutTimeArray as $value){
       $inTime = $value[0];
       $outTime = $value[1];
-      echo $inTime."+".$outTime;
+      // echo $inTime."+".$outTime;
       $inOutQuery = <<<EOT
           INSERT INTO in_out_times (staff, date_of_shift, in_time, out_time)
           VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')

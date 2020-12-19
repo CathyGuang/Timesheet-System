@@ -11,7 +11,7 @@
 <body style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
   <header class="full-time-header">
-    <p class="full-time-title">You have successfully submitted your timesheet!</p>
+    <p class="full-time-title">Hours successfully submitted</p>
     <nav class="button-container"> 
       <a href="../"><button class="back-button">Back</button></a>
       <a href="/"><button class="home-button">Home</button></a>
@@ -22,10 +22,7 @@
 
   <div>
 
-    <!-- <form action='index.php' class='submit_another_form' method='post'>
-      <input name='name' value='<?php echo $pstaffName; ?>' hidden>
-      <button class='submit_another' type='submit'>Submit another shift</button>
-    </form> -->
+    
 
   </div>
 
@@ -92,7 +89,7 @@
 
         if ($totalHourResult) {
           echo "<div class='another_shift_title'>Hours recorded successfully.</div>";
-          echo "<form action='index.php' method='post'><input name='name' class='submit_another' value='{$_POST['selected-name']}' hidden><button  class='submit_another_form' type='submit'>Submit another shift</button></form>";
+          echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another shift</button><button  class='view_hours' type='button'>View my hours</button></form>";
           if ($_POST['send-email'] == 'true') {
             $currentDate = date('j-m-Y, g:iA');
             $emailBody = <<<EOT

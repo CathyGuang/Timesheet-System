@@ -96,7 +96,11 @@
       $sortarray[$key] = strtotime($row['date_of_shift']);
     }
     array_multisort($sortarray, SORT_DESC, $coreData);
+    print_r($sortarray);
+    print_r($inOutData);
     array_multisort($sortarray, SORT_DESC, $inOutData);
+
+    print_r($inOutData);
 
     
     foreach ($coreData as &$line) {

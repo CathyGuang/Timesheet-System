@@ -91,18 +91,6 @@
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
-    foreach ($inOutTimeArray as $value){
-      $inTime = $value[0];
-      $outTime = $value[1];
-      // echo $inTime."+".$outTime;
-      $inOutQuery = <<<EOT
-          INSERT INTO in_out_times (staff, date_of_shift, in_time, out_time)
-          VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
-          ;
-    EOT;
-      $inOutResult = pg_query($db_connection, $inOutQuery);
-    }
-
     foreach ($workTypeHourArray as $data){
       $workType = $data[0];
       $hours = $data[1];
@@ -117,6 +105,40 @@
     EOT;
       $workTypeResult = pg_query($db_connection, $workTypeQuery);
     }
+
+  ?>
+
+  </tbody>
+  </table>
+
+  <table class="table-fill">
+    <thead>
+    <tr>
+    <th class="text-left">In-time</th>
+    <th class="text-left">Out-time</th>
+    </tr>
+    </thead>
+    <tbody class="table-hover">
+
+   
+  <?php
+
+    foreach ($inOutTimeArray as $value){
+      $inTime = $value[0];
+      $outTime = $value[1];
+      echo "<tr><td class='text-left'>".$inTime."</td>
+      <td class='text-left'>".$outTime."</td>
+      </tr>";
+      // echo $inTime."+".$outTime;
+      $inOutQuery = <<<EOT
+          INSERT INTO in_out_times (staff, date_of_shift, in_time, out_time)
+          VALUES ('{$staffID}', '{$date}', '{$inTime}', '{$outTime}')
+          ;
+    EOT;
+      $inOutResult = pg_query($db_connection, $inOutQuery);
+    }
+
+
 
   ?>
 

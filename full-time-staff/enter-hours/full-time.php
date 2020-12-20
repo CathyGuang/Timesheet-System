@@ -26,7 +26,6 @@
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
 
     $date = $_POST['Date'];
-    // echo $date;
     $notes = $_POST['notes'];
     $totalMin = $_POST['TotalTime'];
     $totalHour = $totalMin/60; 
@@ -45,14 +44,14 @@
     <div class = "submitted_date_and_hours">
       <p class="submitted_date"><?php echo $date ?></p>
       <p class="submitted_hours_title">TOTAL HOURS</p>
-      <p class="submitted_hours">7.5</p>
+      <p class="submitted_hours"><?php echo $totalHour ?></p>
     </div>
 
     <table class="table-fill">
     <thead>
     <tr>
-    <th class="text-left">Month</th>
-    <th class="text-left">Sales</th>
+    <th class="text-left">work</th>
+    <th class="text-left">hours</th>
     </tr>
     </thead>
     <tbody class="table-hover">
@@ -126,6 +125,13 @@
       $workTypeResult = pg_query($db_connection, $workTypeQuery);
     }
 
+  ?>
+
+
+
+  
+
+  <?php
         if ($totalHourResult) {
           echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><button  class='view_hours' type='button'>View my hours</button></form>";
           if ($_POST['send-email'] == 'true') {

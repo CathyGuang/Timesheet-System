@@ -59,16 +59,7 @@
     <td class="text-left">January</td>
     <td class="text-left">$ 50,000.00</td>
     </tr>
-    <tr>
-    <td class="text-left">February</td>
-    <td class="text-left">$ 10,000.00</td>
-    </tr>
-    <tr>
-    <td class="text-left">February</td>
-    <td class="text-left">$ 10,000.00</td>
-    </tr>
-    </tbody>
-    </table>
+  
 
     
 
@@ -115,7 +106,9 @@
     foreach ($workTypeHourArray as $data){
       $workType = $data[0];
       $hours = $data[1];
-      // echo $workType."+".$hours;
+      echo "<tr><td class='text-left'>".$workType."</td>
+      <td class='text-left'>".$hours."</td>
+      </tr>";
       // echo "";
       $workTypeQuery = <<<EOT
           INSERT INTO full_job_hours (staff, date_of_shift, work_type, hours)
@@ -127,9 +120,12 @@
 
   ?>
 
+  </tbody>
+  </table>
 
 
-  
+
+
 
   <?php
         if ($totalHourResult) {

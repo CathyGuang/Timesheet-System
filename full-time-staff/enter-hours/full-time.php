@@ -129,7 +129,7 @@
 
   <?php
         if ($totalHourResult) {
-          echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><button  class='view_hours' type='button'>View my hours</button></form>";
+          echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><a href='view-hours'><button  class='view_hours' type='button'>View my hours</button></a></form>";
           if ($_POST['send-email'] == 'true') {
             $currentDate = date('j-m-Y, g:iA');
             $emailBody = <<<EOT

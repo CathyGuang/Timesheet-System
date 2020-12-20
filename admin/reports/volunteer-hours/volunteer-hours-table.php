@@ -52,11 +52,11 @@
     EOT;
     } else{
       $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-      echo $staffName;
+      
       //Get table data with certain staff name
       $query = <<<EOT
     SELECT * FROM volunteer_hours
-    WHERE staff = '{$staffID}' AND
+    WHERE volunteer = '{$staffID}' AND
     '{$_POST['start-date-of-hours']}' <= date_of_hours AND
     '{$_POST['end-date-of-hours']}' >= date_of_hours
     ;

@@ -20,7 +20,7 @@
   <div class="main-content-div">
 
     <a href="workers-table.php"><button class="blue-button">Export Staff/Volunteer Data</button></a>
-    <a href="volunteer-hours-table.php"><button class="blue-button">Export Volunteer Hours Data</button></a>
+    <a href="volunteer-hours"><button class="blue-button">Export Volunteer Hours Data</button></a>
     <a href="staff-hours"><button class="blue-button">Export Staff Hours Data</button></a>
     <a href="core-staff"><button class="blue-button">Export Core Staff Data</button></a>
 

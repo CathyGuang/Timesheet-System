@@ -621,7 +621,7 @@ input::-webkit-inner-spin-button {
   background: white;
   border-radius:3px;
   border-collapse: collapse;
-  height: 150px;
+  height: 100px;
   margin: auto;
   max-width: 790px;
   padding:5px;
@@ -631,13 +631,13 @@ input::-webkit-inner-spin-button {
 }
  
 th {
-  color:#f0f5ff;
+  color:white;
   background:#A0D2EB;
   border-bottom:4px solid #f0f5ff;
   border-right: 1px solid #f0f5ff;
-  font-size:20px;
+  font-size:28px;
   font-weight: 100;
-  padding:24px;
+  padding:15px;
   text-align: center;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   vertical-align:middle;
@@ -697,7 +697,7 @@ td {
   text-align:left;
   vertical-align:middle;
   font-weight:300;
-  font-size:18px;
+  font-size:20px;
   border-right: 1px solid #f0f5ff;
   font-family: 'Trebuchet MS', sans-serif;
 }

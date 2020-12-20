@@ -50,8 +50,8 @@
     <table class="table-fill">
     <thead>
     <tr>
-    <th class="text-left">work</th>
-    <th class="text-left">hours</th>
+    <th class="text-left">Work</th>
+    <th class="text-left">Hours</th>
     </tr>
     </thead>
     <tbody class="table-hover">

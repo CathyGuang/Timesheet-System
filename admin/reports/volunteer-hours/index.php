@@ -23,7 +23,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Name:</label>
-          <input name="staff" list="staff-list" id="selected-name">
+          <input name="volunteer" list="volunteer-list" id="selected-name">
         </div>
       </div>
 
@@ -52,7 +52,7 @@
 
 
   <!-- DATALISTS -->
-  <datalist id="staff-list">
+  <datalist id="volunteer-list">
     <?php
       $staffNames = pg_fetch_all_columns(pg_query($db_connection, "SELECT name FROM workers WHERE volunteer = TRUE AND (archived IS NULL OR archived = '');"));
       foreach ($staffNames as $name) {

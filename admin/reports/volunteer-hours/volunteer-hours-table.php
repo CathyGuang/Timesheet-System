@@ -41,7 +41,7 @@
     <th>Notes</th>
 
   <?php
-    $staffName = pg_escape_string(trim($_POST['staff']));
+    $staffName = pg_escape_string(trim($_POST['volunteer']));
     if (empty($staffName)){
       //Get table data without name restriction
       $query = <<<EOT
@@ -52,7 +52,7 @@
     EOT;
     } else{
       $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-      
+      echo $staffName;
       //Get table data with certain staff name
       $query = <<<EOT
     SELECT * FROM volunteer_hours

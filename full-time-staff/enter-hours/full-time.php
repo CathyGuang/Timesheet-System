@@ -149,9 +149,6 @@
   </div>
 
 
-
-
-
   <?php
         if ($totalHourResult) {
           echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><a href='/full-time-staff/view-hours'><button  class='view_hours' type='button'>View my hours</button></a></form>";
@@ -164,15 +161,11 @@
     on {$currentDate}.
 
     Full time staff hours complete for pay period.
-
-    Date: {$_POST['Date']}
-    In and Out Time: {$inOutTime}
-    Note: {$notes}
+    
     EOT;
             $emailBody = wordwrap($emailBody, 70);
 
-            $recipient = "guangc2@carleton.edu";
-            // $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
+            $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
             if (!$recipient) {
               echo "<p class='main-content-header'>No staff coordinator email found. Contact an administrator to change this.</p>";
             }

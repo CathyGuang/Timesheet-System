@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <script type="text/javascript" src="print.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>

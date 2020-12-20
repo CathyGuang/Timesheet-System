@@ -616,6 +616,10 @@ input::-webkit-inner-spin-button {
   
 }
 
+.tables{
+
+  border-radius: 15px;
+}
 
 .table-fill {
   background: white;

@@ -46,7 +46,8 @@
       <p class="submitted_hours_title">TOTAL HOURS</p>
       <p class="submitted_hours"><?php echo $totalHour ?></p>
     </div>
-
+    
+    <div class="tables">
     <table class="table-fill">
     <thead>
     <tr>
@@ -145,6 +146,7 @@
 
   </tbody>
   </table>
+  </div>
 
 
 

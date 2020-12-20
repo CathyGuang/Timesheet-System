@@ -577,6 +577,9 @@ function setEachWorkTime(value,num){
     }
     totalWorkedmin = totalWorktimeSelected % 60;
     totalWorkedhours = (totalWorktimeSelected- totalWorkedmin) /60;
+    totalremain = totalmin- totalWorktimeSelected;
+    totalremainMin= totalremain % 60;
+    totalremainHour = (totalremain- totalremainMin) /60;
     if(workList.length==0){
 
          $("#job_reminder").text("Please select jobs to report");
@@ -585,7 +588,7 @@ function setEachWorkTime(value,num){
     }
     else{
 
-         $("#job_reminder").text("You have selected " + workList.length + " jobs totaling " + totalWorkedhours + " hrs " + totalWorkedmin + " min");
+         $("#job_reminder").text("You have selected " + workList.length + " jobs remaining " + totalremainHour + " hrs " + totalremainMin + " min to select");
         document.getElementById("job_reminder").style.color = "#7A77B9";
     }
        

@@ -24,7 +24,7 @@
   <div class="full-time-header">
     <p class="full-time-title">Core Staff Timesheet</p>
     <nav class="button-container"> 
-      <a href="../"><button class="back-button">Back</button></a>
+      `<a href="../">`<button class="back-button">Back</button></a>
       <a href="/"><button class="home-button">Home</button></a>
     </nav>
   </div>

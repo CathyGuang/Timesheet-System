@@ -110,6 +110,7 @@
 
   </tbody>
   </table>
+  <br>
 
   <table class="table-fill">
     <thead>

@@ -55,10 +55,10 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr>
+    <!-- <tr>
     <td class="text-left">January</td>
     <td class="text-left">$ 50,000.00</td>
-    </tr>
+    </tr> -->
   
 
     

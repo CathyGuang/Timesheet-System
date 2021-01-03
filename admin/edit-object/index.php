@@ -20,9 +20,7 @@
   <h3 class="main-content-header">Select type of object to edit:</h3>
 
   <div class="main-content-div">
-    <a href="edit-worker"><button class="green-button">Worker</button></a>
-    <a href="edit-client"><button class="green-button">Client</button></a>
-    <a href="edit-horse"><button class="green-button">Horse</button></a>
+    <a href="edit-worker"><button class="green-button">Staff/Volunteer</button></a>
     <a href="edit-other"><button class="blue-button">Other</button></a>
 
   </div>

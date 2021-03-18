@@ -49,7 +49,7 @@
           <input type="text" name="hours" required>
         </div>
       </div>
-<!-- 
+
       <div class="form-section">
         <div class="form-element">
           <label>Notes:</label>
@@ -61,7 +61,7 @@
         <div class="form-element">
           <p>Notify supervisor: <input type="checkbox" name="send-email" value="true"></p>
         </div>
-      </div> -->
+      </div>
 
 
       <div class="form-section">

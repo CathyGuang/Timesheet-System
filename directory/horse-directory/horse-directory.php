@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
+  <title>Horse Directory | <?php echo $organizationName; ?> Web Portal</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Horse Directory</h1>
+    <nav> <a href="index.php"><button id="back-button">Back</button></a>
+      <a href="/"><button id="home-button">Home</button></a>
+    </nav>
+  </header>
+
+  <div class="main-content-div">
+    <form autocomplete="off" class="main-content-form" style="width: 500px;">
+      <?php
+        $query = "SELECT * FROM horses WHERE id = {$_POST['buttonInfo']};";
+        $horseInfo = pg_fetch_all(pg_query($db_connection, $query))[0];
+
+        echo <<<EOT
+          <p>Name: {$horseInfo['name']}</p>
+          <p>Owner: {$horseInfo['owner']}</p>
+          <p>Owner email address: <a href="mailto: {$horseInfo['owner_email']}">{$horseInfo['owner_email']}</a></p>
+          <p>Owner phone number: <a href="tel: {$horseInfo['owner_phone']}">{$horseInfo['owner_phone']}</a></p>
+          <p>Veterinarian name: {$horseInfo['vet_name']}</p>
+          <p>Veterinarian email: <a href="mailto: {$horseInfo['vet_email']}">{$horseInfo['vet_email']}</a></p>
+          <p>Veterinarian phone number: <a href="tel: {$horseInfo['vet_phone']}">{$horseInfo['vet_phone']}</a></p>
+          <p>Organization Uses per Day: {$horseInfo['org_uses_per_day']}</p>
+          <p>Owner Uses per Day: {$horseInfo['owner_uses_per_day']}</p>
+          <p>Notes: {$horseInfo['notes']}</p>
+EOT;
+
+      ?>
+    </form>
+  </div>
+
+</body>
+
+</html>

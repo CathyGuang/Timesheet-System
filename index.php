@@ -22,8 +22,11 @@
 
   <div class="main-content-div">
     <a href="/volunteer"><button class="green-button">Volunteer</button></a>
-    <a href="/part-time-staff"><button class="green-button">Part Time Staff</button></a>
-    <a href="/full-time-staff"><button class="green-button">Full Time Staff</button></a>
+    <a href="/staff"><button class="green-button">Staff</button></a>
+    <a href="/client"><button class="green-button">Client</button></a>
+    <a href="/check-availability"><button class="blue-button">Check Availability</button></a>
+    <button type="submit" form="full-daily-schedule-form" name="selected-date" value="<?php echo date('Y-m-d'); ?>" class="blue-button">Full Daily Schedule</button>
+    <a href="/horse-daily-schedule"><button class="green-button">Horse Daily Schedule</button></a>
     <a href="/directory"><button class="blue-button">Directories</button></a>
     <a href="/admin"><button class="red-button">Admin</button></a>
   </div>

@@ -106,7 +106,7 @@
 
 </body>
 
-<script type="text/javascript" src="js/query.js"></script>
+<script type="text/javascript" src="query.js"></script>
 
 
 </html>

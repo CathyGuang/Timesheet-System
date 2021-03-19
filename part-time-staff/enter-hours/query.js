@@ -35,7 +35,7 @@ function checkJob(){
         var name_element = document.getElementById("work_select_reminder");
         name_element.innerHTML = "Please enter/select a work exactly as in list";
         name_element.scrollIntoView(false);
-        nameEntry.style="box-shadow: inset 0px 0px 3px #EA7186;"
+        jobEntry.style="box-shadow: inset 0px 0px 3px #EA7186;"
         JobReady = false;
 
     }
@@ -44,7 +44,7 @@ function checkJob(){
 
         var name_element = document.getElementById("work_select_reminder");
         name_element.innerHTML = "";
-        nameEntry.style="box-shadow: inset 0px 0px 3px #d6dce7;"
+        jobEntry.style="box-shadow: inset 0px 0px 3px #d6dce7;"
         JobReady = true;
 
 

@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
-  <script type="text/javascript" src="part-time-staff/js/jquery.min.js"></script>
-  <script type="text/javascript" src="part-time-staff/js/jquery-ui.js"></script>
-  <link rel="stylesheet" href="part-time-staff/js/enter_hour.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="js/enter_hour.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff Timesheet</title>
@@ -98,7 +98,7 @@
 
 </body>
 
-<script type="text/javascript" src="part-time-staff/js/query.js"></script>
+<script type="text/javascript" src="js/query.js"></script>
 
 
 </html>

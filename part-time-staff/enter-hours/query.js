@@ -131,6 +131,8 @@ function submitted() {
             alert("Please select a correct job to report");
         }
 
+        return;
+
     }
     
     else{

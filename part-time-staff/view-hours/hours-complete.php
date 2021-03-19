@@ -18,14 +18,15 @@
   </header>
 
   <?php
-
+    session_start();
     $staffName = $_SESSION['staffName'];
     $staffID = $_SESSION['staffID'];
     echo $staffName;
+    echo $staffID;
     echo "here";
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
-      VALUES ('{$staffID}', '{}', '{}', '{}', '{Hours complete for pay period.}')
+      VALUES ('{$staffID}', '', '', '', 'Hours complete for pay period')
       ;
 EOT;
 

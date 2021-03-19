@@ -26,11 +26,12 @@
     echo "here";
     date_default_timezone_set('America/Los_Angeles');
     $timezone = date_default_timezone_get();
-    echo $timezone;
+    $date = date('m/d/Y h:i:s a', time());
+    echo $date;
 
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
-      VALUES ('{$staffID}', 0, NULL, '{$timezone}', 'Hours complete for pay period')
+      VALUES ('{$staffID}', 0, NULL, '{$date}', 'Hours complete for pay period')
       ;
 EOT;
 

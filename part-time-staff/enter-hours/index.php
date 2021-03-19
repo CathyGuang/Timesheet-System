@@ -22,8 +22,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+          <label>Name:<div id="name_select_reminder"></div></label>
+          <input type="text" name="staff" id = "selected-name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
         </div>
       </div>
 

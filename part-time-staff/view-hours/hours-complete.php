@@ -21,9 +21,6 @@
     session_start();
     $staffName = $_SESSION['staffName'];
     $staffID = $_SESSION['staffID'];
-    echo $staffName;
-    echo $staffID;
-    echo "here";
     date_default_timezone_set('America/Los_Angeles');
     $timezone = date_default_timezone_get();
     $date = date('m/d/Y h:i:s a', time());

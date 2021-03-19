@@ -24,8 +24,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Name:</label>
-          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+          <label>Name:<div id="name_select_reminder"></div></label>
+          <input type="text" name="staff" id="selected-name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
         </div>
       </div>
 
@@ -67,7 +67,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="submitted();">Submit</button>
       </div>
 
     </form>
@@ -105,5 +105,8 @@
   </datalist>
 
 </body>
+
+<script type="text/javascript" src="js/query.js"></script>
+
 
 </html>

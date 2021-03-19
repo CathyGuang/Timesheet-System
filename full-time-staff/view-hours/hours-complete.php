@@ -46,7 +46,9 @@ EOT;
     } else {
       echo "<p class='main-content-header'>Email failed to send.</p>";
     }
-  }
+  }else{
+    echo "<p class='main-content-header'>If you intended to select 'hours completed for the pay period', you failed to do so; if you are just viewing hours, welcome!</p>";
+}
 
 
   ?>

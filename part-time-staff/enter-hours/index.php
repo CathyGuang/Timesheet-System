@@ -68,7 +68,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="button" class = "submit" onclick="submitted();">Submit</button>
+        <button type="button" class = "submitt" onclick="submitted();">Submit</button>
       </div>
 
     </form>

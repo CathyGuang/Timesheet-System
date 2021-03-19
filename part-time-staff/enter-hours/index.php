@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff Timesheet</title>

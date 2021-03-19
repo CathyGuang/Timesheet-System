@@ -18,7 +18,7 @@
   </header>
 
   <?php
-
+    session_start();
     $staffName = $_SESSION['staffName'];
     $staffID = $_SESSION['staffID'];
     echo $staffName;

@@ -48,7 +48,7 @@
       
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Go</button>
+        <button type="button" class="purplebut" id="purplebut"onclick="submitted();">Go</button>
       </div>
 
     </form>

@@ -22,7 +22,7 @@
 
 
   <div class="form-container">
-    <form autocomplete="off" class="standard-form" action="view-hours.php" method="post">
+    <form autocomplete="off" id = "myform" class="standard-form" action="view-hours.php" method="post">
 
       <div class="form-section">
         <div class="form-element">
@@ -48,7 +48,7 @@
       
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="button" class="purplebut" id="purplebut"onclick="submitted();">Go</button>
+        <button type="button" class="purplebut" id="purplebut" onclick="submitted();">Go</button>
       </div>
 
     </form>
@@ -69,7 +69,7 @@
 
 </body>
 
-<script type="text/javascript" src="/static/query.js"></script>
+<script type="text/javascript" src="/static/query2.js"></script>
 
 
 </html>

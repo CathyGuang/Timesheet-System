@@ -5,6 +5,7 @@
   <link rel="stylesheet" href="/static/main.css">
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="enter_hour.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Staff Timesheet</title>
@@ -24,7 +25,7 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Name:<div id="name_select_reminder"></div></label>
+          <label>Name:<div class="name_select_reminder" id="name_select_reminder"></div></label>
           <input type="text" name="staff" id="selected-name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
         </div>
       </div>

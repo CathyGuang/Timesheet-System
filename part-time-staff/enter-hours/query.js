@@ -19,7 +19,7 @@ function checkJob(){
 
     var jobEntry =  document.getElementById("selected-job");
 
-    if(nameEntry.value ==""){
+    if(jobEntry.value ==""){
 
         var name_element = document.getElementById("work_select_reminder");
         name_element.innerHTML = "Please select your work!";
@@ -30,7 +30,7 @@ function checkJob(){
 
     }
 
-    else if(!nameList.includes(nameEntry.value)){
+    else if(!jobList.includes(jobEntry.value)){
 
         var name_element = document.getElementById("work_select_reminder");
         name_element.innerHTML = "Please enter/select a work exactly as in list";

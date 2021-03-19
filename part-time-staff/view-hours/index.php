@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <script type="text/javascript" src="/static/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/static/enter_hour.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>View Staff Hours</title>
@@ -23,8 +26,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label for="staff">Name:</label>
-          <input type="text" name="staff" list="staff-list" required>
+          <label for="staff">Name:<div class="name_select_reminder" id="name_select_reminder"></div></label>
+          <input type="text" name="staff" id="selected-name" list="staff-list" required>
         </div>
       </div>
           
@@ -65,5 +68,8 @@
 
 
 </body>
+
+<script type="text/javascript" src="/static/query.js"></script>
+
 
 </html>

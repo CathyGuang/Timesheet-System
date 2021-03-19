@@ -32,8 +32,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Type of Work:</label>
-          <input type="text" name="work-type" list="work-type-list" required>
+          <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></label>
+          <input type="text" name="work-type" id="selected-job" list="work-type-list" required>
         </div>
       </div>
 
@@ -83,15 +83,6 @@
       foreach ($staffNames as $name) {
         $name = htmlspecialchars($name, ENT_QUOTES);
         echo "<option value='{$name}'>";
-      }
-    ?>
-  </datalist>
-
-  <datalist id="work-type-list">
-    <?php
-      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
-      foreach ($staffShiftTypes as $value) {
-        echo "<option value='{$value}'>";
       }
     ?>
   </datalist>

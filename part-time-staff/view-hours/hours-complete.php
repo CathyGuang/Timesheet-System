@@ -21,7 +21,7 @@
 
     $staffName = $_SESSION['staffName'];
     $staffID = $_SESSION['staffID'];
-
+    echo $staffName;
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
       VALUES ('{$staffID}', '{}', '{}', '{}', '{Hours complete for pay period.}')
@@ -29,9 +29,10 @@
 EOT;
 
     if ($_POST['send-email'] == 'true') {
-        echo "hahaha";
         $result = pg_query($db_connection, $query);
         if ($result) {
+
+            echo "hahaha";
             echo "<h3 class='main-content-header'>Hours completed successfully.</h3>";
 
             $currentDate = date('j-m-Y, g:iA');
@@ -56,6 +57,8 @@ EOT;
                 echo "<p class='main-content-header'>Email failed to send.</p>";
             }
         }
+    }else{
+        echo "<p class='main-content-header'>If you intended to select 'hours completed for the pay period', you failed to do so; if you are just viewing hours, welcome!</p>";
     }
 
 

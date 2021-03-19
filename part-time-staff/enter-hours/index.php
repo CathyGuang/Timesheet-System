@@ -18,12 +18,12 @@
   </header>
 
   <div class="form-container">
-    <form autocomplete="off" class="standard-form" id="myform" action="staff-record-hours.php" method="post">
+    <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
 
       <div class="form-section">
         <div class="form-element">
-          <label>Name:<div id="name_select_reminder"></div></label>
-          <input type="text" name="staff" id = "selected-name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
+          <label>Name:</label>
+          <input type="text" name="staff" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
         </div>
       </div>
 
@@ -54,17 +54,18 @@
           <input type="text" name="notes">
         </div>
       </div>
-
+       
+<!-- Below content moved to View Hour
       <div class="form-section">
         <div class="form-element">
           <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
         </div>
-      </div>
+      </div> -->
 
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit" onclick="submitted();">Submit</button>
+        <button type="submit">Submit</button>
       </div>
 
     </form>
@@ -102,8 +103,5 @@
   </datalist>
 
 </body>
-
-<script type="text/javascript" src="query.js"></script>
-
 
 </html>

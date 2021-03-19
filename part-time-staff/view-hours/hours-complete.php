@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/static/main.css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
+  <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
+  <title>Hours complete</title>
+</head>
+
+<body>
+
+  <header>
+    <h1>Staff Timesheet</h1>
+    <nav> <a href="../"><button id="back-button">Back</button></a>
+      <a href="/"><button id="home-button">Home</button></a>
+    </nav>
+  </header>
+
+  <?php
+
+    $staffName = $_SESSION['staffName'];
+    $staffID = $_SESSION['staffID'];
+
+    $query = <<<EOT
+      INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
+      VALUES ('{$staffID}', '{}', '{}', '{}', '{Hours complete for pay period.}')
+      ;
+EOT;
+
+    if ($_POST['send-email'] == 'true') {
+        $result = pg_query($db_connection, $query);
+        if ($result) {
+            echo "<h3 class='main-content-header'>Hours completed successfully.</h3>";
+
+            $currentDate = date('j-m-Y, g:iA');
+            $emailBody = <<<EOT
+Automatic Message from DHS:
+
+Staff hours recorded by: {$staffName}
+
+Hours complete for pay period.
+EOT;
+            $emailBody = wordwrap($emailBody, 70);
+
+            $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
+            if (!$recipient) {
+                echo "<p class='main-content-header'>No staff coordinator email found. Contact an administrator to change this.</p>";
+            }
+
+            $mail = mail($recipient, "Staff Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
+            if ($mail) {
+                echo "<p class='main-content-header'>Email sent successfully.</p>";
+            } else {
+                echo "<p class='main-content-header'>Email failed to send.</p>";
+            }
+        }
+    }
+
+
+  ?>
+
+
+</body>
+
+</html>

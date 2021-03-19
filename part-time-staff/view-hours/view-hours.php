@@ -21,7 +21,10 @@
 
     $staffName = pg_escape_string(trim($_POST['staff']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-
+    
+    $_SESSION['staffName'] = $staffName;
+    $_SESSION['staffID'] = $staffID;
+    
     $query = <<<EOT
     SELECT * FROM staff_hours
     WHERE staff = '{$staffID}' AND
@@ -45,6 +48,24 @@ EOT;
     echo "<h3 style='position: absolute; top: 25vh; right: 20vw'>Total Hours: {$totalHours}</h3>";
 
   ?>
+
+  <div class="form-container">
+    <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
+
+      <div class="form-section">
+        <div class="form-element">
+          <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
+        </div>
+      </div>
+
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Submit</button>
+      </div>
+
+    </form>
+  </div>
 
 
 </body>

@@ -29,6 +29,7 @@
 EOT;
 
     if ($_POST['send-email'] == 'true') {
+        echo "hahaha";
         $result = pg_query($db_connection, $query);
         if ($result) {
             echo "<h3 class='main-content-header'>Hours completed successfully.</h3>";

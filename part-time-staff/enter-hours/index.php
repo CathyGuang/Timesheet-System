@@ -32,7 +32,7 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></label>
+          <label>Type of Work:</label>
           <input type="text" name="work-type" id="selected-job" list="work-type-list" required>
         </div>
       </div>

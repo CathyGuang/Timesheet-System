@@ -237,6 +237,16 @@ input[type='time'] {
     background-color: var(--background-blue);
 }
 
+.submit{
+    height: 40px;
+    grid-column: 3 / 5;
+    border: 2px solid #4829ad;
+    border-radius: 2px;
+    transition-duration: .25s;
+    -webkit-transition-duration: .25s;
+    /* font-size: 18pt; */
+    background-color: var(--background-blue);
+}
 .form-section>button[type='submit']:hover:enabled {
     background-color: var(--dark-blue);
 }

@@ -1,7 +1,7 @@
 //variable that checks if name entry is ready 
 var NameReady = true;
 var JobReady = true;
-
+var hourReady = true;
 //checks if name is correctly in list
 function checkJob(){
 
@@ -109,16 +109,56 @@ function checkName(){
 
 }
 
+function checkHour(){
+
+    var hourEntry =  document.getElementById("selected-hour");
+
+    if(hourEntry.value ==""){
+
+        var name_element = document.getElementById("hour_select_reminder");
+        name_element.innerHTML = "Please enter your hour!";
+        name_element.scrollIntoView(false);
+        hourEntry.style="box-shadow: inset 0px 0px 3px #EA7186;"
+        hourReady = false;
+        
+
+    }
+
+    else if(!isNaN(hourEntry.value)){
+
+        var name_element = document.getElementById("hour_select_reminder");
+        name_element.innerHTML = "Please enter a number in hours";
+        name_element.scrollIntoView(false);
+        hourEntry.style="box-shadow: inset 0px 0px 3px #EA7186;"
+        hourReady = false;
+
+    }
+
+    else{
+
+        var name_element = document.getElementById("hour_select_reminder");
+        name_element.innerHTML = "";
+        hourEntry.style="box-shadow: inset 0px 0px 0px #d6dce7;"
+        hourReady = true;
+
+
+    }
+
+
+
+
+}
+
 
 
 function submitted() {
 
-    
+    checkHour(); 
     checkName();
     checkJob();
     //checkJobSelect();
 
-    if(NameReady == false||JobReady == false){
+    if(NameReady == false||JobReady == false ||hourReady ==false){
         console.log("innn");
         if(NameReady == false){
 
@@ -130,7 +170,11 @@ function submitted() {
     
             alert("Please select a correct job to report");
         }
-
+        
+        if(hourReady == false){
+    
+            alert("Please enter a correct work hour");
+        }
         return;
 
     }
@@ -165,4 +209,8 @@ $("#selected-name").change(function() {
 
 $("#selected-job").change(function() {
     checkJob();
+});
+
+$("#selected-hour").change(function() {
+    checkHour();
 });

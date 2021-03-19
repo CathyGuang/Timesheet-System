@@ -46,8 +46,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label>Number of hours:</label>
-          <input type="text" name="hours" required>
+          <label>Number of hours:<div class="hour_select_reminder" id="hour_select_reminder"></div></label>
+          <input type="text" name="hours" id = "selected-hour" required>
         </div>
       </div>
 
@@ -68,7 +68,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="button" onclick="submitted();">Submit</button>
+        <button type="button" class = "sumbmit" onclick="submitted();">Submit</button>
       </div>
 
     </form>

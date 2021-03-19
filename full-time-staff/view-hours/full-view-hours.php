@@ -49,7 +49,10 @@
 
     $staffName = pg_escape_string(trim($_POST['staff']));
     $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
-
+    session_start();
+    $_SESSION['staffName'] = $staffName;
+    $_SESSION['staffID'] = $staffID;
+    
       $query = <<<EOT
     SELECT * FROM full_job_hours, full_total_hours
     WHERE full_job_hours.staff = '{$staffID}' AND
@@ -112,7 +115,18 @@
   </table>
   <br>
 
-
+  <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
+      <div class="payroll_complete_check">
+        <p class="payroll_text">Hours complete for pay period: 
+          <input type="checkbox" name="send-email" value="true">
+        </p>
+      </div>
+      <div class="submit_and_cancel">
+          <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
+          <button type="button" class="submit" onclick="submitted();" >Submit</button>
+      
+      </div>
+    </form>
 
 </body>
 

@@ -152,31 +152,6 @@
   <?php
         if ($totalHourResult) {
           echo "<form action='index.php' class= 'submit_another_container'method='post'><input name='name' value='{$_POST['selected-name']}' hidden><button  class='submit_another' type='submit'>Submit another</button><a href='/full-time-staff/view-hours'><button  class='view_hours' type='button'>View my hours</button></a></form>";
-          if ($_POST['send-email'] == 'true') {
-            $currentDate = date('j-m-Y, g:iA');
-            $emailBody = <<<EOT
-    Automatic Message from DHS:
-
-    Staff hours recorded by: {$_POST['selected-name']} 
-    on {$currentDate}.
-
-    Full time staff hours complete for pay period.
-    
-    EOT;
-            $emailBody = wordwrap($emailBody, 70);
-
-            $recipient = pg_fetch_array(pg_query($db_connection, "SELECT value FROM misc_data WHERE key LIKE 'staff_coordinator_email';"), 0, PGSQL_ASSOC)['value'];
-            if (!$recipient) {
-              echo "<p class='main-content-header'>No staff coordinator email found. Contact an administrator to change this.</p>";
-            }
-
-            $mail = mail($recipient, "Full Time Staff Hours Recorded", $emailBody, "From: no-reply@darkhorsescheduling.com");
-            if ($mail) {
-              echo "<p class='main-content-header'>Email sent successfully.</p>";
-            } else {
-              echo "<p class='main-content-header'>Email failed to send.</p>";
-            }
-          }
         } else {
           echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
         }

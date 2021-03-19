@@ -52,7 +52,7 @@
     session_start();
     $_SESSION['staffName'] = $staffName;
     $_SESSION['staffID'] = $staffID;
-    
+
       $query = <<<EOT
     SELECT * FROM full_job_hours, full_total_hours
     WHERE full_job_hours.staff = '{$staffID}' AND
@@ -115,18 +115,23 @@
   </table>
   <br>
 
-  <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
-      <div class="payroll_complete_check">
-        <p class="payroll_text">Hours complete for pay period: 
-          <input type="checkbox" name="send-email" value="true">
-        </p>
+  <div class="form-container">
+    <form autocomplete="off" class="standard-form" action="hours-complete.php" method="post">
+
+      <div class="form-section">
+        <div class="form-element">
+          <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
+        </div>
       </div>
-      <div class="submit_and_cancel">
-          <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
-          <button type="button" class="submit" onclick="submitted();" >Submit</button>
-      
+
+
+      <div class="form-section">
+        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
+        <button type="submit">Submit</button>
       </div>
+
     </form>
+  </div>
 
 </body>
 

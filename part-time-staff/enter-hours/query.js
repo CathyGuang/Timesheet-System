@@ -124,7 +124,7 @@ function checkHour(){
 
     }
 
-    else if(!isNaN(hourEntry.value)){
+    else if(isNaN(hourEntry.value)){
 
         var name_element = document.getElementById("hour_select_reminder");
         name_element.innerHTML = "Please enter a number in hours";

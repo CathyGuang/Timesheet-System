@@ -21,13 +21,9 @@
     session_start();
     $staffName = $_SESSION['staffName'];
     $staffID = $_SESSION['staffID'];
-    echo $staffName;
-    echo $staffID;
-    echo "here";
     date_default_timezone_set('America/Los_Angeles');
     $timezone = date_default_timezone_get();
     $date = date('m/d/Y h:i:s a', time());
-    echo $date;
 
     $query = <<<EOT
       INSERT INTO staff_hours (staff, hours, work_type, date_of_hours, notes)
@@ -38,8 +34,6 @@ EOT;
     if ($_POST['send-email'] == 'true') {
         $result = pg_query($db_connection, $query);
         if ($result) {
-
-            echo "hahaha";
             echo "<h3 class='main-content-header'>Hours completed successfully.</h3>";
 
             $currentDate = date('j-m-Y, g:iA');

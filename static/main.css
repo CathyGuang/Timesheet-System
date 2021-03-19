@@ -247,6 +247,13 @@ input[type='time'] {
     /* font-size: 18pt; */
     background-color: var(--background-blue);
 }
+
+.submit :hover:enabled{
+
+    background-color: var(--dark-blue);
+
+
+}
 .form-section>button[type='submit']:hover:enabled {
     background-color: var(--dark-blue);
 }

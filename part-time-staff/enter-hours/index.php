@@ -18,7 +18,7 @@
   </header>
 
   <div class="form-container">
-    <form autocomplete="off" class="standard-form" action="staff-record-hours.php" method="post">
+    <form autocomplete="off" class="standard-form" id="myform" action="staff-record-hours.php" method="post">
 
       <div class="form-section">
         <div class="form-element">
@@ -64,7 +64,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Submit</button>
+        <button type="submit" onclick="submitted();">Submit</button>
       </div>
 
     </form>
@@ -102,5 +102,8 @@
   </datalist>
 
 </body>
+
+<script type="text/javascript" src="query.js"></script>
+
 
 </html>

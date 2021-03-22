@@ -26,8 +26,8 @@
 
       <div class="form-section">
         <div class="form-element">
-          <label for="staff">Name:</label>
-          <input type="text" name="volunteer" list="volunteer-list" required>
+          <label for="staff">Name:<div class="name_select_reminder" id="name_select_reminder"></div></label>
+          <input type="text" name="volunteer" id="selected-name" list="volunteer-list" required>
         </div>
       </div>
 
@@ -48,7 +48,7 @@
       
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Go</button>
+        <button  type="button" class="purplebut" id="purplebut" onclick="submitted();">Go</button>
       </div>
 
       
@@ -68,5 +68,6 @@
   </datalist>
 
 </body>
+<script type="text/javascript" src="/static/query4.js"></script>
 
 </html>

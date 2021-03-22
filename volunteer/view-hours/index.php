@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <script type="text/javascript" src="/static/jquery.min.js"></script>
+  <script type="text/javascript" src="/static/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/static/enter_hour.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>View Volunteer Hours</title>
@@ -19,7 +22,7 @@
 
 
   <div class="form-container">
-    <form autocomplete="off" class="standard-form" action="view-hours.php" method="post">
+    <form autocomplete="off" id = "myform" class="standard-form" action="view-hours.php" method="post">
 
       <div class="form-section">
         <div class="form-element">

@@ -69,6 +69,6 @@
 
 </body>
 
-<script type="text/javascript" src="/static/query2.js"></script>
+<script type="text/javascript" src="/static/query3.js"></script>
 
 </html>

@@ -19,10 +19,16 @@
 
   <div class="main-content-div">
 
-    <a href="workers-table.php"><button class="blue-button">Staff/Volunteer Info</button></a>
-    <a href="volunteer-hours"><button class="blue-button">Volunteer Hours Data</button></a>
-    <a href="staff-hours"><button class="blue-button">Part Time Staff Data</button></a>
-    <a href="core-staff"><button class="blue-button">Full Time Staff Data</button></a>
+    <a href="workers-table.php"><button class="blue-button">Export Staff/Volunteer Data</button></a>
+    <a href="classes-table.php"><button class="blue-button">Export Class Data</button></a>
+    <a href="clients-table.php"><button class="blue-button">Export Client Data</button></a>
+    <a href="volunteer-hours-table.php"><button class="blue-button">Export Volunteer Hours Data</button></a>
+    <a href="staff-hours-table.php"><button class="blue-button">Export Staff Hours Data</button></a>
+    <a href="horses-table.php"><button class="blue-button">Export Horses Data</button></a>
+    <a href="horse-care-shifts-table.php"><button class="blue-button">Export Horse Care Shifts Data</button></a>
+    <a href="office-shifts-table.php"><button class="blue-button">Export Office Shifts Data</button></a>
+
+
 
   </div>
 

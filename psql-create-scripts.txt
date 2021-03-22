@@ -214,26 +214,3 @@ CREATE TABLE class_type_colors (
 CREATE TABLE archived_enums (
   name TEXT
 );
-
-/* CREATE FULL TIME STAFF TABLE */
-CREATE TABLE full_total_hours (
-  id SERIAL PRIMARY KEY,
-  staff INT REFERENCES workers(id),
-  date_of_shift DATE,
-  total_hour NUMERIC,
-  notes TEXT
-);
-
-CREATE TABLE in_out_times (
-  staff INT REFERENCES workers(id),
-  date_of_shift DATE,
-  in_time TIME,
-  out_time TIME
-);
-
-CREATE TABLE full_job_hours (
-  staff INT REFERENCES workers(id),
-  date_of_shift DATE,
-  work_type STAFF_WORK_TYPE,
-  hours NUMERIC
-);

@@ -187,7 +187,7 @@ function submitted() {
 
             document.getElementById('myform').submit(function(e){   
 
-                window.location.href = 'staff-record-hours.php'; 
+                window.location.href = 'volunteer-record-hours.php'; 
             });
 
         

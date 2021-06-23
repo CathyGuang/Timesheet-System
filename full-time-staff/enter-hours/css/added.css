@@ -454,17 +454,15 @@ input::-webkit-inner-spin-button {
 }
 
 .payPeriod{
-
   border: none;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 14px;
   border-radius: 10px;
-  padding: 10px 35px;
-  margin: 10px;
+  padding: 10px 25px;
   color: black;
   outline: none;
-  background-color: #e48f11;
-  box-shadow: inset 0px 0px 3px #b6730e;
+  background-color: #f3a32b;
+  box-shadow: inset 0px 0px 3px #e48f11;
 
 }
 
@@ -474,7 +472,7 @@ input::-webkit-inner-spin-button {
     text-align: center;
     height: 40px;
     padding-top: 40px;
-    padding-bottom: 80px;
+    padding-bottom: 50px;
     margin-top: 20px;
 }
 

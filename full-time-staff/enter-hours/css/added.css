@@ -768,6 +768,7 @@ td.text-right {
 .pay_table{
   text-align: center;
   top: 1em;
+  padding-top: 50px;
   padding-bottom: 50px;
 
 }

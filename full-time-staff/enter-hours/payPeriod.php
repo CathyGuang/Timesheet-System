@@ -27,7 +27,9 @@
     </div>
 
     <div class= "fulltime-form-container" >
-        <p> LLLAAAAAA</p>
+        <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
+            <p> LLLAAAAAA</p>
+        </form>
 
     </div>
 

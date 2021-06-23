@@ -29,7 +29,7 @@
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <div class = "pay_table">
-                <table>
+                <table class = "table-fill">
                 <tr>
                     <th>Start Date</th>
                     <th>End Date</th>

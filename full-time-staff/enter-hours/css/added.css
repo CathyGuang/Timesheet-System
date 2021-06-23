@@ -603,8 +603,6 @@ input::-webkit-inner-spin-button {
 
 
 .submit_background{
-
-
   width:800px;
   min-height:100px;
   position:relative;
@@ -764,5 +762,15 @@ td.text-right {
   text-align: right;
 }
 
+
+/* pay period table check */
+
+.pay_table{
+  text-align: center;
+  position: relative;
+  top: 1em;
+  padding-bottom: 50px;
+
+}
 
 

@@ -329,6 +329,9 @@
       <input type="hidden" name="InOutTime" id="InOutTime" value="INOUTTIME">
       <input type="hidden" name="Notes" id="Notes" value="NOTES">
       <input type="hidden" name="TotalTime" id="TotalTime" value="Total Hours">
+
+      <br>
+
       
 
       <div class="submit_and_cancel">

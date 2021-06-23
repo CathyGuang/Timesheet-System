@@ -773,4 +773,24 @@ td.text-right {
 
 }
 
+.pay_table_fill{
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 50px;
+  margin: auto;
+  max-width: 350px;
+  padding:5px;
+  width: 100%;
+  animation: float 5s infinite;
+  font-family: 'Trebuchet MS', sans-serif;
+
+}
+
+.pay_table_row{
+
+  font-size:20px;
+
+}
+
 

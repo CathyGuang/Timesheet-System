@@ -1298,7 +1298,7 @@ function canceled(){
 
         if (confirmed == true){
 
-            window.location.href = '/staff/core-staff-choice.php';
+            window.location.href = '/full-time-staff/index.php';
         }
 
 

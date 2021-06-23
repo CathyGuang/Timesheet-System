@@ -444,6 +444,16 @@ input::-webkit-inner-spin-button {
 }
 
 
+/*check pay period*/
+
+.check_pay_period{
+  text-align: center;
+  height: 20px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+
 /* submit and cancel */
 
 .submit_and_cancel {
@@ -455,7 +465,7 @@ input::-webkit-inner-spin-button {
 }
 
 .submit,
-.cancel,.payPeriod {
+.cancel{
     border: none;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 18px;

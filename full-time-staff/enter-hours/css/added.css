@@ -455,7 +455,7 @@ input::-webkit-inner-spin-button {
 }
 
 .submit,
-.cancel {
+.cancel,.payPeriod {
     border: none;
     font-family: 'Trebuchet MS', sans-serif;
     font-size: 18px;

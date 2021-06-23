@@ -30,27 +30,27 @@
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <div class = "pay_table">
                 <table class = "table-fill">
-                <tr>
+                <tr class = "pay_table_row">
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Pay Date</th>
                 </tr>
-                <tr>
+                <tr class = "pay_table_row">
                     <td>Peter</td>
                     <td>Griffin</td>
                     <td>$100</td>
                 </tr>
-                <tr>
+                <tr class = "pay_table_row">
                     <td>Lois</td>
                     <td>Griffin</td>
                     <td>$150</td>
                 </tr>
-                <tr>
+                <tr class = "pay_table_row">
                     <td>Joe</td>
                     <td>Swanson</td>
                     <td>$300</td>
                 </tr>
-                <tr>
+                <tr class = "pay_table_row">
                     <td>Cleveland</td>
                     <td>Brown</td>
                     <td>$250</td>

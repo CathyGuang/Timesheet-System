@@ -323,13 +323,6 @@
 
         
       </div>
-      
-
-      <div class="payroll_complete_check">
-        <p class="payroll_text">Hours complete for pay period: 
-          <input type="checkbox" name="send-email" value="true">
-        </p>
-      </div>
 
             
       <input type="hidden" name="WorkTypeHour" id="WorkTypeHour" value = "WorkTypeHour">

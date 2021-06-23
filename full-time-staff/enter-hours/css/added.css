@@ -444,7 +444,7 @@ input::-webkit-inner-spin-button {
 }
 
 
-/*check pay period*/
+/*check pay period button*/
 
 .check_pay_period{
   text-align: center;
@@ -453,6 +453,20 @@ input::-webkit-inner-spin-button {
   padding-bottom: 30px;
 }
 
+.payPeriod{
+
+  border: none;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 35px;
+  margin: 10px;
+  color: black;
+  outline: none;
+  background-color: #8beb93;
+  box-shadow: inset 0px 0px 3px #78b37b;
+
+}
 
 /* submit and cancel */
 

@@ -36,19 +36,19 @@
                     <th>Pay Date</th>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>Peter</td>
-                    <td>Griffin</td>
-                    <td>$100</td>
+                    <td>6/28/2021</td>
+                    <td>7/11/2021</td>
+                    <td>7/23/2021</td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>Lois</td>
-                    <td>Griffin</td>
-                    <td>$150</td>
+                    <td>7/26/2021</td>
+                    <td>8/8/2021</td>
+                    <td>8/20/2021</td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>Joe</td>
-                    <td>Swanson</td>
-                    <td>$300</td>
+                    <td>7/26/2021</td>
+                    <td>8/8/2021</td>
+                    <td>8/20/2021</td>
                 </tr>
                 <tr class = "pay_table_row">
                     <td>Cleveland</td>

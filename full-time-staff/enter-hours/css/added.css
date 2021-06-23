@@ -501,7 +501,8 @@ input::-webkit-inner-spin-button {
 }
 
 .submit:hover,
-.cancel:hover {
+.cancel:hover,
+.payPeriod:hover {
     cursor: pointer;
     color: white;
 }

@@ -463,8 +463,8 @@ input::-webkit-inner-spin-button {
   margin: 10px;
   color: black;
   outline: none;
-  background-color: #8beb93;
-  box-shadow: inset 0px 0px 3px #78b37b;
+  background-color: #e48f11;
+  box-shadow: inset 0px 0px 3px #b6730e;
 
 }
 
@@ -515,6 +515,12 @@ input::-webkit-inner-spin-button {
 .cancel:hover {
     background-color: #862e3d;
     box-shadow: inset 0px 0px 3px #55141f;
+}
+
+.payPeriod:hover{
+  background-color: #945e0e;
+  box-shadow: inset 0px 0px 3px #6d450a;
+
 }
 
 .submit:active,

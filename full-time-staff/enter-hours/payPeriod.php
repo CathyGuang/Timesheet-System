@@ -19,7 +19,7 @@
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
     <div class="full-time-header">
-        <p class="full-time-title">2021 Pay Period</p>
+        <p class="full-time-title">2021 Pay Period Form</p>
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>
         <a href="/"><button class="home-button">Home</button></a>
@@ -28,7 +28,33 @@
 
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
-            <p> LLLAAAAAA</p>
+            <table>
+            <tr>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Pay Date</th>
+            </tr>
+            <tr>
+                <td>Peter</td>
+                <td>Griffin</td>
+                <td>$100</td>
+            </tr>
+            <tr>
+                <td>Lois</td>
+                <td>Griffin</td>
+                <td>$150</td>
+            </tr>
+            <tr>
+                <td>Joe</td>
+                <td>Swanson</td>
+                <td>$300</td>
+            </tr>
+            <tr>
+                <td>Cleveland</td>
+                <td>Brown</td>
+                <td>$250</td>
+            </tr>
+            </table>
         </form>
 
     </div>

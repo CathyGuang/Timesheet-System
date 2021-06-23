@@ -1281,7 +1281,13 @@ function checkName(){
 }
 
 
+//staff pay period button
 
+function checkPeriod(){
+
+    window.location.href = 'payPeriod.php';
+
+}
 
 
 //reminders while submition:

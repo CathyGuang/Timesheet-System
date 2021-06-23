@@ -51,9 +51,9 @@
                     <td>8/20/2021</td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>Cleveland</td>
-                    <td>Brown</td>
-                    <td>$250</td>
+                    <td>7/26/2021</td>
+                    <td>8/8/2021</td>
+                    <td>8/20/2021</td>
                 </tr>
                 </table>
             </div>

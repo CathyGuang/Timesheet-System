@@ -29,7 +29,10 @@
 
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
-            <p id="date"></p>
+            <div>
+            Today's Date is:
+            </div>
+            <div id="date"></div>
             <script>
                 n =  new Date();
                 y = n.getFullYear();

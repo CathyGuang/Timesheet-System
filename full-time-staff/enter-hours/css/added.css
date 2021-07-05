@@ -649,10 +649,11 @@ input::-webkit-inner-spin-button {
 /* today's date displayer */
 .today_date{
   padding-top:30px;
+  padding-bottom:30px;
   text-align: center;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
-  background:blue;
+  background-color:#BD9DEA;
 }
 
 .the_date{

@@ -26,13 +26,13 @@
         </nav>
     </div>
 
-    <p id="date"></p>
-    <script>
-    document.getElementById("date").innerHTML = Date();
-    </script>
 
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
+            <p id="date"></p>
+            <script>
+            document.getElementById("date").innerHTML = Date();
+            </script>
             <div class = "pay_table">
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">

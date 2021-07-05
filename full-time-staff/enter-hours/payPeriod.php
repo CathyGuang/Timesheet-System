@@ -30,8 +30,11 @@
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <div class = "today_date">
-            Today's Date is:
-            <div class = "the_date" id="date"></div>
+                <div class = "the_date">
+                    Today's Date is:
+                    <div id="date"></div>
+                </div>
+            </div>
             <script>
                 n =  new Date();
                 y = n.getFullYear();

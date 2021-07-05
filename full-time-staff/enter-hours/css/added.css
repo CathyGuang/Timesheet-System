@@ -644,6 +644,12 @@ input::-webkit-inner-spin-button {
   
 }
 
+/* pay period table */
+
+/* today's date displayer */
+.today_date{
+  text-align: center;
+}
 
 /* pay period table*/
 

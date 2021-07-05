@@ -42,7 +42,6 @@
                 d = n.getDate();
                 document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
             </script>
-            </div>
             <div class = "pay_table">
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">

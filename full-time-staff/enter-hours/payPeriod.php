@@ -34,6 +34,9 @@
                     Today's Date is:
                     <div class = "the_date" id="date"></div>
                 </div>
+                <div>
+                    Next Due Day is:
+                </div>
             </div>
             <script>
                 n =  new Date();

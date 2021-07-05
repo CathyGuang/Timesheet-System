@@ -649,6 +649,12 @@ input::-webkit-inner-spin-button {
 /* today's date displayer */
 .today_date{
   text-align: center;
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+}
+
+.the_date{
+  font-size: 25px;
 }
 
 /* pay period table*/

@@ -32,6 +32,13 @@
             <div class = "today_date">
             Today's Date is:
             <div id="date"></div>
+            <script>
+                n =  new Date();
+                y = n.getFullYear();
+                m = n.getMonth() + 1;
+                d = n.getDate();
+                document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+            </script>
             </div>
             <div class = "pay_table">
                 <table class = "pay_table_fill">

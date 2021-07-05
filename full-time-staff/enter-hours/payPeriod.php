@@ -31,7 +31,11 @@
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <p id="date"></p>
             <script>
-            document.getElementById("date").innerHTML = Date();
+                n =  new Date();
+                y = n.getFullYear();
+                m = n.getMonth() + 1;
+                d = n.getDate();
+                document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
             </script>
             <div class = "pay_table">
                 <table class = "pay_table_fill">

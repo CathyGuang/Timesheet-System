@@ -663,8 +663,8 @@ input::-webkit-inner-spin-button {
     margin-right: 80px;
     margin-left: 80px;
     padding: 10px;
-    /* background-color:#f0f5ff; */
-    background-image: url('hor.png');
+    background-color:#f0f5ff;
+    background-image: url("horses.png");
     border-radius: 10px;
     
 }

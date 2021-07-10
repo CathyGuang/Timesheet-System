@@ -9,9 +9,8 @@ function stampToDate(n){
 
 // get today's date
 n =  new Date();
-document.getElementById("date").innerHTML =stampToDate(n);
-
-
+todayDate = stampToDate(n);
+document.getElementById("date").innerHTML =todayDate;
 
 // find next due date
 const timeStampNow = Date.now();
@@ -19,18 +18,19 @@ var timeStart = new Date("2021-06-25 23:59:59");
 var timeStampDue = timeStart.getTime();
 var nextDueStamp = 0;
 
+// CAUTION: the function only works 200 fortnights after start date, needs periodic renew
 for (let i = 0; i < 200; i++) {
-
     if(timeStampDue>= timeStampNow){
         nextDueStamp = timeStampDue;
     }
     else{
         timeStampDue = timeStampDue + 12096e5;
     }   
-
 }
+
 Due_day = new Date(nextDueStamp);
-document.getElementById("dueDate").innerHTML = stampToDate(Due_day);
+nextDueDate = stampToDate(Due_day);
+document.getElementById("dueDate").innerHTML = nextDueDate;
 
 
 

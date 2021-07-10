@@ -23,15 +23,16 @@ for (let i = 0; i < 200; i++) {
     }
     else{
         timeStampDue = timeStampDue + 12096e5;
-    }
-    
+    }   
 
 }
 
+Due_y = nextDueStamp.getFullYear();
+Due_m = nextDueStamp.getMonth() + 1;
+Due_d = nextDueStamp.getDate();
+document.getElementById("dueDate").innerHTML = Due_m + "/" + Due_d + "/" + Due_y;
 
 
-
-document.getElementById("dueDate").innerHTML = nextDueStamp;
 
 
 

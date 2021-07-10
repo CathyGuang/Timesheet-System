@@ -651,9 +651,16 @@ input::-webkit-inner-spin-button {
   padding-top:30px;
   padding-bottom:30px;
   display:grid;
+  grid-template-columns: 50% 50%;
+  align-items: start;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
   background-color:#d0b5f7;
+
+}
+
+.dates_{
+    align-self: center;
 }
 
 .the_date{

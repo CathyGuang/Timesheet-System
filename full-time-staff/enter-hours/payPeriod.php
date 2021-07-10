@@ -30,11 +30,11 @@
     <div class= "fulltime-form-container" >
         <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <div class = "today_date">
-                <div>
+                <div class = "dates_">
                     Today's Date is:
                     <div class = "the_date" id="date"></div>
                 </div>
-                <div>
+                <div class = "dates_">
                     Next Due Day is:
                     <div class = "the_date" id="dueDate"></div>
                 </div>

@@ -19,7 +19,7 @@
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
     <div class="full-time-header">
-        <p class="full-time-title">2021 Pay Period Form</p>
+        <p class="full-time-title">Pay Period Reminder</p>
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>
         <a href="/"><button class="home-button">Home</button></a>

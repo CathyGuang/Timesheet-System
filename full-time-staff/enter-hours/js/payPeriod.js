@@ -19,8 +19,6 @@ var timeStart = new Date("2021-06-25 23:59:59");
 var timeStampDue = timeStart.getTime();
 var nextDueStamp = 0;
 
-console.log(timeStampNow);
-console.log(timeStampDue);
 for (let i = 0; i < 200; i++) {
 
     if(timeStampDue>= timeStampNow){
@@ -31,11 +29,8 @@ for (let i = 0; i < 200; i++) {
     }   
 
 }
-var Due_day = new Date(nextDueStamp);
-Due_y = Due_day.getFullYear();
-Due_m = Due_day.getMonth() + 1;
-Due_d = Due_day.getDate();
-document.getElementById("dueDate").innerHTML = Due_m + "/" + Due_d + "/" + Due_y;
+Due_day = new Date(nextDueStamp);
+document.getElementById("dueDate").innerHTML = stampToDate(Due_day);
 
 
 

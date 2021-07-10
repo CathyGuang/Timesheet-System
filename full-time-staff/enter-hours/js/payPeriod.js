@@ -30,7 +30,14 @@ for (let i = 0; i < 200; i++) {
 
 Due_day = new Date(nextDueStamp);
 nextDueDate = stampToDate(Due_day);
-document.getElementById("dueDate").innerHTML = nextDueDate;
+
+//if due date is today, say is today. if not, show next due date
+if(nextDueDate ==todayDate ){
+    document.getElementById("dueDate").innerHTML = "IS TODAY!!!";
+}
+else{
+    document.getElementById("dueDate").innerHTML = nextDueDate;
+}
 
 
 

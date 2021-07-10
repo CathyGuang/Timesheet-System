@@ -38,13 +38,7 @@
                     Next Due Day is:
                 </div>
             </div>
-            <script>
-                n =  new Date();
-                y = n.getFullYear();
-                m = n.getMonth() + 1;
-                d = n.getDate();
-                document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
-            </script>
+            <script type="text/javascript" src="js/payPeriod.js"></script>
             <div class = "pay_table">
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">

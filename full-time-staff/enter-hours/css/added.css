@@ -650,7 +650,7 @@ input::-webkit-inner-spin-button {
 .today_date{
   padding-top:30px;
   padding-bottom:30px;
-  text-align: center;
+  text-align: float;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
   background-color:#d0b5f7;

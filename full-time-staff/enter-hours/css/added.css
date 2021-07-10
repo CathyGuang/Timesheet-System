@@ -621,8 +621,6 @@ input::-webkit-inner-spin-button {
   top:0;
   padding-top: 10px;
   
-  
-  
 
 }
 
@@ -666,6 +664,7 @@ input::-webkit-inner-spin-button {
     margin-left: 80px;
     padding: 10px;
     background-color:#f0f5ff;
+    border-radius: 10px;
     
 }
 

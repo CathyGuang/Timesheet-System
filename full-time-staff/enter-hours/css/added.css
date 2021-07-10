@@ -666,6 +666,7 @@ input::-webkit-inner-spin-button {
     background-color:#f0f5ff;
     background-image: url("hor.png");
     border-radius: 10px;
+    border: 2px solid #BD9DEA;
     
 }
 

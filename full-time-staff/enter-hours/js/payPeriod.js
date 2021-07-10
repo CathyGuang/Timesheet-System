@@ -1,16 +1,21 @@
 
+// transform time-stamp to readible date
+function stampToDate(n){
+    y = n.getFullYear();
+    m = n.getMonth() + 1;
+    d = n.getDate();
+    return m + "/" + d + "/" + y;
+}
+
 // get today's date
 n =  new Date();
-y = n.getFullYear();
-m = n.getMonth() + 1;
-d = n.getDate();
-document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
+document.getElementById("date").innerHTML =stampToDate(n);
 
 
 
 // find next due date
 const timeStampNow = Date.now();
-var timeStart = new Date("2021-06-24 23:59:59");
+var timeStart = new Date("2021-06-25 23:59:59");
 var timeStampDue = timeStart.getTime();
 var nextDueStamp = 0;
 

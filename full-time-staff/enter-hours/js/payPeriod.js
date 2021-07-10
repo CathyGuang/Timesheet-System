@@ -34,6 +34,7 @@ nextDueDate = stampToDate(Due_day);
 //if due date is today, say is today. if not, show next due date
 if(nextDueDate ==todayDate ){
     document.getElementById("dueDate").innerHTML = "IS TODAY!!!";
+    document.getElementById("dueDate").style.color = "red";
 }
 else{
     document.getElementById("dueDate").innerHTML = nextDueDate;

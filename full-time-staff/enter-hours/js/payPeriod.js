@@ -9,13 +9,21 @@ document.getElementById("date").innerHTML = m + "/" + d + "/" + y;
 
 
 // find next due date
-var timeStampNow = Date.now();
-var timeStamp = new Date("2021-07-09 23:59:59");
-var timeStampStart = timeStamp.getTime();
+const timeStampNow = Date.now();
+var timeStart = new Date("2021-07-09 23:59:59");
+var timeStampDue = timeStart.getTime();
+var nextDueStamp = 0;
 
 console.log(timeStampNow);
-console.log(timeStampStart);
+console.log(timeStampDue);
 for (let i = 0; i < 200; i++) {
+
+    if(timeStampDue>= timeStampNow){
+        nextDueStamp = timeStampDue;
+    }
+    else{
+        timeStampDue = timeStampDue + 12096e5;
+    }
     
 
 }
@@ -23,7 +31,7 @@ for (let i = 0; i < 200; i++) {
 
 
 
-document.getElementById("dueDate").innerHTML = "dummy Date";
+document.getElementById("dueDate").innerHTML = nextDueStamp;
 
 
 

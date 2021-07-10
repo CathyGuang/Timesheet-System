@@ -36,6 +36,7 @@
                 </div>
                 <div>
                     Next Due Day is:
+                    <div class = "the_date" id="dueDate"></div>
                 </div>
             </div>
             <script type="text/javascript" src="js/payPeriod.js"></script>

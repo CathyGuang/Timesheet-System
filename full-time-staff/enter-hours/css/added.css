@@ -655,12 +655,13 @@ input::-webkit-inner-spin-button {
   align-items: start;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
+  background-color:#d0b5f7;
 
 }
 
 .dates_{
     text-align: center;
-    background-color:#d0b5f7;
+    
 }
 
 .the_date{

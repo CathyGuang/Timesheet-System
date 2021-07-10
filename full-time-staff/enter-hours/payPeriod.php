@@ -34,7 +34,7 @@
                     Today's Date is:
                     <div class = "the_date" id="date"></div>
                 </div>
-                <div class = "dates_">
+                <div id = "next_due_day" class = "dates_">
                     Next Due Day is:
                     <div class = "the_date" id="dueDate"></div>
                 </div>

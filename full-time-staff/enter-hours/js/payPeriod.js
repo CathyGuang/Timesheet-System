@@ -35,6 +35,7 @@ nextDueDate = stampToDate(Due_day);
 if(nextDueDate ==todayDate ){
     document.getElementById("dueDate").innerHTML = "IS TODAY!!!";
     document.getElementById("dueDate").style.color = "red";
+    document.getElementById("next_due_day").style.backgroundColor = "yellow";
 }
 else{
     document.getElementById("dueDate").innerHTML = nextDueDate;

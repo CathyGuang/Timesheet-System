@@ -660,7 +660,7 @@ input::-webkit-inner-spin-button {
 }
 
 .dates_{
-    align-self: center;
+    text-align: center;
 }
 
 .the_date{

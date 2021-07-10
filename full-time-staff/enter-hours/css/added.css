@@ -661,6 +661,10 @@ input::-webkit-inner-spin-button {
 
 .dates_{
     text-align: center;
+    padding-left: 20px;
+    margin-right: 80px;
+    margin-left: 80px;
+    padding: 10px;
     
 }
 

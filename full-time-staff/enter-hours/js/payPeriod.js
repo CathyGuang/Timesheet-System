@@ -26,10 +26,10 @@ for (let i = 0; i < 200; i++) {
     }   
 
 }
-
-Due_y = nextDueStamp.getFullYear();
-Due_m = nextDueStamp.getMonth() + 1;
-Due_d = nextDueStamp.getDate();
+var Due_day = new Date(nextDueStamp);
+Due_y = Due_day.getFullYear();
+Due_m = Due_day.getMonth() + 1;
+Due_d = Due_day.getDate();
 document.getElementById("dueDate").innerHTML = Due_m + "/" + Due_d + "/" + Due_y;
 
 

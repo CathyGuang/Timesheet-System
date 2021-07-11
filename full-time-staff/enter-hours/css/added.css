@@ -654,7 +654,7 @@ input::-webkit-inner-spin-button {
     background-color:#ebdcff;
 }
 .purple_block{
-    background-color:#d0b5f7;
+    background: url("hor.png"), #d0b5f7;
 }
 .today_date{
   padding-top:30px;

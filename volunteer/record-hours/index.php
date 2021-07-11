@@ -89,15 +89,15 @@
 
   <datalist id="shift-type-list">
     <?php
-      $horseCareShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CARE_TYPE));"));
+      $horseCareShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::CARE_TYPE))::text EXCEPT SELECT name FROM archived_enums;"));
       foreach ($horseCareShiftTypes as $value) {
         echo "<option value='{$value}'>";
       }
-      $officeShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE));"));
+      $officeShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::OFFICE_SHIFT_TYPE))::text EXCEPT SELECT name FROM archived_enums;"));
       foreach ($officeShiftTypes as $value) {
         echo "<option value='{$value}'>";
       }
-      $classShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE));"));
+      $classShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::VOLUNTEER_CLASS_ROLE))::text EXCEPT SELECT name FROM archived_enums;"));
       foreach ($classShiftTypes as $value) {
         echo "<option value='{$value}'>";
       }

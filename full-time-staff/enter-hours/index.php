@@ -374,7 +374,7 @@
 
   <datalist id="work-type-list">
     <?php
-      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE));"));
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE))::text EXCEPT SELECT name FROM archived_enums;"));
       foreach ($staffShiftTypes as $value) {
         echo "{$value},";
       }

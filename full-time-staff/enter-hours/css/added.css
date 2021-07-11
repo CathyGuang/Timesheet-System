@@ -720,6 +720,7 @@ input::-webkit-inner-spin-button {
 
 .pay_table_unit{
     padding:15px;
+    border-radius:10px;
 }
 
 

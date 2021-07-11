@@ -26,9 +26,9 @@
         <form>
         <input type="button"class="back-button" value="Back" onclick="history.back()">
         </form>
+        <a href="/"><button class="home-button">View Hours</button></a> 
         <a href="/"><button class="home-button">Home</button></a>
-        
-        
+         
         </nav>
     </div>
 

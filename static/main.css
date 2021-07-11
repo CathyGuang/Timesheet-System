@@ -111,6 +111,8 @@ nav>* {
 
 .check_pay_period_button:hover{
     background-color: blue;
+    font-size:17px;
+    background-color:#fdb13e;
 }
 
 

@@ -109,10 +109,22 @@ nav>* {
     width: 100%;
 }
 
+.check_pay_period_button{
+    background-color:#fdb13e;
+    font-size:17px;
+    height: 100%;
+    width: 100%;
+    border: 2px solid #4829ad;
+    border-radius: 2px;
+    transition-duration: .25s;
+    -webkit-transition-duration: .25s;
+    font-family: inherit;
+    font-size: inherit;
+
+}
 .check_pay_period_button:hover{
     background-color: blue;
-    font-size:17px;
-    background-color:#fdb13e;
+
 }
 
 

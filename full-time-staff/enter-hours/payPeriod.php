@@ -45,7 +45,6 @@
                     </div>
                 </div>
             </div>
-            <script type="text/javascript" src="js/payPeriod.js"></script>
             <div class = "pay_table">
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">
@@ -75,6 +74,7 @@
                 </tr>
                 </table>
             </div>
+            <script type="text/javascript" src="js/payPeriod.js"></script>
 
     </div>
 

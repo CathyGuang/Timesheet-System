@@ -17,7 +17,9 @@
     <h1>Staff Hours</h1>
     <nav> 
       <button onclick="history.back()" >Back</button>
-      <button class = "check_pay_period_button">Check Pay Periods</button>
+      <form>
+        <input type="button"class="check_pay_period_button" value="Check Pay Periods" onclick="history.back()">
+      </form>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

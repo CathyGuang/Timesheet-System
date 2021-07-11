@@ -28,14 +28,16 @@
 
 
     <div class= "fulltime-form-container" >
-            <div class = "today_date">
-                <div class = "dates_">
-                    Today's Date is:
-                    <div class = "the_date" id="date"></div>
-                </div>
-                <div id = "next_due_day" class = "dates_">
-                    Next Due Day is:
-                    <div class = "the_date" id="dueDate"></div>
+            <div class = "purple_block">
+                <div class = "today_date">
+                    <div class = "dates_">
+                        Today's Date is:
+                        <div class = "the_date" id="date"></div>
+                    </div>
+                    <div id = "next_due_day" class = "dates_">
+                        Next Due Day is:
+                        <div class = "the_date" id="dueDate"></div>
+                    </div>
                 </div>
             </div>
             <script type="text/javascript" src="js/payPeriod.js"></script>

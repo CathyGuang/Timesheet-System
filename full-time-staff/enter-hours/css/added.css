@@ -645,6 +645,9 @@ input::-webkit-inner-spin-button {
 /* pay period table */
 
 /* today's date displayer */
+.purple_block{
+    background-color:#d0b5f7;
+}
 .today_date{
   padding-top:30px;
   padding-bottom:30px;
@@ -653,7 +656,6 @@ input::-webkit-inner-spin-button {
   align-items: start;
   font-family: 'Trebuchet MS', sans-serif;
   font-size: 25px;
-  background-color:#d0b5f7;
 
 }
 

@@ -67,8 +67,8 @@ document.getElementById("3_start_date").innerHTML = stampToDate(new Date(addTwoW
 document.getElementById("3_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,2)));
 document.getElementById("3_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,2)));
 
-document.getElementById("3_start_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextStartStamp,3)));
-document.getElementById("3_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,3)));
-document.getElementById("3_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,3)));
+document.getElementById("4_start_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextStartStamp,3)));
+document.getElementById("4_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,3)));
+document.getElementById("4_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,3)));
 
 

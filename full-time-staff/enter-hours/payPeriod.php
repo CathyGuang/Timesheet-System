@@ -45,6 +45,11 @@
                     </div>
                 </div>
             </div>
+            <div class = "light_purple_block">
+                <div class = "reminder_under_title">
+                    Pay Periods and Pay Dates
+                </div>
+            </div>
             <div class = "pay_table">
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">

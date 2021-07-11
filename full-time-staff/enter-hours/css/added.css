@@ -656,6 +656,11 @@ input::-webkit-inner-spin-button {
 .purple_block{
     background: url("horTrans.png"), #d0b5f7;
 }
+
+.light_purple_block{
+    background: url("horTrans.png"), #ebdcff;
+}
+
 .today_date{
   padding-top:30px;
   padding-bottom:30px;

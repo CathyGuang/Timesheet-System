@@ -29,6 +29,9 @@
 
     <div class= "fulltime-form-container" >
             <div class = "purple_block">
+                <div>
+                    Timesheets need to be completed by Tuesday noon.
+                </div>
                 <div class = "today_date">
                     <div class = "dates_">
                         Today's Date is:

@@ -650,6 +650,7 @@ input::-webkit-inner-spin-button {
     text-align: center;
     padding-top:20px; 
     font-family: 'Trebuchet MS', sans-serif; 
+    background-color:#ebdcff;
 }
 .purple_block{
     background-color:#d0b5f7;

@@ -666,15 +666,15 @@ input::-webkit-inner-spin-button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    width: 58%;
     position: relative;
 }
 
 .reminder_under_title{
     font-size :20px;
     text-align: center;
-    padding-top:20px; 
-    padding-bottom:20px; 
+    padding-top:15px; 
+    padding-bottom:15px; 
     font-family: 'Trebuchet MS', sans-serif; 
     background-color:#ebdcff;
 }
@@ -693,7 +693,7 @@ input::-webkit-inner-spin-button {
   grid-template-columns: 50% 50%;
   align-items: start;
   font-family: 'Trebuchet MS', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
 
 }
 

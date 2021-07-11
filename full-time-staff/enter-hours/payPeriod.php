@@ -62,9 +62,9 @@
                     <th class ="pay_table_unit" >Pay Date</th>
                 </tr>
                 <tr class = "pay_table_row" style= "background-color:#b3def3;">
-                    <td class ="pay_table_unit" id = "1_start_date"></td>
-                    <td class ="pay_table_unit" id = "1_end_date"></td>
-                    <td class ="pay_table_unit" id = "1_pay_date"></td>
+                    <td class ="pay_table_unit" style = "border: 2px solid #A0D2EB;" id = "1_start_date"></td>
+                    <td class ="pay_table_unit" style = "border: 2px solid #A0D2EB;"id = "1_end_date"></td>
+                    <td class ="pay_table_unit" style = "border: 2px solid #A0D2EB;"id = "1_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
                     <td class ="pay_table_unit"id = "2_start_date"></td>

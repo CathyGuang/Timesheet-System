@@ -702,7 +702,6 @@ input::-webkit-inner-spin-button {
   border: 2px solid #BD9DEA;
   background-color:#f0f5ff;
   border-radius:10px;
-  padding: 10px;
   border-collapse: collapse;
   height: 50px;
   margin: auto;
@@ -717,6 +716,7 @@ input::-webkit-inner-spin-button {
 .pay_table_row{
 
   font-size:20px;
+  padding: 10px;
 
 }
 

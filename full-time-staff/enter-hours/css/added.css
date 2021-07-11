@@ -671,7 +671,7 @@ input::-webkit-inner-spin-button {
 }
 
 .reminder_under_title{
-    font-size :20px;
+    font-size :18px;
     text-align: center;
     padding-top:15px; 
     padding-bottom:15px; 
@@ -687,8 +687,8 @@ input::-webkit-inner-spin-button {
 }
 
 .today_date{
-  padding-top:30px;
-  padding-bottom:30px;
+  padding-top:20px;
+  padding-bottom:20px;
   display:grid;
   grid-template-columns: 50% 50%;
   align-items: start;
@@ -739,7 +739,7 @@ input::-webkit-inner-spin-button {
 
 .pay_table_row{
 
-  font-size:20px;
+  font-size:18px;
 
 }
 

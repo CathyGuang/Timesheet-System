@@ -45,7 +45,7 @@
                     </div>
                 </div>
             </div>
-            <div class = "purple_block">
+            <div class = "purple_block" style = "margin-bottom: 40px;">
                 <div class = "reminder_under_title">
                     Pay Periods and Pay Dates
                 </div>

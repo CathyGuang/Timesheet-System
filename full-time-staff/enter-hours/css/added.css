@@ -661,6 +661,15 @@ input::-webkit-inner-spin-button {
 /* pay period table */
 
 /* today's date displayer */
+
+.Payperiod-form-container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    position: relative;
+}
+
 .reminder_under_title{
     font-size :22px;
     text-align: center;

@@ -68,14 +68,14 @@
                     <td id = "2_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td id = "3_start_date"></td>
+                    <td id = "3_end_date"></td>
+                    <td id = "3_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td id = "4_start_date"></td>
+                    <td id = "4_end_date"></td>
+                    <td id = "4_pay_date"></td>
                 </tr>
                 </table>
             </div>

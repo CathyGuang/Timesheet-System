@@ -63,6 +63,12 @@ document.getElementById("2_start_date").innerHTML = stampToDate(new Date(addTwoW
 document.getElementById("2_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,1)));
 document.getElementById("2_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,1)));
 
+document.getElementById("3_start_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextStartStamp,2)));
+document.getElementById("3_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,2)));
+document.getElementById("3_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,2)));
 
+document.getElementById("3_start_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextStartStamp,3)));
+document.getElementById("3_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,3)));
+document.getElementById("3_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,3)));
 
 

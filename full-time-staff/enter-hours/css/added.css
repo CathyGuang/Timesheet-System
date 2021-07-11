@@ -646,9 +646,10 @@ input::-webkit-inner-spin-button {
 
 /* today's date displayer */
 .reminder_under_title{
-    font-size :18px;
+    font-size :22px;
     text-align: center;
-    padding-top:15px;  
+    padding-top:20px; 
+    font-family: 'Trebuchet MS', sans-serif; 
 }
 .purple_block{
     background-color:#d0b5f7;

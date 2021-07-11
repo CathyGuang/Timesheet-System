@@ -646,7 +646,8 @@ input::-webkit-inner-spin-button {
 
 /* today's date displayer */
 .reminder_under_title{
-    font-size :18px;  
+    font-size :18px;
+    text-align: center;  
 }
 .purple_block{
     background-color:#d0b5f7;

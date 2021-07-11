@@ -49,8 +49,8 @@
                 <div class = "reminder_under_title">
                     Pay Periods and Pay Dates
                 </div>
-            </div>
-            <div class = "pay_table">
+                <div class = "pay_table">
+                    
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">
                     <th>Start Date</th>
@@ -78,6 +78,8 @@
                     <td>8/20/2021</td>
                 </tr>
                 </table>
+            </div>
+
             </div>
             <script type="text/javascript" src="js/payPeriod.js"></script>
 

@@ -112,13 +112,13 @@ nav>* {
 .check_pay_period_button{
     background-color:#fdb13e;
     font-size:17px;
-    height: 3em;
+    height: 3.5em;
     width: 100%;
     border: 2px solid #4829ad;
     border-radius: 2px;
     transition-duration: .25s;
     -webkit-transition-duration: .25s;
-    font-family: inherit;
+    font-family:inherit;
 
 }
 .check_pay_period_button:hover{

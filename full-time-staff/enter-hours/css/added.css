@@ -705,7 +705,7 @@ input::-webkit-inner-spin-button {
   border-collapse: collapse;
   height: 50px;
   margin: auto;
-  max-width: 350px;
+  max-width: 600px;
   padding:5px;
   width: 100%;
   animation: float 5s infinite;
@@ -717,6 +717,10 @@ input::-webkit-inner-spin-button {
 
   font-size:20px;
 
+}
+
+.pay_table_unit{
+    padding:20px;
 }
 
 

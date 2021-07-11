@@ -53,9 +53,9 @@
 
                 <table class = "pay_table_fill">
                 <tr class = "pay_table_row">
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Pay Date</th>
+                    <th class ="pay_table_unit" >Start Date</th>
+                    <th class ="pay_table_unit" >End Date</th>
+                    <th class ="pay_table_unit" >Pay Date</th>
                 </tr>
                 <tr class = "pay_table_row">
                     <td id = "1_start_date"></td>

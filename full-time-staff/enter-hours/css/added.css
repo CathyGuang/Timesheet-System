@@ -666,12 +666,12 @@ input::-webkit-inner-spin-button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 60%;
     position: relative;
 }
 
 .reminder_under_title{
-    font-size :22px;
+    font-size :20px;
     text-align: center;
     padding-top:20px; 
     padding-bottom:20px; 
@@ -739,7 +739,7 @@ input::-webkit-inner-spin-button {
 
 .pay_table_row{
 
-  font-size:24px;
+  font-size:20px;
 
 }
 

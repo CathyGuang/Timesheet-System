@@ -19,7 +19,6 @@
       <form>
         <input type="button" id="back-button" value="Back" onclick="history.back()">
       </form>
-      <a href="../"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

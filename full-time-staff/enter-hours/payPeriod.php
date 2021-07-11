@@ -19,7 +19,7 @@
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
     <div class="full-time-header">
-        <div class="full-time-title"  style="top:10px;">Pay Period Reminder
+        <div class="full-time-title"  style="top:5px;">Pay Period Reminder
             <div class = "reminder_under_title">
                 Timesheets need to be completed by Tuesday noon.
             </div>

@@ -20,6 +20,7 @@
   <div class="main-content-div">
     <a href="view-hours"><button class="green-button">View Hours</button></a>
     <a href="enter-hours"><button class="blue-button">Enter Hours</button></a>
+    <a href="enter-hours"><button class="green-button">Enter PTO/Holiday Hours</button></a>
   </div>
 
 </body>

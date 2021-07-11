@@ -14,7 +14,7 @@ document.getElementById("date").innerHTML =todayDate;
 
 // find next due date
 const timeStampNow = Date.now();
-var timeStart = new Date("2021-06-25 23:59:59");
+var timeStart = new Date("2021-06-27 23:59:59");
 var timeStampDue = timeStart.getTime();
 var nextDueStamp = 0;
 

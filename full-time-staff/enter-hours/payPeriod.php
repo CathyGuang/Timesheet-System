@@ -19,11 +19,11 @@
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
 
     <div class="full-time-header">
-        <p class="full-time-title">Pay Period Reminder
+        <div class="full-time-title">Pay Period Reminder
             <div>
                 Timesheets need to be completed by Tuesday noon.
             </div>
-        </p>
+        </div>
         
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>

@@ -18,7 +18,7 @@
     <nav> 
       <button onclick="history.back()" >Back</button>
       <form>
-        <input type="button"class="check_pay_period_button" value="Check Pay Periods" onclick="history.back()">
+        <input type="button" class="check_pay_period_button" value="Check Pay Periods" onclick="history.back()">
       </form>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

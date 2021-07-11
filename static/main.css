@@ -122,7 +122,8 @@ nav>* {
 
 }
 .check_pay_period_button:hover{
-    background-color: blue;
+    background-color: var(--dark-purple);
+    color: white;
 
 }
 

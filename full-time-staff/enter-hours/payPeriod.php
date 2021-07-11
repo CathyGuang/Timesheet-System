@@ -58,24 +58,24 @@
                     <th>Pay Date</th>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>6/28/2021</td>
-                    <td>7/11/2021</td>
-                    <td>7/23/2021</td>
+                    <td id = "1_start_date"></td>
+                    <td id = "1_end_date"></td>
+                    <td id = "1_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>7/26/2021</td>
-                    <td>8/8/2021</td>
-                    <td>8/20/2021</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>7/26/2021</td>
-                    <td>8/8/2021</td>
-                    <td>8/20/2021</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td>7/26/2021</td>
-                    <td>8/8/2021</td>
-                    <td>8/20/2021</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 </table>
             </div>

@@ -104,6 +104,15 @@ nav>* {
     width: 100%;
 }
 
+#back-button {
+    height: 3em;
+    width: 100%;
+}
+
+.check_pay_period_button:hover{
+    background-color: blue;
+}
+
 
 /* MAIN CONTENT STYLES */
 

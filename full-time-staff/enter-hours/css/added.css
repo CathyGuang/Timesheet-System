@@ -684,7 +684,7 @@ input::-webkit-inner-spin-button {
   grid-template-columns: 50% 50%;
   align-items: start;
   font-family: 'Trebuchet MS', sans-serif;
-  font-size: 25px;
+  font-size: 24px;
 
 }
 
@@ -701,7 +701,7 @@ input::-webkit-inner-spin-button {
 }
 
 .the_date{
-  font-size: 35px;
+  font-size: 30px;
 }
 
 /* pay period table*/

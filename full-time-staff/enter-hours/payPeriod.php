@@ -56,12 +56,12 @@
                 <div class = "pay_table">
 
                 <table class = "pay_table_fill">
-                <tr class = "pay_table_row" style= "background-color:blue;">
+                <tr class = "pay_table_row">
                     <th class ="pay_table_unit" >Start Date</th>
                     <th class ="pay_table_unit" >End Date</th>
                     <th class ="pay_table_unit" >Pay Date</th>
                 </tr>
-                <tr class = "pay_table_row">
+                <tr class = "pay_table_row" style= "background-color:#A0D2EB;">
                     <td class ="pay_table_unit" id = "1_start_date"></td>
                     <td class ="pay_table_unit" id = "1_end_date"></td>
                     <td class ="pay_table_unit" id = "1_pay_date"></td>

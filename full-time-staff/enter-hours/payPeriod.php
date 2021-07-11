@@ -24,7 +24,11 @@
         
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>
-       <button class="home-button" onclick="history.back()">Home</button>
+        <a href="/"><button class="home-button">Home</button></a>
+        <form>
+        <input type="button"class="back-button" value="Go back!" onclick="history.back()">
+        </form>
+        
         </nav>
     </div>
 

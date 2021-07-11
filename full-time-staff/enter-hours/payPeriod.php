@@ -24,7 +24,7 @@
         
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>
-        <a href="/"><button class="home-button">Home</button></a>
+       <button class="home-button" onclick="history.back()">Home</button>
         </nav>
     </div>
 

@@ -18,7 +18,7 @@
     <nav> 
       <button onclick="history.back()" >Back</button>
       <form>
-        <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\..\enter-hours\payPeriod.php';">
+        <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\../enter-hours/payPeriod.php';">
       </form>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

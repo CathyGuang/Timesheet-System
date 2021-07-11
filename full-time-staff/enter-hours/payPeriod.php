@@ -58,29 +58,29 @@
                     <th class ="pay_table_unit" >Pay Date</th>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td id = "1_start_date"></td>
-                    <td id = "1_end_date"></td>
-                    <td id = "1_pay_date"></td>
+                    <td class ="pay_table_unit" id = "1_start_date"></td>
+                    <td class ="pay_table_unit" id = "1_end_date"></td>
+                    <td class ="pay_table_unit" id = "1_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td id = "2_start_date"></td>
-                    <td id = "2_end_date"></td>
-                    <td id = "2_pay_date"></td>
+                    <td class ="pay_table_unit"id = "2_start_date"></td>
+                    <td class ="pay_table_unit"id = "2_end_date"></td>
+                    <td class ="pay_table_unit"id = "2_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td id = "3_start_date"></td>
-                    <td id = "3_end_date"></td>
-                    <td id = "3_pay_date"></td>
+                    <td class ="pay_table_unit"id = "3_start_date"></td>
+                    <td class ="pay_table_unit"id = "3_end_date"></td>
+                    <td class ="pay_table_unit"id = "3_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td id = "4_start_date"></td>
-                    <td id = "4_end_date"></td>
-                    <td id = "4_pay_date"></td>
+                    <td class ="pay_table_unit"id = "4_start_date"></td>
+                    <td class ="pay_table_unit"id = "4_end_date"></td>
+                    <td class ="pay_table_unit"id = "4_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td id = "5_start_date"></td>
-                    <td id = "5_end_date"></td>
-                    <td id = "5_pay_date"></td>
+                    <td class ="pay_table_unit"id = "5_start_date"></td>
+                    <td class ="pay_table_unit"id = "5_end_date"></td>
+                    <td class ="pay_table_unit"id = "5_pay_date"></td>
                 </tr>
                 </table>
             </div>

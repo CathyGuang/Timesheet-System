@@ -59,6 +59,10 @@ document.getElementById("1_start_date").innerHTML = stampToDate(new Date(nextSta
 document.getElementById("1_end_date").innerHTML = nextDueDate;
 document.getElementById("1_pay_date").innerHTML = stampToDate(new Date(nextPayStamp));
 
+document.getElementById("2_start_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextStartStamp,1)));
+document.getElementById("2_end_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextDueStamp,1)));
+document.getElementById("2_pay_date").innerHTML = stampToDate(new Date(addTwoWeeks(nextPayStamp,1)));
+
 
 
 

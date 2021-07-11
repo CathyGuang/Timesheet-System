@@ -63,9 +63,9 @@
                     <td id = "1_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td id = "2_start_date"></td>
+                    <td id = "2_end_date"></td>
+                    <td id = "2_pay_date"></td>
                 </tr>
                 <tr class = "pay_table_row">
                     <td></td>

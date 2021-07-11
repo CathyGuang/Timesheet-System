@@ -33,7 +33,7 @@
     </div>
 
 
-    <div class= "fulltime-form-container" >
+    <div class= "Payperiod-form-container" >
             <div class = "purple_block">
                 <div class = "reminder_under_title">
                     Timesheets need to be completed by Tuesday noon.

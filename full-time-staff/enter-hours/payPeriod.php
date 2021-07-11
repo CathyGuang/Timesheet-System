@@ -28,7 +28,6 @@
 
 
     <div class= "fulltime-form-container" >
-        <form class="white-background" method="post" name="myform" id="myform" action="full-time.php">
             <div class = "today_date">
                 <div class = "dates_">
                     Today's Date is:
@@ -69,7 +68,6 @@
                 </tr>
                 </table>
             </div>
-        </form>
 
     </div>
 

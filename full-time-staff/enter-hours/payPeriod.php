@@ -20,6 +20,9 @@
 
     <div class="full-time-header">
         <p class="full-time-title">Pay Period Reminder</p>
+        <div>
+            Timesheets need to be completed by Tuesday noon.
+        </div>
         <nav class="button-container"> 
         `<a href="../">`<button class="back-button">Back</button></a>
         <a href="/"><button class="home-button">Home</button></a>
@@ -29,9 +32,6 @@
 
     <div class= "fulltime-form-container" >
             <div class = "purple_block">
-                <div>
-                    Timesheets need to be completed by Tuesday noon.
-                </div>
                 <div class = "today_date">
                     <div class = "dates_">
                         Today's Date is:

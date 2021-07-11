@@ -17,7 +17,7 @@
     <h1>Staff Hours</h1>
     <nav> 
       <button onclick="history.back()" >Back</button>
-      <div class= "check_pay_period_button"><button >Check Pay Periods</button></div>
+      <button style="font-size:17px;background-color:#fdb13e;">Check Pay Periods</button></div>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>

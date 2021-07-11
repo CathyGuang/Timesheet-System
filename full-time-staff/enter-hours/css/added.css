@@ -695,13 +695,13 @@ input::-webkit-inner-spin-button {
   top: 1em;
   padding-top: 50px;
   padding-bottom: 50px;
-  border-radius:10px;
 
 }
 
 .pay_table_fill{
   border: 2px solid #BD9DEA;
   background-color:#f0f5ff;
+  border-radius:10px;
   border-collapse: collapse;
   height: 50px;
   margin: auto;

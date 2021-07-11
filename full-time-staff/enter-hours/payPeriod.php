@@ -20,7 +20,7 @@
 
     <div class="full-time-header">
         <div class="full-time-title">Pay Period Reminder
-            <div>
+            <div class = "reminder_under_title">
                 Timesheets need to be completed by Tuesday noon.
             </div>
         </div>

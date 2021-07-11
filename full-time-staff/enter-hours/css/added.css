@@ -645,6 +645,9 @@ input::-webkit-inner-spin-button {
 /* pay period table */
 
 /* today's date displayer */
+.reminder_under_title{
+    font-size :12px;
+}
 .purple_block{
     background-color:#d0b5f7;
 }

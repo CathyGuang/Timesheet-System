@@ -818,6 +818,7 @@ input::-webkit-inner-spin-button {
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
+    color:red;
 }
 [type="radio"]:not(:checked) + label:after {
     opacity: 0;
@@ -828,6 +829,5 @@ input::-webkit-inner-spin-button {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
-    color:red;
 }
 

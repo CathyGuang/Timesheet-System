@@ -753,6 +753,6 @@ input::-webkit-inner-spin-button {
 .PTO-button-container{
     text-align: center;
     position: relative;
-    display: grid;
-    bottom: -10em;
+    display:inline-block;
+    bottom: -8em;
 }

@@ -69,6 +69,9 @@
             <div class = "time-range-title">
                 Enter Hours
             </div>
+            <div>
+            <input type="number" id="quantity" name="quantity" min="0" max="50">
+            </div>
         </div>
      
 

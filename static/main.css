@@ -39,7 +39,14 @@ button {
 }
 
 .green-button {
-    box-shadow: inset 0px 0px 8px var(--dark-green);
+    box-shadow: inset 0px 0px 6px var(--dark-green);
+}
+
+.red-button {
+    box-shadow: inset 0px 0px 6px var(--background-red);
+}
+.blue-button {
+    box-shadow: inset 0px 0px 6px var(--dark-blue);
 }
 
 button:hover {

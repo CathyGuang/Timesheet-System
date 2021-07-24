@@ -19,7 +19,7 @@
 
 <body class= "full-time-report" style="background-color:#bddff4;min-width:1226px;background-image: url('/full-time-staff/enter-hours/hor.png')">
    
-  <img src="holi.png" class= "holiday_horse" alt="horse picture">
+  <img src="ho.png" class= "holiday_horse" alt="horse picture">
 
   <div class="full-time-header">
     <p class="full-time-title">Enter PTO/Holiday Hours</p>

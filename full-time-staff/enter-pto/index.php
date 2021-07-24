@@ -48,18 +48,6 @@
             
         </div>
      
-
-        
-        <div class="submit_and_cancel">
-            <button type="button" class="cancel" onclick="canceled();" >Cancel</button>
-            <button type="button" class="submit" onclick="submitted();" >Submit</button>
-        
-        </div>
-
-        <div class = "check_pay_period">
-            <button type="button" class = "payPeriod" onclick="checkPeriod();" >Check Pay Periods</button>
-
-        </div>
           
         
 

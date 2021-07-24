@@ -92,7 +92,8 @@
 
     
 
-            <div class = "check_pay_period">
+            <div class = "check_pay_period" style = "position: absolute;
+            left: 320px;">
 
                 <button type="button" class = "payPeriod" >Check Pay Periods</button>
 

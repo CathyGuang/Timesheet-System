@@ -30,6 +30,7 @@ button {
     /* border: 1px solid #4829ad; */
     border-radius: 10px;
     outline: none;
+    border: none;
     transition-duration: .25s;
     -webkit-transition-duration: .25s;
     font-family: inherit;

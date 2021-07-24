@@ -6,11 +6,11 @@
   <script type="text/javascript" src="/static/jquery.min.js"></script>
   <script type="text/javascript" src="/static/jquery-ui.js"></script>
   <link rel="stylesheet" href="/static/enter_hour.css">
-  <link rel="stylesheet" href="\../enter-hours/css/slider.css">
-  <link rel="stylesheet" href="\../enter-hours/css/jquery-ui.css">
-  <link rel="stylesheet" href="\../enter-hours/css/rangeslider.css">
-  <link rel="stylesheet" href="\../enter-hours/css/added.css">
-  <link rel="stylesheet" href="\../enter-hours/css/choices.css">
+  <link rel="stylesheet" href="/full-time-staff//enter-hours/css/slider.css">
+  <link rel="stylesheet" href="/full-time-staff//enter-hours/css/jquery-ui.css">
+  <link rel="stylesheet" href="/full-time-staff/enter-hours/css/rangeslider.css">
+  <link rel="stylesheet" href="/full-time-staff//enter-hours/css/added.css">
+  <link rel="stylesheet" href="/full-time-staff//enter-hours/css/choices.css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>PTO/Holiday Hours</title>

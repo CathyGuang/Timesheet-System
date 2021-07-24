@@ -828,8 +828,6 @@ input::-webkit-inner-spin-button {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
-}
-
-[type="radio"]:hover{
     color:red;
 }
+

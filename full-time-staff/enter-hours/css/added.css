@@ -814,8 +814,8 @@ input::-webkit-inner-spin-button {
     background: #BD9DEA;
     border: 1px solid #BD9DEA;
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 5px;
+    left: 5px;
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;

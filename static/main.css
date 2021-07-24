@@ -29,10 +29,12 @@ button {
     background-color: white;
     /* border: 1px solid #4829ad; */
     border-radius: 10px;
+    outline: none;
     transition-duration: .25s;
     -webkit-transition-duration: .25s;
     font-family: inherit;
     font-size: inherit;
+
 }
 
 .green-button {

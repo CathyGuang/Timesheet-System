@@ -2,10 +2,12 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="https://kit.fontawesome.com/22bba2cae7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="/static/main.css">
   <script type="text/javascript" src="/static/jquery.min.js"></script>
   <script type="text/javascript" src="/static/jquery-ui.js"></script>
-  <link rel="stylesheet" href="/static/enter_hour.css">
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/rangeslider.min.js"></script>
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/choices.js"></script>
   <link rel="stylesheet" href="/full-time-staff/enter-hours/css/slider.css">
   <link rel="stylesheet" href="/full-time-staff/enter-hours/css/jquery-ui.css">
   <link rel="stylesheet" href="/full-time-staff/enter-hours/css/rangeslider.css">

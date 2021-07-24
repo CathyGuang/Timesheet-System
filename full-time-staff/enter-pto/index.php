@@ -50,7 +50,7 @@
         </div>
         <hr class="line_below_form_inline">
 
-        <div class="time-range-container"style="height:50px">
+        <div class="time-range-container"style="height:100px">
             <div class = "time-range-title">
                 Select Hour Type
                 
@@ -66,7 +66,7 @@
         
         </div>
         <hr class="line_below_form_inline" style="top:1em;">
-        <div class="time-range-container" style="top:-2em;height:100px;">
+        <div class="time-range-container" style="top:-2em;">
             <div class = "time-range-title" style="height:45px;">
                 Enter Hours<br>
                 <span id="pto_hour_reminder">Entree must be a number</span>

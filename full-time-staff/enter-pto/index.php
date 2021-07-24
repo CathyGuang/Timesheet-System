@@ -89,9 +89,8 @@
 
         </div>
 
-            <div class="submit_and_cancel" style = "height:fit-content;
-             width:fit-content;position: absolute;
-            left: 320px;">
+            <div class="submit_and_cancel" style="display:flex;height:fit-content;
+             width:fit-content;position: absolute;left: 260px;top:32em;">
                 <button type="button" class="cancel" >Cancel</button>
                 <button type="button" class="submit" >Submit</button>
             

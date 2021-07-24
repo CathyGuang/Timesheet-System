@@ -18,15 +18,13 @@
 
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('\../enter-hours/hor.png')">
 
-  <header>
-    <h1>Enter PTO/Holiday Hours</h1>
-    <nav> <a href="../"><button id="back-button">Back</button></a>
-    <form>
-        <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\../\../full-time-staff/enter-hours/payPeriod.php';">
-      </form>
-      <a href="/"><button id="home-button">Home</button></a>
+    <div class="full-time-header">
+    <p class="full-time-title">Enter PTO/Holiday Hours</p>
+    <nav class="button-container"> 
+      `<button onclick="history.back()" class="back-button">Back</button>
+      <a href="/"><button class="home-button">Home</button></a>
     </nav>
-  </header>
+    </div>
 
   <div class="form-container">
     <form autocomplete="off" id = "myform" class="standard-form" action="staff-record-hours.php" method="post">

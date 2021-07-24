@@ -68,8 +68,8 @@
         <hr class="line_below_form_inline" style="top:1em;">
         <div class="time-range-container" style="top:-2em;">
             <div class = "time-range-title" style="height:40px;">
-                Enter Hours
-                <span id="pto_hour_reminder" style="color:#EA7186; top:0em;">Please enter a number between 0 and 50</span>
+                Enter Hours<br>
+                <span id="pto_hour_reminder" style="color:#EA7186; top:0em;font-size:16px;">Please enter a number between 0 and 50</span>
             </div>
             <div class = "enter-hours-pto">
                 <input type="number" id="quantity" name="quantity" min="0" max="50">

@@ -770,9 +770,10 @@ input::-webkit-inner-spin-button {
     margin-left: -140px
 }
 
+/* button for chosing holiday/PTO */
 .PTO-choice-button{
     text-align: center;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 [type="radio"]:checked,
@@ -784,11 +785,12 @@ input::-webkit-inner-spin-button {
 [type="radio"]:not(:checked) + label
 {
     position: relative;
-    padding-left: 28px;
+    padding-left: 40px;
     cursor: pointer;
-    line-height: 20px;
+    line-height: 30px;
     display: inline-block;
-    color: #666;
+    color: black;
+    margin:30px;
 }
 [type="radio"]:checked + label:before,
 [type="radio"]:not(:checked) + label:before {

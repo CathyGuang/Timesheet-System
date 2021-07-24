@@ -754,6 +754,8 @@ input::-webkit-inner-spin-button {
     text-align: center;
     position: relative;
     display:inline-flex;
-    bottom: -8em;
+    bottom: -7em;
     width:100%;
+    align-items: center;
+    align-content: center;
 }

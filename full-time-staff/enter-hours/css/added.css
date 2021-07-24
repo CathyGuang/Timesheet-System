@@ -812,6 +812,7 @@ input::-webkit-inner-spin-button {
     width: 20px;
     height: 20px;
     background: #BD9DEA;
+    border: 1px solid #BD9DEA;
     position: absolute;
     top: 6px;
     left: 6px;
@@ -829,10 +830,4 @@ input::-webkit-inner-spin-button {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
-}
-
-#choice-pto:hover{
-    color:red;
-    font-size: 30px;
-
 }

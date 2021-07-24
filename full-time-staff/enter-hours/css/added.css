@@ -847,3 +847,7 @@ input::-webkit-inner-spin-button {
     -webkit-transform: scale(1);
     transform: scale(1);
 }
+
+.enter-hours-pto{
+    text-align: center;
+}

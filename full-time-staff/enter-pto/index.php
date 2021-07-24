@@ -69,7 +69,7 @@
             <div class = "time-range-title">
                 Enter Hours
             </div>
-            <div>
+            <div class = "enter-hours-pto">
             <input type="number" id="quantity" name="quantity" min="0" max="50">
             </div>
         </div>

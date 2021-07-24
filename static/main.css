@@ -129,6 +129,7 @@ nav>* {
 
 .check_pay_period_button{
     background-color:#fdb13e;
+    border: 2px solid #4829ad;
     font-size:17px;
     height: 3.5em;
     width: 100%;

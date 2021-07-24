@@ -27,7 +27,6 @@ body {
 button {
     height: 100%;
     width: 100%;
-    box-shadow: inset 0px 0px 6px var(--dark-purple);
     border: 1px solid #4829ad;
     border-radius: 2px;
     transition-duration: .25s;

@@ -53,6 +53,7 @@
         <div class="time-range-container"style="height:50px">
             <div class = "time-range-title">
                 Select Hour Type
+                
             </div>
             <div class = "PTO-choice-button">
                 <input type="radio" name="choice" value="PTO" id="choice-pto"> 
@@ -68,6 +69,7 @@
         <div class="time-range-container" style="top:-2em;">
             <div class = "time-range-title" style="height:40px;">
                 Enter Hours
+                <span id="pto_hour_reminder" style="color:#EA7186; top:0em;">Please enter a number between 0 and 50</span>
             </div>
             <div class = "enter-hours-pto">
                 <input type="number" id="quantity" name="quantity" min="0" max="50">

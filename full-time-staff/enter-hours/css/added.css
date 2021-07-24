@@ -824,7 +824,7 @@ input::-webkit-inner-spin-button {
 
 [type="radio"]:checked + label:hover,
 [type="radio"]:not(:checked) + label:hover {
-    color:#a36af3;
+    color:#7bccff;
     font-size:25px;
     
 

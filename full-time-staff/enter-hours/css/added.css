@@ -826,8 +826,16 @@ input::-webkit-inner-spin-button {
 [type="radio"]:not(:checked) + label:hover {
     color:#a36af3;
     font-size:25px;
+    background-color: white;
 
 }
+
+[type="radio"]:checked + label:active,
+[type="radio"]:not(:checked) + label:active {
+    color:red;
+
+}
+
 [type="radio"]:not(:checked) + label:after {
     opacity: 0;
     -webkit-transform: scale(0);

@@ -21,10 +21,11 @@
 
   <div class="full-time-header">
     <p class="full-time-title">Enter PTO/Holiday Hours</p>
-    <nav class="PTO-button-container"> 
+  </div>
+
+  <div class="PTO-button-container"> 
       `<button onclick="history.back()" class="back-button">Back</button>
       <a href="/"><button class="home-button">Home</button></a>
-    </nav>
   </div>
 
 

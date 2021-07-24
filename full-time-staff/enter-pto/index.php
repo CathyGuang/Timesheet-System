@@ -54,13 +54,13 @@
             <div class = "time-range-title">
                 Select Hour Type
             </div>
-            <form>
+            <div>
                 <input type="radio" name="choice" value="yes" id="choice-yes"> 
                 <label for="choice-yes">PTO</label>
                 <input type="radio" name="choice" value="no" id="choice-no">
                 <label for="choice-no">Holiday</label>
                 <button id="btn">Show Selected Value</button>
-            </form>
+            </div>
 
         
         </div>

@@ -502,8 +502,6 @@ input::-webkit-inner-spin-button {
     padding-top: 40px;
     padding-bottom: 50px;
     margin-top: 20px;
-    height:fit-content;
-    width:fit-content;
 }
 
 .submit,

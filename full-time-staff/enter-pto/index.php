@@ -89,14 +89,17 @@
 
         </div>
 
-            <div class="submit_and_cancel">
+            <div class="submit_and_cancel" style = "height:fit-content;
+             width:fit-content;position: absolute;
+            left: 320px;">
                 <button type="button" class="cancel" >Cancel</button>
                 <button type="button" class="submit" >Submit</button>
             
             </div>
 
 
-            <div class = "check_pay_period" style = "position: absolute;
+            <div class = "check_pay_period" style = "height:fit-content;
+             width:fit-content;position: absolute;
             left: 320px;">
 
                 <button type="button" class = "payPeriod" >Check Pay Periods</button>

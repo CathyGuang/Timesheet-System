@@ -755,4 +755,5 @@ input::-webkit-inner-spin-button {
     position: relative;
     display:inline-flex;
     bottom: -8em;
+    width:100%;
 }

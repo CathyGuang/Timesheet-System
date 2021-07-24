@@ -17,6 +17,15 @@
     opacity: 0.1;
 }
 
+.holiday_horse {
+    position: absolute;
+    display: block;
+    top: 46em;
+    width: 60%;
+    margin: auto;
+    left: -2em;
+    text-align: center;
+}
 
 /* header */
 

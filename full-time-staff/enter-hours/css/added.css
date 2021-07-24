@@ -755,7 +755,5 @@ input::-webkit-inner-spin-button {
     position: relative;
     display:inline-flex;
     bottom: -7em;
-    width:100%;
-    align-items: center;
-    align-content: center;
+    width:fit-content;
 }

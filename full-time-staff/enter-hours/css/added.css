@@ -477,8 +477,6 @@ input::-webkit-inner-spin-button {
   height: 20px;
   padding-top: 30px;
   padding-bottom: 30px;
-  height: fit-content;
-  width: fit-content;
 }
 
 .payPeriod{

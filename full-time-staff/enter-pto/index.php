@@ -56,26 +56,11 @@
             </div>
             <form>
                 <input type="radio" name="choice" value="yes" id="choice-yes"> 
-                <label for="choice-yes">Yes</label>
+                <label for="choice-yes">PTO</label>
                 <input type="radio" name="choice" value="no" id="choice-no">
-                <label for="choice-no">No</label>
+                <label for="choice-no">Holiday</label>
                 <button id="btn">Show Selected Value</button>
             </form>
-            <script>
-                const btn = document.querySelector('#btn');
-                // handle button click
-                btn.onclick = function () {
-                    const rbs = document.querySelectorAll('input[name="choice"]');
-                    let selectedValue;
-                    for (const rb of rbs) {
-                        if (rb.checked) {
-                            selectedValue = rb.value;
-                            break;
-                        }
-                    }
-                    alert(selectedValue);
-                };
-            </script>
 
         
         </div>

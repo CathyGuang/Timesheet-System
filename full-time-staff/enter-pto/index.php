@@ -56,8 +56,8 @@
                 
             </div>
             <div class = "PTO-choice-button">
-                <input type="radio" name="choice" value="PTO" id="choice-pto" style="width:90px;margin-left:275px;"> 
-                <label for="choice-pto">PTO</label>
+                <input type="radio" name="choice" value="PTO" id="choice-pto"> 
+                <label for="choice-pto" style="width:90px;margin-left:275px;">PTO</label>
                 <input type="radio" name="choice" value="Holiday" id="choice-holiday" >
                 <label for="choice-holiday">Holiday</label>
                 <!-- <button id="btn" onclick = "clicked();">Show Selected Value</button> -->

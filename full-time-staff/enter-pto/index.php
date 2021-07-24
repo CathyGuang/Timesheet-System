@@ -89,15 +89,20 @@
 
         </div>
 
-        <div class="submit_and_cancel">
-          <button type="button" class="cancel" >Cancel</button>
-          <button type="button" class="submit" >Submit</button>
-      
-        </div>
 
-        <div class = "check_pay_period">
+        <div class="PTO-button-container"> 
 
-            <button type="button" class = "payPeriod" >Check Pay Periods</button>
+            <div class="submit_and_cancel">
+            <button type="button" class="cancel" >Cancel</button>
+            <button type="button" class="submit" >Submit</button>
+        
+            </div>
+
+            <div class = "check_pay_period">
+
+                <button type="button" class = "payPeriod" >Check Pay Periods</button>
+
+            </div>
 
         </div>
      

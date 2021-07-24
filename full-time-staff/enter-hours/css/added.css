@@ -851,3 +851,7 @@ input::-webkit-inner-spin-button {
 .enter-hours-pto{
     text-align: center;
 }
+
+#quantity{
+    background-color: red;
+}

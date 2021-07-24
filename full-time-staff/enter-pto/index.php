@@ -70,7 +70,7 @@
                 Enter Hours
             </div>
             <div class = "enter-hours-pto">
-            <input type="number" id="quantity" name="quantity" min="0" max="50">
+                <input type="number" id="quantity" name="quantity" min="0" max="50">
             </div>
         </div>
      

@@ -827,12 +827,15 @@ input::-webkit-inner-spin-button {
     color:#a36af3;
     font-size:25px;
     background-color: white;
+    padding:15px;
+    border-radius: 10px;
 
 }
 
 [type="radio"]:checked + label:active,
 [type="radio"]:not(:checked) + label:active {
-    color:red;
+    color:white;
+    background-color: #BD9DEA;
 
 }
 

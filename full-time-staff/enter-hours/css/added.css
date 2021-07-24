@@ -774,6 +774,7 @@ input::-webkit-inner-spin-button {
 .PTO-choice-button{
     text-align: center;
     font-size: 20px;
+    display:flex;
 }
 
 [type="radio"]:checked,

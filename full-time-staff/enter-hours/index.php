@@ -19,7 +19,7 @@
 
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
    
-  <img src="horse_pattern.png" class= "holiday_horse" alt="horse picture">
+  <img src="horse_pattern.png" class= "horse" alt="horse picture">
 
   <div class="full-time-header">
     <p class="full-time-title">Core Staff Timesheet</p>

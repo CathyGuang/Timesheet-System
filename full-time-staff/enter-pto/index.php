@@ -69,7 +69,7 @@
         <div class="time-range-container" style="top:-2em;">
             <div class = "time-range-title" style="height:40px;">
                 Enter Hours<br>
-                <span id="pto_hour_reminder" style="color:grey; top:-2em;font-size:16px;">Please enter a number between 0 and 50</span>
+                <span id="pto_hour_reminder">Please enter a number between 0 and 50</span>
             </div>
             <div class = "enter-hours-pto">
                 <input type="number" id="quantity" name="quantity" min="0" max="50">

@@ -31,7 +31,7 @@ var nextDueStamp = 0;
 var nextPayStamp = startPayDate .getTime();
 
 // CAUTION: the function only works 200 fortnights after start date, needs periodic renew
-for (let i = 0; i < 200; i++) {
+for (let i = 0; i < 500; i++) {
     if(timeStampDue>= timeStampNow){
         nextDueStamp = timeStampDue;
     }

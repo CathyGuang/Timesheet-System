@@ -748,4 +748,8 @@ input::-webkit-inner-spin-button {
     border-radius:10px;
 }
 
+/* enter PTO/Holiday Hours */
 
+.PTO-button-container{
+    text-align: center;
+}

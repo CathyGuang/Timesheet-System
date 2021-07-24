@@ -47,11 +47,15 @@
             <input type="Date" id="work_date"  name="Date" value="<?php echo date('Y-m-d'); ?>" required class="input-element" >
             </div>
                 
-            
+        </div>
+        <hr class="line_below_form_inline">
+
+        <div>
+
+         Select work time
+        
         </div>
      
-          
-        
 
     
     </form>

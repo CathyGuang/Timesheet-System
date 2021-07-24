@@ -35,6 +35,10 @@ button {
     font-size: inherit;
 }
 
+.green-button {
+    box-shadow: inset 0px 0px 3px var(--dark-green);
+}
+
 button:hover {
     background-color: var(--dark-purple);
     color: white;

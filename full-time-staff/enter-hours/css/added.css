@@ -835,6 +835,7 @@ input::-webkit-inner-spin-button {
     color:white;
     background-color: #BD9DEA;
     padding-top:10px;
+    padding-bottom:10px;
 
 }
 

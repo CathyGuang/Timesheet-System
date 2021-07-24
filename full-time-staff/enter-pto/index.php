@@ -55,9 +55,9 @@
                 Select Hour Type
             </div>
             <div class = "PTO-choice-button">
-                <input type="radio" name="choice" value="PTO" id="choice-yes"> 
+                <input type="radio" name="choice" value="PTO" id="choice-pto" class = "holi-button"> 
                 <label for="choice-yes">PTO</label>
-                <input type="radio" name="choice" value="Holiday" id="choice-no">
+                <input type="radio" name="choice" value="Holiday" id="choice-holiday" class = "holi-button">
                 <label for="choice-no">Holiday</label>
                 <!-- <button id="btn" onclick = "clicked();">Show Selected Value</button> -->
             </div>

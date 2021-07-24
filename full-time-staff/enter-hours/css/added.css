@@ -818,7 +818,7 @@ input::-webkit-inner-spin-button {
     border-radius: 100%;
     -webkit-transition: all 0.2s ease;
     transition: all 0.2s ease;
-    color:red;
+
 }
 [type="radio"]:not(:checked) + label:after {
     opacity: 0;
@@ -831,3 +831,8 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
 }
 
+.holi-button:hover{
+    color:red;
+    font-size: 30px;
+
+}

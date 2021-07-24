@@ -51,7 +51,7 @@
         <hr class="line_below_form_inline">
 
         <div class="time-range-container">
-            <div>
+            <div class = "time-range-title">
                 Select Hour Type
             </div>
 

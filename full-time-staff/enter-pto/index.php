@@ -15,7 +15,7 @@
   <title>PTO/Holiday Hours</title>
 </head>
 
-<body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
+<body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('/full-time-staff/enter-hours/hor.png')">
    
   <img src="horse_pattern.png" class= "horse" alt="horse picture">
 

@@ -236,6 +236,8 @@ input {
     border-radius: 2px;
     box-shadow: inset 0px 0px 6px #777777;
     font-size: .8em;
+    outline:none;
+    border:none;
 }
 
 textarea {

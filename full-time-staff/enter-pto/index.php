@@ -19,11 +19,11 @@
 <body class= "full-time-report" style="background-color:#D0BDF4;min-width:1226px;background-image: url('\../enter-hours/hor.png')">
 
     <div class="full-time-header">
-    <p class="full-time-title">Enter PTO/Holiday Hours</p>
-    <nav class="button-container"> 
-      `<button onclick="history.back()" class="back-button">Back</button>
-      <a href="/"><button class="home-button">Home</button></a>
-    </nav>
+        <p class="full-time-title">Enter PTO/Holiday Hours</p>
+        <nav class="button-container"> 
+        `<button onclick="history.back()" class="back-button">Back</button>
+        <a href="/"><button class="home-button">Home</button></a>
+        </nav>
     </div>
 
   <div class="form-container">

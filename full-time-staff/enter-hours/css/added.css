@@ -793,7 +793,6 @@ input::-webkit-inner-spin-button {
     color: rgb(48, 48, 48);
     margin-left: 30px;
     margin-right: 30px;
-    top:-1em;
 }
 [type="radio"]:checked + label:before,
 [type="radio"]:not(:checked) + label:before {

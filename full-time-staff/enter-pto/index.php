@@ -69,11 +69,25 @@
         <div class="time-range-container" style="top:-2em;">
             <div class = "time-range-title" style="height:45px;">
                 Enter Hours<br>
-                <span id="pto_hour_reminder">Please enter a number between 0 and 50</span>
+                <span id="pto_hour_reminder">Entree must be a number</span>
             </div>
             <div class = "enter-hours-pto">
                 <input type="number" id="quantity" name="quantity" min="0" max="50">
             </div>
+        </div>
+
+        <hr class="line_below_form_inline" style="top:6em;">
+
+        <div class= "job_notes">
+          <div class="job_notes_title"> 
+            Notes
+  
+          </div>
+
+          <div class="note-box">
+          <input type="text" name="notes" class="note-input" id="notes" placeholder="Your notes...">
+          </div>
+
         </div>
      
 

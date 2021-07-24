@@ -26,59 +26,6 @@
         </nav>
     </div>
 
-  <div class="form-container">
-    <form autocomplete="off" id = "myform" class="standard-form" action="staff-record-hours.php" method="post">
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Name:<div class="name_select_reminder" id="name_select_reminder"></div></label>
-          <input type="text" name="staff" id="selected-name" list="staff-list" value="<?php echo $_POST['name']; ?>" required>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></div></label>
-          <input type="text" name="work-type" id="selected-job" list="work-type-list" required>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Date:</label>
-          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Number of hours:<div class="hour_select_reminder" id="hour_select_reminder"></div></label>
-          <input type="text" name="hours" id = "selected-hour" required>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <div class="form-element">
-          <label>Notes:</label>
-          <input type="text" name="notes">
-        </div>
-      </div>
-       
-<!-- Below content moved to View Hour
-      <div class="form-section">
-        <div class="form-element">
-          <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
-        </div>
-      </div> -->
-
-
-      <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="button" class="purplebut" id="purplebut"onclick="submitted();">Submit</button>
-      </div>
-
-    </form>
-  </div>
 
 
 
@@ -101,6 +48,7 @@
       }
     ?>
   </datalist>
+
 
 </body>
 

@@ -811,7 +811,7 @@ input::-webkit-inner-spin-button {
     content: '';
     width: 20px;
     height: 20px;
-    background: #F87DA9;
+    background: #BD9DEA;
     position: absolute;
     top: 6px;
     left: 6px;
@@ -828,4 +828,8 @@ input::-webkit-inner-spin-button {
     opacity: 1;
     -webkit-transform: scale(1);
     transform: scale(1);
+}
+
+[type="radio"]:hover{
+    color:red;
 }

@@ -192,6 +192,8 @@ nav>* {
     margin: auto;
     margin-top: 5vh;
     font-family: "Nunito", sans-serif;
+    padding-left:5px;
+    padding-right:5px;
 }
 
 .standard-form {

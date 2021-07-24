@@ -831,7 +831,7 @@ input::-webkit-inner-spin-button {
     transform: scale(1);
 }
 
-.holi-button:hover{
+#choice-pto:hover{
     color:red;
     font-size: 30px;
 

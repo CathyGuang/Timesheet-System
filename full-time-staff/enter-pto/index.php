@@ -59,7 +59,7 @@
                 <label for="choice-yes">PTO</label>
                 <input type="radio" name="choice" value="Holiday" id="choice-no">
                 <label for="choice-no">Holiday</label>
-                <button id="btn" onclick = "clicked();">Show Selected Value</button>
+                <!-- <button id="btn" onclick = "clicked();">Show Selected Value</button> -->
             </div>
 
         

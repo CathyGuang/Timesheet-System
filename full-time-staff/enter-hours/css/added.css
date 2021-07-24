@@ -834,7 +834,6 @@ input::-webkit-inner-spin-button {
 [type="radio"]:not(:checked) + label:active {
     color:white;
     background-color: #BD9DEA;
-    padding:4px;
 
 }
 

@@ -76,7 +76,7 @@
             </div>
         </div>
 
-        <hr class="line_below_form_inline" style="top:0em;">
+        <hr class="line_below_form_inline" style="top:-4.4em;">
         <div class= "job_notes" style="top:-4em;">
           <div class="job_notes_title"> 
             Notes

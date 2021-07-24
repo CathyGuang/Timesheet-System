@@ -27,6 +27,7 @@ button {
     height: 100%;
     width: 100%;
     background-color: white;
+    box-shadow: inset 0px 0px 6px var(--dark-purple);
     /* border: 1px solid #4829ad; */
     border-radius: 10px;
     outline: none;
@@ -43,7 +44,7 @@ button {
 }
 
 .red-button {
-    box-shadow: inset 0px 0px 6px var(--background-red);
+    box-shadow: inset 0px 0px 6px var(--dark-red);
 }
 .blue-button {
     box-shadow: inset 0px 0px 6px var(--dark-blue);

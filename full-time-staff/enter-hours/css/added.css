@@ -20,10 +20,10 @@
 .holiday_horse {
     position: absolute;
     display: block;
-    top: 2em;
+    top: 1em;
     width: 70%;
     margin: auto;
-    left: -14em;
+    left: -20em;
     text-align: center;
 }
 

@@ -65,8 +65,8 @@
         
         </div>
         <hr class="line_below_form_inline" style="top:1em;">
-        <div class="time-range-container" style="top:-1em;">
-            <div class = "time-range-title" style="height:45px;">
+        <div class="time-range-container" style="top:-2em;">
+            <div class = "time-range-title" style="height:40px;">
                 Enter Hours
             </div>
             <div class = "enter-hours-pto">

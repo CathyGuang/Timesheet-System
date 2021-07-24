@@ -769,3 +769,7 @@ input::-webkit-inner-spin-button {
     left: 50%;
     margin-left: -140px
 }
+
+.PTO-choice-button{
+    text-align: center;
+}

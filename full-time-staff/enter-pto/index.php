@@ -23,7 +23,7 @@
 
   <div class="full-time-header">
     <p class="full-time-title">Enter PTO/Holiday Hours</p>
-    <div class="button-container"> 
+    <div class="PTO-button-container"> 
       `<a><button class="back-button"onclick="history.back()">Back</button></a>
       <a href="/"><button class="home-button">Home</button></a>
     </div>

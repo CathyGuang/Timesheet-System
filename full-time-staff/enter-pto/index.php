@@ -32,7 +32,7 @@
 
   <div class= "fulltime-form-container" >
 
-    <form class="white-background" method="post" name="myform" id="myform" action="enter-pto.php" style = "border-radius: 20px;border: 2px solid #A0D2EB;">
+    <form class="white-background" method="post" name="myform" id="myform" action="enter-pto.php" method="post" style = "border-radius: 20px;border: 2px solid #A0D2EB;">
 
         <div class="form-inline" >
             <div id="name_select_reminder"></div>

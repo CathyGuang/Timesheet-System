@@ -37,8 +37,30 @@
     <th>Name</th>
     <th>Date</th>
     <th>Work Types</th>
-    <th>Hours</th>
+    <th>Work Hours</th>
     <th>Total Hours This Day</th>
+    
+    <!-- SELECT * FROM full_job_hours, full_total_hours, holiday_hours
+    WHERE '2021-07-01' <= full_job_hours.date_of_shift AND
+    '2021-07-25' >= full_job_hours.date_of_shift AND
+    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
+    full_job_hours.date_of_shift = holiday_hours.date_of_shift AND
+    full_job_hours.staff = full_total_hours.staff
+    ;
+    SELECT * FROM full_job_hours, full_total_hours, holiday_hours
+    WHERE '{$_POST['start-date-of-hours']}' <= full_job_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= full_job_hours.date_of_shift AND
+    full_job_hours.date_of_shift = full_total_hours.date_of_shift = holiday_hours.date_of_shift AND
+    full_job_hours.staff = full_total_hours.staff = holiday_hours.staff
+    ;
+    SELECT * FROM full_job_hours, full_total_hours, holiday_hours
+    WHERE '2021-07-25' <= full_job_hours.date_of_shift AND
+    '2021-07-01' >= full_job_hours.date_of_shift AND
+    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
+    full_job_hours.date_of_shift = holiday_hours.date_of_shift AND
+    full_job_hours.staff = full_total_hours.staff AND
+    full_job_hours.staff = holiday_hours.staff
+    ; -->
 
   <?php
     $staffName = pg_escape_string(trim($_POST['staff']));
@@ -59,6 +81,12 @@
     '{$_POST['end-date-of-hours']}' >= in_out_times.date_of_shift
     ;
     EOT;
+        $holidayQuery = <<<EQT
+    SELECT * FROM holiday_hours
+    WHERE '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift AND
+    ;
+    EQT;
 
     } else{
         $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
@@ -81,10 +109,18 @@
     '{$_POST['end-date-of-hours']}' >= in_out_times.date_of_shift
     ;
     EOT;
+        $holidayQuery = <<<EQT
+    SELECT * FROM holiday_hours
+    WHERE holiday_hours.staff = '{$staffID}' AND
+    '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift AND
+    ;
+    EQT;
     }
     
     $coreData = pg_fetch_all(pg_query($db_connection, $query));
     $inOutData = pg_fetch_all(pg_query($db_connection, $inOutQuery));
+    $holidayData = pg_fetch_all(pg_query($db_connection, $holidayQuery));
 
     if (!$coreData) {
         echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -136,6 +172,39 @@
     unset($row);
   ?>
   </table>
+  <br>
+
+  <table>
+  <tr>
+    <th>Date</th>
+    <th>Holiday Type</th>
+    <th>Hours</th>
+  </tr>
+
+  <?php
+    //Sort holidayData array according to date
+    $sortarray3 = array();
+    foreach ($holidayData as $key => $row){
+      $sortarray3[$key] = strtotime($row['date_of_shift']);
+    }
+
+    array_multisort($sortarray3, SORT_DESC, $holidayData);
+    
+    foreach ($holidayData as $holidayDay) {
+      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+      $holidayDay['staff'] = $name;
+
+      echo "<tr>";
+      echo "<td>$name</td>";
+      echo "<td>{$holidayDay['date_of_shift']}</td>";
+      echo "<td>{$holidayDay['holiday_type']}</td>";
+      echo "<td>{$holidayDay['hours']}</td>";
+      echo "</tr>";
+    }
+    
+  ?>
+  </table>
+  <br>
 
   <form method="post" action="core-csv-download.php">
     <input type="hidden" name="core_data" value= "<?php echo htmlentities(serialize($coreData)); ?>">

@@ -39,28 +39,6 @@
     <th>Work Types</th>
     <th>Work Hours</th>
     <th>Total Hours This Day</th>
-    
-    <!-- SELECT * FROM full_job_hours, full_total_hours, holiday_hours
-    WHERE '2021-07-01' <= full_job_hours.date_of_shift AND
-    '2021-07-25' >= full_job_hours.date_of_shift AND
-    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
-    full_job_hours.date_of_shift = holiday_hours.date_of_shift AND
-    full_job_hours.staff = full_total_hours.staff
-    ;
-    SELECT * FROM full_job_hours, full_total_hours, holiday_hours
-    WHERE '{$_POST['start-date-of-hours']}' <= full_job_hours.date_of_shift AND
-    '{$_POST['end-date-of-hours']}' >= full_job_hours.date_of_shift AND
-    full_job_hours.date_of_shift = full_total_hours.date_of_shift = holiday_hours.date_of_shift AND
-    full_job_hours.staff = full_total_hours.staff = holiday_hours.staff
-    ;
-    SELECT * FROM full_job_hours, full_total_hours, holiday_hours
-    WHERE '2021-07-25' <= full_job_hours.date_of_shift AND
-    '2021-07-01' >= full_job_hours.date_of_shift AND
-    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
-    full_job_hours.date_of_shift = holiday_hours.date_of_shift AND
-    full_job_hours.staff = full_total_hours.staff AND
-    full_job_hours.staff = holiday_hours.staff
-    ; -->
 
   <?php
     $staffName = pg_escape_string(trim($_POST['staff']));
@@ -84,7 +62,7 @@
         $holidayQuery = <<<EQT
     SELECT * FROM holiday_hours
     WHERE '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
-    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift
     ;
     EQT;
 
@@ -113,7 +91,7 @@
     SELECT * FROM holiday_hours
     WHERE holiday_hours.staff = '{$staffID}' AND
     '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
-    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift
     ;
     EQT;
     }
@@ -189,7 +167,7 @@
     }
 
     array_multisort($sortarray3, SORT_DESC, $holidayData);
-    
+
     foreach ($holidayData as $holidayDay) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
       $holidayDay['staff'] = $name;

@@ -242,5 +242,6 @@ CREATE TABLE holiday_hours (
   staff INT REFERENCES workers(id),
   date_of_shift DATE,
   holiday_type TEXT,
-  hours NUMERIC
+  hours NUMERIC,
+  notes TEXT
 );

@@ -32,7 +32,27 @@
   <button id="cmd">generate PDF</button>
 
   <header>
-    <h1><?php echo $_POST['staff']; ?>'s Hours</h1>
+    <h1><?php echo $_POST['staff']; ?>'s Hours: 
+    <?php
+      $staffName = pg_escape_string(trim($_POST['staff']));
+      $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+  
+      $totalHourQuery = <<<EOT
+      SELECT * FROM full_total_hours
+      WHERE full_total_hours.staff = '{$staffID}' AND
+      '{$_POST['start-date']}' <= full_total_hours.date_of_shift AND
+      '{$_POST['end-date']}' >= full_total_hours.date_of_shift
+      ;
+      EOT;
+      $totalHourData = pg_fetch_all(pg_query($db_connection, $totalHourQuery));
+      $totalHour = 0;
+      foreach($totalHourData as $day){
+          $totalHour = $totalHour + $day['total_hour'];
+          echo $totalHour;
+      }
+      echo $totalHour;
+    ?>
+    </h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <form>
         <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\../enter-hours/payPeriod.php';">
@@ -95,6 +115,8 @@
   ?>
   </table>
   <br>
+
+  <h3>
 
   <table>
   <tr>

@@ -154,6 +154,7 @@
 
   <table>
   <tr>
+    <th>Name</th>
     <th>Date</th>
     <th>Holiday Type</th>
     <th>Hours</th>

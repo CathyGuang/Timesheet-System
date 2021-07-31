@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/added.css">
-<link rel="stylesheet" href="css/table.css">
+<link rel="stylesheet" href="full-time-staff/enter-hours/css/added.css">
+<link rel="stylesheet" href="full-time-staff/enter-hours/css/table.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>PTO/Holiday time</title>
 </head>

@@ -48,7 +48,6 @@
       $totalHour = 0;
       foreach($totalHourData as $day){
           $totalHour = $totalHour + $day['total_hour'];
-          echo $totalHour;
       }
       echo $totalHour;
     ?>

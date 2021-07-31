@@ -91,8 +91,8 @@
 
             <div class="submit_and_cancel" style="display:flex;height:fit-content;
              width:fit-content;position: absolute;left: 260px;top:32em;">
-                <button type="button" class="cancel" >Cancel</button>
-                <button type="button" class="submit" >Submit</button>
+                <button type="button" class="cancel" onclick="canceled();">Cancel</button>
+                <button type="button" class="submit" onclick="submitted();">Submit</button>
             
             </div>
 

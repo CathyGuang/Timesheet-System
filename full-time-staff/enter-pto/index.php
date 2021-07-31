@@ -32,7 +32,7 @@
 
   <div class= "fulltime-form-container" >
 
-    <form class="white-background" method="post" name="myform" id="myform" action="enter-pto.php" method="post" style = "border-radius: 20px;border: 2px solid #A0D2EB;">
+    <form class="white-background" method="post" name="myform" id="myform" action="enter-pto.php" method="POST" style = "border-radius: 20px;border: 2px solid #A0D2EB;">
 
         <div class="form-inline" >
             <div id="name_select_reminder"></div>
@@ -92,7 +92,7 @@
             <div class="submit_and_cancel" style="display:flex;height:fit-content;
              width:fit-content;position: absolute;left: 260px;top:32em;">
                 <button type="button" class="cancel" onclick="canceled();">Cancel</button>
-                <button type="button" class="submit" onclick="submitted();">Submit</button>
+                <button type="submit" class="submit" onclick="submitted();">Submit</button>
             
             </div>
 

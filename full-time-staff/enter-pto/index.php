@@ -72,7 +72,7 @@
                 <span id="pto_hour_reminder">Entree must be a number</span>
             </div>
             <div class = "enter-hours-pto">
-                <input type="number" id="quantity" name="quantity" min="0" max="50">
+                <input type="number" id="quantity" name="quantity" min="0" max="50" required>
             </div>
         </div>
 

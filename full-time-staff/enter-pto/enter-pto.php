@@ -80,8 +80,9 @@
   
 </body>
 <form action='index.php' class= 'submit_another_container'method='post'>
-  <button  class='submit_another' type='submit' onclick="window.location.href='index.php'" >Submit another</button>
-  <button  class='view_hours' type='button' onclick="window.location.href='\../view-hours'" >View my hours</button>
+  <button  class='submit_another' type='submit' onclick="window.location.href='index.php'" >Submit Another</button>
+  <button class='submit_another'> Check Pay Period </button>
+  <button  class='view_hours' type='button' onclick="window.location.href='\../view-hours'" >View My Hours</button>
 </form>
 
 </html>

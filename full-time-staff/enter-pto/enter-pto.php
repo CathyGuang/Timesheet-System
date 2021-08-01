@@ -20,6 +20,8 @@
 
 <body class= "full-time-report" style="background-color:#bddff4;min-width:1226px;background-image: url('/full-time-staff/enter-hours/hor.png')">
 
+  <img src="ho.png" class= "holiday_horse" alt="horse picture">
+
   <?php
 
     $staffName = pg_escape_string(trim($_POST['selected-name']));

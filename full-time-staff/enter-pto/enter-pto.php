@@ -81,7 +81,7 @@
 </body>
 <form action='index.php' class= 'submit_another_container'method='post'>
   <button  class='submit_another' type='submit'>Submit another</button>
-  <a href='/full-time-staff/view-hours'><button  class='view_hours' type='button'>View my hours</button></a>
+  <button  class='view_hours' type='button'>View my hours</button>
 </form>
 
 </html>

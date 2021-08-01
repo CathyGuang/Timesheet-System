@@ -27,15 +27,10 @@ function checkTimeCorrect(){
 
 function checkTypeCorrect(){
 
-    if(document.getElementById('choice_pto').checked){
+    if($('input[name=choice]:checked').length > 0){
         TypeReady = true;
-        console.log("pto_type");
+        console.log("okay_type");
     
-    }
-    else if(document.getElementById('choice_holiday').checked){
-        TypeReady = true;
-        console.log("holiday_type");
-
     }
     else{
         TypeReady = false;

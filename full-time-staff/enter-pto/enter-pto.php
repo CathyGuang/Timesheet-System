@@ -43,12 +43,20 @@
   <div class="submit_background">
     
     <div class = "submitted_date_and_hours">
-      <p class="submitted_hours_title">Date</p>
-      <p class="submitted_info"><?php echo $date ?></p>
-      <p class="submitted_hours_title">HOURS</p>
-      <p class="submitted_info"><?php echo $hours ?></p>
-      <p class="submitted_hours_title">Type</p>
-      <p class="submitted_info"><?php echo $type ?></p>
+      <div class = "submitted_grid">
+        <p class="submitted_hours_title">Date</p>
+        <p class="submitted_info"><?php echo $date ?></p>
+      </div>
+
+      <div class = "submitted_grid">
+        <p class="submitted_hours_title">HOURS</p>
+        <p class="submitted_info"><?php echo $hours ?></p>
+      </div>
+
+      <div class = "submitted_grid">
+        <p class="submitted_hours_title">Type</p>
+        <p class="submitted_info"><?php echo $type ?></p>
+      </div>
     </div>
     
 

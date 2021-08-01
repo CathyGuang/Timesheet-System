@@ -1,3 +1,20 @@
+//variable for checking form validity
+
+var HoursReady = true;
+
+var HoursEntry =  document.getElementById("quantity");
+
+
+if(HoursEntry.value ==""){
+    HoursReady = false;
+
+}
+
+else if((HoursEntry*100)%25 != 0){
+    HoursReady = false;
+}
+
+
 //canceled function:
 
 function canceled(){
@@ -15,7 +32,13 @@ function canceled(){
 //submitted function:
 function submitted() {
 
-    var confirmed = confirm('Are you sure you want to submit?');
+    if(HoursReady == false){
+
+        alert("Please enter a valid hour with 15 minute (.25) interval");
+        
+    }
+    else{
+        var confirmed = confirm('Are you sure you want to submit?');
 
         if (confirmed == true){
 
@@ -24,9 +47,10 @@ function submitted() {
                 window.location.href = 'enter-pto.php'; 
             });
 
-    
-
         
         }
+
+    }
+
 
 }

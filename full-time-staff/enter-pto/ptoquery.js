@@ -29,7 +29,7 @@ function checkTimeCorrect(){
 function checkTypeCorrect(){
 
 
-    TypeEntry = document.getElementById("choice").value;
+    TypeEntry = document.getElementByName("choice").value;
     console.log(TypeEntry);
 
     if(HoursEntry.value ==""){

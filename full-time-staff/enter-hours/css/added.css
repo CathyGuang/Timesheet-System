@@ -682,10 +682,16 @@ input::-webkit-inner-spin-button {
 
   font-size:56px;
   color:#845BB3;
-  
-  
+    
 }
 
+.submitted_info{
+
+    font-size:30px;
+    color:#845BB3;
+    font-family: 'Trebuchet MS', sans-serif;
+
+}
 /* pay period table */
 
 /* today's date displayer */

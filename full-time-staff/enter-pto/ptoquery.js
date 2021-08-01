@@ -1,11 +1,11 @@
 //variable for checking form validity
 
 var HoursReady;
-var HoursEntry;
+var HoursEntry = document.getElementById("quantity");
 
 function checkTimeCorrect(){
 
-    HoursEntry =  Number(document.getElementById("quantity"));
+    console.log(HoursEntry);
     
 
     if(HoursEntry.value ==""){
@@ -16,7 +16,6 @@ function checkTimeCorrect(){
     else if((HoursEntry*100)%25 != 0){
         HoursReady = false;
         console.log("Math_Incoorect");
-        console.log(HoursEntry);
     }
     else{
         HoursReady = true;

@@ -43,22 +43,14 @@
   <div class="submit_background">
     
     <div class = "submitted_date_and_hours">
-      <p class="submitted_date"><?php echo $date ?></p>
+      <p class="submitted_hours_title">Date</p>
+      <p class="submitted_hours"><?php echo $date ?></p>
       <p class="submitted_hours_title">HOURS</p>
       <p class="submitted_hours"><?php echo $hours ?></p>
-      <p class="submitted_hours_title">Date</p>
-      <p class="submitted_hours"><?php echo $hours ?></p>
+      <p class="submitted_hours_title">Type</p>
+      <p class="submitted_hours"><?php echo $type ?></p>
     </div>
     
-    <div class="tables">
-    <table class="table-fill">
-    <thead>
-    <tr>
-    <th class="text-left">Type</th>
-    <th class="text-left">Hours</th>
-    </tr>
-    </thead>
-    <tbody class="table-hover">
 
   <?php
 
@@ -70,9 +62,6 @@
 
     $holidayHourResult = pg_query($db_connection, $holidayHourQuery);
 
-    echo "<tr><td class='text-left'>".$type."</td>
-    <td class='text-left'>".$hours."</td>
-    </tr>";
   ?>
     </tbody>
     </table>

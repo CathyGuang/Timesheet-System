@@ -20,15 +20,6 @@
 
 <body class= "full-time-report" style="background-color:#bddff4;min-width:1226px;background-image: url('/full-time-staff/enter-hours/hor.png')">
 
-
- <div class="full-time-header">
-    <p class="full-time-title">Holiday Hours successfully submitted</p>
-    <div class="PTO-button-container"> 
-      <button class="back-button" onclick="history.back()">Back</button>
-      <button class="home-button" onclick="window.location.href='https://scheduledev.forwardstride.org/'">Home</button>
-    </div>
-  </div>
-
   <?php
 
     $staffName = pg_escape_string(trim($_POST['selected-name']));
@@ -40,6 +31,14 @@
     $notes = $_POST['notes'];
 
   ?>
+
+ <div class="full-time-header">
+    <p class="full-time-title"><?php echo $type?> Hours successfully submitted</p>
+    <div class="PTO-button-container"> 
+      <button class="back-button" onclick="history.back()">Back</button>
+      <button class="home-button" onclick="window.location.href='https://scheduledev.forwardstride.org/'">Home</button>
+    </div>
+  </div>
 
   <div class="submit_background">
     

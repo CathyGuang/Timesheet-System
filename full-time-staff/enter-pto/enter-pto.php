@@ -46,6 +46,8 @@
       <p class="submitted_date"><?php echo $date ?></p>
       <p class="submitted_hours_title">HOURS</p>
       <p class="submitted_hours"><?php echo $hours ?></p>
+      <p class="submitted_hours_title">Date</p>
+      <p class="submitted_hours"><?php echo $hours ?></p>
     </div>
     
     <div class="tables">

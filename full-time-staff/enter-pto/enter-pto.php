@@ -46,7 +46,7 @@
     
     <div class = "submitted_date_and_hours">
       <div class = "submitted_grid">
-        <p class="submitted_hours_title">Date</p>
+        <p class="submitted_hours_title">DATE</p>
         <p class="submitted_info"><?php echo $date ?></p>
       </div>
 
@@ -56,7 +56,7 @@
       </div>
 
       <div class = "submitted_grid">
-        <p class="submitted_hours_title">Type</p>
+        <p class="submitted_hours_title">TYPE</p>
         <p class="submitted_info"><?php echo $type ?></p>
       </div>
     </div>

@@ -10,7 +10,7 @@ function checkTimeCorrect(){
     HoursEntry = document.getElementById("quantity").value;
     console.log(HoursEntry);
     
-    if(HoursEntry.value ==""){
+    if(HoursEntry.value == ''){
         HoursReady = false;
         console.log("None_hours");
     
@@ -68,6 +68,7 @@ function canceled(){
 function submitted() {
 
     checkTimeCorrect();
+    checkTypeCorrect();
 
     if(HoursReady == false){
 

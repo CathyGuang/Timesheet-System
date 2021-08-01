@@ -3,12 +3,11 @@
 <head>
   <meta charset="utf-8">
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/full-time-staff/enter-hours/css/slider.css">
-<link rel="stylesheet" href="/full-time-staff/enter-hours/css/jquery-ui.css">
-<link rel="stylesheet" href="/full-time-staff/enter-hours/css/rangeslider.css">
-<link rel="stylesheet" href="/full-time-staff/enter-hours/css/choices.css">
+<link rel="stylesheet" href="/static/main.css">
 <link rel="stylesheet" href="full-time-staff/enter-hours/css/added.css">
 <link rel="stylesheet" href="full-time-staff/enter-hours/css/table.css">
+<link rel="stylesheet" href="/full-time-staff/enter-hours/css/jquery-ui.css">
+<link rel="stylesheet" href="/full-time-staff/enter-hours/css/choices.css">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>PTO/Holiday time</title>
 </head>

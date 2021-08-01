@@ -2,27 +2,22 @@
 
 var HoursReady = true;
 
-var HoursEntry =  document.getElementById("quantity");
+var HoursEntry;
 
-
-if(HoursEntry.value ==""){
-    HoursReady = false;
-
-}
-
-else if((HoursEntry*100)%25 != 0){
-    HoursReady = false;
-}
-
-
-function checkTimeAligned(){
+function checkTimeCorrect(){
 
     HoursEntry =  document.getElementById("quantity");
 
-    if((HoursEntry*100)%25 == 0){
+    if(HoursEntry.value ==""){
+        HoursReady = false;
+    
+    }
+    else if((HoursEntry*100)%25 != 0){
+        HoursReady = false;
+    }
+    else{
         HoursReady = true;
     }
-
 }
 
 //canceled function:
@@ -42,7 +37,7 @@ function canceled(){
 //submitted function:
 function submitted() {
 
-    checkTimeAligned();
+    checkTimeCorrect();
 
     if(HoursReady == false){
 

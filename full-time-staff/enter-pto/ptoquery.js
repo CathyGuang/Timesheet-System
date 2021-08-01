@@ -1,7 +1,6 @@
 //variable for checking form validity
 
-var HoursReady = true;
-
+var HoursReady;
 var HoursEntry;
 
 function checkTimeCorrect(){
@@ -10,13 +9,17 @@ function checkTimeCorrect(){
 
     if(HoursEntry.value ==""){
         HoursReady = false;
+        console.log("None");
     
     }
     else if((HoursEntry*100)%25 != 0){
         HoursReady = false;
+        console.log("Math_Incoorect");
+        console.log((HoursEntry*100)%25);
     }
     else{
         HoursReady = true;
+        console.log("okay");
     }
 }
 
@@ -44,6 +47,7 @@ function submitted() {
         alert("Please enter a valid hour with 15 minute (.25) interval");
         
     }
+
     else{
         var confirmed = confirm('Are you sure you want to submit?');
 

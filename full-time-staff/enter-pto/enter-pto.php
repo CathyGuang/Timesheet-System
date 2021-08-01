@@ -40,7 +40,7 @@
     </div>
   </div>
 
-  <div class="submit_background">
+  <div class="submit_background" style= "border-radius: 10px;">
     
     <div class = "submitted_date_and_hours">
       <div class = "submitted_grid">

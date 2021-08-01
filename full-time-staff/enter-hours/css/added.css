@@ -685,6 +685,11 @@ input::-webkit-inner-spin-button {
     
 }
 
+.submitted_info_title{
+    color:#414141;
+    font-size:25px;
+}
+
 .submitted_info{
 
     font-size:35px;
@@ -694,7 +699,10 @@ input::-webkit-inner-spin-button {
 }
 
 .submitted_grid{
-    height:50px;
+    height: 120px;
+    display: inline-grid;
+    width: 180px;
+    text-align: center;
 }
 /* pay period table */
 

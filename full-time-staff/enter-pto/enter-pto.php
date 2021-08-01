@@ -33,9 +33,10 @@
   ?>
 
  <div class="full-time-header">
-    <p class="full-time-title"><?php echo $type?> Hours successfully submitted</p>
+    <p class="full-time-title"><?php echo $type?> Hours Successfully Submitted</p>
     <div class="PTO-button-container"> 
       <button class="back-button" onclick="history.back()">Back</button>
+      <a href="../view-hours"><button class="view-hours">View Hours</button></a> 
       <button class="home-button" onclick="window.location.href='https://scheduledev.forwardstride.org/'">Home</button>
     </div>
   </div>

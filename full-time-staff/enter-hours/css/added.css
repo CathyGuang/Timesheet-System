@@ -692,6 +692,10 @@ input::-webkit-inner-spin-button {
     font-family: 'Trebuchet MS', sans-serif;
 
 }
+
+.submitted_grid{
+    height:50px;
+}
 /* pay period table */
 
 /* today's date displayer */

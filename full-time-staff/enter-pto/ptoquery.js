@@ -15,7 +15,7 @@ function checkTimeCorrect(){
     else if((HoursEntry*100)%25 != 0){
         HoursReady = false;
         console.log("Math_Incoorect");
-        console.log((HoursEntry*100)%25);
+        console.log(HoursEntry);
     }
     else{
         HoursReady = true;

@@ -5,7 +5,8 @@ var HoursEntry;
 
 function checkTimeCorrect(){
 
-    HoursEntry =  document.getElementById("quantity");
+    HoursEntry =  Number(document.getElementById("quantity"));
+    
 
     if(HoursEntry.value ==""){
         HoursReady = false;

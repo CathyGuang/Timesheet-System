@@ -17,7 +17,7 @@ else if((HoursEntry*100)%25 != 0){
 
 function checkTimeAligned(){
 
-    if((HoursEntry*100)%25 != 0){
+    if((HoursEntry*100)%25 == 0){
         HoursReady = true;
     }
 

@@ -2,7 +2,6 @@
 
 var HoursReady;
 var TypeReady;
-var TypeEntry;
 var HoursEntry;
 
 function checkTimeCorrect(){
@@ -28,24 +27,21 @@ function checkTimeCorrect(){
 
 function checkTypeCorrect(){
 
-
-    TypeEntry = document.getElementsByName("choice").value;
-    console.log(TypeEntry);
-
-    if(HoursEntry.value ==""){
-        TypeReady = false;
-        console.log("None_type");
+    if(document.getElementById('choice_pto').checked){
+        TypeReady = true;
+        console.log("pto_type");
     
     }
-
-    else{
-
-        TypeReady = false;
-        console.log("Type_okay");
+    else if(document.getElementById('choice_holiday').checked){
+        TypeReady = true;
+        console.log("holiday_type");
 
     }
+    else{
+        TypeReady = false;
+        console.log("Type_not_okay");
 
-
+    }
 
 
 }

@@ -10,7 +10,7 @@ function checkTimeCorrect(){
     HoursEntry = document.getElementById("quantity").value;
     console.log(HoursEntry);
     
-    if(HoursEntry.value == ''){
+    if(HoursEntry== ""){
         HoursReady = false;
         console.log("None_hours");
     

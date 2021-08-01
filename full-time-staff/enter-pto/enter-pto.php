@@ -10,7 +10,7 @@
   <title>PTO/Holiday time</title>
 </head>
 
-<body style="background-color:#D0BDF4;min-width:1226px;background-image: url('hor.png')">
+<body class= "full-time-report" style="background-color:#bddff4;min-width:1226px;background-image: url('/full-time-staff/enter-hours/hor.png')">
 
   <header class="full-time-header">
     <p class="full-time-title">Holiday Hours successfully submitted</p>

@@ -17,6 +17,8 @@ else if((HoursEntry*100)%25 != 0){
 
 function checkTimeAligned(){
 
+    HoursEntry =  document.getElementById("quantity");
+
     if((HoursEntry*100)%25 == 0){
         HoursReady = true;
     }
@@ -39,6 +41,7 @@ function canceled(){
 
 //submitted function:
 function submitted() {
+
     checkTimeAligned();
 
     if(HoursReady == false){

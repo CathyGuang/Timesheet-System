@@ -582,12 +582,18 @@ input::-webkit-inner-spin-button {
   box-shadow: inset 0px 0px 3px#a287c9;
 }
 
+.check_pay_period {
+    background-color: #fdb13e;
+    box-shadow: inset 0px 0px 3px#e48f11;
+}
+
 .view_hours {
   background-color: #A0D2EB;
   box-shadow: inset 0px 0px 3px #8cb8ce;
 }
 
 .submit_another,
+.check_pay_period,
 .view_hours {
   border: none;
   border-radius: 10px;
@@ -617,6 +623,12 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.103), 0 3px 10px 0 rgba(0, 0, 0, 0.096);
 }
 
+.check_pay_period:hover{
+  background-color: #995c00;
+  color: white;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.103), 0 3px 10px 0 rgba(0, 0, 0, 0.096);
+}
+
 .submit_another:active {
   background-color: #298dff;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.11), 0 2px 2px 0 rgba(0, 0, 0, 0.089);
@@ -627,6 +639,11 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.11), 0 2px 2px 0 rgba(0, 0, 0, 0.089);
 }
 
+.check_pay_period:active{
+    background-color: #ff9b06;
+    color: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.103), 0 3px 10px 0 rgba(0, 0, 0, 0.096);
+}
 
 .submit_background{
   width:800px;

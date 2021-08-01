@@ -609,6 +609,7 @@ input::-webkit-inner-spin-button {
   outline: none;
   margin: 10px;
   width:250px;
+  height:fit-content;
 }
 
 .submit_another:hover {

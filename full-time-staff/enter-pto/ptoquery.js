@@ -121,6 +121,11 @@ function submitted() {
         alert("Please enter a valid hour with 15 minute (.25) interval");
         
     }
+    else if(NameReady == false){
+
+        alert("Please select or enter a name in the staff list");
+        
+    }
     else{
         var confirmed = confirm('Are you sure you want to submit?');
 

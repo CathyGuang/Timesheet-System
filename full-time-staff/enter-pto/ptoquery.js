@@ -15,6 +15,14 @@ else if((HoursEntry*100)%25 != 0){
 }
 
 
+function checkTimeAligned(){
+
+    if((HoursEntry*100)%25 != 0){
+        HoursReady = true;
+    }
+
+}
+
 //canceled function:
 
 function canceled(){
@@ -31,6 +39,7 @@ function canceled(){
 
 //submitted function:
 function submitted() {
+    checkTimeAligned();
 
     if(HoursReady == false){
 

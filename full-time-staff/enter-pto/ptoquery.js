@@ -1,18 +1,18 @@
 //variable for checking form validity
 
 var HoursReady;
-var HoursEntry = document.getElementById("quantity").value;
+var TypeReady;
+var TypeEntry;
+var HoursEntry;
 
 function checkTimeCorrect(){
 
     HoursEntry = document.getElementById("quantity").value;
-
     console.log(HoursEntry);
     
-
     if(HoursEntry.value ==""){
         HoursReady = false;
-        console.log("None");
+        console.log("None_hours");
     
     }
     else if((HoursEntry*100)%25 != 0){
@@ -23,6 +23,31 @@ function checkTimeCorrect(){
         HoursReady = true;
         console.log("okay");
     }
+}
+
+
+function checkTypeCorrect(){
+
+
+    TypeEntry = document.getElementById("choice").value;
+    console.log(TypeEntry);
+
+    if(HoursEntry.value ==""){
+        TypeReady = false;
+        console.log("None_type");
+    
+    }
+
+    else{
+
+        TypeReady = false;
+        console.log("Type_okay");
+
+    }
+
+
+
+
 }
 
 //canceled function:

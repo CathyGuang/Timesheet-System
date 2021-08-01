@@ -1,11 +1,11 @@
 //variable for checking form validity
 
 var HoursReady;
-var HoursEntry = Number(document.getElementByName("quantity"));
+var HoursEntry = Number(document.getElementById("quantity"));
 
 function checkTimeCorrect(){
 
-    HoursEntry = Number(document.getElementByName("quantity"));
+    HoursEntry = Number(document.getElementById("quantity"));
 
     console.log(HoursEntry);
     

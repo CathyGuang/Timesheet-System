@@ -97,7 +97,7 @@
             </div>
 
 
-            <div class = "check_pay_period" style = "height:fit-content;
+            <div class = "check_pay_period_but" style = "height:fit-content;
              width:fit-content;position: absolute;
             left: 320px;">
 

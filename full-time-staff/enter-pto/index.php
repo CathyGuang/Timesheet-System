@@ -101,7 +101,7 @@
              width:fit-content;position: absolute;
             left: 320px;">
 
-                <button type="button" class = "payPeriod" >Check Pay Periods</button>
+                <button type="button" class = "payPeriod" onclick="window.location.href='https://scheduledev.forwardstride.org/full-time-staff/enter-hours/payPeriod.php'" >Check Pay Periods</button>
 
             </div>
 
@@ -141,6 +141,6 @@
   </datalist>
 </body>
 
-<script type="text/javascript" src="/full-time-staff/enter-hours/js/query.js"></script>
+<script type="text/javascript" src="ptoquery.js"></script>
 
 </html>

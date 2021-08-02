@@ -339,7 +339,7 @@
       
       </div>
 
-      <div class = "check_pay_period">
+      <div class = "check_pay_period_but">
 
         <button type="button" class = "payPeriod" onclick="checkPeriod();" >Check Pay Periods</button>
 

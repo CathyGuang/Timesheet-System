@@ -82,7 +82,7 @@
 </body>
 <form action='index.php' class= 'submit_another_container'>
   <button  class='submit_another' type='submit' onclick="window.location.href='index.php'" >Submit Another</button>
-  <button class='check_pay_period' onclick="window.location.href='\../enter-hours'> Check Pay Period </button>
+  <button class='check_pay_period' onclick="window.location.href='\../enter-hours'"> Check Pay Period </button>
   <button  class='view_hours' type='button' onclick="window.location.href='\../view-hours'" >View My Hours</button>
 </form>
 

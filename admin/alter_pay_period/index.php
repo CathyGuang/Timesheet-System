@@ -21,9 +21,9 @@
     <form autocomplete="off" action="alter_pay.php"  class="standard-form" method="post">
 
     <div class="form-section">
-        <div class="form-element">
-          <label>Current Pay Cycle</label>
-          Start Date     End Date
+        <div class="form-element" style = "padding-top: 10px;">
+          <label>Current Pay Cycle:</label>
+          Start Date: <p id = "start-date"></p>    End Date:<p id = "end-date"></p> 
         </div>
       </div>
 

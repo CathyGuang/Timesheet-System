@@ -23,7 +23,7 @@
   </header>
 
   <div class="form-container">
-    <form autocomplete="off" action="alter_pay.php" id="myform" class="standard-form" method="post">
+    <form autocomplete="off" id="myform" class="standard-form" method="post">
 
     <div class="form-section">
         <div class="form-element" style = "padding-top: 10px;">
@@ -45,7 +45,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit" onclick="submitted();">Submit</button>
+        <button type="button" onclick="submitted();">Submit</button>
       </div>
 
     </form>

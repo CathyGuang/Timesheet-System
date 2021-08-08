@@ -41,9 +41,6 @@ function submitted() {
             localStorage.setItem('startDate', SelectedStamp);
             localStorage.setItem('dueDate', minus13Days(SelectedStamp));
             localStorage.setItem('payDate', add12Days(SelectedStamp));
-
-
-            window.location.href = 'alter_pay.php'; 
         });
         
     }
@@ -66,7 +63,7 @@ if (typeof(Storage) !== "undefined") {
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
     document.getElementById("pay-date").innerHTML = stampToDate(PayDateD);
-    
+
     console.log(control);
     console.log(StartDateD);
     console.log(EndDateD);

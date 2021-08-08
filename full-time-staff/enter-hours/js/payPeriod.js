@@ -42,6 +42,7 @@ var nextPayStamp = add12Days(timeStampDue);
 localStorage.setItem('startDate', nextStartStamp);
 localStorage.setItem('dueDate', timeStampDue);
 localStorage.setItem('payDate', nextPayStamp);
+localStorage.setItem('control', "controlGroup");
 
 // CAUTION: the function only works 200 fortnights after start date, needs periodic renew
 for (let i = 0; i < 500; i++) {

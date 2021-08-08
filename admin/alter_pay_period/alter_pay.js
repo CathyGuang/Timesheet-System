@@ -1,6 +1,7 @@
 //Selected new Date
 var selected = document.getElementById("new-start-date").value;
 SelectedD = new Date(selected);
+var SelectedStamp = SelectedD.getTime();
 
 // transform time-stamp to readible date
 function stampToDate(n){
@@ -73,6 +74,8 @@ if (typeof(Storage) !== "undefined") {
     console.log(EndDateD);
     console.log(selected);
     console.log(SelectedD);
+    console.log(SelectedStamp);
+
 
   } else {
     // Sorry! No Web Storage support..

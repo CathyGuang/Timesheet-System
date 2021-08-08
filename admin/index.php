@@ -23,7 +23,7 @@
     <a href="edit-object"><button class="red-button">Edit Object</button></a>
     <a href="system-email"><button class="blue-button">System Email</button></a>
     <a href="send-email"><button class="blue-button">Send Email</button></a>
-    <a href="send-email"><button class="blue-button">Alter Pay Period</button></a>
+    <a href="alter_pay_period"><button class="blue-button">Alter Pay Period</button></a>
   </div>
 
   <form autocomplete="off" action="editable-daily-schedule/" method="post" id="editable-daily-schedule-form" style="visibility: hidden">

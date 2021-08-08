@@ -12,7 +12,7 @@ function stampToDate(n){
 if (typeof(Storage) !== "undefined") {
     localStorage.setItem('myCat', 'Tom');
     var tt = localStorage.getItem('myCat');
-    var StartDate = localStorage.getItem('startDate');
+    var StartDate = parseInt(localStorage.getItem('startDate'));
     var EndDate = localStorage.getItem('dueDate');
     var control = localStorage.getItem('controll');
 

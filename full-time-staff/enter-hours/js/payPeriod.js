@@ -66,11 +66,6 @@ else{
     document.getElementById("dueDate").innerHTML = nextDueDate;
 }
 
-localStorage.setItem('startDate', nextStartStamp);
-localStorage.setItem('dueDate', nextDueStamp);
-localStorage.setItem('payDate', nextPayStamp);
-localStorage.setItem('controll', 'controlGroup');
-
 document.getElementById("1_start_date").innerHTML = stampToDate(new Date(nextStartStamp));
 document.getElementById("1_end_date").innerHTML = nextDueDate;
 document.getElementById("1_pay_date").innerHTML = stampToDate(new Date(nextPayStamp));

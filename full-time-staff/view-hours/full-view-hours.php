@@ -92,9 +92,18 @@
     '{$_POST['end-date']}' >= in_out_times.date_of_shift
     ;
     EOT;
+
+      $holidayQuery = <<<EQT
+    SELECT * FROM holiday_hours
+    WHERE holiday_hours.staff = '{$staffID}' AND
+    '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
+    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift
+    ;
+    EQT;
     
     $coreData = pg_fetch_all(pg_query($db_connection, $query));
     $inOutData = pg_fetch_all(pg_query($db_connection, $inOutQuery));
+    $holidayData = pg_fetch_all(pg_query($db_connection, $holidayQuery));
 
     if (!$coreData) {
         echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
@@ -138,6 +147,34 @@
   ?>
   </table>
   <br>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Holiday Type</th>
+    <th>Hours</th>
+  </tr>
+
+  <?php
+    //Sort holidayData array according to date
+    $sortarray = array();
+    foreach ($holidayData as $key => $row){
+      $sortarray[$key] = strtotime($row['date_of_shift']);
+    }
+
+    array_multisort($sortarray, SORT_DESC, $holidayData);
+
+    foreach ($holidayData as $holidayDay) {
+
+      echo "<tr>";
+      echo "<td>{$holidayDay['date_of_shift']}</td>";
+      echo "<td>{$holidayDay['holiday_type']}</td>";
+      echo "<td>{$holidayDay['hours']}</td>";
+      echo "</tr>";
+    }
+    
+  ?>
+  </table>
 
   <div class="form-container">
     <form autocomplete="off" class="standard-form" action="hours-complete.php" method="post">

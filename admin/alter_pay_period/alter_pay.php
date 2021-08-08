@@ -18,21 +18,8 @@
   </header>
 
   <div class="form-container">
-    <form autocomplete="off" action="alter_pay.php"  class="standard-form" method="post">
+    <form autocomplete="off" action="send-email.php"  class="standard-form" method="post">
 
-
-    <div class="form-section">
-        <div class="form-element">
-          <label>Date:</label>
-          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
-        </div>
-      </div>
-
-
-      <div class="form-section">
-        <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="submit">Send</button>
-      </div>
 
     </form>
   </div>

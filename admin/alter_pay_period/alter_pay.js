@@ -53,7 +53,6 @@ function refreshDate(){
     var StartDate = parseInt(localStorage.getItem('startDate'));
     var EndDate = parseInt(localStorage.getItem('dueDate'));
     var PayDate = parseInt(localStorage.getItem('payDate'));
-    var control = localStorage.getItem('controll');
 
     StartDateD = new Date(StartDate);
     EndDateD = new Date(EndDate);
@@ -72,7 +71,6 @@ if (typeof(Storage) !== "undefined") {
 
     refreshDate();
     
-    console.log(control);
     console.log(StartDateD);
     console.log(EndDateD);
     // console.log(selected);

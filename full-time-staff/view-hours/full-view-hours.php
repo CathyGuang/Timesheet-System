@@ -96,8 +96,8 @@
       $holidayQuery = <<<EQT
     SELECT * FROM holiday_hours
     WHERE holiday_hours.staff = '{$staffID}' AND
-    '{$_POST['start-date-of-hours']}' <= holiday_hours.date_of_shift AND
-    '{$_POST['end-date-of-hours']}' >= holiday_hours.date_of_shift
+    '{$_POST['start-date']}' <= holiday_hours.date_of_shift AND
+    '{$_POST['end-date']}' >= holiday_hours.date_of_shift
     ;
     EQT;
     

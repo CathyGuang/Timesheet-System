@@ -21,7 +21,7 @@ if (typeof(Storage) !== "undefined") {
 
 
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
-    document.getElementById("end-date").innerHTML = stampToDate(EndDate);
+    document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
 
     console.log(tt);
     console.log(control);

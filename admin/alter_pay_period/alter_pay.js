@@ -66,8 +66,7 @@ if (typeof(Storage) !== "undefined") {
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
     document.getElementById("pay-date").innerHTML = stampToDate(PayDateD);
-
-    console.log(tt);
+    
     console.log(control);
     console.log(StartDateD);
     console.log(EndDateD);

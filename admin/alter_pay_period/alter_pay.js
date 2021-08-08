@@ -16,7 +16,11 @@ if (typeof(Storage) !== "undefined") {
     var EndDate = localStorage.getItem('dueDate');
     var control = localStorage.getItem('controll');
 
-    document.getElementById("start-date").innerHTML = new Date(StartDate);
+    StartDateDate = new Date(StartDate);
+
+
+
+    document.getElementById("start-date").innerHTML = stampToDate( StartDateDate );
     document.getElementById("end-date").innerHTML = new Date(EndDate);
 
     console.log(tt);

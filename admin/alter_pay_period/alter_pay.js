@@ -21,7 +21,8 @@ if (typeof(Storage) !== "undefined") {
 
     console.log(tt);
     console.log(control);
-    console.log(ex);
+    console.log(StartDate);
+    console.log(EndDate);
   } else {
     // Sorry! No Web Storage support..
   }

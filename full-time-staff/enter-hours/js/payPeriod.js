@@ -11,6 +11,15 @@ function addTwoWeeks(n,k){
     return n + k*12096e5;
 }
 
+function add12Days(n){
+    return n + 12096e5 - (2*86400000) ;
+}
+
+function minus13Days(n){
+    return n - 12096e5 +86400000 ;
+}
+
+
 function minusTwoWeeks(n,k){
     return n - k*12096e5;
 }
@@ -28,9 +37,9 @@ var timeStart = new Date(beginDate);
 var startStartDate = new Date("2021-06-14 23:59:59");
 var startPayDate = new Date("2021-07-09 23:59:59");
 var timeStampDue = timeStart.getTime();
-var nextStartStamp = startStartDate.getTime();
+var nextStartStamp = minus13Days(timeStampDue);
 var nextDueStamp = 0;
-var nextPayStamp = startPayDate .getTime();
+var nextPayStamp = add12Days(timeStampDue);
 
 // CAUTION: the function only works 200 fortnights after start date, needs periodic renew
 for (let i = 0; i < 500; i++) {

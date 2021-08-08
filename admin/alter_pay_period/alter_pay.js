@@ -1,7 +1,4 @@
-//Selected new Date
-var selected = document.getElementById("new-start-date").value;
-SelectedD = new Date(selected);
-var SelectedStamp = SelectedD.getTime();
+
 
 // transform time-stamp to readible date
 function stampToDate(n){
@@ -35,7 +32,16 @@ function submitted() {
 
     if (confirmed == true){
 
-        document.getElementById('myform').submit(function(e){    
+        document.getElementById('myform').submit(function(e){   
+            
+            //Selected new Date
+            var selected = document.getElementById("new-start-date").value;
+            SelectedD = new Date(selected);
+            var SelectedStamp = SelectedD.getTime();
+            localStorage.setItem('startDate', SelectedStamp);
+            localStorage.setItem('dueDate', minus13Days(SelectedStamp));
+            localStorage.setItem('payDate', add12Days(SelectedStamp));
+
 
             window.location.href = 'alter_pay.php'; 
         });
@@ -44,10 +50,7 @@ function submitted() {
 
 }
 
-// localStorage.setItem('startDate', nextStartStamp);
-// localStorage.setItem('dueDate', nextDueStamp);
-// localStorage.setItem('payDate', nextPayStamp);
-// localStorage.setItem('controll', 'controlGroup');
+
 
 
 
@@ -72,9 +75,9 @@ if (typeof(Storage) !== "undefined") {
     console.log(control);
     console.log(StartDateD);
     console.log(EndDateD);
-    console.log(selected);
-    console.log(SelectedD);
-    console.log(SelectedStamp);
+    // console.log(selected);
+    // console.log(SelectedD);
+    // console.log(SelectedStamp);
 
 
   } else {

@@ -41,15 +41,15 @@ function submitted() {
             localStorage.setItem('startDate', SelectedStamp);
             localStorage.setItem('dueDate', minus13Days(SelectedStamp));
             localStorage.setItem('payDate', add12Days(SelectedStamp));
+
+            refreshDate();
         });
         
     }
 
 }
 
-
-
-if (typeof(Storage) !== "undefined") {
+function refreshDate(){
     var StartDate = parseInt(localStorage.getItem('startDate'));
     var EndDate = parseInt(localStorage.getItem('dueDate'));
     var PayDate = parseInt(localStorage.getItem('payDate'));
@@ -64,6 +64,14 @@ if (typeof(Storage) !== "undefined") {
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
     document.getElementById("pay-date").innerHTML = stampToDate(PayDateD);
 
+}
+
+
+
+if (typeof(Storage) !== "undefined") {
+
+    refreshDate();
+    
     console.log(control);
     console.log(StartDateD);
     console.log(EndDateD);

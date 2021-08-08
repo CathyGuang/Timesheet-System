@@ -39,10 +39,6 @@ var nextStartStamp = minus13Days(timeStampDue);
 var nextDueStamp = 0;
 var nextPayStamp = add12Days(timeStampDue);
 
-localStorage.setItem('startDate', nextStartStamp);
-localStorage.setItem('dueDate', timeStampDue);
-localStorage.setItem('payDate', nextPayStamp);
-localStorage.setItem('controll', 'controlGroup');
 
 // CAUTION: the function only works 200 fortnights after start date, needs periodic renew
 for (let i = 0; i < 500; i++) {
@@ -69,6 +65,11 @@ if(nextDueDate ==todayDate ){
 else{
     document.getElementById("dueDate").innerHTML = nextDueDate;
 }
+
+localStorage.setItem('startDate', nextStartStamp);
+localStorage.setItem('dueDate', nextDueStamp);
+localStorage.setItem('payDate', nextPayStamp);
+localStorage.setItem('controll', 'controlGroup');
 
 document.getElementById("1_start_date").innerHTML = stampToDate(new Date(nextStartStamp));
 document.getElementById("1_end_date").innerHTML = nextDueDate;

@@ -37,11 +37,12 @@ if (typeof(Storage) !== "undefined") {
 
     StartDateD = new Date(StartDate);
     EndDateD = new Date(EndDate);
+    PayDateD = new Date(PayDate);
 
 
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
-    document.getElementById("pay-date").innerHTML = stampToDate(PayDate);
+    document.getElementById("pay-date").innerHTML = stampToDate(PayDateD);
 
     console.log(tt);
     console.log(control);

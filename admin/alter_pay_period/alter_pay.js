@@ -6,6 +6,23 @@ function stampToDate(n){
     return m + "/" + d + "/" + y;
 }
 
+//submitted function:
+function submitted() {
+
+    var confirmed = confirm('Are you sure you want to change the pay date?');
+
+    if (confirmed == true){
+
+        document.getElementById('myform').submit(function(e){    
+
+            window.location.href = 'alter_pay.php'; 
+        });
+        
+    }
+
+}
+
+
 
 
 

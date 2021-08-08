@@ -28,7 +28,9 @@
     <div class="form-section">
         <div class="form-element" style = "padding-top: 10px;">
           <label>Current Pay Cycle:</label>
-          Start Date: <div id = "start-date"></div>    End Date:<div id = "end-date"></div> 
+          Start Date: <div id = "start-date"></div>    
+          End Date:<div id = "end-date"></div>   
+          Pay Date:<div id = "pay-date"></div> 
         </div>
       </div>
 

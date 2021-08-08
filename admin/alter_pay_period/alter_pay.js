@@ -1,3 +1,6 @@
+//Selected new Date
+var selected = document.getElementById("new-start-date").value;
+
 // transform time-stamp to readible date
 function stampToDate(n){
     y = n.getFullYear();
@@ -29,6 +32,7 @@ if (typeof(Storage) !== "undefined") {
     var tt = localStorage.getItem('myCat');
     var StartDate = parseInt(localStorage.getItem('startDate'));
     var EndDate = parseInt(localStorage.getItem('dueDate'));
+    var PayDate = parseInt(localStorage.getItem('payDate'));
     var control = localStorage.getItem('controll');
 
     StartDateD = new Date(StartDate);
@@ -37,8 +41,7 @@ if (typeof(Storage) !== "undefined") {
 
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
-
-    var selected = document.getElementById("new-start-date").value;
+    document.getElementById("pay-date").innerHTML = stampToDate(PayDate);
 
     console.log(tt);
     console.log(control);

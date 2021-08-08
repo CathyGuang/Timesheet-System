@@ -20,6 +20,13 @@
   <div class="form-container">
     <form autocomplete="off" action="alter_pay.php"  class="standard-form" method="post">
 
+    <div class="form-section">
+        <div class="form-element">
+          <label>Current Pay Period</label>
+          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+        </div>
+      </div>
+
 
     <div class="form-section">
         <div class="form-element">

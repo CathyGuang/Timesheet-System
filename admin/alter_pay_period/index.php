@@ -22,8 +22,8 @@
 
     <div class="form-section">
         <div class="form-element">
-          <label>Current Pay Period</label>
-          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+          <label>Current Pay Cycle</label>
+          Start Date     End Date
         </div>
       </div>
 

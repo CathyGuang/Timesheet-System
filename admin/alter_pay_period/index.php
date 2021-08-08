@@ -35,8 +35,8 @@
 
     <div class="form-section">
         <div class="form-element">
-          <label>Date:</label>
-          <input type="date" name="date-of-hours" value="<?php echo date('Y-m-d'); ?>" required>
+          <label>New Start Date:</label>
+          <input type="date" name="date-of-hours" id="new-start-date" value="<?php echo date('Y-m-d'); ?>" required>
         </div>
       </div>
 

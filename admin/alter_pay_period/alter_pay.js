@@ -1,5 +1,6 @@
 //Selected new Date
 var selected = document.getElementById("new-start-date").value;
+SelectedD = new Date(selected);
 
 // transform time-stamp to readible date
 function stampToDate(n){
@@ -7,6 +8,23 @@ function stampToDate(n){
     m = n.getMonth() + 1;
     d = n.getDate();
     return m + "/" + d + "/" + y;
+}
+
+function addTwoWeeks(n,k){
+    return n + k*12096e5;
+}
+
+function add12Days(n){
+    return n + 12096e5 - (2*86400000) ;
+}
+
+function minus13Days(n){
+    return n - 12096e5 +86400000 ;
+}
+
+
+function minusTwoWeeks(n,k){
+    return n - k*12096e5;
 }
 
 //submitted function:
@@ -24,6 +42,11 @@ function submitted() {
     }
 
 }
+
+// localStorage.setItem('startDate', nextStartStamp);
+// localStorage.setItem('dueDate', nextDueStamp);
+// localStorage.setItem('payDate', nextPayStamp);
+// localStorage.setItem('controll', 'controlGroup');
 
 
 
@@ -49,6 +72,8 @@ if (typeof(Storage) !== "undefined") {
     console.log(StartDateD);
     console.log(EndDateD);
     console.log(selected);
+    console.log(SelectedD);
+
   } else {
     // Sorry! No Web Storage support..
     document.getElementById("start-date").innerHTML = "Sorry! Your web browser does not support Web Storage";

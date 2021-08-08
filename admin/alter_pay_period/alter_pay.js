@@ -17,7 +17,7 @@ if (typeof(Storage) !== "undefined") {
     var control = localStorage.getItem('controll');
 
     StartDateDate = new Date(StartDate);
-
+    StartDateDateRead = stampToDate( StartDateDate );
 
 
     document.getElementById("start-date").innerHTML = stampToDate( StartDateDate );
@@ -27,6 +27,8 @@ if (typeof(Storage) !== "undefined") {
     console.log(control);
     console.log(StartDate);
     console.log(EndDate);
+    console.log(StartDateDate);
+    console.log(StartDateDate);
   } else {
     // Sorry! No Web Storage support..
   }

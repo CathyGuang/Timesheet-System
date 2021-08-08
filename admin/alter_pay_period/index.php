@@ -3,6 +3,10 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/jquery-ui.js"></script>
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/rangeslider.min.js"></script>
+  <script type="text/javascript" src="/full-time-staff/enter-hours/js/choices.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
   <title>Alter Pay Period | <?php echo $organizationName; ?> Web Portal</title>

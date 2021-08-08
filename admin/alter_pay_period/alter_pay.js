@@ -24,8 +24,6 @@ function submitted() {
 
 
 
-
-
 if (typeof(Storage) !== "undefined") {
     localStorage.setItem('myCat', 'Tom');
     var tt = localStorage.getItem('myCat');
@@ -40,14 +38,19 @@ if (typeof(Storage) !== "undefined") {
     document.getElementById("start-date").innerHTML = stampToDate(StartDateD);
     document.getElementById("end-date").innerHTML = stampToDate(EndDateD);
 
+    var selected = document.getElementById("new-start-date").value;
+
     console.log(tt);
     console.log(control);
     console.log(StartDate);
     console.log(EndDate);
     console.log(StartDateDate);
     console.log(StartDateDate);
+    console.log(selected);
   } else {
     // Sorry! No Web Storage support..
+    document.getElementById("start-date").innerHTML = "Sorry! Your web browser does not support Web Storage";
+    document.getElementById("end-date").innerHTML = "Sorry! Your web browser does not support Web Storage";
   }
 
 

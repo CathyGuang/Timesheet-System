@@ -1,5 +1,5 @@
-amplify.store( "storeEx", "baz" );
+localStorage.setItem('myCat', 'Tom');
 
-var ex = amplify.store( "storeEx" );
+var ex = localStorage.getItem('myCat');
 
 console.log(ex);

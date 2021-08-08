@@ -50,7 +50,7 @@
     </form>
   </div>
 
-  <script type="text/javascript" src="/full-time-staff/js/payPeriod.js"></script>
+  <script type="text/javascript" src="alter_pay.js"></script>
 
 
   

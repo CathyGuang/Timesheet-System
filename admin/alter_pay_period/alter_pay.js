@@ -52,11 +52,7 @@ function submitted() {
 
 
 
-
-
 if (typeof(Storage) !== "undefined") {
-    localStorage.setItem('myCat', 'Tom');
-    var tt = localStorage.getItem('myCat');
     var StartDate = parseInt(localStorage.getItem('startDate'));
     var EndDate = parseInt(localStorage.getItem('dueDate'));
     var PayDate = parseInt(localStorage.getItem('payDate'));

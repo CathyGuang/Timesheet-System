@@ -20,9 +20,11 @@ n =  new Date();
 todayDate = stampToDate(n);
 document.getElementById("date").innerHTML =todayDate;
 
+var beginDate = "2021-06-27 23:59:59";
+
 // find next due date
 const timeStampNow = Date.now();
-var timeStart = new Date("2021-06-27 23:59:59");
+var timeStart = new Date(beginDate);
 var startStartDate = new Date("2021-06-14 23:59:59");
 var startPayDate = new Date("2021-07-09 23:59:59");
 var timeStampDue = timeStart.getTime();

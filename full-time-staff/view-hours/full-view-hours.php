@@ -32,7 +32,7 @@
   <button id="cmd">generate PDF</button>
 
   <header>
-    <h1><?php echo $_POST['staff']; ?>'s Hours: 
+    <h1><?php echo $_POST['staff']; ?>'s Total Hours: 
     <?php
       $staffName = pg_escape_string(trim($_POST['staff']));
       $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
@@ -49,6 +49,17 @@
       foreach($totalHourData as $day){
           $totalHour = $totalHour + $day['total_hour'];
       }
+      $holidayHourQuery = <<<EOT
+      SELECT * FROM holiday_hours
+      WHERE holiday_hours.staff = '{$staffID}' AND
+      '{$_POST['start-date']}' <= holiday_hours.date_of_shift AND
+      '{$_POST['end-date']}' >= holiday_hours.date_of_shift
+      ;
+      EOT;
+      $holidayHourData = pg_fetch_all(pg_query($db_connection, $holidayHourQuery));
+      foreach($holidayHourData as $hour){
+        $totalHour = $totalHour + $hour['hours'];
+    }
       echo $totalHour;
     ?>
     </h1>

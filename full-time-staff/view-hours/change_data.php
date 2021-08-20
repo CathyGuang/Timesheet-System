@@ -52,5 +52,7 @@
 
 </body>
 
+<script type="text/javascript" src="change_data.js"></script>
+
 
 </html>

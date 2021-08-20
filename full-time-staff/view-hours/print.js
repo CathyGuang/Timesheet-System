@@ -1,14 +1,22 @@
-var doc = new jsPDF();
-var specialElementHandlers = {
-    '#editor': function (element, renderer) {
-        return true;
-    }
-};
 
-$('#cmd').click(function () {
-    doc.fromHTML($('#content').html(), 15, 15, {
-        'width': 170,
-            'elementHandlers': specialElementHandlers
-    });
-    doc.save('sample-file.pdf');
-});
+
+function change(){
+
+    var confirmed = confirm('Are you sure you want to change this data?');
+
+    if (confirmed == true){
+
+        document.getElementById('myform').submit(function(e){    
+
+            window.location.href = 'change_data.php'; 
+        });
+
+    
+    }
+
+
+
+}
+
+// localStorage.setItem('startDate', SelectedStamp);
+

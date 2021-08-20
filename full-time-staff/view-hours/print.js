@@ -9,7 +9,6 @@ function change(obj){
     if (confirmed == true){
 
          window.location.href = 'change_data.php';
-
          localStorage.setItem('Change_Value', valued);
     
     

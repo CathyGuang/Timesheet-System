@@ -134,7 +134,7 @@
         echo "<td>{$line['total_hour']}</td>";
         echo "<td>{$line['id']}</td>";
         echo "<td>{$line['idd']}</td>";
-        echo "<td><button onclick='window.location.href='/'' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
+        echo "<td><button onclick='window.location.href='\../\..'' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
         echo "<td><button>Delete</button></td>";
         echo "</tr>";
     }

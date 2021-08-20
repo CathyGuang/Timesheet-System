@@ -79,6 +79,7 @@
     <th>Total Hours This Day</th>
     <th>ID</th>
     <th>IDD</th>
+    <th>BUtton</th>
 
   <?php
 

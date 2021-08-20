@@ -77,6 +77,8 @@
     <th>Work Types</th>
     <th>Hours</th>
     <th>Total Hours This Day</th>
+    <th>ID</th>
+    <th>IDD</th>
 
   <?php
 
@@ -124,10 +126,12 @@
     foreach ($coreData as $line) {
     
         echo "<tr id = {$line['id']}>";
-        echo "<td>{$line['date_of_shift']}{$line['id']}</td>";
+        echo "<td>{$line['date_of_shift']}</td>";
         echo "<td>{$line['work_type']}</td>";
         echo "<td>{$line['hours']}</td>";
         echo "<td>{$line['total_hour']}</td>";
+        echo "<td>{$line['id']}</td>";
+        echo "<td>{$line['idd']}</td>";
         echo "</tr>";
     }
 

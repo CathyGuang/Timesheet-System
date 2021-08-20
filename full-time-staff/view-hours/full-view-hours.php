@@ -132,6 +132,7 @@
         echo "<td>{$line['total_hour']}</td>";
         echo "<td>{$line['id']}</td>";
         echo "<td>{$line['idd']}</td>";
+        echo "<td><button >{$line['id']}</button></td>";
         echo "</tr>";
     }
 

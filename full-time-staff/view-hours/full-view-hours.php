@@ -79,7 +79,8 @@
     <th>Total Hours This Day</th>
     <th>ID</th>
     <th>IDD</th>
-    <th>BUtton</th>
+    <th>Change</th>
+    <th>Delete</th>
 
   <?php
 
@@ -133,7 +134,8 @@
         echo "<td>{$line['total_hour']}</td>";
         echo "<td>{$line['id']}</td>";
         echo "<td>{$line['idd']}</td>";
-        echo "<td><button >{$line['id']}</button></td>";
+        echo "<td><button>Change</button></td>";
+        echo "<td><button>Delete</button></td>";
         echo "</tr>";
     }
 

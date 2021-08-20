@@ -6,11 +6,8 @@ function change(){
 
     if (confirmed == true){
 
-        document.getElementById('myform').submit(function(e){    
-
-            window.location.href = 'change_data.php'; 
-        });
-
+         window.location.href = 'change_data.php'; 
+    
     
     }
 

@@ -25,7 +25,7 @@
     <p class="full-time-title">Enter PTO/Holiday Hours</p>
     <div class="PTO-button-container"> 
       <button class="back-button" onclick="history.back()">Back</button>
-      <button class="home-button" onclick="window.location.href='https://scheduledev.forwardstride.org/'">Home</button>
+      <button class="home-button" onclick="window.location.href='/'">Home</button>
     </div>
   </div>
 

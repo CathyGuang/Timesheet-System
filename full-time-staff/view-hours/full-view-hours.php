@@ -79,8 +79,8 @@
     <th>Total Hours This Day</th>
     <th>ID</th>
     <th>IDD</th>
-    <th>Change</th>
-    <th>Delete</th>
+    <th> </th>
+    <th> </th>
 
   <?php
 

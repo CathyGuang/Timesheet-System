@@ -1,12 +1,16 @@
 
 
-function change(){
+function change(obj){
 
-    var confirmed = confirm('Are you sure you want to change this data?');
+    var valued = obj.value;
+
+    var confirmed = confirm('Are you sure you want to change this data?'+valued);
 
     if (confirmed == true){
 
-         window.location.href = 'change_data.php'; 
+         window.location.href = 'change_data.php';
+
+         localStorage.setItem('Change_Value', valued);
     
     
     }
@@ -15,5 +19,5 @@ function change(){
 
 }
 
-// localStorage.setItem('startDate', SelectedStamp);
+
 

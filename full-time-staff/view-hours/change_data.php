@@ -35,8 +35,9 @@
       <?php 
 
       session_start();
-      $value = $_POST['idd'];
-      echo $value;
+      $iDD = $_POST['idd'];
+      echo $iDD;
+      echo $_SESSION[$iDD.'work_type'];
       ?>
       
       

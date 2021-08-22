@@ -127,7 +127,7 @@
     
     foreach ($coreData as $line) {
 
-        echo"<form action='change_data.php' method='post'>";
+        echo"<form action='change_data.php' method='POST'>";
     
         echo "<tr id = '{$line['id']}'>";
         echo "<td name = 'date_shift' >{$line['date_of_shift']}</td>";

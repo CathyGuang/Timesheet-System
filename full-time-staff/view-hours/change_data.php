@@ -33,9 +33,7 @@
       For reall
 
       <?php 
-
-      echo $_GET["date_shift"];
-      
+      echo $_POST["date_shift"];
       ?>
       
       

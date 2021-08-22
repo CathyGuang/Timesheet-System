@@ -36,20 +36,30 @@
       $staff = $_SESSION['staff'];
       $date = $_SESSION[$iDD.'shift_date'];
       $hours = $_SESSION[$iDD.'hours'];
+      $work = $_SESSION[$iDD.'work_type'];
 
 
       echo $iDD;
       echo $_SESSION['staff'];
-      echo $_SESSION[$iDD.'work_type'];
       echo $_SESSION[$iDD.'shift_date'];
-      echo $_SESSION[$iDD.'hours'];
       ?>
+      
+          
+      <div class="form-section">
+        <div class="form-element">
+          <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></div></label>
+          <input type="text" name="work-type" value=<?php echo $work?> id="selected-job" list="work-type-list" required>
+        </div>
+      </div>
 
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" value=<?php echo $staff?>><br><br>
-      <label for="lname">Last name:</label>
-      <input type="text" id="lname" name="lname" value="Doe"><br><br>
-      <input type="submit" value="Submit">
+
+      <div class="form-section">
+        <div class="form-element">
+          <label>Number of hours:<div class="hour_select_reminder" id="hour_select_reminder"></div></label>
+          <input type="text" name="hours" value=<?php echo $hours?> id = "selected-hour" required>
+        </div>
+      </div>
+      
       
       
       <div class="form-section">

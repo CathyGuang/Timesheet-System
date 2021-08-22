@@ -33,7 +33,10 @@
       For reall
 
       <?php 
-      echo $_POST["date_shift"];
+
+      session_start();
+      $value = $_SESSION['animal'];
+      echo $value;
       ?>
       
       

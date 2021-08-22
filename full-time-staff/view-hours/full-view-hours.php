@@ -126,11 +126,9 @@
     }
     
     foreach ($coreData as $line) {
-
-        echo"<form action='change_data.php' method='POST'>";
     
         echo "<tr id = '{$line['id']}'>";
-        echo "<td name = 'date_shift' >{$line['date_of_shift']}</td>";
+        echo "<td>{$line['date_of_shift']}</td>";
         echo "<td>{$line['work_type']}</td>";
         echo "<td>{$line['hours']}</td>";
         echo "<td>{$line['total_hour']}</td>";
@@ -139,10 +137,13 @@
         echo "<td><button type = 'submit' onclick='change(this);' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
         echo "<td><button>Delete</button></td>";
         echo "</tr>";
-        echo"</form>";
-
 
     }
+
+    // session
+    session_start();
+    $phpVariable = "Dog";
+    $_SESSION['animal'] = $phpVariable;
 
   ?>
   </table>

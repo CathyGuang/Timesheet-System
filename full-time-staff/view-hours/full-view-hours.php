@@ -126,6 +126,8 @@
     }
     
     foreach ($coreData as $line) {
+
+        echo"<form action='change_data.php' method='post'>";
     
         echo "<tr id = '{$line['id']}'>";
         echo "<td>{$line['date_of_shift']}</td>";
@@ -137,6 +139,9 @@
         echo "<td><button type = 'submit' onclick='change(this);' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
         echo "<td><button>Delete</button></td>";
         echo "</tr>";
+        echo"</form>";
+
+
     }
 
   ?>

@@ -142,7 +142,7 @@
         echo "</tr>";
 
         //  // session
-        $_SESSION[$line['idd']] = $line['work_type'];
+        $_SESSION[$line['idd'].'work_type'] = $line['work_type'];
         // $_SESSION['work_type'+{$line['idd']}] = {$line['work_type']};
         // $_SESSION['hours'+{$line['idd']}] = {$line['hours']};
 

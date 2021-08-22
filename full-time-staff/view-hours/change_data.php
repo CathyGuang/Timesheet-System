@@ -48,7 +48,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></div></label>
-          <input type="text" name="work-type" value=<?php echo $work?> id="selected-job" list="work-type-list" required>
+          <input type="text" name="work-type" value="<?php echo $work?>" id="selected-job" list="work-type-list" required>
         </div>
       </div>
 
@@ -56,7 +56,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Number of hours:<div class="hour_select_reminder" id="hour_select_reminder"></div></label>
-          <input type="text" name="hours" value=<?php echo $hours?> id = "selected-hour" required>
+          <input type="text" name="hours" value="<?php echo $hours?>" id = "selected-hour" required>
         </div>
       </div>
       

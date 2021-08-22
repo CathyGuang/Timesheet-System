@@ -142,9 +142,9 @@
         echo "</tr>";
 
          // session
-        $_SESSION['date_shift'+{$line['id']}_{$line['idd']}] = {$line['date_of_shift']};
-        $_SESSION['work_type'+{$line['id']}_{$line['idd']}] = {$line['work_type']};
-        $_SESSION['hours'+{$line['id']}_{$line['idd']}] = {$line['hours']};
+        $_SESSION['date_shift'+{$line['idd']}] = {$line['date_of_shift']};
+        $_SESSION['work_type'+{$line['idd']}] = {$line['work_type']};
+        $_SESSION['hours'+{$line['idd']}] = {$line['hours']};
 
     }
 

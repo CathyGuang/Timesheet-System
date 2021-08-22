@@ -35,7 +35,7 @@
       <?php 
 
       session_start();
-      $value = $_SESSION['animal'];
+      $value = $_SESSION['hours'];
       echo $value;
       ?>
       

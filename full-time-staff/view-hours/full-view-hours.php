@@ -142,8 +142,10 @@
 
     // session
     session_start();
-    $phpVariable = "Dog";
-    $_SESSION['animal'] = $phpVariable;
+    $_SESSION['date_shift'] = {$line['date_of_shift']};
+    $_SESSION['work_type'] = {$line['work_type']};
+    $_SESSION['hours'] = {$line['hours']};
+
 
   ?>
   </table>

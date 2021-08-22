@@ -146,10 +146,16 @@
 
         //  // session
         $_SESSION[$line['idd'].'work_type'] = $line['work_type'];
+        $_SESSION[$line['idd'].'shift_date'] = $line['date_of_shift'];
+        $_SESSION[$line['idd'].'hours'] = $line['hours'];
+
         // $_SESSION['work_type'+{$line['idd']}] = {$line['work_type']};
         // $_SESSION['hours'+{$line['idd']}] = {$line['hours']};
 
     }
+
+    $_SESSION['staff'] =$_POST['staff'];
+
 
 
 

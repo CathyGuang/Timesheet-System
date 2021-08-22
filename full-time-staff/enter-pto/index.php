@@ -101,7 +101,7 @@
              width:fit-content;position: absolute;
             left: 320px;">
 
-                <button type="button" class = "payPeriod" onclick="window.location.href='https://scheduledev.forwardstride.org/full-time-staff/enter-hours/payPeriod.php'" >Check Pay Periods</button>
+                <button type="button" class = "payPeriod" onclick="window.location.href='\../enter-hours/payPeriod.php'" >Check Pay Periods</button>
 
             </div>
 

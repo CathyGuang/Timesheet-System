@@ -1,2 +1,4 @@
 var changed_value = localStorage.getItem('Change_Value');
-console.log(changed_value);
+var splitted_value = str.split("_");
+console.log(splitted_value[0]);
+console.log(splitted_value[1]);

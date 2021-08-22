@@ -10,11 +10,8 @@ function change(obj){
 
          window.location.href = 'change_data.php';
          localStorage.setItem('Change_Value', valued);
-    
-    
+
     }
-
-
 
 }
 

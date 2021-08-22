@@ -28,7 +28,7 @@
 
 
   <div class="form-container">
-    <form autocomplete="off"  id = "myform" class="standard-form" action="change_complete.php" method="post">
+    <form autocomplete="off"  id = "myform" class="standard-form" action="full-view-hours.php" method="post">
       
       
       <div class="form-section">

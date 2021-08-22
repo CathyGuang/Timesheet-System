@@ -31,15 +31,25 @@
     <form autocomplete="off"  id = "myform" class="standard-form" action="change_complete.php" method="post">
 
       <?php 
-
       session_start();
       $iDD = $_POST['idd'];
+      $staff = $_SESSION['staff'];
+      $date = $_SESSION[$iDD.'shift_date'];
+      $hours = $_SESSION[$iDD.'hours'];
+
+
       echo $iDD;
       echo $_SESSION['staff'];
       echo $_SESSION[$iDD.'work_type'];
       echo $_SESSION[$iDD.'shift_date'];
       echo $_SESSION[$iDD.'hours'];
       ?>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" value=<?php echo $staff?>><br><br>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname" value="Doe"><br><br>
+      <input type="submit" value="Submit">
       
       
       <div class="form-section">

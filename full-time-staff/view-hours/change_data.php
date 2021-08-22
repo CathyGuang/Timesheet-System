@@ -35,8 +35,8 @@
       <?php 
 
       session_start();
-      // $value = $_SESSION['hours'];
-      // echo $value;
+      $value = $_POST['idd'];
+      echo $value;
       ?>
       
       

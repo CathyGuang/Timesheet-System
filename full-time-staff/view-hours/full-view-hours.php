@@ -130,7 +130,7 @@
         echo"<form action='change_data.php' method='post'>";
     
         echo "<tr id = '{$line['id']}'>";
-        echo "<td>{$line['date_of_shift']}</td>";
+        echo "<td name = 'date_shift' >{$line['date_of_shift']}</td>";
         echo "<td>{$line['work_type']}</td>";
         echo "<td>{$line['hours']}</td>";
         echo "<td>{$line['total_hour']}</td>";

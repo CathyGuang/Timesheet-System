@@ -10,7 +10,7 @@
   <script type="text/javascript" src="change_data.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Nunito:700&display=swap" rel="stylesheet">
   <?php include $_SERVER['DOCUMENT_ROOT']."/static/scripts/initialization.php"; ?>
-  <title>View Staff Hours</title>
+  <title>Change Data</title>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
       <div class="form-section">
         <div class="form-element">
           <label>Type of Work:<div class="work_select_reminder" id="work_select_reminder"></div></label>
-          <input type="text" name="work-type" id="selected-job" list="work-type-list" required>
+          <input type="text" name="work-type" value=<?php echo $work?> id="selected-job" list="work-type-list" required>
         </div>
       </div>
 

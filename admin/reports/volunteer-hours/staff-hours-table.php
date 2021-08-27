@@ -51,7 +51,7 @@
     ;
     EOT;
     } else{
-      $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+      $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}';"), 0, 1)['id'];
       
       //Get table data with certain staff name
       $query = <<<EOT
@@ -77,7 +77,7 @@
     array_multisort($sortarray, SORT_DESC, $hourData);
 
     foreach ($hourData as &$line) {
-      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['volunteer']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['volunteer']}';"), 0, 1)['name'];
 
       $line['volunteer'] = $name;
       

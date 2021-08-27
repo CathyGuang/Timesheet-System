@@ -67,7 +67,7 @@
     EQT;
 
     } else{
-        $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
+        $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}';"), 0, 1)['id'];
 
       //Get table data with certain staff name
         $query = <<<EOT
@@ -121,7 +121,7 @@
     array_multisort($sortarray1, SORT_DESC, $coreData);
     
     foreach ($coreData as &$line) {
-        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$line['staff']}';"), 0, 1)['name'];
         $line['staff'] = $name;
         unset($line['id']);
     
@@ -144,7 +144,7 @@
     array_multisort($sortarray2, SORT_DESC, $inOutData);
 
     foreach ($inOutData as &$row) {
-        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$row['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+        $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$row['staff']}';"), 0, 1)['name'];
         $row['staff'] = $name;
     }
     unset($row);
@@ -170,7 +170,7 @@
     array_multisort($sortarray3, SORT_DESC, $holidayData);
 
     foreach ($holidayData as $holidayDay) {
-      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}' AND (archived IS NULL OR archived = '');"), 0, 1)['name'];
+      $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}';"), 0, 1)['name'];
       $holidayDay['staff'] = $name;
 
       echo "<tr>";

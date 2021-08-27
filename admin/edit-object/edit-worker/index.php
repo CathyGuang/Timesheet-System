@@ -29,7 +29,7 @@
               <input type="text" name="selected-worker" id="selected-worker" list="worker-list" onclick='select();'>
                 <datalist id="worker-list">
 EOT;
-                    $query = "SELECT name FROM workers WHERE name != 'NEEDED' AND (archived IS NULL OR archived = '');";
+                    $query = "SELECT name FROM workers WHERE name != 'NEEDED';";
                     $result = pg_fetch_all(pg_query($db_connection, $query));
                     foreach ($result as $worker) {
                       $name = htmlspecialchars($worker['name'], ENT_QUOTES);
@@ -49,7 +49,7 @@ EOT;
 EOT;
 
     } else {
-      $workerInfoQuery = "SELECT * FROM workers WHERE name LIKE '{$_POST['selected-worker']}' AND (archived IS NULL OR archived = '');";
+      $workerInfoQuery = "SELECT * FROM workers WHERE name LIKE '{$_POST['selected-worker']}';";
       $workerInfoSQL = pg_query($db_connection, $workerInfoQuery);
       $workerInfo = pg_fetch_array($workerInfoSQL, 0, PGSQL_ASSOC);
       echo <<<EOT

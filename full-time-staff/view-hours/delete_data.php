@@ -48,10 +48,10 @@
       } else {
         echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }
-      return;
     }else{
       echo $_POST['date'];
       echo $_POST['total_hours'];
+      echo $_POST['id'];
       $query_total = "UPDATE full_total_hours SET date_of_shift = {$_POST['date']}, total_hour = {$_POST['total_hours']} WHERE id = {$_POST['id']};";
       $result_total = pg_query($db_connection, $query_total);
         if ($result_total){
@@ -60,8 +60,8 @@
           echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
         }
       }
-      echo ($_POST['delete']);
     ?>
+    <!-- UPDATE full_total_hours SET date_of_shift = 2021-08-27, total_hour = 1 WHERE id =  -->
 
 </body>
 

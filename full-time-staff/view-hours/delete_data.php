@@ -18,7 +18,7 @@
   <header>
     <h1>Delete Hours Complete</h1>
     <nav>
-     <a href="../"><button id="back-button">Back</button></a>
+     <a href="./"><button id="back-button">Back</button></a>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>
   </header>
@@ -34,10 +34,15 @@
         $hours = $total_hours_row[0] - $_POST['id'];
         $query_total = "UPDATE full_total_hours SET total_hour = {$hours} WHERE id = {$_POST['id']};";
         $result_total = pg_query($db_connection, $query_total);
+        if ($result_total){
+          echo "<h3 class='main-content-header'>Now your total hour for that day is {$hours}</h3>";
+        } else {
+          echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+        }
       }
 
       if ($result) {
-        echo "<h3 class='main-content-header'>Success</h3";
+        echo "<h3 class='main-content-header'>Success</h3>";
       } else {
         echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }

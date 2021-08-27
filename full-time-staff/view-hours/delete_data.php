@@ -53,7 +53,7 @@
       $query_job_hours = "UPDATE full_job_hours SET work_type = '{$_POST['work_type']}', hours = '{$_POST['entered_hours']}' WHERE idd = {$_POST['idd']};";
       $result_job_hours = pg_query($db_connection, $query_job_hours);
       if ($result_total && $result_job_hours){
-        echo "<h3 class='main-content-header'>Now your total hour for that day is {$_POST['total_hours']}</h3>";
+        echo "<h3 class='main-content-header'>You successfully update this row's data! Now your total hour for that day is {$_POST['total_hours']}</h3>";
       } else {
         echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }

@@ -127,7 +127,7 @@
       echo <<<EOT
       <form action='delete_data.php' method='POST'>
         <tr>
-          <td><input type="text" name="date" id="date" value="{$line['date_of_shift']}" required></td>
+          <td>{$line['date_of_shift']}</td>
           <td><input type="text" name="work_type" id="selected-job" list="work-type-list" value="{$line['work_type']}" required></td>
           <td><input type="text" name="entered_hours" id="entered_hours" value="{$line['hours']}" required></td>
           <td><input type="text" name="total_hours" id="total_hours" value="{$line['total_hour']}" required></td>
@@ -221,7 +221,7 @@
       }
     ?>
   </datalist>
-  
+
 </body>
 
 <script type="text/javascript" src="print.js"></script>

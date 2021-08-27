@@ -50,7 +50,7 @@
       $query_total = "UPDATE full_total_hours SET date_of_shift = '{$_POST['date']}', total_hour = {$_POST['total_hours']} WHERE id = {$_POST['id']};";
       $result_total = pg_query($db_connection, $query_total);
       echo $_POST['idd'];
-      $query_job_hours = "UPDATE full_job_hours SET date_of_shift = '{$_POST['date']}', work_type = '{$_POST['work_type']}', 'hours' = '{$_POST['entered_hours']}' WHERE id = {$_POST['idd']};";
+      $query_job_hours = "UPDATE full_job_hours SET date_of_shift = '{$_POST['date']}', work_type = '{$_POST['work_type']}', hours = '{$_POST['entered_hours']}' WHERE idd = {$_POST['idd']};";
       $result_job_hours = pg_query($db_connection, $query_job_hours);
       if ($result_total && $result_job_hours){
         echo "<h3 class='main-content-header'>Now your total hour for that day is {$_POST['total_hours']}</h3>";
@@ -59,7 +59,7 @@
       }
     }
     ?>
-    <!-- UPDATE full_job_hours SET date_of_shift = '2021-08-27', 'hours' = 1 WHERE id = 4 -->
+    <!-- UPDATE full_job_hours SET date_of_shift = '2021-08-27', hours = 1 WHERE idd = 9 -->
     
 </body>
 

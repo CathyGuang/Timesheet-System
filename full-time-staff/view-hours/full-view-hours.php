@@ -142,6 +142,7 @@
         <input type='number' name='hours' value='{$line['hours']}' hidden>
       </form>
       EOT;
+    }
   ?>
   </table>
   <br>

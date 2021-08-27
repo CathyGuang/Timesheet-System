@@ -25,6 +25,7 @@
 
 
     <?php
+    if ($_POST['delete']) {
       $query = "DELETE FROM full_job_hours WHERE idd = {$_POST['idd']};";
       $result = pg_query($db_connection, $query);
 
@@ -48,6 +49,16 @@
         echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }
       return;
+    }else{
+      $query_total = "UPDATE full_total_hours SET date_of_shift = {$_POST['date']}, total_hour = {$_POST['total_hours']} WHERE id = {$_POST['id']};";
+        $result_total = pg_query($db_connection, $query_total);
+        if ($result_total){
+          echo "<h3 class='main-content-header'>Now your total hour for that day is {$_POST['total_hours']}</h3>";
+        } else {
+          echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+        }
+      }
+    }
     ?>
 
 </body>

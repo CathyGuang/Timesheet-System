@@ -77,8 +77,6 @@
     <th>Work Types</th>
     <th>Hours</th>
     <th>Total Hours This Day</th>
-    <th>ID</th>
-    <th>IDD</th>
     <th> </th>
     <th> </th>
 
@@ -129,43 +127,21 @@
     session_start();
     
     foreach ($coreData as $line) {
-    
-        echo "<tr>";
-        echo "<td>{$line['date_of_shift']}</td>";
-        echo "<td>{$line['work_type']}</td>";
-        echo "<td>{$line['hours']}</td>";
-        echo "<td>{$line['total_hour']}</td>";
-        echo "<td>{$line['id']}</td>";
-        echo "<td><input type='text' name='idd' value='{$line['idd']}'></td>";
-
-        echo "<form action='change_data.php' method='POST'>";
-        echo "<td><button type ='submit' onclick='change(this);' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
-        echo "</form>";
-
-        echo "<form action='delete_data.php' method='POST'>";
-        echo "<td><button type = 'submit'>Delete</button></td>";
-        echo "<input type='number' name='id' value='{$line['id']}' hidden>";
-        echo "<input type='number' name='idd' value='{$line['idd']}' hidden>";
-        echo "<input type='number' name='hours' value='{$line['hours']}' hidden>";
-        echo "</form>";
-        echo "</tr>";
-        
-
-        //  // session
-        $_SESSION[$line['idd'].'work_type'] = $line['work_type'];
-        $_SESSION[$line['idd'].'shift_date'] = $line['date_of_shift'];
-        $_SESSION[$line['idd'].'hours'] = $line['hours'];
-
-        // $_SESSION['work_type'+{$line['idd']}] = {$line['work_type']};
-        // $_SESSION['hours'+{$line['idd']}] = {$line['hours']};
-
-    }
-
-    $_SESSION['staff'] =$_POST['staff'];
-
-
-
-
+      echo <<<EOT
+      <form action='delete_data.php' method='POST'>";
+        <tr>
+          <td><input type="text" name="date" id="date" value="{$line['date_of_shift']}" required></td>
+          <td><input type="text" name="work_type" id="work_type" value="{$line['work_type']}" required></td>
+          <td><input type="text" name="hours" id="hours" value="{$line['hours']}" required></td>
+          <td><input type="text" name="total_hours" id="total_hours" value="{$line['total_hour']}" required></td>
+          <td>DELETE<input type="checkbox" id="delete-checkbox" name="DELETE" value="FALSE"></td>
+          <td><button type ="submit">Submit</button></td>
+        </tr>
+        <input type='number' name='id' value='{$line['id']}' hidden>
+        <input type='number' name='idd' value='{$line['idd']}' hidden>
+        <input type='number' name='hours' value='{$line['hours']}' hidden>
+      </form>
+      EOT;
   ?>
   </table>
   <br>

@@ -80,6 +80,8 @@
     <th>Work Types</th>
     <th>Hours</th>
     <th>Total Hours This Day</th>
+    <th> <th>
+    <th> <th>
 
   <?php
 

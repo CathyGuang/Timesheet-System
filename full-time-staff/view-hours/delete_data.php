@@ -26,12 +26,13 @@
 
     <?php
       $query = "DELETE FROM full_job_hours WHERE idd = {$_POST['idd']};";
-      echo $_POST['idd'];
       $result = pg_query($db_connection, $query);
 
       $total_hours_result = pg_query($db_connection, "SELECT total_hour FROM full_total_hours WHERE id = {$_POST['id']};");
-      While ($total_hours_row = pg_fetch_row($total_hours_result)){
-        $hours = $total_hours_row[0] - $_POST['id'];
+      if ($total_hours_row = pg_fetch_row($total_hours_result)){
+        $hours = $total_hours_row[0] - $_POST['hours'];
+        echo $total_hours_row[0];
+        echo $hours;
         $query_total = "UPDATE full_total_hours SET total_hour = {$hours} WHERE id = {$_POST['id']};";
         $result_total = pg_query($db_connection, $query_total);
         if ($result_total){

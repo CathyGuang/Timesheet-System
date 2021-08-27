@@ -123,23 +123,20 @@
         return;
     }
 
-    // session
-    session_start();
-    
     foreach ($coreData as $line) {
       echo <<<EOT
-      <form action='delete_data.php' method='POST'>";
+      <form action='delete_data.php' method='POST'>
         <tr>
           <td><input type="text" name="date" id="date" value="{$line['date_of_shift']}" required></td>
           <td><input type="text" name="work_type" id="work_type" value="{$line['work_type']}" required></td>
-          <td><input type="text" name="hours" id="hours" value="{$line['hours']}" required></td>
+          <td><input type="text" name="entered_hours" id="entered_hours" value="{$line['hours']}" required></td>
           <td><input type="text" name="total_hours" id="total_hours" value="{$line['total_hour']}" required></td>
           <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
           <td><button type ="submit">Submit</button></td>
         </tr>
         <input type='number' name='id' value='{$line['id']}' hidden>
         <input type='number' name='idd' value='{$line['idd']}' hidden>
-        <input type='number' name='hours' value='{$line['hours']}' hidden>
+        <input type='number' name='type_hours' value='{$line['hours']}' hidden>
       </form>
       EOT;
     }

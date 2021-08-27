@@ -129,8 +129,6 @@
     session_start();
     
     foreach ($coreData as $line) {
-
-        echo "<form action='change_data.php' method='POST'>";
     
         echo "<tr>";
         echo "<td>{$line['date_of_shift']}</td>";
@@ -139,10 +137,18 @@
         echo "<td>{$line['total_hour']}</td>";
         echo "<td>{$line['id']}</td>";
         echo "<td><input type='text' name='idd' value='{$line['idd']}'></td>";
+
+        echo "<form action='change_data.php' method='POST'>";
         echo "<td><button type ='submit' onclick='change(this);' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
-        echo "<td><button>Delete</button></td>";
-        echo "</tr>";
         echo "</form>";
+
+        echo "<form action='delete_data.php' method='POST'>";
+        echo "<td><button type = 'submit'>Delete</button></td>";
+        echo "<input type='number' name='id' value='{$line['id']}' hidden>";
+        echo "<input type='number' name='idd' value='{$line['idd']}' hidden>";
+        echo "</form>";
+        echo "</tr>";
+        
 
         //  // session
         $_SESSION[$line['idd'].'work_type'] = $line['work_type'];

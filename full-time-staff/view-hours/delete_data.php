@@ -25,7 +25,7 @@
 
 
     <?php
-      $query = "DELETE FROM full_job_hours WHERE id = {$_POST['idd']};";
+      $query = "DELETE FROM full_job_hours WHERE idd = {$_POST['idd']};";
       echo $_POST['idd'];
       $result = pg_query($db_connection, $query);
 

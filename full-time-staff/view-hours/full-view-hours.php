@@ -146,6 +146,7 @@
         echo "<td><button type = 'submit'>Delete</button></td>";
         echo "<input type='number' name='id' value='{$line['id']}' hidden>";
         echo "<input type='number' name='idd' value='{$line['idd']}' hidden>";
+        echo "<input type='number' name='hours' value='{$line['hours']}' hidden>";
         echo "</form>";
         echo "</tr>";
         

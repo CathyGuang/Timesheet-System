@@ -169,7 +169,7 @@
           <td><button type ="submit">Submit</button></td>
         </tr>
         <input type='number' name='id' value='{$row['id']}' hidden>
-        <input type='number' name='type_hours' value='{$row['date_of_shift']}' hidden>
+        <input type='number' name='date_of_shift' value='{$row['date_of_shift']}' hidden>
       </form>
       EOT;
     }

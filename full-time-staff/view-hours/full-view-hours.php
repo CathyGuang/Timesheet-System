@@ -182,6 +182,8 @@
     <th>Date</th>
     <th>Holiday Type</th>
     <th>Hours</th>
+    <th> </th>
+    <th> </th>
   </tr>
 
   <?php

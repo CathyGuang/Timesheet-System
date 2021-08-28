@@ -26,9 +26,9 @@
 
     <?php
     if ($_POST['delete']) {
-      $query = "DELETE FROM in_out_times WHERE date_of_shift = {$_POST['date_of_shift']};";
+      $query = "DELETE FROM in_out_times WHERE date_of_shift = '{$_POST['date_of_shift']}';";
       $result = pg_query($db_connection, $query);
-
+    
       $total_hours_query = "DELETE FROM full_total_hours WHERE date_of_shift = '{$_POST['date_of_shift']}';";
       $total_hours_result = pg_query($db_connection, $total_hours_query);
 

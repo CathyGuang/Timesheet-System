@@ -71,9 +71,9 @@
     </nav>
   </header>
 
-  <h3>NOTE: If you want to modify data, you can only change data from one row each time!</h3>
-  <h3>Make sure to edit Hours and Total Hours together!</h3>
-  <h3>If there is no changes, click Submit at the bottom.</h3>
+  <h3>  NOTE: If you want to modify data, you can only change data from one row each time!</h3>
+  <h3>  Make sure to edit Hours and Total Hours together!</h3>
+  <h3>  If there is no changes, click Submit at the bottom.</h3>
   <table>
     <tr>
     <th>Date</th>
@@ -159,12 +159,19 @@
   <?php
 
     foreach ($inOutData as $row) {
-
-      echo "<tr>";
-      echo "<td>{$row['date_of_shift']}</td>";
-      echo "<td>{$row['in_time']}</td>";
-      echo "<td>{$row['out_time']}</td>";
-      echo "</tr>";
+      echo <<<EOT
+      <form action='delete_in_out.php' method='POST'>
+        <tr>
+          <td>{$row['date_of_shift']}</td>
+          <td><input type="text" name="in_time" id="in_time" value="{$row['in_time']}" required></td>
+          <td><input type="text" name="out_time" id="out_time" value="{$row['out_time']}" required></td>
+          <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
+          <td><button type ="submit">Submit</button></td>
+        </tr>
+        <input type='number' name='id' value='{$row['id']}' hidden>
+        <input type='number' name='type_hours' value='{$row['date_of_shift']}' hidden>
+      </form>
+      EOT;
     }
     
   ?>

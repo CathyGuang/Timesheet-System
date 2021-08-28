@@ -225,6 +225,7 @@ CREATE TABLE full_total_hours (
 );
 
 CREATE TABLE in_out_times (
+  id SERIAL PRIMARY KEY,
   staff INT REFERENCES workers(id),
   date_of_shift DATE,
   in_time TIME,

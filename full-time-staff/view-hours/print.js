@@ -46,7 +46,7 @@ function genPDF(){
         //iterate through rows
         //rows would be accessed using the "row" variable assigned in the for loop
         for (var j = 0, col; col = myTab.cells[j]; j++) {
-            doc.text(col.value,20,30+amount); 
+            doc.text(col.value(),20,30+amount); 
             amount = amount + 10;
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop

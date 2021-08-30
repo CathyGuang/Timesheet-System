@@ -1,7 +1,3 @@
-var myTab = document.getElementById('HoursTable');
-
-
-
 
 
 function change(obj){
@@ -43,18 +39,20 @@ function genPDF(){
 
     doc.setFontSize(10);
 
-    for (i = 1; i < myTab.rows.length; i++) {
-    
-        // GET THE CELLS COLLECTION OF THE CURRENT ROW.
-        var objCells = myTab.rows.item(i).cells;
-    
-        // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
-        for (var j = 0; j < objCells.length; j++) {
-            doc.text(objCells.item(j).innerHTML.value(),20,30+amount); 
+    var myTab = document.getElementById('HoursTable');
+
+
+    for (var i = 0, row; row = myTab.rows[i]; i++) {
+        //iterate through rows
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (var j = 0, col; col = myTab.cells[j]; j++) {
+            doc.text(col.value,20,30+amount); 
             amount = amount + 10;
-        }
-        amount = amount + 10;
+          //iterate through columns
+          //columns would be accessed using the "col" variable assigned in the for loop
+        }  
     };
+
 
     doc.addPage();
     doc.text(20,20,"TEST");

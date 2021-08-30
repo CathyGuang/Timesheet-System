@@ -41,6 +41,8 @@ function genPDF(){
 
     var amount = 20;
 
+    doc.setFontSize(10);
+
     for (i = 1; i < myTab.rows.length; i++) {
     
         // GET THE CELLS COLLECTION OF THE CURRENT ROW.

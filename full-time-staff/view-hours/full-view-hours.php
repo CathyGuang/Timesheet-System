@@ -28,8 +28,8 @@
 
 <body>
 
-  <div id="editor"></div>
-  <button id="cmd">generate PDF</button>
+  <!-- <div id="editor"></div>
+  <button id="cmd">generate PDF</button> -->
 
   <header>
     <h1><?php echo $_POST['staff']; ?>'s Total Hours: 

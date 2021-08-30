@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/full-time-staff/enter-hours/css/added.css">
   <script type="text/javascript" src="/full-time-staff/enter-hours/js/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   
@@ -71,13 +72,13 @@
     </nav>
   </header>
 
-  <div>
+  <div class = "full_view_note">
 
   <h3>  NOTE: If you want to modify data, you can only change data from one row each time!</h3>
   <h3>  Make sure to edit Hours and Total Hours together!</h3>
   <h3>  If there is no changes, click Submit at the bottom.</h3>
 
-  </div class = "full_view_note" style="margin:15px;">
+  </div >
   <table>
     <tr>
     <th>Date</th>

@@ -79,7 +79,7 @@
   <h3>  If there is no changes, click Submit at the bottom.</h3>
 
   </div >
-  <table style = "margin:15px;">
+  <table style = "margin:15px;font-size:20px;">
     <tr>
     <th>Date</th>
     <th>Work Types</th>
@@ -154,13 +154,13 @@
 
   <h3>
 
-  <table>
+  <table style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>
     <th>In Time</th>
     <th>Out Time</th>
   </tr>
-  <h3>  NOTE: Deleting any one row, all hours on that day will be deleted!</h3>
+  <h3 class = "full_view_note">  NOTE: Deleting any one row, all hours on that day will be deleted!</h3>
 
   <?php
 

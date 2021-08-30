@@ -24,6 +24,9 @@ var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
 
+
+var php_var = "<?php echo $_POST['staff'];?>";
+
 function genPDF(){
 
     var doc = new jsPDF();
@@ -31,7 +34,7 @@ function genPDF(){
     doc.text(20,20,"TEST!");
     doc.addPage();
     doc.text(20,20,"TEST");
-    doc.save(today+".pdf");
+    doc.save(today+php_var+".pdf");
 
 
   };

@@ -33,11 +33,11 @@ function genPDF(){
 
     var doc = new jsPDF();
 
-    doc.setFontSize(22);
+    doc.setFontSize(16);
     doc.text(someone+"'s Total Hours "+hours,20,20);
 
-    doc.setFontSize(16);
-    doc.text("File created on"+today,20,30);
+    doc.setFontSize(12);
+    doc.text("File created on "+today,20,30);
 
     var amount = 20;
 
@@ -48,7 +48,7 @@ function genPDF(){
     
         // LOOP THROUGH EACH CELL OF THE CURENT ROW TO READ CELL VALUES.
         for (var j = 0; j < objCells.length; j++) {
-            doc.text(objCells.item(j).innerHTML,20,30+amount); 
+            doc.text(objCells.item(j),20,30+amount); 
             amount = amount + 10;
         }
         amount = amount + 10;

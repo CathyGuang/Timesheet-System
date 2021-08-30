@@ -160,7 +160,9 @@
     <th>In Time</th>
     <th>Out Time</th>
   </tr>
-  <p class = "full_view_note">  NOTE: Deleting any one row, all hours on that day will be deleted!</p>
+  <div class = "full_view_note">
+  <p>  NOTE: Deleting any one row, all hours on that day will be deleted!</p>
+  </div>
 
   <?php
 

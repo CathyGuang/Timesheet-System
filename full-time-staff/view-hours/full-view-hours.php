@@ -83,7 +83,7 @@
   <p>  If there is no changes, click Submit at the bottom.</p>
 
   </div >
-  <table style = "margin:15px;font-size:20px;">
+  <table id="HoursTable" style = "margin:15px;font-size:20px;">
     <tr>
     <th>Date</th>
     <th>Work Types</th>

@@ -24,18 +24,6 @@ var yyyy = today.getFullYear();
 
 today = mm + '/' + dd + '/' + yyyy;
 
-
-var t = document.getElementById('HoursTable');
-
-    if(t) {
-        Array.from(t.rows).forEach((tr, row_ind) => {
-            Array.from(tr.cells).forEach((cell, col_ind) => {
-                console.log('Value at row/col [' + row_ind + ',' + col_ind + '] = ' + cell.textContent);
-            });
-        });
-    }
-
-
 function genPDF(){
 
     var doc = new jsPDF();
@@ -51,18 +39,18 @@ function genPDF(){
     doc.setFontSize(10);
 
 
-    // for (let i in myTab.rows) {
-    //     let row = myTab.rows[i]
-    //     //iterate through rows
-    //     //rows would be accessed using the "row" variable assigned in the for loop
-    //     for (let j in row.cells) {
-    //       let col = row.cells[j]
-    //       //iterate through columns
-    //       //columns would be accessed using the "col" variable assigned in the for loop
-    //       doc.text(col.innerHTML,20,30+amount); 
-    //       amount = amount + 10;
-    //     }  
-    //  };
+    for (let i in myTab.rows) {
+        let row = myTab.rows[i]
+        //iterate through rows
+        //rows would be accessed using the "row" variable assigned in the for loop
+        for (let j in row.cells) {
+          let col = row.cells[j]
+          //iterate through columns
+          //columns would be accessed using the "col" variable assigned in the for loop
+          doc.text("text",20,30+amount); 
+          amount = amount + 10;
+        }  
+     };
 
 
     doc.addPage();

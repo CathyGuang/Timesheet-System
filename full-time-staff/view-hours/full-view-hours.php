@@ -71,9 +71,13 @@
     </nav>
   </header>
 
+  <div>
+
   <h3>  NOTE: If you want to modify data, you can only change data from one row each time!</h3>
   <h3>  Make sure to edit Hours and Total Hours together!</h3>
   <h3>  If there is no changes, click Submit at the bottom.</h3>
+
+  </div>
   <table>
     <tr>
     <th>Date</th>

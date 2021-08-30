@@ -25,6 +25,17 @@ var yyyy = today.getFullYear();
 today = mm + '/' + dd + '/' + yyyy;
 
 
+var t = document.getElementById('HoursTable');
+
+    if(t) {
+        Array.from(t.rows).forEach((tr, row_ind) => {
+            Array.from(tr.cells).forEach((cell, col_ind) => {
+                console.log('Value at row/col [' + row_ind + ',' + col_ind + '] = ' + cell.textContent);
+            });
+        });
+    }
+
+
 function genPDF(){
 
     var doc = new jsPDF();
@@ -38,16 +49,6 @@ function genPDF(){
     var amount = 20;
 
     doc.setFontSize(10);
-
-    var t = document.getElementById('HoursTable');
-
-    if(t) {
-        Array.from(t.rows).forEach((tr, row_ind) => {
-            Array.from(tr.cells).forEach((cell, col_ind) => {
-                console.log('Value at row/col [' + row_ind + ',' + col_ind + '] = ' + cell.textContent);
-            });
-        });
-    }
 
 
     // for (let i in myTab.rows) {

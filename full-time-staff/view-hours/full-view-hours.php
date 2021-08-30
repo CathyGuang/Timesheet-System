@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
   <link rel="stylesheet" href="/full-time-staff/enter-hours/css/added.css">
+  <script type="text/javascript" src="jspdf.js"></script>
   <script type="text/javascript" src="/full-time-staff/enter-hours/js/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   
@@ -29,8 +30,28 @@
 
 <body>
 
-  <!-- <div id="editor"></div>
-  <button id="cmd">generate PDF</button> -->
+
+<script type="text/javascript">
+
+    function genPDF(){
+
+      var doc = new jsPDF();
+
+      doc.text(20,20,"TEST!");
+      doc.addPage();
+      doc.text(20,20,"TEST");
+      doc.save("Test.pdf");
+
+
+    };
+
+
+
+
+</script>
+
+  <div id="editor"></div>
+  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 
   <header>
     <h1><?php echo $_POST['staff']; ?>'s Total Hours: 

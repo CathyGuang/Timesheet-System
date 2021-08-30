@@ -31,26 +31,9 @@
 <body>
 
 
-<script type="text/javascript">
-
-    function genPDF(){
-
-      var doc = new jsPDF();
-
-      doc.text(20,20,"TEST!");
-      doc.addPage();
-      doc.text(20,20,"TEST");
-      doc.save("Test.pdf");
-
-
-    };
-
-
-
-
-</script>
 
   <div id="editor"></div>
+  <script type="text/javascript" src="print.js"></script>
   <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 
   <header>
@@ -265,7 +248,5 @@
   </datalist>
 
 </body>
-
-<script type="text/javascript" src="print.js"></script>
 
 </html>

@@ -16,4 +16,17 @@ function change(obj){
 }
 
 
+function genPDF(){
+
+    var doc = new jsPDF();
+
+    doc.text(20,20,"TEST!");
+    doc.addPage();
+    doc.text(20,20,"TEST");
+    doc.save("Test.pdf");
+
+
+  };
+
+
 

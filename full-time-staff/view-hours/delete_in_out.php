@@ -26,19 +26,19 @@
 
     <?php
     if ($_POST['delete']) {
+        echo $_POST['id'];
       $query = "DELETE FROM in_out_times WHERE id = {$_POST['id']};";
       $result = pg_query($db_connection, $query);
-    echo $_POST['date_of_shift'];
+        echo $_POST['date_of_shift'];
       $total_hours_query = "DELETE FROM full_total_hours WHERE id = {$_POST['id']};";
       $total_hours_result = pg_query($db_connection, $total_hours_query);
 
       $job_hour_query = "DELETE FROM full_job_hours WHERE id = {$_POST['id']};";
       $job_hour_result = pg_query($db_connection, $job_hour_query);
-    
+        echo $result;
         if ($result && $total_hours_result && $job_hour_result){
           echo "<h3 class='main-content-header'>Now your total hour for that day is {$hours_now}</h3>";
         } else {
-            echo "haha";
           echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
         }
     }else{

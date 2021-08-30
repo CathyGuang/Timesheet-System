@@ -33,6 +33,9 @@
 
 
   <div id="editor"></div>
+  <script type="text/javascript">
+    var something=<?php echo json_encode($_POST['staff']); ?>;
+  </script>
   <script type="text/javascript" src="print.js"></script>
   <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 

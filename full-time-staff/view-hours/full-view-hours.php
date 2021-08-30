@@ -184,7 +184,7 @@
   ?>
   </table>
   <br>
-  <table>
+  <table style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>
     <th>Holiday Type</th>

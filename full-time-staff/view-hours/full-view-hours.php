@@ -155,6 +155,7 @@
     <th>In Time</th>
     <th>Out Time</th>
   </tr>
+  <h3>  NOTE: Deleting any one row, all hours on that day will be deleted!</h3>
 
   <?php
 

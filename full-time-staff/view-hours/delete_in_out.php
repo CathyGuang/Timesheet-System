@@ -29,17 +29,24 @@
       $query = "DELETE FROM in_out_times WHERE id = {$_POST['id']};";
       $result = pg_query($db_connection, $query);
 
-      $total_hours_query = "DELETE FROM full_total_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
-      $total_hours_result = pg_query($db_connection, $total_hours_query);
+      if ($result){
+        $total_hours_query = "DELETE FROM full_total_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
+        $total_hours_result = pg_query($db_connection, $total_hours_query);
+  
+        $job_hour_query = "DELETE FROM full_job_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
+        $job_hour_result = pg_query($db_connection, $job_hour_query);
+  
+        if ($total_hours_result && $job_hour_result){
+        echo "<h3 class='main-content-header'>Successfully deleted this whole day's hours.</h3>";
+      }else{
+        echo "<h3 class='main-content-header'>Something went wrong. Contact admin for this day's hours.</h3>";
+      }
+     } else {
+        echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+      }
 
-      $job_hour_query = "DELETE FROM full_job_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
-      $job_hour_result = pg_query($db_connection, $job_hour_query);
-
-        if ($result && $total_hours_result && $job_hour_result){
-          echo "<h3 class='main-content-header'>Now your total hour for that day is {$hours_now}</h3>";
-        } else {
-          echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
-        }
+      
+        
     }else{
       $query_total = "UPDATE in_out_times SET in_time = '{$_POST['in_time']}', out_time = '{$_POST['out_time']}' WHERE id = {$_POST['id']};";
       $result_total = pg_query($db_connection, $query_total);

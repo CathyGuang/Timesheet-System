@@ -66,11 +66,7 @@
     }
       echo $totalHour;
     ?>
-      <script type="text/javascript">
-    var someone=<?php echo json_encode($_POST['staff']); ?>;
-    var hours=<?php echo json_encode($totalHour); ?>;
-  </script>
-  <script type="text/javascript" src="print.js"></script>
+     
     </h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <form>
@@ -250,6 +246,16 @@
       }
     ?>
   </datalist>
+
+
+  <!-- generate PDF Javascript -->
+
+
+  <script type="text/javascript">
+    var someone=<?php echo json_encode($_POST['staff']); ?>;
+    var hours=<?php echo json_encode($totalHour); ?>;
+  </script>
+  <script type="text/javascript" src="print.js"></script>
 
 </body>
 

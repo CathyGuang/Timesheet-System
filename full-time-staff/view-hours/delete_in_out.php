@@ -26,7 +26,6 @@
 
     <?php
     if ($_POST['delete']) {
-        echo $_POST['date_of_shift'];
       $query = "DELETE FROM in_out_times WHERE id = {$_POST['id']};";
       $result = pg_query($db_connection, $query);
 

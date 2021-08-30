@@ -30,10 +30,10 @@ function genPDF(){
 
     var doc = new jsPDF();
 
-    doc.text(20,20,"TEST!");
+    doc.text(20,20,someone+"'s Total Hours "+hours);
     doc.addPage();
     doc.text(20,20,"TEST");
-    doc.save(something+" "+today+" hours.pdf");
+    doc.save(someone+" "+today+" hours.pdf");
 
 
   };

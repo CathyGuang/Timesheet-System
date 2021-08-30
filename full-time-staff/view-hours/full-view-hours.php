@@ -71,16 +71,17 @@
     </nav>
   </header>
 
+  <h3>  NOTE: If you want to modify data, you can only change data from one row each time!</h3>
+  <h3>  Make sure to edit Hours and Total Hours together!</h3>
+  <h3>  If there is no changes, click Submit at the bottom.</h3>
   <table>
     <tr>
     <th>Date</th>
     <th>Work Types</th>
     <th>Hours</th>
     <th>Total Hours This Day</th>
-    <th>ID</th>
-    <th>IDD</th>
-    <th> </th>
-    <th> </th>
+    <th> <th>
+    <th> <th>
 
   <?php
 
@@ -125,40 +126,23 @@
         return;
     }
 
-    // session
-    session_start();
-    
     foreach ($coreData as $line) {
-
-        echo "<form action='change_data.php' method='POST'>";
-    
-        echo "<tr>";
-        echo "<td>{$line['date_of_shift']}</td>";
-        echo "<td>{$line['work_type']}</td>";
-        echo "<td>{$line['hours']}</td>";
-        echo "<td>{$line['total_hour']}</td>";
-        echo "<td>{$line['id']}</td>";
-        echo "<td><input type='text' name='idd' value='{$line['idd']}'></td>";
-        echo "<td><button type ='submit' onclick='change(this);' value='{$line['id']}_{$line['idd']}'>Change</button></td>";
-        echo "<td><button>Delete</button></td>";
-        echo "</tr>";
-        echo "</form>";
-
-        //  // session
-        $_SESSION[$line['idd'].'work_type'] = $line['work_type'];
-        $_SESSION[$line['idd'].'shift_date'] = $line['date_of_shift'];
-        $_SESSION[$line['idd'].'hours'] = $line['hours'];
-
-        // $_SESSION['work_type'+{$line['idd']}] = {$line['work_type']};
-        // $_SESSION['hours'+{$line['idd']}] = {$line['hours']};
-
+      echo <<<EOT
+      <form action='delete_data.php' method='POST'>
+        <tr>
+          <td>{$line['date_of_shift']}</td>
+          <td><input type="text" name="work_type" id="selected-job" list="work-type-list" value="{$line['work_type']}" required></td>
+          <td><input type="text" name="entered_hours" id="entered_hours" value="{$line['hours']}" required></td>
+          <td><input type="text" name="total_hours" id="total_hours" value="{$line['total_hour']}" required></td>
+          <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
+          <td><button type ="submit">Submit</button></td>
+        </tr>
+        <input type='number' name='id' value='{$line['id']}' hidden>
+        <input type='number' name='idd' value='{$line['idd']}' hidden>
+        <input type='number' name='type_hours' value='{$line['hours']}' hidden>
+      </form>
+      EOT;
     }
-
-    $_SESSION['staff'] =$_POST['staff'];
-
-
-
-
   ?>
   </table>
   <br>
@@ -171,16 +155,25 @@
     <th>In Time</th>
     <th>Out Time</th>
   </tr>
+  <h3>  NOTE: Deleting any one row, all hours on that day will be deleted!</h3>
 
   <?php
 
     foreach ($inOutData as $row) {
-
-      echo "<tr>";
-      echo "<td>{$row['date_of_shift']}</td>";
-      echo "<td>{$row['in_time']}</td>";
-      echo "<td>{$row['out_time']}</td>";
-      echo "</tr>";
+      echo <<<EOT
+      <form action='delete_in_out.php' method='POST'>
+        <tr>
+          <td>{$row['date_of_shift']}</td>
+          <td><input type="text" name="in_time" id="in_time" value="{$row['in_time']}" required></td>
+          <td><input type="text" name="out_time" id="out_time" value="{$row['out_time']}" required></td>
+          <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
+          <td><button type ="submit">Submit</button></td>
+        </tr>
+        <input type='number' name='id' value='{$row['id']}' hidden>
+        <input type='number' name='staff' value='{$row['staff']}' hidden>
+        <input type='date' name='date_of_shift' value='{$row['date_of_shift']}' hidden>
+      </form>
+      EOT;
     }
     
   ?>
@@ -191,6 +184,8 @@
     <th>Date</th>
     <th>Holiday Type</th>
     <th>Hours</th>
+    <th> </th>
+    <th> </th>
   </tr>
 
   <?php
@@ -231,6 +226,15 @@
 
     </form>
   </div>
+
+  <datalist id="work-type-list">
+    <?php
+      $staffShiftTypes = pg_fetch_all_columns(pg_query($db_connection, "SELECT unnest(enum_range(NULL::STAFF_WORK_TYPE))::text EXCEPT SELECT name FROM archived_enums;"));
+      foreach ($staffShiftTypes as $value) {
+        echo "<option value='{$value}'>";
+      }
+    ?>
+  </datalist>
 
 </body>
 

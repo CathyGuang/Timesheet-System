@@ -38,6 +38,7 @@
       $hours = $_SESSION[$iDD.'hours'];
       $work = $_SESSION[$iDD.'work_type'];
 
+      
 
       echo $iDD;
       echo $_SESSION['staff'];

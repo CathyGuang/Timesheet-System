@@ -79,7 +79,7 @@
   <h3>  If there is no changes, click Submit at the bottom.</h3>
 
   </div >
-  <table>
+  <table style = "margin:15px;">
     <tr>
     <th>Date</th>
     <th>Work Types</th>

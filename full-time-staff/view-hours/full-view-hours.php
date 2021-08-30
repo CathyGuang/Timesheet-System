@@ -77,7 +77,7 @@
   <h3>  Make sure to edit Hours and Total Hours together!</h3>
   <h3>  If there is no changes, click Submit at the bottom.</h3>
 
-  </div>
+  </div class = "full_view_note">
   <table>
     <tr>
     <th>Date</th>

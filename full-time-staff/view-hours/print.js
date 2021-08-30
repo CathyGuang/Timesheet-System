@@ -15,6 +15,14 @@ function change(obj){
 
 }
 
+// today's date
+
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
+
+today = mm + '/' + dd + '/' + yyyy;
 
 function genPDF(){
 
@@ -23,7 +31,7 @@ function genPDF(){
     doc.text(20,20,"TEST!");
     doc.addPage();
     doc.text(20,20,"TEST");
-    doc.save("Test.pdf");
+    doc.save(today+".pdf");
 
 
   };

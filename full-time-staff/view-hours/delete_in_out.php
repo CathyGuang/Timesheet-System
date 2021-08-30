@@ -29,11 +29,10 @@
       $query = "DELETE FROM in_out_times WHERE id = {$_POST['id']};";
       $result = pg_query($db_connection, $query);
 
-        echo $_POST['date_of_shift'];
-      $total_hours_query = "DELETE FROM full_total_hours WHERE id = {$_POST['id']};";
+      $total_hours_query = "DELETE FROM full_total_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
       $total_hours_result = pg_query($db_connection, $total_hours_query);
 
-      $job_hour_query = "DELETE FROM full_job_hours WHERE id = {$_POST['id']};";
+      $job_hour_query = "DELETE FROM full_job_hours WHERE date_of_shift = '{$_POST['date_of_shift']}' AND staff = {$_POST['staff']};";
       $job_hour_result = pg_query($db_connection, $job_hour_query);
 
         if ($result && $total_hours_result && $job_hour_result){

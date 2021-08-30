@@ -218,7 +218,7 @@
     <form autocomplete="off" class="standard-form" action="hours-complete.php" method="post">
 
       <div class="form-section">
-        <div class="form-element">
+        <div class="form-element" style = "font-size:18px;">
           <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
         </div>
       </div>

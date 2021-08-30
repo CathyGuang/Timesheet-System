@@ -50,7 +50,7 @@ function genPDF(){
           let col = row.cells[j]
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
-          doc.text(+col.innerHTML,20,30+amount); 
+          doc.text(col.innerHTML,20,30+amount); 
           amount = amount + 10;
         }  
      };

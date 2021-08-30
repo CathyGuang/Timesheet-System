@@ -33,7 +33,7 @@ function genPDF(){
     doc.text(20,20,"TEST!");
     doc.addPage();
     doc.text(20,20,"TEST");
-    doc.save(today+something+".pdf");
+    doc.save(something+" "+today+" hours.pdf");
 
 
   };

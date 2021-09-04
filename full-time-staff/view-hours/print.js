@@ -53,13 +53,18 @@ function genPDF(){
                 if (j == 0){
                 console.log("COL:");
                 console.log(col.textContent);
+                doc.text(col.textContent,20,30+amount); 
+                amount = amount + 10;
                 }
                 if(j==1 || j==2 || j==3){
                 console.log("EEEE:");
                 console.log(col.children[0].value);
+                doc.text(col.children[0].value,20,30+amount); 
+                amount = amount + 10;
     
                 }
                 else{
+                amount = amount + 5;
     
                 }
 

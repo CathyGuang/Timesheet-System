@@ -48,7 +48,7 @@ function genPDF(){
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j in row.cells) {
           let col = row.cells[j]
-          if (j == 1){
+          if (j == 0){
             console.log("COL:");
             console.log(col.textContent);
           }

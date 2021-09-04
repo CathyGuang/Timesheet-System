@@ -48,29 +48,29 @@ function genPDF(){
             //iterate through rows
             //rows would be accessed using the "row" variable assigned in the for loop
             for (let j in row.cells) {
-            let col = row.cells[j]
-            //   console.log(col);
-            if (j == 0){
-              console.log("COL:");
-              console.log(col.textContent);
-            }
-            if(j==1 || j==2 || j==3){
-              console.log("EEEE:");
-              console.log(col.children[0].value);
-  
-            }
-            else{
-  
-            }
+                let col = row.cells[j]
+                //   console.log(col);
+                if (j == 0){
+                console.log("COL:");
+                console.log(col.textContent);
+                }
+                if(j==1 || j==2 || j==3){
+                console.log("EEEE:");
+                console.log(col.children[0].value);
+    
+                }
+                else{
+    
+                }
 
-        }
+            }
         
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           doc.text("text",20,30+amount); 
           amount = amount + 10;
         }  
-     };
+    };
 
 
     doc.addPage();

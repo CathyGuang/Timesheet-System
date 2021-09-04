@@ -67,7 +67,7 @@ function genPDF(){
                 amount = amount + 5;
     
                 }
-                if(amount>100){
+                if(amount>200){
                     amount = 10;
                     doc.addPage();
                 }

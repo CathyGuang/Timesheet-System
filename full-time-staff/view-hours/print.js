@@ -45,10 +45,10 @@ function genPDF(){
 
     for (let i in myTab.rows) {
         let row = myTab.rows[i]
-        column = column + 20;
         if(column>100){
-            column = 20;
+            column = 0;
         }
+        column = column + 20;
 
         if(i != 0){
             //iterate through rows

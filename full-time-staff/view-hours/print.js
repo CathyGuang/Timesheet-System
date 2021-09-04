@@ -64,7 +64,7 @@ function genPDF(){
                 console.log(col.children[0].value);
                 doc.setFontType("normal")
                 doc.text(col.children[0].value,20,30+amount); 
-                amount = amount + 10;
+                amount = amount + 5;
     
                 }
                 else{

@@ -48,12 +48,12 @@ function genPDF(){
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j in row.cells) {
           let col = row.cells[j]
-          if (j = 1){
+          if (j == 1){
             console.log("COL:");
             console.log(col.textContent);
           }
           else{
-            console.log("COL:");
+            console.log("EEEE:");
             console.log(col.innerHTML);
 
           }

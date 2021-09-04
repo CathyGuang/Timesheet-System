@@ -72,6 +72,7 @@ function genPDF(){
         
         }  
     };
+    doc.save(someone+" "+today+" hours.pdf");
 
 
 };

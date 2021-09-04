@@ -44,7 +44,8 @@ function genPDF(){
 
     for (let i in myTab.rows) {
         let row = myTab.rows[i]
-        console.log("LOG");
+        console.log("ROW:");
+        console.log(row);
         //iterate through rows
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j in row.cells) {

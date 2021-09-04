@@ -51,13 +51,15 @@ function genPDF(){
                 let col = row.cells[j]
                 //   console.log(col);
                 if (j == 0){
+                doc.setFontSize(14);
                 console.log("COL:");
                 console.log(col.textContent);
                 doc.setFontType('bold');
                 doc.text(col.textContent,20,30+amount); 
-                amount = amount + 10;
+                amount = amount + 5;
                 }
                 if(j==1 || j==2 || j==3){
+                doc.setFontSize(12);
                 console.log("EEEE:");
                 console.log(col.children[0].value);
                 doc.setFontType("normal")

@@ -38,12 +38,18 @@ function genPDF(){
     doc.text("File created on "+today,20,30);
 
     var amount = 20;
+    var column = 20;
 
     doc.setFontSize(10);
 
 
     for (let i in myTab.rows) {
         let row = myTab.rows[i]
+        column = column + 20;
+        if(column>100){
+            column = 20;
+        }
+
         if(i != 0){
             //iterate through rows
             //rows would be accessed using the "row" variable assigned in the for loop
@@ -55,7 +61,7 @@ function genPDF(){
                 console.log("COL:");
                 console.log(col.textContent);
                 doc.setFontType('bold');
-                doc.text(col.textContent+": ",20,30+amount); 
+                doc.text(col.textContent+": ",column,30+amount); 
                 amount = amount + 5;
                 }
                 if(j==1 || j==2 || j==3){
@@ -63,7 +69,7 @@ function genPDF(){
                 console.log("EEEE:");
                 console.log(col.children[0].value);
                 doc.setFontType("normal")
-                doc.text(col.children[0].value,20,30+amount); 
+                doc.text(col.children[0].value,column,30+amount); 
                 amount = amount + 5;
     
                 }

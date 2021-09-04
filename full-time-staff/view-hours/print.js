@@ -44,12 +44,12 @@ function genPDF(){
 
     for (let i in myTab.rows) {
         let row = myTab.rows[i]
-        console.log("ROW:");
-        console.log(row);
         //iterate through rows
         //rows would be accessed using the "row" variable assigned in the for loop
         for (let j in row.cells) {
           let col = row.cells[j]
+          console.log("COL:");
+          console.log(col);
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           doc.text("text",20,30+amount); 

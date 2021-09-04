@@ -49,7 +49,7 @@ function genPDF(){
         for (let j in row.cells) {
           let col = row.cells[j]
           console.log("COL:");
-          console.log(col.innerHTML);
+          console.log(col.value);
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop
           doc.text("text",20,30+amount); 

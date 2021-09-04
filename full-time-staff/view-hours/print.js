@@ -70,10 +70,6 @@ function genPDF(){
 
             }
         
-          //iterate through columns
-          //columns would be accessed using the "col" variable assigned in the for loop
-          doc.text("text",20,30+amount); 
-          amount = amount + 10;
         }  
     };
 

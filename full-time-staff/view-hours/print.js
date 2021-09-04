@@ -59,7 +59,7 @@ function genPDF(){
                 if(j==1 || j==2 || j==3){
                 console.log("EEEE:");
                 console.log(col.children[0].value);
-                doc.text(col.children[0].value,20,30+amount); 
+                doc.text(col.children[0].value,30,30+amount); 
                 amount = amount + 10;
     
                 }
@@ -72,11 +72,6 @@ function genPDF(){
         
         }  
     };
-
-
-    doc.addPage();
-    doc.text(20,20,"TEST");
-    doc.save(someone+" "+today+" hours.pdf");
 
 
 };

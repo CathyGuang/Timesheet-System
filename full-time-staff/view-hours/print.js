@@ -55,7 +55,7 @@ function genPDF(){
           }
           else{
             console.log("EEEE:");
-            console.log(col.children);
+            console.log(col.children[0].value);
 
           }
           //iterate through columns

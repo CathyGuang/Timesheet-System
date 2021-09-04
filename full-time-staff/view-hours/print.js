@@ -53,10 +53,13 @@ function genPDF(){
             console.log("COL:");
             console.log(col.textContent);
           }
-          else{
+          if(j==1 || j==2 || j==3){
             console.log("EEEE:");
             console.log(col.children[0].value);
 
+          }
+          else{
+              
           }
           //iterate through columns
           //columns would be accessed using the "col" variable assigned in the for loop

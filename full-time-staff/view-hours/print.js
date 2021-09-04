@@ -55,7 +55,7 @@ function genPDF(){
                 console.log("COL:");
                 console.log(col.textContent);
                 doc.setFontType('bold');
-                doc.text(col.textContent,20,30+amount); 
+                doc.text(col.textContent+": ",20,30+amount); 
                 amount = amount + 5;
                 }
                 if(j==1 || j==2 || j==3){
@@ -68,8 +68,7 @@ function genPDF(){
     
                 }
                 else{
-                amount = amount + 5;
-    
+                amount = amount + 1;
                 }
 
             }

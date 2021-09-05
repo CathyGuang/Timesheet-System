@@ -25,35 +25,35 @@
 
 
     <?php
-    if ($_POST['delete']) {
-      $query = "DELETE FROM full_job_hours WHERE idd = {$_POST['idd']};";
-      $result = pg_query($db_connection, $query);
+    // if ($_POST['delete']) {
+    //   $query = "DELETE FROM full_job_hours WHERE idd = {$_POST['idd']};";
+    //   $result = pg_query($db_connection, $query);
 
-      $total_hours_result = pg_query($db_connection, "SELECT total_hour FROM full_total_hours WHERE id = {$_POST['id']};");
-      if ($total_hours_row = pg_fetch_row($total_hours_result)){
-        $hours_now = $total_hours_row[0] - $_POST['type_hours'];
-        $query_total = "UPDATE full_total_hours SET total_hour = {$hours_now} WHERE id = {$_POST['id']};";
-        $result_total = pg_query($db_connection, $query_total);
-        if ($result_total){
-          echo "<h3 class='main-content-header'>Now your total hour for that day is {$hours_now}</h3>";
-        } else {
-          echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
-        }
-      }
+    //   $total_hours_result = pg_query($db_connection, "SELECT total_hour FROM full_total_hours WHERE id = {$_POST['id']};");
+    //   if ($total_hours_row = pg_fetch_row($total_hours_result)){
+    //     $hours_now = $total_hours_row[0] - $_POST['type_hours'];
+    //     $query_total = "UPDATE full_total_hours SET total_hour = {$hours_now} WHERE id = {$_POST['id']};";
+    //     $result_total = pg_query($db_connection, $query_total);
+    //     if ($result_total){
+    //       echo "<h3 class='main-content-header'>Now your total hour for that day is {$hours_now}</h3>";
+    //     } else {
+    //       echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+    //     }
+    //   }
 
-      if ($result) {
-        echo "<h3 class='main-content-header'>Success</h3>";
-      } else {
-        echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
-      }
-    }else{
-      $query_total = "UPDATE full_total_hours SET total_hour = {$_POST['total_hours']} WHERE id = {$_POST['id']};";
-      $result_total = pg_query($db_connection, $query_total);
+    //   if ($result) {
+    //     echo "<h3 class='main-content-header'>Success</h3>";
+    //   } else {
+    //     echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
+    //   }
+    // }else{
+      // $query_total = "UPDATE full_total_hours SET total_hour = {$_POST['total_hours']} WHERE id = {$_POST['id']};";
+      // $result_total = pg_query($db_connection, $query_total);
       
-      $query_job_hours = "UPDATE full_job_hours SET work_type = '{$_POST['work_type']}', hours = '{$_POST['entered_hours']}' WHERE idd = {$_POST['idd']};";
+      $query_job_hours = "UPDATE full_job_hours SET work_type = '{$_POST['work_type']}' WHERE idd = {$_POST['idd']};";
       $result_job_hours = pg_query($db_connection, $query_job_hours);
-      if ($result_total && $result_job_hours){
-        echo "<h3 class='main-content-header'>You successfully update this row's data! Now your total hour for that day is {$_POST['total_hours']}</h3>";
+      if ($result_job_hours){
+        echo "<h3 class='main-content-header'>You successfully update this work type! </h3>";
       } else {
         echo "<h3 class='main-content-header'>An error occurred.</h3><p class='main-content-header'>Please try again, ensure that all data is correctly formatted.</p>";
       }

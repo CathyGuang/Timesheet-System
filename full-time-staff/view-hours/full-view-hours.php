@@ -143,7 +143,6 @@
           <td><input type="text" name="work_type" id="selected-job" list="work-type-list" value="{$line['work_type']}" required></td>
           <td>{$line['hours']}</td>
           <td>{$line['total_hour']}</td>
-          <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
           <td><button type ="submit">Submit</button></td>
         </tr>
         <input type='number' name='id' value='{$line['id']}' hidden>

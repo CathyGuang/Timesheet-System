@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/full-time-staff/enter-hours/css/added.css">
+  <script type="text/javascript" src="jspdf.js"></script>
   <script type="text/javascript" src="/full-time-staff/enter-hours/js/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
   
@@ -28,8 +30,10 @@
 
 <body>
 
+
+
   <div id="editor"></div>
-  <button id="cmd">generate PDF</button>
+  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 
   <header>
     <h1><?php echo $_POST['staff']; ?>'s Total Hours: 
@@ -62,6 +66,7 @@
     }
       echo $totalHour;
     ?>
+     
     </h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
       <form>
@@ -71,10 +76,14 @@
     </nav>
   </header>
 
-  <h3>  NOTE: If you want to modify data, you can only change data from one row each time!</h3>
-  <h3>  Make sure to edit Hours and Total Hours together!</h3>
-  <h3>  If there is no changes, click Submit at the bottom.</h3>
-  <table>
+  <div class = "full_view_note">
+
+  <p>  NOTE: If you want to modify data, you can only change data from one row each time!</p>
+  <p>  Make sure to edit Hours and Total Hours together!</p>
+  <p>  If there is no changes, click Submit at the bottom.</p>
+
+  </div >
+  <table id="HoursTable" style = "margin:15px;font-size:20px;">
     <tr>
     <th>Date</th>
     <th>Work Types</th>
@@ -149,13 +158,15 @@
 
   <h3>
 
-  <table>
+  <table style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>
     <th>In Time</th>
     <th>Out Time</th>
   </tr>
-  <h3>  NOTE: Deleting any one row, all hours on that day will be deleted!</h3>
+  <div class = "full_view_note">
+  <p>  NOTE: Deleting any one row, all hours on that day will be deleted!</p>
+  </div>
 
   <?php
 
@@ -179,7 +190,7 @@
   ?>
   </table>
   <br>
-  <table>
+  <table style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>
     <th>Holiday Type</th>
@@ -213,7 +224,7 @@
     <form autocomplete="off" class="standard-form" action="hours-complete.php" method="post">
 
       <div class="form-section">
-        <div class="form-element">
+        <div class="form-element" style = "font-size:18px;">
           <p>Hours complete for pay period: <input type="checkbox" name="send-email" value="true"></p>
         </div>
       </div>
@@ -236,8 +247,16 @@
     ?>
   </datalist>
 
-</body>
 
-<script type="text/javascript" src="print.js"></script>
+  <!-- generate PDF Javascript -->
+
+
+  <script type="text/javascript">
+    var someone=<?php echo json_encode($_POST['staff']); ?>;
+    var hours=<?php echo json_encode($totalHour); ?>;
+  </script>
+  <script type="text/javascript" src="print.js"></script>
+
+</body>
 
 </html>

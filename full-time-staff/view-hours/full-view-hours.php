@@ -79,7 +79,6 @@
   <div class = "full_view_note">
 
   <p>  NOTE: If you want to modify data, you can only change data from one row each time!</p>
-  <p>  Make sure to edit Hours and Total Hours together!</p>
   <p>  If there is no changes, click Submit at the bottom.</p>
 
   </div >

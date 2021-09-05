@@ -132,8 +132,8 @@
         <tr>
           <td>{$line['date_of_shift']}</td>
           <td><input type="text" name="work_type" id="selected-job" list="work-type-list" value="{$line['work_type']}" required></td>
-          <td><input type="text" name="entered_hours" id="entered_hours" value="{$line['hours']}" required></td>
-          <td><input type="text" name="total_hours" id="total_hours" value="{$line['total_hour']}" required></td>
+          <td>{$line['hours']}</td>
+          <td>{$line['total_hour']}</td>
           <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
           <td><button type ="submit">Submit</button></td>
         </tr>
@@ -164,8 +164,8 @@
       <form action='delete_in_out.php' method='POST'>
         <tr>
           <td>{$row['date_of_shift']}</td>
-          <td><input type="text" name="in_time" id="in_time" value="{$row['in_time']}" required></td>
-          <td><input type="text" name="out_time" id="out_time" value="{$row['out_time']}" required></td>
+          <td>{$row['in_time']}</td>
+          <td>{$row['out_time']}</td>
           <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
           <td><button type ="submit">Submit</button></td>
         </tr>

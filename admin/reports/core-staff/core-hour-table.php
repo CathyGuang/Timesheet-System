@@ -152,12 +152,12 @@
   </table>
   <br>
 
-  <?php
+  <!-- <?php
     if (!$holidayData) {
       echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
       return;
     }
-  ?>
+  ?> -->
   <table>
   <tr>
     <th>Name</th>

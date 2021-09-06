@@ -344,7 +344,9 @@
         <button type="button" class = "payPeriod" onclick="checkPeriod();" >Check Pay Periods</button>
 
       </div>
-          
+      
+      <br>
+      <br>
         
 
       

@@ -69,7 +69,7 @@
 
       <div class="form-section">
         <button type="button" class="cancel-form" onclick="window.history.back()">Cancel</button>
-        <button type="button" class="purplebut" id="purplebut" onclick="submitted();">Submit</button>
+        <button type="submit" class="purplebut" id="purplebut" >Submit</button>
       </div>
 
     </form>

@@ -52,7 +52,7 @@ function genPDF(){
             for (let j in row.cells) {
                 let col = row.cells[j]
                 //   console.log(col);
-                if (j == 0){
+                if (j == 0 || j==2 || j==3){
                 doc.setFontSize(14);
                 console.log("COL:");
                 console.log(col.textContent);
@@ -60,7 +60,7 @@ function genPDF(){
                 doc.text(col.textContent+": ",column,30+amount); 
                 amount = amount + 5;
                 }
-                if(j==1 || j==2 || j==3){
+                if(j==1){
                 doc.setFontSize(12);
                 console.log("EEEE:");
                 console.log(col.children[0].value);

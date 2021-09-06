@@ -17,7 +17,7 @@
     <h1>Staff Timesheet</h1>
     <nav> <a href="../"><button id="back-button">Back</button></a>
     <form>
-        <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\../\../full-time-staff/enter-hours/payPeriod.php';">
+        <input type="button" class="check_pay_period_button" value="Pay Periods" onclick= "window.location.href='\../\../full-time-staff/enter-hours/payPeriodPart.php';">
       </form>
       <a href="/"><button id="home-button">Home</button></a>
     </nav>

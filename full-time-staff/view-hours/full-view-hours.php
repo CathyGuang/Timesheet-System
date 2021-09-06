@@ -79,7 +79,7 @@
   <div class = "full_view_note">
 
   <p>  NOTE: If you want to modify data, you can only change data from one row each time!</p>
-  <p>  If there is no changes, click Submit at the bottom.</p>
+  <p>  If there is no changes, click the blue Submit button at the bottom.</p>
 
   </div >
   <table id="HoursTable" style = "margin:15px;font-size:20px;">

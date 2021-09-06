@@ -52,7 +52,7 @@ function genPDF(){
             for (let j in row.cells) {
                 let col = row.cells[j]
                 //   console.log(col);
-                if (j == 0 || j==2 || j==3){
+                if (j == 0){
                 doc.setFontSize(14);
                 console.log("COL:");
                 console.log(col.textContent);
@@ -60,11 +60,27 @@ function genPDF(){
                 doc.text(col.textContent+": ",column,30+amount); 
                 amount = amount + 5;
                 }
+                if (j==2){
+                    doc.setFontSize(12);
+                    console.log("COL:");
+                    console.log(col.textContent);
+                    doc.setFontType("normal");
+                    doc.text("hours: "+col.textContent,column,30+amount); 
+                    amount = amount + 5;
+                }
+                if (j==3){
+                    doc.setFontSize(12);
+                    console.log("COL:");
+                    console.log(col.textContent);
+                    doc.setFontType("normal");
+                    doc.text("total hours: "+col.textContent,column,30+amount); 
+                    amount = amount + 5;
+                }
                 if(j==1){
                 doc.setFontSize(12);
                 console.log("EEEE:");
                 console.log(col.children[0].value);
-                doc.setFontType("normal")
+                doc.setFontType("normal");
                 doc.text(col.children[0].value,column,30+amount); 
                 amount = amount + 5;
     

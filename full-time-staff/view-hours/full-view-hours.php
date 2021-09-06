@@ -31,10 +31,6 @@
 <body>
 
 
-
-  <div id="editor"></div>
-  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
-
   <header>
     <h1><?php echo $_POST['staff']; ?>'s Total Hours: 
     <?php
@@ -152,7 +148,15 @@
     }
   ?>
   </table>
-  <br>
+  <script type="text/javascript">
+    var someone=<?php echo json_encode($_POST['staff']); ?>;
+    var hours=<?php echo json_encode($totalHour); ?>;
+  </script>
+  <script type="text/javascript" src="print.js"></script>
+
+   <!-- generate PDF Javascript -->
+
+  <a href="javascript:genPDF()"><button id="cmd" class = "genPDFButton">generate PDF</button></a>
 
   <h3>
 
@@ -262,14 +266,7 @@
   </datalist>
 
 
-  <!-- generate PDF Javascript -->
 
-
-  <script type="text/javascript">
-    var someone=<?php echo json_encode($_POST['staff']); ?>;
-    var hours=<?php echo json_encode($totalHour); ?>;
-  </script>
-  <script type="text/javascript" src="print.js"></script>
 
 </body>
 

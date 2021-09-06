@@ -156,11 +156,11 @@
 
    <!-- generate PDF Javascript -->
 
-  <a href="javascript:genPDF()"><button id="cmd" class = "genPDFButton">generate PDF</button></a>
+  <a href="javascript:genPDF()"><button id="cmd" class = "genPDFButton">generate work hours PDF</button></a>
 
   <h3>
 
-  <table style = "margin:15px;font-size:20px;">
+  <table id="InOutTable" style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>
     <th>In Time</th>
@@ -190,6 +190,8 @@
     }
     
   ?>
+
+<a href="javascript:genPDFin()"><button id="cmd" class = "genPDFButton">generate in out time PDF</button></a>
 
   </table>
   <br>

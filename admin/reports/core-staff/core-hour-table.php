@@ -175,7 +175,7 @@
 
     array_multisort($sortarray3, SORT_DESC, $holidayData);
 
-    foreach ($holidayData as $holidayDay) {
+    foreach ($holidayData as &$holidayDay) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}';"), 0, 1)['name'];
       $holidayDay['staff'] = $name;
       unset($holidayDay['id']);
@@ -187,7 +187,7 @@
       echo "<td>{$holidayDay['hours']}</td>";
       echo "</tr>";
     }
-    
+    unset($holidayDay);
   ?>
   </table>
   <br>

@@ -30,13 +30,14 @@ todayDate = stampToDate(n);
 document.getElementById("date").innerHTML =todayDate;
 
 var beginDate = "2021-06-27 23:59:59";
-var StartDate = parseInt(localStorage.getItem('startDate'));
+//var StartDate = parseInt(localStorage.getItem('startDate'));
 
 // find next due date
-// var timeStampDue = timeStart.getTime();
+//var timeStampDue = StartDate;
+
 const timeStampNow = Date.now();
 var timeStart = new Date(beginDate);
-var timeStampDue = StartDate;
+var timeStampDue = timeStart.getTime();
 var nextStartStamp = minus13Days(timeStampDue);
 var nextDueStamp = 0;
 var nextPayStamp = add12Days(timeStampDue);

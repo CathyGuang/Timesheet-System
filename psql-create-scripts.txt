@@ -241,6 +241,7 @@ CREATE TABLE full_job_hours (
 );
 
 CREATE TABLE holiday_hours (
+  id SERIAL PRIMARY KEY,
   staff INT REFERENCES workers(id),
   date_of_shift DATE,
   holiday_type TEXT,

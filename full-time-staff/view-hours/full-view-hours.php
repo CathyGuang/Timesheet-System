@@ -184,8 +184,12 @@
       </form>
       EOT;
     }
-    
+    if (!$holidayData) {
+      echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no holiday data for this time period.</p>";
+      return;
+  }
   ?>
+
   </table>
   <br>
   <table style = "margin:15px;font-size:20px;">
@@ -207,12 +211,18 @@
     array_multisort($sortarray, SORT_DESC, $holidayData);
 
     foreach ($holidayData as $holidayDay) {
-
-      echo "<tr>";
-      echo "<td>{$holidayDay['date_of_shift']}</td>";
-      echo "<td>{$holidayDay['holiday_type']}</td>";
-      echo "<td>{$holidayDay['hours']}</td>";
-      echo "</tr>";
+      echo <<<EOT
+      <form action='delete_holiday.php' method='POST'>
+        <tr>
+          <td>{$holidayDay['date_of_shift']}</td>
+          <td>{$holidayDay['holiday_type']}</td>
+          <td>{$holidayDay['hours']}</td>
+          <td>DELETE<input type="checkbox" id="delete-checkbox" name="delete" value="FALSE"></td>
+          <td><button type ="submit">Submit</button></td>
+        </tr>
+        <input type='number' name='id' value='{$holidayDay['id']}' hidden>
+      </form>
+      EOT;
     }
     
   ?>

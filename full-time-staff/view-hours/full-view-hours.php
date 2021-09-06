@@ -148,8 +148,6 @@
     }
   ?>
   </table>
-  <br>
-  
   <script type="text/javascript">
     var someone=<?php echo json_encode($_POST['staff']); ?>;
     var hours=<?php echo json_encode($totalHour); ?>;

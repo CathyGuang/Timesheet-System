@@ -65,7 +65,7 @@
   <?php
 
     $holidayHourQuery = <<<EOT
-      INSERT INTO holiday_hours
+      INSERT INTO holiday_hours (staff, date_of_shift, holiday_type, hours, notes)
       VALUES ('{$staffID}', '{$date}', '{$type}', '{$hours}', '{$notes}')
       ;
   EOT;

@@ -155,9 +155,8 @@
   <?php
     if (!$holidayData) {
       echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
-      return;
-    }
-    echo <<<EOT
+    }else{
+      echo <<<EOT
       <table>
       <tr>
         <th>Name</th>
@@ -166,8 +165,8 @@
         <th>Hours</th>
       </tr>
       EOT;
-  
-
+    }
+    
     //Sort holidayData array according to date
     $sortarray3 = array();
     foreach ($holidayData as $key => $row){

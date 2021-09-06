@@ -156,7 +156,7 @@
 
    <!-- generate PDF Javascript -->
 
-  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
+  <a href="javascript:genPDF()"><button id="cmd" class = "genPDFButton">generate PDF</button></a>
 
   <h3>
 

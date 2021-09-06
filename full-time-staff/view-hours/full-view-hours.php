@@ -193,9 +193,9 @@
     
   ?>
 
-<a href="javascript:genPDFin()"><button id="cmd" class = "genPDFButton">generate in out time PDF</button></a>
 
   </table>
+  <a href="javascript:genPDFin()"><button id="kmd" class = "genPDFButton">generate in out time PDF</button></a>
   <br>
   <?php
     if (!$holidayData) {

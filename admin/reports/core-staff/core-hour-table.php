@@ -152,16 +152,21 @@
   </table>
   <br>
 
-
-  <table>
-  <tr>
-    <th>Name</th>
-    <th>Date</th>
-    <th>Holiday Type</th>
-    <th>Hours</th>
-  </tr>
-
   <?php
+    if (!$holidayData) {
+      echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
+    }else{
+      echo <<<EOT
+      <table>
+      <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Holiday Type</th>
+        <th>Hours</th>
+      </tr>
+      EOT;
+    }
+    
     //Sort holidayData array according to date
     $sortarray3 = array();
     foreach ($holidayData as $key => $row){
@@ -173,6 +178,7 @@
     foreach ($holidayData as $holidayDay) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}';"), 0, 1)['name'];
       $holidayDay['staff'] = $name;
+      unset($holidayDay['id']);
 
       echo "<tr>";
       echo "<td>$name</td>";

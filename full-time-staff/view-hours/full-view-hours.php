@@ -165,6 +165,8 @@
     <th>Date</th>
     <th>In Time</th>
     <th>Out Time</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <div class = "full_view_note">
   <p>  NOTE: Deleting any one row, all hours on that day will be deleted!</p>
@@ -198,20 +200,18 @@
   <?php
     if (!$holidayData) {
       echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
-      return;
+    }else{
+      echo <<<EOT
+      <table>
+      <tr>
+        <th>Date</th>
+        <th>Holiday Type</th>
+        <th>Hours</th>
+        <th> </th>
+        <th> </th>
+      </tr>
+      EOT;
     }
-  ?>
-
-  <table style = "margin:15px;font-size:20px;">
-  <tr>
-    <th>Date</th>
-    <th>Holiday Type</th>
-    <th>Hours</th>
-    <th> </th>
-    <th> </th>
-  </tr>
-
-  <?php
     //Sort holidayData array according to date
     $sortarray = array();
     foreach ($holidayData as $key => $row){

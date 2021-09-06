@@ -30,11 +30,6 @@
 
 <body>
 
-     <!-- generate PDF Javascript -->
-
-
-  <div id="editor"></div>
-  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 
   <header>
     <h1><?php echo $_POST['staff']; ?>'s Total Hours: 
@@ -265,6 +260,12 @@
     var hours=<?php echo json_encode($totalHour); ?>;
   </script>
   <script type="text/javascript" src="print.js"></script>
+
+   <!-- generate PDF Javascript -->
+
+
+   <div id="editor"></div>
+  <a href="javascript:genPDF()"><button id="cmd">generate PDF</button></a>
 
 
 

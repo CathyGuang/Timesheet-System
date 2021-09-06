@@ -30,6 +30,14 @@
 
 <body>
 
+     <!-- generate PDF Javascript -->
+
+
+  <script type="text/javascript">
+    var someone=<?php echo json_encode($_POST['staff']); ?>;
+    var hours=<?php echo json_encode($totalHour); ?>;
+  </script>
+  <script type="text/javascript" src="print.js"></script>
 
 
   <div id="editor"></div>
@@ -260,14 +268,6 @@
   </datalist>
 
 
-  <!-- generate PDF Javascript -->
-
-
-  <script type="text/javascript">
-    var someone=<?php echo json_encode($_POST['staff']); ?>;
-    var hours=<?php echo json_encode($totalHour); ?>;
-  </script>
-  <script type="text/javascript" src="print.js"></script>
 
 </body>
 

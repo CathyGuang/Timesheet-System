@@ -152,12 +152,7 @@
   </table>
   <br>
 
-  <!-- <?php
-    if (!$holidayData) {
-      echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
-      return;
-    }
-  ?> -->
+
   <table>
   <tr>
     <th>Name</th>
@@ -205,6 +200,7 @@
     <input type="hidden" name="holiday_data" value= "<?php echo htmlentities(serialize($holidayData)); ?>">
   <button class="blue-button" type="submit">Export Holiday Data</button>
   </form>
+
 </body>
 
 </html>

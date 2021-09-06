@@ -178,6 +178,7 @@
     foreach ($holidayData as $holidayDay) {
       $name = pg_fetch_array(pg_query($db_connection, "SELECT name FROM workers WHERE id = '{$holidayDay['staff']}';"), 0, 1)['name'];
       $holidayDay['staff'] = $name;
+      unset($holidayDay['id']);
 
       echo "<tr>";
       echo "<td>$name</td>";

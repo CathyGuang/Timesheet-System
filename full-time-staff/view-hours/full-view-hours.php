@@ -161,6 +161,8 @@
     <th>Date</th>
     <th>In Time</th>
     <th>Out Time</th>
+    <th> </th>
+    <th> </th>
   </tr>
   <div class = "full_view_note">
   <p>  NOTE: Deleting any one row, all hours on that day will be deleted!</p>

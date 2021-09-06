@@ -184,14 +184,18 @@
       </form>
       EOT;
     }
-    if (!$holidayData) {
-      echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no holiday data for this time period.</p>";
-      return;
-  }
+    
   ?>
 
   </table>
   <br>
+  <?php
+    if (!$holidayData) {
+      echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no holiday data for this time period.</p>";
+      return;
+    }
+  ?>
+
   <table style = "margin:15px;font-size:20px;">
   <tr>
     <th>Date</th>

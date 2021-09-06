@@ -6,7 +6,7 @@
 
   //Get table columns for CSV file
   $metadata = array();
-  $metadata[0] = array("Name", "Date", "Work Type", "Hours", "Total Hours This Day");
+  $metadata[0] = array("ID", "Name", "Date", "Work Type", "Hours", "Total Hours This Day");
 
   $result = unserialize($_POST['core_data']);
 

@@ -1,4 +1,0 @@
-AuthName "Staff Page"
-Authtype Basic
-AuthUserFile /var/www/DarkHorseScheduling/HTPASSWD/.htpasswd
-require user [STAFF USERNAME]

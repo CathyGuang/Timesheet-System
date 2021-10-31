@@ -39,6 +39,12 @@ EOT;
       return;
     }
 
+    $sortarray = array();
+    foreach ($hourData as $key => $row){
+      $sortarray[$key] = strtotime($row['date_of_hours']);
+    }
+    array_multisort($sortarray, SORT_DESC, $hourData);
+
     $totalHours = 0;
     foreach ($hourData as $uniqueShift) {
       $totalHours += $uniqueShift['hours'];

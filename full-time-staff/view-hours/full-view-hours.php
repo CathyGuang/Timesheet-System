@@ -130,6 +130,14 @@
         return;
     }
 
+    $sortarray1 = array();
+
+    foreach ($coreData as $key => $row){
+      $sortarray1[$key] = strtotime($row['date_of_shift']);
+    }
+    
+    array_multisort($sortarray1, SORT_DESC, $coreData);
+
     foreach ($coreData as $line) {
       echo <<<EOT
       <form action='delete_data.php' method='POST'>
@@ -174,6 +182,13 @@
 
   <?php
 
+    $sortarray2 = array();
+    foreach ($inOutData as $key => $row){
+      $sortarray2[$key] = strtotime($row['date_of_shift']);
+    }
+
+    array_multisort($sortarray2, SORT_DESC, $inOutData);
+
     foreach ($inOutData as $row) {
       echo <<<EOT
       <form action='delete_in_out.php' method='POST'>
@@ -213,12 +228,12 @@
       EOT;
     }
     //Sort holidayData array according to date
-    $sortarray = array();
+    $sortarray3 = array();
     foreach ($holidayData as $key => $row){
-      $sortarray[$key] = strtotime($row['date_of_shift']);
+      $sortarray3[$key] = strtotime($row['date_of_shift']);
     }
 
-    array_multisort($sortarray, SORT_DESC, $holidayData);
+    array_multisort($sortarray3, SORT_DESC, $holidayData);
 
     foreach ($holidayData as $holidayDay) {
       echo <<<EOT

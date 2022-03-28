@@ -99,7 +99,8 @@
     SELECT * FROM full_job_hours, full_total_hours
     WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date']}' <= full_job_hours.date_of_shift AND
-    '{$_POST['end-date']}' >= full_job_hours.date_of_shift
+    '{$_POST['end-date']}' >= full_job_hours.date_of_shift AND
+    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
     ;
     EOT;
 

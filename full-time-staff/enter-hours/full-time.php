@@ -93,6 +93,21 @@
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
+    $totalDayHourQuery = <<<EOT
+    SELECT * FROM full_total_hours
+    WHERE full_total_hours.staff = '{$staffID}' AND
+    '{$_POST['start-date']}' <= full_total_hours.date_of_shift AND
+    '{$_POST['end-date']}' >= full_total_hours.date_of_shift
+    ;
+    EOT;
+    $totalHourData = pg_fetch_all(pg_query($db_connection, $totalDayHourQuery));
+    $totalDayHour = 0;
+    foreach($totalHourData as $day){
+        $totalDayHour = $totalDayHour + $day['total_hour'];
+    }
+
+    echo $totalDayHour;
+
     foreach ($workTypeHourArray as $data){
       $workType = $data[0];
       $hours = $data[1];

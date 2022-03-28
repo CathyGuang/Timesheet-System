@@ -99,7 +99,7 @@
 
     $totalDayFinalHour = $totalDayHour + $totalHour;
 
-    echo $totalDayFinalHour;
+    // echo $totalDayFinalHour;
 
     $totalHourQuery = <<<EOT
       INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)

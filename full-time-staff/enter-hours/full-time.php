@@ -103,9 +103,18 @@
 
     $totalHourQuery = <<<EOT
       INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
-      VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
+      VALUES ('{$staffID}', '{$date}', '{$totalDayFinalHour}', '{$notes}')
       ;
   EOT;
+    
+    $deleteExcessHourQuery = <<<EOT
+    DELETE FROM full_total_hours 
+    WHERE full_total_hours.staff = '{$staffID}' AND
+    full_total_hours.date_of_shift = '{$date}'
+    ;
+  EOT;
+
+  pg_query($db_connection, $deleteExcessHourQuery);
 
   $totalHourResult = pg_query($db_connection, $totalHourQuery);
 

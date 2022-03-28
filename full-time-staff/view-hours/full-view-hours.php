@@ -125,6 +125,7 @@
     $inOutData = pg_fetch_all(pg_query($db_connection, $inOutQuery));
     $holidayData = pg_fetch_all(pg_query($db_connection, $holidayQuery));
 
+    echo $coreData;
     if (!$coreData) {
         echo "<h3 class='main-content-header'>No data.</h3><p class='main-content-header'>There are no hour entries for this time period.</p>";
         return;

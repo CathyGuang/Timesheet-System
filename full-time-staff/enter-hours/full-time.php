@@ -96,6 +96,19 @@
     ;
   EOT;
 
+    $totalHourQuery = <<<EOT
+      SELECT * FROM full_total_hours
+      WHERE full_total_hours.staff = '{$staffID}' AND
+      full_total_hours.date_of_shift = '{$date}';
+      EOT;
+      $totalHourData = pg_fetch_all(pg_query($db_connection, $totalHourQuery));
+      $DaytotalHour = 0;
+      foreach($totalHourData as $day){
+          $DaytotalHour= $DaytotalHour + $day['total_hour'];
+      }
+    
+    echo "hhhh";
+
     pg_query($db_connection, $deletetotalHourQuery);
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);

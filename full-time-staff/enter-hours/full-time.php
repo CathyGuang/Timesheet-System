@@ -96,7 +96,7 @@
     ;
   EOT;
 
-    $totalHourDelete = pg_query($db_connection, $deletetotalHourQuery);
+    pg_query($db_connection, $deletetotalHourQuery);
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 

@@ -32,7 +32,7 @@
 
 
   <header>
-    <h1><?php echo $_POST['staff']; ?>'s Total HoursKK: 
+    <h1><?php echo $_POST['staff']; ?>'s Total Hours: 
     <?php
       $staffName = pg_escape_string(trim($_POST['staff']));
       $staffID = pg_fetch_array(pg_query($db_connection, "SELECT id FROM workers WHERE name = '{$staffName}' AND (archived IS NULL OR archived = '');"), 0, 1)['id'];
@@ -99,9 +99,7 @@
     SELECT * FROM full_job_hours, full_total_hours
     WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date']}' <= full_job_hours.date_of_shift AND
-    '{$_POST['end-date']}' >= full_job_hours.date_of_shift AND
-    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
-    full_job_hours.staff = full_total_hours.staff
+    '{$_POST['end-date']}' >= full_job_hours.date_of_shift
     ;
     EOT;
 

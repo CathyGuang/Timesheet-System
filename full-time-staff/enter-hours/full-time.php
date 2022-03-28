@@ -85,14 +85,6 @@
     }
     unset($row);
 
-    $totalHourQuery = <<<EOT
-      INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
-      VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
-      ;
-  EOT;
-
-    $totalHourResult = pg_query($db_connection, $totalHourQuery);
-
     $totalDayHourQuery = <<<EOT
     SELECT * FROM full_total_hours
     WHERE full_total_hours.staff = '{$staffID}' AND
@@ -105,7 +97,17 @@
         $totalDayHour = $totalDayHour + $day['total_hour'];
     }
 
-    echo $totalDayHour;
+    $totalDayFinalHour = $totalDayHour + $totalHour;
+
+    echo $totalDayFinalHour;
+
+    $totalHourQuery = <<<EOT
+      INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
+      VALUES ('{$staffID}', '{$date}', '{$totalHour}', '{$notes}')
+      ;
+  EOT;
+
+  $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     foreach ($workTypeHourArray as $data){
       $workType = $data[0];

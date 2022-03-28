@@ -107,7 +107,7 @@
           $DaytotalHour= $DaytotalHour + $day['total_hour'];
       }
     
-    echo "hhhh";
+    echo $DaytotalHour;
 
     pg_query($db_connection, $deletetotalHourQuery);
 

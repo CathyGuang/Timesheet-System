@@ -100,7 +100,8 @@
     WHERE full_job_hours.staff = '{$staffID}' AND
     '{$_POST['start-date']}' <= full_job_hours.date_of_shift AND
     '{$_POST['end-date']}' >= full_job_hours.date_of_shift AND
-    full_job_hours.date_of_shift = full_total_hours.date_of_shift
+    full_job_hours.date_of_shift = full_total_hours.date_of_shift AND
+    full_job_hours.staff = full_total_hours.staff
     ;
     EOT;
 

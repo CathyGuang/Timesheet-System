@@ -91,6 +91,13 @@
       ;
   EOT;
 
+    $deletetotalHourQuery = <<<EOT
+    DELETE FROM full_total_hours WHERE date_of_shift = '{$date}'
+    ;
+  EOT;
+
+    $totalHourDelete = pg_query($db_connection, $deletetotalHourQuery);
+
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     foreach ($workTypeHourArray as $data){

@@ -91,11 +91,6 @@
       ;
   EOT;
 
-    $deletetotalHourQuery = <<<EOT
-    DELETE FROM full_total_hours WHERE date_of_shift = '{$date}'
-    ;
-  EOT;
-
     $totalHourQuery = <<<EOT
       SELECT * FROM full_total_hours
       WHERE full_total_hours.staff = '{$staffID}' AND
@@ -108,8 +103,6 @@
       }
     
     echo $DaytotalHour;
-
-    // pg_query($db_connection, $deletetotalHourQuery);
 
     $totalHourResult = pg_query($db_connection, $totalHourQuery);
 

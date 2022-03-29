@@ -154,7 +154,7 @@
 
   <?php
     if (!$holidayData) {
-      echo "<p class='main-content-header'>There are no holiday data for this time period.</p>";
+      echo "<p class='main-content-header'>There is no holiday data for this time period.</p>";
     }else{
       echo <<<EOT
       <table>

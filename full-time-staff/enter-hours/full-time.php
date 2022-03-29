@@ -85,6 +85,9 @@
     }
     unset($row);
 
+    // calculate the total work hours of that day accumulatively
+    // update the total work hour that day in the full_total_hours table
+    // by deleting the outdated data and inserting updated data
     $totalDayHourQuery = <<<EOT
     SELECT * FROM full_total_hours
     WHERE full_total_hours.staff = '{$staffID}' AND
@@ -99,8 +102,6 @@
 
     $totalDayFinalHour = $totalDayHour + $totalHour;
 
-    // echo $totalDayFinalHour;
-
     $totalHourQuery = <<<EOT
       INSERT INTO full_total_hours (staff, date_of_shift, total_hour, notes)
       VALUES ('{$staffID}', '{$date}', '{$totalDayFinalHour}', '{$notes}')
@@ -114,8 +115,10 @@
     ;
   EOT;
 
+  // deleting the outdated total hour data
   pg_query($db_connection, $deleteExcessHourQuery);
 
+  // inserting updated total hour data
   $totalHourResult = pg_query($db_connection, $totalHourQuery);
 
     foreach ($workTypeHourArray as $data){
